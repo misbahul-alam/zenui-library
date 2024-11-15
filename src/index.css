@@ -200,7 +200,7 @@ aside ul a:not(.getStarted a) {
   text-transform: capitalize;
 }
 
-aside ul a:not(.getStarted a):hover {
+aside ul a:not(.getStarted a, .sectionHeader):hover {
   background-color: #e5eaf2;
   font-weight: 500;
   border-left: 1px solid #9caebc;
