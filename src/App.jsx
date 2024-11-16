@@ -6,13 +6,12 @@ import {Route, Routes} from "react-router-dom";
 // home page
 import HomePage from "./Pages/HomePage";
 
-// components page
-import ComponentsPage from "./Pages/ComponentsPage";
-
 // documentation page
 import OverviewPage from "./Pages/OverviewPage";
-import FaqPage from "./Pages/FaqPage";
+import InstallationPage from "./Pages/InstallationPage.jsx";
 import TempletePage from "./Pages/TempletePage";
+import ResourcesPage from "./Pages/ResourcesPage.jsx";
+import ReactCustomHooksPage from "./Pages/ReactCustomHooksPage.jsx";
 
 // inputs
 import InputTextPage from "./Pages/Components/Inputs/InputTextPage";
@@ -21,10 +20,15 @@ import InputRadioPage from "./Pages/Components/Inputs/InputRadioPage";
 import InputSwitchPage from "./Pages/Components/Inputs/InputSwitchPage";
 import InputSelectPage from "./Pages/Components/Inputs/InputSelectPage";
 import InputFilePage from "./Pages/Components/Inputs/InputFilePage";
+import NumberInputPage from "./Pages/Components/Inputs/NumberInputPage.jsx";
+import StrongPasswordPage from "./Pages/Components/Inputs/StrongPasswordPage.jsx";
+import CheckboxInputPage from "./Pages/Components/Inputs/CheckboxInputPage.jsx";
+import InputSliderPage from "./Pages/Components/Inputs/InputSliderPage.jsx";
 
 // buttons pages
 import NormalPage from "./Pages/Components/Buttons/NormalPage";
 import AnimatedButtonPage from "./Pages/Components/Buttons/AnimatedButtonPage";
+import AuthButtonPage from "./Pages/Components/Buttons/AuthButtonPage.jsx";
 
 // all components
 import AllComponentsPage from "./Pages/Components/AllComponentsPage";
@@ -34,6 +38,10 @@ import PaginationPage from "./Pages/Components/Navigation/PaginationPage";
 import TabsPage from "./Pages/Components/Navigation/TabsPage";
 import ModalPage from "./Pages/Components/Navigation/ModalPage";
 import ChipPage from "./Pages/Components/Navigation/ChipPage";
+import StepsPage from "./Pages/Components/Navigation/StepsPage.jsx";
+import BreadcrumbPage from "./Pages/Components/Navigation/BreadcrumbPage.jsx";
+import RatingPage from "./Pages/Components/Navigation/RatingPage.jsx";
+import ProgressBarPage from "./Pages/Components/Navigation/ProgressBarPage.jsx";
 
 // feedback pages
 import SkeletonPage from "./Pages/Components/Feedback/SkeletonPage";
@@ -42,10 +50,15 @@ import DialogPage from "./Pages/Components/Feedback/DialogPage";
 import TestimonialPage from "./Pages/Components/Feedback/TestimonialPage";
 import NotificationPage from "./Pages/Components/Feedback/NotificationPage";
 import LoaderPage from "./Pages/Components/Feedback/LoaderPage";
+import ContextMenuPage from "./Pages/Components/Feedback/ContextMenuPage.jsx";
+import TreeDropdownPage from "./Pages/Components/Feedback/TreeDropdownPage.jsx";
 
 // data display
 import BadgePage from "./Pages/Components/Data Display/BadgePage";
 import TooltipPage from "./Pages/Components/Data Display/TooltipPage";
+import TimelinePage from "./Pages/Components/Data Display/TimelinePage.jsx";
+import TablePage from "./Pages/Components/Data Display/TablePage.jsx";
+import PieChartPage from "./Pages/Components/Data Display/PieChartPage.jsx";
 
 // surface pages
 import CardPage from "./Pages/Components/Surfaces/CardPage";
@@ -53,6 +66,13 @@ import AnimatedCardsPage from "./Pages/Components/Surfaces/AnimatedCardsPage.jsx
 import ImageGalleryPage from "./Pages/Components/Surfaces/ImageGalleryPage";
 import AccordingPage from "./Pages/Components/Surfaces/AccordingPage";
 import AppbarPage from "./Pages/Components/Surfaces/AppbarPage";
+import DragAndDropPage from "./Pages/Components/Surfaces/DragAndDropPage.jsx";
+import CarouselPage from "./Pages/Components/Surfaces/CarouselPage.jsx";
+
+// e-commerce
+import ProductCardPage from "./Pages/Components/ECommerce/ProductCardPage.jsx";
+import OfferGridPage from "./Pages/Components/ECommerce/OfferGridPage.jsx";
+import AdsCardPage from "./Pages/Components/ECommerce/AdsCardPage.jsx";
 
 // randoms
 import CodeSnippetPage from "./Pages/Components/Randoms/CodeSnippetPage";
@@ -67,44 +87,28 @@ import OtpInputPage from "./Pages/Components/Inputs/OtpInputPage.jsx";
 // blocks
 import ResponsiveNavbarPage from "./Pages/Blocks/Sections/ResponsiveNavbarPage.jsx";
 import AllBlocksPage from "./Pages/Blocks/AllBlocksPage.jsx";
-import HeroSectionPage from "./Pages/Blocks/Sections/HeroSectionPage.jsx";
-import ProgressBarPage from "./Pages/Components/Navigation/ProgressBarPage.jsx";
-import ContactFormPage from "./Pages/Blocks/Forms/ContactFormPage.jsx";
-import ResponsiveSearchbarPage from "./Pages/Blocks/Randoms/ResponsiveSearchbarPage.jsx";
-import BreadcrumbPage from "./Pages/Components/Navigation/BreadcrumbPage.jsx";
-import RatingPage from "./Pages/Components/Navigation/RatingPage.jsx";
-import TimelinePage from "./Pages/Components/Data Display/TimelinePage.jsx";
-import NumberInputPage from "./Pages/Components/Inputs/NumberInputPage.jsx";
-import StrongPasswordPage from "./Pages/Components/Inputs/StrongPasswordPage.jsx";
-import CheckboxInputPage from "./Pages/Components/Inputs/CheckboxInputPage.jsx";
-import EmptyPage from "./Pages/EmptyPage.jsx"
-import StepsPage from "./Pages/Components/Navigation/StepsPage.jsx";
-
-// icons page
-import IconsPage from './Pages/IconsPages/IconsPage.jsx'
-import ResponsiveFooterPage from "./Pages/Blocks/Randoms/ResponsiveFooterPage.jsx";
-import AuthButtonPage from "./Pages/Components/Buttons/AuthButtonPage.jsx";
-
-import OpacityPalettePage from "./Pages/OpacityPalettePage.jsx"
 import WrongUrlErrorPage from "./Pages/Blocks/EmptyPages/WrongRoutePage.jsx";
 import WrongRoutePage from "./Pages/Blocks/EmptyPages/EmptyPage.jsx";
+import HeroSectionPage from "./Pages/Blocks/Sections/HeroSectionPage.jsx";
+import ContactFormPage from "./Pages/Blocks/Forms/ContactFormPage.jsx";
+import ResponsiveSearchbarPage from "./Pages/Blocks/Randoms/ResponsiveSearchbarPage.jsx";
+import ResponsiveFooterPage from "./Pages/Blocks/Randoms/ResponsiveFooterPage.jsx";
 import PricingSectionPage from "./Pages/Blocks/Sections/PricingSectionPage.jsx";
 import NewsletterSectionPage from "./Pages/Blocks/Forms/NewsletterSectionPage.jsx";
 import MultipageFormPage from "./Pages/Blocks/Forms/MultipageFormPage.jsx";
 import ResponsiveSidebarPage from "./Pages/Blocks/Randoms/ResponsiveSidebarPage.jsx";
-import InputSliderPage from "./Pages/Components/Inputs/InputSliderPage.jsx";
+
+// ZenUI wrong route page
+import EmptyPage from "./Pages/EmptyPage.jsx"
+
+// icons page
+import IconsPage from './Pages/IconsPages/IconsPage.jsx'
+
+// opacity palette
+import OpacityPalettePage from "./Pages/OpacityPalettePage.jsx"
 
 // layout playground page
 import LayoutPlaygroundPage from "./Pages/LayoutPlaygroundPage.jsx";
-import TreeDropdownPage from "./Pages/Components/Feedback/TreeDropdownPage.jsx";
-import InstallationPage from "./Pages/InstallationPage.jsx";
-import DragAndDropPage from "./Pages/Components/Surfaces/DragAndDropPage.jsx";
-import ResourcesPage from "./Pages/ResourcesPage.jsx";
-import ContextMenuPage from "./Pages/Components/Feedback/ContextMenuPage.jsx";
-import ReactCustomHooksPage from "./Pages/ReactCustomHooksPage.jsx";
-import TablePage from "./Pages/Components/Data Display/TablePage.jsx";
-import PieChartPage from "./Pages/Components/Data Display/PieChartPage.jsx";
-import CarouselPage from "./Pages/Components/Surfaces/CarouselPage.jsx";
 
 
 const App = () => {
@@ -260,6 +264,11 @@ const App = () => {
                 <Route path="/components/pie-chart" element={<PieChartPage/>}/>
                 <Route path="/components/tooltip" element={<TooltipPage/>}/>
                 <Route path="/components/timeline" element={<TimelinePage/>}/>
+
+                {/* e-commerce */}
+                <Route path="/components/product-card" element={<ProductCardPage/>}/>
+                <Route path="/components/offer-grid" element={<OfferGridPage/>}/>
+                <Route path="/components/ads-card" element={<AdsCardPage/>}/>
 
                 {/* randoms */}
                 <Route path="/components/code" element={<CodeSnippetPage/>}/>

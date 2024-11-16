@@ -18,7 +18,6 @@ const index = ({ startContent, setStartContent }) => {
   const [components, setComponents] = useState(true);
   const [blocks, setBlocks] = useState(true);
   const sidebarRef = useRef(null);
-  // Automatically scrolls the active sidebar element into view when startContent changes
 
   useEffect(() => {
     if (sidebarRef.current) {
@@ -655,36 +654,42 @@ const index = ({ startContent, setStartContent }) => {
                 </Link>
 
                 <Link
-                    to={"/components/code"}
+                    to={"/components/product-card"}
                     className={`${
-                        startContent === 39 &&
+                        startContent === 108 &&
                         "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
-                    }   border-l border-[#9caebc] `}
-                    onClick={() => setStartContent(39)}
+                    }   border-l border-[#9caebc] flex items-center gap-[10px]`}
+                    onClick={() => setStartContent(108)}
                 >
                     Product Card
+
+                    <NewBadge/>
                 </Link>
 
                 <Link
-                    to={"/components/code"}
+                    to={"/components/ads-card"}
                     className={`${
-                        startContent === 39 &&
+                        startContent === 109 &&
                         "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
-                    }   border-l border-[#9caebc] `}
-                    onClick={() => setStartContent(39)}
+                    }   border-l border-[#9caebc] flex items-center gap-[10px]`}
+                    onClick={() => setStartContent(109)}
                 >
                     Ads Card
+
+                    <NewBadge/>
                 </Link>
 
                 <Link
-                    to={"/components/code"}
+                    to={"/components/offer-grid"}
                     className={`${
-                        startContent === 39 &&
+                        startContent === 110 &&
                         "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
-                    }   border-l border-[#9caebc] `}
-                    onClick={() => setStartContent(39)}
+                    }   border-l border-[#9caebc] flex items-center gap-[10px]`}
+                    onClick={() => setStartContent(110)}
                 >
                     Offer Grid
+
+                    <NewBadge/>
                 </Link>
 
               {/* Randoms */}

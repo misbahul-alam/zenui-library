@@ -601,6 +601,53 @@ const MobileSidebar = ({ startContent, setStartContent }) => {
 
                             </Link>
 
+                            {/* e-commerce */}
+                            <Link
+                                to={""}
+                                className={`sectionHeader tracking-widest font-[500] relative mt-4 uppercase  border-l border-border !text-[0.750rem] `}
+                            >
+                                E-COMMERCE
+                            </Link>
+
+                            <Link
+                                to={"/components/code"}
+                                className={`${
+                                    startContent === 39 &&
+                                    "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
+                                }   border-l border-[#9caebc] flex items-center gap-[10px]`}
+                                onClick={() => setStartContent(39)}
+                            >
+                                Product Card
+
+                                <NewBadge/>
+                            </Link>
+
+                            <Link
+                                to={"/components/code"}
+                                className={`${
+                                    startContent === 39 &&
+                                    "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
+                                }   border-l border-[#9caebc] flex items-center gap-[10px]`}
+                                onClick={() => setStartContent(39)}
+                            >
+                                Ads Card
+
+                                <NewBadge/>
+                            </Link>
+
+                            <Link
+                                to={"/components/code"}
+                                className={`${
+                                    startContent === 39 &&
+                                    "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
+                                }   border-l border-[#9caebc] flex items-center gap-[10px]`}
+                                onClick={() => setStartContent(39)}
+                            >
+                                Offer Grid
+
+                                <NewBadge/>
+                            </Link>
+
                             {/* Randoms */}
                             <Link
                                 to={""}
