@@ -4,7 +4,7 @@ import ZenUIHeroBadge from "../../SvgIcons/ZenUIHeroBadge.jsx";
 const BecomeZenUIHero = () => {
     return (
         <section className='px-6 1024px:px-12 py-10 overflow-hidden'>
-            <img alt='zenui-hero/image' loading='lazy' src='https://i.ibb.co.com/TMZZfS6/become-zenui-hero-poster.png'
+            <img alt='zenui-hero/image' loading='lazy' src='https://i.ibb.co.com/LtKGtCS/become-zenui-hero-poster.png'
                  className='rounded-md w-[1000px] mx-auto'/>
 
             {/* details */}
