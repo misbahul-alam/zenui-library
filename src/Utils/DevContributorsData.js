@@ -39,4 +39,14 @@ export const DevContributorsData = [
         website: 'https://bento.me/e-sdev',
         zenuiHero: false,
     },
+    {
+        name: 'phuoctaiismee',
+        title: 'Web Developer',
+        image: 'https://avatars.githubusercontent.com/u/113773744?v=4',
+        linkedinLink: '',
+        twitterLink: '',
+        githubLink: 'https://github.com/phuoctaiismee',
+        website: '',
+        zenuiHero: false,
+    },
 ]

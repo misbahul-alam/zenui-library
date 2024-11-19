@@ -553,7 +553,7 @@ export default ProductDetailsSkeleton;
                             <div className='p-8 mb-4 flex items-center gap-5 justify-center'>
                                 <div className='w-full flex flex-col gap-[20px]'>
                                     <div
-                                        className='w-full mx-auto 640px:w-[450px] bg-secondary p-3 rounded-md border border-border boxShadow animate-pulse'>
+                                        className='w-full mx-auto bg-secondary p-3 rounded-md border border-border boxShadow animate-pulse'>
                                         <div className='flex items-center gap-[20px]'>
                                             <div className='w-[40%] 425px:w-[20%]'>
                                                 <img className='w-[80px] h-[80px] rounded-full bg-border'/>
@@ -571,7 +571,7 @@ export default ProductDetailsSkeleton;
                                         </div>
                                     </div>
                                     <div
-                                        className='w-full mx-auto 640px:w-[450px] bg-secondary p-3 rounded-md border border-border boxShadow animate-pulse'>
+                                        className='w-full mx-auto bg-secondary p-3 rounded-md border border-border boxShadow animate-pulse'>
                                         <div className='flex items-center gap-[20px]'>
                                             <div className='w-[40%] 425px:w-[20%]'>
                                                 <img className='w-[80px] h-[80px] rounded-full bg-border'/>
@@ -589,7 +589,7 @@ export default ProductDetailsSkeleton;
                                         </div>
                                     </div>
                                     <div
-                                        className='w-full mx-auto 640px:w-[450px] bg-secondary p-3 rounded-md border border-border boxShadow animate-pulse'>
+                                        className='w-full mx-auto bg-secondary p-3 rounded-md border border-border boxShadow animate-pulse'>
                                         <div className='flex items-center gap-[20px]'>
                                             <div className='w-[40%] 425px:w-[20%]'>
                                                 <img className='w-[80px] h-[80px] rounded-full bg-border'/>
@@ -620,7 +620,7 @@ const Skeleton = () => {
     return (
         <div className="w-full flex flex-col gap-[20px]">
             <div
-                className="w-full mx-auto sm:w-[450px] bg-secondary p-3 rounded-md border border-border boxShadow animate-pulse">
+                className="w-full mx-auto bg-secondary p-3 rounded-md border border-border boxShadow animate-pulse">
                 <div className="flex items-center gap-[20px]">
                     <div className="w-[40%] 425px:w-[20%]">
                         <img className="w-[80px] h-[80px] rounded-full bg-border"/>
@@ -640,7 +640,7 @@ const Skeleton = () => {
 
             </div>
             <div
-                className="w-full mx-auto sm:w-[450px] bg-secondary p-3 rounded-md border border-border boxShadow animate-pulse">
+                className="w-full mx-auto bg-secondary p-3 rounded-md border border-border boxShadow animate-pulse">
                 <div className="flex items-center gap-[20px]">
                     <div className="w-[40%] 425px:w-[20%]">
                         <img className="w-[80px] h-[80px] rounded-full bg-border"/>
@@ -660,7 +660,7 @@ const Skeleton = () => {
 
             </div>
             <div
-                className="w-full mx-auto sm:w-[450px] bg-secondary p-3 rounded-md border border-border boxShadow animate-pulse">
+                className="w-full mx-auto bg-secondary p-3 rounded-md border border-border boxShadow animate-pulse">
                 <div className="flex items-center gap-[20px]">
                     <div className="w-[40%] 425px:w-[20%]">
                         <img className="w-[80px] h-[80px] rounded-full bg-border"/>
@@ -730,7 +730,7 @@ export default Skeleton;
                             <div className='p-8 mb-4 flex items-center gap-5 justify-center'>
                                 <div className='w-full flex flex-col gap-[20px]'>
                                     <div
-                                        className='w-full 640px:w-[450px] mx-auto bg-secondary p-4 rounded-md border border-border boxShadow animate-pulse'>
+                                        className='w-full mx-auto bg-secondary p-4 rounded-md border border-border boxShadow animate-pulse'>
                                         <div className='flex gap-[20px]'>
                                             <div className='flex flex-col justify-between w-full 640px:w-[80%]'>
                                                 <div className='flex flex-col gap-2'>
@@ -768,7 +768,7 @@ const Skeleton = () => {
     return (
         <div className="w-full flex flex-col gap-[20px]">
             <div
-                className="w-full sm:w-[450px] mx-auto bg-secondary p-4 rounded-md border border-border boxShadow animate-pulse">
+                className="w-full mx-auto bg-secondary p-4 rounded-md border border-border boxShadow animate-pulse">
                 <div className="flex gap-[20px]">
                     <div className="flex flex-col justify-between w-full sm:w-[80%]">
                         <div className="flex flex-col gap-2">
@@ -840,7 +840,7 @@ export default Skeleton;
                         </div>
                         {shineSkeletonPreview && (
                             <div className="flex py-8 items-center justify-center">
-                                <div className="grid w-[600px] grid-cols-3 gap-6">
+                                <div className="grid w-full px-4 grid-cols-1 640px:grid-cols-2 1024px:grid-cols-3 gap-6">
 
                                     <div
                                         className="relative space-y-5 border border-slate-100 dark:border-slate-700 overflow-hidden rounded-2xl bg-white/5 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-100/10 before:bg-gradient-to-r before:from-transparent before:via-slate-100/70 dark:before:via-slate-100/10 before:to-transparent">
@@ -880,21 +880,20 @@ export default Skeleton;
                         {shineSkeletonCode && (
                             <Showcode
                                 code="
-// Add keyframes in tailwind.config.js
-        keyframes: {
-            shimmer: {
-                '100%': {
-                    transform: 'translateX(100%)',
-                },
-            },
-        },
+// Add keyframes in your index.css file
+@keyframes shimmer {
+  100% {
+        transform: translateX(100%)
+      }
+}
+
 //_________COMPONENT_____________
 import React from 'react';
 
 const ShineSkeleton = () => {
   return (
     <div className='flex py-8 items-center justify-center'>
-        <div className='grid w-[600px] grid-cols-3 gap-6'>
+        <div className='grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6'>
 
         // Card 1
         <div className='relative space-y-5 border border-slate-100 dark:border-slate-700 overflow-hidden rounded-2xl bg-white/5 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-100/10 before:bg-gradient-to-r before:from-transparent before:via-slate-100/70 dark:before:via-slate-100/10 before:to-transparent'>

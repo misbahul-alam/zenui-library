@@ -106,6 +106,9 @@ import TablePage from "./Pages/Components/Data Display/TablePage.jsx";
 import PieChartPage from "./Pages/Components/Data Display/PieChartPage.jsx";
 import CarouselPage from "./Pages/Components/Surfaces/CarouselPage.jsx";
 
+// become zenui hero docs
+import ZenUIHeroDocsPage from "./Pages/ZenUIHeroDocsPage.jsx";
+
 
 const App = () => {
     const [isCookie, setIsCookie] = useState(false)
@@ -289,6 +292,9 @@ const App = () => {
 
                 {/* layout playground */}
                 <Route path='/layout-playground' element={<LayoutPlaygroundPage/>}/>
+
+                {/* become ZenUI Hero */}
+                <Route path='/zenui-hero-docs' element={<ZenUIHeroDocsPage/>}/>
 
                 {/*  empty route  */}
                 <Route path="*" element={<EmptyPage/>}/>

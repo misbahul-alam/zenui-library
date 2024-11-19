@@ -18,13 +18,6 @@ export default {
                 secondary: "2px 2px 20px 2px rgba(0, 0, 0, 0.3)",
             }
         },
-        keyframes: {
-            shimmer: {
-                '100%': {
-                    transform: 'translateX(100%)',
-                },
-            },
-        },
 
         screens: {
             '640px': '640px',
