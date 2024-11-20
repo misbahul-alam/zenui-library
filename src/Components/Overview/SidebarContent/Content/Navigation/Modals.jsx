@@ -861,7 +861,7 @@ export default DropDown;
                 <div
                   className={`${
                     modal5Open ? ' visible' : ' invisible'
-                  } w-full h-screen fixed top-0 left-0 z-50 bg-[#0000002a] transition-all duration-300 flex items-center justify-center`}
+                  } w-full h-screen fixed top-0 left-0 z-50 bg-[#0000002a] transition-all duration-300 flex items-center justify-center z-[999]`}
                 >
                   <div
                     className={`${
@@ -1150,7 +1150,7 @@ export default DropDown;
                           className='py-2 w-full px-4 border border-[#d1d1d1] rounded-md outline-none text-[#353535]'
                           onClick={() => setModal6Open(false)}
                         >
-                          Dicline
+                          Decline
                         </button>
                       </div>
                     </div>
@@ -1274,7 +1274,7 @@ export default DropDown;
                 <div
                   className={`${
                     modal7Open ? ' visible' : ' invisible'
-                  } w-full h-screen fixed flex items-end justify-end top-0 left-0 z-50   transition-all duration-300`}
+                  } w-full h-screen fixed flex items-end justify-end top-0 left-0 z-50   transition-all duration-300 z-[999]`}
                 >
                   <div
                     className={`${
@@ -1289,7 +1289,6 @@ export default DropDown;
                         onClick={() => setModal7Open(false)}
                       />
                     </div>
-
                     <div className='flex items-start 1024px:flex-row flex-col justify-between gap-8'>
                       <div className='bg-[#fff] min-h-screen rounded-md p-6 w-full 1024px:w-[70%]'>
                         {/* steps */}
@@ -1703,7 +1702,7 @@ export default DropDown;
                   <div
                     className={`${
                       modal9Open ? ' visible' : ' invisible'
-                    } w-full h-screen fixed bg-[rgb(0,0,0,0.2)] top-0 left-0 z-50  transition-all duration-300`}
+                    } w-full h-screen fixed bg-[rgb(0,0,0,0.2)] top-0 left-0 z-50  transition-all duration-300 z-[999]`}
                   >
                     <div
                       className={`${
@@ -1883,7 +1882,7 @@ export default DropDown;
                   <div
                     className={`${
                       modal8Open ? ' visible' : ' invisible'
-                    } w-full h-screen fixed bg-[rgb(0,0,0,0.2)] top-0 left-0 z-50  transition-all duration-300`}
+                    } w-full h-screen fixed bg-[rgb(0,0,0,0.2)] top-0 left-0 z-50  transition-all duration-300 z-[999]`}
                   >
                     <div
                       className={`${
@@ -2522,14 +2521,14 @@ export default Modal;
                 <div
                   className={`${
                     modal10Open ? ' visible' : ' invisible'
-                  } w-full h-screen fixed top-0 left-0 z-50 bg-[#0000002a] flex items-center justify-center transition-all duration-300`}
+                  } w-full h-screen fixed top-0 left-0 z-50 bg-[#0000002a] flex items-center justify-center transition-all duration-300 z-[999]`}
                 >
                   <div
                     className={`${
                       modal10Open
                         ? ' scale-[1] opacity-100'
                         : ' scale-[0] opacity-0'
-                    } w-[90%] 640px:w-[80%] 1024px:w-[30%] bg-secondary rounded-lg p-5 transition-all duration-300`}
+                    } w-[90%] 640px:w-[80%] 1024px:w-[30%] bg-secondary rounded-lg p-5 transition-all duration-300 z-[999]`}
                   >
                     <div className='w-full flex items-center justify-between'>
                       <h2 className='text-[#000] text-[1.3rem] font-[500]'>
