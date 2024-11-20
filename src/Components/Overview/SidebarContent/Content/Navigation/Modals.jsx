@@ -254,7 +254,6 @@ const Modals = () => {
                       : ' scale-[0] opacity-0'
                   } w-full h-screen fixed top-0 left-0 z-50 bg-[#0000002a] flex items-center justify-center transition-all duration-300`}
                 >
-                  Je;;p
                   <div
                     className={`w-[90%] 1024px:w-[40%] bg-secondary rounded-lg p-4 `}
                   >
@@ -267,7 +266,7 @@ const Modals = () => {
 
                     <div className='w-full pl-3 1024px:pl-8'>
                       <h2 className='text-[1.7rem] font-[500] text-[#202020]'>
-                        Are you sure about it111?
+                        Are you sure about it?
                       </h2>
                       <p className='text-[1rem] text-[#525252]'>
                         you can't undo this action
@@ -1286,7 +1285,7 @@ export default DropDown;
                   >
                     <div className='w-full flex items-end p-4 justify-end'>
                       <RxCross1
-                        className='p-2 text-[2.5rem] hover:bg-[#e7e7e7] rounded-full transition-all duration-300 cursor-pointer z-[100000]'
+                        className='p-2 text-[2.5rem] hover:bg-[#e7e7e7] rounded-full transition-all duration-300 cursor-pointer'
                         onClick={() => setModal7Open(false)}
                       />
                     </div>
