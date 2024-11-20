@@ -14,10 +14,15 @@ import { Helmet } from 'react-helmet';
 // showing the code
 import Showcode from '../../../../../Shared/ShowCode';
 import {BsArrowRight} from "react-icons/bs";
+import {MdKeyboardArrowRight} from "react-icons/md";
+import {HiArrowRight} from "react-icons/hi";
+
+// sidebar contents
+import {adsCardContents} from "../../../../../Utils/ContentsConfig/ECommerceContents.js";
 
 const AdsCard = () => {
     // const [contentActiveTab, setContentActiveTab] = useState(0);
-    const sectionIds = radioInputContents.map((item) => item.href.slice(1));
+    const sectionIds = adsCardContents.map((item) => item.href.slice(1));
     const activeSection = useScrollSpy(sectionIds);
 
     // circle radio
@@ -52,11 +57,10 @@ const AdsCard = () => {
         <>
             <aside className='flex items-start justify-between gap-6 w-full 640px:pl-[2.5rem] px-6 640px:px-10'>
                 <div>
-                    <ContentHeader text={'circle radio'} id={'circle_radio'} />
+                    <ContentHeader text={'ads card 1'} id={'ads_card_1'} />
 
                     <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        This is a circle radio button component. Select options with a click
-                        on the elegant circular design.
+                        E-commerce ad cards highlight products with an image, price, discount, and a "Buy Now" button for easy shopping.
                     </p>
 
                     <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
@@ -112,12 +116,11 @@ const AdsCard = () => {
                     </div>
 
                     <div className='mt-8'>
-                        <ContentHeader text={'Square Radio'} id={'square_radio'} />
+                        <ContentHeader text={'ads card 2'} id={'ads_card_2'} />
                     </div>
 
                     <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        This is a square radio button component. Choose options by clicking
-                        on the modern, square design.
+                        E-commerce ad cards highlight products with an image, price, discount, and a "Buy Now" button for easy shopping.
                     </p>
 
                     <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
@@ -175,11 +178,263 @@ const AdsCard = () => {
                         )}
                     </div>
 
+                    <div className='mt-8'>
+                        <ContentHeader text={'ads card 3'} id={'ads_card_3'} />
+                    </div>
+
+                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
+                        E-commerce ad cards highlight products with an image, price, discount, and a "Buy Now" button for easy shopping.
+                    </p>
+
+                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
+                        <div className='relative'>
+                            <div
+                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
+                                    squarePreview
+                                        ? 'translate-x-[0px] !w-[100px]'
+                                        : 'translate-x-[105px] rounded-br'
+                                }`}
+                            ></div>
+                            <button
+                                className={`${
+                                    squarePreview && 'text-tabTextColor'
+                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
+                                onClick={handleSquarePreview}
+                            >
+                                Preview
+                            </button>
+                            <button
+                                className={`${
+                                    squareCode && 'text-tabTextColor'
+                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
+                                onClick={handleSquareCode}
+                            >
+                                Code
+                            </button>
+                        </div>
+                        {squarePreview && (
+                            <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                                <div className='w-[80%] relative'>
+
+                                    {/* offer details */}
+                                    <div className='bg-white rounded-l-md rounded-r-[60px] absolute top-3 left-3 pl-3.5 pr-6 py-1.5'>
+                                        <p className='text-[1rem] text-[#0BAF9A] leading-[15px] mt-1.5'>Hot Deals!</p>
+                                        <span className='text-gray-600 text-[0.9rem] tracking-wider'>Fruit & Vegetables</span>
+                                    </div>
+
+                                    <img alt='product/image' src='https://i.ibb.co.com/h7Jfs7s/div-offer-banner-1.png' className='rounded-xl'/>
+
+                                    {/* action button */}
+                                    <button className='absolute bottom-3 right-3 py-[8px] px-5 text-white bg-[#0BAF9A] rounded-full font-medium'>View Offer</button>
+                                </div>
+                            </div>
+                        )}
+
+                        {squareCode && (
+                            <Showcode
+                                code='
+                '
+                            />
+                        )}
+                    </div>
+
+                    <div className='mt-8'>
+                        <ContentHeader text={'ads card 4'} id={'ads_card_4'} />
+                    </div>
+
+                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
+                        E-commerce ad cards highlight products with an image, price, discount, and a "Buy Now" button for easy shopping.
+                    </p>
+
+                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
+                        <div className='relative'>
+                            <div
+                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
+                                    squarePreview
+                                        ? 'translate-x-[0px] !w-[100px]'
+                                        : 'translate-x-[105px] rounded-br'
+                                }`}
+                            ></div>
+                            <button
+                                className={`${
+                                    squarePreview && 'text-tabTextColor'
+                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
+                                onClick={handleSquarePreview}
+                            >
+                                Preview
+                            </button>
+                            <button
+                                className={`${
+                                    squareCode && 'text-tabTextColor'
+                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
+                                onClick={handleSquareCode}
+                            >
+                                Code
+                            </button>
+                        </div>
+                        {squarePreview && (
+                            <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                                <div className='w-[60%] overflow-hidden flex items-center justify-center flex-col pt-12 p-6 bg-[#0BAF9A] rounded-xl'>
+
+                                    <h4 className='text-center text-[1.2rem] font-medium text-white'>Fresh & 100% Organic</h4>
+                                    <p className='text-[1rem] text-center text-[#FFFFFF]'>farmer's market</p>
+
+                                    <button className='py-2 px-6 rounded-md bg-white text-[#0BAF9A] font-[400] text-[1rem] mx-auto mb-5 mt-4'>Shop Now</button>
+
+                                    <img alt='product/image' src='https://i.ibb.co.com/xfp5R3W/basket-png.png' className='w-[400px] mx-auto'/>
+
+                                </div>
+                            </div>
+                        )}
+
+                        {squareCode && (
+                            <Showcode
+                                code='
+                '
+                            />
+                        )}
+                    </div>
+
+                    <div className='mt-8'>
+                        <ContentHeader text={'ads card 5'} id={'ads_card_5'} />
+                    </div>
+
+                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
+                        E-commerce ad cards highlight products with an image, price, discount, and a "Buy Now" button for easy shopping.
+                    </p>
+
+                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
+                        <div className='relative'>
+                            <div
+                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
+                                    squarePreview
+                                        ? 'translate-x-[0px] !w-[100px]'
+                                        : 'translate-x-[105px] rounded-br'
+                                }`}
+                            ></div>
+                            <button
+                                className={`${
+                                    squarePreview && 'text-tabTextColor'
+                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
+                                onClick={handleSquarePreview}
+                            >
+                                Preview
+                            </button>
+                            <button
+                                className={`${
+                                    squareCode && 'text-tabTextColor'
+                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
+                                onClick={handleSquareCode}
+                            >
+                                Code
+                            </button>
+                        </div>
+                        {squarePreview && (
+                            <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                                <div className='w-[70%] relative'>
+
+                                    <img alt='product/image' src='https://i.ibb.co.com/PC8s3B6/Link-2.png'
+                                         className='w-full'/>
+
+                                    <div className='absolute top-[50%] transform translate-y-[-50%] left-8'>
+                                        <p className='text-[1rem] font-[300] text-gray-900'>Today Special</p>
+                                        <h4 className='text-[1.3rem] mt-2 font-semibold text-gray-900'>Fruits Juice
+                                            Series</h4>
+
+                                        <button
+                                            className='py-2 text-[#239698] font-semibold mt-2 group hover:underline text-[1rem] flex items-center gap-[10px]'>
+                                            Shop Now
+                                            <MdKeyboardArrowRight className='text-[1.3rem] group-hover:ml-1 transition-all duration-300'/>
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        )}
+
+                        {squareCode && (
+                            <Showcode
+                                code='
+                '
+                            />
+                        )}
+                    </div>
+
+                    <div className='mt-8'>
+                        <ContentHeader text={'ads card 6'} id={'ads_card_6'} />
+                    </div>
+
+                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
+                        E-commerce ad cards highlight products with an image, price, discount, and a "Buy Now" button for easy shopping.
+                    </p>
+
+                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
+                        <div className='relative'>
+                            <div
+                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
+                                    squarePreview
+                                        ? 'translate-x-[0px] !w-[100px]'
+                                        : 'translate-x-[105px] rounded-br'
+                                }`}
+                            ></div>
+                            <button
+                                className={`${
+                                    squarePreview && 'text-tabTextColor'
+                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
+                                onClick={handleSquarePreview}
+                            >
+                                Preview
+                            </button>
+                            <button
+                                className={`${
+                                    squareCode && 'text-tabTextColor'
+                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
+                                onClick={handleSquareCode}
+                            >
+                                Code
+                            </button>
+                        </div>
+                        {squarePreview && (
+                            <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                                <div className='w-[90%] bg-gray-900 flex flex-col justify-center min-h-[260px] overflow-hidden rounded-md relative px-12'>
+
+                                    {/* coupon */}
+                                    <span className='py-2 font-semibold px-4 rounded-md absolute right-6 z-20 top-6 bg-[#EFD33D]'>29% OFF</span>
+
+                                    {/* offer details */}
+                                    <div className='w-[45%]'>
+                                        <p className='text-[1rem] font-[300] text-[#EBC80C]'>Summer Sales</p>
+                                        <h4 className='text-[1.5rem] mt-2 font-medium text-white'>New Google Pixel 6 Pro</h4>
+
+                                        <button
+                                            className='py-2 px-5 text-white font-medium mt-5 group hover:bg-[#ed6104] transition-all duration-300 text-[1rem] flex items-center gap-[10px] bg-[#FA8232] rounded-md'>
+                                            Shop Now
+                                            <HiArrowRight
+                                                className='text-[1.3rem] group-hover:ml-1 transition-all duration-300'/>
+                                        </button>
+                                    </div>
+
+                                    {/* product image */}
+                                    <img alt='product/image' src='https://i.ibb.co.com/WWTSSbm/image-5-1.png'
+                                         className='w-[220px] absolute right-0 bottom-0'/>
+
+                                </div>
+                            </div>
+                        )}
+
+                        {squareCode && (
+                            <Showcode
+                                code='
+                '
+                            />
+                        )}
+                    </div>
+
                     <OverviewFooter
-                        backUrl='/components/input-select'
-                        backName='select'
-                        forwardName='range'
-                        forwardUrl='/components/input-range'
+                        backUrl='/components/product-card'
+                        backName='product card'
+                        forwardName='offer grid'
+                        forwardUrl='/components/offer-grid'
                     />
                 </div>
 
@@ -187,7 +442,7 @@ const AdsCard = () => {
                     <h2 className='text-[0.9rem] font-[600] text-text tracking-widest'>
                         CONTENTS
                     </h2>
-                    {radioInputContents.map((item) => (
+                    {adsCardContents.map((item) => (
                         <a
                             key={item.id}
                             href={item.href}

@@ -71,7 +71,6 @@ import CarouselPage from "./Pages/Components/Surfaces/CarouselPage.jsx";
 
 // e-commerce
 import ProductCardPage from "./Pages/Components/ECommerce/ProductCardPage.jsx";
-import OfferGridPage from "./Pages/Components/ECommerce/OfferGridPage.jsx";
 import AdsCardPage from "./Pages/Components/ECommerce/AdsCardPage.jsx";
 
 // randoms
@@ -97,6 +96,9 @@ import PricingSectionPage from "./Pages/Blocks/Sections/PricingSectionPage.jsx";
 import NewsletterSectionPage from "./Pages/Blocks/Forms/NewsletterSectionPage.jsx";
 import MultipageFormPage from "./Pages/Blocks/Forms/MultipageFormPage.jsx";
 import ResponsiveSidebarPage from "./Pages/Blocks/Randoms/ResponsiveSidebarPage.jsx";
+
+// e-commerce blocks
+import OfferGridPage from "./Pages/Blocks/E-Commerce/OfferGridPage.jsx";
 
 // ZenUI wrong route page
 import EmptyPage from "./Pages/EmptyPage.jsx"
@@ -267,7 +269,6 @@ const App = () => {
 
                 {/* e-commerce */}
                 <Route path="/components/product-card" element={<ProductCardPage/>}/>
-                <Route path="/components/offer-grid" element={<OfferGridPage/>}/>
                 <Route path="/components/ads-card" element={<AdsCardPage/>}/>
 
                 {/* randoms */}
@@ -288,6 +289,9 @@ const App = () => {
                 <Route path="/blocks/multi-step-form" element={<MultipageFormPage/>}/>
                 <Route path="/blocks/responsive-sidebar" element={<ResponsiveSidebarPage/>}/>
                 <Route path="/blocks/empty-page" element={<WrongRoutePage/>}/>
+
+                {/* e-commerce blocks */}
+                <Route path="/blocks/offer-grid" element={<OfferGridPage/>}/>
 
 
                 {/*  icons  */}

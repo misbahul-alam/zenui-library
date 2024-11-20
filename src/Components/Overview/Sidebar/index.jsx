@@ -33,7 +33,7 @@ const index = ({ startContent, setStartContent }) => {
   return (
       <aside
           ref={sidebarRef}
-          className="py-6 px-10 border-r h-[89vh] border-border flex-col gap-4 overflow-y-scroll sticky top-18 left-0 w-[320px] bg-secondary z-20 1024px:flex hidden">
+          className="py-6 px-10 pr-7 border-r h-[89vh] border-border flex-col gap-4 overflow-y-scroll sticky top-18 left-0 w-[320px] bg-secondary z-20 1024px:flex hidden">
 
         {/*  get starts  */}
         <ul className='getStarted flex flex-col gap-[12px] mb-4'>
@@ -679,19 +679,6 @@ const index = ({ startContent, setStartContent }) => {
                     <NewBadge/>
                 </Link>
 
-                <Link
-                    to={"/components/offer-grid"}
-                    className={`${
-                        startContent === 110 &&
-                        "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
-                    }   border-l border-[#9caebc] flex items-center gap-[10px]`}
-                    onClick={() => setStartContent(110)}
-                >
-                    Offer Grid
-
-                    <NewBadge/>
-                </Link>
-
               {/* Randoms */}
               <Link
                   to={""}
@@ -884,6 +871,55 @@ const index = ({ startContent, setStartContent }) => {
               >
                 Empty Page
               </Link>
+
+                {/* e-commerce blocks */}
+                <Link
+                    to={""}
+                    className={`sectionHeader tracking-widest font-[500] hover:font-[500] relative mt-4 uppercase  border-l border-border !text-[0.750rem] `}
+                >
+                    E-COMMERCE
+                </Link>
+
+                <Link
+                    to={"/blocks/offer-grid"}
+                    className={`${startContent === 200 &&
+                    "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
+                    }   border-l border-[#9caebc] flex items-center gap-[10px]`}
+                    onClick={() => setStartContent(200)}
+                >
+                    Offer Grid
+                    <NewBadge/>
+                </Link>
+                <Link
+                    to={"/blocks/product-details-page"}
+                    className={`${startContent === 201 &&
+                    "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
+                    }   border-l border-[#9caebc] flex items-center gap-[10px]`}
+                    onClick={() => setStartContent(201)}
+                >
+                    Product Details Page
+                    <NewBadge/>
+                </Link>
+                <Link
+                    to={"/blocks/product-filter-page"}
+                    className={`${startContent === 202 &&
+                    "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
+                    }   border-l border-[#9caebc] flex items-center gap-[10px]`}
+                    onClick={() => setStartContent(202)}
+                >
+                    Product Filter Page
+                    <NewBadge/>
+                </Link>
+                <Link
+                    to={"/blocks/checkout-page"}
+                    className={`${startContent === 203 &&
+                    "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
+                    }   border-l border-[#9caebc] flex items-center gap-[10px]`}
+                    onClick={() => setStartContent(203)}
+                >
+                    Checkout Page
+                    <NewBadge/>
+                </Link>
 
               {/* Randoms */}
               <Link
