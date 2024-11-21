@@ -90,6 +90,12 @@ export const allComponents = [
     groupName: "navigation",
   },
   {
+    title: "Timer",
+    image: "https://i.ibb.co.com/1G0c4MN/timer.png",
+    url: "/components/timer",
+    groupName: "navigation",
+  },
+  {
     title: "Progress Bar",
     image: "https://i.ibb.co.com/MGCGZZW/progress-bar.png",
     url: "/components/progress-bar",
