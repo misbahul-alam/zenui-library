@@ -32,6 +32,10 @@ export const componentSearchData = [
         url: '/components/normal-button'
     },
     {
+        title: 'Timer',
+        url: '/components/timer'
+    },
+    {
         title: 'RGB Border',
         url: '/components/rgb-border'
     },

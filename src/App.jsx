@@ -112,6 +112,10 @@ import OpacityPalettePage from "./Pages/OpacityPalettePage.jsx"
 // layout playground page
 import LayoutPlaygroundPage from "./Pages/LayoutPlaygroundPage.jsx";
 
+// become zenui hero docs
+import ZenUIHeroDocsPage from "./Pages/ZenUIHeroDocsPage.jsx";
+import TimerPage from "./Pages/Components/Navigation/TimerPage.jsx";
+
 
 const App = () => {
     const [isCookie, setIsCookie] = useState(false)
@@ -230,6 +234,7 @@ const App = () => {
                 <Route path="/components/modal" element={<ModalPage/>}/>
                 <Route path="/components/progress-bar" element={<ProgressBarPage/>}/>
                 <Route path="/components/chip" element={<ChipPage/>}/>
+                <Route path="/components/timer" element={<TimerPage/>}/>
                 <Route path="/components/breadcrumb" element={<BreadcrumbPage/>}/>
                 <Route path="/components/rating" element={<RatingPage/>}/>
                 <Route path="/components/stepper" element={<StepsPage/>}/>
@@ -302,6 +307,9 @@ const App = () => {
 
                 {/* layout playground */}
                 <Route path='/layout-playground' element={<LayoutPlaygroundPage/>}/>
+
+                {/* become ZenUI Hero */}
+                <Route path='/zenui-hero-docs' element={<ZenUIHeroDocsPage/>}/>
 
                 {/*  empty route  */}
                 <Route path="*" element={<EmptyPage/>}/>

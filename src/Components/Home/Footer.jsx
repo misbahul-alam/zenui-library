@@ -127,10 +127,17 @@ const Footer = () => {
                 <p><a href='/privacy-policy'>Privacy policy</a></p>
                 <span><a href='/privacy-policy'>Privacy policy</a></span>
               </li>
+              <div className='relative'>
+                <div className='w-2 h-2 animate-[ping_1.5s_linear_infinite] absolute -top-0.5 right-0 bg-green-500 rounded-full'></div>
+                <li>
+                  <p><a href='/zenui-hero-docs'>Become ZenUI Hero</a></p>
+                  <span><a href='/zenui-hero-docs'>Become ZenUI Hero</a></span>
+                </li>
+              </div>
             </ul>
           </div>
           <div className="flex gap-2 flex-col mt-4">
-            <h3 className="font-[600] text-gray-600 text-[20px] capitalize">
+          <h3 className="font-[600] text-gray-600 text-[20px] capitalize">
               Join our newsletter
             </h3>
 

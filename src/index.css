@@ -399,3 +399,24 @@ input[type="number"] {
   background: #a2a2a2;
   border-radius: 10px;
 }
+
+/* skeleton shimmer animation */
+@keyframes shimmer {
+  100% {
+        transform: translateX(100%)
+      }
+}
+
+/* bouncing animation for zenui hero badge*/
+.animation-bounce-zenui-hero-badge {
+  animation: badgeBounce 2s infinite ease-in-out;
+}
+
+@keyframes badgeBounce {
+  0%, 100% {
+    transform: translateY(0) rotate(-15deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-15deg);
+  }
+}
