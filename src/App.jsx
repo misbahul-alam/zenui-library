@@ -42,6 +42,7 @@ import StepsPage from "./Pages/Components/Navigation/StepsPage.jsx";
 import BreadcrumbPage from "./Pages/Components/Navigation/BreadcrumbPage.jsx";
 import RatingPage from "./Pages/Components/Navigation/RatingPage.jsx";
 import ProgressBarPage from "./Pages/Components/Navigation/ProgressBarPage.jsx";
+import TimerPage from "./Pages/Components/Navigation/TimerPage.jsx";
 
 // feedback pages
 import SkeletonPage from "./Pages/Components/Feedback/SkeletonPage";
@@ -99,6 +100,7 @@ import ResponsiveSidebarPage from "./Pages/Blocks/Randoms/ResponsiveSidebarPage.
 
 // e-commerce blocks
 import OfferGridPage from "./Pages/Blocks/E-Commerce/OfferGridPage.jsx";
+import ProductDetailsPage from "./Pages/Blocks/E-Commerce/ProductDetailsPages/Index.jsx";
 
 // ZenUI wrong route page
 import EmptyPage from "./Pages/EmptyPage.jsx"
@@ -114,7 +116,7 @@ import LayoutPlaygroundPage from "./Pages/LayoutPlaygroundPage.jsx";
 
 // become zenui hero docs
 import ZenUIHeroDocsPage from "./Pages/ZenUIHeroDocsPage.jsx";
-import TimerPage from "./Pages/Components/Navigation/TimerPage.jsx";
+
 
 
 const App = () => {
@@ -297,6 +299,7 @@ const App = () => {
 
                 {/* e-commerce blocks */}
                 <Route path="/blocks/offer-grid" element={<OfferGridPage/>}/>
+                <Route path="/blocks/product-details-page" element={<ProductDetailsPage/>}/>
 
 
                 {/*  icons  */}
