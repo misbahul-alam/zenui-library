@@ -722,7 +722,7 @@ export default Select;
 
                   {/* Dropdown menu */}
                   {isOpen3 && (
-                    <div className='absolute left-0 w-full mt-1 border rounded-md bg-white shadow-lg z-20'>
+                    <div className='absolute left-0 w-full mt-1 border border-gray-200 rounded-md bg-white shadow-lg z-20'>
                       <div className='w-full overflow-auto'>
                         {filteredItems3.map((item) => (
                           <p
@@ -826,7 +826,7 @@ const SearchSelect = () => {
 
             {/* Dropdown menu */}
             {isOpen && (
-                <div className="absolute left-0 w-full mt-1 border rounded-md bg-white shadow-lg z-20">
+                <div className="absolute left-0 w-full mt-1 border border-gray-200 rounded-md bg-white shadow-lg z-20">
                     <div className="w-full overflow-auto">
                         {filteredItems.map(item => (
                             <p
@@ -920,7 +920,7 @@ export default SearchSelect;
 
                   {/* Dropdown menu */}
                   {isOpen4 && (
-                    <div className='absolute left-0 w-full mt-1 border rounded-md bg-white shadow-lg z-20'>
+                    <div className='absolute left-0 w-full mt-1 border border-gray-200 rounded-md bg-white shadow-lg z-20'>
                       <div className='w-full overflow-auto'>
                         {filteredItems4.map((item) => (
                           <p
@@ -1020,7 +1020,7 @@ const SearchSelect = () => {
 
             {/* Dropdown menu */}
             {isOpen && (
-                <div className="absolute left-0 w-full mt-1 border rounded-md bg-white shadow-lg z-20">
+                <div className="absolute left-0 w-full mt-1 border border-gray-200 rounded-md bg-white shadow-lg z-20">
                     <div className="w-full overflow-auto">
                         {filteredItems.map(item => (
                             <p
@@ -1115,7 +1115,7 @@ export default SearchSelect;
 
                   {/* Dropdown menu */}
                   {isOpen5 && (
-                    <div className='absolute left-0 w-full mt-1 border rounded-md bg-white shadow-lg z-20'>
+                    <div className='absolute left-0 w-full mt-1 border border-gray-200 rounded-md bg-white shadow-lg z-20'>
                       <div className='w-full overflow-auto'>
                         {filteredItems5.map((item) => (
                           <p
@@ -1233,7 +1233,7 @@ const SearchSelect = () => {
 
             {/* Dropdown menu */}
             {isOpen && (
-                <div className="absolute left-0 w-full mt-1 border rounded-md bg-white shadow-lg z-20">
+                <div className="absolute left-0 w-full mt-1 border border-gray-200 rounded-md bg-white shadow-lg z-20">
                     <div className="w-full overflow-auto">
                         {filteredItems.map(item => (
                             <p
@@ -1343,7 +1343,7 @@ export default SearchSelect;
 
                   {/* Dropdown menu */}
                   {isOpen6 && (
-                    <div className='absolute left-0 w-full mt-1 border rounded-md bg-white shadow-lg z-20'>
+                    <div className='absolute left-0 w-full mt-1 border border-gray-200 rounded-md bg-white shadow-lg z-20'>
                       <div className='w-full overflow-auto'>
                         {filteredItems6.map((item) => (
                           <p
@@ -1468,7 +1468,7 @@ const SearchSelect = () => {
 
             {/* Dropdown menu */}
             {isOpen && (
-                <div className="absolute left-0 w-full mt-1 border rounded-md bg-white shadow-lg z-20">
+                <div className="absolute left-0 w-full mt-1 border border-gray-200 rounded-md bg-white shadow-lg z-20">
                     <div className="w-full overflow-auto">
                         {filteredItems.map(item => (
                             <p

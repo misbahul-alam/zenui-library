@@ -76,6 +76,26 @@ const Footer = () => {
 
           <div className="flex gap-2 flex-col mt-4">
             <h3 className="font-[600] text-gray-600 text-[20px] capitalize">
+              tools
+            </h3>
+            <ul className="footer font-[400] text-[#9caebc] text-[0.9rem] flex flex-col gap-2">
+              <li>
+                <p><a href='/shortcut-generator'>ShortKey</a></p>
+                <span><a href='/shortcut-generator'>ShortKey</a></span>
+              </li>
+              <li>
+                <p><a href='/color-palette'>Colors Palette</a></p>
+                <span><a href='/color-palette'>Colors Palette</a></span>
+              </li>
+              <li>
+                <p><a href='/icons'>Icons</a></p>
+                <span><a href='/icons'>Icons</a></span>
+              </li>
+            </ul>
+          </div>
+
+          <div className="flex gap-2 flex-col mt-4">
+            <h3 className="font-[600] text-gray-600 text-[20px] capitalize">
               resources
             </h3>
             <ul className="footer font-[400] text-[#9caebc] text-[0.9rem] flex flex-col gap-2">
@@ -88,16 +108,8 @@ const Footer = () => {
                 <span><a href='/components/all-components'>Components</a></span>
               </li>
               <li>
-                <p><a href='/color-palette'>Colors Palette</a></p>
-                <span><a href='/color-palette'>Colors Palette</a></span>
-              </li>
-              <li>
                 <p><a href='/blocks/all-blocks'>Blocks</a></p>
                 <span><a href='/blocks/all-blocks'>Blocks</a></span>
-              </li>
-              <li>
-                <p><a href='/icons'>Icons</a></p>
-                <span><a href='/icons'>Icons</a></span>
               </li>
               <li>
                 <p><a href='/custom-hooks'>Custom Hooks</a></p>
