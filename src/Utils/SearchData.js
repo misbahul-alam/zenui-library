@@ -1,241 +1,359 @@
 export const componentSearchData = [
     {
         title: 'Input',
-        url: '/components/input-text'
+        description: 'Basic text field for user data entry',
+        url: '/components/input-text',
+        tags: ['form', 'input', 'text']
     },
     {
         title: 'Textarea',
-        url: '/components/input-textarea'
+        description: 'Multi-line textarea for longer text content',
+        url: '/components/input-textarea',
+        tags: ['form', 'text', 'multiline']
     },
     {
         title: 'Switch',
-        url: '/components/input-switch'
+        description: 'Toggle switch for binary on/off selections',
+        url: '/components/input-switch',
+        tags: ['form', 'toggle', 'boolean']
     },
     {
         title: 'Select',
-        url: '/components/input-select'
+        description: 'Dropdown selection component for choosing from multiple options',
+        url: '/components/input-select',
+        tags: ['form', 'input', 'dropdown']
     },
     {
         title: 'Tree Dropdown',
-        url: '/components/tree-dropdown'
+        description: 'Hierarchical dropdown with nested selection options',
+        url: '/components/tree-dropdown',
+        tags: ['form', 'dropdown', 'nested', 'hierarchy']
     },
     {
         title: 'Radio',
-        url: '/components/input-radio'
+        description: 'Radio button group for selecting a single option',
+        url: '/components/input-radio',
+        tags: ['form', 'input', 'selection']
     },
     {
         title: 'File',
-        url: '/components/input-file'
+        description: 'File upload for selecting and uploading files',
+        url: '/components/input-file',
+        tags: ['form', 'input', 'upload']
     },
     {
         title: 'Normal Button',
-        url: '/components/normal-button'
+        description: 'Standard button component for user interactions',
+        url: '/components/normal-button',
+        tags: ['ui', 'interactive', 'button']
     },
     {
         title: 'RGB Border',
-        url: '/components/rgb-border'
+        description: 'Colorful border effect with RGB color transitions',
+        url: '/components/rgb-border',
+        tags: ['ui', 'styling', 'effect']
     },
     {
         title: 'Hover Animated Cards',
-        url: '/components/animated-cards'
+        description: 'Interactive cards with smooth hover animations',
+        url: '/components/animated-cards',
+        tags: ['ui', 'animation', 'interactive']
     },
     {
         title: 'Drag & Drop',
-        url: '/components/drag-and-drop'
+        description: 'Drag and drop interface for interactive content movement',
+        url: '/components/drag-and-drop',
+        tags: ['ui', 'interactive', 'drag-drop']
     },
     {
         title: 'Animated Button',
-        url: '/components/animated-button'
+        description: 'Button with dynamic animation effects',
+        url: '/components/animated-button',
+        tags: ['ui', 'button', 'animation']
     },
     {
         title: 'Context Menu',
-        url: '/components/context-menu'
+        description: 'Contextual menu displaying actions based on user interaction',
+        url: '/components/context-menu',
+        tags: ['ui', 'menu', 'interactive']
     },
     {
         title: 'Cards',
-        url: '/components/cards'
+        description: 'Flexible card layout for displaying content',
+        url: '/components/cards',
+        tags: ['ui', 'layout', 'container']
     },
     {
         title: 'Accordion',
-        url: '/components/according'
+        description: 'Expandable/collapsible content sections',
+        url: '/components/according',
+        tags: ['ui', 'layout', 'interactive']
     },
     {
         title: 'Resources',
-        url: '/docs/resources'
+        description: 'Documentation and resource links',
+        url: '/docs/resources',
+        tags: ['documentation', 'resources']
     },
     {
         title: 'Custom Hooks',
-        url: '/custom-hooks'
+        description: 'Reusable React hook utilities',
+        url: '/custom-hooks',
+        tags: ['react', 'hooks', 'utility']
     },
     {
         title: 'Pie Chart',
-        url: '/components/pie-chart'
+        description: 'Circular statistical chart for data visualization',
+        url: '/components/pie-chart',
+        tags: ['chart', 'data', 'visualization']
     },
     {
         title: 'App Bar',
-        url: '/components/appbar'
+        description: 'Top navigation bar for application layout',
+        url: '/components/appbar',
+        tags: ['ui', 'navigation', 'layout']
     },
     {
         title: 'Table',
-        url: '/components/table'
+        description: 'Structured data display component',
+        url: '/components/table',
+        tags: ['ui', 'data', 'display']
     },
     {
         title: 'Image Gallery',
-        url: '/components/image-gallery'
+        description: 'Interactive image display and browsing component',
+        url: '/components/image-gallery',
+        tags: ['ui', 'media', 'gallery']
     },
     {
         title: 'Pagination',
-        url: '/components/pagination'
+        description: 'Navigation control for paginated content',
+        url: '/components/pagination',
+        tags: ['ui', 'navigation', 'control']
     },
     {
         title: 'Dropdown Menu',
-        url: '/components/dropdown'
+        description: 'Expandable menu for selecting options',
+        url: '/components/dropdown',
+        tags: ['ui', 'menu', 'selection']
     },
     {
         title: 'Chip',
-        url: '/components/chip'
+        description: 'Compact, interactive tag or filter element',
+        url: '/components/chip',
+        tags: ['ui', 'tag', 'filter']
     },
     {
         title: 'Modal',
-        url: '/components/modal'
+        description: 'Overlay dialog for focused interactions',
+        url: '/components/modal',
+        tags: ['ui', 'overlay', 'interactive']
     },
     {
         title: 'Tabs',
-        url: '/components/tabs'
+        description: 'Tabbed interface for organizing content',
+        url: '/components/tabs',
+        tags: ['ui', 'navigation', 'layout']
     },
     {
         title: 'Skeleton',
-        url: '/components/skeleton'
+        description: 'Placeholder loading state for content',
+        url: '/components/skeleton',
+        tags: ['ui', 'loading', 'placeholder']
     },
     {
         title: 'Alert Message',
-        url: '/components/alert-message'
+        description: 'Informative message display component',
+        url: '/components/alert-message',
+        tags: ['ui', 'notification', 'feedback']
     },
     {
         title: 'Dialog',
-        url: '/components/dialog-message'
+        description: 'Interactive dialog box for user confirmations',
+        url: '/components/dialog-message',
+        tags: ['ui', 'overlay', 'interactive']
     },
     {
         title: 'Testimonial',
-        url: '/components/testimonials'
+        description: 'Display customer or user testimonials',
+        url: '/components/testimonials',
+        tags: ['ui', 'content', 'social-proof']
     },
     {
         title: 'Loader',
-        url: '/components/loader'
+        description: 'Visual loading indicator',
+        url: '/components/loader',
+        tags: ['ui', 'loading', 'feedback']
     },
     {
         title: 'Notification',
-        url: '/components/notification'
+        description: 'System or application notification display',
+        url: '/components/notification',
+        tags: ['ui', 'feedback', 'alert']
     },
     {
         title: 'Badge',
-        url: '/components/badge'
+        description: 'Small status or informational label',
+        url: '/components/badge',
+        tags: ['ui', 'label', 'status']
     },
     {
         title: 'Tooltip',
-        url: '/components/tooltip'
+        description: 'Contextual information popup',
+        url: '/components/tooltip',
+        tags: ['ui', 'information', 'hover']
     },
     {
         title: 'Code',
-        url: '/components/code'
+        description: 'Code display and syntax highlighting',
+        url: '/components/code',
+        tags: ['ui', 'display', 'development']
     },
     {
         title: 'Snippet',
-        url: '/components/snippet'
+        description: 'Compact code or text snippet display',
+        url: '/components/snippet',
+        tags: ['ui', 'code', 'display']
     },
     {
         title: 'Number Input',
-        url: '/components/input-number'
+        description: 'Field specifically for numeric values',
+        url: '/components/input-number',
+        tags: ['form', 'input', 'numeric']
     },
     {
         title: 'Checkbox Input',
-        url: '/components/input-checkbox'
+        description: 'Checkbox for multiple selection options',
+        url: '/components/input-checkbox',
+        tags: ['form', 'input', 'selection']
     },
     {
         title: 'Strong Password',
-        url: '/components/strong-password'
+        description: 'Password with strength validation',
+        url: '/components/strong-password',
+        tags: ['form', 'input', 'security']
     },
     {
         title: 'Range Input',
-        url: '/components/input-range'
+        description: 'Slider for selecting a value within a range',
+        url: '/components/input-range',
+        tags: ['form', 'input', 'slider']
     },
     {
         title: 'OTP Input',
-        url: '/components/otp-input'
+        description: 'One-time password field',
+        url: '/components/otp-input',
+        tags: ['form', 'input', 'security']
     },
     {
         title: 'Auth Button',
-        url: '/components/auth-buttons'
+        description: 'Authentication-related buttons',
+        url: '/components/auth-buttons',
+        tags: ['ui', 'authentication', 'button']
     },
     {
         title: 'Dropdown Button',
-        url: '/components/dropdown-button'
+        description: 'Button with additional dropdown options',
+        url: '/components/dropdown-button',
+        tags: ['ui', 'button', 'menu']
     },
     {
         title: 'Progress Bar',
-        url: '/components/progress-bar'
+        description: 'Visual representation of progress or completion',
+        url: '/components/progress-bar',
+        tags: ['ui', 'feedback', 'status']
     },
     {
         title: 'Breadcrumb',
-        url: '/components/breadcrumb'
+        description: 'Navigation trail showing current page hierarchy',
+        url: '/components/breadcrumb',
+        tags: ['ui', 'navigation', 'hierarchy']
     },
     {
         title: 'Rating',
-        url: '/components/rating'
+        description: 'Interactive rating or display for user feedback',
+        url: '/components/rating',
+        tags: ['ui', 'input', 'feedback']
     },
     {
         title: 'Stepper',
-        url: '/components/stepper'
+        description: 'Multi-step progress or form navigation',
+        url: '/components/stepper',
+        tags: ['ui', 'navigation', 'progress']
     },
     {
         title: 'Timeline',
-        url: '/components/timeline'
-    },
-]
+        description: 'Chronological event or process visualization',
+        url: '/components/timeline',
+        tags: ['ui', 'display', 'chronology']
+    }
+];
 
 export const blocksSearchData = [
     {
         title: 'Responsive navbar',
-        url: '/blocks/responsive-navbar'
+        description: 'Adaptive navigation bar that adjusts to different screen sizes',
+        url: '/blocks/responsive-navbar',
+        tags: ['layout', 'navigation', 'responsive']
     },
     {
         title: 'Hero section',
-        url: '/blocks/hero-section'
+        description: 'Prominent introductory section with key messaging and call-to-action',
+        url: '/blocks/hero-section',
+        tags: ['landing', 'marketing', 'ui']
     },
     {
         title: 'Pricing section',
-        url: '/blocks/pricing-section'
+        description: 'Comprehensive pricing plan display with feature comparisons',
+        url: '/blocks/pricing-section',
+        tags: ['business', 'pricing', 'comparison']
     },
     {
         title: 'Responsive footer',
-        url: '/blocks/responsive-footer'
+        description: 'Adaptable footer that scales across different device sizes',
+        url: '/blocks/responsive-footer',
+        tags: ['layout', 'navigation', 'responsive']
     },
     {
         title: 'Contact form',
-        url: '/blocks/contact-form'
+        description: 'Interactive form for user communication and feedback',
+        url: '/blocks/contact-form',
+        tags: ['form', 'interaction', 'communication']
     },
     {
-        title: 'multi step form',
-        url: '/blocks/multi-step-form'
+        title: 'Multi step form',
+        description: 'Complex form divided into sequential, manageable stages',
+        url: '/blocks/multi-step-form',
+        tags: ['form', 'process', 'workflow']
     },
     {
-        title: 'newsletter form',
-        url: '/blocks/newsletter-form'
+        title: 'Newsletter form',
+        description: 'Subscription form for email list sign-ups',
+        url: '/blocks/newsletter-form',
+        tags: ['form', 'marketing', 'subscription']
     },
     {
         title: '404 page',
-        url: '/blocks/404-page'
+        description: 'Custom error page for handling non-existent routes',
+        url: '/blocks/404-page',
+        tags: ['error', 'navigation', 'ui']
     },
     {
         title: 'Empty page',
-        url: '/blocks/empty-page'
+        description: 'Minimal template for creating new page layouts',
+        url: '/blocks/empty-page',
+        tags: ['template', 'layout', 'starter']
     },
     {
         title: 'Responsive searchbar',
-        url: '/blocks/responsive-search-bar'
+        description: 'Adaptive search that works across different device sizes',
+        url: '/blocks/responsive-search-bar',
+        tags: ['search', 'input', 'responsive']
     },
     {
         title: 'Responsive sidebar',
-        url: '/blocks/responsive-sidebar'
-    },
-]
+        description: 'Flexible side navigation that adapts to screen dimensions',
+        url: '/blocks/responsive-sidebar',
+        tags: ['navigation', 'layout', 'responsive']
+    }
+];
