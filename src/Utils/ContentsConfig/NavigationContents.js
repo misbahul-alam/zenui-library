@@ -123,6 +123,40 @@ export const ratingContents = [
   },
 ];
 
+// timer contents
+export const timerContents = [
+  {
+    id: 1,
+    title: 'timer style 1',
+    href: '#timer-style-1',
+  },
+  {
+    id: 2,
+    title: 'timer style 2',
+    href: '#timer-style-2',
+  },
+  {
+    id: 3,
+    title: 'timer style 3',
+    href: '#timer-style-3',
+  },
+  {
+    id: 4,
+    title: 'timer style 4',
+    href: '#timer-style-4',
+  },
+  {
+    id: 5,
+    title: 'timer style 5',
+    href: '#timer-style-5',
+  },
+  {
+    id: 6,
+    title: 'timer style 6',
+    href: '#timer-style-6',
+  },
+];
+
 // Steps contents
 export const stepsContents = [
   {

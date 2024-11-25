@@ -48,6 +48,10 @@ export const componentSearchData = [
         tags: ['ui', 'interactive', 'button']
     },
     {
+        title: 'Timer',
+        url: '/components/timer'
+    },
+    {
         title: 'RGB Border',
         description: 'Colorful border effect with RGB color transitions',
         url: '/components/rgb-border',
