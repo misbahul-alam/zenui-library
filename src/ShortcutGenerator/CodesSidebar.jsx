@@ -8,7 +8,7 @@ import {Prism as SyntaxHighlighter} from "react-syntax-highlighter";
 import {dracula} from "react-syntax-highlighter/dist/cjs/styles/prism/index.js";
 
 const CodesSidebar = ({sidebarOpen, setSidebarOpen, codes, isGenerating}) => {
-    const[isCopied, setIsCopied] = useState(false);
+    const [isCopied, setIsCopied] = useState(false);
 
     useEffect(() => {
         const handleOutsideClick = (e) => {
@@ -27,7 +27,7 @@ const CodesSidebar = ({sidebarOpen, setSidebarOpen, codes, isGenerating}) => {
     const handleCopy = () => {
         navigator.clipboard.writeText(codes)
         setIsCopied(true)
-        setTimeout(()=> {
+        setTimeout(() => {
             setIsCopied(false)
         }, 2000)
     }
@@ -38,7 +38,7 @@ const CodesSidebar = ({sidebarOpen, setSidebarOpen, codes, isGenerating}) => {
 
             <div className='relative'>
                 <RxCross1
-                    onClick={()=> setSidebarOpen(false)}
+                    onClick={() => setSidebarOpen(false)}
                     className='p-[8px] absolute top-[15px] left-[-10px] 640px:left-[-15px] rounded-full transition-all duration-100 hover:bg-gray-100 text-[2rem] text-gray-800 cursor-pointer'/>
             </div>
 
@@ -66,12 +66,18 @@ const CodesSidebar = ({sidebarOpen, setSidebarOpen, codes, isGenerating}) => {
                 {
                     isGenerating ? (
                         <div className='h-[380px] 1024px:h-[440px]'>
-                            <div className='relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent before:via-slate-200/70 before:to-transparent w-full h-[60px] rounded-md mt-3 bg-gray-100'></div>
-                            <div className='relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent before:via-slate-200/70 before:to-transparent  w-full h-[40px] rounded-md mt-3 bg-gray-100'></div>
-                            <div className=' relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent before:via-slate-200/70 before:to-transparent  w-[50%] h-[40px] rounded-md mt-3 bg-gray-100'></div>
-                            <div className='relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent before:via-slate-200/70 before:to-transparent  w-[40%] h-[30px] rounded-md mt-3 bg-gray-100'></div>
-                            <div className='relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent before:via-slate-200/70 before:to-transparent  w-[80%] h-[30px] rounded-md mt-3 bg-gray-100'></div>
-                            <div className='relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent before:via-slate-200/70 before:to-transparent  w-[65%] h-[40px] rounded-md mt-3 bg-gray-100'></div>
+                            <div
+                                className='relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent before:via-slate-200/70 before:to-transparent w-full h-[60px] rounded-md mt-3 bg-gray-100'></div>
+                            <div
+                                className='relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent before:via-slate-200/70 before:to-transparent  w-full h-[40px] rounded-md mt-3 bg-gray-100'></div>
+                            <div
+                                className=' relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent before:via-slate-200/70 before:to-transparent  w-[50%] h-[40px] rounded-md mt-3 bg-gray-100'></div>
+                            <div
+                                className='relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent before:via-slate-200/70 before:to-transparent  w-[40%] h-[30px] rounded-md mt-3 bg-gray-100'></div>
+                            <div
+                                className='relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent before:via-slate-200/70 before:to-transparent  w-[80%] h-[30px] rounded-md mt-3 bg-gray-100'></div>
+                            <div
+                                className='relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent before:via-slate-200/70 before:to-transparent  w-[65%] h-[40px] rounded-md mt-3 bg-gray-100'></div>
                         </div>
                     ) : (
                         <SyntaxHighlighter language="jsx" style={dracula}
@@ -79,12 +85,13 @@ const CodesSidebar = ({sidebarOpen, setSidebarOpen, codes, isGenerating}) => {
                                            showLineNumbers>
                             {codes}
                         </SyntaxHighlighter>
-                        )
+                    )
                 }
 
             </div>
 
-            <p className='mt-10 1024px:mt-16 text-center text-[0.9rem] bg-clip-text text-transparent bg-gradient-to-r from-[#0FABCA] from-30% to-[#CD00F1] opacity-80'>Powered by @ZenUI</p>
+            <p className='fixed bottom-8 left-[50%] transform translate-x-[-50%] text-center text-[0.9rem] bg-clip-text text-transparent bg-gradient-to-r from-[#0FABCA] from-30% to-[#CD00F1] opacity-80'>Powered
+                by @ZenUI</p>
         </aside>
     );
 };

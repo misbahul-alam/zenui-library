@@ -1,6 +1,8 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {IoIosInformationCircleOutline} from "react-icons/io";
 import CodesSidebar from "./CodesSidebar.jsx";
+import {FiEye} from "react-icons/fi";
+import ShortcutCheatsheetModal from "./ShortcutCheatsheetModal.jsx";
 
 const VALID_MODIFIERS = ['ctrl', 'alt', 'shift', 'meta'];
 const VALID_KEYS = [
@@ -18,6 +20,7 @@ const Generator = () => {
     const [isGenerating, setIsGenerating] = useState(false)
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [inputError, setInputError] = useState('');
+    const [cheatsheetOpen, setCheatsheetOpen] = useState(false);
 
     const handleKeyDown = useCallback((event) => {
         // Only prevent default and detect keys if input is not focused
@@ -115,7 +118,8 @@ document.removeEventListener('keydown', ${functionName});
         <>
             <div className='w-full'>
                 <div>
-                    <label htmlFor="manual-input" className='text-[1rem] font-semibold text-gray-700 '>Type Shortcut</label> <br/>
+                    <label htmlFor="manual-input" className='text-[1rem] font-semibold text-gray-700 '>Type
+                        Shortcut</label> <br/>
                     <input
                         id="manual-input"
                         type="text"
@@ -140,30 +144,45 @@ document.removeEventListener('keydown', ${functionName});
                             <div
                                 className="px-3 py-2 w-[330px] rounded text-secondary bg-gray-900 absolute top-[-60px] left-[50%] translate-x-[-50%] translate-y-[10px] opacity-0 z-[-1] text-center group-hover:opacity-100 group-hover:z-30 group-hover:translate-y-0 transition-all duration-200 text-[0.8rem]">
 
-                                <span className='w-[8px] h-[8px] rotate-[45deg] bg-gray-900 text-center absolute bottom-[-4px] left-[50%] translate-x-[-50%]'></span>
+                                <span
+                                    className='w-[8px] h-[8px] rotate-[45deg] bg-gray-900 text-center absolute bottom-[-4px] left-[50%] translate-x-[-50%]'></span>
                                 Press any key on your keyboard to automatically detect and capture it in the field.
 
                             </div>
                         </div>
                     </label>
-                    <div className={`${detectedKeys.length > 0 ? 'text-gray-700' : 'text-gray-400'} mt-1.5 p-2 relative bg-gray-100 min-h-[150px] flex items-center justify-center font-semibold rounded`}>
+                    <div
+                        className={`${detectedKeys.length > 0 ? 'text-gray-700' : 'text-gray-400'} mt-1.5 p-2 relative bg-gray-100 min-h-[150px] flex items-center justify-center font-semibold rounded`}>
                         {detectedKeys.length > 0 ? detectedKeys.join(' + ') : 'No keys detected'}
 
                         {
                             detectedKeys.length > 0 && (
                                 <button
-                                    onClick={()=> setDetectedKeys([])}
+                                    onClick={() => setDetectedKeys([])}
                                     className='bg-gray-400 rounded-md py-1.5 px-6 absolute right-2 bottom-2 text-white font-normal text-[0.9rem]'>Clear</button>
                             )
                         }
                     </div>
                 </div>
 
-                <button onClick={generateCode} className='code_generate_btn bg-gradient-to-r mt-7 from-[#0FABCA] hover:from-[#0FABCA]/80 to-[#CD00F1] hover:to-[#CD00F1]/80 text-white py-2.5 px-6 rounded-md'>
-                    {isGenerating ? 'Generating...' : 'Generate Code'}
-                </button>
+                <div className='flex items-center gap-[15px] mt-7'>
+                    <button onClick={generateCode}
+                            className='code_generate_btn bg-gradient-to-r from-[#0FABCA] hover:from-[#0FABCA]/80 to-[#CD00F1] hover:to-[#CD00F1]/80 text-white py-2.5 px-6 rounded-md'>
+                        {isGenerating ? 'Generating...' : 'Generate Code'}
+                    </button>
+
+                    <button
+                        onClick={()=> setCheatsheetOpen(true)}
+                        className='flex items-center gap-[8px] text-[1rem] py-2.5 px-4 hover:bg-gray-50 border border-gray-300 rounded-md text-gray-600'>
+                        <FiEye/>
+                        Valid Shortcut Cheatsheet
+                    </button>
+                </div>
+
             </div>
-            <CodesSidebar sidebarOpen={sidebarOpen} isGenerating={isGenerating} setSidebarOpen={setSidebarOpen} codes={generatedCode}/>
+            <CodesSidebar sidebarOpen={sidebarOpen} isGenerating={isGenerating} setSidebarOpen={setSidebarOpen}
+                          codes={generatedCode}/>
+            <ShortcutCheatsheetModal isOpen={cheatsheetOpen} setIsOpen={setCheatsheetOpen} VALID_KEYS={VALID_KEYS} VALID_MODIFIERS={VALID_MODIFIERS}/>
         </>
     );
 };
