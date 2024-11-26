@@ -8,7 +8,6 @@ import HomePage from "./Pages/HomePage";
 
 // documentation page
 import OverviewPage from "./Pages/OverviewPage";
-import FaqPage from "./Pages/FaqPage";
 import TempletePage from "./Pages/TempletePage";
 
 // inputs
@@ -50,8 +49,6 @@ import AnimatedCardsPage from "./Pages/Components/Surfaces/AnimatedCardsPage.jsx
 import ImageGalleryPage from "./Pages/Components/Surfaces/ImageGalleryPage";
 import AccordingPage from "./Pages/Components/Surfaces/AccordingPage";
 import AppbarPage from "./Pages/Components/Surfaces/AppbarPage";
-import DragAndDropPage from "./Pages/Components/Surfaces/DragAndDropPage.jsx";
-import CarouselPage from "./Pages/Components/Surfaces/CarouselPage.jsx";
 
 // e-commerce
 import ProductCardPage from "./Pages/Components/ECommerce/ProductCardPage.jsx";
@@ -70,8 +67,6 @@ import OtpInputPage from "./Pages/Components/Inputs/OtpInputPage.jsx";
 // blocks
 import ResponsiveNavbarPage from "./Pages/Blocks/Sections/ResponsiveNavbarPage.jsx";
 import AllBlocksPage from "./Pages/Blocks/AllBlocksPage.jsx";
-import WrongUrlErrorPage from "./Pages/Blocks/EmptyPages/WrongRoutePage.jsx";
-import WrongRoutePage from "./Pages/Blocks/EmptyPages/EmptyPage.jsx";
 import HeroSectionPage from "./Pages/Blocks/Sections/HeroSectionPage.jsx";
 import ProgressBarPage from "./Pages/Components/Navigation/ProgressBarPage.jsx";
 import ContactFormPage from "./Pages/Blocks/Forms/ContactFormPage.jsx";
@@ -82,15 +77,12 @@ import TimelinePage from "./Pages/Components/Data Display/TimelinePage.jsx";
 import NumberInputPage from "./Pages/Components/Inputs/NumberInputPage.jsx";
 import StrongPasswordPage from "./Pages/Components/Inputs/StrongPasswordPage.jsx";
 import CheckboxInputPage from "./Pages/Components/Inputs/CheckboxInputPage.jsx";
-import EmptyPage from "./Pages/EmptyPage.jsx"
 import StepsPage from "./Pages/Components/Navigation/StepsPage.jsx";
 
 // icons page
-import IconsPage from './Pages/IconsPages/IconsPage.jsx'
 import ResponsiveFooterPage from "./Pages/Blocks/Randoms/ResponsiveFooterPage.jsx";
 import AuthButtonPage from "./Pages/Components/Buttons/AuthButtonPage.jsx";
 
-import OpacityPalettePage from "./Pages/OpacityPalettePage.jsx"
 import WrongUrlErrorPage from "./Pages/Blocks/EmptyPages/WrongRoutePage.jsx";
 import WrongRoutePage from "./Pages/Blocks/EmptyPages/EmptyPage.jsx";
 import PricingSectionPage from "./Pages/Blocks/Sections/PricingSectionPage.jsx";
@@ -127,6 +119,7 @@ import CarouselPage from "./Pages/Components/Surfaces/CarouselPage.jsx";
 import ZenUIHeroDocsPage from "./Pages/ZenUIHeroDocsPage.jsx";
 import TimerPage from "./Pages/Components/Navigation/TimerPage.jsx";
 import ShortcutGeneratorPage from "./Pages/ShortcutGeneratorPage.jsx";
+import InputSliderPage from "./Pages/Components/Inputs/InputSliderPage.jsx";
 
 
 const App = () => {

@@ -17,7 +17,7 @@ const ProductDetailsExample1 = () => {
     const [isFavorite, setIsFavorite] = useState(false)
 
     const images = [
-        'https://i.ibb.co.com/k5JzbPr/Image-7.png',
+        'https://i.ibb.co.com/GTGBw03/image-323.png',
         'https://i.ibb.co.com/thxkk1x/image-320.png',
         'https://i.ibb.co.com/MckV93r/image-320.png',
         'https://i.ibb.co.com/ZGWRGDT/image-320.png'
@@ -35,14 +35,14 @@ const ProductDetailsExample1 = () => {
 
     return (
         <div className="mx-auto px-8 py-12">
-            <div className="w-full grid grid-cols-2 gap-12">
+            <div className="w-full grid grid-cols-2 gap-6">
 
                 {/* Left side - Image gallery */}
                 <div className="flex">
 
                     {/* Thumbnails */}
                     <div
-                        className="w-[30%] flex flex-col gap-4 max-h-[600px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 pr-2">
+                        className="w-[20%] flex flex-col gap-4 max-h-[600px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 pr-2">
                         {images.map((image, index) => (
                             <button
                                 key={index}
@@ -61,11 +61,11 @@ const ProductDetailsExample1 = () => {
                     </div>
 
                     {/* Main image */}
-                    <div className="w-[70%] relative flex-1 aspect-square">
+                    <div className="w-[80%] bg-gray-100 rounded-sm h-[400px] relative flex items-center justify-center">
                         <img
                             src={images[selectedImage]}
                             alt="Product main image"
-                            className="object-cover mx-auto rounded-lg"
+                            className="object-cover w-[300px] rounded-lg"
                         />
                     </div>
                 </div>
