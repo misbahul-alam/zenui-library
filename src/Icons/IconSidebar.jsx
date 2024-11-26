@@ -210,7 +210,7 @@ const IconSidebar = ({sidebarOpen, setSidebarOpen, iconData, setSelectedIconData
 
     return (
         <aside
-            className={`${sidebarOpen ? 'translate-x-0 1630px:translate-x-[-129px] 2000px:translate-x-[-200px]' : 'translate-x-[2000px]'} w-full 640px:w-[60%] 1024px:w-[30%] bg-white fixed top-0 right-0 boxShadow min-h-screen transition-all z-30 duration-300 iconsSidebar pt-[7rem] px-6 640px:px-12`}>
+            className={`${sidebarOpen ? 'translate-x-0 1630px:translate-x-[-129px] 2000px:translate-x-[-200px]' : 'translate-x-[2000px]'} w-full 640px:w-[60%] 1024px:w-[30%] bg-white fixed top-0 right-0 boxShadow min-h-screen transition-all z-[20000000000] duration-300 iconsSidebar pt-[7rem] px-6 640px:px-12`}>
 
             <div className='relative'>
                 <RxCross1

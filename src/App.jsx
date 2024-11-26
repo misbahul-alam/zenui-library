@@ -8,10 +8,8 @@ import HomePage from "./Pages/HomePage";
 
 // documentation page
 import OverviewPage from "./Pages/OverviewPage";
-import InstallationPage from "./Pages/InstallationPage.jsx";
+import FaqPage from "./Pages/FaqPage";
 import TempletePage from "./Pages/TempletePage";
-import ResourcesPage from "./Pages/ResourcesPage.jsx";
-import ReactCustomHooksPage from "./Pages/ReactCustomHooksPage.jsx";
 
 // inputs
 import InputTextPage from "./Pages/Components/Inputs/InputTextPage";
@@ -20,15 +18,10 @@ import InputRadioPage from "./Pages/Components/Inputs/InputRadioPage";
 import InputSwitchPage from "./Pages/Components/Inputs/InputSwitchPage";
 import InputSelectPage from "./Pages/Components/Inputs/InputSelectPage";
 import InputFilePage from "./Pages/Components/Inputs/InputFilePage";
-import NumberInputPage from "./Pages/Components/Inputs/NumberInputPage.jsx";
-import StrongPasswordPage from "./Pages/Components/Inputs/StrongPasswordPage.jsx";
-import CheckboxInputPage from "./Pages/Components/Inputs/CheckboxInputPage.jsx";
-import InputSliderPage from "./Pages/Components/Inputs/InputSliderPage.jsx";
 
 // buttons pages
 import NormalPage from "./Pages/Components/Buttons/NormalPage";
 import AnimatedButtonPage from "./Pages/Components/Buttons/AnimatedButtonPage";
-import AuthButtonPage from "./Pages/Components/Buttons/AuthButtonPage.jsx";
 
 // all components
 import AllComponentsPage from "./Pages/Components/AllComponentsPage";
@@ -38,11 +31,6 @@ import PaginationPage from "./Pages/Components/Navigation/PaginationPage";
 import TabsPage from "./Pages/Components/Navigation/TabsPage";
 import ModalPage from "./Pages/Components/Navigation/ModalPage";
 import ChipPage from "./Pages/Components/Navigation/ChipPage";
-import StepsPage from "./Pages/Components/Navigation/StepsPage.jsx";
-import BreadcrumbPage from "./Pages/Components/Navigation/BreadcrumbPage.jsx";
-import RatingPage from "./Pages/Components/Navigation/RatingPage.jsx";
-import ProgressBarPage from "./Pages/Components/Navigation/ProgressBarPage.jsx";
-import TimerPage from "./Pages/Components/Navigation/TimerPage.jsx";
 
 // feedback pages
 import SkeletonPage from "./Pages/Components/Feedback/SkeletonPage";
@@ -51,15 +39,10 @@ import DialogPage from "./Pages/Components/Feedback/DialogPage";
 import TestimonialPage from "./Pages/Components/Feedback/TestimonialPage";
 import NotificationPage from "./Pages/Components/Feedback/NotificationPage";
 import LoaderPage from "./Pages/Components/Feedback/LoaderPage";
-import ContextMenuPage from "./Pages/Components/Feedback/ContextMenuPage.jsx";
-import TreeDropdownPage from "./Pages/Components/Feedback/TreeDropdownPage.jsx";
 
 // data display
 import BadgePage from "./Pages/Components/Data Display/BadgePage";
 import TooltipPage from "./Pages/Components/Data Display/TooltipPage";
-import TimelinePage from "./Pages/Components/Data Display/TimelinePage.jsx";
-import TablePage from "./Pages/Components/Data Display/TablePage.jsx";
-import PieChartPage from "./Pages/Components/Data Display/PieChartPage.jsx";
 
 // surface pages
 import CardPage from "./Pages/Components/Surfaces/CardPage";
@@ -90,9 +73,26 @@ import AllBlocksPage from "./Pages/Blocks/AllBlocksPage.jsx";
 import WrongUrlErrorPage from "./Pages/Blocks/EmptyPages/WrongRoutePage.jsx";
 import WrongRoutePage from "./Pages/Blocks/EmptyPages/EmptyPage.jsx";
 import HeroSectionPage from "./Pages/Blocks/Sections/HeroSectionPage.jsx";
+import ProgressBarPage from "./Pages/Components/Navigation/ProgressBarPage.jsx";
 import ContactFormPage from "./Pages/Blocks/Forms/ContactFormPage.jsx";
 import ResponsiveSearchbarPage from "./Pages/Blocks/Randoms/ResponsiveSearchbarPage.jsx";
+import BreadcrumbPage from "./Pages/Components/Navigation/BreadcrumbPage.jsx";
+import RatingPage from "./Pages/Components/Navigation/RatingPage.jsx";
+import TimelinePage from "./Pages/Components/Data Display/TimelinePage.jsx";
+import NumberInputPage from "./Pages/Components/Inputs/NumberInputPage.jsx";
+import StrongPasswordPage from "./Pages/Components/Inputs/StrongPasswordPage.jsx";
+import CheckboxInputPage from "./Pages/Components/Inputs/CheckboxInputPage.jsx";
+import EmptyPage from "./Pages/EmptyPage.jsx"
+import StepsPage from "./Pages/Components/Navigation/StepsPage.jsx";
+
+// icons page
+import IconsPage from './Pages/IconsPages/IconsPage.jsx'
 import ResponsiveFooterPage from "./Pages/Blocks/Randoms/ResponsiveFooterPage.jsx";
+import AuthButtonPage from "./Pages/Components/Buttons/AuthButtonPage.jsx";
+
+import OpacityPalettePage from "./Pages/OpacityPalettePage.jsx"
+import WrongUrlErrorPage from "./Pages/Blocks/EmptyPages/WrongRoutePage.jsx";
+import WrongRoutePage from "./Pages/Blocks/EmptyPages/EmptyPage.jsx";
 import PricingSectionPage from "./Pages/Blocks/Sections/PricingSectionPage.jsx";
 import NewsletterSectionPage from "./Pages/Blocks/Forms/NewsletterSectionPage.jsx";
 import MultipageFormPage from "./Pages/Blocks/Forms/MultipageFormPage.jsx";
@@ -113,10 +113,20 @@ import OpacityPalettePage from "./Pages/OpacityPalettePage.jsx"
 
 // layout playground page
 import LayoutPlaygroundPage from "./Pages/LayoutPlaygroundPage.jsx";
+import TreeDropdownPage from "./Pages/Components/Feedback/TreeDropdownPage.jsx";
+import InstallationPage from "./Pages/InstallationPage.jsx";
+import DragAndDropPage from "./Pages/Components/Surfaces/DragAndDropPage.jsx";
+import ResourcesPage from "./Pages/ResourcesPage.jsx";
+import ContextMenuPage from "./Pages/Components/Feedback/ContextMenuPage.jsx";
+import ReactCustomHooksPage from "./Pages/ReactCustomHooksPage.jsx";
+import TablePage from "./Pages/Components/Data Display/TablePage.jsx";
+import PieChartPage from "./Pages/Components/Data Display/PieChartPage.jsx";
+import CarouselPage from "./Pages/Components/Surfaces/CarouselPage.jsx";
 
 // become zenui hero docs
 import ZenUIHeroDocsPage from "./Pages/ZenUIHeroDocsPage.jsx";
-
+import TimerPage from "./Pages/Components/Navigation/TimerPage.jsx";
+import ShortcutGeneratorPage from "./Pages/ShortcutGeneratorPage.jsx";
 
 
 const App = () => {
@@ -310,6 +320,9 @@ const App = () => {
 
                 {/* layout playground */}
                 <Route path='/layout-playground' element={<LayoutPlaygroundPage/>}/>
+
+                {/* layout playground */}
+                <Route path='/shortcut-generator' element={<ShortcutGeneratorPage/>}/>
 
                 {/* become ZenUI Hero */}
                 <Route path='/zenui-hero-docs' element={<ZenUIHeroDocsPage/>}/>
