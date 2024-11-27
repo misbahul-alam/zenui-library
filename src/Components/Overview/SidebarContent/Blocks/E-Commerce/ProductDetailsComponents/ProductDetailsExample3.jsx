@@ -96,7 +96,7 @@ const ProductDetailsExample1 = () => {
                             <button
                                 key={index}
                                 onClick={() => selectThumbnail(index)}
-                                className={`flex-shrink-0 bg-gray-100 w-20 h-20 rounded-md overflow-hidden border-2 ${currentImageIndex === index ? "border-[#0FABCA]" : "border-transparent"
+                                className={`flex-shrink-0 bg-gray-100 w-20 transition-all duration-300 h-20 rounded-md overflow-hidden border-2 ${currentImageIndex === index ? "border-[#0FABCA]" : "border-transparent"
                                 }`}
                             >
                                 <img src={img} alt={`Thumbnail ${index + 1}`} className="w-full h-full object-cover"/>
