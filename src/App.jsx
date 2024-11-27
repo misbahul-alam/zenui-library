@@ -120,6 +120,7 @@ import ZenUIHeroDocsPage from "./Pages/ZenUIHeroDocsPage.jsx";
 import TimerPage from "./Pages/Components/Navigation/TimerPage.jsx";
 import ShortcutGeneratorPage from "./Pages/ShortcutGeneratorPage.jsx";
 import InputSliderPage from "./Pages/Components/Inputs/InputSliderPage.jsx";
+import ProductFilterPage from "./Pages/Blocks/E-Commerce/ProductFilterPage.jsx";
 
 
 const App = () => {
@@ -303,6 +304,7 @@ const App = () => {
                 {/* e-commerce blocks */}
                 <Route path="/blocks/offer-grid" element={<OfferGridPage/>}/>
                 <Route path="/blocks/product-details-page" element={<ProductDetailsPage/>}/>
+                <Route path="/blocks/product-filter-page" element={<ProductFilterPage/>}/>
 
 
                 {/*  icons  */}
