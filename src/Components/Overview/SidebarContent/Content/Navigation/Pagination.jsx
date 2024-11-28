@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 // components
 import OverviewFooter from '../../../../../Shared/OverviewFooter';
 import ContentHeader from '../../../../../Shared/ContentHeader';
+import PageButton from './PageButton';
 
 // contents for scrollspy
 import { paginationContents } from '../../../../../Utils/ContentsConfig/NavigationContents';
@@ -158,6 +159,86 @@ const Pagination = () => {
 
     return pageNumbers;
   };
+
+  // pagination 4 logic start
+
+  const [currentPagePagination4, setCurrentPagePagination4] = useState(1);
+
+  const FourPaginationTotalPages = 50;
+
+  const handlePreviousPagination4 = () => {
+    if (currentPagePagination4 > 1) {
+      setCurrentPagePagination4((prev) => prev - 1);
+    }
+  };
+
+  const handleNextPagination4 = () => {
+    if (currentPagePagination4 < FourPaginationTotalPages) {
+      setCurrentPagePagination4((prev) => prev + 1);
+    }
+  };
+
+  const handlePageClick4 = (pageNumber) => {
+    setCurrentPagePagination4(pageNumber);
+  };
+
+  const renderPageNumbersForPagination4 = () => {
+    const pageNumbers = [];
+    const startPage = Math.max(2, currentPagePagination4 - 1);
+    const endPage = Math.min(
+      FourPaginationTotalPages - 1,
+      currentPagePagination4 + 1
+    );
+
+    pageNumbers.push(
+      <PageButton
+        key={1}
+        pageNumber={1}
+        isActive={currentPagePagination4 === 1}
+        onClick={handlePageClick4}
+      />
+    );
+
+    if (startPage > 2) {
+      pageNumbers.push(
+        <span key="start-dots" className="mx-1 px-2 text-gray-500">
+          ...
+        </span>
+      );
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+      pageNumbers.push(
+        <PageButton
+          key={i}
+          pageNumber={i}
+          isActive={currentPagePagination4 === i}
+          onClick={handlePageClick4}
+        />
+      );
+    }
+
+    if (endPage < FourPaginationTotalPages - 1) {
+      pageNumbers.push(
+        <span key="end-dots" className="mx-1 px-2 text-gray-500">
+          ...
+        </span>
+      );
+    }
+
+    pageNumbers.push(
+      <PageButton
+        key={FourPaginationTotalPages}
+        pageNumber={FourPaginationTotalPages}
+        isActive={currentPagePagination4 === FourPaginationTotalPages}
+        onClick={handlePageClick4}
+      />
+    );
+
+    return pageNumbers;
+  };
+
+  // pagination 4 logic end
 
   return (
     <>
@@ -605,6 +686,196 @@ export default pagination;
               />
             )}
           </div>
+
+            {/* start pagination 4 */}
+
+          <div className="mt-8">
+            <ContentHeader
+              text={"smarter pagination component"}
+              id={"smarter pagination component"}
+            />
+          </div>
+
+          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
+            A smarter pagination component that dynamically adjusts the range of
+            visible page numbers based on the current page, ensuring a seamless
+            and intuitive user experience.
+          </p>
+
+          <div className="w-full 425px:w-[80%] border border-border rounded mt-8 pb-14">
+            <div className="relative">
+              <div
+                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
+                  animatedPaginationPreview
+                    ? "translate-x-[0px] !w-[100px]"
+                    : "translate-x-[106px] rounded-br"
+                }`}
+              ></div>
+              <button
+                className={`${
+                  animatedPaginationPreview && "text-tabTextColor"
+                } px-6 py-2 border-b z-[2] relative text-text border-border`}
+                onClick={handleAnimatedPaginationPreview}
+              >
+                Preview
+              </button>
+              <button
+                className={`${
+                  animatedPaginationCode && "text-tabTextColor"
+                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
+                onClick={handleAnimatedPaginationCode}
+              >
+                Code
+              </button>
+            </div>
+            {animatedPaginationPreview && (
+              <div className="flex items-center justify-center flex-col 640px:flex-row 1024px:flex-col 1360px:flex-row mt-8 640px:space-x-4 space-y-4 640px:space-y-0 1024px:space-y-4 1360px:space-y-0 py-7">
+               
+                  <button
+                  onClick={handlePreviousPagination4}
+                  disabled={currentPagePagination4 === 1}
+                  className={`px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
+                    currentPagePagination4 === 1
+                      ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                      : ""
+                  }`}
+                >
+                  Previous
+                </button>
+                <div className="flex 640px:block 1024px:flex 1404px:block">
+                  {renderPageNumbersForPagination4()}
+                </div>
+                <button
+                  onClick={handleNextPagination4}
+                  disabled={currentPagePagination4 === FourPaginationTotalPages}
+                  className={`px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
+                    currentPagePagination4 === FourPaginationTotalPages
+                      ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                      : ""
+                  }`}
+                >
+                  Next
+                </button>
+               
+              </div>
+            )}
+
+            {animatedPaginationCode && (
+              <Showcode
+                code='
+import { useState } from "react";
+
+const Pagination = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = 50;
+
+  const handlePrevious = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
+  const handlePageClick = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const renderPageNumbers = () => {
+    const pageNumbers = [];
+    const startPage = Math.max(2, currentPage - 1);
+    const endPage = Math.min(totalPages - 1, currentPage + 1);
+
+    pageNumbers.push(
+      <PageButton
+        key={1}
+        pageNumber={1}
+        isActive={currentPage === 1}
+        onClick={handlePageClick}
+      />
+    );
+
+    if (startPage > 2) {
+      pageNumbers.push(
+        <span key="start-dots" className="dots">
+          ...
+        </span>
+      );
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+      pageNumbers.push(
+        <PageButton
+          key={i}
+          pageNumber={i}
+          isActive={currentPage === i}
+          onClick={handlePageClick}
+        />
+      );
+    }
+
+    if (endPage < totalPages - 1) {
+      pageNumbers.push(
+        <span key="end-dots" className="dots">
+          ...
+        </span>
+      );
+    }
+
+    pageNumbers.push(
+      <PageButton
+        key={totalPages}
+        pageNumber={totalPages}
+        isActive={currentPage === totalPages}
+        onClick={handlePageClick}
+      />
+    );
+
+    return pageNumbers;
+  };
+
+  return (
+    <div className="flex items-center justify-center mt-8 space-x-4">
+      <button
+        onClick={handlePrevious}
+        disabled={currentPage === 1}
+        className={`button ${currentPage === 1 ? "disabled" : ""}`}
+      >
+        Previous
+      </button>
+      {renderPageNumbers()}
+      <button
+        onClick={handleNext}
+        disabled={currentPage === totalPages}
+        className={`button ${currentPage === totalPages ? "disabled" : ""}`}
+      >
+        Next
+      </button>
+    </div>
+  );
+};
+
+const PageButton = ({ pageNumber, isActive, onClick }) => (
+  <button
+    onClick={() => onClick(pageNumber)}
+    className={`button ${isActive ? "active" : "inactive"}`}
+  >
+    {pageNumber}
+  </button>
+);
+
+export default Pagination;
+                    '
+              />
+            )}
+          </div>
+
+          {/* end pagination 4 */}
+
           <OverviewFooter backUrl='/components/carousel' backName='Carousel' forwardName='progress bar' forwardUrl='/components/progress-bar'/>
         </div>
 
