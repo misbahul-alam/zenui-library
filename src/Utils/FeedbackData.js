@@ -92,7 +92,7 @@ export const feedbackData = [
     },
     {
         name: 'Misbah Ahmed',
-        avatar: 'https://media.licdn.com/dms/image/v2/C4D03AQGLHpj-_gIrRw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1616828476471?e=1732147200&v=beta&t=l3mzrtWb5yyLJFEaToDjbMhRw9y7LYlCIze5pbFf1QY',
+        avatar: 'https://i.ibb.co.com/jTWnDQb/1707239557517.jpg',
         review: 'ZenUI is an awesome library for developing websites rapidy. It offers ready-made impressive templates that have touch in modern design. I personally love to explore the UI library and use it as I need. Hopefully it will make difference in modern development.',
         source: 'product_hunt',
     },

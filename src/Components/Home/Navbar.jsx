@@ -16,7 +16,8 @@ const Navbar = () => {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [hasShadow, setHasShadow] = useState(false);
     const navigate = useNavigate();
-    const [isHovered, setIsHovered] = useState(false);
+    const [isDeveloperKitHover, setIsDeveloperKitHover] = useState(false);
+    const [isToolsHover, setIsToolsHover] = useState(false);
 
     const handleSearchClick = () => {
         setIsSearchOpen(true);
@@ -104,21 +105,72 @@ const Navbar = () => {
                         <ul className={`text-gray-600 flex items-center gap-8 font-[500] capitalize text-[1.2rem]`}>
                             <Link to='/about-us' className='cursor-pointer hover:text-[#0FABCA] transition-all duration-200'>About Us</Link>
                             <li
-                                onMouseEnter={() => setIsHovered(true)}
-                                onMouseLeave={() => setIsHovered(false)}
+                                onMouseEnter={() => setIsToolsHover(true)}
+                                onMouseLeave={() => setIsToolsHover(false)}
                                 className='cursor-pointer relative py-[23px] hover:text-[#0FABCA] transition-all duration-200 flex items-center gap-[8px]'
                             >
-                                Developer Kit
-                                <IoIosArrowDown className={`${isHovered ? 'rotate-[180deg]': 'rotate-0'} transition-all duration-300`}/>
+                                Tools
+                                <IoIosArrowDown className={`${isToolsHover ? 'rotate-[180deg]': 'rotate-0'} transition-all duration-300`}/>
 
-                                {isHovered && (
+                                {isToolsHover && (
                                     <motion.div
                                         initial={{opacity: 0, scale: 0.8}}
                                         animate={{opacity: 1, scale: 1}}
                                         exit={{opacity: 0, scale: 0.8}}
                                         className="absolute top-[68px] left-0 gap-[30px] w-[600px] grid grid-cols-2 bg-white border border-gray-200 shadow-sm rounded-md p-6 mt-2"
-                                        onMouseEnter={() => setIsHovered(true)}
-                                        onMouseLeave={() => setIsHovered(false)}
+                                        onMouseEnter={() => setIsToolsHover(true)}
+                                        onMouseLeave={() => setIsToolsHover(false)}
+                                    >
+                                        <div className='flex flex-col text-[1rem]'>
+
+                                            <Link to='/shortcut-generator' className='p-[10px] transition-all duration-200 hover:bg-gray-100 rounded-md'>
+                                                <div className='flex items-center gap-[10px]'>
+                                                    <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
+                                                        ShotKey
+                                                    </p>
+                                                    <NewBadge/>
+                                                </div>
+                                                <span className='text-[0.8rem] font-[300] text-gray-500'>generate keyboard shortcuts easily.</span>
+                                            </Link>
+
+                                            <Link to='/color-palette' className='p-[10px] transition-all duration-200 hover:bg-gray-100 rounded-md'>
+                                                <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
+                                                    Color Palettes
+                                                </p>
+                                                <span className='text-[0.8rem] font-[300] text-gray-500'>Harmonized color sets.</span>
+                                            </Link>
+
+                                        </div>
+
+                                        <div className='flex flex-col text-[1rem]'>
+
+                                            <Link to='/icons' className='p-[10px] transition-all duration-200 hover:bg-gray-100 rounded-md'>
+                                                <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
+                                                    Icons
+                                                </p>
+                                                <span className='text-[0.8rem] font-[300] text-gray-500'>Scalable icons for clear visuals.</span>
+                                            </Link>
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </li>
+
+                            <li
+                                onMouseEnter={() => setIsDeveloperKitHover(true)}
+                                onMouseLeave={() => setIsDeveloperKitHover(false)}
+                                className='cursor-pointer relative py-[23px] hover:text-[#0FABCA] transition-all duration-200 flex items-center gap-[8px]'
+                            >
+                                Components
+                                <IoIosArrowDown className={`${isDeveloperKitHover ? 'rotate-[180deg]': 'rotate-0'} transition-all duration-300`}/>
+
+                                {isDeveloperKitHover && (
+                                    <motion.div
+                                        initial={{opacity: 0, scale: 0.8}}
+                                        animate={{opacity: 1, scale: 1}}
+                                        exit={{opacity: 0, scale: 0.8}}
+                                        className="absolute top-[68px] left-0 gap-[30px] w-[600px] grid grid-cols-2 bg-white border border-gray-200 shadow-sm rounded-md p-6 mt-2"
+                                        onMouseEnter={() => setIsDeveloperKitHover(true)}
+                                        onMouseLeave={() => setIsDeveloperKitHover(false)}
                                     >
                                         <div className='flex flex-col text-[1rem]'>
                                             <Link to='/templates' className='p-[10px] transition-all duration-200 hover:bg-gray-100 rounded-md'>
@@ -135,12 +187,6 @@ const Navbar = () => {
                                                 <span className='text-[0.8rem] font-[300] text-gray-500'>Modular components for easy design.</span>
                                             </Link>
 
-                                            <Link to='/icons' className='p-[10px] transition-all duration-200 hover:bg-gray-100 rounded-md'>
-                                                <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
-                                                    Icons
-                                                </p>
-                                                <span className='text-[0.8rem] font-[300] text-gray-500'>Scalable icons for clear visuals.</span>
-                                            </Link>
                                         </div>
 
                                         <div className='flex flex-col text-[1rem]'>
@@ -158,12 +204,6 @@ const Navbar = () => {
                                                 <span className='text-[0.8rem] font-[300] text-gray-500'>Tools and guides for developers.</span>
                                             </Link>
 
-                                            <Link to='/color-palette' className='p-[10px] transition-all duration-200 hover:bg-gray-100 rounded-md'>
-                                                <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
-                                                    Color Palettes
-                                                </p>
-                                                <span className='text-[0.8rem] font-[300] text-gray-500'>Harmonized color sets.</span>
-                                            </Link>
                                         </div>
                                     </motion.div>
                                 )}

@@ -109,6 +109,7 @@ import CarouselPage from "./Pages/Components/Surfaces/CarouselPage.jsx";
 // become zenui hero docs
 import ZenUIHeroDocsPage from "./Pages/ZenUIHeroDocsPage.jsx";
 import TimerPage from "./Pages/Components/Navigation/TimerPage.jsx";
+import ShortcutGeneratorPage from "./Pages/ShortcutGeneratorPage.jsx";
 
 
 const App = () => {
@@ -294,6 +295,9 @@ const App = () => {
 
                 {/* layout playground */}
                 <Route path='/layout-playground' element={<LayoutPlaygroundPage/>}/>
+
+                {/* layout playground */}
+                <Route path='/shortcut-generator' element={<ShortcutGeneratorPage/>}/>
 
                 {/* become ZenUI Hero */}
                 <Route path='/zenui-hero-docs' element={<ZenUIHeroDocsPage/>}/>
