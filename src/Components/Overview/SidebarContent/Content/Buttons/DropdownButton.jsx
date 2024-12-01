@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // components
 import OverviewFooter from "../../../../../Shared/OverviewFooter";
@@ -112,12 +112,18 @@ const DropdownButton = () => {
         setActionButtonActive2(false)
     }
 
-    document.addEventListener('click', (event)=>{
-        if(!event.target.closest('.publishButtonOptions') && !event.target.closest('.publishButton')){
-            setPublishButtonActive(false)
-            setActionButtonActive(false)
-        }
-    })
+    useEffect(() => {
+        const handleClick = (event) => {
+            if(!event.target.closest('.publishButtonOptions') && !event.target.closest('.publishButton')){
+                setPublishButtonActive(false)
+                setActionButtonActive(false)
+            }
+        };
+        document.addEventListener("click", handleClick);
+        return () => {
+          document.removeEventListener("click", handleClick);
+        };
+      }, []);
 
     return (
         <aside className="flex items-start justify-between gap-6 w-full 640px:pl-[2.5rem] px-6 640px:px-10">

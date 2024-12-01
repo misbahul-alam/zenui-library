@@ -133,14 +133,21 @@ const Breadcrumb = () => {
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  document.addEventListener('click', (e) => {
-    if (
-      !e.target.closest('.dropdownModal') &&
-      !e.target.closest('.dropdownButton')
-    ) {
-      setDropdownOpen(false);
-    }
-  });
+  React.useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        !e.target.closest('.dropdownModal') &&
+        !e.target.closest('.dropdownButton')
+      ) {
+        setDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
 
   return (
     <>

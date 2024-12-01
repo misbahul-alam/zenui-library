@@ -43,16 +43,18 @@ const Search = ({ isSearchOpen, setIsSearchOpen }) => {
   const allItems = searchResults;
 
   useEffect(() => {
+    let timeout = null;
     if (isSearchOpen) {
-        setInputText("");
-        setFocusedIndex(-1);
-      setTimeout(() => {
+      setInputText("");
+      setFocusedIndex(-1);
+      timeout = setTimeout(() => {
         const searchInput = document.getElementById("zenui_search_input");
         if (searchInput) {
           searchInput.focus();
         }
       }, 50);
     }
+    return () => timeout && clearTimeout(timeout);
   }, [isSearchOpen]);
 
   const handleKeyDown = (e) => {

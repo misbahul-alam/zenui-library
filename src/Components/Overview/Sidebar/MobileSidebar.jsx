@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // icons
 import { MdKeyboardArrowRight, MdKeyboardArrowDown } from "react-icons/md";
@@ -21,11 +21,18 @@ const MobileSidebar = ({ startContent, setStartContent }) => {
     const [blocks, setBlocks] = useState(true);
 
 
-    document.addEventListener('click', (event) => {
-        if (!event.target.closest('.mobileSidebar') && !event.target.closest('.mobilesidebarIcon')) {
-            setSidebarOpen(false)
-        }
-    })
+    useEffect(() => {
+        const handleClick = (event) => {
+            if (!event.target.closest('.mobileSidebar') && !event.target.closest('.mobilesidebarIcon')) {
+                setSidebarOpen(false)
+            }
+        };
+
+        document.addEventListener('click', handleClick);
+        return () => {
+            document.removeEventListener('click', handleClick);
+        };
+    }, [])
 
     return (
         <>

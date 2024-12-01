@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // components
 import Showcode from '../../../../../Shared/ShowCode';
@@ -168,15 +168,22 @@ const Modals = () => {
   };
 
   // outside click modal close
-  document.addEventListener('click', (e) => {
-    if (
-      !e.target.closest('.zenUIRightModal') &&
-      !e.target.closest('.zenUIRightModalButton')
-    ) {
-      setModal8Open(false);
-      setModal9Open(false);
-    }
-  });
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        !e.target.closest('.zenUIRightModal') &&
+        !e.target.closest('.zenUIRightModalButton')
+      ) {
+        setModal8Open(false);
+        setModal9Open(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
 
   const [disabledButton, setDisabledButton] = useState(true);
 
