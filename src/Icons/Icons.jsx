@@ -113,8 +113,8 @@ const Icons = () => {
                     <CiSearch className='absolute top-[50%] transform translate-y-[-50%] text-gray-400 text-[1.4rem] left-3'/>
                 </div>
 
-                <div className='overflow-x-auto w-full'>
-                    <div className='flex items-center gap-[10px] mt-[20px]'>
+                <div className='overflow-x-auto scrollbar pb-2 w-full'>
+                    <div className='flex items-center gap-[10px] mt-[20px] flex-nowrap 1024px:flex-wrap'>
                         {
                             iconFilterOptions?.map((option) => (
                                 <button onClick={() => setActiveFilterOption(option)}

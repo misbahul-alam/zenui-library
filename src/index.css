@@ -420,3 +420,7 @@ input[type="number"] {
     transform: translateY(-10px) rotate(-15deg);
   }
 }
+
+.scrollbar::-webkit-scrollbar {
+  height: 4px;
+}
