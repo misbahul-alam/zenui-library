@@ -49,7 +49,9 @@ export const componentSearchData = [
     },
     {
         title: 'Timer',
-        url: '/components/timer'
+        description: 'A timer lets you set a specific duration, and it counts down based on that duration, notifying you when the time is up.',
+        url: '/components/timer',
+        tags: ['timer', 'count-down', 'timer effect']
     },
     {
         title: 'RGB Border',

@@ -111,7 +111,7 @@ const Search = ({ isSearchOpen, setIsSearchOpen }) => {
   useEffect(() => {
     if (focusedIndex >= 0) {
       document.getElementById(`search-item-${focusedIndex}`)?.scrollIntoView({
-        block: "nearest",
+        block: "center",
         behavior: "smooth",
       });
     }
@@ -163,42 +163,38 @@ const Search = ({ isSearchOpen, setIsSearchOpen }) => {
                 key={index}
                 to={component.url}
                 onMouseMove={handleMouseMove}
-                className={`flex items-center gap-[7px] py-3 px-3 text-gray-500 
+                className={`flex group items-start gap-[10px] py-3 px-3 text-gray-500 
                   ${isKeyboardActive 
                     ? focusedIndex === index 
-                      ? 'bg-primary text-white' 
-                      : ''
-                    : 'hover:text-white hover:bg-primary'
+                      ? 'bg-gray-100' 
+                      : 'text-gray-500'
+                    : 'hover:bg-gray-100'
                   } rounded-md transition-colors`}
               >
-                <LuLayoutTemplate className='text-[1.4rem] flex-shrink-0' />
+                <LuLayoutTemplate className='text-[1.4rem] flex-shrink-0 mt-1' />
                 <div className='flex-1 min-w-0'>
                   <p
-                    className='text-[1rem] font-[500] capitalize'
+                    className='text-[1rem] font-[500] text-gray-600 capitalize'
                     dangerouslySetInnerHTML={{
                       __html: highlightText(component.title, inputText),
                     }}
                   />
                   {component.description && (
                     <p
-                      className={`text-sm mt-0.5 truncate ${
-                        focusedIndex === index
-                          ? 'text-gray-100'
-                          : 'text-gray-500'
-                      }`}
+                      className={`text-sm font-[300] mt-0.5 truncate text-gray-500`}
                       dangerouslySetInnerHTML={{
                         __html: highlightText(component.description, inputText),
                       }}
                     />
                   )}
                   {component.tags && (
-                    <div className='flex flex-wrap gap-1 mt-1'>
+                    <div className='flex flex-wrap gap-1 mt-2'>
                       {component.tags.map((tag, tagIndex) => (
                         <span
                           key={tagIndex}
-                          className={`text-xs px-2 py-0.5 rounded-full ${
+                          className={`text-xs group-hover:bg-gray-200 px-2 py-0.5 rounded-full ${
                             focusedIndex === index
-                              ? 'bg-white/20 text-white'
+                              ? 'bg-gray-200'
                               : 'bg-gray-100 text-gray-600'
                           }`}
                         >
@@ -216,7 +212,7 @@ const Search = ({ isSearchOpen, setIsSearchOpen }) => {
               <h3 className='text-gray-600 font-bold pb-[10px]'>Blocks</h3>
             </div>
           )}
-          <div className='flex flex-col pr-2'>
+          <div className='flex flex-col pr-2 pb-7'>
             {filteredBlocksData?.map((block, index) => {
               const blockIndex = filteredComponentData.length + index;
               return (
@@ -225,42 +221,38 @@ const Search = ({ isSearchOpen, setIsSearchOpen }) => {
                   key={blockIndex}
                   to={block.url}
                   onMouseMove={handleMouseMove}
-                  className={`flex items-center gap-[7px] py-3 px-3 text-gray-500 
+                  className={`flex items-start group gap-[10px] py-3 px-3 text-gray-500 
                     ${isKeyboardActive 
                       ? focusedIndex === blockIndex 
-                        ? 'bg-primary text-white' 
-                        : ''
-                      : 'hover:text-white hover:bg-primary'
+                        ? 'bg-gray-100' 
+                        : 'text-gray-500'
+                      : 'hover:bg-gray-100'
                     } rounded-md transition-colors`}
                 >
-                  <RxSection className='text-[1.4rem] flex-shrink-0' />
+                  <RxSection className='text-[1.4rem] flex-shrink-0 mt-1' />
                   <div className='flex-1 min-w-0'>
                     <p
-                      className='text-[1rem] font-[500] capitalize'
+                      className='text-[1rem] text-gray-600 font-[500] capitalize'
                       dangerouslySetInnerHTML={{
                         __html: highlightText(block.title, inputText),
                       }}
                     />
                     {block.description && (
                       <p
-                        className={`text-sm mt-0.5 truncate ${
-                          focusedIndex === blockIndex
-                            ? 'text-gray-100'
-                            : 'text-gray-500'
-                        }`}
+                        className={`text-sm font-[300] mt-0.5 truncate text-gray-500`}
                         dangerouslySetInnerHTML={{
                           __html: highlightText(block.description, inputText),
                         }}
                       />
                     )}
                     {block.tags && (
-                      <div className='flex flex-wrap gap-1 mt-1'>
+                      <div className='flex flex-wrap gap-1 mt-2'>
                         {block.tags.map((tag, tagIndex) => (
                           <span
                             key={tagIndex}
-                            className={`text-xs px-2 py-0.5 rounded-full ${
+                            className={`text-xs px-2 group-hover:bg-gray-200 py-0.5 rounded-full ${
                               focusedIndex === blockIndex
-                                ? 'bg-white/20 text-white'
+                                ? 'bg-gray-200'
                                 : 'bg-gray-100 text-gray-600'
                             }`}
                           >
@@ -284,33 +276,35 @@ const Search = ({ isSearchOpen, setIsSearchOpen }) => {
         </div>
 
         {/* Bottom Navigation */}
-        {/* <div className='w-full fixed bottom-0 left-0 bg-white border-t border-gray-200 rounded-md'>
-          <div className='flex gap-8 p-3'>
-            <div className='flex items-center gap-2'>
-              <span className='bg-gray-200 text-gray-600 px-2 py-1 rounded font-semibold text-sm w-7 text-center'>
+        <div className='w-full fixed bottom-0 left-0 bg-white border-t border-gray-200 rounded-b-md'>
+          <div className='flex flex-wrap gap-[15px] p-3'>
+            <div className='flex items-center gap-[5px]'>
+              <span className='bg-gray-100 text-gray-500 px-2 flex items-center justify-center py-1 rounded font-semibold text-[0.7rem] w-5 h-5 text-center'>
                 ↑
               </span>
-              <span className='text-sm text-gray-600'>to navigate</span>
+              <span className='text-[0.7rem] text-gray-500 capitalize'>up navigate</span>
             </div>
-            <div className='flex items-center gap-2'>
-              <span className='bg-gray-200 text-gray-600 px-2 py-1 rounded font-semibold text-sm w-7 text-center'>
+            <div className='flex items-center gap-[5px]'>
+              <span className='bg-gray-100 text-gray-500 px-2 py-1 flex items-center justify-center rounded font-semibold text-[0.7rem] w-5 h-5 text-center'>
                 ↓
               </span>
-              <span className='text-sm text-gray-600'>to navigate</span>
+              <span className='text-[0.7rem] text-gray-500 capitalize'>down navigate</span>
             </div>
-            <div className='flex items-center gap-2'>
-              <span className='bg-gray-200 text-gray-600 px-2 py-1 rounded font-semibold text-sm w-7 text-center'>
+            <div className='flex items-center gap-[5px]'>
+              <span className='bg-gray-100 text-gray-500 px-2 py-1 flex items-center justify-center rounded font-semibold text-[0.7rem] w-5 h-5 text-center'>
                 ↵
               </span>
-              <span className='text-sm text-gray-600'>to select</span>
+              <span className='text-[0.7rem] text-gray-500 capitalize'>select</span>
             </div>
             <div className='flex items-center gap-2'>
-              <span className='bg-gray-200 text-gray-600 px-2 py-1 rounded font-semibold text-sm w-7 text-center'>
+              <span
+                  className='bg-gray-100 text-gray-500 px-2 py-1 flex items-center justify-center rounded font-semibold text-[0.7rem] w-8 h-5 text-center'>
                 Esc
               </span>
+              <span className='text-[0.7rem] text-gray-500 capitalize'>close</span>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
     </main>
   );

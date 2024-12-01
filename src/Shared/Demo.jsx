@@ -1,106 +1,128 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 
-const Timer = () => {
+const SmartPagination = () => {
+    const [currentPagePagination, setCurrentPagePagination] = useState(1);
 
-    const [timeLeft, setTimeLeft] = useState({
-        days: 0,
-        hours: 0,
-        minutes: 0,
-        seconds: 0,
-        durations: {
-            days: 365,
-            hours: 24,
-            minutes: 60,
-            seconds: 60
+    const totalPageNumber = 50;
+
+    const handlePreviousPagination = () => {
+        if (currentPagePagination > 1) {
+            setCurrentPagePagination((prev) => prev - 1);
         }
-    });
+    };
 
-    const targetDate = "2024-12-31T23:59:59"
-    const size = 100
+    const handleNextPagination = () => {
+        if (currentPagePagination < totalPageNumber) {
+            setCurrentPagePagination((prev) => prev + 1);
+        }
+    };
 
-    useEffect(() => {
-        const calculateTimeLeft = () => {
-            const difference = new Date(targetDate) - new Date();
+    const handlePageClick = (pageNumber) => {
+        setCurrentPagePagination(pageNumber);
+    };
 
-            if (difference > 0) {
-                setTimeLeft({
-                    days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-                    hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-                    minutes: Math.floor((difference / 1000 / 60) % 60),
-                    seconds: Math.floor((difference / 1000) % 60),
-                    durations: {
-                        days: 365,
-                        hours: 24,
-                        minutes: 60,
-                        seconds: 60
-                    }
-                });
-            }
-        };
-
-        const timer = setInterval(calculateTimeLeft, 1000);
-        calculateTimeLeft();
-
-        return () => clearInterval(timer);
-    }, [targetDate]);
-
-    const CircleTimer = ({ value, type }) => {
-        const strokeWidth = 7;
-        const radius = (size - strokeWidth) / 2;
-        const circumference = radius * 2 * Math.PI;
-        const progress = (value / timeLeft.durations[type]) * 100;
-        const strokeDashoffset = circumference - (progress / 100) * circumference;
-
-        return (
-            <div className="relative" style={{ width: size, height: size }}>
-                {/* Background Circle */}
-                <svg className="absolute top-0 left-0" width={size} height={size}>
-                    <circle
-                        cx={size/2}
-                        cy={size/2}
-                        r={radius}
-                        fill="transparent"
-                        stroke="#e5e5e5"
-                        strokeWidth={strokeWidth}
-                    />
-                </svg>
-
-                {/* Progress Circle */}
-                <svg className="absolute top-0 left-0" width={size} height={size}>
-                    <circle
-                        cx={size/2}
-                        cy={size/2}
-                        r={radius}
-                        fill="transparent"
-                        stroke="#17b4d3"
-                        strokeWidth={strokeWidth}
-                        strokeDasharray={circumference}
-                        strokeDashoffset={strokeDashoffset}
-                        strokeLinecap="round"
-                        style={{
-                            transition: "stroke-dashoffset 1s linear",
-                            transform: "rotate(-90deg)",
-                            transformOrigin: "50% 50%"
-                        }}
-                    />
-                </svg>
-
-                {/* Time Display */}
-                <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center">
-                    <div className="text-[1.2rem] font-semibold text-[#17b4d3]">{value}</div>
-                    <div className="text-[0.6rem] text-gray-500">{type.charAt(0).toUpperCase() + type.slice(1)}</div>
-                </div>
-            </div>
+    const renderPageNumbersForPagination = () => {
+        const pageNumbers = [];
+        const startPage = Math.max(2, currentPagePagination - 1);
+        const endPage = Math.min(
+            totalPageNumber - 1,
+            currentPagePagination + 1
         );
+
+        pageNumbers.push(
+            <PageButton
+                key={1}
+                pageNumber={1}
+                isActive={currentPagePagination === 1}
+                onClick={handlePageClick}
+            />
+        );
+
+        if (startPage > 2) {
+            pageNumbers.push(
+                <span key="start-dots" className="mx-1 px-2 text-gray-500">
+          ...
+        </span>
+            );
+        }
+
+        for (let i = startPage; i <= endPage; i++) {
+            pageNumbers.push(
+                <PageButton
+                    key={i}
+                    pageNumber={i}
+                    isActive={currentPagePagination === i}
+                    onClick={handlePageClick}
+                />
+            );
+        }
+
+        if (endPage < totalPageNumber - 1) {
+            pageNumbers.push(
+                <span key="end-dots" className="mx-1 px-2 text-gray-500">
+          ...
+        </span>
+            );
+        }
+
+        pageNumbers.push(
+            <PageButton
+                key={totalPageNumber}
+                pageNumber={totalPageNumber}
+                isActive={currentPagePagination === totalPageNumber}
+                onClick={handlePageClick}
+            />
+        );
+
+        return pageNumbers;
     };
     
     return (
-        <div className="flex flex-wrap justify-center items-center space-x-6 p-4">
-            <CircleTimer value={timeLeft.hours} type="hours"/>
-            <CircleTimer value={timeLeft.minutes} type="minutes"/>
-            <CircleTimer value={timeLeft.seconds} type="seconds"/>
+        <div
+            className="flex items-center justify-center flex-col sm:flex-row mt-8 sm:space-x-4 space-y-4 sm:space-y-0 md:space-y-4 py-7">
+
+            <button
+                onClick={handlePreviousPagination}
+                disabled={currentPagePagination === 1}
+                className={`px-4 py-2 bg-gray-200 text-gray-800 rounded-lg font-medium transition-colors duration-300 ${
+                    currentPagePagination === 1
+                        ? "bg-gray-200 !text-gray-400 cursor-not-allowed"
+                        : ""
+                }`}
+            >
+                Previous
+            </button>
+            <div className="flex gap-[5px] sm:gap-[8px]">
+                {renderPageNumbersForPagination()}
+            </div>
+            <button
+                onClick={handleNextPagination}
+                disabled={currentPagePagination === totalPageNumber}
+                className={`px-4 py-2 bg-gray-200 text-gray-800 rounded-lg font-medium transition-colors duration-300 ${
+                    currentPagePagination === totalPageNumber
+                        ? "bg-gray-200 !text-gray-400 cursor-not-allowed"
+                        : ""
+                }`}
+            >
+                Next
+            </button>
+
         </div>
     );
 };
 
-export default Timer;
+export default SmartPagination;
+
+// page button
+const PageButton = ({ pageNumber, isActive, onClick }) => (
+    <button
+        onClick={() => onClick(pageNumber)}
+        className={`px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
+            isActive
+                ? "bg-blue-600 text-white shadow-lg"
+                : "bg-gray-100 text-gray-600 hover:bg-blue-500 hover:text-white"
+        }`}
+    >
+        {pageNumber}
+    </button>
+);

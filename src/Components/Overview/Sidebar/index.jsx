@@ -415,6 +415,7 @@ const index = ({ startContent, setStartContent }) => {
                   onClick={() => setStartContent(22)}
               >
                 Pagination
+                  <UpdateBadge/>
               </Link>
               <Link
                   to={"/components/progress-bar"}

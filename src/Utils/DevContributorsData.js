@@ -49,4 +49,14 @@ export const DevContributorsData = [
         website: '',
         zenuiHero: false,
     },
+    {
+        name: 'MD.Asif Ullah',
+        title: 'Web Developer',
+        image: 'https://i.ibb.co.com/YNSYsPL/122894322.jpg',
+        linkedinLink: 'https://www.linkedin.com/in/DevMdAsif',
+        twitterLink: 'https://x.com/DevMdAsif',
+        githubLink: 'https://github.com/md-asif-ullah',
+        website: '',
+        zenuiHero: false,
+    },
 ]

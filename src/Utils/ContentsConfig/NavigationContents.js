@@ -15,6 +15,11 @@ export const paginationContents = [
     title: 'Pagination With Rounded Button',
     href: '#pagination_with_rounded_button',
   },
+  {
+    id: 4,
+    title: 'smarter pagination component',
+    href: '#smarter_pagination_component',
+  },
 ];
 
 // Progress Bar contents
