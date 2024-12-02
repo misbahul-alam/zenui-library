@@ -114,8 +114,6 @@ const ShortcutGeneratorPage = React.lazy(() => import("./Pages/ShortcutGenerator
 
 const App = () => {
     const [isCookie, setIsCookie] = useState(false)
-    const [cursorPosition, setCursorPosition] = useState({x: 0, y: 0});
-    const [isMemeVisible, setIsMemeVisible] = useState(false)
 
     let Title = document.title;
     window.addEventListener('blur', () => {
@@ -125,58 +123,9 @@ const App = () => {
     window.addEventListener('focus', () => {
         document.title = Title;
     })
-    //
-    // useEffect(() => {
-    //     const handleRightClick = (event) => {
-    //         event.preventDefault();
-    //         setIsMemeVisible(true);
-    //         const audio = new Audio('/rightclickmeme.mp3');
-    //         audio.play();
-    //         setTimeout(() => {
-    //             setIsMemeVisible(false);
-    //         }, 3500);
-    //     };
-    //
-    //     const handleKeyCombination = (event) => {
-    //         if (
-    //             (event.ctrlKey && event.shiftKey && event.key === 'I') ||
-    //             (event.ctrlKey && event.shiftKey && event.key === 'J') ||
-    //             (event.key === 'F12') ||
-    //             (event.ctrlKey && event.key === 'U')
-    //         ) {
-    //             event.preventDefault();
-    //             const audio = new Audio('/rightclickmeme.mp3');
-    //             audio.play();
-    //         }
-    //     };
-    //
-    //     document.addEventListener('contextmenu', handleRightClick);
-    //     document.addEventListener('keydown', handleKeyCombination);
-    //
-    //     return () => {
-    //         document.removeEventListener('contextmenu', handleRightClick);
-    //         document.removeEventListener('keydown', handleKeyCombination);
-    //     };
-    // }, []);
-
-    document.addEventListener('mousemove', (event) => {
-        setCursorPosition({
-            x: event.clientX + 90,
-            y: event.clientY + window.scrollY
-        });
-    });
 
     return (
         <Suspense>
-
-            <img src='/rightClickMeme.gif' alt='meme' style={{
-                left: cursorPosition.x + 'px',
-                top: cursorPosition.y + 'px',
-                transform: 'translate(-50%, -50%)',
-                pointerEvents: 'none',
-            }}
-                 className={`${isMemeVisible ? 'block' : 'hidden'} z-[3000] absolute rounded-full boxShadow w-[150px] h-[150px] transition-all shadow-md object-cover`}/>
-
 
             {/* all routes */}
             <Routes>
