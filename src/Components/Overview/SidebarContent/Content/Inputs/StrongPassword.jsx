@@ -140,6 +140,15 @@ const OtpInput = () => {
     length: false,
     strong: false,
   });
+
+  const countTrueItems = (obj) => {
+    const totalItems = Object.keys(obj).length;
+    const trueItems = Object.values(obj).filter((item) => item).length;
+    return (trueItems / totalItems) * 100;
+  };
+
+  const strengthProgress = Math.floor(countTrueItems(signal2));
+
   const [StrongPassword2, setStrongPassword2] = useState('');
 
   const handleStrongPasswordCheckingChange2 = (e) => {
@@ -441,27 +450,27 @@ export default StrongPassword;
                     <div className='w-full mt-2 flex items-center gap-[5px]'>
                       <div
                         className={`${
-                          signal2.lowercase ? 'bg-green-500' : 'bg-gray-200'
+                          strengthProgress > 0 ? 'bg-green-500' : 'bg-gray-200'
                         } h-[9px] w-full rounded-md`}
                       ></div>
                       <div
                         className={`${
-                          signal2.uppercase ? 'bg-green-500' : 'bg-gray-200'
+                          strengthProgress > 16 ? 'bg-green-500' : 'bg-gray-200'
                         } h-[9px] w-full rounded-md`}
                       ></div>
                       <div
                         className={`${
-                          signal2.number ? 'bg-green-500' : 'bg-gray-200'
+                          strengthProgress > 33 ? 'bg-green-500' : 'bg-gray-200'
                         } h-[9px] w-full rounded-md`}
                       ></div>
                       <div
                         className={`${
-                          signal2.symbol ? 'bg-green-500' : 'bg-gray-200'
+                          strengthProgress > 50 ? 'bg-green-500' : 'bg-gray-200'
                         } h-[9px] w-full rounded-md`}
                       ></div>
                       <div
                         className={`${
-                          signal2.length ? 'bg-green-500' : 'bg-gray-200'
+                          strengthProgress == 100 ? 'bg-green-500' : 'bg-gray-200'
                         } h-[9px] w-full rounded-md`}
                       ></div>
                     </div>
@@ -485,90 +494,98 @@ export default StrongPassword;
             {checkIndicatorCode && (
               <Showcode
                 code='
-import React, {useState} from "react";
+                  import React, {useState} from "react";
 
-// react icons
-import {IoEyeOffOutline, IoEyeOutline} from "react-icons/io5";
+                  // react icons
+                  import {IoEyeOffOutline, IoEyeOutline} from "react-icons/io5";
 
-const StrongPassword = () => {
+                  const StrongPassword = () => {
 
-    const [isEyeOpen, setIsEyeOpen] = useState(false);
-    const [StrongPassword, setStrongPassword] = useState("");
-    const [signal, setSignal] = useState({
-        lowercase: false,
-        uppercase: false,
-        number: false,
-        symbol: false,
-        length: false,
-        strong: false
-    });
+                      const [isEyeOpen, setIsEyeOpen] = useState(false);
+                      const [StrongPassword, setStrongPassword] = useState("");
+                      const [signal, setSignal] = useState({
+                          lowercase: false,
+                          uppercase: false,
+                          number: false,
+                          symbol: false,
+                          length: false,
+                          strong: false
+                      });
 
-    const handleStrongPasswordChecker = (e) => {
-        const password = e.target.value;
-        setStrongPassword(password);
+                      const countTrueItems = (obj) => {
+                        const totalItems = Object.keys(obj).length;
+                        const trueItems = Object.values(obj).filter((item) => item).length;
+                        return (trueItems / totalItems) * 100;
+                      };
 
-        const hasUpperCase = /[A-Z]/.test(password);
-        const hasLowerCase = /[a-z]/.test(password);
-        const hasNumber = /[0-9]/.test(password);
-        const hasSymbol = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+                      const strengthProgress = Math.floor(countTrueItems(signal2));
 
-        setSignal({
-            lowercase: hasLowerCase,
-            uppercase: hasUpperCase,
-            number: hasNumber,
-            symbol: hasSymbol,
-            length: password.length >= 8,
-            strong: hasUpperCase && hasLowerCase && hasNumber && hasSymbol && password.length >= 8
-        });
-    }
+                      const handleStrongPasswordChecker = (e) => {
+                          const password = e.target.value;
+                          setStrongPassword(password);
 
-    return (
-        <div className="w-full">
-            <label htmlFor="password" className="text-[15px] text-text font-[400]">
-                Password
-            </label>
-            <div className="w-full relative">
-                <input
-                    type={isEyeOpen ? "text" : "password"}
-                    name="password"
-                    id="password"
-                    onChange={handleStrongPasswordChecker}
-                    placeholder="Password"
-                    className="peer border-[#e5eaf2] border rounded-md outline-none pl-4 pr-12 py-3 w-full mt-1 focus:border-[#3B9DF8] transition-colors duration-300"
-                />
+                          const hasUpperCase = /[A-Z]/.test(password);
+                          const hasLowerCase = /[a-z]/.test(password);
+                          const hasNumber = /[0-9]/.test(password);
+                          const hasSymbol = /[!@#$%^&*(),.?":{}|<>]/.test(password);
 
-                <div className="w-full mt-2 flex items-center gap-[5px]">
-                    <div
-                        className={`${signal.lowercase ? "bg-green-500" : "bg-gray-200"} h-[9px] w-full rounded-md`}></div>
-                    <div
-                        className={`${signal.uppercase ? "bg-green-500" : "bg-gray-200"} h-[9px] w-full rounded-md`}></div>
-                    <div
-                        className={`${signal.number ? "bg-green-500" : "bg-gray-200"} h-[9px] w-full rounded-md`}></div>
-                    <div
-                        className={`${signal.symbol ? "bg-green-500" : "bg-gray-200"} h-[9px] w-full rounded-md`}></div>
-                    <div
-                        className={`${signal.length ? "bg-green-500" : "bg-gray-200"} h-[9px] w-full rounded-md`}></div>
+                          setSignal({
+                              lowercase: hasLowerCase,
+                              uppercase: hasUpperCase,
+                              number: hasNumber,
+                              symbol: hasSymbol,
+                              length: password.length >= 8,
+                              strong: hasUpperCase && hasLowerCase && hasNumber && hasSymbol && password.length >= 8
+                          });
+                      }
 
-                </div>
+                      return (
+                          <div className="w-full">
+                              <label htmlFor="password" className="text-[15px] text-text font-[400]">
+                                  Password
+                              </label>
+                              <div className="w-full relative">
+                                  <input
+                                      type={isEyeOpen ? "text" : "password"}
+                                      name="password"
+                                      id="password"
+                                      onChange={handleStrongPasswordChecker}
+                                      placeholder="Password"
+                                      className="peer border-[#e5eaf2] border rounded-md outline-none pl-4 pr-12 py-3 w-full mt-1 focus:border-[#3B9DF8] transition-colors duration-300"
+                                  />
 
-                {isEyeOpen ? (
-                    <IoEyeOutline
-                        className=" absolute top-4 right-4 text-[1.5rem] text-[#777777] cursor-pointer"
-                        onClick={() => setIsEyeOpen(false)}
-                    />
-                ) : (
-                    <IoEyeOffOutline
-                        className=" absolute top-4 right-4 text-[1.5rem] text-[#777777] cursor-pointer"
-                        onClick={() => setIsEyeOpen(true)}
-                    />
-                )}
-            </div>
-        </div>
-    );
-};
+                                  <div className="w-full mt-2 flex items-center gap-[5px]">
+                                      <div
+                                          className={`${strengthProgress > 0 ? "bg-green-500" : "bg-gray-200"} h-[9px] w-full rounded-md`}></div>
+                                      <div
+                                          className={`${strengthProgress > 16 ? "bg-green-500" : "bg-gray-200"} h-[9px] w-full rounded-md`}></div>
+                                      <div
+                                          className={`${strengthProgress > 33 ? "bg-green-500" : "bg-gray-200"} h-[9px] w-full rounded-md`}></div>
+                                      <div
+                                          className={`${strengthProgress > 50 ? "bg-green-500" : "bg-gray-200"} h-[9px] w-full rounded-md`}></div>
+                                      <div
+                                          className={`${strengthProgress == 100 ? "bg-green-500" : "bg-gray-200"} h-[9px] w-full rounded-md`}></div>
 
-export default StrongPassword;
-                                '
+                                  </div>
+
+                                  {isEyeOpen ? (
+                                      <IoEyeOutline
+                                          className=" absolute top-4 right-4 text-[1.5rem] text-[#777777] cursor-pointer"
+                                          onClick={() => setIsEyeOpen(false)}
+                                      />
+                                  ) : (
+                                      <IoEyeOffOutline
+                                          className=" absolute top-4 right-4 text-[1.5rem] text-[#777777] cursor-pointer"
+                                          onClick={() => setIsEyeOpen(true)}
+                                      />
+                                  )}
+                              </div>
+                          </div>
+                      );
+                  };
+
+                  export default StrongPassword;
+                '
               />
             )}
           </div>
