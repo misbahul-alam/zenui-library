@@ -46,21 +46,33 @@ const Navbar = () => {
         return window.location.pathname
     }
 
-    document.addEventListener('click', (event) => {
-        if (!event.target.closest('.zenuiSearchComponent') && !event.target.closest('.zenuiSearchInput')) {
-            setIsSearchOpen(false)
+    useEffect(() => {
+        const handleClickedOutside = (event) => {
+            if (!event.target.closest('.zenuiSearchComponent') && !event.target.closest('.zenuiSearchInput')) {
+                setIsSearchOpen(false)
+            }
         }
-    })
+        document.addEventListener('click', handleClickedOutside)
+        return () => {
+            document.removeEventListener('click', handleClickedOutside)
+        }
+    }, [])
 
-    document.addEventListener('keydown', function (event) {
-        event.stopPropagation();
-        if ((event.ctrlKey || event.metaKey) && event.key === 's') {
-            event.preventDefault();
-            setIsSearchOpen(true)
-        } else if (event.key === 'Escape') {
-            setIsSearchOpen(false)
+    useEffect(() => {
+        const handleShortCut = (event) => {
+            event.stopPropagation();
+            if ((event.ctrlKey || event.metaKey) && event.key === 's') {
+                event.preventDefault();
+                setIsSearchOpen(true)
+            } else if (event.key === 'Escape') {
+                setIsSearchOpen(false)
+            }
         }
-    });
+        document.addEventListener('keydown', handleShortCut);
+        return () => {
+            document.removeEventListener('keydown', handleShortCut)
+        }
+    }, [])
 
     const handleScroll = () => {
         if (window.scrollY > 10) {
@@ -229,7 +241,7 @@ const Navbar = () => {
             </span>
                         </div>
                         <div className='flex items-center gap-2'>
-                            <a href='https://discord.gg/qbwytm4WUG' target='_blank'>
+                        <a href='https://discord.gg/qbwytm4WUG' target='_blank'>
                                 <RxDiscordLogo
                                     className={`text-[2.7rem] text-gray-400 rounded-md p-[6px] border border-gray-200 cursor-pointer`}/>
                             </a>

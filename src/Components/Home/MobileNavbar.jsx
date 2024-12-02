@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 // icons
 import {CiMenuFries} from "react-icons/ci";
@@ -28,15 +28,21 @@ const MobileNavbar = () => {
         return window.location.pathname
     }
 
-    document.addEventListener('click', (event) => {
-        if (!event.target.closest('.zenuiSearchComponent') && !event.target.closest('.zenuiSearchInput')) {
-            setIsSearchOpen(false)
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (!event.target.closest('.zenuiSearchComponent') && !event.target.closest('.zenuiSearchInput')) {
+                setIsSearchOpen(false)
+            }
+    
+            if (!event.target.closest('.mobileSidebar') && !event.target.closest('.mobileSidebarButton')) {
+                setSidebarOpen(false)
+            }
         }
-
-        if (!event.target.closest('.mobileSidebar') && !event.target.closest('.mobileSidebarButton')) {
-            setSidebarOpen(false)
+        document.addEventListener('click', handleClickOutside)
+        return () => {
+            document.removeEventListener('click', handleClickOutside)
         }
-    })
+    }, [])
 
     return (
         <>

@@ -119,15 +119,18 @@ const Table = () => {
     });
   }, [filteredData, sortConfig]);
 
-  document.addEventListener('click', (event) => {
-    if (
-      !event.target.closest('.zenui-table') &&
-      !event.target.closest('.action-btn')
-    ) {
-      setOpenActionMenuId(null);
-    }
-  });
-
+  useEffect(() => {
+    const handleCLick = (event) => {
+      if (
+        !event.target.closest('.zenui-table') &&
+        !event.target.closest('.action-btn')
+      ) {
+        setOpenActionMenuId(null);
+      }
+    };
+    document.addEventListener('click', handleCLick);
+    return () => document.removeEventListener('click', handleCLick);
+  }, [])
   // pagination table
   const initialData2 = Array.from({ length: 35 }, (_, index) => ({
     id: index + 1,
@@ -200,13 +203,12 @@ const Table = () => {
 
   const handleToggle = () => setIsOpen((prev) => !prev);
 
-  const handleOutsideClick = (event) => {
-    if (selectRef.current && !selectRef.current.contains(event.target)) {
-      setIsOpen(false);
-    }
-  };
-
   useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (selectRef.current && !selectRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
     document.addEventListener('mousedown', handleOutsideClick);
     return () =>
       document.removeEventListener('mousedown', () => {
