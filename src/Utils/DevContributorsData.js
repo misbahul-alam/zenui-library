@@ -59,4 +59,25 @@ export const DevContributorsData = [
         website: '',
         zenuiHero: false,
     },
+    {
+        name: 'Fabian Ajokubi',
+        title: 'Frontend Developer',
+        image: 'https://i.ibb.co.com/DMxRHBd/1704506313487.jpg',
+        linkedinLink: 'https://www.linkedin.com/in/fabiconcept/?originalSubdomain=ng',
+        twitterLink: '',
+        githubLink: 'https://github.com/fabiconcept',
+        website: 'https://fabiconcept.online/',
+        zenuiHero: false,
+    },
+    {
+        name: 'Hoang Nguyen',
+        title: 'Web Developer',
+        image: 'https://i.ibb.co.com/VwfFxF3/67743418.jpg',
+        linkedinLink: 'https://www.linkedin.com/in/hoang-nguyen-876a12257/',
+        twitterLink: 'https://x.com/akirad836',
+        githubLink: 'https://github.com/Zysd836',
+        website: '',
+        zenuiHero: true,
+    },
+
 ]
