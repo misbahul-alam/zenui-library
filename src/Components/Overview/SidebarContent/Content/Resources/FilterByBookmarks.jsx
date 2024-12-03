@@ -32,13 +32,13 @@ const CustomSelect = ({setBookmark}) => {
         }, 200);
     };
 
-    const handleClickOutside = (event) => {
-        if (selectRef.current && !selectRef.current.contains(event.target)) {
-            handleBlur();
-        }
-    };
-
     useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (selectRef.current && !selectRef.current.contains(event.target)) {
+                handleBlur();
+            }
+        };
+        
         document.addEventListener('mousedown', handleClickOutside);
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);

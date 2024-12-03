@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // react helmet
 import { Helmet } from 'react-helmet';
@@ -47,20 +47,27 @@ const Tooltip = () => {
   const [topClicked, setTopClicked] = useState(false);
   const [bottomClicked, setBottomClicked] = useState(false);
 
-  document.addEventListener('click', (event) => {
-    if (!event.target.closest('.top_button')) {
-      setTopClicked(false);
-    }
-    if (!event.target.closest('.left_button')) {
-      setLeftClicked(false);
-    }
-    if (!event.target.closest('.right_button')) {
-      setRightClicked(false);
-    }
-    if (!event.target.closest('.bottom_button')) {
-      setBottomClicked(false);
-    }
-  });
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!event.target.closest('.top_button')) {
+        setTopClicked(false);
+      }
+      if (!event.target.closest('.left_button')) {
+        setLeftClicked(false);
+      }
+      if (!event.target.closest('.right_button')) {
+        setRightClicked(false);
+      }
+      if (!event.target.closest('.bottom_button')) {
+        setBottomClicked(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [])
 
   return (
     <>

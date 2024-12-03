@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 // components
 import OverviewFooter from '../../../../../Shared/OverviewFooter';
 import ContentHeader from '../../../../../Shared/ContentHeader';
+import PageButton from './PageButton';
 
 // contents for scrollspy
 import { paginationContents } from '../../../../../Utils/ContentsConfig/NavigationContents';
@@ -64,6 +65,22 @@ const Pagination = () => {
   const handleRoundedButtonPaginationCode = () => {
     setRoundedButtonPaginationCode(true);
     setRoundedButtonPaginationPreview(false);
+  };
+
+  // smartPagination
+  const [smartPaginationPreview, setSmartPaginationPreview] =
+    useState(true);
+  const [smartPaginationCode, setSmartPaginationCode] =
+    useState(false);
+
+  const handleSmartPaginationPreview = () => {
+    setSmartPaginationPreview(true);
+    setSmartPaginationCode(false);
+  };
+
+  const handleSmartPaginationCode = () => {
+    setSmartPaginationCode(true);
+    setSmartPaginationPreview(false);
   };
 
   const [paginationNum, setPaginationNum] = useState(0);
@@ -158,6 +175,86 @@ const Pagination = () => {
 
     return pageNumbers;
   };
+
+  // pagination 4 logic start
+
+  const [currentPagePagination4, setCurrentPagePagination4] = useState(1);
+
+  const FourPaginationTotalPages = 50;
+
+  const handlePreviousPagination4 = () => {
+    if (currentPagePagination4 > 1) {
+      setCurrentPagePagination4((prev) => prev - 1);
+    }
+  };
+
+  const handleNextPagination4 = () => {
+    if (currentPagePagination4 < FourPaginationTotalPages) {
+      setCurrentPagePagination4((prev) => prev + 1);
+    }
+  };
+
+  const handlePageClick4 = (pageNumber) => {
+    setCurrentPagePagination4(pageNumber);
+  };
+
+  const renderPageNumbersForPagination4 = () => {
+    const pageNumbers = [];
+    const startPage = Math.max(2, currentPagePagination4 - 1);
+    const endPage = Math.min(
+      FourPaginationTotalPages - 1,
+      currentPagePagination4 + 1
+    );
+
+    pageNumbers.push(
+      <PageButton
+        key={1}
+        pageNumber={1}
+        isActive={currentPagePagination4 === 1}
+        onClick={handlePageClick4}
+      />
+    );
+
+    if (startPage > 2) {
+      pageNumbers.push(
+        <span key="start-dots" className="mx-1 px-2 text-gray-500">
+          ...
+        </span>
+      );
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+      pageNumbers.push(
+        <PageButton
+          key={i}
+          pageNumber={i}
+          isActive={currentPagePagination4 === i}
+          onClick={handlePageClick4}
+        />
+      );
+    }
+
+    if (endPage < FourPaginationTotalPages - 1) {
+      pageNumbers.push(
+        <span key="end-dots" className="mx-1 px-2 text-gray-500">
+          ...
+        </span>
+      );
+    }
+
+    pageNumbers.push(
+      <PageButton
+        key={FourPaginationTotalPages}
+        pageNumber={FourPaginationTotalPages}
+        isActive={currentPagePagination4 === FourPaginationTotalPages}
+        onClick={handlePageClick4}
+      />
+    );
+
+    return pageNumbers;
+  };
+
+  // pagination 4 logic end
 
   return (
     <>
@@ -605,6 +702,218 @@ export default pagination;
               />
             )}
           </div>
+
+            {/* start pagination 4 */}
+
+          <div className="mt-8">
+            <ContentHeader
+              text={"smarter pagination component"}
+              id={"smarter_pagination_component"}
+            />
+          </div>
+
+          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
+            A smarter pagination component that dynamically adjusts the range of
+            visible page numbers based on the current page, ensuring a seamless
+            and intuitive user experience.
+          </p>
+
+          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
+            <div className="relative">
+              <div
+                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
+                  smartPaginationPreview
+                    ? "translate-x-[0px] !w-[100px]"
+                    : "translate-x-[106px] rounded-br"
+                }`}
+              ></div>
+              <button
+                className={`${
+                  smartPaginationPreview && "text-tabTextColor"
+                } px-6 py-2 border-b z-[2] relative text-text border-border`}
+                onClick={handleSmartPaginationPreview}
+              >
+                Preview
+              </button>
+              <button
+                className={`${
+                  smartPaginationCode && "text-tabTextColor"
+                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
+                onClick={handleSmartPaginationCode}
+              >
+                Code
+              </button>
+            </div>
+            {smartPaginationPreview && (
+              <div className="flex items-center justify-center flex-col 640px:flex-row 1024px:flex-col 1360px:flex-row mt-8 640px:space-x-4 space-y-4 640px:space-y-0 1024px:space-y-4 1360px:space-y-0 py-7 pb-14">
+               
+                  <button
+                  onClick={handlePreviousPagination4}
+                  disabled={currentPagePagination4 === 1}
+                  className={`px-4 py-2 bg-gray-200 text-gray-800 rounded-lg font-medium transition-colors duration-300 ${
+                    currentPagePagination4 === 1
+                      ? "bg-gray-200 !text-gray-400 cursor-not-allowed"
+                      : ""
+                  }`}
+                >
+                  Previous
+                </button>
+                <div className="flex gap-[5px] 640px:gap-[8px]">
+                  {renderPageNumbersForPagination4()}
+                </div>
+                <button
+                  onClick={handleNextPagination4}
+                  disabled={currentPagePagination4 === FourPaginationTotalPages}
+                  className={`px-4 py-2 bg-gray-200 text-gray-800 rounded-lg font-medium transition-colors duration-300 ${
+                    currentPagePagination4 === FourPaginationTotalPages
+                      ? "bg-gray-200 !text-gray-400 cursor-not-allowed"
+                      : ""
+                  }`}
+                >
+                  Next
+                </button>
+               
+              </div>
+            )}
+
+            {smartPaginationCode && (
+              <Showcode
+                code='
+import React, {useState} from "react";
+
+const SmartPagination = () => {
+    const [currentPagePagination, setCurrentPagePagination] = useState(1);
+
+    const totalPageNumber = 50;
+
+    const handlePreviousPagination = () => {
+        if (currentPagePagination > 1) {
+            setCurrentPagePagination((prev) => prev - 1);
+        }
+    };
+
+    const handleNextPagination = () => {
+        if (currentPagePagination < totalPageNumber) {
+            setCurrentPagePagination((prev) => prev + 1);
+        }
+    };
+
+    const handlePageClick = (pageNumber) => {
+        setCurrentPagePagination(pageNumber);
+    };
+
+    const renderPageNumbersForPagination = () => {
+        const pageNumbers = [];
+        const startPage = Math.max(2, currentPagePagination - 1);
+        const endPage = Math.min(
+            totalPageNumber - 1,
+            currentPagePagination + 1
+        );
+
+        pageNumbers.push(
+            <PageButton
+                key={1}
+                pageNumber={1}
+                isActive={currentPagePagination === 1}
+                onClick={handlePageClick}
+            />
+        );
+
+        if (startPage > 2) {
+            pageNumbers.push(
+                <span key="start-dots" className="mx-1 px-2 text-gray-500">
+          ...
+        </span>
+            );
+        }
+
+        for (let i = startPage; i <= endPage; i++) {
+            pageNumbers.push(
+                <PageButton
+                    key={i}
+                    pageNumber={i}
+                    isActive={currentPagePagination === i}
+                    onClick={handlePageClick}
+                />
+            );
+        }
+
+        if (endPage < totalPageNumber - 1) {
+            pageNumbers.push(
+                <span key="end-dots" className="mx-1 px-2 text-gray-500">
+          ...
+        </span>
+            );
+        }
+
+        pageNumbers.push(
+            <PageButton
+                key={totalPageNumber}
+                pageNumber={totalPageNumber}
+                isActive={currentPagePagination === totalPageNumber}
+                onClick={handlePageClick}
+            />
+        );
+
+        return pageNumbers;
+    };
+
+    return (
+        <div
+            className="flex items-center justify-center flex-col sm:flex-row mt-8 sm:space-x-4 space-y-4 sm:space-y-0 md:space-y-4 py-7">
+
+            <button
+                onClick={handlePreviousPagination}
+                disabled={currentPagePagination === 1}
+                className={`px-4 py-2 bg-gray-200 text-gray-800 rounded-lg font-medium transition-colors duration-300 ${
+                    currentPagePagination === 1
+                        ? "bg-gray-200 !text-gray-400 cursor-not-allowed"
+                        : ""
+                }`}
+            >
+                Previous
+            </button>
+            <div className="flex gap-[5px] sm:gap-[8px]">
+                {renderPageNumbersForPagination()}
+            </div>
+            <button
+                onClick={handleNextPagination}
+                disabled={currentPagePagination === totalPageNumber}
+                className={`px-4 py-2 bg-gray-200 text-gray-800 rounded-lg font-medium transition-colors duration-300 ${
+                    currentPagePagination === totalPageNumber
+                        ? "bg-gray-200 !text-gray-400 cursor-not-allowed"
+                        : ""
+                }`}
+            >
+                Next
+            </button>
+
+        </div>
+    );
+};
+
+export default SmartPagination;
+
+// page button
+const PageButton = ({ pageNumber, isActive, onClick }) => (
+    <button
+        onClick={() => onClick(pageNumber)}
+        className={`px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
+            isActive
+                ? "bg-blue-600 text-white shadow-lg"
+                : "bg-gray-100 text-gray-600 hover:bg-blue-500 hover:text-white"
+        }`}
+    >
+        {pageNumber}
+    </button>
+);
+                    '
+              />
+            )}
+          </div>
+
+          {/* end pagination 4 */}
+
           <OverviewFooter backUrl='/components/carousel' backName='Carousel' forwardName='progress bar' forwardUrl='/components/progress-bar'/>
         </div>
 
@@ -619,7 +928,7 @@ export default pagination;
               className={`${
                 activeSection === item.href.slice(1) &&
                 '!text-primary !border-primary'
-              } text-[0.9rem] text-text border-l border-transparent pl-4`}
+              } text-[0.9rem] capitalize transition-all duration-300 text-text border-l border-transparent pl-4`}
             >
               {item.title}
             </a>

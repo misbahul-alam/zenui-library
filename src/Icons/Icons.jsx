@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 
 import {IconsData} from "../Utils/IconsData.js";
@@ -8,12 +8,14 @@ import DeleteIcon from "../SvgIcons/DeleteIcon.jsx";
 import CursorIcon from "../SvgIcons/CursorIcon.jsx";
 import ShareIcon from "../SvgIcons/ShareIcon.jsx";
 import {CiSearch} from "react-icons/ci";
+import {create as value} from "eslint-plugin-react/lib/rules/sort-prop-types.js";
 
 const Icons = () => {
     const [sidebarOpen,setSidebarOpen] = useState(false)
     const [selectedIcon,setSelectedIcon] = useState({})
     const [searchInputValue, setSearchInputValue] = useState("");
     const [filteredIcons, setFilteredIcons] = useState(IconsData);
+    const [activeFilterOption, setActiveFilterOption] = useState({ name: "All", slug: "all" },);
 
     const handleIconClick = (data) => {
         setSidebarOpen(true)
@@ -25,10 +27,58 @@ const Icons = () => {
 
         setSearchInputValue(value);
 
-        const filter = IconsData?.filter((icon)=> icon.name.toLowerCase().includes(value.toLowerCase()));
+        if(value === ''){
+            const filter = IconsData?.filter((icon)=> icon?.groupName?.toLowerCase().includes(activeFilterOption?.slug?.toLowerCase()));
 
-        setFilteredIcons(filter);
+            setFilteredIcons(filter)
+        }else {
+            const filter = filteredIcons?.filter((icon)=> icon.name.toLowerCase().includes(value.toLowerCase()));
+
+            setFilteredIcons(filter);
+        }
     }
+
+    useEffect(()=> {
+
+        if(activeFilterOption.slug === 'all'){
+            setFilteredIcons(IconsData)
+        }else {
+            const filter = IconsData?.filter((icon)=> icon?.groupName?.toLowerCase().includes(activeFilterOption?.slug?.toLowerCase()));
+
+            setFilteredIcons(filter)
+        }
+
+    }, [activeFilterOption])
+
+    const iconFilterOptions = [
+        { name: "All", slug: "all" },
+        { name: "E-Commerce", slug: "e_commerce" },
+        { name: "Social Media", slug: "social" },
+        { name: "Technology", slug: "technology" },
+        { name: "Healthcare", slug: "healthcare" },
+        { name: "Education", slug: "education" },
+        { name: "Component", slug: "component" },
+        { name: "Finance", slug: "finance" },
+        { name: "Date & Time", slug: "date_&_time" },
+        { name: "Actions", slug: "actions" },
+        { name: "Construction", slug: "construction" },
+        { name: "Alignment", slug: "alignment" },
+        { name: "Gaming", slug: "gaming" },
+        { name: "File Icon", slug: "file_icon" },
+        { name: "Fitness", slug: "fitness" },
+        { name: "Music", slug: "music" },
+        { name: "Brand", slug: "brand" },
+        { name: "Weather", slug: "weather" },
+        { name: "Medical", slug: "medical" },
+        { name: "People", slug: "people" },
+        { name: "Programming", slug: "programming" },
+        { name: "Marketing", slug: "marketing" },
+        { name: "Automation", slug: "automation" },
+        { name: "AI & Machine Learning", slug: "ai_machine_learning" },
+        { name: "Databases", slug: "databases" },
+        { name: "Devices", slug: "devices" },
+    ];
+
 
     return (
         <>
@@ -62,12 +112,28 @@ const Icons = () => {
                         placeholder='Search icon...' maxLength='50' onInput={handleIconSearch}/>
                     <CiSearch className='absolute top-[50%] transform translate-y-[-50%] text-gray-400 text-[1.4rem] left-3'/>
                 </div>
+
+                <div className='overflow-x-auto scrollbar pb-2 w-full'>
+                    <div className='flex items-center gap-[10px] mt-[20px] flex-nowrap 1024px:flex-wrap'>
+                        {
+                            iconFilterOptions?.map((option) => (
+                                <button onClick={() => setActiveFilterOption(option)}
+                                        className={`${activeFilterOption.slug === option.slug && 'bg-[#0fabca] text-white'} py-2 px-4 border border-gray-200 rounded-md min-w-max hover:bg-[#0fabca] hover:text-white transition-all duration-300 text-gray-700 text-[0.9rem]`}
+                                        key={option.name}>
+                                    {option.name}
+                                </button>
+                            ))
+                        }
+                    </div>
+                </div>
+
                 {
                     filteredIcons?.length <= 0 && (
                         <div className='flex items-center justify-center w-full flex-col mt-20'>
                             <NoSearchFoundIcon/>
                             <h3 className='text-[1.3rem] font-semibold mt-2'>No Icon Found!</h3>
-                            <p className='text-[0.9rem]  text-text mt-2 text-center 640px:text-start'>Please check the spelling or try alternative keyword</p>
+                            <p className='text-[0.9rem]  text-text mt-2 text-center 640px:text-start'>Please check the
+                                spelling or try alternative keyword</p>
                         </div>
                     )
                 }
