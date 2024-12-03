@@ -97,25 +97,11 @@ const NewsletterSectionPage = React.lazy(() => import("./Pages/Blocks/Forms/News
 const MultipageFormPage = React.lazy(() => import("./Pages/Blocks/Forms/MultipageFormPage.jsx"));
 const ResponsiveSidebarPage = React.lazy(() => import("./Pages/Blocks/Randoms/ResponsiveSidebarPage.jsx"));
 const InputSliderPage = React.lazy(() => import("./Pages/Components/Inputs/InputSliderPage.jsx"));
-import WrongUrlErrorPage from "./Pages/Blocks/EmptyPages/WrongRoutePage.jsx";
-import WrongRoutePage from "./Pages/Blocks/EmptyPages/EmptyPage.jsx";
-import PricingSectionPage from "./Pages/Blocks/Sections/PricingSectionPage.jsx";
-import NewsletterSectionPage from "./Pages/Blocks/Forms/NewsletterSectionPage.jsx";
-import MultipageFormPage from "./Pages/Blocks/Forms/MultipageFormPage.jsx";
-import ResponsiveSidebarPage from "./Pages/Blocks/Randoms/ResponsiveSidebarPage.jsx";
 
 // e-commerce blocks
 import OfferGridPage from "./Pages/Blocks/E-Commerce/OfferGridPage.jsx";
 import ProductDetailsPage from "./Pages/Blocks/E-Commerce/ProductDetailsPages/Index.jsx";
-
-// ZenUI wrong route page
-import EmptyPage from "./Pages/EmptyPage.jsx"
-
-// icons page
-import IconsPage from './Pages/IconsPages/IconsPage.jsx'
-
-// opacity palette
-import OpacityPalettePage from "./Pages/OpacityPalettePage.jsx"
+import ProductFilterPage from "./Pages/Blocks/E-Commerce/ProductFilterPage.jsx";
 
 // layout playground page
 const LayoutPlaygroundPage = React.lazy(() => import("./Pages/LayoutPlaygroundPage.jsx"));
