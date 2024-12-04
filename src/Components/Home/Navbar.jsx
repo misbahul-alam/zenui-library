@@ -18,6 +18,7 @@ const Navbar = () => {
     const navigate = useNavigate();
     const [isDeveloperKitHover, setIsDeveloperKitHover] = useState(false);
     const [isToolsHover, setIsToolsHover] = useState(false);
+    const [eCommerceHover, setECommerceHover] = useState(false)
 
     const handleSearchClick = () => {
         setIsSearchOpen(true);
@@ -214,6 +215,69 @@ const Navbar = () => {
                                                     Resources
                                                 </p>
                                                 <span className='text-[0.8rem] font-[300] text-gray-500'>Tools and guides for developers.</span>
+                                            </Link>
+
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </li>
+
+                            <li
+                                onMouseEnter={() => setECommerceHover(true)}
+                                onMouseLeave={() => setECommerceHover(false)}
+                                className='cursor-pointer relative py-[23px] hover:text-[#0FABCA] transition-all duration-200 flex items-center gap-[8px]'
+                            >
+                                E-Commerce
+                                <NewBadge/>
+                                <div className='w-[8px] h-[8px] bg-green-500 rounded-full absolute top-5 right-6 animate-[ping_1.5s_linear_infinite]'></div>
+                                <IoIosArrowDown className={`${eCommerceHover ? 'rotate-[180deg]': 'rotate-0'} transition-all duration-300`}/>
+
+                                {eCommerceHover && (
+                                    <motion.div
+                                        initial={{opacity: 0, scale: 0.8}}
+                                        animate={{opacity: 1, scale: 1}}
+                                        exit={{opacity: 0, scale: 0.8}}
+                                        className="absolute top-[68px] left-0 gap-[30px] w-[600px] grid grid-cols-2 bg-white border border-gray-200 shadow-sm rounded-md p-6 mt-2"
+                                        onMouseEnter={() => setECommerceHover(true)}
+                                        onMouseLeave={() => setECommerceHover(false)}
+                                    >
+                                        <div className='flex flex-col text-[1rem]'>
+                                            <Link to='/components/product-card' className='p-[10px] transition-all duration-200 hover:bg-gray-100 rounded-md'>
+                                                <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
+                                                    Product Card
+                                                </p>
+                                                <span className='text-[0.8rem] font-[300] text-gray-500'>Animated modern product cards.</span>
+                                            </Link>
+
+                                            <Link to='/blocks/offer-grid' className='p-[10px] transition-all duration-200 hover:bg-gray-100 rounded-md'>
+                                                <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
+                                                    Offer Grid
+                                                </p>
+                                                <span className='text-[0.8rem] font-[300] text-gray-500'>Grid layout for showing product offers.</span>
+                                            </Link>
+
+                                            <Link to='/blocks/checkout-page' className='p-[10px] transition-all duration-200 hover:bg-gray-100 rounded-md'>
+                                                <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
+                                                    Checkout Page
+                                                </p>
+                                                <span className='text-[0.8rem] font-[300] text-gray-500'>Checkout page with order summery.</span>
+                                            </Link>
+
+                                        </div>
+
+                                        <div className='flex flex-col text-[1rem]'>
+                                            <Link to='/components/ads-card' className='p-[10px] transition-all duration-200 hover:bg-gray-100 rounded-md'>
+                                                <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200 flex items-center gap-[10px]'>
+                                                    Ads Card
+                                                </p>
+                                                <span className='text-[0.8rem] font-[300] text-gray-500'>Modern ads cards.</span>
+                                            </Link>
+
+                                            <Link to='/blocks/product-details-page' className='p-[10px] transition-all duration-200 hover:bg-gray-100 rounded-md'>
+                                                <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
+                                                    Product Details Page
+                                                </p>
+                                                <span className='text-[0.8rem] font-[300] text-gray-500'>Product Details with full functionality.</span>
                                             </Link>
 
                                         </div>
