@@ -913,16 +913,16 @@ const index = ({ startContent, setStartContent }) => {
                     Product Details Page
                     <NewBadge/>
                 </Link>
-                <Link
-                    to={"/blocks/product-filter-page"}
-                    className={`${startContent === 202 &&
-                    "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
-                    }   border-l border-[#9caebc] flex items-center gap-[10px]`}
-                    onClick={() => setStartContent(202)}
-                >
-                    Product Filter Page
-                    <NewBadge/>
-                </Link>
+                {/*<Link*/}
+                {/*    to={"/blocks/product-filter-page"}*/}
+                {/*    className={`${startContent === 202 &&*/}
+                {/*    "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"*/}
+                {/*    }   border-l border-[#9caebc] flex items-center gap-[10px]`}*/}
+                {/*    onClick={() => setStartContent(202)}*/}
+                {/*>*/}
+                {/*    Product Filter Page*/}
+                {/*    <NewBadge/>*/}
+                {/*</Link>*/}
                 <Link
                     to={"/blocks/checkout-page"}
                     className={`${startContent === 203 &&

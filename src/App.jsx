@@ -102,6 +102,7 @@ const InputSliderPage = React.lazy(() => import("./Pages/Components/Inputs/Input
 import OfferGridPage from "./Pages/Blocks/E-Commerce/OfferGridPage.jsx";
 import ProductDetailsPage from "./Pages/Blocks/E-Commerce/ProductDetailsPages/Index.jsx";
 import ProductFilterPage from "./Pages/Blocks/E-Commerce/ProductFilterPage.jsx";
+import CheckoutPage from "./Pages/Blocks/E-Commerce/CheckoutPage.jsx";
 
 // layout playground page
 const LayoutPlaygroundPage = React.lazy(() => import("./Pages/LayoutPlaygroundPage.jsx"));
@@ -252,6 +253,7 @@ const App = () => {
                 <Route path="/blocks/offer-grid" element={<OfferGridPage/>}/>
                 <Route path="/blocks/product-details-page" element={<ProductDetailsPage/>}/>
                 <Route path="/blocks/product-filter-page" element={<ProductFilterPage/>}/>
+                <Route path="/blocks/checkout-page" element={<CheckoutPage/>}/>
 
 
                 {/*  icons  */}
