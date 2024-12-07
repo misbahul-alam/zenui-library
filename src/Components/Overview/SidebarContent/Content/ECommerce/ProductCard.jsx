@@ -9,19 +9,18 @@ import Showcode from "../../../../../Shared/ShowCode";
 import OverviewFooter from "../../../../../Shared/OverviewFooter";
 
 // contents for scrollspy
-import {dialogContents} from '../../../../../Utils/ContentsConfig/FeedbackContents';
 import {useScrollSpy} from '../../../../../CustomHooks/useScrollSpy';
+import {productCardsContents} from "../../../../../Utils/ContentsConfig/ECommerceContents.js";
 
 // icons
 import {FaPlus} from "react-icons/fa6";
-import {FaHeart, FaRegHeart, FaStar, FaUser} from "react-icons/fa";
+import {FaHeart, FaRegHeart, FaStar} from "react-icons/fa";
 import {RiHeartAddLine, RiHeartFill} from "react-icons/ri";
 import {FiArrowUpRight, FiMinus, FiPlus} from "react-icons/fi";
 import {IoBagHandleOutline, IoCartOutline, IoEyeOutline, IoGift} from "react-icons/io5";
 import {IoIosHeart, IoMdHeartEmpty} from "react-icons/io";
 import {MdLocalShipping} from "react-icons/md";
 import {HiArrowsUpDown} from "react-icons/hi2";
-import {productCardsContents} from "../../../../../Utils/ContentsConfig/ECommerceContents.js";
 
 const ProductCard = () => {
     const sectionIds = productCardsContents.map(item => item.href.slice(1));
@@ -1043,7 +1042,7 @@ const ProductCard = () => {
                 </div>
             </aside>
             <Helmet>
-                <title>Feedback - Product Card</title>
+                <title>E-Commerce - Product Card</title>
             </Helmet>
         </>
     );

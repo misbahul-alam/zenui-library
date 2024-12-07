@@ -9,7 +9,7 @@ const PrivacyPolicy = () => {
 
             <div className='max-w-[800px] text-gray-800'>
                 <h1 className="text-3xl font-bold mb-4 text-[#0FABCA]">Privacy Policy for Zenui Library</h1>
-                <p className="mb-4 !text-gray-500">Effective Date: January 1, 2024</p>
+                <p className="mb-4 !text-gray-500">Effective Date: January 1, 2025</p>
 
                 <p className="mb-4 !text-gray-500">
                     Welcome to Zenui Library. Your privacy is important to us. This Privacy Policy outlines how we

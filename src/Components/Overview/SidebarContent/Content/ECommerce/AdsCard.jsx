@@ -433,8 +433,8 @@ const AdsCard = () => {
                     <OverviewFooter
                         backUrl='/components/product-card'
                         backName='product card'
-                        forwardName='offer grid'
-                        forwardUrl='/components/offer-grid'
+                        forwardName='Code'
+                        forwardUrl='/components/code'
                     />
                 </div>
 
@@ -457,7 +457,7 @@ const AdsCard = () => {
                 </div>
             </aside>
             <Helmet>
-                <title>Form - Radio</title>
+                <title>E-Commerce - Ads Card</title>
             </Helmet>
         </>
     );

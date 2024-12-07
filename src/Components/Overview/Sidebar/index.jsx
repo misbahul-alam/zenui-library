@@ -394,8 +394,6 @@ const index = ({ startContent, setStartContent }) => {
                   onClick={() => setStartContent(55)}
               >
                 Carousel
-
-                  <NewBadge/>
               </Link>
 
               {/* navigation */}
@@ -414,7 +412,6 @@ const index = ({ startContent, setStartContent }) => {
                   onClick={() => setStartContent(22)}
               >
                 Pagination
-                  <UpdateBadge/>
               </Link>
               <Link
                   to={"/components/progress-bar"}
@@ -447,8 +444,6 @@ const index = ({ startContent, setStartContent }) => {
                   onClick={() => setStartContent(210)}
               >
                 Timer
-
-                  <NewBadge/>
               </Link>
               <Link
                   to={"/components/breadcrumb"}
@@ -643,8 +638,6 @@ const index = ({ startContent, setStartContent }) => {
                 onClick={() => setStartContent(140)}
               >
                 Pie Chart
-
-                <NewBadge/>
               </Link>
               <Link
                   to={"/components/timeline"}

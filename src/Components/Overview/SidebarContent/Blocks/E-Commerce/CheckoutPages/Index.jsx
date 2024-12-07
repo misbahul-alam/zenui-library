@@ -11,6 +11,7 @@ import BlocksFooter from "../../../../../../Shared/BlocksFooter.jsx";
 // toggle card view
 import {useToggleCardView} from "../../../../../../CustomHooks/ButtonToggle.js";
 import CheckoutPageExample1 from "./CheckoutPageExample1.jsx";
+import CheckoutPageExample2 from "./CheckoutPageExample2.jsx";
 
 const Index = () => {
 
@@ -53,6 +54,47 @@ const Index = () => {
                     {wrongRoute1Preview && (
                         <div className={`p-8 flex flex-wrap items-center gap-5 justify-center overflow-hidden`}>
                             <CheckoutPageExample1/>
+                        </div>
+                    )}
+
+                    {wrongRoute1Code && <BlocksShowCode code='
+                    '/>
+                    }
+                </div>
+
+                <div className='mt-8'>
+                    <ContentHeader text={"404 page 1"} id={"empty_page_1"}/>
+                </div>
+
+                <p className="w-full text-text text-[1rem]">
+                    A 404 page is a custom error page that informs users the requested page is not found, often offering
+                    navigation links to guide them back to the homepage or other sections.
+                </p>
+
+                <div className="w-full border border-border rounded mt-8">
+                    <div className="relative">
+                        <div
+                            className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${wrongRoute1Preview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
+                        <button
+                            className={`${
+                                wrongRoute1Preview && "text-tabTextColor"
+                            } px-6 py-2 border-b z-[2] relative text-text border-border`}
+                            onClick={() => toggleCardView(setWrongRoute1Preview, setWrongRoute1Code, true)}
+                        >
+                            Preview
+                        </button>
+                        <button
+                            className={`${
+                                wrongRoute1Code && "text-tabTextColor"
+                            } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
+                            onClick={() => toggleCardView(setWrongRoute1Preview, setWrongRoute1Code, false)}
+                        >
+                            Code
+                        </button>
+                    </div>
+                    {wrongRoute1Preview && (
+                        <div className={`p-8 flex flex-wrap items-center gap-5 justify-center overflow-hidden`}>
+                            <CheckoutPageExample2/>
                         </div>
                     )}
 
