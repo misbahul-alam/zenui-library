@@ -9,7 +9,7 @@ import Search from "./Search";
 import {FiGithub} from "react-icons/fi";
 import {RxDiscordLogo} from "react-icons/rx";
 
-import {motion} from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import NewBadge from "../../Shared/NewBadge.jsx";
 
 const Navbar = () => {
@@ -19,6 +19,8 @@ const Navbar = () => {
     const [isDeveloperKitHover, setIsDeveloperKitHover] = useState(false);
     const [isToolsHover, setIsToolsHover] = useState(false);
     const [eCommerceHover, setECommerceHover] = useState(false)
+
+    const [searchPlaceholderText, setSearchPlaceholderText] = useState("search component");
 
     const handleSearchClick = () => {
         setIsSearchOpen(true);
@@ -90,6 +92,18 @@ const Navbar = () => {
         };
     }, []);
 
+    useEffect(() => {
+        const placeholderTexts = ["Search components", "Search Blocks", "Explore templates", "Search E-commerce"];
+        let index = 0;
+
+        const interval = setInterval(() => {
+            setSearchPlaceholderText(placeholderTexts[index]);
+            index = (index + 1) % placeholderTexts.length;
+        }, 3000);
+
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <>
             <nav
@@ -106,7 +120,7 @@ const Navbar = () => {
                         <div className='relative mr-6'>
                             <span
                                 className='px-2.5 absolute right-[-40px] text-[#a4a4a8] top-0 py-0.5 bg-[#f0f0f1] rounded-full text-[12px]'>
-                                v2.0
+                                v2.2
                             </span>
                             <img
                                 src="/darklogo.png"
@@ -291,21 +305,32 @@ const Navbar = () => {
                         <div className="zenuiSearchInput relative w-full" onClick={handleSearchClick}>
                             <IoIosSearch
                                 className={`text-gray-400 absolute left-3 top-[0.6rem] text-[1.5rem]`}/>
-                            <input
-                                type="search"
-                                name=""
-                                id=""
-                                readOnly={true}
-                                placeholder="Search..."
-                                className={`py-[0.59rem] pl-10 border w-full bg-transparent border-gray-200 rounded-md focus:ring-0 outline-none`}
-                            />
+                            <AnimatePresence>
+                                <motion.p
+                                    key={searchPlaceholderText}
+                                    initial={{opacity: 0, y: -10}}
+                                    animate={{opacity: 1, y: 0}}
+                                    exit={{opacity: 0, y: 10}}
+                                    transition={{duration: 0.5}}
+                                    className='text-[1rem] text-gray-400 absolute top-[10px] left-[40px]'
+                                >
+                                    {searchPlaceholderText}
+                                </motion.p>
+                            </AnimatePresence>
+                                <input
+                                    type="search"
+                                    name=""
+                                    id=""
+                                    readOnly={true}
+                                    className={`py-[0.59rem] pl-10 border w-full bg-transparent border-gray-200 rounded-md focus:ring-0 outline-none`}
+                                />
                             <span
                                 className={`text-gray-500 bg-gray-50 border-gray-200 px-2 py-1 text-[0.8rem] font-[500] rounded-md h-[75%] absolute right-1.5 border top-[0.35rem] flex items-center justify-center`}>
-              Ctrl + S
-            </span>
+                                Ctrl + S
+                            </span>
                         </div>
                         <div className='flex items-center gap-2'>
-                        <a href='https://discord.gg/qbwytm4WUG' target='_blank'>
+                            <a href='https://discord.gg/qbwytm4WUG' target='_blank'>
                                 <RxDiscordLogo
                                     className={`text-[2.7rem] text-gray-400 rounded-md p-[6px] border border-gray-200 cursor-pointer`}/>
                             </a>
