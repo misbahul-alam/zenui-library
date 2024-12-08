@@ -22,6 +22,8 @@ import {IoIosHeart, IoMdHeartEmpty} from "react-icons/io";
 import {MdLocalShipping} from "react-icons/md";
 import {HiArrowsUpDown} from "react-icons/hi2";
 
+import {useToggleCardView} from "../../../../../CustomHooks/ButtonToggle.js";
+
 const ProductCard = () => {
     const sectionIds = productCardsContents.map(item => item.href.slice(1));
     const activeSection = useScrollSpy(sectionIds);
@@ -40,8 +42,37 @@ const ProductCard = () => {
         setBasicDialogPreview(false);
     };
 
-    // all actions
+    // toggle actions
+    const toggleCardView = useToggleCardView();
 
+    const [productCard1Preview, setProductCard1Preview] = useState(true);
+    const [productCard1Code, setProductCard1Code] = useState(false);
+
+    const [productCard2Preview, setProductCard2Preview] = useState(true);
+    const [productCard2Code, setProductCard2Code] = useState(false);
+
+    const [productCard3Preview, setProductCard3Preview] = useState(true);
+    const [productCard3Code, setProductCard3Code] = useState(false);
+
+    const [productCard4Preview, setProductCard4Preview] = useState(true);
+    const [productCard4Code, setProductCard4Code] = useState(false);
+
+    const [productCard5Preview, setProductCard5Preview] = useState(true);
+    const [productCard5Code, setProductCard5Code] = useState(false);
+
+    const [productCard6Preview, setProductCard6Preview] = useState(true);
+    const [productCard6Code, setProductCard6Code] = useState(false);
+
+    const [productCard7Preview, setProductCard7Preview] = useState(true);
+    const [productCard7Code, setProductCard7Code] = useState(false);
+
+    const [productCard8Preview, setProductCard8Preview] = useState(true);
+    const [productCard8Code, setProductCard8Code] = useState(false);
+
+    const [productCard9Preview, setProductCard9Preview] = useState(true);
+    const [productCard9Code, setProductCard9Code] = useState(false);
+
+    // functionality actions
     const [rating, setRating] = useState(5);
     const [isFavorite, setIsFavorite] = useState(false);
     const [count, setCount] = useState(0);
@@ -78,31 +109,31 @@ const ProductCard = () => {
                         <div className='relative'>
                             <div
                                 className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    basicDialogPreview
+                                    productCard1Preview
                                         ? 'translate-x-[0px] !w-[100px]'
                                         : 'translate-x-[107px] rounded-br'
                                 }`}
                             ></div>
                             <button
                                 className={`${
-                                    basicDialogPreview && 'text-tabTextColor'
+                                    productCard1Preview && 'text-tabTextColor'
                                 } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={handleBasicDialogPreview}
+                                onClick={() => toggleCardView(setProductCard1Preview, setProductCard1Code, true)}
                             >
                                 Preview
                             </button>
                             <button
                                 className={`${
-                                    basicDialogCode && 'text-tabTextColor'
+                                    productCard1Code && 'text-tabTextColor'
                                 } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={handleBasicDialogCode}
+                                onClick={() => toggleCardView(setProductCard1Preview, setProductCard1Code, false)}
                             >
                                 Code
                             </button>
                         </div>
-                        {basicDialogPreview && (
+                        {productCard1Preview && (
                             <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                                <div className='w-[50%] group'>
+                                <div className='w-full 640px:w-[50%] group'>
 
                                     {/* image & action buttons */}
                                     <div onMouseOver={() => setProductCardHover(true)}
@@ -237,9 +268,178 @@ const ProductCard = () => {
                             </div>
                         )}
 
-                        {basicDialogCode && (
+                        {productCard1Code && (
                             <Showcode
                                 code='
+import React, {useState} from "react";
+
+// react icons
+import {IoMdHeartEmpty} from "react-icons/io";
+import {HiArrowsUpDown} from "react-icons/hi2";
+import {IoBagHandleOutline, IoEyeOutline} from "react-icons/io5";
+import {FiMinus, FiPlus} from "react-icons/fi";
+import {FaStar} from "react-icons/fa";
+
+const ProductCard = () => {
+
+    const [rating, setRating] = useState(5);
+    const [count, setCount] = useState(0);
+
+    const [wishlistVisible, setWishlistVisible] = useState(false);
+    const [compareVisible, setCompareVisible] = useState(false);
+    const [quickViewVisible, setQuickViewVisible] = useState(false);
+
+    const [productCardHover, setProductCardHover] = useState(false);
+
+    const handleIncrement = () => {
+        setCount(prevValue => prevValue + 1);
+    }
+
+    const handleDecrement = () => {
+        setCount(prevValue => prevValue - 1);
+    }
+
+    const handleInputValueChange = (e) => {
+        setCount(Number(e.target.value));
+    }
+
+    return (
+        <div className="w-full md:w-[50%] group">
+
+            {/* image & action buttons */}
+            <div onMouseOver={() => setProductCardHover(true)}
+                 onMouseOut={() => setProductCardHover(false)}
+                 className="w-full relative cursor-pointer overflow-hidden">
+                <img alt="product/image"
+                     src={
+                         productCardHover
+                             ? "//wpbingo-fashow.myshopify.com/cdn/shop/products/63.jpg?v=1665549687"
+                             : "//wpbingo-fashow.myshopify.com/cdn/shop/products/62.jpg?v=1665549687"
+                     }
+                     className="w-full"/>
+
+                <div className="absolute bottom-0 left-0 w-full">
+                    {/* quick action buttons */}
+                    <div className="flex items-center gap-[15px] justify-center">
+
+                        <div onMouseOver={() => setWishlistVisible(true)}
+                             onMouseOut={() => setWishlistVisible(false)}
+                             className="relative w-max group-hover:translate-y-0 translate-y-[50px] transition-all opacity-0 group-hover:opacity-100 duration-300">
+                            <p className="rounded-full bg-white p-2 hover:bg-[#0FABCA] hover:text-white transition-all duration-200 cursor-pointer">
+                                <IoMdHeartEmpty className="text-[1.3rem]"/>
+                            </p>
+
+                            {/* tooltip */}
+                            <p className={`${wishlistVisible ? "opacity-100 z-[100] translate-y-0" : "opacity-0 z-[-1] translate-y-[20px]"} absolute top-[-50px] transform translate-x-[-50%] left-[50%] w-max py-[7px] px-[20px] rounded-md bg-gray-800 text-[0.9rem] text-white font-[400] transition-all duration-200`}>
+                                Wishlist
+
+                                {/* arrow */}
+                                <span
+                                    className="w-[8px] h-[8px] bg-gray-800 rotate-[45deg] absolute left-[50%] transform translate-x-[-50%] bottom-[-10%]"></span>
+                            </p>
+                        </div>
+
+                        <div onMouseOver={() => setCompareVisible(true)}
+                             onMouseOut={() => setCompareVisible(false)}
+                             className="relative w-max group-hover:translate-y-0 transition-all duration-500 opacity-0 group-hover:opacity-100 translate-y-[80px]">
+                            <p className="rounded-full bg-white p-2 hover:bg-[#0FABCA] hover:text-white transition-all duration-200 cursor-pointer">
+                                <HiArrowsUpDown className="text-[1.3rem]"/>
+                            </p>
+
+                            {/* tooltip */}
+                            <p className={`${compareVisible ? "opacity-100 z-[100] translate-y-0" : "opacity-0 z-[-1] translate-y-[20px]"} absolute top-[-50px] transform translate-x-[-50%] left-[50%] w-max py-[7px] px-[20px] rounded-md bg-gray-800 text-[0.9rem] text-white font-[400] transition-all duration-200`}>
+                                Compare
+
+                                {/* arrow */}
+                                <span
+                                    className="w-[8px] h-[8px] bg-gray-800 rotate-[45deg] absolute left-[50%] transform translate-x-[-50%] bottom-[-10%]"></span>
+                            </p>
+                        </div>
+
+                        <div onMouseOver={() => setQuickViewVisible(true)}
+                             onMouseOut={() => setQuickViewVisible(false)}
+                             className="relative w-max group-hover:translate-y-0 transition-all duration-700 opacity-0 group-hover:opacity-100 translate-y-[110px]">
+                            <p className="rounded-full bg-white p-2 hover:bg-[#0FABCA] hover:text-white transition-all duration-200 cursor-pointer">
+                                <IoEyeOutline className="text-[1.3rem]"/>
+                            </p>
+
+                            {/* tooltip */}
+                            <p className={`${quickViewVisible ? "opacity-100 z-[100] translate-y-0" : "opacity-0 z-[-1] translate-y-[20px]"} absolute top-[-50px] transform translate-x-[-50%] left-[50%] w-max py-[7px] px-[20px] rounded-md bg-gray-800 text-[0.9rem] text-white font-[400] transition-all duration-200`}>
+                                Quick View
+
+                                {/* arrow */}
+                                <span
+                                    className="w-[8px] h-[8px] bg-gray-800 rotate-[45deg] absolute left-[50%] transform translate-x-[-50%] bottom-[-10%]"></span>
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* quantity & add cart */}
+                    <div
+                        className="w-full flex mt-6 items-center opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 translate-y-[60px] bg-[rgb(0,0,0,0.5)]">
+
+                        {/* quantity */}
+                        <div
+                            className="flex w-[50%] justify-center px-2 py-0.5 items-center border-r border-gray-400 text-white">
+                            <button
+                                className="active:bg-gray-100 p-[6px] rounded-full text-white transition-all duration-300 active:text-gray-700 text-[0.9rem]"
+                                onClick={handleDecrement}><FiMinus/></button>
+                            <input type="number" value={count}
+                                   className="w-[40px] py-2.5 outline-none focus:ring-0 border-none text-center text-[0.9rem] bg-transparent"
+                                   onInput={handleInputValueChange}/>
+                            <button
+                                className="active:bg-gray-100 p-[6px] rounded-full text-white transition-all duration-300 active:text-gray-700 text-[0.9rem]"
+                                onClick={handleIncrement}><FiPlus/></button>
+                        </div>
+
+                        {/* add to cart */}
+                        <button
+                            className="py-[13px] overflow-hidden before:w-full before:h-full before:bg-[#0FABCA] before:absolute before:top-0 z-0 before:z-[-1] before:translate-x-[-150px] hover:before:translate-x-0 before:transition-all before:duration-300 before:left-0 relative flex items-center justify-center grow text-white">
+                            <IoBagHandleOutline className="text-[1.3rem]"/>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            {/* product details */}
+            <div className="mt-4">
+
+                {/* review area */}
+                <div className="flex items-center justify-center gap-[10px] mt-2">
+                    <div className="flex items-center space-x-1">
+                        {[...Array(5)].map((_, index) => {
+                            const starRating = index + 1;
+                            return (
+                                <FaStar
+                                    key={starRating}
+                                    className={`cursor-pointer ${
+                                        starRating <= rating ? "text-yellow-400" : "text-gray-300"
+                                    }`}
+                                    size={16}
+                                    onClick={() => setRating(starRating)}
+                                />
+                            );
+                        })}
+                    </div>
+                    <span className="text-[0.9rem] text-gray-500">(43)</span>
+                </div>
+
+                <h3 className="text-[1rem] font-medium text-center mt-0.5 text-gray-900">Drop-shoulder
+                    synthetic</h3>
+                <p className="text-center mt-0.5 text-[0.9rem] text-gray-900">Tk 1,800.00</p>
+
+                <div className="flex items-center gap-[10px] justify-center mt-3">
+                    <div
+                        className="w-4 h-4 rounded-full bg-red-500 outline outline-1 outline-red-500 outline-offset-2 cursor-pointer"></div>
+                    <div className="w-4 h-4 rounded-full bg-green-500 cursor-pointer"></div>
+                    <div className="w-4 h-4 rounded-full bg-blue-500 cursor-pointer"></div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default ProductCard;
           '
                             />
                         )}
@@ -257,29 +457,29 @@ const ProductCard = () => {
                         <div className='relative'>
                             <div
                                 className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    basicDialogPreview
+                                    productCard2Preview
                                         ? 'translate-x-[0px] !w-[100px]'
                                         : 'translate-x-[107px] rounded-br'
                                 }`}
                             ></div>
                             <button
                                 className={`${
-                                    basicDialogPreview && 'text-tabTextColor'
+                                    productCard2Preview && 'text-tabTextColor'
                                 } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={handleBasicDialogPreview}
+                                onClick={() => toggleCardView(setProductCard2Preview, setProductCard2Code, true)}
                             >
                                 Preview
                             </button>
                             <button
                                 className={`${
-                                    basicDialogCode && 'text-tabTextColor'
+                                    productCard2Code && 'text-tabTextColor'
                                 } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={handleBasicDialogCode}
+                                onClick={() => toggleCardView(setProductCard2Preview, setProductCard2Code, false)}
                             >
                                 Code
                             </button>
                         </div>
-                        {basicDialogPreview && (
+                        {productCard2Preview && (
                             <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
                                 <div className='border border-gray-300 rounded-md p-5'>
 
@@ -328,9 +528,68 @@ const ProductCard = () => {
                             </div>
                         )}
 
-                        {basicDialogCode && (
+                        {productCard2Code && (
                             <Showcode
                                 code='
+import React, {useState} from "react";
+
+// react icons
+import {FaStar} from "react-icons/fa";
+import {FaPlus} from "react-icons/fa6";
+
+const ProductCard = () => {
+
+    const [rating, setRating] = useState(5);
+
+    return (
+        <div className="border border-gray-300 rounded-md p-5">
+
+            {/* product image */}
+            <img alt="product/image" src="https://i.ibb.co.com/VN5sNHX/Link-14-png.png"
+                 className="w-[250px] mt-2"/>
+
+            {/* product details */}
+            <div className="mt-3">
+                <h3 className="text-[1.1rem] font-semibold">Frooti Mango Drink</h3>
+
+                {/* rating area */}
+                <div className="flex items-center gap-[10px] mt-2">
+                    <div className="flex items-center space-x-1">
+                        {[...Array(5)].map((_, index) => {
+                            const starRating = index + 1;
+                            return (
+                                <FaStar
+                                    key={starRating}
+                                    className={`cursor-pointer ${
+                                        starRating <= rating ? "text-yellow-400" : "text-gray-300"
+                                    }`}
+                                    size={16}
+                                    onClick={() => setRating(starRating)}
+                                />
+                            );
+                        })}
+                    </div>
+                    <span className="text-[0.9rem] text-gray-500">(43)</span>
+                </div>
+
+                <div className="flex items-end justify-between mt-2">
+                    <div>
+                        <p className="text-[0.9rem] text-gray-500">1 KG</p>
+                        <p className="text-[1rem] font-semibold mt-1 text-[#0FABCA]">$ 80.00</p>
+                    </div>
+
+                    <button
+                        className="py-2 px-4 bg-[#0FABCA] text-white rounded-md flex items-center gap-[0.5rem] text-[0.9rem] hover:bg-[#0195af] transition-all duration-200">
+                        Add
+                        <FaPlus/>
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default ProductCard;
           '
                             />
                         )}
@@ -348,31 +607,31 @@ const ProductCard = () => {
                         <div className='relative'>
                             <div
                                 className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    basicDialogPreview
+                                    productCard3Preview
                                         ? 'translate-x-[0px] !w-[100px]'
                                         : 'translate-x-[107px] rounded-br'
                                 }`}
                             ></div>
                             <button
                                 className={`${
-                                    basicDialogPreview && 'text-tabTextColor'
+                                    productCard3Preview && 'text-tabTextColor'
                                 } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={handleBasicDialogPreview}
+                                onClick={() => toggleCardView(setProductCard3Preview, setProductCard3Code, true)}
                             >
                                 Preview
                             </button>
                             <button
                                 className={`${
-                                    basicDialogCode && 'text-tabTextColor'
+                                    productCard3Code && 'text-tabTextColor'
                                 } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={handleBasicDialogCode}
+                                onClick={() => toggleCardView(setProductCard3Preview, setProductCard3Code, false)}
                             >
                                 Code
                             </button>
                         </div>
-                        {basicDialogPreview && (
+                        {productCard3Preview && (
                             <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                                <div className='relative border w-[55%] border-gray-300 rounded-md p-5'>
+                                <div className='relative border w-full 640px:w-[55%] border-gray-300 rounded-md p-5'>
 
                                     {/* favorite icon */}
                                     <FaHeart onClick={() => setIsFavorite(false)}
@@ -436,9 +695,101 @@ const ProductCard = () => {
                             </div>
                         )}
 
-                        {basicDialogCode && (
+                        {productCard3Code && (
                             <Showcode
                                 code='
+import React, {useState} from "react";
+
+// react icons
+import {FaHeart, FaRegHeart, FaStar} from "react-icons/fa";
+import {FiMinus, FiPlus} from "react-icons/fi";
+import {IoCartOutline} from "react-icons/io5";
+
+const ProductCard = () => {
+
+    const [rating, setRating] = useState(5);
+    const [isFavorite, setIsFavorite] = useState(false);
+    const [count, setCount] = useState(0);
+
+
+    const handleIncrement = () => {
+        setCount(prevValue => prevValue + 1);
+    }
+
+    const handleDecrement = () => {
+        setCount(prevValue => prevValue - 1);
+    }
+
+    const handleInputValueChange = (e) => {
+        setCount(Number(e.target.value));
+    }
+
+    return (
+        <div className="relative border w-full md:w-[55%] border-gray-300 rounded-md p-5">
+
+            {/* favorite icon */}
+            <FaHeart onClick={() => setIsFavorite(false)}
+                     className={` ${isFavorite ? "opacity-100 scale-[1] z-10" : "opacity-0 scale-[0.7] z-[-1]"} text-[1.4rem] absolute top-3 text-red-500 right-3 cursor-pointer transition-all duration-300`}/>
+            <FaRegHeart onClick={() => setIsFavorite(true)}
+                        className={`${isFavorite ? "opacity-0 scale-[0.7] z-[-1]" : "opacity-100 scale-[1] z-10"} text-[1.4rem] absolute top-3 right-3 text-gray-600 cursor-pointer transition-all duration-300`}/>
+
+
+            {/* product image */}
+            <img alt="product/image" src="https://i.ibb.co.com/p0CjNLD/Link-11-png.png"
+                 className="w-[150px] mt-2 mx-auto"/>
+
+            {/* product details */}
+            <div className="mt-8">
+
+                {/* rating area */}
+                <div className="flex items-center space-x-1">
+                    {[...Array(5)].map((_, index) => {
+                        const starRating = index + 1;
+                        return (
+                            <FaStar
+                                key={starRating}
+                                className={`cursor-pointer ${
+                                    starRating <= rating ? "text-yellow-400" : "text-gray-300"
+                                }`}
+                                size={16}
+                                onClick={() => setRating(starRating)}
+                            />
+                        );
+                    })}
+                </div>
+
+                <h3 className="text-[1.1rem] font-medium mt-1.5">Cucumber</h3>
+
+                <div className="flex items-center gap-[10px]">
+                    <p className="text-[1rem] font-semibold mt-1 text-[#0FABCA]">$70.21</p>
+                    <del className="text-[1rem] font-normal mt-1 text-gray-500 ">$80.50</del>
+                </div>
+
+                <div className="flex items-center w-full justify-between mt-4">
+
+                    <div className="flex items-center border border-gray-200 rounded-md">
+                        <button
+                            className="bg-gray-100 p-[9px] rounded-l-md text-gray-600 text-[1.1rem]"
+                            onClick={handleDecrement}><FiMinus/></button>
+                        <input type="number" value={count}
+                               className="w-[50px] py-[4px] outline-none text-gray-600 focus:ring-0 border-none text-center text-[1.1rem]"
+                               onInput={handleInputValueChange}/>
+                        <button
+                            className="bg-gray-100 p-[9px] rounded-r-md text-gray-600 text-[1.1rem]"
+                            onClick={handleIncrement}><FiPlus/></button>
+                    </div>
+
+                    <button
+                        className="py-2 px-4 bg-[#0FABCA] text-white rounded-md flex items-center gap-[0.5rem] text-[0.9rem] hover:bg-[#0195af] transition-all duration-200">
+                        <IoCartOutline className="text-[1.3rem]"/>
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default ProductCard;
           '
                             />
                         )}
@@ -456,31 +807,31 @@ const ProductCard = () => {
                         <div className='relative'>
                             <div
                                 className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    basicDialogPreview
+                                    productCard4Preview
                                         ? 'translate-x-[0px] !w-[100px]'
                                         : 'translate-x-[107px] rounded-br'
                                 }`}
                             ></div>
                             <button
                                 className={`${
-                                    basicDialogPreview && 'text-tabTextColor'
+                                    productCard4Preview && 'text-tabTextColor'
                                 } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={handleBasicDialogPreview}
+                                onClick={() => toggleCardView(setProductCard4Preview, setProductCard4Code, true)}
                             >
                                 Preview
                             </button>
                             <button
                                 className={`${
-                                    basicDialogCode && 'text-tabTextColor'
+                                    productCard4Code && 'text-tabTextColor'
                                 } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={handleBasicDialogCode}
+                                onClick={() => toggleCardView(setProductCard4Preview, setProductCard4Code, false)}
                             >
                                 Code
                             </button>
                         </div>
-                        {basicDialogPreview && (
+                        {productCard4Preview && (
                             <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                                <div className='border border-gray-300 rounded-xl p-2 w-[70%]'>
+                                <div className='border border-gray-300 rounded-xl p-2 w-full 640px:w-[70%]'>
 
                                     {/* product image */}
                                     <div className='relative'>
@@ -508,7 +859,7 @@ const ProductCard = () => {
                                             Business Keynote</h3>
 
                                         {/* authors & reviews */}
-                                        <div className='flex items-center justify-between mt-1'>
+                                        <div className='flex flex-col 640px:flex-row 640px:items-center justify-between mt-1'>
                                             <p className='text-gray-400 text-[0.9rem]'>by <span
                                                 className='text-black'>Criphin</span> in <span
                                                 className='text-black'>Graphics</span></p>
@@ -559,9 +910,102 @@ const ProductCard = () => {
                             </div>
                         )}
 
-                        {basicDialogCode && (
+                        {productCard4Code && (
                             <Showcode
                                 code='
+import React, {useState} from "react";
+
+// react icons
+import {FaStar} from "react-icons/fa";
+import {IoCartOutline} from "react-icons/io5";
+import {IoIosHeart, IoMdHeartEmpty} from "react-icons/io";
+
+const ProductCard = () => {
+
+    const [rating, setRating] = useState(5);
+    const [isFavorite, setIsFavorite] = useState(false);
+
+    return (
+        <div className="border border-gray-300 rounded-xl p-2 w-full md:w-[70%]">
+
+            {/* product image */}
+            <div className="relative">
+                <img alt="product/image" src="https://i.ibb.co.com/cTTfNRw/Link-1.png"
+                     className="w-full"/>
+
+                {/* favorite icon */}
+                <div className="p-2 rounded-full bg-gray-600 absolute top-2 right-2">
+                    {
+                        isFavorite ? (
+                            <IoIosHeart onClick={() => setIsFavorite(false)}
+                                        className={`text-[#0FABCA] text-[1.2rem] cursor-pointer`}/>
+                        ) : (
+                            <IoMdHeartEmpty onClick={() => setIsFavorite(true)}
+                                            className={` text-white text-[1.2rem] cursor-pointer`}/>
+                        )
+                    }
+
+                </div>
+            </div>
+
+            {/* product details */}
+            <div className="mt-2 pt-0 p-1">
+                <h3 className="text-[1.1rem] font-medium line-clamp-1">Criphin - Contemporary
+                    Business Keynote</h3>
+
+                {/* authors & reviews */}
+                <div className="flex flex-col md:flex-row md:items-center justify-between mt-1">
+                    <p className="text-gray-400 text-[0.9rem]">by <span
+                        className="text-black">Criphin</span> in <span
+                        className="text-black">Graphics</span></p>
+
+                    {/* review area */}
+                    <div className="flex items-center gap-[10px]">
+                        <div className="flex items-center space-x-1">
+                            {[...Array(5)].map((_, index) => {
+                                const starRating = index + 1;
+                                return (
+                                    <FaStar
+                                        key={starRating}
+                                        className={`cursor-pointer ${
+                                            starRating <= rating ? "text-yellow-400" : "text-gray-300"
+                                        }`}
+                                        size={15}
+                                        onClick={() => setRating(starRating)}
+                                    />
+                                );
+                            })}
+                        </div>
+                        <span className="text-[0.8rem] text-gray-500">(4.8)</span>
+                    </div>
+                </div>
+
+                {/* price and action btn */}
+                <div className="flex items-end justify-between mt-5">
+                    <div>
+                        <span className="text-gray-400 text-[0.9rem]">168 Sales</span>
+                        <p className="text-[1.150rem] font-semibold text-[#0FABCA]">$52.00</p>
+                    </div>
+
+                    <div className="flex items-center gap-[10px]">
+                        <button
+                            className="py-2 px-4 border border-[#0FABCA] text-white rounded-md flex items-center group gap-[0.5rem] text-[0.9rem] hover:bg-[#0FABCA] transition-all duration-200">
+                            <IoCartOutline
+                                className="text-[1.3rem] group-hover:text-white text-[#0FABCA]"/>
+                        </button>
+
+                        <button
+                            className="py-2 px-4 border border-[#0FABCA] text-[#0FABCA] hover:text-white rounded-md flex items-center gap-[0.5rem] text-[0.9rem] hover:bg-[#0FABCA] transition-all duration-200">
+                            Preview
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default ProductCard;
           '
                             />
                         )}
@@ -579,31 +1023,31 @@ const ProductCard = () => {
                         <div className='relative'>
                             <div
                                 className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    basicDialogPreview
+                                    productCard5Preview
                                         ? 'translate-x-[0px] !w-[100px]'
                                         : 'translate-x-[107px] rounded-br'
                                 }`}
                             ></div>
                             <button
                                 className={`${
-                                    basicDialogPreview && 'text-tabTextColor'
+                                    productCard5Preview && 'text-tabTextColor'
                                 } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={handleBasicDialogPreview}
+                                onClick={() => toggleCardView(setProductCard5Preview, setProductCard5Code, true)}
                             >
                                 Preview
                             </button>
                             <button
                                 className={`${
-                                    basicDialogCode && 'text-tabTextColor'
+                                    productCard5Code && 'text-tabTextColor'
                                 } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={handleBasicDialogCode}
+                                onClick={() => toggleCardView(setProductCard5Preview, setProductCard5Code, false)}
                             >
                                 Code
                             </button>
                         </div>
-                        {basicDialogPreview && (
+                        {productCard5Preview && (
                             <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                                <div className='w-[55%] relative rounded-md overflow-hidden'>
+                                <div className='w-full 640px:w-[55%] relative rounded-md overflow-hidden'>
 
                                     {/* badge */}
                                     <span
@@ -625,9 +1069,36 @@ const ProductCard = () => {
                             </div>
                         )}
 
-                        {basicDialogCode && (
+                        {productCard5Code && (
                             <Showcode
                                 code='
+import React from "react";
+
+const ProductCard = () => {
+    return (
+        <div className="w-full md:w-[55%] relative rounded-md overflow-hidden">
+
+            {/* badge */}
+            <span
+                className="bg-red-500 rounded-sm px-3 py-1 text-[0.9rem] text-white absolute top-3 left-3">Best</span>
+
+            {/* product image */}
+            <img alt="product/image" src="https://i.ibb.co.com/wrYPvfd/Link-31-jpg.png"
+                 className="w-full"/>
+
+            {/* product details */}
+            <div className="mt-2">
+                <span className="text-gray-400 text-[0.9rem]">Biography</span>
+                <h3 className="text-[1.1rem] font-medium mt-2">Home Decor Lucky Deer Family
+                    Matte Finish Ceramic Figures</h3>
+                <p className="text-[0.9rem] text-gray-400 mt-1">By Ellie Thomson, Henry</p>
+                <p className="text-[1.1rem] font-semibold mt-1 text-[#0FABCA]">$80.00</p>
+            </div>
+        </div>
+    );
+};
+
+export default ProductCard;
           '
                             />
                         )}
@@ -645,31 +1116,31 @@ const ProductCard = () => {
                         <div className='relative'>
                             <div
                                 className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    basicDialogPreview
+                                    productCard6Preview
                                         ? 'translate-x-[0px] !w-[100px]'
                                         : 'translate-x-[107px] rounded-br'
                                 }`}
                             ></div>
                             <button
                                 className={`${
-                                    basicDialogPreview && 'text-tabTextColor'
+                                    productCard6Preview && 'text-tabTextColor'
                                 } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={handleBasicDialogPreview}
+                                onClick={() => toggleCardView(setProductCard6Preview, setProductCard6Code, true)}
                             >
                                 Preview
                             </button>
                             <button
                                 className={`${
-                                    basicDialogCode && 'text-tabTextColor'
+                                    productCard6Code && 'text-tabTextColor'
                                 } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={handleBasicDialogCode}
+                                onClick={() => toggleCardView(setProductCard6Preview, setProductCard6Code, false)}
                             >
                                 Code
                             </button>
                         </div>
-                        {basicDialogPreview && (
+                        {productCard6Preview && (
                             <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                                <div className='border border-gray-300 w-[60%] relative rounded-2xl overflow-hidden'>
+                                <div className='border border-gray-300 w-full 640px:w-[60%] relative rounded-2xl overflow-hidden'>
 
                                     {/* badge */}
                                     <span
@@ -730,9 +1201,84 @@ const ProductCard = () => {
                             </div>
                         )}
 
-                        {basicDialogCode && (
+                        {productCard6Code && (
                             <Showcode
                                 code='
+import React, {useState} from "react";
+
+// react icons
+import {MdLocalShipping} from "react-icons/md";
+import {IoGift} from "react-icons/io5";
+import {FiArrowUpRight} from "react-icons/fi";
+import {RiHeartAddLine, RiHeartFill} from "react-icons/ri";
+
+const ProductCard = () => {
+
+    const [isFavorite, setIsFavorite] = useState(false);
+
+    return (
+        <div className="border border-gray-300 w-full md:w-[60%] relative rounded-2xl overflow-hidden">
+
+            {/* badge */}
+            <span
+                className="bg-red-500 rounded-b-md px-3 py-1 text-[0.9rem] text-white absolute top-0 left-4">Best Value</span>
+
+            {/* product image */}
+            <img alt="product/image" src="https://i.ibb.co.com/z4BV3S2/image-1.png"
+                 className="w-full mt-6"/>
+
+            {/* product details */}
+            <div className="p-4 pt-0">
+                <h3 className="text-[1.4rem] font-semibold mb-1 mt-2">Apple</h3>
+
+                <span className="text-[0.9rem] font-normal text-gray-500 line-clamp-2">2020 Apple MacBook Pro with Apple M1 Chip (13-inch, 8GB RAM, 256GB SSD Storage) - Silver</span>
+
+                {/* price & discount offer */}
+                <div className="flex items-center mt-3 gap-[15px]">
+                    <p className="text-[1.150rem] font-semibold mt-1">$1024.99+</p>
+
+                    <p className="border text-green-600 text-[0.8rem] border-green-400 px-2 py-1 rounded-md">35%
+                        Off</p>
+                </div>
+
+                {/* shipping offers */}
+                <div
+                    className="flex items-center border-t border-gray-300 mt-3 gap-[15px] pt-[5px]">
+                    <div className="flex items-center gap-[6px] text-gray-400 text-[0.9rem]">
+                        <MdLocalShipping/>
+                        <p>Free shipping</p>
+                    </div>
+                    <div className="flex items-center gap-[6px] text-gray-400 text-[0.9rem]">
+                        <IoGift/>
+                        <p>Free gift</p>
+                    </div>
+                </div>
+
+                {/* actions */}
+                <div className="flex items-center justify-between mt-7 gap-[15px]">
+                    <button
+                        className="py-[9px] px-4 text-white rounded-2xl grow justify-center flex items-center gap-[0.5rem] hover:bg-[#01849b] text-[1rem] bg-[#0FABCA] transition-all duration-200">
+                        View Deal
+                        <FiArrowUpRight className="text-[1.3rem]"/>
+                    </button>
+                    <button className="p-[9px] rounded-full border-2 border-[#0FABCA]">
+                        {
+                            isFavorite ? (
+                                <RiHeartFill onClick={() => setIsFavorite(false)}
+                                             className="text-[#0FABCA] text-[1.3rem]"/>
+                            ) : (
+                                <RiHeartAddLine onClick={() => setIsFavorite(true)}
+                                                className="text-[#0FABCA] text-[1.3rem]"/>
+                            )
+                        }
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default ProductCard;
           '
                             />
                         )}
@@ -750,31 +1296,31 @@ const ProductCard = () => {
                         <div className='relative'>
                             <div
                                 className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    basicDialogPreview
+                                    productCard7Preview
                                         ? 'translate-x-[0px] !w-[100px]'
                                         : 'translate-x-[107px] rounded-br'
                                 }`}
                             ></div>
                             <button
                                 className={`${
-                                    basicDialogPreview && 'text-tabTextColor'
+                                    productCard7Preview && 'text-tabTextColor'
                                 } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={handleBasicDialogPreview}
+                                onClick={() => toggleCardView(setProductCard7Preview, setProductCard7Code, true)}
                             >
                                 Preview
                             </button>
                             <button
                                 className={`${
-                                    basicDialogCode && 'text-tabTextColor'
+                                    productCard7Code && 'text-tabTextColor'
                                 } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={handleBasicDialogCode}
+                                onClick={() => toggleCardView(setProductCard7Preview, setProductCard7Code, false)}
                             >
                                 Code
                             </button>
                         </div>
-                        {basicDialogPreview && (
+                        {productCard7Preview && (
                             <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                                <div className='border border-gray-300 w-[60%] relative rounded-2xl overflow-hidden'>
+                                <div className='border border-gray-300 w-full 640px:w-[60%] relative rounded-2xl overflow-hidden'>
 
                                     {/* badge */}
                                     <span
@@ -876,9 +1422,129 @@ const ProductCard = () => {
                             </div>
                         )}
 
-                        {basicDialogCode && (
+                        {productCard7Code && (
                             <Showcode
                                 code='
+import React, {useState} from "react";
+
+// react icons
+import {IoEyeOutline} from "react-icons/io5";
+import {IoMdHeartEmpty} from "react-icons/io";
+import {HiArrowsUpDown} from "react-icons/hi2";
+import {FaStar} from "react-icons/fa";
+
+const ProductCard = () => {
+
+    const [wishlistVisible, setWishlistVisible] = useState(false);
+    const [compareVisible, setCompareVisible] = useState(false);
+    const [quickViewVisible, setQuickViewVisible] = useState(false);
+
+    const [rating, setRating] = useState(5);
+
+    return (
+        <div className="border border-gray-300 w-full md:w-[60%] relative rounded-2xl overflow-hidden">
+
+            {/* badge */}
+            <span
+                className="bg-red-500 rounded-sm px-3 py-1 z-10 text-[0.9rem] text-white absolute top-3 left-3">HOT</span>
+
+            {/* product image */}
+            <div className="group relative overflow-hidden cursor-pointer">
+                <img alt="product/image" src="https://i.ibb.co.com/kcYX9md/Image-2.png"
+                     className="w-[240px] mx-auto mt-5"/>
+
+                {/* action buttons */}
+                <div className="absolute bg-[rgb(0,0,0,0.3)] z-30 opacity-0 group-hover:opacity-100 transition-all duration-300 bottom-0 left-0 flex items-center justify-center w-full h-full">
+                    <div className="flex items-center gap-[15px] justify-center">
+
+                        <div onMouseOver={() => setWishlistVisible(true)}
+                             onMouseOut={() => setWishlistVisible(false)}
+                             className="relative w-max group-hover:translate-y-0 translate-y-[50px] transition-all opacity-0 group-hover:opacity-100 duration-300">
+                            <p className="rounded-full bg-white p-2 hover:bg-[#0FABCA] hover:text-white transition-all duration-200 cursor-pointer">
+                                <IoMdHeartEmpty className="text-[1.3rem]"/>
+                            </p>
+
+                            {/* tooltip */}
+                            <p className={`${wishlistVisible ? "opacity-100 z-[100] translate-y-0" : "opacity-0 z-[-1] translate-y-[20px]"} absolute top-[-50px] transform translate-x-[-50%] left-[50%] w-max py-[7px] px-[20px] rounded-md bg-gray-800 text-[0.9rem] text-white font-[400] transition-all duration-200`}>
+                                Wishlist
+
+                                {/* arrow */}
+                                <span
+                                    className="w-[8px] h-[8px] bg-gray-800 rotate-[45deg] absolute left-[50%] transform translate-x-[-50%] bottom-[-10%]"></span>
+                            </p>
+                        </div>
+
+                        <div onMouseOver={() => setCompareVisible(true)}
+                             onMouseOut={() => setCompareVisible(false)}
+                             className="relative w-max group-hover:translate-y-0 transition-all duration-500 opacity-0 group-hover:opacity-100 translate-y-[80px]">
+                            <p className="rounded-full bg-white p-2 hover:bg-[#0FABCA] hover:text-white transition-all duration-200 cursor-pointer">
+                                <HiArrowsUpDown className="text-[1.3rem]"/>
+                            </p>
+
+                            {/* tooltip */}
+                            <p className={`${compareVisible ? "opacity-100 z-[100] translate-y-0" : "opacity-0 z-[-1] translate-y-[20px]"} absolute top-[-50px] transform translate-x-[-50%] left-[50%] w-max py-[7px] px-[20px] rounded-md bg-gray-800 text-[0.9rem] text-white font-[400] transition-all duration-200`}>
+                                Compare
+
+                                {/* arrow */}
+                                <span
+                                    className="w-[8px] h-[8px] bg-gray-800 rotate-[45deg] absolute left-[50%] transform translate-x-[-50%] bottom-[-10%]"></span>
+                            </p>
+                        </div>
+
+                        <div onMouseOver={() => setQuickViewVisible(true)}
+                             onMouseOut={() => setQuickViewVisible(false)}
+                             className="relative w-max group-hover:translate-y-0 transition-all duration-700 opacity-0 group-hover:opacity-100 translate-y-[110px]">
+                            <p className="rounded-full bg-white p-2 hover:bg-[#0FABCA] hover:text-white transition-all duration-200 cursor-pointer">
+                                <IoEyeOutline className="text-[1.3rem]"/>
+                            </p>
+
+                            {/* tooltip */}
+                            <p className={`${quickViewVisible ? "opacity-100 z-[100] translate-y-0" : "opacity-0 z-[-1] translate-y-[20px]"} absolute top-[-50px] transform translate-x-[-50%] left-[50%] w-max py-[7px] px-[20px] rounded-md bg-gray-800 text-[0.9rem] text-white font-[400] transition-all duration-200`}>
+                                Quick View
+
+                                {/* arrow */}
+                                <span
+                                    className="w-[8px] h-[8px] bg-gray-800 rotate-[45deg] absolute left-[50%] transform translate-x-[-50%] bottom-[-10%]"></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* product details */}
+            <div className="p-4 pt-6">
+
+                {/* review area */}
+                <div className="flex items-center gap-[10px]">
+                    <div className="flex items-center space-x-1">
+                        {[...Array(5)].map((_, index) => {
+                            const starRating = index + 1;
+                            return (
+                                <FaStar
+                                    key={starRating}
+                                    className={`cursor-pointer ${
+                                        starRating <= rating ? "text-[#FA8232]" : "text-gray-300"
+                                    }`}
+                                    size={15}
+                                    onClick={() => setRating(starRating)}
+                                />
+                            );
+                        })}
+                    </div>
+                    <span className="text-[0.8rem] text-gray-500">(738)</span>
+                </div>
+
+                <h3 className="text-[1.1rem] text-gray-900 font-medium mb-2 mt-2">TOZO T6 True
+                    Wireless
+                    Earbuds Bluetooth Headphon</h3>
+                <p className="text-[1.150rem] font-medium text-[#0FABCA] mt-1">$70</p>
+
+            </div>
+        </div>
+    );
+};
+
+export default ProductCard;
           '
                             />
                         )}
@@ -896,34 +1562,34 @@ const ProductCard = () => {
                         <div className='relative'>
                             <div
                                 className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    basicDialogPreview
+                                    productCard8Preview
                                         ? 'translate-x-[0px] !w-[100px]'
                                         : 'translate-x-[107px] rounded-br'
                                 }`}
                             ></div>
                             <button
                                 className={`${
-                                    basicDialogPreview && 'text-tabTextColor'
+                                    productCard8Preview && 'text-tabTextColor'
                                 } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={handleBasicDialogPreview}
+                                onClick={() => toggleCardView(setProductCard8Preview, setProductCard8Code, true)}
                             >
                                 Preview
                             </button>
                             <button
                                 className={`${
-                                    basicDialogCode && 'text-tabTextColor'
+                                    productCard8Code && 'text-tabTextColor'
                                 } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={handleBasicDialogCode}
+                                onClick={() => toggleCardView(setProductCard8Preview, setProductCard8Code, false)}
                             >
                                 Code
                             </button>
                         </div>
-                        {basicDialogPreview && (
+                        {productCard8Preview && (
                             <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                                <div className='w-[80%] border border-gray-300 rounded-md px-4 flex items-center gap-[10px]'>
+                                <div className='w-full 640px:w-[80%] border border-gray-300 rounded-md px-4 flex flex-col 640px:flex-row 640px:items-center 640px:gap-[10px]'>
                                     <img alt='product/image' src='https://i.ibb.co.com/FDsyM7X/Image-4.png' className='w-[120px]'/>
 
-                                    <div>
+                                    <div className='pb-4 640px:pb-0'>
                                         <h3 className='text-[1.1rem] font-medium line-clamp-2'>Portable Wshing Machine, 11lbs capacity Model 18NMF</h3>
                                         <p className='text-[1rem] font-medium text-[#0FABCA] mt-1'>$1,500</p>
                                     </div>
@@ -931,9 +1597,27 @@ const ProductCard = () => {
                             </div>
                         )}
 
-                        {basicDialogCode && (
+                        {productCard8Code && (
                             <Showcode
                                 code='
+import React from "react";
+
+const ProductCard = () => {
+    return (
+        <div
+            className="w-full md:w-[80%] border border-gray-300 rounded-md px-4 flex flex-col md:flex-row md:items-center md:gap-[10px]">
+            <img alt="product/image" src="https://i.ibb.co.com/FDsyM7X/Image-4.png" className="w-[120px]"/>
+
+            <div className="pb-4 md:pb-0">
+                <h3 className="text-[1.1rem] font-medium line-clamp-2">Portable Wshing Machine, 11lbs capacity Model
+                    18NMF</h3>
+                <p className="text-[1rem] font-medium text-[#0FABCA] mt-1">$1,500</p>
+            </div>
+        </div>
+    );
+};
+
+export default ProductCard;
           '
                             />
                         )}
@@ -951,31 +1635,31 @@ const ProductCard = () => {
                         <div className='relative'>
                             <div
                                 className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    basicDialogPreview
+                                    productCard9Preview
                                         ? 'translate-x-[0px] !w-[100px]'
                                         : 'translate-x-[107px] rounded-br'
                                 }`}
                             ></div>
                             <button
                                 className={`${
-                                    basicDialogPreview && 'text-tabTextColor'
+                                    productCard9Preview && 'text-tabTextColor'
                                 } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={handleBasicDialogPreview}
+                                onClick={() => toggleCardView(setProductCard9Preview, setProductCard9Code, true)}
                             >
                                 Preview
                             </button>
                             <button
                                 className={`${
-                                    basicDialogCode && 'text-tabTextColor'
+                                    productCard9Code && 'text-tabTextColor'
                                 } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={handleBasicDialogCode}
+                                onClick={() => toggleCardView(setProductCard9Preview, setProductCard9Code, false)}
                             >
                                 Code
                             </button>
                         </div>
-                        {basicDialogPreview && (
+                        {productCard9Preview && (
                             <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                                <div className='w-[80%] justify-center flex items-center gap-[10px]'>
+                                <div className='w-full 640px:w-[80%] justify-center flex flex-col 640px:flex-row 640px:items-center gap-[10px]'>
                                     <img alt='product/image' src='https://i.ibb.co.com/HHP2J04/7-jpg.png' className='w-[80px] rounded-md'/>
 
                                     <div>
@@ -1007,9 +1691,52 @@ const ProductCard = () => {
                             </div>
                         )}
 
-                        {basicDialogCode && (
+                        {productCard9Code && (
                             <Showcode
                                 code='
+import React, {useState} from "react";
+
+// react icons
+import {FaStar} from "react-icons/fa";
+
+const ProductCard = () => {
+
+    const [rating, setRating] = useState(5);
+
+    return (
+        <div className="w-full md:w-[80%] justify-center flex flex-col md:flex-row md:items-center gap-[10px]">
+            <img alt="product/image" src="https://i.ibb.co.com/HHP2J04/7-jpg.png" className="w-[80px] rounded-md"/>
+
+            <div>
+                <h3 className="text-[1.1rem] font-medium line-clamp-2">Good Life Raw Peanuts</h3>
+
+                {/* review area */}
+                <div className="flex items-center gap-[10px] mb-2">
+                    <div className="flex items-center space-x-1">
+                        {[...Array(5)].map((_, index) => {
+                            const starRating = index + 1;
+                            return (
+                                <FaStar
+                                    key={starRating}
+                                    className={`cursor-pointer ${
+                                        starRating <= rating ? "text-yellow-400" : "text-gray-300"
+                                    }`}
+                                    size={15}
+                                    onClick={() => setRating(starRating)}
+                                />
+                            );
+                        })}
+                    </div>
+                    <span className="text-[0.8rem] text-gray-500">(4.8)</span>
+                </div>
+
+                <p className="text-[1rem] font-medium text-[#0FABCA] mt-1">$85.00</p>
+            </div>
+        </div>
+    );
+};
+
+export default ProductCard;
           '
                             />
                         )}

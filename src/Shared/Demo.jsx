@@ -1,128 +1,37 @@
-import React, {useState} from "react";
+import React from "react";
 
-const SmartPagination = () => {
-    const [currentPagePagination, setCurrentPagePagination] = useState(1);
+// react icons
+import {HiArrowRight} from "react-icons/hi";
 
-    const totalPageNumber = 50;
-
-    const handlePreviousPagination = () => {
-        if (currentPagePagination > 1) {
-            setCurrentPagePagination((prev) => prev - 1);
-        }
-    };
-
-    const handleNextPagination = () => {
-        if (currentPagePagination < totalPageNumber) {
-            setCurrentPagePagination((prev) => prev + 1);
-        }
-    };
-
-    const handlePageClick = (pageNumber) => {
-        setCurrentPagePagination(pageNumber);
-    };
-
-    const renderPageNumbersForPagination = () => {
-        const pageNumbers = [];
-        const startPage = Math.max(2, currentPagePagination - 1);
-        const endPage = Math.min(
-            totalPageNumber - 1,
-            currentPagePagination + 1
-        );
-
-        pageNumbers.push(
-            <PageButton
-                key={1}
-                pageNumber={1}
-                isActive={currentPagePagination === 1}
-                onClick={handlePageClick}
-            />
-        );
-
-        if (startPage > 2) {
-            pageNumbers.push(
-                <span key="start-dots" className="mx-1 px-2 text-gray-500">
-          ...
-        </span>
-            );
-        }
-
-        for (let i = startPage; i <= endPage; i++) {
-            pageNumbers.push(
-                <PageButton
-                    key={i}
-                    pageNumber={i}
-                    isActive={currentPagePagination === i}
-                    onClick={handlePageClick}
-                />
-            );
-        }
-
-        if (endPage < totalPageNumber - 1) {
-            pageNumbers.push(
-                <span key="end-dots" className="mx-1 px-2 text-gray-500">
-          ...
-        </span>
-            );
-        }
-
-        pageNumbers.push(
-            <PageButton
-                key={totalPageNumber}
-                pageNumber={totalPageNumber}
-                isActive={currentPagePagination === totalPageNumber}
-                onClick={handlePageClick}
-            />
-        );
-
-        return pageNumbers;
-    };
+const AdsCard = () => {
     
     return (
         <div
-            className="flex items-center justify-center flex-col sm:flex-row mt-8 sm:space-x-4 space-y-4 sm:space-y-0 md:space-y-4 py-7">
+            className="wful md:w-[90%] bg-gray-900 flex flex-col justify-center min-h-[260px] overflow-hidden rounded-md relative px-7 md:px-12">
 
-            <button
-                onClick={handlePreviousPagination}
-                disabled={currentPagePagination === 1}
-                className={`px-4 py-2 bg-gray-200 text-gray-800 rounded-lg font-medium transition-colors duration-300 ${
-                    currentPagePagination === 1
-                        ? "bg-gray-200 !text-gray-400 cursor-not-allowed"
-                        : ""
-                }`}
-            >
-                Previous
-            </button>
-            <div className="flex gap-[5px] sm:gap-[8px]">
-                {renderPageNumbersForPagination()}
+            {/* coupon */}
+            <span
+                className="py-1 md:py-2 font-semibold px-3 md:px-4 rounded-md absolute right-4 md:right-6 z-20 top-4 md:top-6 bg-[#EFD33D]">29% OFF</span>
+
+            {/* offer details */}
+            <div className="w-full md:w-[45%] z-30">
+                <p className="text-[1rem] font-[300] text-[#EBC80C]">Summer Sales</p>
+                <h4 className="text-[1.5rem] mt-2 font-medium text-white">New Google Pixel 6 Pro</h4>
+
+                <button
+                    className="py-2 px-5 text-white font-medium mt-5 group hover:bg-[#ed6104] transition-all duration-300 text-[1rem] flex items-center gap-[10px] bg-[#FA8232] rounded-md">
+                    Shop Now
+                    <HiArrowRight
+                        className="text-[1.3rem] group-hover:ml-1 transition-all duration-300"/>
+                </button>
             </div>
-            <button
-                onClick={handleNextPagination}
-                disabled={currentPagePagination === totalPageNumber}
-                className={`px-4 py-2 bg-gray-200 text-gray-800 rounded-lg font-medium transition-colors duration-300 ${
-                    currentPagePagination === totalPageNumber
-                        ? "bg-gray-200 !text-gray-400 cursor-not-allowed"
-                        : ""
-                }`}
-            >
-                Next
-            </button>
+
+            {/* product image */}
+            <img alt="product/image" src="https://i.ibb.co.com/WWTSSbm/image-5-1.png"
+                 className="w-[130px] md:w-[220px] absolute right-0 bottom-0"/>
 
         </div>
     );
 };
 
-export default SmartPagination;
-
-// page button
-const PageButton = ({ pageNumber, isActive, onClick }) => (
-    <button
-        onClick={() => onClick(pageNumber)}
-        className={`px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
-            isActive
-                ? "bg-blue-600 text-white shadow-lg"
-                : "bg-gray-100 text-gray-600 hover:bg-blue-500 hover:text-white"
-        }`}
-    >
-        {pageNumber}
-    </button>
-);
+export default AdsCard;
