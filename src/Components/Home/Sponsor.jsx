@@ -10,7 +10,7 @@ const Sponsor = () => {
                         Become A <br/>
                         Sponsor
                     </h1>
-                    <FaHeart className='text-[3rem] text-red-500'/>
+                    <FaHeart className='heart-beat-animation text-[3rem] text-red-500'/>
                 </div>
 
                     <a className='py-[11px] px-[40px] bg-white text-[#0FABCA] text-center rounded-md text-[1.4rem] font-[600]' href='mailto:zenuilibrary@gmail.com'>Be Our Sponsor</a>
