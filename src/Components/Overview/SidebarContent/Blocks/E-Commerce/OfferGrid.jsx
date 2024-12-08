@@ -84,7 +84,7 @@ const OfferGrid = () => {
                     {wrongRoute1Preview && (
                         <div className={`p-8  flex flex-wrap items-center gap-5 justify-center overflow-hidden`}>
 
-                            <div className='grid grid-cols-2 gap-[15px] w-[80%] min-h-[550px]'>
+                            <div className='grid grid-cols-1 1024px:grid-cols-2 gap-[15px] w-full 640px:w-[80%] min-h-[550px]'>
 
                                 <div
                                     className='col-span-1 overflow-hidden flex justify-between flex-col rounded-sm row-span-2 bg-[#f2f4f6] h-full py-8'>
@@ -178,12 +178,12 @@ const OfferGrid = () => {
                     {wrongRoute1Preview && (
                         <div className={`p-8  flex flex-wrap items-center gap-5 justify-center overflow-hidden`}>
 
-                            <div className='grid grid-cols-4 gap-[15px] w-[80%] min-h-[400px]'>
+                            <div className='grid grid-cols-1 1024px:grid-cols-4 gap-[15px] w-full 640px:w-[80%] min-h-[400px]'>
 
                                 <div
-                                    className='col-span-2 overflow-hidden flex justify-between flex-col rounded-sm row-span-2 bg-black h-full py-8 relative'>
+                                    className='col-span-1 1024px:col-span-2 overflow-hidden flex justify-between flex-col rounded-sm row-span-1 1024px:row-span-2 h-[170px] bg-black 1024px:h-full py-8 relative'>
 
-                                    <div className='px-8 absolute bottom-8 z-20 w-[70%]'>
+                                    <div className='px-8 absolute bottom-8 z-20 w-full 1024px:w-[70%]'>
                                         <h4 className='text-[1.1rem] font-medium text-white'>PlayStation 5</h4>
                                         <p className='text-[0.8rem] mt-3 text-[#FAFAFA] font-[300]'>Black and White version of the PS5 coming out on sale.</p>
                                         <button
@@ -197,9 +197,9 @@ const OfferGrid = () => {
                                 </div>
 
                                 <div
-                                    className='bg-black rounded-sm col-span-2 flex justify-between items-center px-4 overflow-hidden relative min-h-[190px]'>
+                                    className='bg-black rounded-sm col-span-1 1024px:col-span-2 flex justify-between items-center px-4 overflow-hidden relative min-h-[190px]'>
 
-                                    <div className='absolute bottom-6 left-6 z-20 w-[50%]'>
+                                    <div className='absolute bottom-6 left-6 z-20 w-[70%] 1024px:w-[50%]'>
                                         <h4 className='text-[1.1rem] font-medium text-white'>Women’s Collections</h4>
                                         <p className='text-[0.8rem] mt-3 text-[#FAFAFA] font-[300]'>Featured woman collections that give you another vibe.</p>
                                         <button
@@ -293,13 +293,13 @@ const OfferGrid = () => {
                     {wrongRoute1Preview && (
                         <div className={`p-8  flex flex-wrap items-center gap-5 justify-center overflow-hidden`}>
 
-                            <div className="grid grid-cols-4 w-full h-[450px]">
+                            <div className="grid grid-cols-1 1024px:grid-cols-4 w-full 1024px:h-[450px]">
 
                                 <div
-                                    className='col-span-2 overflow-hidden flex justify-between flex-col rounded-sm row-span-2 bg-white h-full py-8 relative'>
+                                    className='col-span-1 1024px:col-span-2 overflow-hidden flex justify-between flex-col rounded-sm row-span-1 1024px:row-span-2 bg-white h-[180px] 1024px:h-full py-8 relative'>
 
-                                    <div className='px-8 absolute top-[50%] translate-y-[-50%] right-7 z-20 w-[60%]'>
-                                        <h4 className='text-[1.5rem] font-medium text-gray-900'>PlayStation 5</h4>
+                                    <div className='px-8 absolute top-[50%] translate-y-[-50%] 1024px:right-7 z-20 w-full 1024px:w-[60%]'>
+                                        <h4 className='text-[1.5rem] font-medium text-white 1024px:text-gray-900'>PlayStation 5</h4>
                                         <p className='text-[0.8rem] mt-1 text-[#909090] font-[300]'>Incredibly powerful CPUs, GPUs, and an SSD with integrated I/O will redefine your PlayStation experience.</p>
                                     </div>
 
@@ -309,9 +309,9 @@ const OfferGrid = () => {
                                 </div>
 
                                 <div
-                                    className='bg-[#EDEDED] rounded-sm col-span-2 flex justify-between items-center px-4 overflow-hidden h-full row-span-3 relative'>
+                                    className='bg-[#EDEDED] rounded-sm col-span-1 1024px:col-span-2 flex justify-between items-center px-4 overflow-hidden h-full row-span-3 relative'>
 
-                                    <div className='pl-5 w-[60%]'>
+                                    <div className='p-4 1024px:pl-5 z-30 w-full 1024px:w-[60%]'>
                                         <h4 className='text-[2rem] font-[300] text-gray-900'>Macbook <b className='text-gray-900 font-semibold'>Air</b></h4>
                                         <p className='text-[0.8rem] mt-1 text-[#909090] font-[300]'>The new 15‑inch MacBook Air makes room for more of what you love with a spacious Liquid Retina display.</p>
                                         <button
@@ -322,14 +322,14 @@ const OfferGrid = () => {
 
                                     <img alt='product/image'
                                          src='https://i.ibb.co.com/JKqHn1w/Mac-Book-Pro-14.png'
-                                         className='w-[180px] absolute top-[50%] transform translate-y-[-50%] right-0'/>
+                                         className='w-[100px] 1024px:w-[180px] absolute top-[50%] transform translate-y-[-50%] right-0'/>
 
                                 </div>
 
                                 <div
                                     className='overflow-hidden flex justify-between flex-col rounded-sm bg-[#EDEDED] py-8 relative min-h-[140px]'>
 
-                                    <div className='absolute top-[50%] transform translate-y-[-50%] right-6 z-20 w-[50%]'>
+                                    <div className='absolute top-[50%] transform translate-y-[-50%] right-6 z-200 w-[70%] 1024px:w-[50%] z-30'>
                                         <h4 className='text-[1.3rem] font-[300] text-gray-900'>Apple <br/>
                                             AirPods <b className='font-semibold'>Max</b></h4>
                                         <p className='text-[0.8rem] mt-1 text-[#909090] font-[300]'>Computational audio. Listen, it's powerful</p>
@@ -343,7 +343,7 @@ const OfferGrid = () => {
                                 <div
                                     className='overflow-hidden flex justify-between flex-col rounded-sm bg-[#353535] py-8 relative min-h-[140px] h-full'>
 
-                                    <div className='absolute top-[50%] translate-y-[-50%] right-6 z-20 w-[50%]'>
+                                    <div className='absolute top-[50%] translate-y-[-50%] right-6 z-20 w-[70%] 1024px:w-[50%]'>
                                         <h4 className='text-[1.1rem] font-[300] text-white'>Apple <br/>
                                             Vision <b className='font-semibold'>Pro</b></h4>
                                         <p className='text-[0.8rem] mt-1 text-[#909090] font-[300]'>An immersive way to experience entertainment</p>
@@ -397,14 +397,14 @@ const OfferGrid = () => {
                     {wrongRoute1Preview && (
                         <div className={`p-8  flex flex-wrap items-center gap-5 justify-center overflow-hidden`}>
 
-                            <div className='grid grid-cols-2 rounded-md'>
+                            <div className='grid grid-cols-1 1024px:grid-cols-2 rounded-md'>
 
                                 <img alt='product/image' src='https://i.ibb.co.com/wpZ3Vhc/Paste-image.png'
-                                     className='w-full h-full rounded-l-md'/>
+                                     className='w-full h-full rounded-t-md 1024px:rounded-l-md'/>
 
-                                <div className='bg-[#ffd37c] rounded-r-md p-12'>
+                                <div className='bg-[#ffd37c] rounded-b-md 1024px:rounded-r-md p-5 1024px:p-12'>
                                     <span className='text-[0.9rem] font-semibold text-blue-600'>PROMOTION</span>
-                                    <h4 className='text-[1.8rem] font-medium mt-2'>Hurry up! 40% OFF</h4>
+                                    <h4 className='text-[1.5rem] 1024px:text-[1.8rem] font-medium mt-2'>Hurry up! 40% OFF</h4>
                                     <p className='text-[0.9rem] font-normal text-gray-900 mt-2'>Thousands of high tech
                                         are waiting for you</p>
 
@@ -412,19 +412,19 @@ const OfferGrid = () => {
                                         <p className='text-[0.9rem] font-normal text-gray-900'>Offer expires in:</p>
                                         <div className='flex items-center gap-[10px] mt-2'>
                                             <div className='flex items-center justify-center flex-col'>
-                                                <h5 className='py-2 px-3 bg-white rounded-sm text-[1.3rem] font-semibold'>{formatNumber(timeLeft.days)}</h5>
+                                                <h5 className='py-1.5 1024px:py-2 px-2.5 1024px:px-3 bg-white rounded-sm text-[1.3rem] font-semibold'>{formatNumber(timeLeft.days)}</h5>
                                                 <span className='text-[0.7rem]'>Days</span>
                                             </div>
                                             <div className='flex items-center justify-center flex-col'>
-                                                <h5 className='py-2 px-3 bg-white rounded-sm text-[1.3rem] font-semibold'>{formatNumber(timeLeft.hours)}</h5>
+                                                <h5 className='py-1.5 1024px:py-2 px-2.5 1024px:px-3 bg-white rounded-sm text-[1.3rem] font-semibold'>{formatNumber(timeLeft.hours)}</h5>
                                                 <span className='text-[0.7rem]'>Hours</span>
                                             </div>
                                             <div className='flex items-center justify-center flex-col'>
-                                                <h5 className='py-2 px-3 bg-white rounded-sm text-[1.3rem] font-semibold'>{formatNumber(timeLeft.minutes)}</h5>
+                                                <h5 className='py-1.5 1024px:py-2 px-2.5 1024px:px-3 bg-white rounded-sm text-[1.3rem] font-semibold'>{formatNumber(timeLeft.minutes)}</h5>
                                                 <span className='text-[0.7rem]'>Minutes</span>
                                             </div>
                                             <div className='flex items-center justify-center flex-col'>
-                                                <h5 className='py-2 px-3 bg-white rounded-sm text-[1.3rem] font-semibold'>{formatNumber(timeLeft.seconds)}</h5>
+                                                <h5 className='py-1.5 1024px:py-2 px-2.5 1024px:px-3 bg-white rounded-sm text-[1.3rem] font-semibold'>{formatNumber(timeLeft.seconds)}</h5>
                                                 <span className='text-[0.7rem]'>Seconds</span>
                                             </div>
                                         </div>
@@ -476,15 +476,15 @@ const OfferGrid = () => {
                     {wrongRoute1Preview && (
                         <div className={`p-8  flex flex-wrap items-center gap-5 justify-center overflow-hidden`}>
 
-                            <div className='flex justify-between items-center w-full py-4 px-8 rounded-md bg-[#FFE7D6]'>
+                            <div className='flex flex-col 1024px:flex-row justify-between items-center w-full 1024px:py-4 py-6 px-6 1024px:px-8 gap-[20px] 1024px:gap-0 rounded-md bg-[#FFE7D6]'>
 
-                                <div className='w-[30%] pl-6'>
+                                <div className='w-full 1024px:w-[30%] 1024px:pl-6'>
 
                                     <span className='bg-[#2DA5F3] rounded-sm py-1.5 px-3 text-[0.8rem] font-normal text-white'>SAVE UP TO $200.00</span>
 
-                                    <h4 className='text-[2rem] mt-2 font-semibold text-gray-800'>Macbook Pro</h4>
+                                    <h4 className='text-[1.7rem] 1024px:text-[2rem] mt-2 font-semibold text-gray-800'>Macbook Pro</h4>
 
-                                    <p className='text-[1rem] mt-3 text-gray-700'>Apple M1 Max Chip. 32GB Unified Memory, 1TB SSD Storage</p>
+                                    <p className='text-[1rem] mt-2 1024px:mt-3 text-gray-700'>Apple M1 Max Chip. 32GB Unified Memory, 1TB SSD Storage</p>
 
                                     <button
                                         className='bg-[#FA8232] flex items-center gap-[10px] py-2 px-4 rounded-sm text-white text-[0.9rem] mt-3 uppercase group'>
@@ -495,7 +495,7 @@ const OfferGrid = () => {
 
                                 <div className='relative'>
 
-                                    <p className='bg-[#FFCEAD] text-gray-900 p-4 rounded-full w-[80px] h-[80px] flex items-center justify-center font-medium border-4 border-white absolute top-3 -left-3'>$1999</p>
+                                    <p className='bg-[#FFCEAD] text-gray-900 p-4 rounded-full w-[80px] h-[80px] flex items-center justify-center font-medium border-4 border-white absolute top-1 1024px:top-3 -left-3'>$1999</p>
 
                                     <img alt='product/image' src='https://i.ibb.co.com/zSm0TRR/Image-6.png'
                                          className='w-[350px] rounded-l-md'/>
