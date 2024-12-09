@@ -34,20 +34,20 @@ const ProductDetailsExample1 = () => {
     const storage = ['128GB', '256GB', '512GB', '1TB']
 
     return (
-        <div className="mx-auto px-8 py-12">
-            <div className="w-full grid grid-cols-2 gap-6">
+        <div className="mx-auto 1024px:px-8 1024px:py-12">
+            <div className="w-full grid grid-cols-1 1024px:grid-cols-2 gap-6">
 
                 {/* Left side - Image gallery */}
-                <div className="flex">
+                <div className="flex flex-col-reverse gap-[15px] 1024px:gap-0 1024px:flex-row">
 
                     {/* Thumbnails */}
                     <div
-                        className="w-[20%] flex flex-col gap-4 max-h-[600px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 pr-2">
+                        className="w-full 1024px:w-[20%] flex flex-row 1024px:flex-col 1024px:gap-4 max-h-[600px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 1024px:pr-2">
                         {images.map((image, index) => (
                             <button
                                 key={index}
                                 onClick={() => setSelectedImage(index)}
-                                className={`relative w-20 h-20 border-2 p-2 rounded-lg overflow-hidden ${
+                                className={`relative w-36 1024px:w-20 h-[70px] 1024px:h-20 border-2 p-1 1024px:p-2 rounded-lg overflow-hidden ${
                                     selectedImage === index ? 'border-[#0FABCA]' : 'border-transparent'
                                 }`}
                             >
@@ -61,11 +61,11 @@ const ProductDetailsExample1 = () => {
                     </div>
 
                     {/* Main image */}
-                    <div className="w-[80%] bg-gray-100 rounded-sm h-[400px] relative flex items-center justify-center">
+                    <div className="w-full 1024px:w-[80%] bg-gray-100 rounded-sm h-[280px] 1024px:h-[400px] relative flex items-center justify-center">
                         <img
                             src={images[selectedImage]}
                             alt="Product main image"
-                            className="object-cover w-[300px] rounded-lg"
+                            className="object-cover w-[200px] 1024px:w-[300px] rounded-lg"
                         />
                     </div>
                 </div>
@@ -73,15 +73,15 @@ const ProductDetailsExample1 = () => {
                 {/* Right side - Product details */}
                 <div className="flex flex-col gap-6">
                     <div>
-                        <h1 className="text-[1.9rem] font-bold text-gray-800">Apple iPhone 14 Pro Max</h1>
-                        <div className="flex items-center gap-2 mt-5">
+                        <h1 className="text-[1.6rem] 1024px:text-[1.9rem] font-bold text-gray-800">Apple iPhone 14 Pro Max</h1>
+                        <div className="flex items-center gap-2 mt-2 1024px:mt-5">
                             <span className="text-3xl font-medium">$1399</span>
                             <span className="text-xl text-gray-500 line-through">$1499</span>
                         </div>
                     </div>
 
                     {/* Color selection */}
-                    <div className='flex items-center gap-[10px]'>
+                    <div className='flex float-start 1024px:items-center flex-col 1024px:flex-row gap-[10px]'>
                         <label className="text-sm font-medium">Select color:</label>
                         <div className="flex gap-3">
                             {colors.map((color) => (
@@ -99,7 +99,7 @@ const ProductDetailsExample1 = () => {
 
                     {/* Storage selection */}
                     <div>
-                        <div className="grid grid-cols-4 gap-3">
+                        <div className="grid grid-cols-2 1024px:grid-cols-4 gap-3">
                             {storage.map((size) => (
                                 <button
                                     key={size}
@@ -117,7 +117,7 @@ const ProductDetailsExample1 = () => {
                     </div>
 
                     {/* Specifications */}
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 1024px:grid-cols-2 gap-4">
                         <div className="flex items-center gap-2 bg-gray-50 p-3 rounded-lg">
                             <FiSmartphone className="w-5 h-5 text-gray-700"/>
                             <div>
@@ -156,7 +156,7 @@ const ProductDetailsExample1 = () => {
                     </p>
 
                     {/* Action buttons */}
-                    <div className="flex gap-4">
+                    <div className="flex flex-col 1024px:flex-row gap-4">
                         <button
                             onClick={() => setIsFavorite(!isFavorite)}
                             className="flex-1 py-3 px-4 rounded-lg border border-gray-200 text-gray-800 hover:bg-gray-50">
@@ -178,7 +178,7 @@ const ProductDetailsExample1 = () => {
                     </div>
 
                     {/* Delivery info */}
-                    <div className="flex justify-between mt-2">
+                    <div className="flex flex-col 1024px:flex-row gap-4 1024px:gap-0 justify-between mt-2">
                         <div className="flex items-center gap-3">
                             <CiDeliveryTruck className="text-[3rem] text-gray-500 p-3 bg-gray-100 rounded-md"/>
                             <div>

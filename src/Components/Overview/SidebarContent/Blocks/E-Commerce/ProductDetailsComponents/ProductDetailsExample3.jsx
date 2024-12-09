@@ -40,8 +40,8 @@ const ProductDetailsExample1 = () => {
     }
 
     return (
-        <div className="p-8">
-            <div className="grid grid-cols-2 gap-12">
+        <div className="1024px:p-8">
+            <div className="grid grid-cols-1 1024px:grid-cols-2 gap-8 1024px:gap-12">
                 {/* Image Section */}
                 <div className="relative">
                     <div className='flex'>
@@ -91,7 +91,7 @@ const ProductDetailsExample1 = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="scrollbar flex w-[87%] gap-2 mt-4 overflow-x-auto">
+                    <div className="scrollbar flex w-full 1024px:w-[87%] gap-2 mt-4 overflow-x-auto">
                         {images.map((img, index) => (
                             <button
                                 key={index}
@@ -110,8 +110,8 @@ const ProductDetailsExample1 = () => {
                     <div className="flex justify-between items-start">
                         <div className='w-full'>
                             <p className="text-gray-400 text-[0.9rem]">John Lewis ANYDAY</p>
-                            <h1 className="text-[1.8rem] text-gray-800 font-semibold mb-3">Long Sleeve Overshirt, Khaki, 6</h1>
-                            <div className="flex items-center justify-between w-full gap-4 mb-4">
+                            <h1 className="text-[1.6rem] 1024px:text-[1.8rem] text-gray-800 font-semibold mb-3">Long Sleeve Overshirt, Khaki, 6</h1>
+                            <div className="flex flex-col 1024px:flex-row 1024px:items-center justify-between w-full gap-1 1024px:gap-4 mb-4">
                                 <div className="flex items-center">
                                     <span className="text-[1.4rem] font-semibold text-gray-800">£28.00</span>
                                     <span className="text-gray-400 text-[1rem] line-through ml-2">£40.00</span>
@@ -165,7 +165,7 @@ const ProductDetailsExample1 = () => {
                                     key={size}
                                     onClick={() => setSelectedSize(size)}
                                     className={
-                                        `px-4 py-2 grow rounded-md border ${selectedSize === size
+                                        `px-4 py-2 max-w-[60px] grow rounded-md border ${selectedSize === size
                                             ? "border-[#0FABCA] bg-[#0FABCA] text-white"
                                             : "border-gray-200 hover:border-[#0FABCA]"}`}
                                 >
@@ -175,7 +175,7 @@ const ProductDetailsExample1 = () => {
                         </div>
                     </div>
 
-                    <div className="flex gap-4 mt-auto">
+                    <div className="flex flex-col 1024px:flex-row gap-4 mt-auto">
                         <button className="grow py-3 px-6 bg-[#0FABCA] hover:bg-[#0FABCA]/90 rounded-md text-white">
                             Add To Cart
                         </button>

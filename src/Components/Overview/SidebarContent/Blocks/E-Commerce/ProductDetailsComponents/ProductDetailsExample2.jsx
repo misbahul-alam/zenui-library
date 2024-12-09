@@ -62,8 +62,8 @@ const ProductDetailsExample2 = () => {
     const formatNumber = (number) => number.toString().padStart(2, '0');
 
     return (
-        <div className="mx-auto px-8 py-12">
-            <div className="grid grid-cols-2 gap-12">
+        <div className="mx-auto 1024px:px-8 1024px:py-12">
+            <div className="grid grid-cols-1 1024px:grid-cols-2 gap-8 1024px:gap-12">
 
                 {/* Left side - Image gallery */}
                 <div className="space-y-4">
@@ -137,7 +137,7 @@ const ProductDetailsExample2 = () => {
                         <span className="text-sm text-gray-600">11 Reviews</span>
                     </div>
 
-                    <h1 className="text-[1.9rem] text-gray-800 font-semibold">Tray Table</h1>
+                    <h1 className="text-[1.6rem] 1024px:text-[1.9rem] text-gray-800 font-semibold">Tray Table</h1>
 
                     <p className="text-gray-600 text-[0.9rem]">
                         Buy one or buy a few and make every space where you sit more convenient. Light and easy to
