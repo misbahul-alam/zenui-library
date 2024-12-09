@@ -2,6 +2,8 @@ import React from 'react';
 
 const PrivacyPolicy = () => {
 
+    const date = new Date();
+
     return (
         <section className="w-full max-w-[1700px] mx-auto 640px:px-10 px-5 1024px:px-12 pt-[2.5rem] pb-[4rem] mx-auto p-6 min-h-screen relative">
 
@@ -9,7 +11,7 @@ const PrivacyPolicy = () => {
 
             <div className='max-w-[800px] text-gray-800'>
                 <h1 className="text-3xl font-bold mb-4 text-[#0FABCA]">Privacy Policy for Zenui Library</h1>
-                <p className="mb-4 !text-gray-500">Effective Date: January 1, 2025</p>
+                <p className="mb-4 !text-gray-500">Effective Date: January 1, {date.getFullYear()}</p>
 
                 <p className="mb-4 !text-gray-500">
                     Welcome to Zenui Library. Your privacy is important to us. This Privacy Policy outlines how we

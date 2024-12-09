@@ -17,7 +17,7 @@ const TemplatesSlider = () => {
 
     return (
         <div className='max-w-[1650px] mx-auto'>
-            <div data-aos="fade-zoom-in" className='w-full items-center justify-center text-center mb-4 640px:mb-[4rem] 640px:mt-20 mt-12 1024px:mt-24'>
+            <div data-aos="fade-zoom-in" className='w-full items-center justify-center text-center mb-4 640px:mb-[4rem] 640px:mt-20 mt-12 1024px:mt-16'>
 
                 <div className='gradient-border !rounded-md hover:rotate-0 transition-all duration-300 rotate-[10deg]'>
                     <div className='bg-white h-full !rounded-md'>

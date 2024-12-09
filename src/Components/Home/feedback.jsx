@@ -21,7 +21,7 @@ const Feedback = () => {
     return (
         <section className='relative mt-12 max-w-[1700px] mx-auto'>
 
-            <div className='absolute bottom-[-120px] left-[-120px] opacity-40 rotate-[-240deg] w-[550px]'>
+            <div className='absolute top-[-120px] left-[-120px] opacity-40 rotate-[-240deg] w-[550px]'>
                 <img src='https://i.ibb.co/VxXFnSz/abstract-wavy-line-removebg-preview.png' alt='vector'
                      className='animation-bounce'/>
             </div>
@@ -56,6 +56,9 @@ const Feedback = () => {
                     ))}
                 </div>
             </div>
+
+            {/* bottom shadow card */}
+            <div className='w-full h-[100px] 640px:h-[300px] bg-gradient-to-t from-white top-[rgb(255,255,255,0.8)] absolute bottom-8 left-0 right-0'></div>
         </section>
     );
 };
