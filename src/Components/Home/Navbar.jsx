@@ -19,31 +19,15 @@ const Navbar = () => {
     const [isDeveloperKitHover, setIsDeveloperKitHover] = useState(false);
     const [isToolsHover, setIsToolsHover] = useState(false);
     const [eCommerceHover, setECommerceHover] = useState(false)
+    const [isActiveToolsMenu, setIsActiveToolsMenu] = useState(false);
+    const [isActiveEcommcerMenu, setIsActiveEcommcerMenu] = useState(false);
+    const [isActiveDeveloperKitMenu, setIsActiveDeveloperKitMenu] = useState(false);
 
     const [searchPlaceholderText, setSearchPlaceholderText] = useState("search component");
 
     const handleSearchClick = () => {
         setIsSearchOpen(true);
     };
-
-    // light and dark mood
-    const [toggle, setToggle] = useState(
-        JSON.parse(localStorage.getItem("theme"))
-            ? JSON.parse(localStorage.getItem("theme"))
-            : false
-    );
-
-    const element = document.documentElement;
-
-    localStorage.setItem("theme", JSON.stringify(toggle));
-
-    useEffect(() => {
-        if (toggle) {
-            element.classList.add("dark");
-        } else {
-            element.classList.remove("dark");
-        }
-    }, [toggle]);
 
     const getTheRouteName = () => {
         return window.location.pathname
@@ -104,6 +88,49 @@ const Navbar = () => {
         return () => clearInterval(interval);
     }, []);
 
+
+    const handleActiveToolsMenu = () => {
+        setIsActiveToolsMenu(!isActiveToolsMenu)
+        setIsActiveEcommcerMenu(false)
+        setIsActiveDeveloperKitMenu(false)
+    }
+
+    const handleActiveDeveloperKitMenu = () => {
+        setIsActiveDeveloperKitMenu(!isActiveDeveloperKitMenu)
+        setIsActiveToolsMenu(false)
+        setIsActiveEcommcerMenu(false)
+    }
+
+    const handleActiveEcommerceMenu = () => {
+        setIsActiveEcommcerMenu(!isActiveEcommcerMenu)
+        setIsActiveToolsMenu(false)
+        setIsActiveDeveloperKitMenu(false)
+    }
+
+    const handleToolsMouseHover = () => {
+        setIsToolsHover(true)
+        setIsDeveloperKitHover(false)
+        setIsActiveEcommcerMenu(false)
+        setIsActiveDeveloperKitMenu(false)
+        setECommerceHover(false)
+    }
+
+    const handleDeveloperKitMouseHover = () => {
+        setIsToolsHover(false)
+        setIsDeveloperKitHover(true)
+        setIsActiveToolsMenu(false)
+        setIsActiveEcommcerMenu(false)
+        setECommerceHover(false)
+    }
+
+    const handleEcommerceMouseHover = () => {
+        setIsToolsHover(false)
+        setIsDeveloperKitHover(false)
+        setIsActiveToolsMenu(false)
+        setIsActiveDeveloperKitMenu(false)
+        setECommerceHover(true)
+    }
+
     return (
         <>
             <nav
@@ -132,14 +159,15 @@ const Navbar = () => {
                         <ul className={`text-gray-600 flex items-center gap-8 font-[500] capitalize text-[1.2rem]`}>
                             <Link to='/about-us' className='cursor-pointer hover:text-[#0FABCA] transition-all duration-200'>About Us</Link>
                             <li
-                                onMouseEnter={() => setIsToolsHover(true)}
+                                onMouseEnter={handleToolsMouseHover}
                                 onMouseLeave={() => setIsToolsHover(false)}
-                                className='cursor-pointer relative py-[23px] hover:text-[#0FABCA] transition-all duration-200 flex items-center gap-[8px]'
+                                onClick={handleActiveToolsMenu}
+                                className={`${isActiveToolsMenu && 'text-[#0FABCA]'} cursor-pointer relative py-[23px] hover:text-[#0FABCA] transition-all duration-200 flex items-center gap-[8px]`}
                             >
                                 Tools
-                                <IoIosArrowDown className={`${isToolsHover ? 'rotate-[180deg]': 'rotate-0'} transition-all duration-300`}/>
+                                <IoIosArrowDown className={`${(isToolsHover || isActiveToolsMenu) ? 'rotate-[180deg]': 'rotate-0'} transition-all duration-300`}/>
 
-                                {isToolsHover && (
+                                {(isToolsHover || isActiveToolsMenu) && (
                                     <motion.div
                                         initial={{opacity: 0, scale: 0.8}}
                                         animate={{opacity: 1, scale: 1}}
@@ -183,14 +211,15 @@ const Navbar = () => {
                             </li>
 
                             <li
-                                onMouseEnter={() => setIsDeveloperKitHover(true)}
+                                onMouseEnter={handleDeveloperKitMouseHover}
                                 onMouseLeave={() => setIsDeveloperKitHover(false)}
-                                className='cursor-pointer relative py-[23px] hover:text-[#0FABCA] transition-all duration-200 flex items-center gap-[8px]'
+                                onClick={handleActiveDeveloperKitMenu}
+                                className={`${isActiveDeveloperKitMenu && 'text-[#0FABCA]'} cursor-pointer relative py-[23px] hover:text-[#0FABCA] transition-all duration-200 flex items-center gap-[8px]`}
                             >
                                 Components
-                                <IoIosArrowDown className={`${isDeveloperKitHover ? 'rotate-[180deg]': 'rotate-0'} transition-all duration-300`}/>
+                                <IoIosArrowDown className={`${(isDeveloperKitHover || isActiveDeveloperKitMenu) ? 'rotate-[180deg]': 'rotate-0'} transition-all duration-300`}/>
 
-                                {isDeveloperKitHover && (
+                                {(isDeveloperKitHover || isActiveDeveloperKitMenu) && (
                                     <motion.div
                                         initial={{opacity: 0, scale: 0.8}}
                                         animate={{opacity: 1, scale: 1}}
@@ -237,16 +266,17 @@ const Navbar = () => {
                             </li>
 
                             <li
-                                onMouseEnter={() => setECommerceHover(true)}
+                                onMouseEnter={handleEcommerceMouseHover}
                                 onMouseLeave={() => setECommerceHover(false)}
-                                className='cursor-pointer relative py-[23px] hover:text-[#0FABCA] transition-all duration-200 flex items-center gap-[8px]'
+                                onClick={handleActiveEcommerceMenu}
+                                className={`${isActiveEcommcerMenu && 'text-[#0FABCA]'} cursor-pointer relative py-[23px] hover:text-[#0FABCA] transition-all duration-200 flex items-center gap-[8px]`}
                             >
                                 E-Commerce
                                 <NewBadge/>
                                 <div className='w-[8px] h-[8px] bg-green-500 rounded-full absolute top-5 right-6 animate-[ping_1.5s_linear_infinite]'></div>
-                                <IoIosArrowDown className={`${eCommerceHover ? 'rotate-[180deg]': 'rotate-0'} transition-all duration-300`}/>
+                                <IoIosArrowDown className={`${(eCommerceHover|| isActiveEcommcerMenu) ? 'rotate-[180deg]': 'rotate-0'} transition-all duration-300`}/>
 
-                                {eCommerceHover && (
+                                {(eCommerceHover||isActiveEcommcerMenu) && (
                                     <motion.div
                                         initial={{opacity: 0, scale: 0.8}}
                                         animate={{opacity: 1, scale: 1}}

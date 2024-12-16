@@ -3,17 +3,17 @@ import {AiOutlinePlus} from "react-icons/ai";
 
 const CheckoutPageExample2 = () => {
     return (
-        <div className="w-full flex">
+        <div className="w-full flex flex-col gap-8 1024px:gap-0 1024px:flex-row">
 
             {/* Left Column - Order Summary */}
-            <div className='bg-gray-50 rounded-md p-8 flex-1'>
+            <div className='bg-gray-50 rounded-md p-4 1024px:p-8 flex-1'>
 
                 {/* order summery */}
                 <div>
                     <h2 className="text-[1.2rem] text-gray-700 font-semibold mb-6">Your order</h2>
                     <div className="border border-gray-200 rounded-md">
-                        <div className="flex items-center gap-4 p-4">
-                            <div className='border relative border-gray-200 rounded-md bg-white'>
+                        <div className="flex flex-col 1024px:flex-row 1024px:items-center gap-4 p-4">
+                            <div className='border relative border-gray-200 w-max rounded-md bg-white'>
                                 <img src="https://i.ibb.co.com/x6fq6nC/Rectangle-516.png" alt="Nike Air Zoom Pegasus 39"
                                      className="w-20 h-20 object-cover rounded"/>
 
@@ -30,8 +30,8 @@ const CheckoutPageExample2 = () => {
                             </div>
                             <span className="font-medium">$28.00</span>
                         </div>
-                        <div className="flex items-center gap-4 border-t p-4 border-gray-200">
-                            <div className='border relative border-gray-200 rounded-md bg-white'>
+                        <div className="flex flex-col 1024px:flex-row 1024px:items-center gap-4 border-t p-4 border-gray-200">
+                            <div className='border relative border-gray-200 w-max rounded-md bg-white'>
                                 <img src="https://i.ibb.co.com/VJKrBt5/Rectangle-519.png"
                                      alt="Nike React Pegasus Trail 4"
                                      className="w-20 h-20 object-cover rounded"/>
@@ -84,7 +84,7 @@ const CheckoutPageExample2 = () => {
             </div>
 
             {/* Right Column - Checkout Form */}
-            <div className="flex-1 px-8">
+            <div className="flex-1 1024px:px-8">
                 <form className="space-y-6">
                     <div>
                         <label htmlFor="email"
@@ -121,7 +121,7 @@ const CheckoutPageExample2 = () => {
                                 Add new
                             </button>
                         </div>
-                        <div className="flex w-full gap-4">
+                        <div className="flex flex-col 1024px:flex-row w-full gap-4">
                             <label
                                 className="flex-1 flex items-center justify-between gap-2 border-gray-200 border rounded-lg p-4">
                                 <div>
@@ -180,7 +180,7 @@ const CheckoutPageExample2 = () => {
                             <option>South Africa</option>
                         </select>
                     </div>
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 1024px:grid-cols-2 gap-4">
                         <div>
                             <label htmlFor="zipCode" className="text-[1rem] font-medium text-gray-800 mb-1">Zip
                                 code</label>

@@ -1,192 +1,214 @@
-import React, {useState} from "react";
+import React from "react";
 
 // react icons
-import {IoHeart, IoHeartOutline, IoShareSocialOutline, IoStar} from "react-icons/io5";
-import {BiChevronLeft, BiChevronRight} from "react-icons/bi";
+import {AiOutlinePlus} from "react-icons/ai";
 
-const ProductDetailsPage = () => {
-
-    const [currentImageIndex, setCurrentImageIndex] = useState(0)
-    const [isFavorite, setIsFavorite] = useState(false)
-    const [selectedSize, setSelectedSize] = useState("8")
-    const [selectedColor, setSelectedColor] = useState("Royal Brown")
-
-    const images = [
-        "https://i.ibb.co.com/LxyQVtG/image-19.png",
-        "https://i.ibb.co.com/d6RXLM2/image-22.png",
-        "https://i.ibb.co.com/17yKVQm/image-19.png",
-        "https://i.ibb.co.com/NCQFGJr/image-21.png",
-        "https://i.ibb.co.com/2tWVrdD/image-23.png"
-    ]
-
-    const sizes = ["6", "8", "10", "14", "18", "20"]
-    const colors = [
-        { name: "Royal Brown", class: "bg-[#654321]" },
-        { name: "Light Gray", class: "bg-gray-200" },
-        { name: "Steel Blue", class: "bg-[#4682B4]" },
-        { name: "Navy", class: "bg-navy-900" }
-    ]
-
-    const nextImage = () => {
-        setCurrentImageIndex((prev) => (prev + 1) % images.length)
-    }
-
-    const prevImage = () => {
-        setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length)
-    }
-
-    const selectThumbnail = (index) => {
-        setCurrentImageIndex(index)
-    }
-
+const CheckoutPage = () => {
     return (
-        <div className="lg:p-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-                {/* Image Section */}
-                <div className="relative">
-                    <div className="flex">
-                        <div className="flex items-center justify-center w-[90%] bg-gray-100 overflow-hidden rounded-md">
-                            <img
-                                src={images[currentImageIndex]}
-                                alt={`Product view ${currentImageIndex + 1}`}
-                                className="w-[300px] h-[400px] object-cover"
-                            />
+        <div className="w-full flex flex-col gap-8 lg:gap-0 lg:flex-row">
+
+            {/* Left Column - Order Summary */}
+            <div className="bg-gray-50 rounded-md p-4 lg:p-8 flex-1">
+
+                {/* order summery */}
+                <div>
+                    <h2 className="text-[1.2rem] text-gray-700 font-semibold mb-6">Your order</h2>
+                    <div className="border border-gray-200 rounded-md">
+                        <div className="flex flex-col lg:flex-row lg:items-center gap-4 p-4">
+                            <div className="border relative border-gray-200 w-max rounded-md bg-white">
+                                <img src="https://i.ibb.co.com/x6fq6nC/Rectangle-516.png" alt="Nike Air Zoom Pegasus 39"
+                                     className="w-20 h-20 object-cover rounded"/>
+
+                                <span
+                                    className="px-[0.45rem] rounded-full absolute bg-white -top-2 -right-2 z-30 text-[0.9rem] text-gray-800 border border-gray-200 shadow-sm">1</span>
+                            </div>
+                            <div className="flex-1">
+                                <h3 className="font-medium">Nike Air Zoom Pegasus 39</h3>
+                                <div className="flex items-center gap-[30px] mt-2">
+                                    <p className="text-sm text-gray-500">Size: <b className="text-gray-800">XL</b></p>
+                                    <p className="text-sm text-gray-500">Color: <b className="text-gray-800">Blue</b>
+                                    </p>
+                                </div>
+                            </div>
+                            <span className="font-medium">$28.00</span>
                         </div>
-                        <div className="flex flex-col justify-between gap-[15px] ml-[20px]">
+                        <div className="flex flex-col lg:flex-row lg:items-center gap-4 border-t p-4 border-gray-200">
+                            <div className="border relative border-gray-200 w-max rounded-md bg-white">
+                                <img src="https://i.ibb.co.com/VJKrBt5/Rectangle-519.png"
+                                     alt="Nike React Pegasus Trail 4"
+                                     className="w-20 h-20 object-cover rounded"/>
 
-                            <div className="flex flex-col gap-[10px]">
-                                <button className="bg-gray-100 rounded-md w-max text-gray-600 p-2.5 hover:bg-gray-200">
-                                    <IoShareSocialOutline className="w-5 h-5"/>
-                                </button>
-
-                                <button
-                                    className="bg-gray-100 rounded-md w-max text-gray-600 p-2.5 hover:bg-gray-200"
-                                    onClick={() => setIsFavorite(!isFavorite)}
-                                >
-                                    {
-                                        isFavorite ? (
-                                            <IoHeart className="w-5 h-5 text-red-500"/>
-                                        ) : (
-                                            <IoHeartOutline className="w-5 h-5"/>
-                                        )
-                                    }
-                                </button>
+                                <span
+                                    className="px-1.5 rounded-full absolute bg-white -top-2 -right-2 z-30 text-[0.9rem] text-gray-800 border border-gray-200 shadow-sm">3</span>
                             </div>
-
-                            <div className="flex flex-col gap-[10px]">
-                                <button
-                                    onClick={prevImage}
-                                    className="bg-gray-100 rounded-md w-max text-gray-600 p-2 hover:bg-gray-200"
-                                    aria-label="Previous image"
-                                >
-                                    <BiChevronLeft className="w-6 h-6"/>
-                                </button>
-                                <button
-                                    onClick={nextImage}
-                                    className="bg-gray-100 rounded-md w-max text-gray-600 p-2 hover:bg-gray-200"
-                                    aria-label="Next image"
-                                >
-                                    <BiChevronRight className="w-6 h-6"/>
-                                </button>
+                            <div className="flex-1">
+                                <h3 className="font-medium">Nike Air Zoom Pegasus 39</h3>
+                                <div className="flex items-center gap-[30px] mt-2">
+                                    <p className="text-sm text-gray-500">Size: <b className="text-gray-800">XL</b></p>
+                                    <p className="text-sm text-gray-500">Color: <b className="text-gray-800">Blue</b>
+                                    </p>
+                                </div>
                             </div>
+                            <span className="font-medium">$28.00</span>
                         </div>
                     </div>
-                    <div className="scrollbar flex w-full lg:w-[87%] gap-2 mt-4 overflow-x-auto">
-                        {images.map((img, index) => (
+                    <div className="mt-6">
+                        <h3 className="font-medium mb-2 text-[1rem] text-gray-800">Discount Code</h3>
+                        <div className="flex gap-2 relative">
+                            <img alt="discount/png" src="https://i.ibb.co.com/r7rF8xK/ticket-discount.png"
+                                 className="w-[25px] absolute transform top-[50%] translate-y-[-50%] left-2"/>
+                            <input type="text" placeholder="BUYRI"
+                                   className="border w-full border-gray-200 bg-transparent outline-none focus:border-[#0FABCA] rounded pl-10 pr-3 py-2"/>
                             <button
-                                key={index}
-                                onClick={() => selectThumbnail(index)}
-                                className={`flex-shrink-0 bg-gray-100 w-20 transition-all duration-300 h-20 rounded-md overflow-hidden border-2 ${currentImageIndex === index ? "border-[#0FABCA]" : "border-transparent"
-                                }`}
-                            >
-                                <img src={img} alt={`Thumbnail ${index + 1}`} className="w-full h-full object-cover"/>
+                                className="absolute top-[50%] transform translate-y-[-50%] right-5 text-[0.9rem] text-[#0FABCA]">Apply
                             </button>
-                        ))}
+                        </div>
+                    </div>
+                    <div className="mt-8 space-y-2 border-t border-gray-200 pt-6">
+                        <div className="flex justify-between">
+                            <span className="text-[1rem] text-gray-500">Subtotal</span>
+                            <span className="text-[1rem] font-medium text-gray-800">$56.00</span>
+                        </div>
+                        <div className="flex justify-between">
+                            <span className="text-[1rem] text-gray-500">Shipping Cost</span>
+                            <span className="text-[1rem] font-medium text-gray-800">$8.00</span>
+                        </div>
+                        <div className="flex justify-between pb-3">
+                            <span className="text-[1rem] text-gray-500">Discount (10%)</span>
+                            <span className="text-[1rem] font-medium text-gray-800">-$13.00</span>
+                        </div>
+                        <div className="flex justify-between border-t border-gray-200 pt-5 font-medium">
+                            <span>Total</span>
+                            <span className="text-[1rem] font-medium text-gray-800">$51.00</span>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                {/* Product Details Section */}
-                <div className="flex flex-col">
-                    <div className="flex justify-between items-start">
-                        <div className="w-full">
-                            <p className="text-gray-400 text-[0.9rem]">John Lewis ANYDAY</p>
-                            <h1 className="text-[1.6rem] lg:text-[1.8rem] text-gray-800 font-semibold mb-3">Long Sleeve Overshirt, Khaki, 6</h1>
-                            <div className="flex flex-col lg:flex-row lg:items-center justify-between w-full gap-1 lg:gap-4 mb-4">
-                                <div className="flex items-center">
-                                    <span className="text-[1.4rem] font-semibold text-gray-800">£28.00</span>
-                                    <span className="text-gray-400 text-[1rem] line-through ml-2">£40.00</span>
-                                </div>
-                                <div className="flex items-center gap-1">
-                                    <IoStar className="text-yellow-400 text-[1.1rem]"/>
-                                    <span className="text-gray-800 font-semibold">4.5</span>
-                                    <span className="text-gray-500">(1,238 Sold)</span>
-                                </div>
-                            </div>
-                        </div>
+            {/* Right Column - Checkout Form */}
+            <div className="flex-1 lg:px-8">
+                <form className="space-y-6">
+                    <div>
+                        <label htmlFor="email"
+                               className="text-[1rem] font-medium text-gray-800 mb-1">Email</label>
+                        <input type="email" id="email" placeholder="joylawson@gmail.com"
+                               className="w-full border rounded px-3 py-2 border-gray-200 outline-none focus:border-[#0FABCA] mt-0.5"/>
                     </div>
-
-                    <div className="mb-6 border-t-[2px] border-gray-200 border-dashed mt-1 pt-6">
-                        <h2 className="text-gray-700 font-semibold mb-2">Description:</h2>
-                        <p className="text-[0.9rem] text-gray-600">
-                            Boba etiam ut bulla tea est potus electus singulari compositione saporum et textuum, quae in
-                            Taiwan annis 1980 orta sunt. Boba refert ad pitas marnicas tapiocas in fundo potus inventas,
-                            quae typice lacte tea nigro sapiuntur.
-                            <button className="text-blue-600 hover:underline ml-1">See More...</button>
-                        </p>
-                    </div>
-
-                    <div className="mb-8">
-                        <div className="flex justify-between items-center mb-2">
-                            <h2 className="font-medium text-gray-400">Color: <span className="text-gray-700 font-semibold">{selectedColor}</span></h2>
-                        </div>
+                    <div>
+                        <label htmlFor="phone" className="text-[1rem] font-medium text-gray-800 mb-1">Phone
+                            number</label>
                         <div className="flex gap-2">
-                            {colors.map((color) => (
-                                <button
-                                    key={color.name}
-                                    onClick={() => setSelectedColor(color.name)}
-                                    className={` w-20 h-10 rounded-md border-2 transition-all duration-300 ${
-                                        selectedColor === color.name ? "border-[#0FABCA] p-1" : "border-transparent" } `}
-                                    aria-label={`Select ${color.name} color`}
-                                >
-                                    <div className={`w-full h-full rounded-md transition-all duration-300 ${color.class}`}></div>
-                                </button>
-                            ))}
+                            <select
+                                className="border rounded px-3 py-2 border-gray-200 outline-none focus:border-[#0FABCA] mt-0.5 w-[100px]">
+                                <option value="us">🇺🇸 +1</option>
+                                <option value="uk">🇬🇧 +44</option>
+                                <option value="in">🇮🇳 +91</option>
+                                <option value="bd">🇧🇩 +880</option>
+                                <option value="au">🇦🇺 +61</option>
+                                <option value="ca">🇨🇦 +1</option>
+                                <option value="de">🇩🇪 +49</option>
+                                <option value="fr">🇫🇷 +33</option>
+                                <option value="jp">🇯🇵 +81</option>
+                                <option value="za">🇿🇦 +27</option>
+                            </select>
+                            <input type="tel" id="phone" placeholder="(201) 830-8210"
+                                   className="w-full border rounded px-3 py-2 border-gray-200 outline-none focus:border-[#0FABCA] mt-0.5"/>
                         </div>
                     </div>
+                    <div>
+                        <div className="flex items-center justify-between mb-2">
+                            <label className="text-[1rem] font-medium text-gray-800">Payment method</label>
+                            <button type="button" className="text-blue-600 text-right flex text-[0.9rem] items-center gap-[5px]">
+                                <AiOutlinePlus/>
+                                Add new
+                            </button>
+                        </div>
+                        <div className="flex flex-col lg:flex-row w-full gap-4">
+                            <label
+                                className="flex-1 flex items-center justify-between gap-2 border-gray-200 border rounded-lg p-4">
+                                <div>
+                                    <div>
+                                        <input type="radio" name="payment" value="card" className="form-radio"
+                                               defaultChecked/>
+                                        <span> **** 8304</span>
+                                    </div>
 
-                    <div className="mb-10">
-                        <div className="flex justify-between items-center mb-2">
-                            <h2 className="font-medium text-gray-400">Size: <span className="font-semibold text-gray-700">{selectedSize}</span></h2>
-                            <button className="text-gray-600 text-[0.8rem] underline">View Size Chart</button>
-                        </div>
-                        <div className="flex w-full flex-wrap gap-2">
-                            {sizes.map((size) => (
-                                <button
-                                    key={size}
-                                    onClick={() => setSelectedSize(size)}
-                                    className={
-                                        `px-4 py-2 max-w-[60px] grow rounded-md border ${selectedSize === size
-                                            ? "border-[#0FABCA] bg-[#0FABCA] text-white"
-                                            : "border-gray-200 hover:border-[#0FABCA]"}`}
-                                >
-                                    {size}
-                                </button>
-                            ))}
-                        </div>
-                    </div>
+                                    <div className="flex items-center gap-[5px] pl-5 mt-0.5">
+                                        <p className="text-[0.9rem] text-gray-500">Visa •</p>
+                                        <p className="text-[0.9rem] text-gray-500 hover:text-[#0FABCA] cursor-pointer"> Edit</p>
+                                    </div>
+                                </div>
+                                <img src="https://i.ibb.co.com/NFwm4jb/Visa.png" alt="Visa"
+                                     className="w-[50px]"/>
+                            </label>
+                            <label
+                                className="flex-1 flex items-center justify-between border-gray-200 gap-2 border rounded-lg p-4">
+                                <div>
+                                    <div>
+                                        <input type="radio" name="payment" value="paypal" className="form-radio"/>
+                                        <span> **** 8304</span>
+                                    </div>
 
-                    <div className="flex flex-col lg:flex-row gap-4 mt-auto">
-                        <button className="grow py-3 px-6 bg-[#0FABCA] hover:bg-[#0FABCA]/90 rounded-md text-white">
-                            Add To Cart
-                        </button>
-                        <button className="grow py-3 px-6 border border-gray-300 text-gray-600 rounded-md">
-                            Checkout Now
-                        </button>
+                                    <div className="flex items-center gap-[5px] pl-5 mt-0.5">
+                                        <p className="text-[0.9rem] text-gray-500">Paypal •</p>
+                                        <p className="text-[0.9rem] text-gray-500 hover:text-[#0FABCA] cursor-pointer"> Edit</p>
+                                    </div>
+                                </div>
+                                <img src="https://i.ibb.co.com/W3ykxd5/paypal.png" alt="PayPal"
+                                     className="w-[50px]"/>
+                            </label>
+                        </div>
                     </div>
-                </div>
+                    <div>
+                        <label htmlFor="cardHolder" className="text-[1rem] font-medium text-gray-800 mb-1">Card
+                            holder name</label>
+                        <input type="text" id="cardHolder" placeholder="Ex. Jane Cooper"
+                               className="w-full border rounded px-3 py-2 border-gray-200 outline-none focus:border-[#0FABCA] mt-0.5"/>
+                    </div>
+                    <div>
+                        <label htmlFor="billingAddress"
+                               className="text-[1rem] font-medium text-gray-800 mb-1">Billing address</label>
+                        <select id="billingAddress"
+                                className="w-full border rounded px-3 py-2 border-gray-200 outline-none focus:border-[#0FABCA] mt-0.5">
+                            <option>United States</option>
+                            <option>United Kingdom</option>
+                            <option>India</option>
+                            <option>Bangladesh</option>
+                            <option>Australia</option>
+                            <option>Canada</option>
+                            <option>Germany</option>
+                            <option>France</option>
+                            <option>Japan</option>
+                            <option>South Africa</option>
+                        </select>
+                    </div>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                        <div>
+                            <label htmlFor="zipCode" className="text-[1rem] font-medium text-gray-800 mb-1">Zip
+                                code</label>
+                            <input type="text" id="zipCode" placeholder="Ex. 73923"
+                                   className="w-full border rounded px-3 py-2 border-gray-200 outline-none focus:border-[#0FABCA] mt-0.5"/>
+                        </div>
+                        <div>
+                            <label htmlFor="city"
+                                   className="text-[1rem] font-medium text-gray-800 mb-1">City</label>
+                            <input type="text" id="city" placeholder="Ex. New York"
+                                   className="w-full border rounded px-3 py-2 border-gray-200 outline-none focus:border-[#0FABCA] mt-0.5"/>
+                        </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <input type="checkbox" id="sameAsShipping" className="form-checkbox"/>
+                        <label htmlFor="sameAsShipping" className="text-sm text-gray-600">Billing address is
+                            same as shipping</label>
+                    </div>
+                    <button type="submit"
+                            className="w-full bg-[#0FABCA] text-white py-3 rounded-lg hover:bg-[#0FABCA]/90">
+                        Pay $51.00
+                    </button>
+                </form>
             </div>
         </div>
     );
 };
 
-export default ProductDetailsPage;
+export default CheckoutPage;

@@ -630,7 +630,7 @@ export default EmptyPage;
                     }
                 </div>
 
-                <BlocksFooter backUrl='/blocks/404-page' backName='404 page' forwardName='responsive search bar' forwardUrl='/blocks/responsive-search-bar'/>
+                <BlocksFooter backUrl='/blocks/404-page' backName='404 page' forwardName='offer grid' forwardUrl='/blocks/offer-grid'/>
             </div>
 
 

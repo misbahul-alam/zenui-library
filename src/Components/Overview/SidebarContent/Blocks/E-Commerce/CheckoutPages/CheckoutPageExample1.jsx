@@ -22,18 +22,18 @@ const CheckoutPageExample1 = () => {
     const cities = ["Los Angeles", "Toronto", "Mumbai", "Sydney", "London"];
 
     return (
-        <div className="grid gap-8 grid-cols-3 w-full">
+        <div className="grid gap-8 grid-cols-1 1024px:grid-cols-3 w-full">
 
                     {/* Billing and Payment Form */}
-                    <div className="col-span-2 space-y-8 w-full">
+                    <div className="1024px:col-span-2 space-y-8 w-full">
 
                             {/* Billing Information */}
                             <div className='w-full'>
                                 <h2 className="text-[1.5rem] font-medium text-gray-700 mb-6">Billing Information</h2>
 
                                 <div className="grid grid-cols-1 gap-[16px]">
-                                    <div className='flex items-center gap-4'>
-                                        <div className='w-[50%]'>
+                                    <div className='flex flex-col 1024px:flex-row items-center gap-4'>
+                                        <div className='w-full 1024px:w-[50%]'>
                                             <label htmlFor="firstName" className={`${labelStyles}`}>
                                                 First name
                                             </label>
@@ -44,7 +44,7 @@ const CheckoutPageExample1 = () => {
                                                 className={`${inputStyles}`}
                                             />
                                         </div>
-                                        <div className='w-[50%]'>
+                                        <div className='w-full 1024px:w-[50%]'>
                                             <label htmlFor="lastName" className={`${labelStyles}`}>
                                                 Last name
                                             </label>
@@ -79,28 +79,28 @@ const CheckoutPageExample1 = () => {
                                         />
                                     </div>
 
-                                    <div className='flex items-center gap-4 w-full'>
-                                        <div className='w-[50%]'>
+                                    <div className='flex flex-col 1024px:flex-row items-center gap-4 w-full'>
+                                        <div className='w-full 1024px:w-[50%]'>
                                             <label htmlFor="country" className={`${labelStyles}`}>
                                                 Country
                                             </label>
                                             <InputSelect items={countries}/>
                                         </div>
-                                        <div className='w-[50%]'>
+                                        <div className='w-full 1024px:w-[50%]'>
                                             <label htmlFor="state" className={`${labelStyles}`}>
                                                 Region/State
                                             </label>
                                             <InputSelect items={regions}/>
                                         </div>
                                     </div>
-                                    <div className='flex items-center gap-4 w-full'>
-                                        <div className='w-[50%]'>
+                                    <div className='flex flex-col 1024px:flex-row items-center gap-4 w-full'>
+                                        <div className='w-full 1024px:w-[50%]'>
                                             <label htmlFor="city" className={`${labelStyles}`}>
                                                 City
                                             </label>
                                             <InputSelect items={cities}/>
                                         </div>
-                                        <div className='w-[50%]'>
+                                        <div className='w-full 1024px:w-[50%]'>
                                             <label htmlFor="zipCode" className={`${labelStyles}`}>
                                             Zip Code
                                             </label>
@@ -113,8 +113,8 @@ const CheckoutPageExample1 = () => {
                                         </div>
                                     </div>
 
-                                    <div className='flex items-center gap-4 w-full'>
-                                        <div className='w-[50%]'>
+                                    <div className='flex flex-col 1024px:flex-row items-center gap-4 w-full'>
+                                        <div className='w-full 1024px:w-[50%]'>
                                             <label htmlFor="email" className={`${labelStyles}`}>
                                                 Email
                                             </label>
@@ -125,7 +125,7 @@ const CheckoutPageExample1 = () => {
                                                 className={`${inputStyles}`}
                                             />
                                         </div>
-                                        <div className='w-[50%]'>
+                                        <div className='w-full 1024px:w-[50%]'>
                                             <label htmlFor="phone" className={`${labelStyles}`}>
                                                 Phone Number
                                             </label>
@@ -176,7 +176,7 @@ const CheckoutPageExample1 = () => {
                         {/* Payment Options */}
                         <div className='border border-gray-200 rounded-md'>
                             <h2 className="text-[1.2rem] font-medium text-gray-700 border-b border-gray-200 px-5 py-3">Payment Option</h2>
-                            <div className="grid grid-cols-2 gap-4 w-full p-5">
+                            <div className="grid grid-cols-1 1024px:grid-cols-2 gap-4 w-full p-5">
                                 <button
                                     onClick={() => setSelectedPayment('cash')}
                                     className={`flex flex-col items-center justify-center p-4 border rounded-lg ${

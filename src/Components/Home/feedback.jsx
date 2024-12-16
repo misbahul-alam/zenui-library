@@ -58,7 +58,7 @@ const Feedback = () => {
             </div>
 
             {/* bottom shadow card */}
-            <div className='w-full h-[100px] 640px:h-[300px] bg-gradient-to-t from-white top-[rgb(255,255,255,0.8)] absolute bottom-8 left-0 right-0'></div>
+            <div className='w-full h-[100px] 640px:h-[300px] z-10 bg-gradient-to-t from-white top-[rgb(255,255,255,0.8)] absolute bottom-8 left-0 right-0'></div>
         </section>
     );
 };
