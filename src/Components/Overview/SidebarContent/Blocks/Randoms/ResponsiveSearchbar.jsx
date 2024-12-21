@@ -992,7 +992,7 @@ export default ResponsiveSearchbar;
                     }
                 </div>
 
-                <BlocksFooter backUrl='/blocks/empty-page' backName='empty page' forwardName='responsive sidebar' forwardUrl='/blocks/responsive-sidebar'/>
+                <BlocksFooter backUrl='/blocks/checkout-page' backName='checkout page' forwardName='responsive sidebar' forwardUrl='/blocks/responsive-sidebar'/>
             </div>
 
 

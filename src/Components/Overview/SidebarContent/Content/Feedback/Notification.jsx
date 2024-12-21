@@ -666,7 +666,7 @@ export default Notification;
                 <div
                   className={` ${
                     autoClose ? 'translate-y-0' : 'translate-y-[100px]'
-                  } transition-all duration-300  rounded-md bg-white fixed bottom-[20px] right-[20px] z-30 text-text notificationShadow border border-gray-200 flex items-start justify-between px-5 py-4 gap-[10px]`}
+                  } transition-all duration-300  rounded-md bg-white fixed bottom-[20px] right-[20px] z-[20000000000000] text-text notificationShadow border border-gray-200 flex items-start justify-between px-5 py-4 gap-[10px]`}
                 >
                   <div className='flex items-start gap-[10px]'>
                     <MdOutlineDone className='text-green-500 text-[1.3rem] mt-0.5 border border-green-500 rounded-full p-0.5' />
@@ -682,7 +682,7 @@ export default Notification;
                 <div
                   className={` ${
                     closeWithIcon ? 'translate-y-0' : 'translate-y-[100px]'
-                  } transition-all duration-300  rounded-md bg-white fixed bottom-[20px] right-[20px] z-30 text-text notificationShadow border border-gray-200 flex items-start justify-between px-5 py-4 gap-[10px] group`}
+                  } transition-all duration-300  rounded-md bg-white fixed bottom-[20px] right-[20px] z-[20000000000] text-text notificationShadow border border-gray-200 flex items-start justify-between px-5 py-4 gap-[10px] group`}
                 >
                   <div className='flex items-start gap-[10px] pr-[20px]'>
                     <BiError className='text-red-500 text-[1.2rem] mt-0.5' />
@@ -842,7 +842,7 @@ export default Notification;
                 <div
                   className={` ${
                     visible ? 'translate-y-0' : 'translate-y-[100px]'
-                  } transition-all duration-300  rounded-md bg-white fixed bottom-[20px] right-[20px] z-30 text-text notificationShadow flex items-start justify-between px-5 py-4 gap-[10px]`}
+                  } transition-all duration-300 rounded-md bg-white fixed bottom-[20px] right-[20px] z-[2000000000] text-text notificationShadow flex items-start justify-between px-5 py-4 gap-[10px]`}
                 >
                   <div className='flex items-start gap-[10px]'>
                     <MdOutlineDone className='text-green-500 text-[1.3rem] mt-0.5 border border-green-500 rounded-full p-0.5' />

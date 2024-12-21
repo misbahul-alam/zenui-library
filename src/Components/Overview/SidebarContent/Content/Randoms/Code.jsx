@@ -89,8 +89,8 @@ const Code = () => {
           </div>
 
           <OverviewFooter
-            backUrl='/components/timeline'
-            backName='timeline'
+            backUrl='/components/ads-card'
+            backName='ads card'
             forwardName='snippet'
             forwardUrl='/components/snippet'
           />

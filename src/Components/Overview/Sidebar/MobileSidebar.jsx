@@ -36,7 +36,7 @@ const MobileSidebar = ({ startContent, setStartContent }) => {
 
     return (
         <>
-            <div className='w-full 1024px:hidden bg-border mt-[4.9rem] 425px:mt-[4.3rem] py-3 fixed 425px:top-0 top-[-10px] px-6 640px:px-10 z-30'>
+            <div className='w-full 1024px:hidden bg-border mt-[4.9rem] 425px:mt-[4.3rem] py-3 fixed 425px:top-0 top-[-10px] px-6 640px:px-10 640px:pr-7 z-30'>
                 <CiMenuFries className='text-[1.7rem] rotate-[180deg] text-text mobilesidebarIcon' onClick={() => setSidebarOpen(true)} />
             </div>
             <aside className={` ${sidebarOpen ? 'translate-x-0 opacity-100 z-40' : 'translate-x-[-200px] opacity-0 z-[-1]'} py-6 pt-[6rem] px-6 640px:px-10 border-r h-[100vh] border-border flex-col gap-4 overflow-y-scroll fixed top-0 left-0 w-[80%] 640px:w-[320px] bg-secondary z-20 flex mobileSidebar transition-all duration-500`}>
@@ -377,8 +377,6 @@ const MobileSidebar = ({ startContent, setStartContent }) => {
                                 onClick={() => setStartContent(55)}
                             >
                                 Carousel
-
-                                <NewBadge/>
                             </Link>
 
                             {/* navigation */}
@@ -396,7 +394,6 @@ const MobileSidebar = ({ startContent, setStartContent }) => {
                                 onClick={() => setStartContent(22)}
                             >
                                 Pagination
-                                <UpdateBadge/>
                             </Link>
                             <Link
                                 to={"/components/progress-bar"}
@@ -427,8 +424,6 @@ const MobileSidebar = ({ startContent, setStartContent }) => {
                                 onClick={() => setStartContent(210)}
                             >
                                 Timer
-
-                                <NewBadge/>
                             </Link>
                             <Link
                                 to={"/components/breadcrumb"}
@@ -607,8 +602,6 @@ const MobileSidebar = ({ startContent, setStartContent }) => {
                                 onClick={() => setStartContent(140)}
                             >
                                 Pie Chart
-
-                                <NewBadge />
                             </Link>
                             <Link
                                 to={"/components/timeline"}
@@ -619,6 +612,40 @@ const MobileSidebar = ({ startContent, setStartContent }) => {
                             >
                                 timeline
 
+                            </Link>
+
+                            {/* e-commerce */}
+                            <Link
+                                to={""}
+                                className={`sectionHeader tracking-widest font-[500] relative mt-4 uppercase  border-l border-border !text-[0.750rem] `}
+                            >
+                                E-COMMERCE
+                            </Link>
+
+                            <Link
+                                to={"/components/code"}
+                                className={`${
+                                    startContent === 39 &&
+                                    "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
+                                }   border-l border-[#9caebc] flex items-center gap-[10px]`}
+                                onClick={() => setStartContent(39)}
+                            >
+                                Product Card
+
+                                <NewBadge/>
+                            </Link>
+
+                            <Link
+                                to={"/components/code"}
+                                className={`${
+                                    startContent === 39 &&
+                                    "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
+                                }   border-l border-[#9caebc] flex items-center gap-[10px]`}
+                                onClick={() => setStartContent(39)}
+                            >
+                                Ads Card
+
+                                <NewBadge/>
                             </Link>
 
                             {/* Randoms */}
@@ -810,6 +837,55 @@ const MobileSidebar = ({ startContent, setStartContent }) => {
                                 onClick={() => setStartContent(50)}
                             >
                                 Empty Page
+                            </Link>
+
+                            {/* e-commerce blocks */}
+                            <Link
+                                to={""}
+                                className={`sectionHeader tracking-widest font-[500] hover:font-[500] relative mt-4 uppercase  border-l border-border !text-[0.750rem] `}
+                            >
+                                E-COMMERCE
+                            </Link>
+
+                            <Link
+                                to={"/blocks/offer-grid"}
+                                className={`${startContent === 200 &&
+                                "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
+                                }   border-l border-[#9caebc] flex items-center gap-[10px]`}
+                                onClick={() => setStartContent(200)}
+                            >
+                                Offer Grid
+                                <NewBadge/>
+                            </Link>
+                            <Link
+                                to={"/blocks/product-details-page"}
+                                className={`${startContent === 201 &&
+                                "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
+                                }   border-l border-[#9caebc] flex items-center gap-[10px]`}
+                                onClick={() => setStartContent(201)}
+                            >
+                                Product Details Page
+                                <NewBadge/>
+                            </Link>
+                            {/*<Link*/}
+                            {/*    to={"/blocks/product-filter-page"}*/}
+                            {/*    className={`${startContent === 202 &&*/}
+                            {/*    "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"*/}
+                            {/*    }   border-l border-[#9caebc] flex items-center gap-[10px]`}*/}
+                            {/*    onClick={() => setStartContent(202)}*/}
+                            {/*>*/}
+                            {/*    Product Filter Page*/}
+                            {/*    <NewBadge/>*/}
+                            {/*</Link>*/}
+                            <Link
+                                to={"/blocks/checkout-page"}
+                                className={`${startContent === 203 &&
+                                "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
+                                }   border-l border-[#9caebc] flex items-center gap-[10px]`}
+                                onClick={() => setStartContent(203)}
+                            >
+                                Checkout Page
+                                <NewBadge/>
                             </Link>
 
                             {/* Randoms */}

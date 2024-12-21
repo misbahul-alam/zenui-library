@@ -54,6 +54,10 @@ const ImageGalleryPage = React.lazy(() => import("./Pages/Components/Surfaces/Im
 const AccordingPage = React.lazy(() => import("./Pages/Components/Surfaces/AccordingPage"));
 const AppbarPage = React.lazy(() => import("./Pages/Components/Surfaces/AppbarPage"));
 
+// e-commerce
+import ProductCardPage from "./Pages/Components/ECommerce/ProductCardPage.jsx";
+import AdsCardPage from "./Pages/Components/ECommerce/AdsCardPage.jsx";
+
 // randoms
 const CodeSnippetPage = React.lazy(() => import("./Pages/Components/Randoms/CodeSnippetPage"));
 const SnippetPage = React.lazy(() => import("./Pages/Components/Randoms/SnippetPage"));
@@ -93,6 +97,12 @@ const NewsletterSectionPage = React.lazy(() => import("./Pages/Blocks/Forms/News
 const MultipageFormPage = React.lazy(() => import("./Pages/Blocks/Forms/MultipageFormPage.jsx"));
 const ResponsiveSidebarPage = React.lazy(() => import("./Pages/Blocks/Randoms/ResponsiveSidebarPage.jsx"));
 const InputSliderPage = React.lazy(() => import("./Pages/Components/Inputs/InputSliderPage.jsx"));
+
+// e-commerce blocks
+import OfferGridPage from "./Pages/Blocks/E-Commerce/OfferGridPage.jsx";
+import ProductDetailsPage from "./Pages/Blocks/E-Commerce/ProductDetailsPages/Index.jsx";
+import ProductFilterPage from "./Pages/Blocks/E-Commerce/ProductFilterPage.jsx";
+import CheckoutPage from "./Pages/Blocks/E-Commerce/CheckoutPage.jsx";
 
 // layout playground page
 const LayoutPlaygroundPage = React.lazy(() => import("./Pages/LayoutPlaygroundPage.jsx"));
@@ -216,6 +226,10 @@ const App = () => {
                 <Route path="/components/tooltip" element={<TooltipPage/>}/>
                 <Route path="/components/timeline" element={<TimelinePage/>}/>
 
+                {/* e-commerce */}
+                <Route path="/components/product-card" element={<ProductCardPage/>}/>
+                <Route path="/components/ads-card" element={<AdsCardPage/>}/>
+
                 {/* randoms */}
                 <Route path="/components/code" element={<CodeSnippetPage/>}/>
                 <Route path="/components/snippet" element={<SnippetPage/>}/>
@@ -234,6 +248,12 @@ const App = () => {
                 <Route path="/blocks/multi-step-form" element={<MultipageFormPage/>}/>
                 <Route path="/blocks/responsive-sidebar" element={<ResponsiveSidebarPage/>}/>
                 <Route path="/blocks/empty-page" element={<WrongRoutePage/>}/>
+
+                {/* e-commerce blocks */}
+                <Route path="/blocks/offer-grid" element={<OfferGridPage/>}/>
+                <Route path="/blocks/product-details-page" element={<ProductDetailsPage/>}/>
+                <Route path="/blocks/product-filter-page" element={<ProductFilterPage/>}/>
+                <Route path="/blocks/checkout-page" element={<CheckoutPage/>}/>
 
 
                 {/*  icons  */}

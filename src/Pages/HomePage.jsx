@@ -10,17 +10,19 @@ import TemplatesSlider from "../Components/Home/TemplatesSlider.jsx";
 import Sponsor from "../Components/Home/Sponsor.jsx";
 import Faq from "../Components/Home/Faq.jsx";
 import NewsBoard from "../Components/Home/NewsBoard.jsx";
+import ZenUITools from "../Components/Home/ZenUITools.jsx";
 
 
 const HomePage = () => {
 
     return (
         <>
-            <NewsBoard/>
+            {/*<NewsBoard/>*/}
             <Navbar/>
             <div className='overflow-x-hidden'>
                 <MobileNavbar/>
                 <Hero/>
+                <ZenUITools/>
                 <Feedback/>
                 <TemplatesSlider/>
                 <Faq/>

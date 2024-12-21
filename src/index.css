@@ -200,7 +200,7 @@ aside ul a:not(.getStarted a) {
   text-transform: capitalize;
 }
 
-aside ul a:not(.getStarted a):hover {
+aside ul a:not(.getStarted a, .sectionHeader):hover {
   background-color: #e5eaf2;
   font-weight: 500;
   border-left: 1px solid #9caebc;
@@ -423,4 +423,33 @@ input[type="number"] {
 
 .scrollbar::-webkit-scrollbar {
   height: 4px;
+}
+
+@keyframes bounce-custom {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+.animate-bounce-custom {
+  animation: bounce-custom 0.6s ease-in-out 2;
+}
+
+@keyframes beat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.heart-beat-animation {
+  animation: beat 1.2s infinite;
 }

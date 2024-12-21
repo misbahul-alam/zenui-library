@@ -167,13 +167,14 @@ document.removeEventListener('keydown', ${functionName});
 
                 <div className='flex items-center gap-[15px] mt-7'>
                     <button onClick={generateCode}
-                            className='code_generate_btn bg-gradient-to-r from-[#0FABCA] hover:from-[#0FABCA]/80 to-[#CD00F1] hover:to-[#CD00F1]/80 text-white py-2.5 px-6 rounded-md'>
+                            className='code_generate_btn bg-gradient-to-r from-[#0FABCA] hover:from-[#0FABCA]/80 to-[#CD00F1] hover:to-[#CD00F1]/80 flex items-center gap-[6px] text-white py-2.5 px-6 rounded-md'>
+                        <img alt='magic/image' src='https://i.ibb.co.com/GFqqKxr/Sparkling.png' className='w-[25px]'/>
                         {isGenerating ? 'Generating...' : 'Generate Code'}
                     </button>
 
                     <button
-                        onClick={()=> setCheatsheetOpen(true)}
-                        className='flex items-center gap-[8px] text-[1rem] py-2.5 px-4 hover:bg-gray-50 border border-gray-300 rounded-md text-gray-600'>
+                        onClick={() => setCheatsheetOpen(true)}
+                        className='flex items-center gap-[8px] text-[1rem] py-[10.5px] px-4 hover:bg-gray-50 border border-gray-300 rounded-md text-gray-600'>
                         <FiEye/>
                         Valid Shortcut Cheatsheet
                     </button>

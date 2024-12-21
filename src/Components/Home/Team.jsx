@@ -14,7 +14,7 @@ const Team = () => {
                 <div className='flex flex-col items-center justify-center mt-16 640px:mt-24'>
                     <h3 className='text-[1.9rem] mb-3 400px:mb-0 640px:text-[2.4rem] text-center 640px:text-start font-[600] text-gray-800'><span
                         className='text-[#9A04F5]'>Design</span> Contributors</h3>
-                    <p className='w-full 1404px:w-[60%] mx-auto 640px:text-center text-[1rem] text-gray-600'>Our design
+                    <p className='w-full 1404px:w-[60%] mx-auto text-center text-[1rem] text-gray-600'>Our design
                         contributors provide the creative foundation for our components and blocks, helping us innovate
                         and expand ZenUI’s offerings with their unique insights and designs.</p>
                 </div>
@@ -74,7 +74,7 @@ const Team = () => {
                 <div className='flex flex-col items-center justify-center mt-16 640px:mt-24'>
                     <h3 className='text-[1.9rem] mb-3 400px:mb-0 640px:text-[2.4rem] font-[600] text-gray-800'><span
                         className='text-[#9A04F5]'>Dev</span> Contributors</h3>
-                    <p className='w-full 1404px:w-[60%] mx-auto 640px:text-center text-[1rem] text-gray-600'>Our development contributors lay the technical groundwork for ZenUI, bringing our components and blocks to life with their expertise and innovation. Their work is essential to our platform's growth and stability.</p>
+                    <p className='w-full 1404px:w-[60%] mx-auto text-center text-[1rem] text-gray-600'>Our development contributors lay the technical groundwork for ZenUI, bringing our components and blocks to life with their expertise and innovation. Their work is essential to our platform's growth and stability.</p>
                 </div>
 
                 <div className='mt-16 flex flex-wrap gap-[40px] justify-center'>

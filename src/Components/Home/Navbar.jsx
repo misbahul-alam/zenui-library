@@ -9,7 +9,7 @@ import Search from "./Search";
 import {FiGithub} from "react-icons/fi";
 import {RxDiscordLogo} from "react-icons/rx";
 
-import {motion} from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import NewBadge from "../../Shared/NewBadge.jsx";
 
 const Navbar = () => {
@@ -18,29 +18,16 @@ const Navbar = () => {
     const navigate = useNavigate();
     const [isDeveloperKitHover, setIsDeveloperKitHover] = useState(false);
     const [isToolsHover, setIsToolsHover] = useState(false);
+    const [eCommerceHover, setECommerceHover] = useState(false)
+    const [isActiveToolsMenu, setIsActiveToolsMenu] = useState(false);
+    const [isActiveEcommcerMenu, setIsActiveEcommcerMenu] = useState(false);
+    const [isActiveDeveloperKitMenu, setIsActiveDeveloperKitMenu] = useState(false);
+
+    const [searchPlaceholderText, setSearchPlaceholderText] = useState("search component");
 
     const handleSearchClick = () => {
         setIsSearchOpen(true);
     };
-
-    // light and dark mood
-    const [toggle, setToggle] = useState(
-        JSON.parse(localStorage.getItem("theme"))
-            ? JSON.parse(localStorage.getItem("theme"))
-            : false
-    );
-
-    const element = document.documentElement;
-
-    localStorage.setItem("theme", JSON.stringify(toggle));
-
-    useEffect(() => {
-        if (toggle) {
-            element.classList.add("dark");
-        } else {
-            element.classList.remove("dark");
-        }
-    }, [toggle]);
 
     const getTheRouteName = () => {
         return window.location.pathname
@@ -89,6 +76,61 @@ const Navbar = () => {
         };
     }, []);
 
+    useEffect(() => {
+        const placeholderTexts = ["Search components", "Search Blocks", "Explore templates", "Search E-commerce"];
+        let index = 0;
+
+        const interval = setInterval(() => {
+            setSearchPlaceholderText(placeholderTexts[index]);
+            index = (index + 1) % placeholderTexts.length;
+        }, 3000);
+
+        return () => clearInterval(interval);
+    }, []);
+
+
+    const handleActiveToolsMenu = () => {
+        setIsActiveToolsMenu(!isActiveToolsMenu)
+        setIsActiveEcommcerMenu(false)
+        setIsActiveDeveloperKitMenu(false)
+    }
+
+    const handleActiveDeveloperKitMenu = () => {
+        setIsActiveDeveloperKitMenu(!isActiveDeveloperKitMenu)
+        setIsActiveToolsMenu(false)
+        setIsActiveEcommcerMenu(false)
+    }
+
+    const handleActiveEcommerceMenu = () => {
+        setIsActiveEcommcerMenu(!isActiveEcommcerMenu)
+        setIsActiveToolsMenu(false)
+        setIsActiveDeveloperKitMenu(false)
+    }
+
+    const handleToolsMouseHover = () => {
+        setIsToolsHover(true)
+        setIsDeveloperKitHover(false)
+        setIsActiveEcommcerMenu(false)
+        setIsActiveDeveloperKitMenu(false)
+        setECommerceHover(false)
+    }
+
+    const handleDeveloperKitMouseHover = () => {
+        setIsToolsHover(false)
+        setIsDeveloperKitHover(true)
+        setIsActiveToolsMenu(false)
+        setIsActiveEcommcerMenu(false)
+        setECommerceHover(false)
+    }
+
+    const handleEcommerceMouseHover = () => {
+        setIsToolsHover(false)
+        setIsDeveloperKitHover(false)
+        setIsActiveToolsMenu(false)
+        setIsActiveDeveloperKitMenu(false)
+        setECommerceHover(true)
+    }
+
     return (
         <>
             <nav
@@ -105,7 +147,7 @@ const Navbar = () => {
                         <div className='relative mr-6'>
                             <span
                                 className='px-2.5 absolute right-[-40px] text-[#a4a4a8] top-0 py-0.5 bg-[#f0f0f1] rounded-full text-[12px]'>
-                                v2.0
+                                v2.2
                             </span>
                             <img
                                 src="/darklogo.png"
@@ -117,14 +159,15 @@ const Navbar = () => {
                         <ul className={`text-gray-600 flex items-center gap-8 font-[500] capitalize text-[1.2rem]`}>
                             <Link to='/about-us' className='cursor-pointer hover:text-[#0FABCA] transition-all duration-200'>About Us</Link>
                             <li
-                                onMouseEnter={() => setIsToolsHover(true)}
+                                onMouseEnter={handleToolsMouseHover}
                                 onMouseLeave={() => setIsToolsHover(false)}
-                                className='cursor-pointer relative py-[23px] hover:text-[#0FABCA] transition-all duration-200 flex items-center gap-[8px]'
+                                onClick={handleActiveToolsMenu}
+                                className={`${isActiveToolsMenu && 'text-[#0FABCA]'} cursor-pointer relative py-[23px] hover:text-[#0FABCA] transition-all duration-200 flex items-center gap-[8px]`}
                             >
                                 Tools
-                                <IoIosArrowDown className={`${isToolsHover ? 'rotate-[180deg]': 'rotate-0'} transition-all duration-300`}/>
+                                <IoIosArrowDown className={`${(isToolsHover || isActiveToolsMenu) ? 'rotate-[180deg]': 'rotate-0'} transition-all duration-300`}/>
 
-                                {isToolsHover && (
+                                {(isToolsHover || isActiveToolsMenu) && (
                                     <motion.div
                                         initial={{opacity: 0, scale: 0.8}}
                                         animate={{opacity: 1, scale: 1}}
@@ -168,14 +211,15 @@ const Navbar = () => {
                             </li>
 
                             <li
-                                onMouseEnter={() => setIsDeveloperKitHover(true)}
+                                onMouseEnter={handleDeveloperKitMouseHover}
                                 onMouseLeave={() => setIsDeveloperKitHover(false)}
-                                className='cursor-pointer relative py-[23px] hover:text-[#0FABCA] transition-all duration-200 flex items-center gap-[8px]'
+                                onClick={handleActiveDeveloperKitMenu}
+                                className={`${isActiveDeveloperKitMenu && 'text-[#0FABCA]'} cursor-pointer relative py-[23px] hover:text-[#0FABCA] transition-all duration-200 flex items-center gap-[8px]`}
                             >
                                 Components
-                                <IoIosArrowDown className={`${isDeveloperKitHover ? 'rotate-[180deg]': 'rotate-0'} transition-all duration-300`}/>
+                                <IoIosArrowDown className={`${(isDeveloperKitHover || isActiveDeveloperKitMenu) ? 'rotate-[180deg]': 'rotate-0'} transition-all duration-300`}/>
 
-                                {isDeveloperKitHover && (
+                                {(isDeveloperKitHover || isActiveDeveloperKitMenu) && (
                                     <motion.div
                                         initial={{opacity: 0, scale: 0.8}}
                                         animate={{opacity: 1, scale: 1}}
@@ -220,6 +264,70 @@ const Navbar = () => {
                                     </motion.div>
                                 )}
                             </li>
+
+                            <li
+                                onMouseEnter={handleEcommerceMouseHover}
+                                onMouseLeave={() => setECommerceHover(false)}
+                                onClick={handleActiveEcommerceMenu}
+                                className={`${isActiveEcommcerMenu && 'text-[#0FABCA]'} cursor-pointer relative py-[23px] hover:text-[#0FABCA] transition-all duration-200 flex items-center gap-[8px]`}
+                            >
+                                E-Commerce
+                                <NewBadge/>
+                                <div className='w-[8px] h-[8px] bg-green-500 rounded-full absolute top-5 right-6 animate-[ping_1.5s_linear_infinite]'></div>
+                                <IoIosArrowDown className={`${(eCommerceHover|| isActiveEcommcerMenu) ? 'rotate-[180deg]': 'rotate-0'} transition-all duration-300`}/>
+
+                                {(eCommerceHover||isActiveEcommcerMenu) && (
+                                    <motion.div
+                                        initial={{opacity: 0, scale: 0.8}}
+                                        animate={{opacity: 1, scale: 1}}
+                                        exit={{opacity: 0, scale: 0.8}}
+                                        className="absolute top-[68px] left-0 gap-[30px] w-[600px] grid grid-cols-2 bg-white border border-gray-200 shadow-sm rounded-md p-6 mt-2"
+                                        onMouseEnter={() => setECommerceHover(true)}
+                                        onMouseLeave={() => setECommerceHover(false)}
+                                    >
+                                        <div className='flex flex-col text-[1rem]'>
+                                            <Link to='/components/product-card' className='p-[10px] transition-all duration-200 hover:bg-gray-100 rounded-md'>
+                                                <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
+                                                    Product Card
+                                                </p>
+                                                <span className='text-[0.8rem] font-[300] text-gray-500'>Animated modern product cards.</span>
+                                            </Link>
+
+                                            <Link to='/blocks/offer-grid' className='p-[10px] transition-all duration-200 hover:bg-gray-100 rounded-md'>
+                                                <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
+                                                    Offer Grid
+                                                </p>
+                                                <span className='text-[0.8rem] font-[300] text-gray-500'>Grid layout for showing product offers.</span>
+                                            </Link>
+
+                                            <Link to='/blocks/checkout-page' className='p-[10px] transition-all duration-200 hover:bg-gray-100 rounded-md'>
+                                                <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
+                                                    Checkout Page
+                                                </p>
+                                                <span className='text-[0.8rem] font-[300] text-gray-500'>Checkout page with order summery.</span>
+                                            </Link>
+
+                                        </div>
+
+                                        <div className='flex flex-col text-[1rem]'>
+                                            <Link to='/components/ads-card' className='p-[10px] transition-all duration-200 hover:bg-gray-100 rounded-md'>
+                                                <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200 flex items-center gap-[10px]'>
+                                                    Ads Card
+                                                </p>
+                                                <span className='text-[0.8rem] font-[300] text-gray-500'>Modern ads cards.</span>
+                                            </Link>
+
+                                            <Link to='/blocks/product-details-page' className='p-[10px] transition-all duration-200 hover:bg-gray-100 rounded-md'>
+                                                <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
+                                                    Product Details Page
+                                                </p>
+                                                <span className='text-[0.8rem] font-[300] text-gray-500'>Product Details with full functionality.</span>
+                                            </Link>
+
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </li>
                         </ul>
                     </div>
 
@@ -227,21 +335,32 @@ const Navbar = () => {
                         <div className="zenuiSearchInput relative w-full" onClick={handleSearchClick}>
                             <IoIosSearch
                                 className={`text-gray-400 absolute left-3 top-[0.6rem] text-[1.5rem]`}/>
-                            <input
-                                type="search"
-                                name=""
-                                id=""
-                                readOnly={true}
-                                placeholder="Search..."
-                                className={`py-[0.59rem] pl-10 border w-full bg-transparent border-gray-200 rounded-md focus:ring-0 outline-none`}
-                            />
+                            <AnimatePresence>
+                                <motion.p
+                                    key={searchPlaceholderText}
+                                    initial={{opacity: 0, y: -10}}
+                                    animate={{opacity: 1, y: 0}}
+                                    exit={{opacity: 0, y: 10}}
+                                    transition={{duration: 0.5}}
+                                    className='text-[1rem] text-gray-400 absolute top-[10px] left-[40px]'
+                                >
+                                    {searchPlaceholderText}
+                                </motion.p>
+                            </AnimatePresence>
+                                <input
+                                    type="search"
+                                    name=""
+                                    id=""
+                                    readOnly={true}
+                                    className={`py-[0.59rem] pl-10 border w-full bg-transparent border-gray-200 rounded-md focus:ring-0 outline-none`}
+                                />
                             <span
                                 className={`text-gray-500 bg-gray-50 border-gray-200 px-2 py-1 text-[0.8rem] font-[500] rounded-md h-[75%] absolute right-1.5 border top-[0.35rem] flex items-center justify-center`}>
-              Ctrl + S
-            </span>
+                                Ctrl + S
+                            </span>
                         </div>
                         <div className='flex items-center gap-2'>
-                        <a href='https://discord.gg/qbwytm4WUG' target='_blank'>
+                            <a href='https://discord.gg/qbwytm4WUG' target='_blank'>
                                 <RxDiscordLogo
                                     className={`text-[2.7rem] text-gray-400 rounded-md p-[6px] border border-gray-200 cursor-pointer`}/>
                             </a>
