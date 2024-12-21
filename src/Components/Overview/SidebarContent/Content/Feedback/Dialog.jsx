@@ -96,8 +96,9 @@ const Dialog = () => {
 
                   {isDialogOpen && (
                     <div className='bg-[#00000027] z-50 fixed flex items-center justify-center top-0 left-0 w-full h-screen'>
+                      <div className="absolute top-0 left-0 h-full w-full cursor-pointer backdrop-blur-[2px]" onClick={() => setIsDialogOpen(false)}></div>
                       <div
-                        className='w-[300px] h-auto py-3 bg-secondary rounded'
+                        className='w-[300px] h-auto py-3 bg-secondary rounded relative z-10'
                         onClick={handleDialogAction}
                       >
                         <div className='w-full flex items-end justify-end px-3'>
@@ -146,89 +147,90 @@ const Dialog = () => {
             {basicDialogCode && (
               <Showcode
                 code='
-import React,{ useState } from "react";
+                    import React,{ useState } from "react";
 
-// icons
-import { FaPlus } from "react-icons/fa6";
-import { FaUser } from "react-icons/fa";
-import { RxCross1 } from "react-icons/rx";
+                    // icons
+                    import { FaPlus } from "react-icons/fa6";
+                    import { FaUser } from "react-icons/fa";
+                    import { RxCross1 } from "react-icons/rx";
 
-const PopupDialog = () => {
+                    const PopupDialog = () => {
 
-  // handle dialog message
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [dialogValue, setDialogValue] = useState("please select");
+                      // handle dialog message
+                      const [isDialogOpen, setIsDialogOpen] = useState(false);
+                      const [dialogValue, setDialogValue] = useState("please select");
 
-  console.log(dialogValue);
+                      console.log(dialogValue);
 
-  const handleDialogAction = (e) => {
-    let element = e.target;
-    setDialogValue(element.innerText);
-    setIsDialogOpen(false);
-  };
+                      const handleDialogAction = (e) => {
+                        let element = e.target;
+                        setDialogValue(element.innerText);
+                        setIsDialogOpen(false);
+                      };
 
-  return (
-    <div className="flex items-center flex-col gap-5">
-      <p>Selected: {dialogValue}</p>
+                      return (
+                        <div className="flex items-center flex-col gap-5">
+                          <p>Selected: {dialogValue}</p>
 
-      <button
-        className="px-6 py-2 border border-[#3B9DF8] outline-none rounded text-[#3B9DF8]"
-        onClick={() => setIsDialogOpen(true)}>
-        Open Simple Dialog
-      </button>
+                          <button
+                            className="px-6 py-2 border border-[#3B9DF8] outline-none rounded text-[#3B9DF8]"
+                            onClick={() => setIsDialogOpen(true)}>
+                            Open Simple Dialog
+                          </button>
 
-      {isDialogOpen && (
-        <div className="bg-[#00000027] z-50 fixed flex 
-        items-center justify-center top-0 left-0 w-full h-screen">
-          <div
-            className="w-[300px] h-auto py-3 bg-[#ffff] rounded"
-            onClick={handleDialogAction}>
-            <div className="w-full flex items-end justify-end px-3">
-              <RxCross1
-                className="text-[2rem] p-2 bg-[#3d3d3d18] 
-                text-[#222222] rounded-full cursor-pointer"
-                onClick={() => setIsDialogOpen(false)}
-              />
-            </div>
-            <h1 className="text-[1.2rem] text-[#424242] font-[500] px-6 py-3">
-              Set backup account
-            </h1>
-            <h2
-              value="user@gmail.com"
-              className="flex items-center gap-3 text-[1rem] 
-              hover:bg-[#f1f1f1] py-3 px-6 cursor-pointer transition duration-300">
-              <span>
-                <FaUser className="text-[2rem] text-[#1b703f] p-2 rounded-full bg-[#15a7522d]" />
-              </span>
-              user@gmail.com
-            </h2>
-            <h2
-              value="user02@gmail.com "
-              className="flex items-center gap-3 text-[1rem] 
-              hover:bg-[#f1f1f1] py-3 px-6 cursor-pointer transition duration-300">
-              <span>
-                <FaUser className="text-[2rem] text-[#1b703f] p-2 rounded-full bg-[#15a7522d]" />
-              </span>
-              user02@gmail.com
-            </h2>
-            <h2
-              value="add account "
-              className="flex items-center gap-3 text-[1rem] 
-              hover:bg-[#f1f1f1] py-3 px-6 cursor-pointer transition duration-300">
-              <span>
-                <FaPlus className="text-[2rem] text-[#303030] p-2 rounded-full bg-[#3d3d3d2c]" />
-              </span>
-              Add Account
-            </h2>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-};
+                          {isDialogOpen && (
+                            <div className="bg-[#00000027] z-50 fixed flex 
+                            items-center justify-center top-0 left-0 w-full h-screen">
+                            <div className="absolute top-0 left-0 h-full w-full cursor-pointer backdrop-blur-[2px]" onClick={() => setIsDialogOpen(false)}></div>
+                              <div
+                                className="w-[300px] h-auto py-3 bg-[#ffff] rounded  relative z-10"
+                                onClick={handleDialogAction}>
+                                <div className="w-full flex items-end justify-end px-3">
+                                  <RxCross1
+                                    className="text-[2rem] p-2 bg-[#3d3d3d18] 
+                                    text-[#222222] rounded-full cursor-pointer"
+                                    onClick={() => setIsDialogOpen(false)}
+                                  />
+                                </div>
+                                <h1 className="text-[1.2rem] text-[#424242] font-[500] px-6 py-3">
+                                  Set backup account
+                                </h1>
+                                <h2
+                                  value="user@gmail.com"
+                                  className="flex items-center gap-3 text-[1rem] 
+                                  hover:bg-[#f1f1f1] py-3 px-6 cursor-pointer transition duration-300">
+                                  <span>
+                                    <FaUser className="text-[2rem] text-[#1b703f] p-2 rounded-full bg-[#15a7522d]" />
+                                  </span>
+                                  user@gmail.com
+                                </h2>
+                                <h2
+                                  value="user02@gmail.com "
+                                  className="flex items-center gap-3 text-[1rem] 
+                                  hover:bg-[#f1f1f1] py-3 px-6 cursor-pointer transition duration-300">
+                                  <span>
+                                    <FaUser className="text-[2rem] text-[#1b703f] p-2 rounded-full bg-[#15a7522d]" />
+                                  </span>
+                                  user02@gmail.com
+                                </h2>
+                                <h2
+                                  value="add account "
+                                  className="flex items-center gap-3 text-[1rem] 
+                                  hover:bg-[#f1f1f1] py-3 px-6 cursor-pointer transition duration-300">
+                                  <span>
+                                    <FaPlus className="text-[2rem] text-[#303030] p-2 rounded-full bg-[#3d3d3d2c]" />
+                                  </span>
+                                  Add Account
+                                </h2>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    };
 
-export default PopupDialog;
-          '
+                    export default PopupDialog;
+                  '
               />
             )}
           </div>

@@ -418,8 +418,8 @@ export default Timeline;
           <OverviewFooter
             backUrl='/components/tooltip'
             backName='tooltip'
-            forwardName='code'
-            forwardUrl='/components/code'
+            forwardName='product card'
+            forwardUrl='/components/product-card'
           />
         </div>
 

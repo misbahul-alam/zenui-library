@@ -67,6 +67,22 @@ const Pagination = () => {
     setRoundedButtonPaginationPreview(false);
   };
 
+  // smartPagination
+  const [smartPaginationPreview, setSmartPaginationPreview] =
+    useState(true);
+  const [smartPaginationCode, setSmartPaginationCode] =
+    useState(false);
+
+  const handleSmartPaginationPreview = () => {
+    setSmartPaginationPreview(true);
+    setSmartPaginationCode(false);
+  };
+
+  const handleSmartPaginationCode = () => {
+    setSmartPaginationCode(true);
+    setSmartPaginationPreview(false);
+  };
+
   const [paginationNum, setPaginationNum] = useState(0);
   const totalPageNumber = 5;
   const updatePageNumber = (num) => {
@@ -692,7 +708,7 @@ export default pagination;
           <div className="mt-8">
             <ContentHeader
               text={"smarter pagination component"}
-              id={"smarter pagination component"}
+              id={"smarter_pagination_component"}
             />
           </div>
 
@@ -702,55 +718,55 @@ export default pagination;
             and intuitive user experience.
           </p>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8 pb-14">
+          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
             <div className="relative">
               <div
                 className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  animatedPaginationPreview
+                  smartPaginationPreview
                     ? "translate-x-[0px] !w-[100px]"
                     : "translate-x-[106px] rounded-br"
                 }`}
               ></div>
               <button
                 className={`${
-                  animatedPaginationPreview && "text-tabTextColor"
+                  smartPaginationPreview && "text-tabTextColor"
                 } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleAnimatedPaginationPreview}
+                onClick={handleSmartPaginationPreview}
               >
                 Preview
               </button>
               <button
                 className={`${
-                  animatedPaginationCode && "text-tabTextColor"
+                  smartPaginationCode && "text-tabTextColor"
                 } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleAnimatedPaginationCode}
+                onClick={handleSmartPaginationCode}
               >
                 Code
               </button>
             </div>
-            {animatedPaginationPreview && (
-              <div className="flex items-center justify-center flex-col 640px:flex-row 1024px:flex-col 1360px:flex-row mt-8 640px:space-x-4 space-y-4 640px:space-y-0 1024px:space-y-4 1360px:space-y-0 py-7">
+            {smartPaginationPreview && (
+              <div className="flex items-center justify-center flex-col 640px:flex-row 1024px:flex-col 1360px:flex-row mt-8 640px:space-x-4 space-y-4 640px:space-y-0 1024px:space-y-4 1360px:space-y-0 py-7 pb-14">
                
                   <button
                   onClick={handlePreviousPagination4}
                   disabled={currentPagePagination4 === 1}
-                  className={`px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
+                  className={`px-4 py-2 bg-gray-200 text-gray-800 rounded-lg font-medium transition-colors duration-300 ${
                     currentPagePagination4 === 1
-                      ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                      ? "bg-gray-200 !text-gray-400 cursor-not-allowed"
                       : ""
                   }`}
                 >
                   Previous
                 </button>
-                <div className="flex 640px:block 1024px:flex 1404px:block">
+                <div className="flex gap-[5px] 640px:gap-[8px]">
                   {renderPageNumbersForPagination4()}
                 </div>
                 <button
                   onClick={handleNextPagination4}
                   disabled={currentPagePagination4 === FourPaginationTotalPages}
-                  className={`px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
+                  className={`px-4 py-2 bg-gray-200 text-gray-800 rounded-lg font-medium transition-colors duration-300 ${
                     currentPagePagination4 === FourPaginationTotalPages
-                      ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                      ? "bg-gray-200 !text-gray-400 cursor-not-allowed"
                       : ""
                   }`}
                 >
@@ -760,115 +776,137 @@ export default pagination;
               </div>
             )}
 
-            {animatedPaginationCode && (
+            {smartPaginationCode && (
               <Showcode
                 code='
-import { useState } from "react";
+import React, {useState} from "react";
 
-const Pagination = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 50;
+const SmartPagination = () => {
+    const [currentPagePagination, setCurrentPagePagination] = useState(1);
 
-  const handlePrevious = () => {
-    if (currentPage > 1) {
-      setCurrentPage((prev) => prev - 1);
-    }
-  };
+    const totalPageNumber = 50;
 
-  const handleNext = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage((prev) => prev + 1);
-    }
-  };
+    const handlePreviousPagination = () => {
+        if (currentPagePagination > 1) {
+            setCurrentPagePagination((prev) => prev - 1);
+        }
+    };
 
-  const handlePageClick = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
+    const handleNextPagination = () => {
+        if (currentPagePagination < totalPageNumber) {
+            setCurrentPagePagination((prev) => prev + 1);
+        }
+    };
 
-  const renderPageNumbers = () => {
-    const pageNumbers = [];
-    const startPage = Math.max(2, currentPage - 1);
-    const endPage = Math.min(totalPages - 1, currentPage + 1);
+    const handlePageClick = (pageNumber) => {
+        setCurrentPagePagination(pageNumber);
+    };
 
-    pageNumbers.push(
-      <PageButton
-        key={1}
-        pageNumber={1}
-        isActive={currentPage === 1}
-        onClick={handlePageClick}
-      />
-    );
+    const renderPageNumbersForPagination = () => {
+        const pageNumbers = [];
+        const startPage = Math.max(2, currentPagePagination - 1);
+        const endPage = Math.min(
+            totalPageNumber - 1,
+            currentPagePagination + 1
+        );
 
-    if (startPage > 2) {
-      pageNumbers.push(
-        <span key="start-dots" className="dots">
+        pageNumbers.push(
+            <PageButton
+                key={1}
+                pageNumber={1}
+                isActive={currentPagePagination === 1}
+                onClick={handlePageClick}
+            />
+        );
+
+        if (startPage > 2) {
+            pageNumbers.push(
+                <span key="start-dots" className="mx-1 px-2 text-gray-500">
           ...
         </span>
-      );
-    }
+            );
+        }
 
-    for (let i = startPage; i <= endPage; i++) {
-      pageNumbers.push(
-        <PageButton
-          key={i}
-          pageNumber={i}
-          isActive={currentPage === i}
-          onClick={handlePageClick}
-        />
-      );
-    }
+        for (let i = startPage; i <= endPage; i++) {
+            pageNumbers.push(
+                <PageButton
+                    key={i}
+                    pageNumber={i}
+                    isActive={currentPagePagination === i}
+                    onClick={handlePageClick}
+                />
+            );
+        }
 
-    if (endPage < totalPages - 1) {
-      pageNumbers.push(
-        <span key="end-dots" className="dots">
+        if (endPage < totalPageNumber - 1) {
+            pageNumbers.push(
+                <span key="end-dots" className="mx-1 px-2 text-gray-500">
           ...
         </span>
-      );
-    }
+            );
+        }
 
-    pageNumbers.push(
-      <PageButton
-        key={totalPages}
-        pageNumber={totalPages}
-        isActive={currentPage === totalPages}
-        onClick={handlePageClick}
-      />
+        pageNumbers.push(
+            <PageButton
+                key={totalPageNumber}
+                pageNumber={totalPageNumber}
+                isActive={currentPagePagination === totalPageNumber}
+                onClick={handlePageClick}
+            />
+        );
+
+        return pageNumbers;
+    };
+
+    return (
+        <div
+            className="flex items-center justify-center flex-col sm:flex-row mt-8 sm:space-x-4 space-y-4 sm:space-y-0 md:space-y-4 py-7">
+
+            <button
+                onClick={handlePreviousPagination}
+                disabled={currentPagePagination === 1}
+                className={`px-4 py-2 bg-gray-200 text-gray-800 rounded-lg font-medium transition-colors duration-300 ${
+                    currentPagePagination === 1
+                        ? "bg-gray-200 !text-gray-400 cursor-not-allowed"
+                        : ""
+                }`}
+            >
+                Previous
+            </button>
+            <div className="flex gap-[5px] sm:gap-[8px]">
+                {renderPageNumbersForPagination()}
+            </div>
+            <button
+                onClick={handleNextPagination}
+                disabled={currentPagePagination === totalPageNumber}
+                className={`px-4 py-2 bg-gray-200 text-gray-800 rounded-lg font-medium transition-colors duration-300 ${
+                    currentPagePagination === totalPageNumber
+                        ? "bg-gray-200 !text-gray-400 cursor-not-allowed"
+                        : ""
+                }`}
+            >
+                Next
+            </button>
+
+        </div>
     );
-
-    return pageNumbers;
-  };
-
-  return (
-    <div className="flex items-center justify-center mt-8 space-x-4">
-      <button
-        onClick={handlePrevious}
-        disabled={currentPage === 1}
-        className={`button ${currentPage === 1 ? "disabled" : ""}`}
-      >
-        Previous
-      </button>
-      {renderPageNumbers()}
-      <button
-        onClick={handleNext}
-        disabled={currentPage === totalPages}
-        className={`button ${currentPage === totalPages ? "disabled" : ""}`}
-      >
-        Next
-      </button>
-    </div>
-  );
 };
 
-const PageButton = ({ pageNumber, isActive, onClick }) => (
-  <button
-    onClick={() => onClick(pageNumber)}
-    className={`button ${isActive ? "active" : "inactive"}`}
-  >
-    {pageNumber}
-  </button>
-);
+export default SmartPagination;
 
-export default Pagination;
+// page button
+const PageButton = ({ pageNumber, isActive, onClick }) => (
+    <button
+        onClick={() => onClick(pageNumber)}
+        className={`px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
+            isActive
+                ? "bg-blue-600 text-white shadow-lg"
+                : "bg-gray-100 text-gray-600 hover:bg-blue-500 hover:text-white"
+        }`}
+    >
+        {pageNumber}
+    </button>
+);
                     '
               />
             )}
@@ -890,7 +928,7 @@ export default Pagination;
               className={`${
                 activeSection === item.href.slice(1) &&
                 '!text-primary !border-primary'
-              } text-[0.9rem] text-text border-l border-transparent pl-4`}
+              } text-[0.9rem] capitalize transition-all duration-300 text-text border-l border-transparent pl-4`}
             >
               {item.title}
             </a>

@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 
 // react icons
 import {CgTemplate} from "react-icons/cg";
@@ -22,7 +22,6 @@ import CountUp from "react-countup";
 import {FaArrowRightLong} from "react-icons/fa6";
 
 // components
-import AnimatedCard from "../HomePageComponents/AnimatedCard.jsx";
 import SwitchCard from "../HomePageComponents/Switch.jsx";
 import TabCard from "../HomePageComponents/Tab.jsx";
 import SelectCard from "../HomePageComponents/Select.jsx";
@@ -34,6 +33,7 @@ import BadgeCard from "../HomePageComponents/Badge.jsx";
 import AnimatedButtonCard from "../HomePageComponents/AnimatedButton.jsx";
 import ChipCard from "../HomePageComponents/Chip.jsx";
 import StrongPasswordCard from "../HomePageComponents/StrongPasswordCard.jsx";
+import AnimatedProductCard from "../HomePageComponents/AnimatedProductCard.jsx";
 
 const Hero = () => {
 
@@ -49,6 +49,38 @@ const Hero = () => {
     }, []);
 
     const navigate = useNavigate();
+
+    const [isAnimating, setIsAnimating] = useState(true);
+
+    useEffect(() => {
+        const animationCycle = () => {
+            setIsAnimating(true);
+
+            const stopTimeout = setTimeout(() => {
+                setIsAnimating(false);
+            }, 1200);
+
+            const restartTimeout = setTimeout(() => {
+                setIsAnimating(true);
+            }, 2000);
+
+            return () => {
+                clearTimeout(stopTimeout);
+                clearTimeout(restartTimeout);
+            };
+        };
+
+        const cleanupAnimation = animationCycle();
+
+        const interval = setInterval(animationCycle, 4000);
+
+        return () => {
+            clearInterval(interval);
+            if (typeof cleanupAnimation === 'function') {
+                cleanupAnimation();
+            }
+        };
+    }, []);
 
     return (
         <main className="w-full min-h-screen">
@@ -69,10 +101,17 @@ const Hero = () => {
                                 },
                             }}>
 
-                    <a href="https://github.com/Asfak00/zenui-library" target="_blank" className='flex items-center gap-[8px] bg-[#9A04F59E] hover:bg-[#9A04F5D2] transition-all duration-200 w-max py-[5px] px-[12px] text-white rounded-[6px] absolute top-[-10px] z-30 left-0 text-[1rem] cursor-pointer'>
-                      <FaGithub/>
-                       Star us on Github
-                      <FaArrowRightLong/>
+                    <a href="https://github.com/Asfak00/zenui-library" target="_blank" className='flex items-center gap-[10px] bg-[#9A04F59E] hover:bg-[#9A04F5D2] transition-all duration-200 w-max py-[5px] pr-[18px] pl-[12px] text-white rounded-[6px] absolute top-[-10px] z-30 left-0 text-[1rem] cursor-pointer'>
+                      <div className='flex items-center gap-[8px]'>
+                          <FaGithub/>
+                          Star us on Github
+                      </div>
+                        <FaArrowRightLong
+                            className={`
+          ${isAnimating ? 'animate-bounce-custom' : ''}
+          transition-transform duration-300
+        `}
+                        />
                     </a>
 
                     <div
@@ -194,7 +233,7 @@ const Hero = () => {
                     </div>
                     <div
                         className='animation-bounce1 absolute top-[35%] left-[33%] transform translate-y-[-50%] translate-x-[-50%]'>
-                        <AnimatedCard/>
+                        <AnimatedProductCard/>
                     </div>
                     <div
                         className='animation-bounce2 absolute top-[28%] right-[-20px] 1260px:right-12 transform translate-y-[-50%] translate-x-[-50%]'>

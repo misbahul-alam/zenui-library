@@ -1,14 +1,20 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 const TooltipCard = () => {
 
     const [topClicked, setTopClicked] = useState(false);
 
-    document.addEventListener('click', (event) => {
-        if (!event.target.closest('.top_button')) {
-            setTopClicked(false)
+    useEffect(() => {
+        const handleClick = (event) => {
+            if (!event.target.closest('.top_button')) {
+                setTopClicked(false)
+            }
         }
-    })
+        document.addEventListener('click', handleClick)
+        return () => {
+            document.removeEventListener('click', handleClick)
+        }
+    }, [])
 
     return (
         <>

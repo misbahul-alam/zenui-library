@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 // icons
 import {CiMenuFries} from "react-icons/ci";
@@ -9,7 +9,7 @@ import {FiGithub} from "react-icons/fi";
 // react router dom
 import {Link, useNavigate} from "react-router-dom";
 import Search from "./Search";
-import {motion} from "framer-motion";
+import {AnimatePresence, motion} from "framer-motion";
 import NewBadge from "../../Shared/NewBadge.jsx";
 
 const MobileNavbar = () => {
@@ -17,6 +17,9 @@ const MobileNavbar = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [developerKitDropdownOpen, setDeveloperKitDropdownOpen] = useState(false);
     const [toolsDropdownOpen, setToolsDropdownOpen] = useState(false);
+    const [eCommerceDropdownOpen, setECommerceDropdownOpen] = useState(false)
+
+    const [searchPlaceholderText, setSearchPlaceholderText] = useState("search component");
 
     const navigate = useNavigate();
 
@@ -28,15 +31,33 @@ const MobileNavbar = () => {
         return window.location.pathname
     }
 
-    document.addEventListener('click', (event) => {
-        if (!event.target.closest('.zenuiSearchComponent') && !event.target.closest('.zenuiSearchInput')) {
-            setIsSearchOpen(false)
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (!event.target.closest('.zenuiSearchComponent') && !event.target.closest('.zenuiSearchInput')) {
+                setIsSearchOpen(false)
+            }
+    
+            if (!event.target.closest('.mobileSidebar') && !event.target.closest('.mobileSidebarButton')) {
+                setSidebarOpen(false)
+            }
         }
+        document.addEventListener('click', handleClickOutside)
+        return () => {
+            document.removeEventListener('click', handleClickOutside)
+        }
+    }, [])
 
-        if (!event.target.closest('.mobileSidebar') && !event.target.closest('.mobileSidebarButton')) {
-            setSidebarOpen(false)
-        }
-    })
+    useEffect(() => {
+        const placeholderTexts = ["Search components", "Search Blocks", "Explore templates", "Search E-commerce"];
+        let index = 0;
+
+        const interval = setInterval(() => {
+            setSearchPlaceholderText(placeholderTexts[index]);
+            index = (index + 1) % placeholderTexts.length;
+        }, 3000);
+
+        return () => clearInterval(interval);
+    }, []);
 
     return (
         <>
@@ -49,7 +70,7 @@ const MobileNavbar = () => {
                     <div className='relative'>
                         <span
                             className='px-2 absolute right-[-33px] text-[#a4a4a8] top-1 py-[1px] bg-[#f0f0f1] rounded-full text-[10px]'>
-                            v2.0
+                            v2.2
                         </span>
                         <img
                             src="/darklogo.png"
@@ -87,12 +108,25 @@ const MobileNavbar = () => {
                 <div className="zenuiSearchInput mt-[45px] relative w-full" onClick={handleSearchClick}>
                     <IoIosSearch
                         className={`text-gray-400 absolute left-3 top-[0.6rem] text-[1.5rem]`}/>
+
+                    <AnimatePresence>
+                        <motion.p
+                            key={searchPlaceholderText}
+                            initial={{opacity: 0, y: -10}}
+                            animate={{opacity: 1, y: 0}}
+                            exit={{opacity: 0, y: 10}}
+                            transition={{duration: 0.5}}
+                            className='text-[1rem] text-gray-400 absolute top-[10px] left-[40px]'
+                        >
+                            {searchPlaceholderText}
+                        </motion.p>
+                    </AnimatePresence>
+
                     <input
                         type="search"
                         name=""
                         id=""
                         readOnly={true}
-                        placeholder="Search..."
                         className={`py-[0.59rem] pl-10 border w-full bg-transparent border-gray-200 rounded-md focus:ring-0 outline-none`}
                     />
                     <span
@@ -196,6 +230,72 @@ const MobileNavbar = () => {
                                             Resources
                                         </p>
                                         <span className='text-[0.8rem] font-[300] text-gray-500'>Tools and guides for developers.</span>
+                                    </Link>
+
+                                </div>
+                            </motion.div>
+                        )
+                    }
+
+
+                    <li onClick={() => setECommerceDropdownOpen(!eCommerceDropdownOpen)}
+                        className='cursor-pointer relative flex items-center gap-[8px] mt-1.5'>
+                        E-Commerce
+                        <NewBadge/>
+                        <div className='w-[8px] h-[8px] bg-green-500 rounded-full absolute -top-1.5 right-6 animate-[ping_1.5s_linear_infinite]'></div>
+                        <IoIosArrowDown className={`${eCommerceDropdownOpen ? 'rotate-[180deg]': 'rotate-0'} transition-all duration-300`}/>
+                    </li>
+
+                    {
+                        eCommerceDropdownOpen && (
+                            <motion.div
+                                initial={{opacity: 0, y: -20}}
+                                animate={{opacity: 1, y: 0}}
+                                exit={{opacity: 0, y: -20}}
+                                className="grid grid-cols-1 gap-[20px] ml-4"
+                            >
+                                <div className='flex flex-col gap-[20px] text-[1rem]'>
+                                    <Link to='/components/product-card'
+                                          className='!p-0'>
+                                        <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
+                                            Product Card
+                                        </p>
+                                        <span className='text-[0.8rem] font-[300] text-gray-500'>Animated modern product cards.</span>
+                                    </Link>
+
+                                    <Link to='/blocks/offer-grid'
+                                          className='!p-0'>
+                                        <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
+                                            Offer Grid
+                                        </p>
+                                        <span className='text-[0.8rem] font-[300] text-gray-500'>Grid layout for showing product offers.</span>
+                                    </Link>
+
+                                    <Link to='/blocks/checkout-page'
+                                          className='!p-0'>
+                                        <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
+                                            Checkout Page
+                                        </p>
+                                        <span className='text-[0.8rem] font-[300] text-gray-500'>Checkout page with order summery.</span>
+                                    </Link>
+                                </div>
+
+                                <div className='flex flex-col gap-[20px] text-[1rem]'>
+                                    <Link to='/components/ads-card'
+                                          className='!p-0'>
+                                        <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200 flex items-center gap-[10px]'>
+                                            Ads Card
+                                        </p>
+                                        <span
+                                            className='text-[0.8rem] font-[300] text-gray-500'>Modern ads cards.</span>
+                                    </Link>
+
+                                    <Link to='/blocks/product-details-page'
+                                          className='!p-0'>
+                                        <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
+                                            Product Details Page
+                                        </p>
+                                        <span className='text-[0.8rem] font-[300] text-gray-500'>Product Details with full functionality.</span>
                                     </Link>
 
                                 </div>

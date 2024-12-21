@@ -88,13 +88,19 @@ const ResponsiveSearchbar = () => {
 
     }, [inputText]);
 
-    document.addEventListener('click', (event)=> {
-        if(!event.target.closest('.product_search_bar') && !event.target.closest('.product_search_input')){
-            setInputFocus(false)
-            setActionSearch(false)
-            setKeyPressOpen(false)
+    useEffect(() => {
+        const handleClick = (event) => {
+            if (!event.target.closest('.product_search_bar') && !event.target.closest('.product_search_input')) {
+                setInputFocus(false)
+                setActionSearch(false)
+                setKeyPressOpen(false)
+            }
         }
-    })
+        document.addEventListener('click', handleClick)
+        return () => {
+            document.removeEventListener('click', handleClick)
+        }
+    }, [])
 
 
     function truncate(text, maxLength, ellipsis = '...') {
@@ -986,7 +992,7 @@ export default ResponsiveSearchbar;
                     }
                 </div>
 
-                <BlocksFooter backUrl='/blocks/empty-page' backName='empty page' forwardName='responsive sidebar' forwardUrl='/blocks/responsive-sidebar'/>
+                <BlocksFooter backUrl='/blocks/checkout-page' backName='checkout page' forwardName='responsive sidebar' forwardUrl='/blocks/responsive-sidebar'/>
             </div>
 
 

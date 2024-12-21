@@ -49,7 +49,9 @@ export const componentSearchData = [
     },
     {
         title: 'Timer',
-        url: '/components/timer'
+        description: 'A timer lets you set a specific duration, and it counts down based on that duration, notifying you when the time is up.',
+        url: '/components/timer',
+        tags: ['timer', 'count-down', 'timer effect']
     },
     {
         title: 'RGB Border',
@@ -290,6 +292,18 @@ export const componentSearchData = [
         description: 'Chronological event or process visualization',
         url: '/components/timeline',
         tags: ['ui', 'display', 'chronology']
+    },
+    {
+        title: 'Product Card',
+        description: 'E-commerce product cards with animation and basic functionality.',
+        url: '/components/product-card',
+        tags: ['e-commerce', 'product', 'card', 'animation']
+    },
+    {
+        title: 'Ads Card',
+        description: 'Ads cards for showing ads in e-commerce website.',
+        url: '/components/ads-card',
+        tags: ['e-commerce', 'ads', 'card', 'animation']
     }
 ];
 
@@ -359,5 +373,23 @@ export const blocksSearchData = [
         description: 'Flexible side navigation that adapts to screen dimensions',
         url: '/blocks/responsive-sidebar',
         tags: ['navigation', 'layout', 'responsive']
+    },
+    {
+        title: 'Checkout Page',
+        description: 'Checkout page with selected products and payment options.',
+        url: '/blocks/checkout-page',
+        tags: ['e-commerce', 'checkout', 'payment']
+    },
+    {
+        title: 'Product Details Page',
+        description: 'Product details page with functionality and product view carousel.',
+        url: '/blocks/product-details-page',
+        tags: ['e-commerce', 'product details page', 'product', 'details']
+    },
+    {
+        title: 'Offer Grid',
+        description: 'Grid layouts for showing e-commerce product offers.',
+        url: '/blocks/offer-grid',
+        tags: ['e-commerce', 'offer', 'product', 'grid layout']
     }
 ];

@@ -48,7 +48,7 @@ const Hero = () => {
                             offering a comprehensive collection of pre-built UI components, website templates, and more.
                         </p>
 
-                        <p className='mt-3 text-[1rem] text-gray-500'>
+                        <p className='mt-4 text-[1rem] text-gray-500'>
                             Our mission is to empower developers to build beautiful, functional web applications without
                             the hassle of designing from scratch. At ZenUI, we believe that great design and seamless
                             functionality should be accessible to everyone. That's why we've meticulously crafted a
@@ -56,7 +56,7 @@ const Hero = () => {
                             and easy to integrate.
                         </p>
 
-                        <p className='mt-3 text-[1rem] text-gray-500'>
+                        <p className='mt-4 text-[1rem] text-gray-500'>
                             Each component is designed with a focus on user experience, ensuring that your applications
                             look great and perform flawlessly across all devices. Beyond our extensive library of UI
                             components and pre-built website templates, we also provide a rich collection of free icons

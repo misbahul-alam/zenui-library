@@ -18,13 +18,12 @@ const index = ({ startContent, setStartContent }) => {
   const [components, setComponents] = useState(true);
   const [blocks, setBlocks] = useState(true);
   const sidebarRef = useRef(null);
-  // Automatically scrolls the active sidebar element into view when startContent changes
 
   useEffect(() => {
     if (sidebarRef.current) {
       const activeElement = sidebarRef.current.querySelector('.border-primary');
       if (activeElement) {
-        activeElement.scrollIntoView({ 
+        activeElement.scrollIntoView({
           behavior: 'instant',
           block: 'center'
         });
@@ -34,10 +33,10 @@ const index = ({ startContent, setStartContent }) => {
   return (
       <aside
           ref={sidebarRef}
-          className="py-6 px-10 border-r h-[89vh] border-border flex-col gap-4 overflow-y-scroll sticky top-18 left-0 w-[320px] bg-secondary z-20 1024px:flex hidden">
+          className="py-6 px-10 pr-7 border-r h-[89vh] border-border flex-col gap-4 overflow-y-scroll sticky top-18 left-0 w-[320px] bg-secondary z-20 1024px:flex hidden">
 
         {/*  get starts  */}
-        <ul className='getStarted flex flex-col gap-[12px]'>
+        <ul className='getStarted flex flex-col gap-[12px] mb-4'>
 
           <Link onClick={() => setStartContent(0)} to='/docs/overview' className={`${startContent === 0 && '!text-blue-600'} flex items-center group gap-[8px] hover:text-blue-600 text-[0.950rem] font-[500] cursor-pointer capitalize text-gray-600`}>
             <span className={`${startContent === 0 && 'bg-blue-600 border-blue-600'} border p-[6px] rounded-md border-blue-200 group-hover:bg-blue-600 group-hover:border-blue-600 transition-all duration-200`}>
@@ -117,7 +116,7 @@ const index = ({ startContent, setStartContent }) => {
               {/* inputs */}
               <Link
                   to={""}
-                  className={`sectionHeader tracking-widest font-[500] hover:font-[500] relative mt-4 uppercase  border-l border-border !text-[0.750rem] `}
+                  className={`sectionHeader tracking-widest font-[500] relative mt-4 uppercase  border-l border-border !text-[0.750rem] `}
               >
                 FORM
               </Link>
@@ -256,7 +255,7 @@ const index = ({ startContent, setStartContent }) => {
               {/* buttons */}
               <Link
                   to={""}
-                  className={`sectionHeader tracking-widest  font-[500] hover:font-[500] relative mt-4 uppercase  border-l border-border !text-[0.750rem] `}
+                  className={`sectionHeader tracking-widest  font-[500] relative mt-4 uppercase  border-l border-border !text-[0.750rem] `}
               >
                 BUTTONS
               </Link>
@@ -308,7 +307,7 @@ const index = ({ startContent, setStartContent }) => {
               {/* SURFACES */}
               <Link
                   to={""}
-                  className={`sectionHeader tracking-widest font-[500] hover:font-[500] relative mt-4 uppercase border-l border-border !text-[0.750rem] `}
+                  className={`sectionHeader tracking-widest font-[500] relative mt-4 uppercase border-l border-border !text-[0.750rem] `}
               >
                 SURFACES
               </Link>
@@ -395,14 +394,12 @@ const index = ({ startContent, setStartContent }) => {
                   onClick={() => setStartContent(55)}
               >
                 Carousel
-
-                  <NewBadge/>
               </Link>
 
               {/* navigation */}
               <Link
                   to={""}
-                  className={`sectionHeader tracking-widest font-[500] hover:font-[500] relative mt-4 uppercase border-l border-border !text-[0.750rem] `}
+                  className={`sectionHeader tracking-widest font-[500] relative mt-4 uppercase border-l border-border !text-[0.750rem] `}
               >
                 NAVIGATION
               </Link>
@@ -447,8 +444,6 @@ const index = ({ startContent, setStartContent }) => {
                   onClick={() => setStartContent(210)}
               >
                 Timer
-
-                  <NewBadge/>
               </Link>
               <Link
                   to={"/components/breadcrumb"}
@@ -508,7 +503,7 @@ const index = ({ startContent, setStartContent }) => {
               {/* FEEDBACK */}
               <Link
                   to={""}
-                  className={`sectionHeader tracking-widest font-[500] hover:font-[500] relative mt-4 uppercase border-l border-border !text-[0.750rem] `}
+                  className={`sectionHeader tracking-widest font-[500] relative mt-4 uppercase border-l border-border !text-[0.750rem] `}
               >
                 FEEDBACK
               </Link>
@@ -599,7 +594,7 @@ const index = ({ startContent, setStartContent }) => {
               {/* data display */}
               <Link
                   to={""}
-                  className={`sectionHeader tracking-widest font-[500] hover:font-[500] relative mt-4 uppercase  border-l border-border !text-[0.750rem] `}
+                  className={`sectionHeader tracking-widest font-[500] relative mt-4 uppercase  border-l border-border !text-[0.750rem] `}
               >
                 DATA DISPLAY
               </Link>
@@ -643,8 +638,6 @@ const index = ({ startContent, setStartContent }) => {
                 onClick={() => setStartContent(140)}
               >
                 Pie Chart
-
-                <NewBadge/>
               </Link>
               <Link
                   to={"/components/timeline"}
@@ -658,10 +651,44 @@ const index = ({ startContent, setStartContent }) => {
 
               </Link>
 
+                {/* e-commerce */}
+                <Link
+                    to={""}
+                    className={`sectionHeader tracking-widest font-[500] relative mt-4 uppercase  border-l border-border !text-[0.750rem] `}
+                >
+                    E-COMMERCE
+                </Link>
+
+                <Link
+                    to={"/components/product-card"}
+                    className={`${
+                        startContent === 108 &&
+                        "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
+                    }   border-l border-[#9caebc] flex items-center gap-[10px]`}
+                    onClick={() => setStartContent(108)}
+                >
+                    Product Card
+
+                    <NewBadge/>
+                </Link>
+
+                <Link
+                    to={"/components/ads-card"}
+                    className={`${
+                        startContent === 109 &&
+                        "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
+                    }   border-l border-[#9caebc] flex items-center gap-[10px]`}
+                    onClick={() => setStartContent(109)}
+                >
+                    Ads Card
+
+                    <NewBadge/>
+                </Link>
+
               {/* Randoms */}
               <Link
                   to={""}
-                  className={`sectionHeader tracking-widest font-[500] hover:font-[500] relative mt-4 uppercase  border-l border-border !text-[0.750rem] `}
+                  className={`sectionHeader tracking-widest font-[500] relative mt-4 uppercase  border-l border-border !text-[0.750rem] `}
               >
                 RANDOMS
               </Link>
@@ -729,7 +756,7 @@ const index = ({ startContent, setStartContent }) => {
               {/* sections */}
               <Link
                   to={""}
-                  className={`sectionHeader tracking-widest font-[500] hover:font-[500] relative mt-4 uppercase  border-l border-border !text-[0.750rem] `}
+                  className={`sectionHeader tracking-widest font-[500] relative mt-4 uppercase  border-l border-border !text-[0.750rem] `}
               >
                 SECTIONS
               </Link>
@@ -774,21 +801,9 @@ const index = ({ startContent, setStartContent }) => {
               >
                 Responsive Footer
               </Link>
-              {/*<Link*/}
-              {/*    to={"/blocks/testimonial-section"}*/}
-              {/*    className={`${*/}
-              {/*        startContent === 46 &&*/}
-              {/*        "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"*/}
-              {/*    }   border-l border-[#9caebc]`}*/}
-              {/*    onClick={() => setStartContent(46)}*/}
-              {/*>*/}
-              {/*  Testimonial Section*/}
-              {/*</Link>*/}
-
-              {/* Forms */}
               <Link
                   to={""}
-                  className={`sectionHeader tracking-widest font-[500] hover:font-[500] relative mt-4 uppercase  border-l border-border !text-[0.750rem] `}
+                  className={`sectionHeader tracking-widest font-[500] relative mt-4 uppercase  border-l border-border !text-[0.750rem] `}
               >
                 FORM
               </Link>
@@ -837,7 +852,7 @@ const index = ({ startContent, setStartContent }) => {
               {/* empty pages */}
               <Link
                   to={""}
-                  className={`sectionHeader tracking-widest font-[500] hover:font-[500] relative mt-4 uppercase  border-l border-border !text-[0.750rem] `}
+                  className={`sectionHeader tracking-widest font-[500] relative mt-4 uppercase  border-l border-border !text-[0.750rem] `}
               >
                 EMPTY PAGES
               </Link>
@@ -863,10 +878,59 @@ const index = ({ startContent, setStartContent }) => {
                 Empty Page
               </Link>
 
+                {/* e-commerce blocks */}
+                <Link
+                    to={""}
+                    className={`sectionHeader tracking-widest font-[500] hover:font-[500] relative mt-4 uppercase  border-l border-border !text-[0.750rem] `}
+                >
+                    E-COMMERCE
+                </Link>
+
+                <Link
+                    to={"/blocks/offer-grid"}
+                    className={`${startContent === 200 &&
+                    "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
+                    }   border-l border-[#9caebc] flex items-center gap-[10px]`}
+                    onClick={() => setStartContent(200)}
+                >
+                    Offer Grid
+                    <NewBadge/>
+                </Link>
+                <Link
+                    to={"/blocks/product-details-page"}
+                    className={`${startContent === 201 &&
+                    "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
+                    }   border-l border-[#9caebc] flex items-center gap-[10px]`}
+                    onClick={() => setStartContent(201)}
+                >
+                    Product Details Page
+                    <NewBadge/>
+                </Link>
+                {/*<Link*/}
+                {/*    to={"/blocks/product-filter-page"}*/}
+                {/*    className={`${startContent === 202 &&*/}
+                {/*    "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"*/}
+                {/*    }   border-l border-[#9caebc] flex items-center gap-[10px]`}*/}
+                {/*    onClick={() => setStartContent(202)}*/}
+                {/*>*/}
+                {/*    Product Filter Page*/}
+                {/*    <NewBadge/>*/}
+                {/*</Link>*/}
+                <Link
+                    to={"/blocks/checkout-page"}
+                    className={`${startContent === 203 &&
+                    "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
+                    }   border-l border-[#9caebc] flex items-center gap-[10px]`}
+                    onClick={() => setStartContent(203)}
+                >
+                    Checkout Page
+                    <NewBadge/>
+                </Link>
+
               {/* Randoms */}
               <Link
                   to={""}
-                  className={`sectionHeader tracking-widest  font-[500] hover:font-[500] relative mt-4 uppercase  border-l border-border !text-[0.750rem] `}
+                  className={`sectionHeader tracking-widest  font-[500] relative mt-4 uppercase  border-l border-border !text-[0.750rem] `}
               >
                 RANDOM
               </Link>
