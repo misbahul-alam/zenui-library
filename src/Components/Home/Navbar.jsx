@@ -150,6 +150,15 @@ const Navbar = () => {
                                                 </p>
                                                 <span className='text-[0.8rem] font-[300] text-gray-500'>Scalable icons for clear visuals.</span>
                                             </Link>
+                                            <Link to='/ai-generator' className='p-[10px] transition-all duration-200 hover:bg-gray-100 rounded-md'>
+                                                <div className='flex items-center gap-[10px]'>
+                                                    <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
+                                                        AI
+                                                    </p>
+                                                    <NewBadge/>
+                                                </div>
+                                                <span className='text-[0.8rem] font-[300] text-gray-500'>Generate tailwind config file by AI.</span>
+                                            </Link>
                                         </div>
                                     </motion.div>
                                 )}
