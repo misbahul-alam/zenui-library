@@ -24,6 +24,7 @@ Elevate your projects with ZenUI, a free, lightweight, customizable UI component
 - Customizable 500+ Icons
 - 600+ Components
 - color Opacity Palette
+- E-Commerce kits
 - 100+ Programming Resources
 - Extract Color From Uploaded Image (Color Picker)
 - Website Templates
