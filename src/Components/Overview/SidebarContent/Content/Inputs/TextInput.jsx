@@ -171,62 +171,63 @@ const TextInput = () => {
     <>
       <aside className='flex items-start justify-between gap-6 w-full 640px:pl-[2.5rem] px-6 640px:px-10'>
         <div>
-          <ContentHeader text={'required input'} id={'primary_input'} />
+          <ContentHeader text={'required input'} id={'primary_input'}/>
 
           <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
             This is an input text field. Use it to enter your information, which
             will be processed accordingly.
           </p>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  primaryInputPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[105px] rounded-br'
+          <div className='mt-8 ml-0 relative mb-1 backdrop-blur-md bg-border w-max rounded'>
+            <div
+                className={`absolute top-[50%] translate-y-[-50%] transform left-0 w-[50%] h-[85%] z-[1] bg-gray-500 rounded transition-all duration-500 ${
+                    primaryInputPreview
+                        ? 'translate-x-[4px]'
+                        : 'translate-x-[93.9px]'
                 }`}
-              ></div>
-              <button
+            ></div>
+            <button
                 className={`${
-                  primaryInputPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
+                    primaryInputPreview && 'text-white'
+                } px-6 py-3 z-[2] relative text-center transition-all duration-500 text-text`}
                 onClick={handlePrimaryInputPreview}
-              >
-                Preview
-              </button>
-              <button
+            >
+              Preview
+            </button>
+            <button
                 className={`${
-                  primaryInputCode && ' text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
+                    primaryInputCode && ' text-white'
+                } pl-4 pr-8 py-3 z-[2] relative transition-all duration-500 text-text`}
                 onClick={handlePrimaryInputCode}
-              >
-                Code
-              </button>
-            </div>
+            >
+              Code
+            </button>
+          </div>
+
+          <div className='w-full 425px:w-[80%] border border-border rounded'>
             {primaryInputPreview && (
-              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                <div className='w-full 1024px:w-[80%]'>
-                  <label
-                    htmlFor='name'
-                    className='text-[15px] text-text font-[400]'
-                  >
-                    Name <span className='text-red-500'>*</span>
-                  </label>
-                  <input
-                    type='text'
-                    name='name'
-                    id='name'
-                    placeholder='Your name'
-                    className='border-border border rounded-md outline-none px-4 w-full mt-1 py-3 focus:border-primary transition-colors duration-300'
-                  />
+                <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                  <div className='w-full 1024px:w-[80%]'>
+                    <label
+                        htmlFor='name'
+                        className='text-[15px] text-text font-[400]'
+                    >
+                      Name <span className='text-red-500'>*</span>
+                    </label>
+                    <input
+                        type='text'
+                        name='name'
+                        id='name'
+                        placeholder='Your name'
+                        className='border-border border rounded-md outline-none px-4 w-full mt-1 py-3 focus:border-primary transition-colors duration-300'
+                    />
+                  </div>
                 </div>
-              </div>
             )}
 
             {primaryInputCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 const Textarea = () => {
   return (
     <div className="w-[80%]">
@@ -246,14 +247,14 @@ const Textarea = () => {
 
 export default Textarea;
                 '
-              />
+                />
             )}
           </div>
 
           <div className='mt-8'>
             <ContentHeader
-              text={'bottom bordered input'}
-              id={'bottom_bordered_input'}
+                text={'bottom bordered input'}
+                id={'bottom_bordered_input'}
             />
           </div>
 
@@ -265,55 +266,55 @@ export default Textarea;
           <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
             <div className='relative'>
               <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  bottomBorderPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[105px] rounded-br'
-                }`}
+                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
+                      bottomBorderPreview
+                          ? 'translate-x-[0px] !w-[100px]'
+                          : 'translate-x-[105px] rounded-br'
+                  }`}
               ></div>
               <button
-                className={`${
-                  bottomBorderPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b text-text z-[2] relative border-border`}
-                onClick={handleBottomBorderPreview}
+                  className={`${
+                      bottomBorderPreview && 'text-tabTextColor'
+                  } px-6 py-2 border-b text-text z-[2] relative border-border`}
+                  onClick={handleBottomBorderPreview}
               >
                 Preview
               </button>
               <button
-                className={`${
-                  bottomBorderCode && 'text-tabTextColor'
-                } px-6 py-2 border-r border-b text-text relative z-[2] rounded-br border-border`}
-                onClick={handleBottomBorderCode}
+                  className={`${
+                      bottomBorderCode && 'text-tabTextColor'
+                  } px-6 py-2 border-r border-b text-text relative z-[2] rounded-br border-border`}
+                  onClick={handleBottomBorderCode}
               >
                 Code
               </button>
             </div>
             {bottomBorderPreview && (
-              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                <input
-                  type='text'
-                  name='name'
-                  id='name'
-                  placeholder='Your name'
-                  className='border-border border-b outline-none px-4 w-full 1024px:w-[80%] py-3 focus:border-primary transition-colors duration-300'
-                />
-              </div>
+                <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                  <input
+                      type='text'
+                      name='name'
+                      id='name'
+                      placeholder='Your name'
+                      className='border-border border-b outline-none px-4 w-full 1024px:w-[80%] py-3 focus:border-primary transition-colors duration-300'
+                  />
+                </div>
             )}
 
             {bottomBorderCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 <input type="text" name="name" id="name" placeholder="Your name" className="border-[#e5eaf2] border-b outline-none px-4 w-[80%] py-3 focus:border-[#3B9DF8] transition-colors duration-300"
 />
                 '
-              />
+                />
             )}
           </div>
 
           <div className='mt-8'>
             <ContentHeader
-              text={'animate label input'}
-              id={'animate_label_input'}
+                text={'animate label input'}
+                id={'animate_label_input'}
             />
           </div>
 
@@ -325,48 +326,49 @@ export default Textarea;
           <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
             <div className='relative'>
               <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  animateLabelPreiview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[105px] rounded-br'
-                }`}
+                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
+                      animateLabelPreiview
+                          ? 'translate-x-[0px] !w-[100px]'
+                          : 'translate-x-[105px] rounded-br'
+                  }`}
               ></div>
               <button
-                className={`${
-                  animateLabelPreiview && 'text-tabTextColor'
-                } px-6 py-2 border-b text-text z-[2] relative border-border`}
-                onClick={handleAnimateLabelPreview}
+                  className={`${
+                      animateLabelPreiview && 'text-tabTextColor'
+                  } px-6 py-2 border-b text-text z-[2] relative border-border`}
+                  onClick={handleAnimateLabelPreview}
               >
                 Preview
               </button>
               <button
-                className={`${
-                  animateLabelCode && 'text-tabTextColor'
-                } px-6 py-2 border-r border-b rounded-br text-text z-[2] relative border-border`}
-                onClick={handleAnimateLabelCode}
+                  className={`${
+                      animateLabelCode && 'text-tabTextColor'
+                  } px-6 py-2 border-r border-b rounded-br text-text z-[2] relative border-border`}
+                  onClick={handleAnimateLabelCode}
               >
                 Code
               </button>
             </div>
             {animateLabelPreiview && (
-              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                <label className='relative w-full 1024px:w-[80%]'>
-                  <input
-                    type='text'
-                    name='name'
-                    id='name'
-                    className='peer border-border border rounded-md outline-none px-4 py-3 w-full focus:border-primary transition-colors duration-300'
-                  />
-                  <span className=' absolute top-3.5 left-5 peer-focus:-top-3 peer-focus:bg-white peer-focus:left-2 peer-focus:scale-[0.9] peer-focus:text-primary text-[#777777] peer-focus:px-1 transition-all duration-300 '>
+                <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                  <label className='relative w-full 1024px:w-[80%]'>
+                    <input
+                        type='text'
+                        name='name'
+                        id='name'
+                        className='peer border-border border rounded-md outline-none px-4 py-3 w-full focus:border-primary transition-colors duration-300'
+                    />
+                    <span
+                        className=' absolute top-3.5 left-5 peer-focus:-top-3 peer-focus:bg-white peer-focus:left-2 peer-focus:scale-[0.9] peer-focus:text-primary text-[#777777] peer-focus:px-1 transition-all duration-300 '>
                     Your name
                   </span>
-                </label>
-              </div>
+                  </label>
+                </div>
             )}
 
             {animateLabelCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 <label className="relative w-[80%]">
   <input type="text" name="name" id="name" className="peer border-[#e5eaf2] border rounded-md outline-none px-4 py-3 w-full focus:border-[#3B9DF8] transition-colors duration-300"
   />
@@ -375,12 +377,12 @@ export default Textarea;
   </span>
 </label>
                 '
-              />
+                />
             )}
           </div>
 
           <div className='mt-8'>
-            <ContentHeader text={'input with icon'} id={'input_with_icon'} />
+            <ContentHeader text={'input with icon'} id={'input_with_icon'}/>
           </div>
 
           <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
@@ -391,69 +393,69 @@ export default Textarea;
           <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
             <div className='relative'>
               <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  iconInputPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[105px] rounded-br'
-                }`}
+                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
+                      iconInputPreview
+                          ? 'translate-x-[0px] !w-[100px]'
+                          : 'translate-x-[105px] rounded-br'
+                  }`}
               ></div>
               <button
-                className={`${
-                  iconInputPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b text-text z-[2] relative border-border`}
-                onClick={handleIconInputPreview}
+                  className={`${
+                      iconInputPreview && 'text-tabTextColor'
+                  } px-6 py-2 border-b text-text z-[2] relative border-border`}
+                  onClick={handleIconInputPreview}
               >
                 Preview
               </button>
               <button
-                className={`${
-                  iconInputCode && 'text-tabTextColor'
-                } px-6 py-2 border-r border-b rounded-br text-text z-[2] relative border-border`}
-                onClick={handleIconInputCode}
+                  className={`${
+                      iconInputCode && 'text-tabTextColor'
+                  } px-6 py-2 border-r border-b rounded-br text-text z-[2] relative border-border`}
+                  onClick={handleIconInputCode}
               >
                 Code
               </button>
             </div>
             {iconInputPreview && (
-              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                <div className='w-full 1024px:w-[80%] relative'>
-                  <RiAccountCircleLine className=' absolute top-3.5 left-3 text-[1.5rem] text-[#777777]' />
-                  <input
-                    type='text'
-                    name='text'
-                    id='text'
-                    placeholder='Username'
-                    className='peer border-border border rounded-md outline-none pl-10 pr-4 py-3 w-full focus:border-primary transition-colors duration-300'
-                  />
-                </div>
+                <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                  <div className='w-full 1024px:w-[80%] relative'>
+                    <RiAccountCircleLine className=' absolute top-3.5 left-3 text-[1.5rem] text-[#777777]'/>
+                    <input
+                        type='text'
+                        name='text'
+                        id='text'
+                        placeholder='Username'
+                        className='peer border-border border rounded-md outline-none pl-10 pr-4 py-3 w-full focus:border-primary transition-colors duration-300'
+                    />
+                  </div>
 
-                <div className='w-full 1024px:w-[80%] relative'>
-                  <RiLockPasswordLine className=' absolute top-3.5 left-3 text-[1.5rem] text-[#777777]' />
-                  <input
-                    type='password'
-                    name='password'
-                    id='password'
-                    placeholder='Password'
-                    className='peer border-border border rounded-md outline-none pl-10 pr-4 py-3 w-full focus:border-primary transition-colors duration-300'
-                  />
-                </div>
+                  <div className='w-full 1024px:w-[80%] relative'>
+                    <RiLockPasswordLine className=' absolute top-3.5 left-3 text-[1.5rem] text-[#777777]'/>
+                    <input
+                        type='password'
+                        name='password'
+                        id='password'
+                        placeholder='Password'
+                        className='peer border-border border rounded-md outline-none pl-10 pr-4 py-3 w-full focus:border-primary transition-colors duration-300'
+                    />
+                  </div>
 
-                <div className='w-full 1024px:w-[80%] relative'>
-                  <MdOutlineMail className=' absolute top-3.5 left-3 text-[1.5rem] text-[#777777]' />
-                  <input
-                    type='email'
-                    name='email'
-                    id='email'
-                    placeholder='Email address'
-                    className='peer border-border border rounded-md outline-none pl-10 pr-4 py-3 w-full focus:border-primary transition-colors duration-300'
-                  />
+                  <div className='w-full 1024px:w-[80%] relative'>
+                    <MdOutlineMail className=' absolute top-3.5 left-3 text-[1.5rem] text-[#777777]'/>
+                    <input
+                        type='email'
+                        name='email'
+                        id='email'
+                        placeholder='Email address'
+                        className='peer border-border border rounded-md outline-none pl-10 pr-4 py-3 w-full focus:border-primary transition-colors duration-300'
+                    />
+                  </div>
                 </div>
-              </div>
             )}
 
             {iconInputCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 // icons
 import { RiAccountCircleLine, RiLockPasswordLine } from "react-icons/ri";
 import { MdOutlineMail } from "react-icons/md";
@@ -502,12 +504,12 @@ const Inputs = () => {
 
 export default Inputs;
                 '
-              />
+                />
             )}
           </div>
 
           <div className='mt-8'>
-            <ContentHeader text={'password input'} id={'password_input'} />
+            <ContentHeader text={'password input'} id={'password_input'}/>
           </div>
 
           <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
@@ -518,65 +520,65 @@ export default Inputs;
           <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
             <div className='relative'>
               <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  passwordInputPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[105px] rounded-br'
-                }`}
+                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
+                      passwordInputPreview
+                          ? 'translate-x-[0px] !w-[100px]'
+                          : 'translate-x-[105px] rounded-br'
+                  }`}
               ></div>
               <button
-                className={`${
-                  passwordInputPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b text-text z-[2] relative border-border`}
-                onClick={handlePasswordInputPreview}
+                  className={`${
+                      passwordInputPreview && 'text-tabTextColor'
+                  } px-6 py-2 border-b text-text z-[2] relative border-border`}
+                  onClick={handlePasswordInputPreview}
               >
                 Preview
               </button>
               <button
-                className={`${
-                  passwordInputCode && 'text-tabTextColor'
-                } px-6 py-2 border-r border-b rounded-br text-text z-[2] relative border-border`}
-                onClick={handlePasswordInputCode}
+                  className={`${
+                      passwordInputCode && 'text-tabTextColor'
+                  } px-6 py-2 border-r border-b rounded-br text-text z-[2] relative border-border`}
+                  onClick={handlePasswordInputCode}
               >
                 Code
               </button>
             </div>
             {passwordInputPreview && (
-              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                <div className='w-full 1024px:w-[80%]'>
-                  <label
-                    htmlFor='password'
-                    className='text-[15px] text-text font-[400]'
-                  >
-                    Password
-                  </label>
-                  <div className='w-full relative'>
-                    <input
-                      type={isEyeOpen ? 'text' : 'password'}
-                      name='password'
-                      id='password'
-                      placeholder='Password'
-                      className='peer border-border border rounded-md outline-none pl-4 pr-12 py-3 w-full mt-1 focus:border-primary transition-colors duration-300'
-                    />
-                    {isEyeOpen ? (
-                      <IoEyeOutline
-                        className=' absolute top-4 right-4 text-[1.5rem] text-[#777777] cursor-pointer'
-                        onClick={() => setIsEyeOpen(false)}
+                <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                  <div className='w-full 1024px:w-[80%]'>
+                    <label
+                        htmlFor='password'
+                        className='text-[15px] text-text font-[400]'
+                    >
+                      Password
+                    </label>
+                    <div className='w-full relative'>
+                      <input
+                          type={isEyeOpen ? 'text' : 'password'}
+                          name='password'
+                          id='password'
+                          placeholder='Password'
+                          className='peer border-border border rounded-md outline-none pl-4 pr-12 py-3 w-full mt-1 focus:border-primary transition-colors duration-300'
                       />
-                    ) : (
-                      <IoEyeOffOutline
-                        className=' absolute top-4 right-4 text-[1.5rem] text-[#777777] cursor-pointer'
-                        onClick={() => setIsEyeOpen(true)}
-                      />
-                    )}
+                      {isEyeOpen ? (
+                          <IoEyeOutline
+                              className=' absolute top-4 right-4 text-[1.5rem] text-[#777777] cursor-pointer'
+                              onClick={() => setIsEyeOpen(false)}
+                          />
+                      ) : (
+                          <IoEyeOffOutline
+                              className=' absolute top-4 right-4 text-[1.5rem] text-[#777777] cursor-pointer'
+                              onClick={() => setIsEyeOpen(true)}
+                          />
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
             )}
 
             {passwordInputCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 const Textarea = () => {
   return (
     <div className="w-[80%]">
@@ -609,12 +611,12 @@ const Textarea = () => {
 
 export default Textarea;
                 '
-              />
+                />
             )}
           </div>
 
           <div className='mt-8'>
-            <ContentHeader text={'Link input'} id={'link_input'} />
+            <ContentHeader text={'Link input'} id={'link_input'}/>
           </div>
 
           <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
@@ -625,60 +627,61 @@ export default Textarea;
           <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
             <div className='relative'>
               <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  linkInputPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[105px] rounded-br'
-                }`}
+                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
+                      linkInputPreview
+                          ? 'translate-x-[0px] !w-[100px]'
+                          : 'translate-x-[105px] rounded-br'
+                  }`}
               ></div>
               <button
-                className={`${
-                  linkInputPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b text-text z-[2] relative border-border`}
-                onClick={handleLinkInputPreview}
+                  className={`${
+                      linkInputPreview && 'text-tabTextColor'
+                  } px-6 py-2 border-b text-text z-[2] relative border-border`}
+                  onClick={handleLinkInputPreview}
               >
                 Preview
               </button>
               <button
-                className={`${
-                  linkInputCode && 'text-tabTextColor'
-                } px-6 py-2 border-r border-b rounded-br text-text z-[2] relative border-border`}
-                onClick={handleLinkInputCode}
+                  className={`${
+                      linkInputCode && 'text-tabTextColor'
+                  } px-6 py-2 border-r border-b rounded-br text-text z-[2] relative border-border`}
+                  onClick={handleLinkInputCode}
               >
                 Code
               </button>
             </div>
             {linkInputPreview && (
-              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                <div className='w-full 1024px:w-[80%] relative'>
-                  <input
-                    type='text'
-                    placeholder='Website url'
-                    className='border border-border py-3 pr-4 pl-[90px] outline-none w-full rounded-md'
-                  />
+                <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                  <div className='w-full 1024px:w-[80%] relative'>
+                    <input
+                        type='text'
+                        placeholder='Website url'
+                        className='border border-border py-3 pr-4 pl-[90px] outline-none w-full rounded-md'
+                    />
 
-                  <span className='bg-gray-300 text-gray-500 text-[1rem] absolute top-0 left-0 h-full px-3 flex items-center justify-center rounded-l-md'>
+                    <span
+                        className='bg-gray-300 text-gray-500 text-[1rem] absolute top-0 left-0 h-full px-3 flex items-center justify-center rounded-l-md'>
                     Https://
                   </span>
+                  </div>
                 </div>
-              </div>
             )}
 
             {linkInputCode && (
-              <Showcode
-                code="
+                <Showcode
+                    code="
 <div className='w-full relative'>
     <input type='text' placeholder='Website url' className='border border-[#e5eaf2] py-3 pr-4 pl-[90px] outline-none w-full rounded-md'/>
 
     <span className='bg-gray-300 text-gray-500 text-[1rem] absolute top-0 left-0 h-full px-3 flex items-center justify-center rounded-l-md'>Https://</span>
 </div>
                     "
-              />
+                />
             )}
           </div>
 
           <div className='mt-8'>
-            <ContentHeader text={'Price input'} id={'price_input'} />
+            <ContentHeader text={'Price input'} id={'price_input'}/>
           </div>
 
           <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
@@ -690,92 +693,93 @@ export default Textarea;
           <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
             <div className='relative'>
               <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  priceInputPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[105px] rounded-br'
-                }`}
+                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
+                      priceInputPreview
+                          ? 'translate-x-[0px] !w-[100px]'
+                          : 'translate-x-[105px] rounded-br'
+                  }`}
               ></div>
               <button
-                className={`${
-                  priceInputPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b text-text z-[2] relative border-border`}
-                onClick={handlePriceInputPreview}
+                  className={`${
+                      priceInputPreview && 'text-tabTextColor'
+                  } px-6 py-2 border-b text-text z-[2] relative border-border`}
+                  onClick={handlePriceInputPreview}
               >
                 Preview
               </button>
               <button
-                className={`${
-                  priceInputCode && 'text-tabTextColor'
-                } px-6 py-2 border-r border-b rounded-br text-text z-[2] relative border-border`}
-                onClick={handlePriceInputCode}
+                  className={`${
+                      priceInputCode && 'text-tabTextColor'
+                  } px-6 py-2 border-r border-b rounded-br text-text z-[2] relative border-border`}
+                  onClick={handlePriceInputCode}
               >
                 Code
               </button>
             </div>
             {priceInputPreview && (
-              <div
-                className={`${
-                  priceDropdownOpen ? 'mb-[8rem]' : 'mb-4'
-                } p-8 flex items-center flex-col gap-5 justify-center transition-all duration-200`}
-              >
-                <div className='w-full 1024px:w-[80%] relative'>
-                  <input
-                    type='number'
-                    placeholder='0'
-                    className='border border-border py-3 pl-[65px] pr-[80px] outline-none w-full rounded-md'
-                  />
+                <div
+                    className={`${
+                        priceDropdownOpen ? 'mb-[8rem]' : 'mb-4'
+                    } p-8 flex items-center flex-col gap-5 justify-center transition-all duration-200`}
+                >
+                  <div className='w-full 1024px:w-[80%] relative'>
+                    <input
+                        type='number'
+                        placeholder='0'
+                        className='border border-border py-3 pl-[65px] pr-[80px] outline-none w-full rounded-md'
+                    />
 
-                  <div className='bg-gray-100 w-[50px] absolute top-0 h-full left-0 flex items-center justify-center rounded-l-md'>
-                    {selectedCurrencyType === 'BDT' && (
-                      <FaBangladeshiTakaSign className='text-[1.2rem] text-gray-600' />
-                    )}
-                    {selectedCurrencyType === 'EUR' && (
-                      <FaEuroSign className='text-[1.2rem] text-gray-600' />
-                    )}
-                    {selectedCurrencyType === 'USD' && (
-                      <IoLogoUsd className='text-[1.2rem] text-gray-600' />
-                    )}
-                  </div>
+                    <div
+                        className='bg-gray-100 w-[50px] absolute top-0 h-full left-0 flex items-center justify-center rounded-l-md'>
+                      {selectedCurrencyType === 'BDT' && (
+                          <FaBangladeshiTakaSign className='text-[1.2rem] text-gray-600'/>
+                      )}
+                      {selectedCurrencyType === 'EUR' && (
+                          <FaEuroSign className='text-[1.2rem] text-gray-600'/>
+                      )}
+                      {selectedCurrencyType === 'USD' && (
+                          <IoLogoUsd className='text-[1.2rem] text-gray-600'/>
+                      )}
+                    </div>
 
-                  <div
-                    onClick={() => setPriceDropdownOpen(!priceDropdownOpen)}
-                    className='absolute top-0 right-0 h-full flex items-center justify-center cursor-pointer border-l border-border px-4'
-                  >
+                    <div
+                        onClick={() => setPriceDropdownOpen(!priceDropdownOpen)}
+                        className='absolute top-0 right-0 h-full flex items-center justify-center cursor-pointer border-l border-border px-4'
+                    >
                     <span className='flex items-center gap-[8px] text-text'>
                       {selectedCurrencyType}
                       <IoIosArrowDown
-                        className={`${
-                          priceDropdownOpen ? 'rotate-[180deg]' : 'rotate-0'
-                        } transition-all duration-200`}
+                          className={`${
+                              priceDropdownOpen ? 'rotate-[180deg]' : 'rotate-0'
+                          } transition-all duration-200`}
                       />
                     </span>
 
-                    <ul
-                      className={`${
-                        priceDropdownOpen
-                          ? 'translate-y-0 opacity-100 z-30'
-                          : 'translate-y-[-10px] opacity-0 z-[-1]'
-                      } list-none absolute top-[53px] right-0 bg-white toastshadow w-[87px] flex flex-col items-center transition-all duration-200 justify-center py-1 rounded-md`}
-                    >
-                      {allCurrencyTypes?.map((currency, index) => (
-                        <li
-                          key={index}
-                          className='py-2 px-4 w-full hover:bg-gray-100 text-center cursor-pointer'
-                          onClick={() => handlePriceDropdownClick(currency)}
-                        >
-                          {currency}
-                        </li>
-                      ))}
-                    </ul>
+                      <ul
+                          className={`${
+                              priceDropdownOpen
+                                  ? 'translate-y-0 opacity-100 z-30'
+                                  : 'translate-y-[-10px] opacity-0 z-[-1]'
+                          } list-none absolute top-[53px] right-0 bg-white toastshadow w-[87px] flex flex-col items-center transition-all duration-200 justify-center py-1 rounded-md`}
+                      >
+                        {allCurrencyTypes?.map((currency, index) => (
+                            <li
+                                key={index}
+                                className='py-2 px-4 w-full hover:bg-gray-100 text-center cursor-pointer'
+                                onClick={() => handlePriceDropdownClick(currency)}
+                            >
+                              {currency}
+                            </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
-              </div>
             )}
 
             {priceInputCode && (
-              <Showcode
-                code="
+                <Showcode
+                    code="
 import React, { useState } from 'react';
 
 // react icon
@@ -843,12 +847,12 @@ const PriceInput = () => {
 
 export default PriceInput;
                     "
-              />
+                />
             )}
           </div>
 
           <div className='mt-8'>
-            <ContentHeader text={'search input'} id={'search_input'} />
+            <ContentHeader text={'search input'} id={'search_input'}/>
           </div>
 
           <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
@@ -859,70 +863,73 @@ export default PriceInput;
           <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
             <div className='relative'>
               <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  passwordInputPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[105px] rounded-br'
-                }`}
+                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
+                      passwordInputPreview
+                          ? 'translate-x-[0px] !w-[100px]'
+                          : 'translate-x-[105px] rounded-br'
+                  }`}
               ></div>
               <button
-                className={`${
-                  passwordInputPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b text-text z-[2] relative border-border`}
-                onClick={handlePasswordInputPreview}
+                  className={`${
+                      passwordInputPreview && 'text-tabTextColor'
+                  } px-6 py-2 border-b text-text z-[2] relative border-border`}
+                  onClick={handlePasswordInputPreview}
               >
                 Preview
               </button>
               <button
-                className={`${
-                  passwordInputCode && 'text-tabTextColor'
-                } px-6 py-2 border-r border-b rounded-br text-text z-[2] relative border-border`}
-                onClick={handlePasswordInputCode}
+                  className={`${
+                      passwordInputCode && 'text-tabTextColor'
+                  } px-6 py-2 border-r border-b rounded-br text-text z-[2] relative border-border`}
+                  onClick={handlePasswordInputCode}
               >
                 Code
               </button>
             </div>
             {passwordInputPreview && (
-              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                <div className='w-full 1024px:w-[80%] relative'>
-                  <input
-                    type='text'
-                    placeholder='Search...'
-                    className='border border-border py-3 pl-4 pr-[65px] outline-none w-full rounded-md'
-                  />
+                <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                  <div className='w-full 1024px:w-[80%] relative'>
+                    <input
+                        type='text'
+                        placeholder='Search...'
+                        className='border border-border py-3 pl-4 pr-[65px] outline-none w-full rounded-md'
+                    />
 
-                  <span className='bg-gray-300 text-gray-500 absolute top-0 right-0 h-full px-5 flex items-center justify-center rounded-r-md cursor-pointer hover:bg-gray-400 group'>
-                    <IoSearch className='text-[1.3rem]  group-hover:text-gray-200' />
+                    <span
+                        className='bg-gray-300 text-gray-500 absolute top-0 right-0 h-full px-5 flex items-center justify-center rounded-r-md cursor-pointer hover:bg-gray-400 group'>
+                    <IoSearch className='text-[1.3rem]  group-hover:text-gray-200'/>
                   </span>
-                </div>
+                  </div>
 
-                <div className='w-full 1024px:w-[80%] relative'>
-                  <input
-                    type='text'
-                    placeholder='Search...'
-                    className='border border-border py-3 pl-4 pr-[65px] outline-none w-full rounded-md'
-                  />
+                  <div className='w-full 1024px:w-[80%] relative'>
+                    <input
+                        type='text'
+                        placeholder='Search...'
+                        className='border border-border py-3 pl-4 pr-[65px] outline-none w-full rounded-md'
+                    />
 
-                  <span className='bg-gray-300 text-gray-500 absolute top-0 right-0 h-full px-5 flex items-center justify-center rounded-r-md cursor-pointer hover:bg-gray-400 hover:text-gray-200'>
+                    <span
+                        className='bg-gray-300 text-gray-500 absolute top-0 right-0 h-full px-5 flex items-center justify-center rounded-r-md cursor-pointer hover:bg-gray-400 hover:text-gray-200'>
                     Search
                   </span>
-                </div>
+                  </div>
 
-                <div className='bg-primary py-4 w-full 1024px:w-[80%] px-5 flex items-center justify-center rounded-full cursor-pointer relative'>
-                  <IoSearch className='text-[1.3rem] text-white ml-auto' />
+                  <div
+                      className='bg-primary py-4 w-full 1024px:w-[80%] px-5 flex items-center justify-center rounded-full cursor-pointer relative'>
+                    <IoSearch className='text-[1.3rem] text-white ml-auto'/>
 
-                  <input
-                    type='text'
-                    placeholder='Search...'
-                    className='border border-border absolute top-[2px] left-[3px] h-[90%] w-[85%] py-3 px-4 outline-none rounded-full'
-                  />
+                    <input
+                        type='text'
+                        placeholder='Search...'
+                        className='border border-border absolute top-[2px] left-[3px] h-[90%] w-[85%] py-3 px-4 outline-none rounded-full'
+                    />
+                  </div>
                 </div>
-              </div>
             )}
 
             {passwordInputCode && (
-              <Showcode
-                code="
+                <Showcode
+                    code="
 import React from 'react';
 
 // react icon
@@ -965,12 +972,12 @@ const SearchInput = () => {
 
 export default SearchInput;
                     "
-              />
+                />
             )}
           </div>
 
           <div className='mt-8'>
-            <ContentHeader text={'Join us input'} id={'join_us_input'} />
+            <ContentHeader text={'Join us input'} id={'join_us_input'}/>
           </div>
 
           <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
@@ -982,48 +989,49 @@ export default SearchInput;
           <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
             <div className='relative'>
               <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  joinInputPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[105px] rounded-br'
-                }`}
+                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
+                      joinInputPreview
+                          ? 'translate-x-[0px] !w-[100px]'
+                          : 'translate-x-[105px] rounded-br'
+                  }`}
               ></div>
               <button
-                className={`${
-                  joinInputPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b text-text z-[2] relative border-border`}
-                onClick={handleJoinInputPreview}
+                  className={`${
+                      joinInputPreview && 'text-tabTextColor'
+                  } px-6 py-2 border-b text-text z-[2] relative border-border`}
+                  onClick={handleJoinInputPreview}
               >
                 Preview
               </button>
               <button
-                className={`${
-                  joinInputCode && 'text-tabTextColor'
-                } px-6 py-2 border-r border-b rounded-br text-text z-[2] relative border-border`}
-                onClick={handleJoinInputCode}
+                  className={`${
+                      joinInputCode && 'text-tabTextColor'
+                  } px-6 py-2 border-r border-b rounded-br text-text z-[2] relative border-border`}
+                  onClick={handleJoinInputCode}
               >
                 Code
               </button>
             </div>
             {joinInputPreview && (
-              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                <div className='w-full 1024px:w-[80%] relative'>
-                  <input
-                    type='email'
-                    placeholder='Email'
-                    className='border border-border py-3 pl-4 pr-[115px] outline-none w-full rounded-md'
-                  />
+                <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                  <div className='w-full 1024px:w-[80%] relative'>
+                    <input
+                        type='email'
+                        placeholder='Email'
+                        className='border border-border py-3 pl-4 pr-[115px] outline-none w-full rounded-md'
+                    />
 
-                  <span className='bg-primary text-white absolute top-0 right-0 h-full px-5 flex items-center justify-center rounded-r-md cursor-pointer hover:bg-gray-400 group'>
+                    <span
+                        className='bg-primary text-white absolute top-0 right-0 h-full px-5 flex items-center justify-center rounded-r-md cursor-pointer hover:bg-gray-400 group'>
                     Subscribe
                   </span>
+                  </div>
                 </div>
-              </div>
             )}
 
             {joinInputCode && (
-              <Showcode
-                code="
+                <Showcode
+                    code="
 <div className='w-full relative'>
    <input type='email' placeholder='Email' className='border border-[#e5eaf2] py-3 pl-4 pr-[115px] outline-none w-full rounded-md'/>
 
@@ -1032,15 +1040,15 @@ export default SearchInput;
     </span>
 </div>
                     "
-              />
+                />
             )}
           </div>
 
           <OverviewFooter
-            backName='all components'
-            backUrl='/components/all-components'
-            forwardName='Textarea'
-            forwardUrl='/components/input-textarea'
+              backName='all components'
+              backUrl='/components/all-components'
+              forwardName='Textarea'
+              forwardUrl='/components/input-textarea'
           />
         </div>
         <div className='1024px:flex flex-col gap-4 sticky top-4 right-0 w-[40%] hidden'>
@@ -1048,16 +1056,16 @@ export default SearchInput;
             CONTENTS
           </h2>
           {textInputContents.map((item) => (
-            <a
-              key={item.id}
-              href={item.href}
-              className={`${
-                activeSection === item.href.slice(1) &&
-                '!text-primary !border-primary'
-              } text-[0.9rem] capitalize transition-all duration-300 text-text border-l border-transparent pl-4`}
-            >
-              {item.title}
-            </a>
+              <a
+                  key={item.id}
+                  href={item.href}
+                  className={`${
+                      activeSection === item.href.slice(1) &&
+                      '!text-primary !border-primary'
+                  } text-[0.9rem] capitalize transition-all duration-300 text-text border-l border-transparent pl-4`}
+              >
+                {item.title}
+              </a>
           ))}
         </div>
       </aside>

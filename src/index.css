@@ -425,6 +425,10 @@ input[type="number"] {
   height: 4px;
 }
 
+.zenui_code_snippet::-webkit-scrollbar {
+  height: 8px;
+}
+
 @keyframes bounce-custom {
   0%, 100% {
     transform: translateX(0);
