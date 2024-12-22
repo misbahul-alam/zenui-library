@@ -21,16 +21,16 @@ const FeedbackCard = ({ feedback }) => {
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
             ref={cardRef}
-            className="w-full h-max p-4 rounded-md border cursor-pointer border-gray-200 relative overflow-hidden"
+            className="w-full h-max p-4 rounded-md border cursor-pointer dark:border-darkBorderColor/70 border-gray-200 relative overflow-hidden"
         >
             <div className='flex items-center justify-between w-full'>
                 <div className='flex items-center gap-[10px]'>
                     <img
                         src={feedback?.avatar}
                         alt='avatar/image'
-                        className='w-[40px] h-[40px] outline outline-gray-100 rounded-full object-cover'
+                        className='w-[40px] h-[40px] outline dark:outline-slate-700 outline-gray-100 rounded-full object-cover'
                     />
-                    <h1 className='text-[1.1rem] font-[600] text-gray-600'>{feedback?.name}</h1>
+                    <h1 className='text-[1.1rem] font-[600] dark:text-darkTextColor/90 text-gray-600'>{feedback?.name}</h1>
                 </div>
 
                 {feedback?.source === 'product_hunt' && (
@@ -56,11 +56,11 @@ const FeedbackCard = ({ feedback }) => {
                 )}
             </div>
 
-            <p className='text-[1rem] text-gray-600 mt-4'>{feedback?.review}</p>
+            <p className='text-[1rem] text-gray-600 dark:text-darkSubTextColor mt-4'>{feedback?.review}</p>
 
             {isHovering && (
                 <div
-                    className="absolute inset-0 pointer-events-none blur-[80px]"
+                    className="absolute inset-0 pointer-events-none dark:blur-[50px] blur-[80px]"
                     style={{
                         background: `radial-gradient(circle 50px at ${mousePosition.x}px ${mousePosition.y}px, #DB06F9, transparent)`,
                     }}

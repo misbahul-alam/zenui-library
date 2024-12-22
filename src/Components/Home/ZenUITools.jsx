@@ -37,10 +37,10 @@ const ZenUITools = () => {
     return (
         <section className='pb-5 max-w-[1700px] mx-auto mt-9 640px:mt-0'>
             <div data-aos="fade-zoom-in">
-                <h1 className='text-[1.5rem] 425px:text-[2.2rem] text-text font-[600] text-center px-8'>Introduce
+                <h1 className='text-[1.5rem] 425px:text-[2.2rem] dark:text-darkTextColor text-text font-[600] text-center px-8'>Introduce
                     With <span
                         className='heroText text-[#0FABCA] font-[500]'>ZenUI</span> Tools</h1>
-                <p className='text-[0.9rem] 640px:text-[1.1rem] text-center text-gray-500 px-8 w-full 1024px:w-[42%] mx-auto'>Streamline
+                <p className='text-[0.9rem] dark:text-darkSubTextColor 640px:text-[1.1rem] text-center text-gray-500 px-8 w-full 1024px:w-[42%] mx-auto'>Streamline
                     your workflow with a versatile color palette, an extensive icon library, and a dynamic keyboard
                     shortcut generator.</p>
             </div>

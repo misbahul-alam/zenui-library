@@ -14,7 +14,7 @@ const RatingCard = () => {
                     <FaStar
                         key={starRating}
                         className={`cursor-pointer ${
-                            starRating <= (hover || rating) ? 'text-yellow-400' : 'text-gray-300'
+                            starRating <= (hover || rating) ? 'text-yellow-400' : 'dark:text-slate-500 text-gray-300'
                         }`}
                         size={24}
                         onClick={() => setRating(starRating)}

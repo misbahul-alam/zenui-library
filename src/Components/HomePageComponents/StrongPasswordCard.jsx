@@ -40,7 +40,7 @@ const StrongPasswordCard = () => {
 
     return (
         <div className="w-[90%]">
-            <label htmlFor="password" className="text-[15px] text-text font-[400]">
+            <label htmlFor="password" className="text-[15px] dark:text-darkSubTextColor text-text font-[400]">
                 Password
             </label>
             <div className="w-full relative">
@@ -54,17 +54,17 @@ const StrongPasswordCard = () => {
                         setHintDropdownOpen(false)
                     }}
                     placeholder="Password"
-                    className="peer border-border border rounded-md outline-none pl-4 pr-12 py-3 w-full mt-1 focus:border-primary transition-colors duration-300"
+                    className="peer dark:text-darkSubTextColor dark:bg-transparent dark:border-slate-500 dark:placeholder:text-slate-500 border-border border rounded-md outline-none pl-4 pr-12 py-3 w-full mt-1 focus:border-primary transition-colors duration-300"
                 />
 
                 <div
-                    className={`${hintDropdownOpen ? 'opacity-100 translate-y-0 z-30' : 'opacity-0 translate-y-[-10px] z-[-1]'} bg-white boxShadow rounded-md py-3 px-4 absolute top-[60px] left-0 w-full transition-all duration-300`}>
-                    <h3 className='text-gray-900 font-[500] text-[1rem]'>Your password must
+                    className={`${hintDropdownOpen ? 'opacity-100 translate-y-0 z-30' : 'opacity-0 translate-y-[-10px] z-[-1]'} bg-white boxShadow dark:bg-slate-800 rounded-md py-3 px-4 absolute top-[60px] left-0 w-full transition-all duration-300`}>
+                    <h3 className='text-gray-900 font-[500] dark:text-darkTextColor text-[1rem]'>Your password must
                         contain:</h3>
 
                     <div className='w-full mt-2 flex-col flex gap-[6px]'>
                         <div
-                            className={`${signal2.length ? 'text-green-500' : 'text-gray-500'} text-[0.8rem] flex items-center gap-[8px]`}>
+                            className={`${signal2.length ? 'text-green-500' : 'text-gray-500 dark:text-darkSubTextColor'} text-[0.8rem] flex items-center gap-[8px]`}>
                             {
                                 signal2.length ? (
                                     <MdDone className={`text-[1rem]`}/>
@@ -75,7 +75,7 @@ const StrongPasswordCard = () => {
                             Minimum number of characters is 8.
                         </div>
                         <div
-                            className={`${signal2.uppercase ? 'text-green-500' : 'text-gray-500'} text-[0.8rem] flex items-center gap-[8px]`}>
+                            className={`${signal2.uppercase ? 'text-green-500' : 'text-gray-500 dark:text-darkSubTextColor'} text-[0.8rem] flex items-center gap-[8px]`}>
                             {
                                 signal2.uppercase ? (
                                     <MdDone className={`text-[1rem]`}/>
@@ -86,7 +86,7 @@ const StrongPasswordCard = () => {
                             Should contain uppercase.
                         </div>
                         <div
-                            className={`${signal2.lowercase ? 'text-green-500' : 'text-gray-500'} text-[0.8rem] flex items-center gap-[8px]`}>
+                            className={`${signal2.lowercase ? 'text-green-500' : 'text-gray-500 dark:text-darkSubTextColor'} text-[0.8rem] flex items-center gap-[8px]`}>
                             {
                                 signal2.lowercase ? (
                                     <MdDone className={`text-[1rem]`}/>
@@ -97,7 +97,7 @@ const StrongPasswordCard = () => {
                             Should contain lowercase.
                         </div>
                         <div
-                            className={`${signal2.number ? 'text-green-500' : 'text-gray-500'} text-[0.8rem] flex items-center gap-[8px]`}>
+                            className={`${signal2.number ? 'text-green-500' : 'text-gray-500 dark:text-darkSubTextColor'} text-[0.8rem] flex items-center gap-[8px]`}>
                             {
                                 signal2.number ? (
                                     <MdDone className={`text-[1rem]`}/>
@@ -108,7 +108,7 @@ const StrongPasswordCard = () => {
                             Should contain numbers.
                         </div>
                         <div
-                            className={`${signal2.symbol ? 'text-green-500' : 'text-gray-500'} text-[0.8rem] flex items-center gap-[8px]`}>
+                            className={`${signal2.symbol ? 'text-green-500' : 'text-gray-500 dark:text-darkSubTextColor'} text-[0.8rem] flex items-center gap-[8px]`}>
                             {
                                 signal2.symbol ? (
                                     <MdDone className={`text-[1rem]`}/>

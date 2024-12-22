@@ -13,7 +13,7 @@ const AnimatedProductCard = () => {
     const [isFavorite, setIsFavorite] = useState(false);
 
     return (
-        <div className='border border-gray-300 rounded-xl p-2 w-[70%]'>
+        <div className='dark:border-slate-700 border border-gray-300 rounded-xl p-2 w-[70%]'>
 
             {/* product image */}
             <div className='relative'>
@@ -37,14 +37,14 @@ const AnimatedProductCard = () => {
 
             {/* product details */}
             <div className='mt-2 pt-0 p-1'>
-                <h3 className='text-[1.1rem] font-medium line-clamp-1'>Criphin - Contemporary
+                <h3 className='text-[1.1rem] dark:text-darkSubTextColor font-medium line-clamp-1'>Criphin - Contemporary
                     Business Keynote</h3>
 
                 {/* authors & reviews */}
                 <div className='flex items-center justify-between mt-1'>
-                    <p className='text-gray-400 text-[0.9rem]'>by <span
-                        className='text-black'>Criphin</span> in <span
-                        className='text-black'>Graphics</span></p>
+                    <p className='text-gray-400 dark:text-slate-400 text-[0.9rem]'>by <span
+                        className='text-black dark:text-slate-300'>Criphin</span> in <span
+                        className='text-black dark:text-slate-300'>Graphics</span></p>
 
                     {/* review area */}
                     <div className='flex items-center gap-[10px]'>
@@ -63,14 +63,14 @@ const AnimatedProductCard = () => {
                                 );
                             })}
                         </div>
-                        <span className='text-[0.8rem] text-gray-500'>(4.8)</span>
+                        <span className='text-[0.8rem] dark:text-darkSubTextColor text-gray-500'>(4.8)</span>
                     </div>
                 </div>
 
                 {/* price and action btn */}
                 <div className='flex items-end justify-between mt-5'>
                     <div>
-                        <span className='text-gray-400 text-[0.9rem]'>168 Sales</span>
+                        <span className='text-gray-400 text-[0.9rem] dark:text-darkSubTextColor'>168 Sales</span>
                         <p className='text-[1.150rem] font-semibold text-[#0FABCA]'>$52.00</p>
                     </div>
 

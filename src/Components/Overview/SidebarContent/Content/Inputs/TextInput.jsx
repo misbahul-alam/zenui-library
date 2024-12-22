@@ -14,13 +14,14 @@ import { Helmet } from 'react-helmet';
 // icons
 import { RiAccountCircleLine, RiLockPasswordLine } from 'react-icons/ri';
 import { MdOutlineMail } from 'react-icons/md';
-import { IoEyeOutline, IoEyeOffOutline, IoSearch } from 'react-icons/io5';
+import {IoEyeOutline, IoEyeOffOutline, IoSearch, IoSunnyOutline, IoMoonOutline} from 'react-icons/io5';
 
 // showing the code
 import Showcode from '../../../../../Shared/ShowCode';
 import { IoIosArrowDown, IoLogoUsd } from 'react-icons/io';
 import { FaBangladeshiTakaSign } from 'react-icons/fa6';
 import { FaEuroSign } from 'react-icons/fa';
+import ToggleTab from "../../../../../Shared/ToggleTab.jsx";
 
 const TextInput = () => {
   // const [contentActiveTab, setContentActiveTab] = useState(0);
@@ -178,39 +179,15 @@ const TextInput = () => {
             will be processed accordingly.
           </p>
 
-          <div className='mt-8 ml-0 relative mb-1 backdrop-blur-md bg-border w-max rounded'>
-            <div
-                className={`absolute top-[50%] translate-y-[-50%] transform left-0 w-[50%] h-[85%] z-[1] bg-gray-500 rounded transition-all duration-500 ${
-                    primaryInputPreview
-                        ? 'translate-x-[4px]'
-                        : 'translate-x-[93.9px]'
-                }`}
-            ></div>
-            <button
-                className={`${
-                    primaryInputPreview && 'text-white'
-                } px-6 py-3 z-[2] relative text-center transition-all duration-500 text-text`}
-                onClick={handlePrimaryInputPreview}
-            >
-              Preview
-            </button>
-            <button
-                className={`${
-                    primaryInputCode && ' text-white'
-                } pl-4 pr-8 py-3 z-[2] relative transition-all duration-500 text-text`}
-                onClick={handlePrimaryInputCode}
-            >
-              Code
-            </button>
-          </div>
+          <ToggleTab setCode={setPrimaryInputCode} preview={primaryInputPreview} setPreview={setPrimaryInputPreview} code={primaryInputCode}/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded'>
+          <div className='w-full dark:bg-darkBg transition-all duration-500 425px:w-[80%] border border-border rounded'>
             {primaryInputPreview && (
                 <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
                   <div className='w-full 1024px:w-[80%]'>
                     <label
                         htmlFor='name'
-                        className='text-[15px] text-text font-[400]'
+                        className='text-[15px] dark:text-slate-300 text-text font-[400]'
                     >
                       Name <span className='text-red-500'>*</span>
                     </label>
@@ -219,7 +196,7 @@ const TextInput = () => {
                         name='name'
                         id='name'
                         placeholder='Your name'
-                        className='border-border border rounded-md outline-none px-4 w-full mt-1 py-3 focus:border-primary transition-colors duration-300'
+                        className='border-border dark:bg-transparent dark:border-slate-500 dark:placeholder:text-slate-600 dark:text-slate-300 border rounded-md outline-none px-4 w-full mt-1 py-3 focus:border-primary transition-colors duration-300'
                     />
                   </div>
                 </div>
@@ -227,8 +204,7 @@ const TextInput = () => {
 
             {primaryInputCode && (
                 <Showcode
-                    code='
-const Textarea = () => {
+                    code='const Textarea = () => {
   return (
     <div className="w-[80%]">
       <label htmlFor="name" className="text-[15px] font-[400]">
@@ -245,8 +221,7 @@ const Textarea = () => {
   );
 };
 
-export default Textarea;
-                '
+export default Textarea;'
                 />
             )}
           </div>
@@ -263,7 +238,7 @@ export default Textarea;
             here for it to be processed accordingly.
           </p>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
+          <div className='w-full dark:bg-darkBg 425px:w-[80%] border border-border rounded mt-8'>
             <div className='relative'>
               <div
                   className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${

@@ -83,21 +83,21 @@ const Faq = () => {
     return (
         <div className='max-w-[1700px] mx-auto'>
             <div data-aos="fade-zoom-in" className='flex items-center justify-center flex-col mt-6 mb-12'>
-                <h1 className='text-[1.4rem] 425px:text-[2.2rem] text-text font-[600] px-8'>Frequently Asked Questions</h1>
-                <p className='text-[0.9rem] 640px:text-[1.1rem] text-gray-500 px-8 w-full 640px:w-[35%] text-center mx-auto'>Find quick answers to common queries</p>
+                <h1 className='text-[1.4rem] 425px:text-[2.2rem] text-text font-[600] dark:text-darkTextColor px-8'>Frequently Asked Questions</h1>
+                <p className='text-[0.9rem] dark:text-darkSubTextColor 640px:text-[1.1rem] text-gray-500 px-8 w-full 640px:w-[35%] text-center mx-auto'>Find quick answers to common queries</p>
             </div>
             <section data-aos="fade-up" className='px-8 640px:px-10 mb-16 grid grid-cols-1 640px:grid-cols-2 gap-[15px]'>
                 <div className='flex-col flex gap-[15px]'>
                     {accordingData1?.map((according, index) => (
-                        <article key={index} className="border border-gray-200 rounded p-5">
+                        <article key={index} className="border dark:border-darkBorderColor/80 border-gray-200 rounded p-5">
                             <div
                                 className="flex gap-2 cursor-pointer items-center justify-between w-full"
                                 onClick={() => handleClick1(index)}>
-                                <h2 className={`${isAccording1 === index ? 'text-gray-700' : 'text-gray-500'} font-[600] text-[1.1rem]`}>
+                                <h2 className={`${isAccording1 === index ? 'text-gray-700 dark:text-darkSubTextColor ' : ' dark:text-darkSubTextColor text-gray-500'} font-[600] text-[1.1rem]`}>
                                     {according.title}
                                 </h2>
                                 <svg
-                                    className={`${isAccording1 === index ? 'fill-gray-700' : 'fill-gray-500'} shrink-0 ml-8`}
+                                    className={`${isAccording1 === index ? 'fill-gray-700 dark:fill-darkSubTextColor' : 'dark:fill-darkSubTextColor fill-gray-500'} shrink-0 ml-8`}
                                     width="16"
                                     height="16"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -127,7 +127,7 @@ const Faq = () => {
                                         ? "grid-rows-[1fr] opacity-100 mt-4"
                                         : "grid-rows-[0fr] opacity-0"
                                 }`}>
-                                <p className="text-gray-600 text-[0.9rem] overflow-hidden">
+                                <p className="text-gray-600 dark:text-darkSubTextColor/80 text-[0.9rem] overflow-hidden">
                                     {according.description}
                                 </p>
                             </div>
@@ -137,15 +137,15 @@ const Faq = () => {
                 </div>
                 <div className='flex-col flex gap-[15px]'>
                     {accordingData2?.map((according, index) => (
-                        <article key={index} className="border border-gray-200 rounded p-5">
+                        <article key={index} className="border dark:border-darkBorderColor/80 border-gray-200 rounded p-5">
                             <div
                                 className="flex gap-2 cursor-pointer items-center justify-between w-full"
                                 onClick={() => handleClick2(index)}>
-                                <h2 className={`${isAccording2 === index ? 'text-gray-700' : 'text-gray-500'} font-[600] text-[1.1rem]`}>
+                                <h2 className={`${isAccording2 === index ? 'text-gray-700 dark:text-darkSubTextColor' : 'dark:text-darkSubTextColor text-gray-500'} font-[600] text-[1.1rem]`}>
                                     {according.title}
                                 </h2>
                                 <svg
-                                    className={`${isAccording2 === index ? 'fill-gray-700' : 'fill-gray-500'} shrink-0 ml-8`}
+                                    className={`${isAccording2 === index ? 'fill-gray-700 dark:fill-darkSubTextColor' : 'dark:fill-darkSubTextColor fill-gray-500'} shrink-0 ml-8`}
                                     width="16"
                                     height="16"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -175,7 +175,7 @@ const Faq = () => {
                                         ? "grid-rows-[1fr] opacity-100 mt-4"
                                         : "grid-rows-[0fr] opacity-0"
                                 }`}>
-                                <p className="text-gray-600 text-[0.9rem] overflow-hidden">
+                                <p className="text-gray-600 dark:text-darkSubTextColor/80 text-[0.9rem] overflow-hidden">
                                     {according.description}
                                 </p>
                             </div>

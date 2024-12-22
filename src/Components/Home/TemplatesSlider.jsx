@@ -20,13 +20,13 @@ const TemplatesSlider = () => {
             <div data-aos="fade-zoom-in" className='w-full items-center justify-center text-center mb-4 640px:mb-[4rem] 640px:mt-20 mt-12 1024px:mt-16'>
 
                 <div className='gradient-border !rounded-md hover:rotate-0 transition-all duration-300 rotate-[10deg]'>
-                    <div className='bg-white h-full !rounded-md'>
+                    <div className='dark:!bg-darkBgColor bg-white h-full !rounded-md'>
                         <p className='bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent text-[1.5rem]'>20+</p>
                     </div>
                 </div>
 
-                <h1 className='text-[1.5rem] 425px:text-[2.2rem] text-text font-[600]'>Templates</h1>
-                <p className='text-[0.9rem] px-8 640px:text-[1.1rem] text-gray-500 w-full 640px:w-[80%] 1024px:w-[35%] mx-auto'>Free, ready-to-use templates to build your projects at lightning speed, perfect for anyone looking to save time without sacrificing quality.</p>
+                <h1 className='text-[1.5rem] 425px:text-[2.2rem] dark:text-darkTextColor text-text font-[600]'>Templates</h1>
+                <p className='text-[0.9rem] px-8 640px:text-[1.1rem] text-gray-500 w-full 640px:w-[80%] 1024px:w-[35%] mx-auto dark:text-darkSubTextColor'>Free, ready-to-use templates to build your projects at lightning speed, perfect for anyone looking to save time without sacrificing quality.</p>
             </div>
 
             <div

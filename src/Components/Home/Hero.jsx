@@ -115,7 +115,7 @@ const Hero = () => {
                     </a>
 
                     <div
-                        className='w-[100px] h-[400px] bg-[#96E8F8] absolute opacity-50 640px:opacity-100 bottom-[0px] 640px:bottom-[-150px] right-12 blur-[70px] rotate-[-60deg] animate-pulse'></div>
+                        className='w-[100px] h-[400px] bg-[#96E8F8] dark:bg-[#0FABCA] absolute opacity-50 dark:animate-none dark:opacity-40 640px:opacity-100 bottom-[0px] 640px:bottom-[-150px] right-12 blur-[70px] rotate-[-60deg] animate-pulse'></div>
                     <div
                         className='w-[100px] h-[300px] bg-[#9A04F5] absolute top-[-200px] animate-pulse opacity-30 left-8 blur-[70px] rotate-[-50deg]'></div>
 
@@ -132,32 +132,32 @@ const Hero = () => {
 
                     <motion.h1
                         variants={FADE_DOWN_ANIMATION_VARIANTS}
-                        className="text-[2.4rem] font-[600] 425px:text-[3rem] 640px:text-[2.8rem] leading-[3rem] 425px:leading-[4.5rem] mt-8 640px:leading-[1.25] text-text">
+                        className="text-[2.4rem] font-[600] 425px:text-[3rem] 640px:text-[2.8rem] leading-[3rem] 425px:leading-[4.5rem] mt-8 640px:leading-[1.25] dark:text-darkTextColor text-text">
                         <span className='heroText text-[#0FABCA] font-[500]'>ZenUI</span> Open-Source Free UI Components & Templates
                         Library
                     </motion.h1>
 
                     <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS} className='my-4 640px:my-6'>
                         <div className='flex flex-wrap items-center gap-y-[10px] gap-x-[20px] 640px:gap-[20px]'>
-                            <h3 className='text-[1.1rem] text-gray-600 font-[500]'>Compatible with:</h3>
+                            <h3 className='text-[1.1rem] text-gray-600 dark:text-darkTextColor font-[500]'>Compatible with:</h3>
                             <div className='flex items-center gap-[5px]'>
-                                <FaReact className='text-[1.4rem] text-gray-500'/>
-                                <p className='text-[1.1rem] text-gray-500'>React</p>
+                                <FaReact className='text-[1.4rem] dark:text-darkSubTextColor text-gray-500'/>
+                                <p className='text-[1.1rem] dark:text-darkSubTextColor text-gray-500'>React</p>
                             </div>
                             <div className='flex items-center gap-[5px]'>
-                                <BiLogoTailwindCss className='text-[1.8rem] text-gray-500'/>
-                                <p className='text-[1.1rem] text-gray-500'>Tailwind CSS</p>
+                                <BiLogoTailwindCss className='text-[1.8rem] dark:text-darkSubTextColor text-gray-500'/>
+                                <p className='text-[1.1rem] dark:text-darkSubTextColor text-gray-500'>Tailwind CSS</p>
                             </div>
                             <div className='flex items-center gap-[5px]'>
-                                <TbBrandNextjs className='text-[1.5rem] text-gray-500'/>
-                                <p className='text-[1.1rem] text-gray-500'>Next JS</p>
+                                <TbBrandNextjs className='text-[1.5rem] dark:text-darkSubTextColor text-gray-500'/>
+                                <p className='text-[1.1rem] dark:text-darkSubTextColor text-gray-500'>Next JS</p>
                             </div>
                         </div>
                     </motion.div>
 
                     <motion.p
                         variants={FADE_DOWN_ANIMATION_VARIANTS}
-                        className=" text-gray-500 w-full 425px:w-[80%] 640px:w-[91%] font-[400] text-[1.1rem]">
+                        className="dark:text-darkSubTextColor text-gray-500 w-full 425px:w-[80%] 640px:w-[91%] font-[400] text-[1.1rem]">
                         ZenUI Library is an Tailwind CSS components library for any needs. Comes with UI examples &
                         blocks,
                         templates, Icons, Color Palette and more.

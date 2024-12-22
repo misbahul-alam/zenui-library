@@ -4,7 +4,7 @@ const TabCard = () => {
     const [boxButtonActive, setBoxButtonActive] = useState(1);
 
     return (
-        <ul className="flex items-center bg-[#59bdf738] rounded-full p-1 w-[408px] relative">
+        <ul className="flex items-center dark:bg-primary/20 bg-[#59bdf738] rounded-full p-1 w-[408px] relative">
             <div
                 className={`${
                     (boxButtonActive === 1 && "translate-x-[0px]") ||
@@ -17,7 +17,7 @@ const TabCard = () => {
             <li
                 className={`${
                     boxButtonActive === 1 && " !text-[#fff]"
-                } px-6 py-2  text-text z-20 transition duration-300 rounded-full border-transparent cursor-pointer`}
+                } px-6 py-2  dark:text-darkSubTextColor text-text z-20 transition duration-300 rounded-full border-transparent cursor-pointer`}
                 onClick={() => setBoxButtonActive(1)}
             >
                 Home
@@ -25,7 +25,7 @@ const TabCard = () => {
             <li
                 className={`${
                     boxButtonActive === 2 && " !text-[#fff]"
-                } px-6 py-2  text-text z-20 transition duration-300 rounded-full border-transparent cursor-pointer`}
+                } px-6 py-2  dark:text-darkSubTextColor text-text z-20 transition duration-300 rounded-full border-transparent cursor-pointer`}
                 onClick={() => setBoxButtonActive(2)}
             >
                 About
@@ -33,7 +33,7 @@ const TabCard = () => {
             <li
                 className={`${
                     boxButtonActive === 3 && " !text-[#fff]"
-                } px-6 py-2  text-text z-20 transition duration-300 rounded-full border-transparent cursor-pointer`}
+                } px-6 py-2  dark:text-darkSubTextColor text-text z-20 transition duration-300 rounded-full border-transparent cursor-pointer`}
                 onClick={() => setBoxButtonActive(3)}
             >
                 Support
@@ -41,7 +41,7 @@ const TabCard = () => {
             <li
                 className={`${
                     boxButtonActive === 4 && " !text-[#fff]"
-                } px-6 py-2 hidden 425px:block text-text z-20 transition duration-300 rounded-full border-transparent cursor-pointer`}
+                } px-6 py-2 dark:text-darkSubTextColor hidden 425px:block text-text z-20 transition duration-300 rounded-full border-transparent cursor-pointer`}
                 onClick={() => setBoxButtonActive(4)}
             >
                 Contact

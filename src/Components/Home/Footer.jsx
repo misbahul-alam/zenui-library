@@ -36,13 +36,13 @@ const Footer = () => {
   };
 
   return (
-    <footer className="w-full border-t border-gray-100 py-8 bg-secondary ">
+    <footer className="w-full border-t border-gray-100 py-8 dark:bg-darkBgColor transition-all duration-500 dark:border-darkBorderColor bg-secondary ">
       <div className='max-w-[1700px] mx-auto px-8 425px:px-10'>
         <div className="w-full flex 640px:flex-row flex-col flex-wrap 1024px:gap-0 gap-8 justify-between items-start">
           <div className="w-full 640px:w-[40%] 1024px:w-[30%]">
             <img src="/footer_logo.png" alt="logo" className="w-[150px] 640px:w-[180px] my-3"/>
 
-            <p className="text-gray-500 text-[1rem]">
+            <p className="dark:text-darkSubTextColor/90 text-gray-500 text-[1rem]">
               Elevate your project with free UI components, customizable icons, and a color palette. No dependencies
               required.
             </p>
@@ -75,7 +75,7 @@ const Footer = () => {
           </div>
 
           <div className="flex gap-2 flex-col mt-4">
-            <h3 className="font-[600] text-gray-600 text-[20px] capitalize">
+            <h3 className="font-[600] dark:text-darkSubTextColor text-gray-600 text-[20px] capitalize">
               tools
             </h3>
             <ul className="footer font-[400] text-[#9caebc] text-[0.9rem] flex flex-col gap-2">
@@ -95,7 +95,7 @@ const Footer = () => {
           </div>
 
           <div className="flex gap-2 flex-col mt-4">
-            <h3 className="font-[600] text-gray-600 text-[20px] capitalize">
+            <h3 className="font-[600] dark:text-darkSubTextColor text-gray-600 text-[20px] capitalize">
               resources
             </h3>
             <ul className="footer font-[400] text-[#9caebc] text-[0.9rem] flex flex-col gap-2">
@@ -123,7 +123,7 @@ const Footer = () => {
           </div>
 
           <div className="flex gap-2 flex-col mt-4">
-            <h3 className="font-[600] text-gray-600 text-[20px] capitalize">
+            <h3 className="font-[600] dark:text-darkSubTextColor text-gray-600 text-[20px] capitalize">
               Company
             </h3>
             <ul className="footer font-[400] text-[0.9rem] text-[#9caebc] flex flex-col gap-2">
@@ -149,7 +149,7 @@ const Footer = () => {
             </ul>
           </div>
           <div className="flex gap-2 flex-col mt-4">
-          <h3 className="font-[600] text-gray-600 text-[20px] capitalize">
+          <h3 className="font-[600] dark:text-darkSubTextColor text-gray-600 text-[20px] capitalize">
               Join our newsletter
             </h3>
 
@@ -168,10 +168,10 @@ const Footer = () => {
                     required
                     onChange={(e) => setInputValue(e.target.value)}
                     placeholder="example@gmail.com"
-                    className="py-3 pl-4 pr-[120px] border w-full bg-transparent border-gray-200 rounded-md focus:ring-0 outline-none"
+                    className="py-3 pl-4 pr-[120px] border dark:border-darkBorderColor w-full bg-transparent border-gray-200 rounded-md focus:ring-0 outline-none"
                 />
                 <button type="submit"
-                        className={`absolute top-0 h-full right-0 px-4 bg-gray-300 hover:text-white text-gray-600 hover:bg-[#0FABCA] rounded-r-md transition-all duration-300`}>
+                        className={`absolute top-0 h-full right-0 px-4 bg-gray-300 hover:text-white text-gray-600 hover:bg-[#0FABCA] dark:bg-slate-700 dark:text-slate-400 rounded-r-md transition-all duration-300`}>
                   Subscribe
                 </button>
               </div>
@@ -179,21 +179,21 @@ const Footer = () => {
             <p className='text-[14px] text-[#0FABCA]'>{result}</p>
 
             <a href='https://web.facebook.com/share/g/D8DbMaprfWPksSGF/' target='_blank'
-               className='p-3 cursor-pointer bg-gray-100 rounded-md flex hover:bg-gray-200 items-center gap-[14px]'>
+               className='p-3 cursor-pointer dark:bg-slate-800 bg-gray-100 rounded-md flex hover:bg-gray-200 items-center gap-[14px]'>
               <img src='https://cdn.doplac.site/doplac-media/doplac/54/kkclZyRXclMgFEfFJfBd1716725266.png'
                    alt='facebook' className='w-[30px]'/>
 
               <div>
-                <h4 className='text-[1rem] font-[600] text-gray-700'>Join Community</h4>
-                <p className='text-[0.9rem] font-[300] text-gray-700'>100+ Members</p>
+                <h4 className='text-[1rem] font-[600] text-gray-700 dark:text-darkSubTextColor/80'>Join Community</h4>
+                <p className='text-[0.9rem] font-[300] text-gray-700 dark:text-darkSubTextColor/80'>100+ Members</p>
               </div>
             </a>
           </div>
         </div>
 
         <div
-            className="w-full border-t border-gray-100 flex items-center 425px:flex-row flex-col 425px:gap-0 gap-5 justify-center mt-12 pt-6">
-          <p className="text-gray-400 text-center text-[0.9rem]">
+            className="w-full border-t dark:border-darkBorderColor border-gray-100 flex items-center 425px:flex-row flex-col 425px:gap-0 gap-5 justify-center mt-12 pt-6">
+          <p className="text-gray-400 dark:text-darkSubTextColor/50 text-center text-[0.9rem]">
             Copyright &copy; {date.getFullYear()} by ZenUI Library.
           </p>
         </div>

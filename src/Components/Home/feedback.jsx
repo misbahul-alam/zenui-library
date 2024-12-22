@@ -27,8 +27,8 @@ const Feedback = () => {
             </div>
 
             <div data-aos="fade-zoom-in">
-                <h1 className='text-[1.5rem] 425px:text-[2.2rem] text-text font-[600] text-center'>The Wall of Love</h1>
-                <p className='text-[0.9rem] px-8 640px:text-[1.1rem] text-gray-500 w-full mx-auto text-center'>Thoughts from those who've
+                <h1 className='text-[1.5rem] 425px:text-[2.2rem] text-text dark:text-darkTextColor font-[600] text-center'>The Wall of Love</h1>
+                <p className='text-[0.9rem] px-8 dark:text-darkSubTextColor 640px:text-[1.1rem] text-gray-500 w-full mx-auto text-center'>Thoughts from those who've
                     experienced <span className='text-[#0FABCA] heroText'>ZenUI</span> in action.</p>
             </div>
 
@@ -58,7 +58,7 @@ const Feedback = () => {
             </div>
 
             {/* bottom shadow card */}
-            <div className='w-full h-[100px] 640px:h-[300px] z-10 bg-gradient-to-t from-white top-[rgb(255,255,255,0.8)] absolute bottom-8 left-0 right-0'></div>
+            <div className='w-full h-[100px] 640px:h-[300px] z-10 bg-gradient-to-t dark:from-darkBgColor from-white top-[rgb(255,255,255,0.8)] absolute bottom-8 left-0 right-0'></div>
         </section>
     );
 };

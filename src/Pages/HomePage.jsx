@@ -16,7 +16,7 @@ import ZenUITools from "../Components/Home/ZenUITools.jsx";
 const HomePage = () => {
 
     return (
-        <>
+        <div className='dark:bg-darkBgColor transition-all duration-500'>
             {/*<NewsBoard/>*/}
             <Navbar/>
             <div className='overflow-x-hidden'>
@@ -29,7 +29,7 @@ const HomePage = () => {
                 <Sponsor/>
                 <Footer/>
             </div>
-        </>
+        </div>
     );
 };
 

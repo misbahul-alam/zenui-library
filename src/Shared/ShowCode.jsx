@@ -6,17 +6,20 @@ import { MdOutlineDone } from "react-icons/md";
 
 const ShowCode = ({ code }) => {
     const [isCopy, setIsCopy] = useState(false);
-    const isMultiTab = typeof code === "object" && !Array.isArray(code);
+    const isMultiTab = Array.isArray(code);
     const [activeTab, setActiveTab] = useState(
-        isMultiTab ? Object.keys(code)[0] : "jsx"
+        isMultiTab ? code[0].id : "default"
     );
 
     // Format code properly whether it's a single code string or multiple
-    const codeSnippets = isMultiTab ? code : { jsx: code };
+    const formattedCode = isMultiTab
+        ? code
+        : [{ id: "default", displayText: "", language: "jsx", code: code }];
 
     // copy to clipboard
     const copyToClipboard = () => {
-        navigator.clipboard.writeText(codeSnippets[activeTab]);
+        const currentCode = formattedCode.find(item => item.id === activeTab)?.code || "";
+        navigator.clipboard.writeText(currentCode);
         setIsCopy(true);
         setTimeout(() => {
             setIsCopy(false);
@@ -25,21 +28,20 @@ const ShowCode = ({ code }) => {
 
     return (
         <div className="code-block-wrapper border border-[#ffffff15] rounded-md overflow-hidden">
-
             {/* Tabs Section */}
             {isMultiTab && (
-                <div className="flex bg-[#282a36] border-b border-[#ffffff15] pl-2 pr-4 pt-2">
-                    {Object.keys(codeSnippets).map((tab) => (
+                <div className="flex bg-[#282a36] border-b border-[#ffffff15] pl-2 pr-4 pt-1.5">
+                    {formattedCode.map((tab) => (
                         <button
-                            key={tab}
-                            onClick={() => setActiveTab(tab)}
-                            className={`px-4 py-2 rounded-t-lg text-sm transition-all duration-300 ${
-                                activeTab === tab
-                                    ? "bg-[#44475a] text-white"
-                                    : "text-gray-400 hover:bg-[#44475a30]"
+                            key={tab.id}
+                            onClick={() => setActiveTab(tab.id)}
+                            className={`px-3 py-2 rounded-lg text-sm ${
+                                activeTab === tab.id
+                                    ? "border-b rounded-b-none text-white"
+                                    : "text-gray-400 hover:bg-slate-700"
                             }`}
                         >
-                            {tab.toUpperCase()}
+                            {tab.displayText || tab.id.toUpperCase()}
                         </button>
                     ))}
                 </div>
@@ -61,7 +63,7 @@ const ShowCode = ({ code }) => {
 
                 {/* Code Display */}
                 <SyntaxHighlighter
-                    language={activeTab}
+                    language={formattedCode.find(item => item.id === activeTab)?.language || 'jsx'}
                     style={dracula}
                     showLineNumbers
                     customStyle={{
@@ -72,7 +74,7 @@ const ShowCode = ({ code }) => {
                     }}
                     className='zenui_code_snippet text-[14px] max-h-[400px] 400px:max-w-[380px] 425px:max-w-[638px] max-w-[325px]'
                 >
-                    {codeSnippets[activeTab]}
+                    {formattedCode.find(item => item.id === activeTab)?.code || ''}
                 </SyntaxHighlighter>
             </div>
         </div>

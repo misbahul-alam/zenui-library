@@ -37,14 +37,14 @@ const RadioCard = () => {
                                              xmlns="http://www.w3.org/2000/svg">
                                                 <g id="Group 335">
                                                     <rect id="Rectangle 331" x="-0.00012207" y="6.10352e-05" width="19"
-                                                          height="19" rx="4" className="fill-transparent"
+                                                          height="19" rx="4" className="fill-transparent dark:stroke-darkSubTextColor"
                                                           stroke="#ccc"></rect>
                                                 </g>
                                             </svg>
                                     </span>
             </div>
 
-            <span className='text-[1.2rem] text-text'>ZenUI Library</span>
+            <span className='text-[1.2rem] dark:text-darkSubTextColor text-text'>ZenUI Library</span>
         </label>
     );
 };
