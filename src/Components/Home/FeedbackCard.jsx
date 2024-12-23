@@ -56,7 +56,7 @@ const FeedbackCard = ({ feedback }) => {
                 )}
             </div>
 
-            <p className='text-[1rem] text-gray-600 dark:text-darkSubTextColor mt-4'>{feedback?.review}</p>
+            <p className='text-[1rem] text-gray-600 dark:text-darkSubTextColor/90 mt-4'>{feedback?.review}</p>
 
             {isHovering && (
                 <div

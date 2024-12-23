@@ -7,7 +7,7 @@ import Installation from "../Components/Overview/SidebarContent/Content/Installa
 
 const InstallationPage = () => {
     return (
-        <>
+        <div className='dark:bg-darkBgColor transition-all duration-500'>
             <Navbar />
             <MobileNavbar/>
             <div className="flex w-full mx-auto max-w-[1700px]">
@@ -20,7 +20,7 @@ const InstallationPage = () => {
                     <Installation/>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

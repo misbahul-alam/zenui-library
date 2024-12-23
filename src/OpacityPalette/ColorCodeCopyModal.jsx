@@ -58,16 +58,16 @@ const ColorCodeCopyModal = ({isCopyClicked, setIsCopyClicked, clipboardColor}) =
                 <div
                     className={`${
                         isCopyClicked ? " scale-[1] opacity-100" : " scale-[0] opacity-0"
-                    } p-8 max-w-[95%] 640px:max-w-[80%] bg-[#fff] colorCodeCopyModal rounded-lg transition-all duration-300 mx-auto mt-8`}
+                    } p-8 max-w-[95%] dark:bg-slate-900 640px:max-w-[80%] bg-[#fff] colorCodeCopyModal rounded-lg transition-all duration-300 mx-auto mt-8`}
                 >
-                    <RxCross2 className='absolute top-3 right-3 p-2 text-[2rem] hover:bg-gray-100 rounded-full cursor-pointer' onClick={()=> setIsCopyClicked(false)}/>
-                    <h1 className='text-[1.3rem] font-[500] text-text'>Copy To Clipboard</h1>
+                    <RxCross2 className='absolute top-3 right-3 p-2 dark:text-darkSubTextColor dark:hover:bg-slate-800 text-[2rem] hover:bg-gray-100 rounded-full cursor-pointer' onClick={()=> setIsCopyClicked(false)}/>
+                    <h1 className='text-[1.3rem] font-[500] text-text dark:text-darkSubTextColor'>Copy To Clipboard</h1>
 
                     <div className='flex items-center gap-5 flex-wrap mt-10'>
                         <div>
-                            <p className='text-[1rem] text-gray-600'>Hex Code</p>
+                            <p className='text-[1rem] text-gray-600 dark:text-darkSubTextColor'>Hex Code</p>
                             <div
-                                className=" w-max mt-1 bg-gray-100 text-gray-700 rounded-md py-3 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4">
+                                className=" w-max mt-1 bg-gray-100 text-gray-700 dark:bg-slate-800 dark:text-darkSubTextColor rounded-md py-3 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4">
                                 {hex}
                                 <GoCopy
                                     onClick={() => handleHexCopy(hex)}
@@ -84,9 +84,9 @@ const ColorCodeCopyModal = ({isCopyClicked, setIsCopyClicked, clipboardColor}) =
                         </div>
 
                         <div>
-                            <p className='text-[1rem] text-gray-600'>RGB Code</p>
+                            <p className='text-[1rem] text-gray-600 dark:text-darkSubTextColor'>RGB Code</p>
                             <div
-                                className=" w-max mt-1 bg-gray-100 text-gray-700 rounded-md py-3 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4">
+                                className=" w-max mt-1 bg-gray-100 text-gray-700 dark:bg-slate-800 dark:text-darkSubTextColor rounded-md py-3 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4">
                                 {rgb}
                                 <GoCopy
                                     onClick={() => handleRgbCopy(rgb)}
@@ -103,9 +103,9 @@ const ColorCodeCopyModal = ({isCopyClicked, setIsCopyClicked, clipboardColor}) =
                         </div>
 
                         <div>
-                            <p className='text-[1rem] text-gray-600'>HSL Code</p>
+                            <p className='text-[1rem] text-gray-600 dark:text-darkSubTextColor'>HSL Code</p>
                             <div
-                                className=" w-max mt-1 bg-gray-100 text-gray-700 rounded-md py-3 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4">
+                                className=" w-max mt-1 bg-gray-100 text-gray-700 dark:bg-slate-800 dark:text-darkSubTextColor rounded-md py-3 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4">
                                 {hsl}
                                 <GoCopy
                                     onClick={() => handleHslCopy(hsl)}

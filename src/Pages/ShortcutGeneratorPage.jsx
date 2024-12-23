@@ -8,12 +8,12 @@ import MobileNavbar from "../Components/Home/MobileNavbar.jsx";
 
 const ShortcutGeneratorPage = () => {
     return (
-        <>
+        <div className='dark:bg-darkBgColor transition-all duration-500'>
             <Navbar/>
             <MobileNavbar/>
             <ShortcutGenerator />
             <Footer/>
-        </>
+        </div>
     );
 };
 

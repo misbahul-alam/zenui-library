@@ -34,17 +34,17 @@ const CodesSidebar = ({sidebarOpen, setSidebarOpen, codes, isGenerating}) => {
 
     return (
         <aside
-            className={`${sidebarOpen ? 'translate-x-0 1630px:translate-x-[-129px] 2000px:translate-x-[-200px]' : 'translate-x-[2000px]'} w-full 640px:w-[60%] 1024px:w-[38%] bg-white fixed top-0 right-0 boxShadow min-h-screen transition-all z-[20000000000] duration-500 code_sidebar px-6 640px:px-8`}>
+            className={`${sidebarOpen ? 'translate-x-0 1630px:translate-x-[-129px] 2000px:translate-x-[-200px]' : 'translate-x-[2000px]'} w-full dark:bg-slate-800 640px:w-[60%] 1024px:w-[38%] bg-white fixed top-0 right-0 boxShadow min-h-screen transition-all z-[20000000000] duration-500 code_sidebar px-6 640px:px-8`}>
 
             <div className='relative'>
                 <RxCross1
                     onClick={() => setSidebarOpen(false)}
-                    className='p-[8px] absolute top-[15px] left-[-10px] 640px:left-[-15px] rounded-full transition-all duration-100 hover:bg-gray-100 text-[2rem] text-gray-800 cursor-pointer'/>
+                    className='p-[8px] absolute top-[15px] dark:text-darkSubTextColor dark:hover:bg-slate-900/80 left-[-10px] 640px:left-[-15px] rounded-full transition-all duration-100 hover:bg-gray-100 text-[2rem] text-gray-800 cursor-pointer'/>
             </div>
 
             <div className='flex justify-end flex-col h-[85%] 1024px:h-[87%] mt-20'>
                 <button onClick={handleCopy}
-                        className='text-[1.rem] relative w-max ml-auto flex items-center gap-[8px] border border-gray-200 py-2 px-4 rounded-md hover:bg-gray-100 transition-all duration-200'>
+                        className='text-[1.rem] relative w-max ml-auto flex items-center gap-[8px] border border-gray-200 py-2 px-4 rounded-md hover:bg-gray-100 dark:border-darkBorderColor dark:text-darkSubTextColor dark:hover:bg-slate-600/20 transition-all duration-200'>
                     <IoCodeSlashOutline/>
                     Copy Code
 
@@ -54,9 +54,9 @@ const CodesSidebar = ({sidebarOpen, setSidebarOpen, codes, isGenerating}) => {
                                 initial={{opacity: 0, scale: 0.7}}
                                 animate={{opacity: 1, scale: 1}}
                                 exit={{opacity: 0, scale: 0.7}}
-                                className='absolute top-[-50px] left-[25%] transform translate-x-[-50%] py-2 px-4 bg-gray-700 text-white text-[0.9rem] rounded-md'>
+                                className='absolute top-[-50px] left-[25%] dark:bg-slate-900 transform translate-x-[-50%] py-2 px-4 bg-gray-700 text-white text-[0.9rem] rounded-md'>
                                             <span
-                                                className='w-[10px] h-[10px] rotate-[45deg] bg-gray-700 absolute bottom-[-4px] left-[50%] transform translate-x-[-50%]'></span>
+                                                className='w-[10px] h-[10px] dark:bg-slate-900 rotate-[45deg] bg-gray-700 absolute bottom-[-4px] left-[50%] transform translate-x-[-50%]'></span>
                                 Copied
                             </motion.p>
                         )
@@ -67,17 +67,17 @@ const CodesSidebar = ({sidebarOpen, setSidebarOpen, codes, isGenerating}) => {
                     isGenerating ? (
                         <div className='h-[380px] 1024px:h-[440px]'>
                             <div
-                                className='relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent before:via-slate-200/70 before:to-transparent w-full h-[60px] rounded-md mt-3 bg-gray-100'></div>
+                                className='relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent dark:before:via-slate-400 dark:bg-slate-700 before:via-slate-200/70 before:to-transparent w-full h-[60px] rounded-md mt-3 bg-gray-100'></div>
                             <div
-                                className='relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent before:via-slate-200/70 before:to-transparent  w-full h-[40px] rounded-md mt-3 bg-gray-100'></div>
+                                className='relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent dark:before:via-slate-400 dark:bg-slate-700 before:via-slate-200/70 before:to-transparent  w-full h-[40px] rounded-md mt-3 bg-gray-100'></div>
                             <div
-                                className=' relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent before:via-slate-200/70 before:to-transparent  w-[50%] h-[40px] rounded-md mt-3 bg-gray-100'></div>
+                                className=' relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent dark:before:via-slate-400 dark:bg-slate-700 before:via-slate-200/70 before:to-transparent  w-[50%] h-[40px] rounded-md mt-3 bg-gray-100'></div>
                             <div
-                                className='relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent before:via-slate-200/70 before:to-transparent  w-[40%] h-[30px] rounded-md mt-3 bg-gray-100'></div>
+                                className='relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent dark:before:via-slate-400 dark:bg-slate-700 before:via-slate-200/70 before:to-transparent  w-[40%] h-[30px] rounded-md mt-3 bg-gray-100'></div>
                             <div
-                                className='relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent before:via-slate-200/70 before:to-transparent  w-[80%] h-[30px] rounded-md mt-3 bg-gray-100'></div>
+                                className='relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent dark:before:via-slate-400 dark:bg-slate-700 before:via-slate-200/70 before:to-transparent  w-[80%] h-[30px] rounded-md mt-3 bg-gray-100'></div>
                             <div
-                                className='relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent before:via-slate-200/70 before:to-transparent  w-[65%] h-[40px] rounded-md mt-3 bg-gray-100'></div>
+                                className='relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent dark:before:via-slate-400 dark:bg-slate-700 before:via-slate-200/70 before:to-transparent  w-[65%] h-[40px] rounded-md mt-3 bg-gray-100'></div>
                         </div>
                     ) : (
                         <SyntaxHighlighter language="jsx" style={dracula}

@@ -78,9 +78,9 @@ const FilterByPackage = ({setSelectedPackage}) => {
             {/* Selected name */}
             <div
                 onClick={() => setIsOpen(!isOpen)}
-                className={`w-full bg-white cursor-pointer border-gray-200 relative border rounded-md px-10 py-2.5 text-gray-600 text-[0.9rem] flex items-center pl-4`}
+                className={`w-full bg-white cursor-pointer border-gray-200 relative border rounded-md px-10 py-2.5 text-gray-600 text-[0.9rem] dark:bg-slate-900 dark:border-darkBorderColor flex items-center pl-4`}
             >
-                <p className={`${selectedOption ? 'text-gray-600' : 'text-gray-400'} text-[1rem] font-[400] mt-0.5`}>
+                <p className={`${selectedOption ? 'text-gray-600 dark:text-darkSubTextColor' : 'text-gray-400'} text-[1rem] font-[400] mt-0.5`}>
                     {selectedOption ? selectedOption.name : 'Filter by Package'}
                 </p>
             </div>
@@ -88,20 +88,20 @@ const FilterByPackage = ({setSelectedPackage}) => {
             {/* Dropdown icon */}
             <IoIosArrowDown
                 size="20"
-                className={`transition-all duration-300 text-[1.3rem] absolute top-[55%] transform translate-y-[-50%] right-3 text-gray-400 ${
+                className={`transition-all dark:text-darkSubTextColor duration-300 text-[1.3rem] absolute top-[55%] transform translate-y-[-50%] right-3 text-gray-400 ${
                     isOpen ? 'rotate-180' : 'rotate-0'
                 }`}
             />
 
             {/* Dropdown menu */}
             {isOpen && (
-                <div className="absolute left-0 w-max mt-1 border border-gray-200 rounded-md bg-white shadow-lg z-20">
+                <div className="absolute left-0 w-max mt-1 dark:border-darkBorderColor dark:bg-slate-900 border border-gray-200 rounded-md bg-white shadow-lg z-20">
                     <div className="w-full overflow-auto py-1">
                         {platforms.map((item) => (
                             <p
                                 key={item.id}
                                 onClick={() => handleSelect(item)}
-                                className="cursor-pointer text-gray-600 px-4 py-2 hover:bg-gray-50"
+                                className="cursor-pointer text-gray-600 dark:text-darkSubTextColor dark:hover:bg-slate-800 px-4 py-2 hover:bg-gray-50"
                             >
                                 {item.name}
                             </p>

@@ -8,7 +8,7 @@ import MobileNavbar from "../../Components/Home/MobileNavbar.jsx";
 
 const IconsPage = () => {
     return (
-        <div className='relative'>
+        <div className='relative dark:bg-darkBgColor transition-all duration-500'>
             <MobileNavbar/>
             <Navbar/>
             <Icons/>

@@ -115,11 +115,11 @@ const ColorPickerFromImage = ({image, isCustomPickerOpen, setIsCustomPickerOpen,
         } flex flex-col items-center transition-all duration-300 justify-center fixed left-0 right-0 top-0 bg-[#0000002a] w-full h-screen z-[1500]`}>
             <div className={`${
                 isCustomPickerOpen ? " scale-[1] opacity-100" : " scale-[0] opacity-0"
-            } bg-white custom-color-picker-from-image w-[95%] 640px:w-[60%] 1024px:w-[45%] transition-all duration-300 rounded-md h-[90vh] overflow-y-auto 640px:h-auto p-[20px] 640px:p-[30px] overflow-hidden`}>
+            } bg-white custom-color-picker-from-image w-[95%] dark:bg-slate-800 640px:w-[60%] 1024px:w-[45%] transition-all duration-300 rounded-md h-[90vh] overflow-y-auto 640px:h-auto p-[20px] 640px:p-[30px] overflow-hidden`}>
 
-                <RxCross2 className='p-2 text-[2.2rem] mb-2 float-right hover:bg-gray-100 rounded-full cursor-pointer' onClick={()=> setIsCustomPickerOpen(false)}/>
+                <RxCross2 className='p-2 text-[2.2rem] mb-2 dark:text-darkSubTextColor dark:hover:bg-slate-900 float-right hover:bg-gray-100 rounded-full cursor-pointer' onClick={()=> setIsCustomPickerOpen(false)}/>
 
-               <div className='relative h-[300px] overflow-auto w-full mx-auto'>
+               <div className='relative zenui_code_snippet h-[300px] overflow-auto w-full rounded-md mx-auto'>
                    {image && (
                        <canvas
                            ref={canvasRef}
@@ -179,44 +179,44 @@ const ColorPickerFromImage = ({image, isCustomPickerOpen, setIsCustomPickerOpen,
                    )}
                </div>
 
-                <h3 className='text-[1.1rem] font-bold text-gray-500 mt-5 '>Selected Color:</h3>
+                <h3 className='text-[1.1rem] font-bold text-gray-500 mt-5 dark:text-darkSubTextColor'>Selected Color:</h3>
                 {color && (
                     <div className="mt-3 flex 640px:flex-row flex-col 640px:items-center">
                         <div
-                            className="w-16 h-[55px] border border-gray-200 rounded-md mr-2"
+                            className="w-16 h-[55px] border dark:border-slate-500 border-gray-200 rounded-md mr-2"
                             style={{ backgroundColor: color }}
                         ></div>
                         <div>
                             <div className='flex items-center gap-[10px]'>
-                                <p className=" text-gray-600"><b className='text-gray-500 mr-2'>Hex Color:</b> {color}</p>
+                                <p className=" text-gray-600 dark:text-darkSubTextColor"><b className='text-gray-500 mr-2 dark:text-darkSubTextColor'>Hex Color:</b> {color}</p>
                                 {
                                     hexColorCopied ? (
                                         <button
-                                             className='w-[35px] h-[35px] rounded-full hover:bg-gray-100 cursor-pointer flex items-center justify-center'>
-                                            <IoMdDoneAll className='text-[1.1rem] text-gray-500'/>
+                                             className='w-[35px] h-[35px] rounded-full hover:bg-gray-100 cursor-pointer flex items-center justify-center dark:hover:bg-slate-900'>
+                                            <IoMdDoneAll className='text-[1.1rem] text-gray-500 dark:text-darkSubTextColor'/>
                                         </button>
                                     ) : (
                                         <button type='button' onClick={(e)=>handleHexColorClick(e,color)}
-                                             className='w-[35px] h-[35px] rounded-full hover:bg-gray-100 cursor-pointer flex items-center justify-center'>
-                                            <BsCopy className='text-[1rem] text-gray-500'/>
+                                             className='w-[35px] h-[35px] rounded-full hover:bg-gray-100 cursor-pointer flex items-center justify-center dark:hover:bg-slate-900'>
+                                            <BsCopy className='text-[1rem] text-gray-500 dark:text-darkSubTextColor'/>
                                         </button>
                                     )
                                 }
                             </div>
 
                             <div className='flex gap-[10px] items-center'>
-                                <p className=" text-gray-600"><b className='text-gray-500 mr-2'>RGB Color:</b> {rgb}</p>
+                                <p className=" text-gray-600 dark:text-darkSubTextColor"><b className='text-gray-500 mr-2 dark:text-darkSubTextColor'>RGB Color:</b> {rgb}</p>
 
                                 {
                                     rgbColorCopied ? (
                                         <button
-                                             className='w-[35px] h-[35px] rounded-full hover:bg-gray-100 cursor-pointer flex items-center justify-center'>
-                                            <IoMdDoneAll className='text-[1.1rem] text-gray-500'/>
+                                             className='w-[35px] h-[35px] rounded-full hover:bg-gray-100 cursor-pointer flex items-center justify-center dark:hover:bg-slate-900'>
+                                            <IoMdDoneAll className='text-[1.1rem] text-gray-500 dark:text-darkSubTextColor'/>
                                         </button>
                                     ) : (
                                         <button type='button' onClick={(e)=>handleRgbColorClick(e,rgb)}
-                                             className='w-[35px] h-[35px] rounded-full hover:bg-gray-100 cursor-pointer flex items-center justify-center'>
-                                            <BsCopy className='text-[1rem] text-gray-500'/>
+                                             className='w-[35px] h-[35px] rounded-full hover:bg-gray-100 cursor-pointer flex items-center justify-center dark:hover:bg-slate-900'>
+                                            <BsCopy className='text-[1rem] text-gray-500 dark:text-darkSubTextColor'/>
                                         </button>
                                     )
                                 }

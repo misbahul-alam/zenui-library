@@ -16,7 +16,7 @@ const AboutUsPage = () => {
     console.log(getTheRouteName())
 
     return (
-        <div className='overflow-x-hidden'>
+        <div className='overflow-x-hidden dark:bg-darkBgColor'>
             <Navbar/>
             <MobileNavbar/>
             <AboutUs/>

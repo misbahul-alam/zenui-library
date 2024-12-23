@@ -89,18 +89,18 @@ const ShadePalette = () => {
 
                 <img src='https://i.ibb.co/K784XvR/Artist-Palette.png' alt='icon/image' className='absolute top-[-30px] 640px:top-[-100px] right-0 640px:left-[500px] w-[300px] opacity-5'/>
 
-                <p className="text-text text-[0.9rem] mt-3 640px:mt-0">
+                <p className="text-text dark:text-darkSubTextColor text-[0.9rem] mt-3 640px:mt-0">
                     Create Your Custom Color Palette. Design and Customize Your Unique Color Shades.
                 </p>
 
-                <p className="text-text text-[0.9rem] mt-6 w-full 640px:w-[70%]">
+                <p className="text-text dark:text-darkSubTextColor text-[0.9rem] mt-6 w-full 640px:w-[70%]">
                     Customize Your Color Shades! Paste your color code to explore various shade levels. Instantly view and copy the corresponding hex, RGB, and HSL codes, making it easy to integrate your custom shades into any project.
                 </p>
 
                 <div className='flex items-center gap-[10px] mt-6'>
                     <div className="relative w-full 1024px:w-[50%]">
                         <input
-                            className={`${invalidColorCode ? 'border-red-500 text-red-500' : 'border-border text-text'} w-full rounded-md border py-3 px-4 outline-none`}
+                            className={`${invalidColorCode ? 'border-red-500 text-red-500' : 'border-border text-text'} w-full rounded-md dark:bg-transparent dark:text-darkSubTextColor dark:border-darkBorderColor border py-3 px-4 outline-none`}
                             placeholder="Paste color code here"
                             maxLength="50"
                             value={colorInput}
@@ -109,13 +109,13 @@ const ShadePalette = () => {
 
                         <button
                             onClick={addColor}
-                            className="py-2 h-full text-[1rem] 640px:text-[1.1rem] px-3 640px:px-6 text-gray-500 hover:text-white transition-all duration-200 bg-gray-300 hover:bg-[#0FABCA] rounded-r-md absolute top-0 right-0"
+                            className="py-2 h-full text-[1rem] 640px:text-[1.1rem] px-3 640px:px-6 text-gray-500 hover:text-white transition-all dark:bg-slate-800 dark:text-darkSubTextColor dark:border-darkBorderColor dark:border duration-200 bg-gray-300 hover:bg-[#0FABCA] rounded-r-md absolute top-0 right-0"
                         >
                             Generate
                         </button>
                     </div>
 
-                    <label htmlFor='uploadImage' className='py-[0.81rem] cursor-pointer text-[1.5rem] px-3 640px:px-8 text-gray-500 hover:text-white transition-all color-picker-upload-image-btn duration-200 bg-gray-300 hover:bg-[#0FABCA] rounded-md'>
+                    <label htmlFor='uploadImage' className='py-[0.81rem] cursor-pointer text-[1.5rem] px-3 640px:px-8 text-gray-500 hover:text-white dark:bg-slate-800 dark:text-darkSubTextColor transition-all color-picker-upload-image-btn duration-200 bg-gray-300 hover:bg-[#0FABCA] rounded-md'>
                         <RiImageAddLine/>
 
                         <input accept="image/*" onChange={handleImageUpload} type='file' id='uploadImage' className='hidden'/>

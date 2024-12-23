@@ -118,7 +118,7 @@ document.removeEventListener('keydown', ${functionName});
         <>
             <div className='w-full'>
                 <div>
-                    <label htmlFor="manual-input" className='text-[1rem] font-semibold text-gray-700 '>Type
+                    <label htmlFor="manual-input" className='text-[1rem] dark:text-darkSubTextColor font-semibold text-gray-700 '>Type
                         Shortcut</label> <br/>
                     <input
                         id="manual-input"
@@ -129,7 +129,7 @@ document.removeEventListener('keydown', ${functionName});
                             setInputError('');
                         }}
                         placeholder="e.g., ctrl + l + e"
-                        className="py-2 px-4 w-full rounded-md border border-gray-300 mt-1.5 outline-none focus:ring-0 focus:border-[#0FABCA] text-gray-800"
+                        className="py-2 px-4 w-full dark:bg-transparent dark:border-darkBorderColor dark:text-darkSubTextColor rounded-md border border-gray-300 mt-1.5 outline-none focus:ring-0 focus:border-[#0FABCA] text-gray-800"
                     />
                     {inputError && (
                         <div className="text-red-500 text-sm mt-1">{inputError}</div>
@@ -137,29 +137,29 @@ document.removeEventListener('keydown', ${functionName});
                 </div>
 
                 <div className='mt-5'>
-                    <label className='text-[1rem] font-semibold text-gray-700 flex items-center gap-[5px]'>
+                    <label className='text-[1rem] dark:text-darkSubTextColor font-semibold text-gray-700 flex items-center gap-[5px]'>
                         Auto Detected Keys
                         <div className='relative group'>
-                            <IoIosInformationCircleOutline className='text-[1.2rem] cursor-pointer text-gray-600'/>
+                            <IoIosInformationCircleOutline className='text-[1.2rem] dark:text-darkSubTextColor cursor-pointer text-gray-600'/>
                             <div
-                                className="px-3 py-2 w-[330px] rounded text-secondary bg-gray-900 absolute top-[-60px] left-[50%] translate-x-[-50%] translate-y-[10px] opacity-0 z-[-1] text-center group-hover:opacity-100 group-hover:z-30 group-hover:translate-y-0 transition-all duration-200 text-[0.8rem]">
+                                className="px-3 py-2 w-[330px] rounded text-secondary bg-gray-900 absolute top-[-60px] left-[50%] translate-x-[-50%] dark:bg-slate-800 translate-y-[10px] opacity-0 z-[-1] text-center group-hover:opacity-100 dark:text-darkTextColor group-hover:z-30 group-hover:translate-y-0 transition-all duration-200 text-[0.8rem]">
 
                                 <span
-                                    className='w-[8px] h-[8px] rotate-[45deg] bg-gray-900 text-center absolute bottom-[-4px] left-[50%] translate-x-[-50%]'></span>
+                                    className='w-[8px] h-[8px] dark:bg-slate-800 rotate-[45deg] bg-gray-900 text-center absolute bottom-[-4px] left-[50%] translate-x-[-50%]'></span>
                                 Press any key on your keyboard to automatically detect and capture it in the field.
 
                             </div>
                         </div>
                     </label>
                     <div
-                        className={`${detectedKeys.length > 0 ? 'text-gray-700' : 'text-gray-400'} mt-1.5 p-2 relative bg-gray-100 min-h-[150px] flex items-center justify-center font-semibold rounded`}>
+                        className={`${detectedKeys.length > 0 ? 'text-gray-700' : 'text-gray-400'} mt-1.5 p-2 relative bg-gray-100 min-h-[150px] dark:bg-slate-900 dark:text-darkSubTextColor flex items-center justify-center font-semibold rounded`}>
                         {detectedKeys.length > 0 ? detectedKeys.join(' + ') : 'No keys detected'}
 
                         {
                             detectedKeys.length > 0 && (
                                 <button
                                     onClick={() => setDetectedKeys([])}
-                                    className='bg-gray-400 rounded-md py-1.5 px-6 absolute right-2 bottom-2 text-white font-normal text-[0.9rem]'>Clear</button>
+                                    className='bg-gray-400 dark:bg-slate-800 rounded-md py-1.5 px-6 absolute right-2 bottom-2 text-white font-normal text-[0.9rem]'>Clear</button>
                             )
                         }
                     </div>
@@ -174,7 +174,7 @@ document.removeEventListener('keydown', ${functionName});
 
                     <button
                         onClick={() => setCheatsheetOpen(true)}
-                        className='flex items-center gap-[8px] text-[1rem] py-[10.5px] px-4 hover:bg-gray-50 border border-gray-300 rounded-md text-gray-600'>
+                        className='flex items-center dark:border-slate-500 gap-[8px] text-[1rem] py-[10.5px] px-4 hover:bg-gray-50 border dark:text-darkSubTextColor dark:hover:bg-slate-900 border-gray-300 rounded-md text-gray-600'>
                         <FiEye/>
                         Valid Shortcut Cheatsheet
                     </button>

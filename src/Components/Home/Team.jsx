@@ -12,9 +12,9 @@ const Team = () => {
         <>
             <section>
                 <div className='flex flex-col items-center justify-center mt-16 640px:mt-24'>
-                    <h3 className='text-[1.9rem] mb-3 400px:mb-0 640px:text-[2.4rem] text-center 640px:text-start font-[600] text-gray-800'><span
+                    <h3 className='text-[1.9rem] mb-3 400px:mb-0 640px:text-[2.4rem] text-center 640px:text-start font-[600] text-gray-800 dark:text-darkTextColor'><span
                         className='text-[#9A04F5]'>Design</span> Contributors</h3>
-                    <p className='w-full 1404px:w-[60%] mx-auto text-center text-[1rem] text-gray-600'>Our design
+                    <p className='w-full dark:text-darkSubTextColor 1404px:w-[60%] mx-auto text-center text-[1rem] text-gray-600'>Our design
                         contributors provide the creative foundation for our components and blocks, helping us innovate
                         and expand ZenUI’s offerings with their unique insights and designs.</p>
                 </div>
@@ -28,8 +28,8 @@ const Team = () => {
                                     alt='profile/image'
                                     className='w-[200px] h-[200px] overflow-hidden hover:scale-[1.1] transition-all duration-300 rounded-full'/>
 
-                                <h3 className='text-[1.3rem] font-[600] text-gray-700 leading-[25px] mt-5'>{member?.name}</h3>
-                                <p className='text-[1rem] text-gray-500 font-[300]'>{member?.title}</p>
+                                <h3 className='text-[1.3rem] font-[600] text-gray-700 leading-[25px] dark:text-darkTextColor mt-5'>{member?.name}</h3>
+                                <p className='text-[1rem] text-gray-500 font-[300] dark:text-darkSubTextColor/80'>{member?.title}</p>
 
                                 <div className='flex items-center gap-[10px] mt-4'>
                                     {
@@ -72,9 +72,9 @@ const Team = () => {
             </section>
             <section>
                 <div className='flex flex-col items-center justify-center mt-16 640px:mt-24'>
-                    <h3 className='text-[1.9rem] mb-3 400px:mb-0 640px:text-[2.4rem] font-[600] text-gray-800'><span
+                    <h3 className='text-[1.9rem] dark:text-darkTextColor mb-3 400px:mb-0 640px:text-[2.4rem] font-[600] text-gray-800'><span
                         className='text-[#9A04F5]'>Dev</span> Contributors</h3>
-                    <p className='w-full 1404px:w-[60%] mx-auto text-center text-[1rem] text-gray-600'>Our development contributors lay the technical groundwork for ZenUI, bringing our components and blocks to life with their expertise and innovation. Their work is essential to our platform's growth and stability.</p>
+                    <p className='w-full 1404px:w-[60%] dark:text-darkSubTextColor mx-auto text-center text-[1rem] text-gray-600'>Our development contributors lay the technical groundwork for ZenUI, bringing our components and blocks to life with their expertise and innovation. Their work is essential to our platform's growth and stability.</p>
                 </div>
 
                 <div className='mt-16 flex flex-wrap gap-[40px] justify-center'>
@@ -107,8 +107,8 @@ const Team = () => {
                                     }
                                 </div>
 
-                                <h3 className='text-[1.3rem] font-[600] text-gray-700 leading-[25px] mt-5'>{member?.name}</h3>
-                                <p className='text-[1rem] text-gray-500 font-[300]'>{member?.title}</p>
+                                <h3 className='text-[1.3rem] font-[600] text-gray-700 dark:text-darkTextColor leading-[25px] mt-5'>{member?.name}</h3>
+                                <p className='text-[1rem] text-gray-500 font-[300] dark:text-darkSubTextColor/80'>{member?.title}</p>
 
                                 <div className='flex items-center gap-[10px] mt-4'>
                                     {

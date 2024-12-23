@@ -33,28 +33,28 @@ const index = ({ startContent, setStartContent }) => {
   return (
       <aside
           ref={sidebarRef}
-          className="py-6 px-10 pr-7 border-r h-[89vh] border-border flex-col gap-4 overflow-y-scroll sticky top-18 left-0 w-[320px] bg-secondary z-20 1024px:flex hidden">
+          className="py-6 px-10 pr-7 border-r h-[89vh] border-border flex-col gap-4 overflow-y-scroll sticky top-18 left-0 w-[320px] dark:bg-darkBgColor transition-all duration-500 dark:border-darkBorderColor bg-secondary z-20 1024px:flex hidden">
 
         {/*  get starts  */}
         <ul className='getStarted flex flex-col gap-[12px] mb-4'>
 
-          <Link onClick={() => setStartContent(0)} to='/docs/overview' className={`${startContent === 0 && '!text-blue-600'} flex items-center group gap-[8px] hover:text-blue-600 text-[0.950rem] font-[500] cursor-pointer capitalize text-gray-600`}>
-            <span className={`${startContent === 0 && 'bg-blue-600 border-blue-600'} border p-[6px] rounded-md border-blue-200 group-hover:bg-blue-600 group-hover:border-blue-600 transition-all duration-200`}>
+          <Link onClick={() => setStartContent(0)} to='/docs/overview' className={`${startContent === 0 && '!text-blue-600'} flex items-center group gap-[8px] hover:text-blue-600 text-[0.950rem] font-[500] cursor-pointer capitalize dark:text-darkSubTextColor text-gray-600`}>
+            <span className={`${startContent === 0 && 'bg-blue-600 border-blue-600'} border p-[6px] rounded-md border-blue-200 group-hover:bg-blue-600 group-hover:border-blue-600 dark:border-slate-600 transition-all duration-200`}>
               <OverviewIcon className={`${startContent === 0 && 'text-white'} shrink-0 size-4 text-blue-600 group-hover:text-white transition-all duration-200`}/>
             </span>
             Overview
           </Link>
 
-          <Link onClick={() => setStartContent(70)} to='/docs/installation' className={`${startContent === 70 && 'text-green-600'} flex items-center gap-[8px] hover:text-green-600 text-[0.950rem] cursor-pointer group font-[500] capitalize text-gray-600`}>
-            <span className={`${startContent === 70 && 'bg-green-600 border-green-600'} border p-[6px] rounded-md border-green-200 group-hover:bg-green-600 group-hover:border-green-600 transition-all duration-200`}>
+          <Link onClick={() => setStartContent(70)} to='/docs/installation' className={`${startContent === 70 && 'text-green-600'} flex items-center gap-[8px] hover:text-green-600 text-[0.950rem] cursor-pointer group font-[500] capitalize dark:text-darkSubTextColor text-gray-600`}>
+            <span className={`${startContent === 70 && 'bg-green-600 border-green-600'} border p-[6px] rounded-md border-green-200 group-hover:bg-green-600 dark:border-slate-600 group-hover:border-green-600 transition-all duration-200`}>
               <InstallationIcon className={`${startContent === 70 && 'text-white'} shrink-0 size-4 text-green-600 group-hover:text-white transition-all duration-200`}/>
             </span>
             Installation
           </Link>
 
           <Link onClick={() => setStartContent(85)} to='/docs/resources' className='w-full flex items-center gap-[10px]'>
-            <div className={`${startContent === 85 && 'text-purple-600'} flex items-center gap-[8px] hover:text-purple-600 group cursor-pointer text-[0.950rem] font-[500] capitalize text-gray-600`}>
-                <span className={`${startContent === 85 && 'bg-purple-600 border-purple-600'} border p-[6px] rounded-md border-purple-200 group-hover:bg-purple-600 group-hover:border-purple-600 transition-all duration-200`}>
+            <div className={`${startContent === 85 && 'text-purple-600'} flex items-center gap-[8px] hover:text-purple-600 group cursor-pointer text-[0.950rem] font-[500] capitalize dark:text-darkSubTextColor text-gray-600`}>
+                <span className={`${startContent === 85 && 'bg-purple-600 border-purple-600'} border p-[6px] rounded-md border-purple-200 group-hover:bg-purple-600 dark:border-slate-600 group-hover:border-purple-600 transition-all duration-200`}>
               <ResourceIcon className={`${startContent === 85 && 'text-white'} shrink-0 size-4 text-purple-600 group-hover:text-white transition-all duration-200`}/>
             </span>
                 Resources
@@ -62,16 +62,16 @@ const index = ({ startContent, setStartContent }) => {
           </Link>
 
           <Link onClick={() => setStartContent(88)} to='/custom-hooks' className='w-full flex items-center gap-[10px]'>
-            <div className={`${startContent === 88 && '!text-[#DB06F9]'} flex items-center gap-[8px] hover:text-[#DB06F9] group cursor-pointer text-[0.950rem] font-[500] capitalize text-gray-600`}>
-                <span className={`${startContent === 88 && 'bg-[#DB06F9] border-[#DB06F9]'} border p-[6px] rounded-md border-[#deb7f7] group-hover:bg-[#DB06F9] group-hover:border-[#DB06F9] transition-all duration-200`}>
+            <div className={`${startContent === 88 && '!text-[#DB06F9]'} flex items-center gap-[8px] hover:text-[#DB06F9] group cursor-pointer text-[0.950rem] font-[500] capitalize dark:text-darkSubTextColor text-gray-600`}>
+                <span className={`${startContent === 88 && 'bg-[#DB06F9] border-[#DB06F9]'} border p-[6px] rounded-md border-[#deb7f7] group-hover:bg-[#DB06F9] dark:border-slate-600 group-hover:border-[#DB06F9] transition-all duration-200`}>
               <HookIcon className={`${startContent === 88 && 'text-white'} shrink-0 size-4 text-[#DB06F9] group-hover:text-white transition-all duration-200`}/>
             </span>
                 Custom Hooks
             </div>
           </Link>
 
-          <Link onClick={() => setStartContent(1)} to='/templates' className={`${startContent === 1 && '!text-indigo-600'} flex items-center gap-[8px] hover:text-indigo-600 group cursor-pointer text-[0.950rem] font-[500] capitalize text-gray-600`}>
-            <span className={`${startContent === 1 && 'bg-indigo-600 border-indigo-600'} border p-[6px] rounded-md border-indigo-200 group-hover:border-indigo-600 group-hover:bg-indigo-600 transition-all duration-200`}>
+          <Link onClick={() => setStartContent(1)} to='/templates' className={`${startContent === 1 && '!text-indigo-600'} flex items-center gap-[8px] hover:text-indigo-600 group dark:text-darkSubTextColor cursor-pointer text-[0.950rem] font-[500] capitalize text-gray-600`}>
+            <span className={`${startContent === 1 && 'bg-indigo-600 border-indigo-600'} border p-[6px] rounded-md border-indigo-200 group-hover:border-indigo-600 dark:border-slate-600 group-hover:bg-indigo-600 transition-all duration-200`}>
               <TemplatesIcon className={`${startContent === 1 && 'text-white'} shrink-0 size-4 text-indigo-500 group-hover:text-white transition-all duration-200`}/>
             </span>
             Templates
@@ -82,7 +82,7 @@ const index = ({ startContent, setStartContent }) => {
         {/*  components  */}
         <div>
           <h3
-              className={`${components ? 'text-[#0471d6]' : 'text-gray-500'} flex items-center justify-between gap-1 text-[1rem]  font-[500] capitalize cursor-pointer`}
+              className={`${components ? 'text-[#0471d6]' : 'text-gray-500 dark:text-darkSubTextColor'} flex items-center justify-between gap-1 text-[1rem]  font-[500] capitalize cursor-pointer`}
               onClick={() => setComponents(!components)}
           >
             Components
@@ -90,7 +90,7 @@ const index = ({ startContent, setStartContent }) => {
             <MdKeyboardArrowRight
                 className={`${
                     components && "rotate-[90deg] !text-[#0471d6]"
-                } text-[1.5rem] text-gray-500 text-[#0471d6] transition-all duration-300`}
+                } text-[1.5rem] text-gray-500 dark:text-darkSubTextColor transition-all duration-300`}
             />
           </h3>
 
@@ -106,8 +106,8 @@ const index = ({ startContent, setStartContent }) => {
                   to={"/components/all-components"}
                   className={`${
                       startContent === 2 &&
-                      "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
-                  }   border-l border-[#9caebc] `}
+                      "border-l !font-[500] hover:!bg-[#3B9DF8] dark:!text-white rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary"
+                  }   border-l dark:hover:!bg-slate-800 dark:!text-darkSubTextColor dark:!border-slate-600 border-[#9caebc] `}
                   onClick={() => setStartContent(2)}
               >
                 All Components
@@ -116,7 +116,7 @@ const index = ({ startContent, setStartContent }) => {
               {/* inputs */}
               <Link
                   to={""}
-                  className={`sectionHeader tracking-widest font-[500] relative mt-4 uppercase  border-l border-border !text-[0.750rem] `}
+                  className={`sectionHeader tracking-widest font-[500] relative mt-4 uppercase border-l dark:!border-slate-600 border-border !text-[0.750rem] `}
               >
                 FORM
               </Link>
@@ -125,8 +125,8 @@ const index = ({ startContent, setStartContent }) => {
                   to={"/components/input-text"}
                   className={`${
                       startContent === 3 &&
-                      "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
-                  }   border-l border-[#9caebc] flex items-center gap-[10px]`}
+                      "border-l !font-[500] hover:!bg-[#3B9DF8] dark:!text-white rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary"
+                  }   border-l border-[#9caebc] dark:hover:!bg-slate-800 dark:!text-darkSubTextColor dark:!border-slate-600 flex items-center gap-[10px]`}
                   onClick={() => setStartContent(3)}
               >
                 Input
@@ -136,8 +136,8 @@ const index = ({ startContent, setStartContent }) => {
                   to={"/components/input-textarea"}
                   className={`${
                       startContent === 4 &&
-                      "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
-                  }   border-l border-[#9caebc]`}
+                      "border-l !font-[500] hover:!bg-[#3B9DF8] dark:!text-white rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary"
+                  }   border-l dark:hover:!bg-slate-800 dark:!text-darkSubTextColor dark:!border-slate-600 border-[#9caebc]`}
                   onClick={() => setStartContent(4)}
               >
                 Textarea
@@ -146,8 +146,8 @@ const index = ({ startContent, setStartContent }) => {
                   to={"/components/input-number"}
                   className={`${
                       startContent === 5 &&
-                      "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
-                  }   border-l border-[#9caebc] flex items-center gap-[10px]`}
+                      "border-l !font-[500] hover:!bg-[#3B9DF8] dark:!text-white rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary"
+                  }   border-l dark:hover:!bg-slate-800 dark:!text-darkSubTextColor dark:!border-slate-600 border-[#9caebc] flex items-center gap-[10px]`}
                   onClick={() => setStartContent(5)}
               >
                 Number
@@ -157,8 +157,8 @@ const index = ({ startContent, setStartContent }) => {
                   to={"/components/input-checkbox"}
                   className={`${
                       startContent === 6 &&
-                      "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
-                  }   border-l border-[#9caebc] flex items-center gap-[10px]`}
+                      "border-l !font-[500] hover:!bg-[#3B9DF8] dark:!text-white rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary"
+                  }   border-l dark:hover:!bg-slate-800 dark:!text-darkSubTextColor dark:!border-slate-600 border-[#9caebc] flex items-center gap-[10px]`}
                   onClick={() => setStartContent(6)}
               >
                 Checkbox
@@ -168,8 +168,8 @@ const index = ({ startContent, setStartContent }) => {
                   to={"/components/input-switch"}
                   className={`${
                       startContent === 7 &&
-                      "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
-                  }   border-l border-[#9caebc] flex items-center gap-[10px]`}
+                      "border-l !font-[500] hover:!bg-[#3B9DF8] dark:!text-white rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary"
+                  }   border-l dark:hover:!bg-slate-800 dark:!text-darkSubTextColor dark:!border-slate-600 border-[#9caebc] flex items-center gap-[10px]`}
                   onClick={() => setStartContent(7)}
               >
                 Switch
@@ -179,8 +179,8 @@ const index = ({ startContent, setStartContent }) => {
                   to={"/components/strong-password"}
                   className={`${
                       startContent === 8 &&
-                      "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
-                  }   border-l border-[#9caebc] flex items-center gap-[10px]`}
+                      "border-l !font-[500] hover:!bg-[#3B9DF8] dark:!text-white rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary"
+                  }   border-l dark:hover:!bg-slate-800 dark:!text-darkSubTextColor dark:!border-slate-600 border-[#9caebc] flex items-center gap-[10px]`}
                   onClick={() => setStartContent(8)}
               >
                 Strong Password
@@ -190,8 +190,8 @@ const index = ({ startContent, setStartContent }) => {
                   to={"/components/input-select"}
                   className={`${
                       startContent === 9 &&
-                      "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
-                  }   border-l border-[#9caebc] flex items-center gap-[10px]`}
+                      "border-l !font-[500] hover:!bg-[#3B9DF8] dark:!text-white rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary"
+                  }   border-l dark:hover:!bg-slate-800 dark:!text-darkSubTextColor dark:!border-slate-600 border-[#9caebc] flex items-center gap-[10px]`}
                   onClick={() => setStartContent(9)}
               >
                 Select
@@ -201,8 +201,8 @@ const index = ({ startContent, setStartContent }) => {
                   to={"/components/input-radio"}
                   className={`${
                       startContent === 10 &&
-                      "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
-                  }   border-l border-[#9caebc]`}
+                      "border-l !font-[500] hover:!bg-[#3B9DF8] dark:!text-white rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary"
+                  }   border-l dark:hover:!bg-slate-800 dark:!text-darkSubTextColor dark:!border-slate-600 border-[#9caebc]`}
                   onClick={() => setStartContent(10)}
               >
                 Radio
@@ -211,8 +211,8 @@ const index = ({ startContent, setStartContent }) => {
                   to={"/components/input-range"}
                   className={`${
                       startContent === 11 &&
-                      "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
-                  }   border-l border-[#9caebc] flex items-center gap-[10px]`}
+                      "border-l !font-[500] hover:!bg-[#3B9DF8] dark:!text-white rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary"
+                  }   border-l dark:hover:!bg-slate-800 dark:!text-darkSubTextColor dark:!border-slate-600 border-[#9caebc] flex items-center gap-[10px]`}
                   onClick={() => setStartContent(11)}
               >
                 Range
@@ -234,8 +234,8 @@ const index = ({ startContent, setStartContent }) => {
                   to={"/components/input-file"}
                   className={`${
                       startContent === 12 &&
-                      "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
-                  }   border-l border-[#9caebc] `}
+                      "border-l !font-[500] hover:!bg-[#3B9DF8] dark:!text-white rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary"
+                  }   border-l dark:hover:!bg-slate-800 dark:!text-darkSubTextColor dark:!border-slate-600 border-[#9caebc] `}
                   onClick={() => setStartContent(12)}
               >
                 File
@@ -244,8 +244,8 @@ const index = ({ startContent, setStartContent }) => {
                   to={"/components/otp-input"}
                   className={`${
                       startContent === 13 &&
-                      "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
-                  }   border-l border-[#9caebc] flex items-center gap-[10px]`}
+                      "border-l !font-[500] hover:!bg-[#3B9DF8] dark:!text-white rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary"
+                  }   border-l dark:hover:!bg-slate-800 dark:!text-darkSubTextColor dark:!border-slate-600 border-[#9caebc] flex items-center gap-[10px]`}
                   onClick={() => setStartContent(13)}
               >
                 OTP Input

@@ -21,7 +21,7 @@ const OverviewFooter = ({width = '820px',backUrl, forwardUrl, backName, forwardN
                         {
                             isBackButton && (
                                 <Link to={backUrl}
-                                      className='flex items-center gap-[5px] text-[0.9rem] py-1.5 px-3 border border-gray-200 hover:bg-gray-200 capitalize transition-all duration-200 text-gray-500 rounded-md bg-gray-100'>
+                                      className='flex items-center gap-[5px] text-[0.9rem] py-1.5 px-3 border border-gray-200 hover:bg-gray-200 dark:bg-slate-900 dark:text-darkSubTextColor dark:border-darkBorderColor dark:hover:bg-slate-800 capitalize transition-all duration-200 text-gray-500 rounded-md bg-gray-100'>
                                     <IoChevronBack className='text-[1rem] text-gray-500'/>
                                     {backName}
                                 </Link>
@@ -31,7 +31,7 @@ const OverviewFooter = ({width = '820px',backUrl, forwardUrl, backName, forwardN
                         {
                             isForwardButton && (
                                 <Link to={forwardUrl}
-                                      className='flex items-center gap-[5px] text-[0.9rem] py-1.5 px-3 border border-gray-200 hover:bg-gray-200 capitalize transition-all duration-200 text-gray-500 rounded-md bg-gray-100'>
+                                      className='flex items-center gap-[5px] text-[0.9rem] py-1.5 px-3 border border-gray-200 hover:bg-gray-200 dark:bg-slate-900 dark:text-darkSubTextColor dark:border-darkBorderColor dark:hover:bg-slate-800 capitalize transition-all duration-200 text-gray-500 rounded-md bg-gray-100'>
                                     {forwardName}
                                     <IoChevronBack className='text-[1rem] text-gray-500 rotate-[180deg]'/>
                                 </Link>
@@ -45,7 +45,7 @@ const OverviewFooter = ({width = '820px',backUrl, forwardUrl, backName, forwardN
                 <img src="/footer_logo.png" alt="logo-image" className="w-[120px] 640px:w-[120px]" />
 
                 <div className="flex items-center gap-3">
-                    <p className=" font-[600] text-[1rem] text-text">Support:</p>
+                    <p className=" font-[600] text-[1rem] text-text dark:text-darkSubTextColor">Support:</p>
                     <a href="https://buymeacoffee.com/zenuilibrary" target="_blank">
                         <img
                             src="https://www.codehim.com/wp-content/uploads/2022/09/bmc-button-640x180.png.webp"

@@ -9,7 +9,7 @@ import MobileSidebar from "../Components/Overview/Sidebar/MobileSidebar.jsx";
 
 const OverviewPage = () => {
   return (
-    <>
+    <div className='dark:bg-darkBgColor transition-all duration-500'>
       <Navbar />
         <MobileNavbar/>
       <div className="flex w-full mx-auto max-w-[1700px]">
@@ -22,7 +22,7 @@ const OverviewPage = () => {
           <Overview />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -26,7 +26,7 @@ const Index = () => {
 
             <h4 className="text-[2rem] 1024px:text-[2.5rem] mt-8 1024px:mt-12 text-center 1024px:text-start leading-[40px] 425px:leading-[48px] font-[600] bg-clip-text text-transparent bg-gradient-to-r from-[#0FABCA] to-[#CD00F1]">ShortKey
                 - <span>The Shortcut Generator</span></h4>
-            <p className='w-full 640px:w-[75%] 1024px:w-[47%] mt-1 1024px:mt-0 text-center text-[0.9rem] 1024px:text-[1rem] font-normal text-gray-600'>Type
+            <p className='w-full dark:text-darkSubTextColor 640px:w-[75%] 1024px:w-[47%] mt-1 1024px:mt-0 text-center text-[0.9rem] 1024px:text-[1rem] font-normal text-gray-600'>Type
                 your custom shortcut and effortlessly generate a function with conditions to execute specific logic when
                 the shortcut keys are pressed on your keyboard.</p>
 

@@ -8,12 +8,12 @@ import MobileNavbar from "../Components/Home/MobileNavbar.jsx";
 
 const OpacityPalettePage = () => {
     return (
-        <>
+        <div className='dark:bg-darkBgColor transition-all duration-500'>
             <Navbar/>
             <MobileNavbar/>
            <OpacityPalette />
             <Footer/>
-        </>
+        </div>
     );
 };
 

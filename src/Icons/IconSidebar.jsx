@@ -210,19 +210,19 @@ const IconSidebar = ({sidebarOpen, setSidebarOpen, iconData, setSelectedIconData
 
     return (
         <aside
-            className={`${sidebarOpen ? 'translate-x-0 1630px:translate-x-[-129px] 2000px:translate-x-[-200px]' : 'translate-x-[2000px]'} w-full 640px:w-[60%] 1024px:w-[30%] bg-white fixed top-0 right-0 boxShadow min-h-screen transition-all z-[20000000000] duration-300 iconsSidebar pt-[2rem] px-6 640px:px-12`}>
+            className={`${sidebarOpen ? 'translate-x-0 1630px:translate-x-[-129px] 2000px:translate-x-[-200px]' : 'translate-x-[2000px]'} w-full dark:bg-slate-800 640px:w-[60%] 1024px:w-[30%] bg-white fixed top-0 right-0 boxShadow min-h-screen transition-all z-[20000000000] duration-300 iconsSidebar pt-[2rem] px-6 640px:px-12`}>
 
             <div className='relative'>
                 <RxCross1
-                    className='p-[8px] absolute top-[-20px] left-[-10px] 640px:left-[-30px] rounded-full transition-all duration-100 hover:bg-gray-100 text-[2rem] text-gray-800 cursor-pointer'
+                    className='p-[8px] absolute top-[-20px] left-[-10px] 640px:left-[-30px] rounded-full transition-all duration-100 hover:bg-gray-100 dark:text-darkSubTextColor dark:hover:bg-slate-900 text-[2rem] text-gray-800 cursor-pointer'
                     onClick={handleCrossClick}/>
             </div>
 
             <div className='flex items-center mb-4 justify-between mt-5'>
-                <h1 className='text-[1.3rem] font-[500]'>{iconData.name}</h1>
+                <h1 className='text-[1.3rem] font-[500] dark:text-darkTextColor'>{iconData.name}</h1>
                 <div className='relative group'>
                     <MdOutlineRefresh
-                        className='text-[2.5rem] px-2 rounded-full hover:bg-gray-50 text-text cursor-pointer'
+                        className='text-[2.5rem] px-2 dark:text-darkSubTextColor rounded-full hover:bg-gray-50 text-text cursor-pointer'
                         onClick={handleRefresh}/>
 
                     <div
@@ -236,7 +236,7 @@ const IconSidebar = ({sidebarOpen, setSidebarOpen, iconData, setSelectedIconData
 
             <div className='grid grid-cols-2 gap-[20px] w-full'>
                 <div
-                    className=' w-full h-full sidebarIcon mx-auto bg-gray-50 rounded-md px-5 flex items-center justify-center'>
+                    className=' w-full h-full sidebarIcon mx-auto dark:bg-slate-900 bg-gray-50 rounded-md px-5 flex items-center justify-center'>
                     <div dangerouslySetInnerHTML={{__html: updatedSvgCode}}/>
                 </div>
 
@@ -245,7 +245,7 @@ const IconSidebar = ({sidebarOpen, setSidebarOpen, iconData, setSelectedIconData
                         hasStrokeAttribute(iconData.iconCode) && (
                             <div className='flex flex-col gap-2'>
                                 <span
-                                    className='text-text flex items-center justify-between w-[80%] gap-[5px]'>
+                                    className='text-text flex dark:text-darkSubTextColor items-center justify-between w-[80%] gap-[5px]'>
                                     Stroke Color:
 
                                     <div className='group relative'>
@@ -283,7 +283,7 @@ const IconSidebar = ({sidebarOpen, setSidebarOpen, iconData, setSelectedIconData
 
 
                     <div className='flex flex-col gap-2'>
-                        <span className='text-text flex items-center justify-between w-[80%] gap-[5px]'>
+                        <span className='text-text dark:text-darkSubTextColor flex items-center justify-between w-[80%] gap-[5px]'>
                             Fill Color:
                             <div className='group relative'>
                                         <IoColorFillOutline className='text-[1.2rem] cursor-pointer'
@@ -298,10 +298,10 @@ const IconSidebar = ({sidebarOpen, setSidebarOpen, iconData, setSelectedIconData
                             </div>
                         </span>
                         <div
-                            className='flex relative items-center w-max border border-gray-200 rounded-md overflow-hidden'>
+                            className='flex relative items-center w-max border dark:border-darkBorderColor border-gray-200 rounded-md overflow-hidden'>
                             <div className='relative'>
                                 <IoMdColorFill onClick={handleColorIconClick}
-                                               className={`py-2.5 cursor-pointer px-2 bg-gray-50 text-text text-[2.5rem]`}/>
+                                               className={`py-2.5 cursor-pointer px-2 dark:text-darkSubTextColor dark:bg-slate-900 bg-gray-50 text-text text-[2.5rem]`}/>
                                 <input
                                     type='color'
                                     value={color}
@@ -311,22 +311,22 @@ const IconSidebar = ({sidebarOpen, setSidebarOpen, iconData, setSelectedIconData
                                 />
                             </div>
                             <input type='text' maxLength='8' value={color} onInput={handleColorInputChange}
-                                   className='px-3 w-[100px] text-gray-500 focus:ring-0 outline-none'/>
+                                   className='px-3 w-[100px] dark:bg-transparent dark:text-darkSubTextColor text-gray-500 focus:ring-0 outline-none'/>
                         </div>
                     </div>
 
                     <label className='flex flex-col gap-2'>
-                        <span className='text-text'>Size:</span>
-                        <div className='flex items-center w-max border border-gray-200 rounded-md'>
-                            <button className='bg-gray-100 p-[11px] rounded-l-md text-gray-700 text-[1.1rem]'
+                        <span className='text-text dark:text-darkSubTextColor'>Size:</span>
+                        <div className='flex items-center w-max border dark:border-darkBorderColor border-gray-200 rounded-md'>
+                            <button className='bg-gray-100 p-[11px] dark:bg-slate-900 dark:text-darkSubTextColor rounded-l-md text-gray-700 text-[1.1rem]'
                                     onClick={handleMiniDecrement}><FiMinus/></button>
                             <input type='number'
                                    value={size}
                                    max='100'
                                    min='0'
-                                   className='w-[60px] py-[6px] outline-none focus:ring-0 border-none text-center text-[1.1rem]'
+                                   className='w-[60px] dark:bg-transparent dark:text-darkSubTextColor py-[6px] outline-none focus:ring-0 border-none text-center text-[1.1rem]'
                                    onInput={handleMiniInputValueChange}/>
-                            <button className='bg-gray-100 p-[11px] rounded-r-md text-gray-700 text-[1.1rem]'
+                            <button className='bg-gray-100 p-[11px] dark:bg-slate-900 dark:text-darkSubTextColor rounded-r-md text-gray-700 text-[1.1rem]'
                                     onClick={handleMiniIncrement}><FiPlus/></button>
                         </div>
                     </label>
@@ -337,16 +337,16 @@ const IconSidebar = ({sidebarOpen, setSidebarOpen, iconData, setSelectedIconData
                 <div className='flex items-center justify-between w-full gap-[20px]'>
                     <button
                         type='button'
-                        className='w-full py-2.5 px-2 border border-border text-text rounded-md flex items-center gap-[8px] justify-center hover:bg-gray-50 active:scale-[0.9] transition-all duration-200'
+                        className='w-full py-2.5 px-2 border dark:border-darkBorderColor dark:text-darkSubTextColor border-border text-text rounded-md dark:hover:bg-slate-900/30 flex items-center gap-[8px] justify-center hover:bg-gray-50 active:scale-[0.9] transition-all duration-200'
                         onClick={handleDownloadSvg}
                     >
-                        <SvgFileIcon/> Download Svg
+                        <SvgFileIcon /> Download Svg
                     </button>
 
                     <button
                         onClick={handleDownloadPng}
-                        className='w-full py-2.5 px-2 border border-border text-text rounded-md flex items-center gap-[8px] justify-center hover:bg-gray-50 active:scale-[0.9] transition-all duration-200'>
-                        <PngFileIcon/> Download Png
+                        className='w-full py-2.5 px-2 border dark:border-darkBorderColor dark:text-darkSubTextColor border-border text-text rounded-md dark:hover:bg-slate-900/30 flex items-center gap-[8px] justify-center hover:bg-gray-50 active:scale-[0.9] transition-all duration-200'>
+                        <PngFileIcon /> Download Png
                     </button>
                 </div>
 

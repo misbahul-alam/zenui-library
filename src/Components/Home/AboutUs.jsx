@@ -36,19 +36,19 @@ const Hero = () => {
                 </Tilt>
 
                 <div data-aos="fade-left" className='1024px:w-[70%] w-full'>
-                    <h1 className='font-bold text-gray-800 text-[2.3rem] 1024px:text-[3rem] leading-[40px]'>Asfak
+                    <h1 className='font-bold text-gray-800 text-[2.3rem] dark:text-darkTextColor 1024px:text-[3rem] leading-[40px]'>Asfak
                         Ahmed</h1>
-                    <h4 className='text-[1rem] text-[#0FABCA] mt-2'>Founder & Creator</h4>
+                    <h4 className='text-[1rem] text-[#0FABCA] mt-2 dark:text-darkSubTextColor/80'>Founder & Creator</h4>
 
-                    <p className='mt-5'>
-                        <p className=' text-[1rem] text-gray-500'>
+                    <p className='mt-5 '>
+                        <p className=' text-[1rem] dark:text-darkSubTextColor text-gray-500'>
                             Welcome to ZenUI, A Open-Source React and Tailwind CSS UI components library dedicated to
                             providing developers with the tools they need to create stunning, responsive websites
                             effortlessly. Founded by Asfak Ahmed, ZenUI aims to simplify the development process by
                             offering a comprehensive collection of pre-built UI components, website templates, and more.
                         </p>
 
-                        <p className='mt-4 text-[1rem] text-gray-500'>
+                        <p className='mt-4 text-[1rem] dark:text-darkSubTextColor text-gray-500'>
                             Our mission is to empower developers to build beautiful, functional web applications without
                             the hassle of designing from scratch. At ZenUI, we believe that great design and seamless
                             functionality should be accessible to everyone. That's why we've meticulously crafted a
@@ -56,7 +56,7 @@ const Hero = () => {
                             and easy to integrate.
                         </p>
 
-                        <p className='mt-4 text-[1rem] text-gray-500'>
+                        <p className='mt-4 text-[1rem] dark:text-darkSubTextColor text-gray-500'>
                             Each component is designed with a focus on user experience, ensuring that your applications
                             look great and perform flawlessly across all devices. Beyond our extensive library of UI
                             components and pre-built website templates, we also provide a rich collection of free icons

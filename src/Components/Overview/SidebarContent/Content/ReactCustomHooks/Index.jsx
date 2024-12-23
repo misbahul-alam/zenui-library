@@ -38,7 +38,7 @@ const ReactCustomHooks = () => {
             <h1 className="text-[2rem] 425px:text-[2.7rem] font-[600] bg-clip-text text-transparent bg-gradient-to-r from-[#3B9DF8] to-[#1A1674]">
                 Custom Hooks
             </h1>
-            <p className="w-full text-text text-[1rem] mb-5">
+            <p className="w-full text-text text-[1rem] dark:text-darkSubTextColor mb-5">
                 {
                     `The Custom Hooks section in ZenUI Library provides a collection of custom hooks designed to simplify complex functionality, helping developers build better applications faster. With over ${CustomHooksData?.length}+ hooks (and more on the way), these resources include essentials like state management, API handling, event listeners, and UI logic tailored to address common development needs. Each hook is carefully curated to offer efficient, reusable solutions that integrate seamlessly into any React project.`
                 }
@@ -47,40 +47,40 @@ const ReactCustomHooks = () => {
             {/*  search area  */}
             <div>
                 <input type='text' placeholder='Search hook...' onChange={handleOnChange}
-                       className='py-3 px-4 border border-gray-200 mt-4 rounded-md focus:border-[#0FABCA] outline-none w-full 640px:w-[50%]'/>
+                       className='py-3 px-4 dark:bg-slate-900 dark:border-darkBorderColor dark:text-darkSubTextColor border border-gray-200 mt-4 rounded-md focus:border-[#0FABCA] outline-none w-full 640px:w-[50%]'/>
             </div>
 
             <div className='grid grid-cols-1 640px:grid-cols-2 1024px:grid-cols-3 gap-[20px] mt-10'>
                 {
                     filteredHooksData?.map((customHook, index) => (
                         <div key={index}
-                             className='rounded-md z-0 overflow-hidden relative border border-gray-200 flex flex-col h-full'>
+                             className='rounded-md z-0 overflow-hidden relative dark:border-darkBorderColor border border-gray-200 flex flex-col h-full'>
                             <div
-                                className='relative bg-white px-4 text-center min-h-[160px] flex items-center capitalize justify-center'>
+                                className='relative bg-white dark:bg-darkBgColor px-4 text-center min-h-[160px] flex items-center capitalize justify-center'>
                                 {/*  top blur  */}
                                 <div
-                                    className='bg-gradient-to-t from-transparent to-[#b2e2ea] w-full h-[50%] absolute top-0 left-0 z-0'></div>
+                                    className='bg-gradient-to-t from-transparent dark:opacity-30 dark:to-[#0FABCA] to-[#b2e2ea] w-full h-[50%] absolute top-0 left-0 z-0'></div>
 
                                 <p className='text-[1.4rem] z-10 font-[600] text-[#0FABCA]'>{customHook?.name}</p>
 
                                 {/*  bottom blur  */}
                                 <div
-                                    className='w-full bg-gradient-to-b absolute flex items-end justify-center bottom-0 left-0  from-transparent to-[#dbbaef] h-[50%] z-0'></div>
+                                    className='w-full bg-gradient-to-b absolute flex items-end justify-center bottom-0 left-0  from-transparent to-[#dbbaef] dark:to-[#9A04F5] dark:opacity-20 h-[50%] z-0'></div>
                             </div>
 
-                            <div className='p-[20px] bg-white flex flex-col flex-grow'>
+                            <div className='p-[20px] bg-white dark:bg-slate-900 flex flex-col flex-grow'>
                                 <div className='flex-grow'>
-                                    <p className='text-[0.9rem] text-gray-600 mt-1'><b
-                                        className='text-gray-700'>Description:</b> {customHook?.description}</p>
+                                    <p className='text-[0.9rem] dark:text-darkSubTextColor/90 text-gray-600 mt-1'><b
+                                        className='text-gray-700 dark:text-darkSubTextColor'>Description:</b> {customHook?.description}</p>
 
-                                    <p className='text-[0.9rem] text-gray-600 mt-3'><b className='text-gray-700'>Usage
+                                    <p className='text-[0.9rem] text-gray-600 mt-3 dark:text-darkSubTextColor/90'><b className='text-gray-700 dark:text-darkSubTextColor'>Usage
                                         Scenario:</b> {customHook?.usages}</p>
 
-                                    <p className='text-[0.9rem] text-gray-600 mt-3'><b
-                                        className='text-gray-700'>Behavior:</b> {customHook?.behavior}</p>
+                                    <p className='text-[0.9rem] text-gray-600 mt-3 dark:text-darkSubTextColor/90'><b
+                                        className='text-gray-700 dark:text-darkSubTextColor'>Behavior:</b> {customHook?.behavior}</p>
                                 </div>
                                 <button onClick={() => handleGetCodeClick(customHook)}
-                                        className='py-3 px-4 bg-gray-300 hover:bg-[#0FABCA] transition-all duration-200 rounded-md w-full mt-4 uppercase text-[0.9rem] text-gray-600 hover:text-white font-[500]'>Get
+                                        className='py-3 px-4 bg-gray-300 dark:bg-slate-600 dark:text-darkSubTextColor hover:bg-[#0FABCA] transition-all duration-200 rounded-md w-full mt-4 uppercase text-[0.9rem] text-gray-600 hover:text-white font-[500]'>Get
                                     Code
                                 </button>
                             </div>
