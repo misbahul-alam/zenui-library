@@ -14,7 +14,7 @@ import { Helmet } from 'react-helmet';
 // icons
 import { RiAccountCircleLine, RiLockPasswordLine } from 'react-icons/ri';
 import { MdOutlineMail } from 'react-icons/md';
-import {IoEyeOutline, IoEyeOffOutline, IoSearch, IoSunnyOutline, IoMoonOutline} from 'react-icons/io5';
+import {IoEyeOutline, IoEyeOffOutline, IoSearch} from 'react-icons/io5';
 
 // showing the code
 import Showcode from '../../../../../Shared/ShowCode';
@@ -22,9 +22,11 @@ import { IoIosArrowDown, IoLogoUsd } from 'react-icons/io';
 import { FaBangladeshiTakaSign } from 'react-icons/fa6';
 import { FaEuroSign } from 'react-icons/fa';
 import ToggleTab from "../../../../../Shared/ToggleTab.jsx";
+import ContentNavbar from "../../../../../Shared/ContentNavbar.jsx";
+import ComponentDescription from "../../../../../Shared/ComponentDescription.jsx";
+import ComponentWrapper from "../../../../../Shared/ComponentWrapper.jsx";
 
 const TextInput = () => {
-  // const [contentActiveTab, setContentActiveTab] = useState(0);
   const sectionIds = textInputContents.map((item) => item.href.slice(1));
   const activeSection = useScrollSpy(sectionIds);
 
@@ -32,127 +34,33 @@ const TextInput = () => {
   const [primaryInputPreview, setPrimaryInputPreview] = useState(true);
   const [primaryInputCode, setPrimaryInputCode] = useState(false);
 
-  const handlePrimaryInputPreview = () => {
-    setPrimaryInputPreview(true);
-    setPrimaryInputCode(false);
-  };
-
-  const handlePrimaryInputCode = () => {
-    setPrimaryInputCode(true);
-    setPrimaryInputPreview(false);
-  };
-
   // bottom border input
   const [bottomBorderPreview, setBottomBorderPreview] = useState(true);
   const [bottomBorderCode, setBottomBorderCode] = useState(false);
-
-  const handleBottomBorderPreview = () => {
-    setBottomBorderPreview(true);
-    setBottomBorderCode(false);
-  };
-
-  const handleBottomBorderCode = () => {
-    setBottomBorderCode(true);
-    setBottomBorderPreview(false);
-  };
 
   // animateLabel
   const [animateLabelPreiview, setAnimateLabelPreview] = useState(true);
   const [animateLabelCode, setAnimateLabelCode] = useState(false);
 
-  const handleAnimateLabelPreview = () => {
-    setAnimateLabelPreview(true);
-    setAnimateLabelCode(false);
-  };
-
-  const handleAnimateLabelCode = () => {
-    setAnimateLabelCode(true);
-    setAnimateLabelPreview(false);
-  };
-
   // icon input
   const [iconInputPreview, setIconInputPreview] = useState(true);
   const [iconInputCode, setIconInputCode] = useState(false);
-
-  const handleIconInputPreview = () => {
-    setIconInputPreview(true);
-    setIconInputCode(false);
-  };
-
-  const handleIconInputCode = () => {
-    setIconInputCode(true);
-    setIconInputPreview(false);
-  };
 
   // password input
   const [passwordInputPreview, setPasswordInputPreview] = useState(true);
   const [passwordInputCode, setPasswordInputCode] = useState(false);
 
-  const handlePasswordInputPreview = () => {
-    setPasswordInputPreview(true);
-    setPasswordInputCode(false);
-  };
-
-  const handlePasswordInputCode = () => {
-    setPasswordInputCode(true);
-    setPasswordInputPreview(false);
-  };
-
   // Link input
   const [linkInputPreview, setLinkInputPreview] = useState(true);
   const [linkInputCode, setLinkInputCode] = useState(false);
-
-  const handleLinkInputPreview = () => {
-    setLinkInputPreview(true);
-    setLinkInputCode(false);
-  };
-
-  const handleLinkInputCode = () => {
-    setLinkInputCode(true);
-    setLinkInputPreview(false);
-  };
 
   // price input
   const [priceInputPreview, setPriceInputPreview] = useState(true);
   const [priceInputCode, setPriceInputCode] = useState(false);
 
-  const handlePriceInputPreview = () => {
-    setPriceInputPreview(true);
-    setPriceInputCode(false);
-  };
-
-  const handlePriceInputCode = () => {
-    setPriceInputCode(true);
-    setPriceInputPreview(false);
-  };
-
-  // search input
-  const [searchInputPreview, setSearchInputPreview] = useState(true);
-  const [searchInputCode, setSearchInputCode] = useState(false);
-
-  const handleSearchInputPreview = () => {
-    setSearchInputPreview(true);
-    setSearchInputCode(false);
-  };
-
-  const handleSearchInputCode = () => {
-    setSearchInputCode(true);
-    setSearchInputPreview(false);
-  };
-
   // join us input
   const [joinInputPreview, setJoinInputPreview] = useState(true);
   const [joinInputCode, setJoinInputCode] = useState(false);
-
-  const handleJoinInputPreview = () => {
-    setJoinInputPreview(true);
-    setJoinInputCode(false);
-  };
-
-  const handleJoinInputCode = () => {
-    setJoinInputCode(true);
-    setJoinInputPreview(false);
-  };
 
   // actions
   const [isEyeOpen, setIsEyeOpen] = useState(false);
@@ -168,20 +76,28 @@ const TextInput = () => {
     setPriceDropdownOpen(false);
   };
 
+  function handleClassesBasedOnTheme(classString, isDark) {
+    const classes = classString.split(' ');
+
+    const filteredClasses = isDark
+        ? classes
+        : classes.filter(cls => !cls.startsWith('dark:'));
+
+    return filteredClasses.join(' ');
+  }
+
   return (
     <>
       <aside className='flex items-start justify-between gap-6 w-full 640px:pl-[2.5rem] px-6 640px:px-10'>
         <div>
           <ContentHeader text={'required input'} id={'primary_input'}/>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            This is an input text field. Use it to enter your information, which
-            will be processed accordingly.
-          </p>
+          <ComponentDescription text='This is an input text field. Use it to enter your information, which
+            will be processed accordingly.'/>
 
           <ToggleTab setCode={setPrimaryInputCode} preview={primaryInputPreview} setPreview={setPrimaryInputPreview} code={primaryInputCode}/>
 
-          <div className='w-full dark:bg-darkBg transition-all duration-500 425px:w-[80%] border border-border rounded'>
+          <ComponentWrapper>
             {primaryInputPreview && (
                 <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
                   <div className='w-full 1024px:w-[80%]'>
@@ -196,7 +112,7 @@ const TextInput = () => {
                         name='name'
                         id='name'
                         placeholder='Your name'
-                        className='border-border dark:bg-transparent dark:border-slate-500 dark:placeholder:text-slate-600 dark:text-slate-300 border rounded-md outline-none px-4 w-full mt-1 py-3 focus:border-primary transition-colors duration-300'
+                        className='border-border dark:bg-transparent dark:border-slate-600 dark:placeholder:text-slate-600 dark:text-slate-300 border rounded-md outline-none px-4 w-full mt-1 py-3 focus:border-primary transition-colors duration-300'
                     />
                   </div>
                 </div>
@@ -224,7 +140,7 @@ const TextInput = () => {
 export default Textarea;'
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className='mt-8'>
             <ContentHeader
@@ -233,37 +149,12 @@ export default Textarea;'
             />
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            This is a bottom-bordered input text field. Enter your information
-            here for it to be processed accordingly.
-          </p>
+          <ComponentDescription text='This is a bottom-bordered input text field. Enter your information
+            here for it to be processed accordingly.'/>
 
-          <div className='w-full dark:bg-darkBg 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                      bottomBorderPreview
-                          ? 'translate-x-[0px] !w-[100px]'
-                          : 'translate-x-[105px] rounded-br'
-                  }`}
-              ></div>
-              <button
-                  className={`${
-                      bottomBorderPreview && 'text-tabTextColor'
-                  } px-6 py-2 border-b text-text z-[2] relative border-border`}
-                  onClick={handleBottomBorderPreview}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      bottomBorderCode && 'text-tabTextColor'
-                  } px-6 py-2 border-r border-b text-text relative z-[2] rounded-br border-border`}
-                  onClick={handleBottomBorderCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab preview={bottomBorderPreview} setPreview={setBottomBorderPreview} code={bottomBorderCode} setCode={setBottomBorderCode}/>
+
+          <ComponentWrapper>
             {bottomBorderPreview && (
                 <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
                   <input
@@ -271,7 +162,7 @@ export default Textarea;'
                       name='name'
                       id='name'
                       placeholder='Your name'
-                      className='border-border border-b outline-none px-4 w-full 1024px:w-[80%] py-3 focus:border-primary transition-colors duration-300'
+                      className='border-border dark:bg-slate-900 dark:text-[#abc2d3] dark:border-slate-600 border-b outline-none px-4 w-full 1024px:w-[80%] py-3 focus:border-primary transition-colors duration-300'
                   />
                 </div>
             )}
@@ -284,7 +175,7 @@ export default Textarea;'
                 '
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className='mt-8'>
             <ContentHeader
@@ -293,37 +184,12 @@ export default Textarea;'
             />
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            This is an animated label text input field. Enter your data here,
-            and the label will animate accordingly.
-          </p>
+          <ComponentDescription text='This is an animated label text input field. Enter your data here,
+            and the label will animate accordingly.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                      animateLabelPreiview
-                          ? 'translate-x-[0px] !w-[100px]'
-                          : 'translate-x-[105px] rounded-br'
-                  }`}
-              ></div>
-              <button
-                  className={`${
-                      animateLabelPreiview && 'text-tabTextColor'
-                  } px-6 py-2 border-b text-text z-[2] relative border-border`}
-                  onClick={handleAnimateLabelPreview}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      animateLabelCode && 'text-tabTextColor'
-                  } px-6 py-2 border-r border-b rounded-br text-text z-[2] relative border-border`}
-                  onClick={handleAnimateLabelCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab setCode={setAnimateLabelCode} code={animateLabelCode} setPreview={setAnimateLabelPreview} preview={animateLabelPreiview}/>
+
+          <ComponentWrapper>
             {animateLabelPreiview && (
                 <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
                   <label className='relative w-full 1024px:w-[80%]'>
@@ -331,10 +197,10 @@ export default Textarea;'
                         type='text'
                         name='name'
                         id='name'
-                        className='peer border-border border rounded-md outline-none px-4 py-3 w-full focus:border-primary transition-colors duration-300'
+                        className='peer border-border dark:border-slate-600 bg-transparent border rounded-md outline-none px-4 py-3 w-full focus:border-primary transition-colors duration-300'
                     />
                     <span
-                        className=' absolute top-3.5 left-5 peer-focus:-top-3 peer-focus:bg-white peer-focus:left-2 peer-focus:scale-[0.9] peer-focus:text-primary text-[#777777] peer-focus:px-1 transition-all duration-300 '>
+                        className=' absolute top-3.5 dark:peer-focus:bg-darkBgColor left-5 peer-focus:-top-3 peer-focus:bg-white dark:text-slate-500 peer-focus:left-2 peer-focus:scale-[0.9] peer-focus:text-primary text-[#777777] peer-focus:px-1 transition-all duration-300 '>
                     Your name
                   </span>
                   </label>
@@ -354,75 +220,50 @@ export default Textarea;'
                 '
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className='mt-8'>
             <ContentHeader text={'input with icon'} id={'input_with_icon'}/>
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            This is an input field with an icon. Enter your information here and
-            use the icon for additional actions.
-          </p>
+          <ComponentDescription text='This is an input field with an icon. Enter your information here and
+            use the icon for additional actions.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                      iconInputPreview
-                          ? 'translate-x-[0px] !w-[100px]'
-                          : 'translate-x-[105px] rounded-br'
-                  }`}
-              ></div>
-              <button
-                  className={`${
-                      iconInputPreview && 'text-tabTextColor'
-                  } px-6 py-2 border-b text-text z-[2] relative border-border`}
-                  onClick={handleIconInputPreview}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      iconInputCode && 'text-tabTextColor'
-                  } px-6 py-2 border-r border-b rounded-br text-text z-[2] relative border-border`}
-                  onClick={handleIconInputCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab preview={iconInputPreview} setPreview={setIconInputPreview} code={iconInputCode} setCode={setIconInputCode}/>
+
+          <ComponentWrapper>
             {iconInputPreview && (
                 <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
                   <div className='w-full 1024px:w-[80%] relative'>
-                    <RiAccountCircleLine className=' absolute top-3.5 left-3 text-[1.5rem] text-[#777777]'/>
+                    <RiAccountCircleLine className=' absolute top-3.5 left-3 text-[1.5rem] dark:text-slate-400 text-[#777777]'/>
                     <input
                         type='text'
                         name='text'
                         id='text'
                         placeholder='Username'
-                        className='peer border-border border rounded-md outline-none pl-10 pr-4 py-3 w-full focus:border-primary transition-colors duration-300'
+                        className='peer border-border dark:bg-slate-900 dark:placeholder:text-slate-500 dark:text-[#abc2d3] dark:border-slate-600 border rounded-md outline-none pl-10 pr-4 py-3 w-full focus:border-primary transition-colors duration-300'
                     />
                   </div>
 
                   <div className='w-full 1024px:w-[80%] relative'>
-                    <RiLockPasswordLine className=' absolute top-3.5 left-3 text-[1.5rem] text-[#777777]'/>
+                    <RiLockPasswordLine className=' absolute top-3.5 left-3 text-[1.5rem] dark:text-slate-400 text-[#777777]'/>
                     <input
                         type='password'
                         name='password'
                         id='password'
                         placeholder='Password'
-                        className='peer border-border border rounded-md outline-none pl-10 pr-4 py-3 w-full focus:border-primary transition-colors duration-300'
+                        className='peer border-border dark:bg-slate-900 dark:placeholder:text-slate-500 dark:text-[#abc2d3] dark:border-slate-600 border rounded-md outline-none pl-10 pr-4 py-3 w-full focus:border-primary transition-colors duration-300'
                     />
                   </div>
 
                   <div className='w-full 1024px:w-[80%] relative'>
-                    <MdOutlineMail className=' absolute top-3.5 left-3 text-[1.5rem] text-[#777777]'/>
+                    <MdOutlineMail className=' absolute top-3.5 left-3 text-[1.5rem] dark:text-slate-400 text-[#777777]'/>
                     <input
                         type='email'
                         name='email'
                         id='email'
                         placeholder='Email address'
-                        className='peer border-border border rounded-md outline-none pl-10 pr-4 py-3 w-full focus:border-primary transition-colors duration-300'
+                        className='peer border-border dark:bg-slate-900 dark:placeholder:text-slate-500 dark:text-[#abc2d3] dark:border-slate-600 border rounded-md outline-none pl-10 pr-4 py-3 w-full focus:border-primary transition-colors duration-300'
                     />
                   </div>
                 </div>
@@ -481,49 +322,24 @@ export default Inputs;
                 '
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className='mt-8'>
             <ContentHeader text={'password input'} id={'password_input'}/>
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            This is a password input field with show/hide functionality. Enter
-            your password and toggle visibility as needed.
-          </p>
+          <ComponentDescription text='This is a password input field with show/hide functionality. Enter
+            your password and toggle visibility as needed.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                      passwordInputPreview
-                          ? 'translate-x-[0px] !w-[100px]'
-                          : 'translate-x-[105px] rounded-br'
-                  }`}
-              ></div>
-              <button
-                  className={`${
-                      passwordInputPreview && 'text-tabTextColor'
-                  } px-6 py-2 border-b text-text z-[2] relative border-border`}
-                  onClick={handlePasswordInputPreview}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      passwordInputCode && 'text-tabTextColor'
-                  } px-6 py-2 border-r border-b rounded-br text-text z-[2] relative border-border`}
-                  onClick={handlePasswordInputCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab setCode={setPasswordInputCode} code={passwordInputCode} setPreview={setPasswordInputPreview} preview={passwordInputPreview}/>
+
+          <ComponentWrapper>
             {passwordInputPreview && (
                 <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
                   <div className='w-full 1024px:w-[80%]'>
                     <label
                         htmlFor='password'
-                        className='text-[15px] text-text font-[400]'
+                        className='text-[15px] dark:text-[#abc2d3] text-text font-[400]'
                     >
                       Password
                     </label>
@@ -533,16 +349,16 @@ export default Inputs;
                           name='password'
                           id='password'
                           placeholder='Password'
-                          className='peer border-border border rounded-md outline-none pl-4 pr-12 py-3 w-full mt-1 focus:border-primary transition-colors duration-300'
+                          className='peer border-border dark:border-slate-600 dark:bg-slate-900 dark:placeholder:text-slate-500 border dark:text-[#abc2d3] rounded-md outline-none pl-4 pr-12 py-3 w-full mt-1 focus:border-primary transition-colors duration-300'
                       />
                       {isEyeOpen ? (
                           <IoEyeOutline
-                              className=' absolute top-4 right-4 text-[1.5rem] text-[#777777] cursor-pointer'
+                              className=' absolute top-4 right-4 text-[1.5rem] dark:text-slate-400 text-[#777777] cursor-pointer'
                               onClick={() => setIsEyeOpen(false)}
                           />
                       ) : (
                           <IoEyeOffOutline
-                              className=' absolute top-4 right-4 text-[1.5rem] text-[#777777] cursor-pointer'
+                              className=' absolute top-4 right-4 text-[1.5rem] dark:text-slate-400 text-[#777777] cursor-pointer'
                               onClick={() => setIsEyeOpen(true)}
                           />
                       )}
@@ -588,54 +404,29 @@ export default Textarea;
                 '
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className='mt-8'>
             <ContentHeader text={'Link input'} id={'link_input'}/>
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            This is a link input field that allows you to enter a URL. You can
-            customize and validate the link as needed.
-          </p>
+          <ComponentDescription text='This is a link input field that allows you to enter a URL. You can
+            customize and validate the link as needed.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                      linkInputPreview
-                          ? 'translate-x-[0px] !w-[100px]'
-                          : 'translate-x-[105px] rounded-br'
-                  }`}
-              ></div>
-              <button
-                  className={`${
-                      linkInputPreview && 'text-tabTextColor'
-                  } px-6 py-2 border-b text-text z-[2] relative border-border`}
-                  onClick={handleLinkInputPreview}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      linkInputCode && 'text-tabTextColor'
-                  } px-6 py-2 border-r border-b rounded-br text-text z-[2] relative border-border`}
-                  onClick={handleLinkInputCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab preview={linkInputPreview} setPreview={setLinkInputPreview} code={linkInputCode} setCode={setLinkInputCode}/>
+
+          <ComponentWrapper>
             {linkInputPreview && (
                 <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
                   <div className='w-full 1024px:w-[80%] relative'>
                     <input
                         type='text'
                         placeholder='Website url'
-                        className='border border-border py-3 pr-4 pl-[90px] outline-none w-full rounded-md'
+                        className='border dark:border-slate-600 dark:text-[#abc2d3] dark:placeholder:text-slate-500 bg-transparent border-border py-3 pr-4 pl-[90px] outline-none w-full rounded-md'
                     />
 
                     <span
-                        className='bg-gray-300 text-gray-500 text-[1rem] absolute top-0 left-0 h-full px-3 flex items-center justify-center rounded-l-md'>
+                        className='bg-gray-300 dark:bg-slate-900 dark:border dark:border-slate-600 dark:text-slate-400 text-gray-500 text-[1rem] absolute top-0 left-0 h-full px-3 flex items-center justify-center rounded-l-md'>
                     Https://
                   </span>
                   </div>
@@ -653,44 +444,19 @@ export default Textarea;
                     "
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className='mt-8'>
             <ContentHeader text={'Price input'} id={'price_input'}/>
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            This is a price input field where you can enter and format a price
+          <ComponentDescription text='This is a price input field where you can enter and format a price
             value. It supports currency symbols and ensures valid numerical
-            input.
-          </p>
+            input.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                      priceInputPreview
-                          ? 'translate-x-[0px] !w-[100px]'
-                          : 'translate-x-[105px] rounded-br'
-                  }`}
-              ></div>
-              <button
-                  className={`${
-                      priceInputPreview && 'text-tabTextColor'
-                  } px-6 py-2 border-b text-text z-[2] relative border-border`}
-                  onClick={handlePriceInputPreview}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      priceInputCode && 'text-tabTextColor'
-                  } px-6 py-2 border-r border-b rounded-br text-text z-[2] relative border-border`}
-                  onClick={handlePriceInputCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab preview={priceInputPreview} setPreview={setPriceInputPreview} code={priceInputCode} setCode={setPriceInputCode}/>
+
+          <ComponentWrapper>
             {priceInputPreview && (
                 <div
                     className={`${
@@ -701,27 +467,27 @@ export default Textarea;
                     <input
                         type='number'
                         placeholder='0'
-                        className='border border-border py-3 pl-[65px] pr-[80px] outline-none w-full rounded-md'
+                        className='border dark:border-slate-600 bg-transparent dark:text-[#abc2d3] dark:placeholder:text-slate-500 border-border py-3 pl-[65px] pr-[80px] outline-none w-full rounded-md'
                     />
 
                     <div
-                        className='bg-gray-100 w-[50px] absolute top-0 h-full left-0 flex items-center justify-center rounded-l-md'>
+                        className='bg-gray-100 w-[50px] dark:bg-slate-900 dark:border dark:border-slate-600 absolute top-0 h-full left-0 flex items-center justify-center rounded-l-md'>
                       {selectedCurrencyType === 'BDT' && (
-                          <FaBangladeshiTakaSign className='text-[1.2rem] text-gray-600'/>
+                          <FaBangladeshiTakaSign className='text-[1.2rem] dark:text-slate-400 text-gray-600'/>
                       )}
                       {selectedCurrencyType === 'EUR' && (
-                          <FaEuroSign className='text-[1.2rem] text-gray-600'/>
+                          <FaEuroSign className='text-[1.2rem] dark:text-slate-400 text-gray-600'/>
                       )}
                       {selectedCurrencyType === 'USD' && (
-                          <IoLogoUsd className='text-[1.2rem] text-gray-600'/>
+                          <IoLogoUsd className='text-[1.2rem] dark:text-slate-400 text-gray-600'/>
                       )}
                     </div>
 
                     <div
                         onClick={() => setPriceDropdownOpen(!priceDropdownOpen)}
-                        className='absolute top-0 right-0 h-full flex items-center justify-center cursor-pointer border-l border-border px-4'
+                        className='absolute top-0 right-0 h-full flex dark:border-slate-600 items-center justify-center cursor-pointer border-l border-border px-4'
                     >
-                    <span className='flex items-center gap-[8px] text-text'>
+                    <span className='flex items-center gap-[8px] dark:text-slate-300 text-text'>
                       {selectedCurrencyType}
                       <IoIosArrowDown
                           className={`${
@@ -735,12 +501,12 @@ export default Textarea;
                               priceDropdownOpen
                                   ? 'translate-y-0 opacity-100 z-30'
                                   : 'translate-y-[-10px] opacity-0 z-[-1]'
-                          } list-none absolute top-[53px] right-0 bg-white toastshadow w-[87px] flex flex-col items-center transition-all duration-200 justify-center py-1 rounded-md`}
+                          } list-none absolute top-[53px] dark:bg-slate-800 dark:text-slate-300 right-0 bg-white toastshadow w-[87px] flex flex-col items-center transition-all duration-200 justify-center py-1 rounded-md`}
                       >
                         {allCurrencyTypes?.map((currency, index) => (
                             <li
                                 key={index}
-                                className='py-2 px-4 w-full hover:bg-gray-100 text-center cursor-pointer'
+                                className='py-2 px-4 w-full dark:hover:bg-slate-700/30 hover:bg-gray-100 text-center cursor-pointer'
                                 onClick={() => handlePriceDropdownClick(currency)}
                             >
                               {currency}
@@ -824,54 +590,29 @@ export default PriceInput;
                     "
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className='mt-8'>
             <ContentHeader text={'search input'} id={'search_input'}/>
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            This is a search input field that lets you enter keywords to find
-            specific content. It provides instant feedback as you type.
-          </p>
+          <ComponentDescription text='This is a search input field that lets you enter keywords to find
+            specific content. It provides instant feedback as you type.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                      passwordInputPreview
-                          ? 'translate-x-[0px] !w-[100px]'
-                          : 'translate-x-[105px] rounded-br'
-                  }`}
-              ></div>
-              <button
-                  className={`${
-                      passwordInputPreview && 'text-tabTextColor'
-                  } px-6 py-2 border-b text-text z-[2] relative border-border`}
-                  onClick={handlePasswordInputPreview}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      passwordInputCode && 'text-tabTextColor'
-                  } px-6 py-2 border-r border-b rounded-br text-text z-[2] relative border-border`}
-                  onClick={handlePasswordInputCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab preview={passwordInputPreview} setPreview={setPasswordInputPreview} code={passwordInputCode} setCode={setPasswordInputCode}/>
+
+          <ComponentWrapper>
             {passwordInputPreview && (
                 <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
                   <div className='w-full 1024px:w-[80%] relative'>
                     <input
                         type='text'
                         placeholder='Search...'
-                        className='border border-border py-3 pl-4 pr-[65px] outline-none w-full rounded-md'
+                        className='border dark:border-slate-600 bg-transparent dark:placeholder:text-slate-500 dark:text-[#abc2d3] border-border py-3 pl-4 pr-[65px] outline-none w-full rounded-md'
                     />
 
                     <span
-                        className='bg-gray-300 text-gray-500 absolute top-0 right-0 h-full px-5 flex items-center justify-center rounded-r-md cursor-pointer hover:bg-gray-400 group'>
+                        className='bg-gray-300 dark:bg-slate-900 dark:border dark:border-slate-600 dark:text-slate-400 text-gray-500 absolute top-0 right-0 h-full px-5 flex items-center justify-center rounded-r-md cursor-pointer hover:bg-gray-400 group'>
                     <IoSearch className='text-[1.3rem]  group-hover:text-gray-200'/>
                   </span>
                   </div>
@@ -880,11 +621,11 @@ export default PriceInput;
                     <input
                         type='text'
                         placeholder='Search...'
-                        className='border border-border py-3 pl-4 pr-[65px] outline-none w-full rounded-md'
+                        className='border dark:border-slate-600 dark:placeholder:text-slate-500 bg-transparent dark:text-[#abc2d3] border-border py-3 pl-4 pr-[65px] outline-none w-full rounded-md'
                     />
 
                     <span
-                        className='bg-gray-300 text-gray-500 absolute top-0 right-0 h-full px-5 flex items-center justify-center rounded-r-md cursor-pointer hover:bg-gray-400 hover:text-gray-200'>
+                        className='bg-gray-300 dark:bg-slate-900 dark:border-slate-600 dark:border dark:text-slate-300 text-gray-500 absolute top-0 right-0 h-full px-5 flex items-center justify-center rounded-r-md cursor-pointer hover:bg-gray-400 hover:text-gray-200'>
                     Search
                   </span>
                   </div>
@@ -896,7 +637,7 @@ export default PriceInput;
                     <input
                         type='text'
                         placeholder='Search...'
-                        className='border border-border absolute top-[2px] left-[3px] h-[90%] w-[85%] py-3 px-4 outline-none rounded-full'
+                        className='border dark:bg-slate-900 dark:border-none dark:placeholder:text-slate-500 dark:text-[#abc2d3] border-border absolute top-[2px] left-[3px] h-[90%] w-[85%] py-3 px-4 outline-none rounded-full'
                     />
                   </div>
                 </div>
@@ -949,51 +690,26 @@ export default SearchInput;
                     "
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className='mt-8'>
             <ContentHeader text={'Join us input'} id={'join_us_input'}/>
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            This is a join us input field where users can enter their details to
+          <ComponentDescription text='This is a join us input field where users can enter their details to
             express interest in joining. It helps capture information for
-            membership or subscription.
-          </p>
+            membership or subscription.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                      joinInputPreview
-                          ? 'translate-x-[0px] !w-[100px]'
-                          : 'translate-x-[105px] rounded-br'
-                  }`}
-              ></div>
-              <button
-                  className={`${
-                      joinInputPreview && 'text-tabTextColor'
-                  } px-6 py-2 border-b text-text z-[2] relative border-border`}
-                  onClick={handleJoinInputPreview}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      joinInputCode && 'text-tabTextColor'
-                  } px-6 py-2 border-r border-b rounded-br text-text z-[2] relative border-border`}
-                  onClick={handleJoinInputCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab preview={joinInputPreview} setPreview={setJoinInputPreview} code={joinInputCode} setCode={setJoinInputCode}/>
+
+          <ComponentWrapper>
             {joinInputPreview && (
                 <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
                   <div className='w-full 1024px:w-[80%] relative'>
                     <input
                         type='email'
                         placeholder='Email'
-                        className='border border-border py-3 pl-4 pr-[115px] outline-none w-full rounded-md'
+                        className='border bg-transparent dark:border-slate-500 dark:placeholder:text-slate-500 dark:text-[#abc2d3] border-border py-3 pl-4 pr-[115px] outline-none w-full rounded-md'
                     />
 
                     <span
@@ -1017,7 +733,7 @@ export default SearchInput;
                     "
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <OverviewFooter
               backName='all components'
@@ -1026,23 +742,9 @@ export default SearchInput;
               forwardUrl='/components/input-textarea'
           />
         </div>
-        <div className='1024px:flex flex-col gap-4 sticky top-4 right-0 w-[40%] hidden'>
-          <h2 className='text-[0.9rem] font-[600] text-text tracking-widest'>
-            CONTENTS
-          </h2>
-          {textInputContents.map((item) => (
-              <a
-                  key={item.id}
-                  href={item.href}
-                  className={`${
-                      activeSection === item.href.slice(1) &&
-                      '!text-primary !border-primary'
-                  } text-[0.9rem] capitalize transition-all duration-300 text-text border-l border-transparent pl-4`}
-              >
-                {item.title}
-              </a>
-          ))}
-        </div>
+
+        <ContentNavbar contents={textInputContents} activeSection={activeSection}/>
+
       </aside>
       <Helmet>
         <title>Form - Text Input</title>

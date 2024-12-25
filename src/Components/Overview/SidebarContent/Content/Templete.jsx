@@ -3,8 +3,7 @@ import React from "react";
 // icons
 import { FaEye } from "react-icons/fa";
 
-// utils style
-import utils from "../../../../Utils";
+// react helmet
 import { Helmet } from "react-helmet";
 
 // animation tilt
@@ -27,7 +26,7 @@ const Templete = () => {
       <h1 className="font-[600] text-[#0471d6] text-[2rem] 425px:text-[2.5rem] 1024px:text-[3rem] capitalize">
         ZenUI Templates
       </h1>
-      <p className="w-full 425px:w-[70%] text-text text-[1rem]">
+      <p className="w-full 425px:w-[70%] dark:text-darkSubTextColor text-text text-[1rem]">
         Browse our collection of React templates to get started building
         your app with ZenUI, including a React home page, React landing page,
         and more.
@@ -38,7 +37,7 @@ const Templete = () => {
             <Tilt>
                 <div
                     key={index}
-                    className="bg-gray-50 h-full flex flex-col justify-between rounded-md border border-gray-200"
+                    className="bg-gray-50 h-full flex dark:bg-slate-900 dark:border-darkBorderColor flex-col justify-between rounded-md border border-gray-200"
                 >
                     <div>
                         <div className=" relative mb-2 group cursor-pointer">
@@ -61,14 +60,14 @@ const Templete = () => {
 
                         <div className="p-4 w-full">
                             <div>
-                                <h1 className="font-[600] text-gray-700 capitalize text-[1.2rem] flex items-center justify-between">
+                                <h1 className="font-[600] dark:text-darkTextColor text-gray-700 capitalize text-[1.2rem] flex items-center justify-between">
                                     {truncateText(template.title, 16)}
 
-                                    <p className='py-[1px] px-[10px] rounded-full bg-blue-100 text-blue-500 text-[0.7rem] font-[300] w-max'>
+                                    <p className='py-[1px] px-[10px] rounded-full bg-blue-100 text-blue-500 text-[0.7rem] font-[300] dark:bg-slate-800 dark:border dark:border-slate-700 dark:text-blue-300 w-max'>
                                         Free
                                     </p>
                                 </h1>
-                                <p className="text-gray-500 text-[0.9rem] mt-3 font-[400]">
+                                <p className="text-gray-500 dark:text-darkSubTextColor text-[0.9rem] mt-3 font-[400]">
                                     {truncateText(template.description, 70)}
                                 </p>
                             </div>
@@ -77,9 +76,9 @@ const Templete = () => {
 
                     <div className="p-4 w-full">
                         <button
-                            className={`px-4 uppercase w-full flex items-center justify-center mx-auto py-2 bg-gray-300 rounded-md hover:bg-blue-400 group transition-all duration-300`}
+                            className={`px-4 uppercase w-full flex items-center justify-center mx-auto py-2 bg-gray-300 rounded-md dark:bg-slate-700 hover:bg-blue-400 group transition-all duration-300`}
                         >
-                            <a href={template.githubLink} target="_blank" className='text-gray-700 group-hover:text-white transition-all duration-300'>
+                            <a href={template.githubLink} target="_blank" className='dark:text-darkSubTextColor text-gray-700 group-hover:text-white transition-all duration-300'>
                                 Get Template
                             </a>
                         </button>

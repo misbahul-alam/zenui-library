@@ -51,11 +51,11 @@ const AllComponents = () => {
         <h2 className="font-[600] text-[#0471d6] uppercase text-[2rem] 425px:text-[2.5rem]">
           ZenUI components
         </h2>
-        <p className="text-text text-[0.9rem]">
+        <p className="text-text dark:text-darkSubTextColor text-[0.9rem]">
           Every ZenUI Library component available for free.
         </p>
 
-        <p className="text-text text-[0.9rem] mt-8">
+        <p className="text-text dark:text-darkSubTextColor text-[0.9rem] mt-8">
           ZenUI is a website where you can get all the component designs you
           want and they are completely free. You can copy and use them in your
           own projects from here. All the guidelines are given very nicely on
@@ -67,14 +67,14 @@ const AllComponents = () => {
         <h2 className="mt-12 font-[600] text-[1.5rem] text-[#0471d6]">input</h2>
         <div className="grid grid-cols-2 425px:grid-cols-3 mt-4 gap-8">
           {inputsData?.map((button, index) => (
-              <a href={button.url} className="border border-border rounded" key={index}>
+              <a href={button.url} className="border border-border dark:border-darkBorderColor rounded" key={index}>
                 <img
                     src={button.image}
                     alt="component/image"
                     className="w-full h-[150px] rounded-t object-contain"
                 />
-                <div className="border-t border-border p-4">
-                  <h2 className="text-text font-[600] text-[1rem] capitalize">
+                <div className="border-t dark:border-darkBorderColor border-border p-4">
+                  <h2 className="text-text font-[600] text-[1rem] dark:text-darkSubTextColor capitalize">
                     {button.title}
                   </h2>
                 </div>
@@ -85,14 +85,14 @@ const AllComponents = () => {
         <h2 className="mt-12 font-[600] text-[1.5rem] text-[#0471d6]">Navigation</h2>
         <div className="grid grid-cols-2 425px:grid-cols-3 mt-4 gap-8">
           {navigationsData?.map((button, index) => (
-              <a href={button.url} className="border border-border rounded" key={index}>
+              <a href={button.url} className="border border-border dark:border-darkBorderColor rounded" key={index}>
                 <img
                     src={button.image}
                     alt="component/image"
                     className="w-full h-[150px] rounded-t object-contain"
                 />
-                <div className="border-t border-border p-4">
-                  <h2 className="text-text font-[600] text-[1rem] capitalize">
+                <div className="border-t dark:border-darkBorderColor border-border p-4">
+                  <h2 className="text-text font-[600] text-[1rem] dark:text-darkSubTextColor capitalize">
                     {button.title}
                   </h2>
                 </div>
@@ -103,14 +103,14 @@ const AllComponents = () => {
         <h2 className="mt-12 font-[600] text-[1.5rem] mb-3 text-[#0471d6]">Buttons</h2>
         <div className="grid grid-cols-2 425px:grid-cols-3 gap-8">
           {buttonsData?.map((button, index) => (
-              <a href={button.url} className="border border-border rounded" key={index}>
+              <a href={button.url} className="border border-border dark:border-darkBorderColor rounded" key={index}>
                 <img
                     src={button.image}
                     alt="component/image"
                     className="w-full h-[150px] rounded-t object-contain"
                 />
-                <div className="border-t border-border p-4">
-                  <h2 className="text-text font-[600] text-[1rem] capitalize">
+                <div className="border-t dark:border-darkBorderColor border-border p-4">
+                  <h2 className="text-text font-[600] text-[1rem] dark:text-darkSubTextColor capitalize">
                     {button.title}
                   </h2>
                 </div>
@@ -121,14 +121,14 @@ const AllComponents = () => {
         <h2 className="mt-12 font-[600] text-[1.5rem] text-[#0471d6]">Feedback</h2>
         <div className="grid grid-cols-2 425px:grid-cols-3 mt-4 gap-8">
           {feedbackData?.map((button, index) => (
-              <a href={button.url} className="border border-border rounded" key={index}>
+              <a href={button.url} className="border border-border dark:border-darkBorderColor rounded" key={index}>
                 <img
                     src={button.image}
                     alt="component/image"
                     className="w-full h-[150px] rounded-t object-contain"
                 />
-                <div className="border-t border-border p-4">
-                  <h2 className="text-text font-[600] text-[1rem] capitalize">
+                <div className="border-t dark:border-darkBorderColor border-border p-4">
+                  <h2 className="text-text font-[600] text-[1rem] dark:text-darkSubTextColor capitalize">
                     {button.title}
                   </h2>
                 </div>
@@ -139,14 +139,14 @@ const AllComponents = () => {
         <h2 className="mt-12 font-[600] text-[1.5rem] mb-3 text-[#0471d6]">Surface</h2>
         <div className="grid grid-cols-2 425px:grid-cols-3 gap-8">
           {surfaceData?.map((button, index) => (
-              <a href={button.url} className="border border-border rounded" key={index}>
+              <a href={button.url} className="border border-border dark:border-darkBorderColor rounded" key={index}>
                 <img
                     src={button.image}
                     alt="component/image"
                     className="w-full h-[150px] rounded-t object-contain"
                 />
-                <div className="border-t border-border p-4">
-                  <h2 className="text-text font-[600] text-[1rem] capitalize">
+                <div className="border-t dark:border-darkBorderColor border-border p-4">
+                  <h2 className="text-text font-[600] text-[1rem] dark:text-darkSubTextColor capitalize">
                     {button.title}
                   </h2>
                 </div>
@@ -157,14 +157,14 @@ const AllComponents = () => {
         <h2 className="mt-12 font-[600] text-[1.5rem] mb-3 text-[#0471d6] ">Data Display</h2>
         <div className="grid grid-cols-2 425px:grid-cols-3 gap-8">
           {displayData?.map((button, index) => (
-              <a href={button.url} className="border border-border rounded" key={index}>
+              <a href={button.url} className="border border-border dark:border-darkBorderColor rounded" key={index}>
                 <img
                     src={button.image}
                     alt="component/image"
                     className="w-full h-[150px] rounded-t object-contain"
                 />
-                <div className="border-t border-border p-4">
-                  <h2 className="text-text font-[600] text-[1rem] capitalize">
+                <div className="border-t dark:border-darkBorderColor border-border p-4">
+                  <h2 className="text-text font-[600] text-[1rem] dark:text-darkSubTextColor capitalize">
                     {button.title}
                   </h2>
                 </div>

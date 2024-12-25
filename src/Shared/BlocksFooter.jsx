@@ -45,7 +45,7 @@ const OverviewFooter = ({width = '820px',backUrl, forwardUrl, backName, forwardN
                 <img src="/footer_logo.png" alt="logo-image" className="w-[120px] 640px:w-[120px]" />
 
                 <div className="flex items-center gap-3">
-                    <p className=" font-[600] text-[1rem] text-text dark:text-darkSubTextColor">Support:</p>
+                    <p className=" font-[600] text-[1rem] text-text dark:text-darkSubTextColor/90">Support:</p>
                     <a href="https://buymeacoffee.com/zenuilibrary" target="_blank">
                         <img
                             src="https://www.codehim.com/wp-content/uploads/2022/09/bmc-button-640x180.png.webp"

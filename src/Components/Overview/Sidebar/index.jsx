@@ -33,7 +33,7 @@ const index = ({ startContent, setStartContent }) => {
   return (
       <aside
           ref={sidebarRef}
-          className="py-6 px-10 pr-7 border-r h-[89vh] border-border flex-col gap-4 overflow-y-scroll sticky top-18 left-0 w-[320px] dark:bg-darkBgColor transition-all duration-500 dark:border-darkBorderColor bg-secondary z-20 1024px:flex hidden">
+          className="py-6 px-10 pr-7 border-r h-[89vh] border-border flex-col gap-4 overflow-y-scroll sticky top-18 left-0 w-[320px] dark:bg-darkBgColor dark:border-darkBorderColor bg-secondary z-20 1024px:flex hidden">
 
         {/*  get starts  */}
         <ul className='getStarted flex flex-col gap-[12px] mb-4'>
