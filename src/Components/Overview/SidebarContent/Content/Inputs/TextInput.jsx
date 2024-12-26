@@ -95,7 +95,8 @@ const TextInput = () => {
           <ComponentDescription text='This is an input text field. Use it to enter your information, which
             will be processed accordingly.'/>
 
-          <ToggleTab setCode={setPrimaryInputCode} preview={primaryInputPreview} setPreview={setPrimaryInputPreview} code={primaryInputCode}/>
+          <ToggleTab setCode={setPrimaryInputCode} preview={primaryInputPreview} setPreview={setPrimaryInputPreview}
+                     code={primaryInputCode}/>
 
           <ComponentWrapper>
             {primaryInputPreview && (
@@ -120,24 +121,32 @@ const TextInput = () => {
 
             {primaryInputCode && (
                 <Showcode
-                    code='const Textarea = () => {
-  return (
-    <div className="w-[80%]">
-      <label htmlFor="name" className="text-[15px] font-[400]">
-        Name <span className="text-red-500">*</span>
-      </label>
-      <input
-        type="text"
-        name="name"
-        id="name"
-        placeholder="Your name"
-        className="border-[#e5eaf2] border rounded-md outline-none px-4 w-full mt-1 py-3 focus:border-[#3B9DF8] transition-colors duration-300"
-      />
-    </div>
-  );
+                    code='
+import React from "react";
+
+const TextInput = () => {
+
+    return (
+        <div className="w-full 1024px:w-[80%]">
+            <label
+                htmlFor="name"
+                className="text-[15px] dark:text-slate-300 text-text font-[400]"
+            >
+                Name <span className="text-red-500">*</span>
+            </label>
+            <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Your name"
+                className="border-border dark:bg-transparent dark:border-slate-600 dark:placeholder:text-slate-600 dark:text-slate-300 border rounded-md outline-none px-4 w-full mt-1 py-3 focus:border-primary transition-colors duration-300"
+            />
+        </div>
+    );
 };
 
-export default Textarea;'
+export default TextInput;
+                    '
                 />
             )}
           </ComponentWrapper>
@@ -152,7 +161,8 @@ export default Textarea;'
           <ComponentDescription text='This is a bottom-bordered input text field. Enter your information
             here for it to be processed accordingly.'/>
 
-          <ToggleTab preview={bottomBorderPreview} setPreview={setBottomBorderPreview} code={bottomBorderCode} setCode={setBottomBorderCode}/>
+          <ToggleTab preview={bottomBorderPreview} setPreview={setBottomBorderPreview} code={bottomBorderCode}
+                     setCode={setBottomBorderCode}/>
 
           <ComponentWrapper>
             {bottomBorderPreview && (
@@ -187,7 +197,8 @@ export default Textarea;'
           <ComponentDescription text='This is an animated label text input field. Enter your data here,
             and the label will animate accordingly.'/>
 
-          <ToggleTab setCode={setAnimateLabelCode} code={animateLabelCode} setPreview={setAnimateLabelPreview} preview={animateLabelPreiview}/>
+          <ToggleTab setCode={setAnimateLabelCode} code={animateLabelCode} setPreview={setAnimateLabelPreview}
+                     preview={animateLabelPreiview}/>
 
           <ComponentWrapper>
             {animateLabelPreiview && (
@@ -229,13 +240,15 @@ export default Textarea;'
           <ComponentDescription text='This is an input field with an icon. Enter your information here and
             use the icon for additional actions.'/>
 
-          <ToggleTab preview={iconInputPreview} setPreview={setIconInputPreview} code={iconInputCode} setCode={setIconInputCode}/>
+          <ToggleTab preview={iconInputPreview} setPreview={setIconInputPreview} code={iconInputCode}
+                     setCode={setIconInputCode}/>
 
           <ComponentWrapper>
             {iconInputPreview && (
                 <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
                   <div className='w-full 1024px:w-[80%] relative'>
-                    <RiAccountCircleLine className=' absolute top-3.5 left-3 text-[1.5rem] dark:text-slate-400 text-[#777777]'/>
+                    <RiAccountCircleLine
+                        className=' absolute top-3.5 left-3 text-[1.5rem] dark:text-slate-400 text-[#777777]'/>
                     <input
                         type='text'
                         name='text'
@@ -246,7 +259,8 @@ export default Textarea;'
                   </div>
 
                   <div className='w-full 1024px:w-[80%] relative'>
-                    <RiLockPasswordLine className=' absolute top-3.5 left-3 text-[1.5rem] dark:text-slate-400 text-[#777777]'/>
+                    <RiLockPasswordLine
+                        className=' absolute top-3.5 left-3 text-[1.5rem] dark:text-slate-400 text-[#777777]'/>
                     <input
                         type='password'
                         name='password'
@@ -257,7 +271,8 @@ export default Textarea;'
                   </div>
 
                   <div className='w-full 1024px:w-[80%] relative'>
-                    <MdOutlineMail className=' absolute top-3.5 left-3 text-[1.5rem] dark:text-slate-400 text-[#777777]'/>
+                    <MdOutlineMail
+                        className=' absolute top-3.5 left-3 text-[1.5rem] dark:text-slate-400 text-[#777777]'/>
                     <input
                         type='email'
                         name='email'
@@ -331,7 +346,8 @@ export default Inputs;
           <ComponentDescription text='This is a password input field with show/hide functionality. Enter
             your password and toggle visibility as needed.'/>
 
-          <ToggleTab setCode={setPasswordInputCode} code={passwordInputCode} setPreview={setPasswordInputPreview} preview={passwordInputPreview}/>
+          <ToggleTab setCode={setPasswordInputCode} code={passwordInputCode} setPreview={setPasswordInputPreview}
+                     preview={passwordInputPreview}/>
 
           <ComponentWrapper>
             {passwordInputPreview && (
@@ -413,7 +429,8 @@ export default Textarea;
           <ComponentDescription text='This is a link input field that allows you to enter a URL. You can
             customize and validate the link as needed.'/>
 
-          <ToggleTab preview={linkInputPreview} setPreview={setLinkInputPreview} code={linkInputCode} setCode={setLinkInputCode}/>
+          <ToggleTab preview={linkInputPreview} setPreview={setLinkInputPreview} code={linkInputCode}
+                     setCode={setLinkInputCode}/>
 
           <ComponentWrapper>
             {linkInputPreview && (
@@ -454,7 +471,8 @@ export default Textarea;
             value. It supports currency symbols and ensures valid numerical
             input.'/>
 
-          <ToggleTab preview={priceInputPreview} setPreview={setPriceInputPreview} code={priceInputCode} setCode={setPriceInputCode}/>
+          <ToggleTab preview={priceInputPreview} setPreview={setPriceInputPreview} code={priceInputCode}
+                     setCode={setPriceInputCode}/>
 
           <ComponentWrapper>
             {priceInputPreview && (
@@ -599,7 +617,8 @@ export default PriceInput;
           <ComponentDescription text='This is a search input field that lets you enter keywords to find
             specific content. It provides instant feedback as you type.'/>
 
-          <ToggleTab preview={passwordInputPreview} setPreview={setPasswordInputPreview} code={passwordInputCode} setCode={setPasswordInputCode}/>
+          <ToggleTab preview={passwordInputPreview} setPreview={setPasswordInputPreview} code={passwordInputCode}
+                     setCode={setPasswordInputCode}/>
 
           <ComponentWrapper>
             {passwordInputPreview && (
@@ -700,7 +719,8 @@ export default SearchInput;
             express interest in joining. It helps capture information for
             membership or subscription.'/>
 
-          <ToggleTab preview={joinInputPreview} setPreview={setJoinInputPreview} code={joinInputCode} setCode={setJoinInputCode}/>
+          <ToggleTab preview={joinInputPreview} setPreview={setJoinInputPreview} code={joinInputCode}
+                     setCode={setJoinInputCode}/>
 
           <ComponentWrapper>
             {joinInputPreview && (

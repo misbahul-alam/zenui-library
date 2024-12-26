@@ -2,10 +2,14 @@ import React, {useEffect, useState} from 'react';
 import {useToggleCardView} from "../CustomHooks/ButtonToggle.js";
 import {LuSettings2} from "react-icons/lu";
 
+// store
+import useZenuiStore from "../Store/Index.js";
+
 const ToggleTab = ({preview, code, setPreview, setCode}) => {
 
     const[settingOpen, setSettingOpen] = useState(false);
-    const[isDark, setIsDark] = useState(false);
+
+    const store = useZenuiStore(state => state);
 
     const isDarkCardView = useToggleCardView();
 
@@ -68,13 +72,13 @@ const ToggleTab = ({preview, code, setPreview, setCode}) => {
 
                     <div
                         className={`${
-                            isDark ? "bg-[#3B9DF8]" : "bg-[#f0f0f0] dark:bg-slate-600"
+                            store.withDarkClasses ? "bg-[#3B9DF8]" : "bg-[#f0f0f0] dark:bg-slate-600"
                         } w-[50px] h-[26px] px-[0.150rem] py-[0.160rem] cursor-pointer dark:border-darkBorderColor border transition-colors duration-500 border-[#e5eaf2] rounded-full relative`}
-                        onClick={() => setIsDark(!isDark)}
+                        onClick={() => store.handleToggle()}
                     >
                         <div
                             className={`${
-                                isDark ? " translate-x-[23px]" : "translate-x-[1px]"
+                                store.withDarkClasses ? " translate-x-[23px]" : "translate-x-[1px]"
                             } w-[20px] h-[19.5px] pb-1 transition-all duration-500 dark:bg-slate-300 rounded-full bg-[#fff]`}
                             style={{boxShadow: "1px 2px 5px 2px rgb(0,0,0,0.1)"}}
                         ></div>

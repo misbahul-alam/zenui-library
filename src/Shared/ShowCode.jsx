@@ -4,12 +4,18 @@ import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { FaRegCopy } from "react-icons/fa";
 import { MdOutlineDone } from "react-icons/md";
 
+// store
+import useZenuiStore from "../Store/Index.js";
+import toggleThemeBaseClasses from "../Supports/Index.js";
+
 const ShowCode = ({ code }) => {
     const [isCopy, setIsCopy] = useState(false);
     const isMultiTab = Array.isArray(code);
     const [activeTab, setActiveTab] = useState(
         isMultiTab ? code[0].id : "default"
     );
+
+    const store = useZenuiStore(state => state);
 
     // Format code properly whether it's a single code string or multiple
     const formattedCode = isMultiTab
@@ -19,7 +25,8 @@ const ShowCode = ({ code }) => {
     // copy to clipboard
     const copyToClipboard = () => {
         const currentCode = formattedCode.find(item => item.id === activeTab)?.code || "";
-        navigator.clipboard.writeText(currentCode);
+        const classes = toggleThemeBaseClasses(currentCode, store.withDarkClasses);
+        navigator.clipboard.writeText(classes);
         setIsCopy(true);
         setTimeout(() => {
             setIsCopy(false);
@@ -27,7 +34,7 @@ const ShowCode = ({ code }) => {
     };
 
     return (
-        <div className="code-block-wrapper border border-[#ffffff15] rounded-md overflow-hidden">
+        <div className="code-block-wrapper border border-[#ffffff15] rounded overflow-hidden">
             {/* Tabs Section */}
             {isMultiTab && (
                 <div className="flex bg-[#282a36] border-b border-[#ffffff15] pl-2 pr-4 pt-1.5">
@@ -72,9 +79,9 @@ const ShowCode = ({ code }) => {
                         fontSize: "14px",
                         maxHeight: "400px",
                     }}
-                    className='zenui_code_snippet text-[14px] max-h-[400px] 400px:max-w-[380px] 425px:max-w-[638px] max-w-[325px]'
+                    className='zenui_code_snippet text-[14px] 1404px:max-w-[700px] max-h-[400px] 400px:max-w-[380px] 425px:max-w-[638px] max-w-[325px]'
                 >
-                    {formattedCode.find(item => item.id === activeTab)?.code || ''}
+                    {toggleThemeBaseClasses(formattedCode.find(item => item.id === activeTab)?.code, store.withDarkClasses) || ''}
                 </SyntaxHighlighter>
             </div>
         </div>
