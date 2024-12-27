@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 // react icons
 import { RxCross1 } from "react-icons/rx";
@@ -6,6 +6,7 @@ import { IoCodeSlashOutline } from "react-icons/io5";
 import { motion } from "framer-motion";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/cjs/styles/prism/index.js";
+
 
 const AIResponseSidebar = ({ sidebarOpen, setSidebarOpen, codes, isGenerating }) => {
   const [isCopied, setIsCopied] = useState(false);
@@ -18,24 +19,19 @@ const AIResponseSidebar = ({ sidebarOpen, setSidebarOpen, codes, isGenerating })
     };
 
     document.addEventListener('click', handleOutsideClick);
-
-    return () => {
-      document.removeEventListener('click', handleOutsideClick);
-    };
+    return () => document.removeEventListener('click', handleOutsideClick);
   }, [setSidebarOpen]);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(codes);
     setIsCopied(true);
-    setTimeout(() => {
-      setIsCopied(false);
-    }, 2000);
+    setTimeout(() => setIsCopied(false), 2000);
   };
 
   return (
-    <aside
-      className={`${sidebarOpen ? 'translate-x-0 1630px:translate-x-[-129px] 2000px:translate-x-[-200px]' : 'translate-x-[2000px]'} w-full 640px:w-[60%] 1024px:w-[38%] bg-white fixed top-0 right-0 boxShadow min-h-screen transition-all z-[20000000000] duration-500 code_sidebar px-6 640px:px-8`}
-    >
+    <aside className={`${
+      sidebarOpen ? 'translate-x-0 1630px:translate-x-[-129px] 2000px:translate-x-[-200px]' : 'translate-x-[2000px]'
+    } w-full 640px:w-[60%] 1024px:w-[38%] bg-white fixed top-0 right-0 boxShadow min-h-screen transition-all z-[20000000000] duration-500 code_sidebar px-6 640px:px-8`}>
       <div className='relative'>
         <RxCross1
           onClick={() => setSidebarOpen(false)}
@@ -50,7 +46,6 @@ const AIResponseSidebar = ({ sidebarOpen, setSidebarOpen, codes, isGenerating })
         >
           <IoCodeSlashOutline />
           Copy Code
-
           {isCopied && (
             <motion.p
               initial={{ opacity: 0, scale: 0.7 }}
@@ -66,12 +61,13 @@ const AIResponseSidebar = ({ sidebarOpen, setSidebarOpen, codes, isGenerating })
 
         {isGenerating ? (
           <div className='h-[380px] 1024px:h-[440px]'>
-            <div className='relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent before:via-slate-200/70 before:to-transparent w-full h-[60px] rounded-md mt-3 bg-gray-100'></div>
-            <div className='relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent before:via-slate-200/70 before:to-transparent  w-full h-[40px] rounded-md mt-3 bg-gray-100'></div>
-            <div className=' relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent before:via-slate-200/70 before:to-transparent  w-[50%] h-[40px] rounded-md mt-3 bg-gray-100'></div>
-            <div className='relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent before:via-slate-200/70 before:to-transparent  w-[40%] h-[30px] rounded-md mt-3 bg-gray-100'></div>
-            <div className='relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent before:via-slate-200/70 before:to-transparent  w-[80%] h-[30px] rounded-md mt-3 bg-gray-100'></div>
-            <div className='relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent before:via-slate-200/70 before:to-transparent  w-[65%] h-[40px] rounded-md mt-3 bg-gray-100'></div>
+            {/* Shimmer loading effect divs */}
+            {[60, 40, 50, 30, 80, 65].map((height, index) => (
+              <div
+                key={index}
+                className={`relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent before:via-slate-200/70 before:to-transparent w-${index === 2 || index === 3 ? '[50%]' : 'full'} h-[${height}px] rounded-md mt-3 bg-gray-100`}
+              />
+            ))}
           </div>
         ) : (
           <SyntaxHighlighter
