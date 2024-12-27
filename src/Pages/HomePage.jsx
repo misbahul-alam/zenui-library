@@ -17,7 +17,7 @@ const HomePage = () => {
 
     return (
         <>
-            {/*<NewsBoard/>*/}
+            <NewsBoard/>
             <Navbar/>
             <div className='overflow-x-hidden'>
                 <MobileNavbar/>
