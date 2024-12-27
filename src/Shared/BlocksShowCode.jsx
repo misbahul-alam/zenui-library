@@ -31,7 +31,7 @@ const ShowCode = ({ code }) => {
                     />
                 )}
             </div>
-            <SyntaxHighlighter language="jsx" style={dracula} className='overflow-x-scroll 425px:max-w-[350px] 640px:max-w-[780px] 1605px:max-w-[1177px] w-full 1404px:max-w-[1107px] 1024px:max-w-[730px] 1260px:max-w-[880px] max-h-[500px] max-w-[325px]' showLineNumbers>
+            <SyntaxHighlighter language="jsx" style={dracula} className='overflow-x-scroll 425px:max-w-[350px] 640px:max-w-[780px] 1605px:max-w-[1250px] w-full 1404px:max-w-[1107px] 1024px:max-w-[730px] 1260px:max-w-[880px] max-h-[500px] max-w-[325px]' showLineNumbers>
                 {code}
             </SyntaxHighlighter>
         </div>
