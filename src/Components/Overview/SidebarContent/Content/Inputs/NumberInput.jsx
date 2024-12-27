@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 
 // components
 import OverviewFooter from '../../../../../Shared/OverviewFooter';
@@ -14,9 +14,12 @@ import { Helmet } from 'react-helmet';
 // showing the code
 import Showcode from '../../../../../Shared/ShowCode';
 import { FiMinus, FiPlus } from 'react-icons/fi';
+import ComponentDescription from "../../../../../Shared/ComponentDescription.jsx";
+import ToggleTab from "../../../../../Shared/ToggleTab.jsx";
+import ComponentWrapper from "../../../../../Shared/ComponentWrapper.jsx";
+import ContentNavbar from "../../../../../Shared/ContentNavbar.jsx";
 
 const OtpInput = () => {
-//   const [contentActiveTab, setContentActiveTab] = useState(0);
   const sectionIds = numberInputContents.map((item) => item.href.slice(1));
   const activeSection = useScrollSpy(sectionIds);
 
@@ -24,45 +27,15 @@ const OtpInput = () => {
   const [miniInputPreview, setMiniInputPreview] = useState(true);
   const [miniInputCode, setMiniInputCode] = useState(false);
 
-  const handleMiniInputPreview = () => {
-    setMiniInputPreview(true);
-    setMiniInputCode(false);
-  };
-
-  const handleMiniInputCode = () => {
-    setMiniInputCode(true);
-    setMiniInputPreview(false);
-  };
-
   // rounded button
   const [roundedButtonPreview, setRoundedButtonPreview] = useState(true);
   const [roundedButtonCode, setRoundedButtonCode] = useState(false);
-
-  const handleRoundedButtonPreview = () => {
-    setRoundedButtonPreview(true);
-    setRoundedButtonCode(false);
-  };
-
-  const handleRoundedButtonCode = () => {
-    setRoundedButtonCode(true);
-    setRoundedButtonPreview(false);
-  };
 
   // rounded button position
   const [roundedButtonPositionPreview, setRoundedButtonPositionPreview] =
     useState(true);
   const [roundedButtonPositionCode, setRoundedButtonPositionCode] =
     useState(false);
-
-  const handleRoundedButtonPositionPreview = () => {
-    setRoundedButtonPositionPreview(true);
-    setRoundedButtonPositionCode(false);
-  };
-
-  const handleRoundedButtonPositionCode = () => {
-    setRoundedButtonPositionCode(true);
-    setRoundedButtonPositionPreview(false);
-  };
 
   // actions
 
@@ -102,210 +75,181 @@ const OtpInput = () => {
         <div>
           <ContentHeader text={'mini number input'} id={'mini_number_input'} />
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            This is a mini number input field designed for entering small
-            numerical values. It ensures precise input with a compact design.
-          </p>
+          <ComponentDescription text='This is a mini number input field designed for entering small
+            numerical values. It ensures precise input with a compact design.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  miniInputPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[105px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  miniInputPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleMiniInputPreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  miniInputCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleMiniInputCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab setCode={setMiniInputCode} code={miniInputCode} setPreview={setMiniInputPreview} preview={miniInputPreview}/>
+
+          <ComponentWrapper>
             {miniInputPreview && (
-              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                <div className='flex items-center mx-auto border border-gray-200 rounded-md'>
-                  <button
-                    className='bg-gray-100 p-[15px] rounded-l-md text-gray-700 text-[1.1rem]'
-                    onClick={handleMiniDecrement}
-                  >
-                    <FiMinus />
-                  </button>
-                  <input
-                    type='number'
-                    value={miniInputValue}
-                    className='w-[70px] py-2.5 outline-none focus:ring-0 border-none text-center text-[1.1rem]'
-                    onInput={handleMiniInputValueChange}
-                  />
-                  <button
-                    className='bg-gray-100 p-[15px] rounded-r-md text-gray-700 text-[1.1rem]'
-                    onClick={handleMiniIncrement}
-                  >
-                    <FiPlus />
-                  </button>
+                <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                  <div className='flex items-center mx-auto border dark:border-slate-700 border-gray-200 rounded-md'>
+                    <button
+                        className='bg-gray-100 p-[15px] dark:bg-slate-800 dark:text-[#abc2d3] rounded-l-md text-gray-700 text-[1.1rem]'
+                        onClick={handleMiniDecrement}
+                    >
+                      <FiMinus />
+                    </button>
+                    <input
+                        type='number'
+                        value={miniInputValue}
+                        className='w-[70px] py-2.5 dark:bg-transparent dark:text-[#abc2d3] outline-none focus:ring-0 border-none text-center text-[1.1rem]'
+                        onInput={handleMiniInputValueChange}
+                    />
+                    <button
+                        className='bg-gray-100 p-[15px] dark:bg-slate-800 dark:text-[#abc2d3] rounded-r-md text-gray-700 text-[1.1rem]'
+                        onClick={handleMiniIncrement}
+                    >
+                      <FiPlus />
+                    </button>
+                  </div>
                 </div>
-              </div>
             )}
 
             {miniInputCode && (
-              <Showcode
-                code="
-import React, {useState} from 'react';
+                <Showcode
+                    code='
+import React, {useState} from "react";
 
-// react icon
-import {FiMinus, FiPlus} from 'react-icons/fi';
+// react icons
+import {FiMinus, FiPlus} from "react-icons/fi";
 
 const NumberInput = () => {
 
-    const [count, setCount] = useState(0);
+    const [countValue, setCountValue] = useState(0);
 
     const handleIncrement = () => {
-        setCount(prevValue => prevValue + 1);
-    }
+        setCountValue((prevValue) => prevValue + 1);
+    };
 
     const handleDecrement = () => {
-        setCount(prevValue => prevValue - 1);
-    }
+        setCountValue((prevValue) => prevValue - 1);
+    };
 
-    const handleInputValueChange = (e) => {
-        setCount(Number(e.target.value));
-    }
+    const handleInputChange = (e) => {
+        setCountValue(Number(e.target.value));
+    };
 
     return (
-        <div className='flex items-center mx-auto border border-gray-200 rounded-md'>
-            <button className='bg-gray-100 p-[15px] rounded-l-md text-gray-700 text-[1.1rem]'
-                    onClick={handleDecrement}><FiMinus/></button>
-            <input type='number' value={count}
-                   className='w-[70px] py-2.5 outline-none focus:ring-0 border-none text-center text-[1.1rem]'
-                   onInput={handleInputValueChange}/>
-            <button className='bg-gray-100 p-[15px] rounded-r-md text-gray-700 text-[1.1rem]'
-                    onClick={handleIncrement}><FiPlus/></button>
+        <div className="flex items-center mx-auto border dark:border-slate-700 border-gray-200 rounded-md">
+            <button
+                className="bg-gray-100 p-[15px] dark:bg-slate-800 dark:text-[#abc2d3] rounded-l-md text-gray-700 text-[1.1rem]"
+                onClick={handleDecrement}
+            >
+                <FiMinus/>
+            </button>
+            <input
+                type="number"
+                value={countValue}
+                className="w-[70px] py-2.5 dark:bg-transparent dark:text-[#abc2d3] outline-none focus:ring-0 border-none text-center text-[1.1rem]"
+                onInput={handleInputChange}
+            />
+            <button
+                className="bg-gray-100 p-[15px] dark:bg-slate-800 dark:text-[#abc2d3] rounded-r-md text-gray-700 text-[1.1rem]"
+                onClick={handleIncrement}
+            >
+                <FiPlus/>
+            </button>
         </div>
     );
 };
 
 export default NumberInput;
-                                "
-              />
+                    '
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className='mt-8'>
             <ContentHeader text={'rounded button'} id={'rounded_button'} />
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            This is a rounded button number input that allows you to increment
+          <ComponentDescription text='This is a rounded button number input that allows you to increment
             or decrement numerical values using buttons with smooth, curved
             edges. It provides a user-friendly and stylish way to adjust
-            numbers.
-          </p>
+            numbers.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  roundedButtonPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[105px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  roundedButtonPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleRoundedButtonPreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  roundedButtonCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleRoundedButtonCode}
-              >
-                Code
-              </button>
-            </div>
+            <ToggleTab setCode={setRoundedButtonCode} code={roundedButtonCode} setPreview={setRoundedButtonPreview} preview={roundedButtonPreview}/>
+
+          <ComponentWrapper>
             {roundedButtonPreview && (
-              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                <div className='flex px-2 py-0.5 items-center mx-auto border border-gray-200 rounded-md'>
-                  <button
-                    className='bg-gray-100 p-[10px] rounded-full text-gray-700 text-[1.1rem]'
-                    onClick={handleRoundedDecrement}
-                  >
-                    <FiMinus />
-                  </button>
-                  <input
-                    type='number'
-                    value={roundedInputValue}
-                    className='w-[70px] py-2.5 outline-none focus:ring-0 border-none text-center text-[1.1rem]'
-                    onInput={handleRoundedInputValueChange}
-                  />
-                  <button
-                    className='bg-gray-100 p-[10px] rounded-full text-gray-700 text-[1.1rem]'
-                    onClick={handleRoundedIncrement}
-                  >
-                    <FiPlus />
-                  </button>
+                <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                  <div className='flex px-2 py-0.5 items-center dark:border-slate-700 mx-auto border border-gray-200 rounded-md'>
+                    <button
+                        className='bg-gray-100 dark:bg-slate-800 dark:text-[#abc2d3] p-[10px] rounded-full text-gray-700 text-[1.1rem]'
+                        onClick={handleRoundedDecrement}
+                    >
+                      <FiMinus />
+                    </button>
+                    <input
+                        type='number'
+                        value={roundedInputValue}
+                        className='w-[70px] py-2.5 outline-none dark:bg-transparent dark:text-[#abc2d3] focus:ring-0 border-none text-center text-[1.1rem]'
+                        onInput={handleRoundedInputValueChange}
+                    />
+                    <button
+                        className='bg-gray-100 p-[10px] dark:bg-slate-800 dark:text-[#abc2d3] rounded-full text-gray-700 text-[1.1rem]'
+                        onClick={handleRoundedIncrement}
+                    >
+                      <FiPlus />
+                    </button>
+                  </div>
                 </div>
-              </div>
             )}
 
             {roundedButtonCode && (
-              <Showcode
-                code="
-import React, {useState} from 'react';
+                <Showcode
+                    code='
+import React, {useState} from "react";
 
-// react icon
-import {FiMinus, FiPlus} from 'react-icons/fi';
+// react icons
+import {FiMinus, FiPlus} from "react-icons/fi";
 
 const NumberInput = () => {
 
-    const [count, setCount] = useState(0);
+    const [countValue, setCountValue] = useState(0);
 
     const handleIncrement = () => {
-        setCount(prevValue => prevValue + 1);
-    }
+        setCountValue((prevValue) => prevValue + 1);
+    };
 
     const handleDecrement = () => {
-        setCount(prevValue => prevValue - 1);
-    }
+        setCountValue((prevValue) => prevValue - 1);
+    };
 
-    const handleInputValueChange = (e) => {
-        setCount(Number(e.target.value));
-    }
+    const handleInputChange = (e) => {
+        setCountValue(Number(e.target.value));
+    };
 
     return (
-        <div
-            className='flex px-2 py-0.5 items-center mx-auto border border-gray-200 rounded-md'>
-            <button className='bg-gray-100 p-[10px] rounded-full text-gray-700 text-[1.1rem]'
-                    onClick={handleDecrement}><FiMinus/></button>
-            <input type='number' value={count}
-                   className='w-[70px] py-2.5 outline-none focus:ring-0 border-none text-center text-[1.1rem]'
-                   onInput={handleInputValueChange}/>
-            <button className='bg-gray-100 p-[10px] rounded-full text-gray-700 text-[1.1rem]'
-                    onClick={handleIncrement}><FiPlus/></button>
+        <div className="flex px-2 py-0.5 items-center dark:border-slate-700 mx-auto border border-gray-200 rounded-md">
+            <button
+                className="bg-gray-100 dark:bg-slate-800 dark:text-[#abc2d3] p-[10px] rounded-full text-gray-700 text-[1.1rem]"
+                onClick={handleDecrement}
+            >
+                <FiMinus/>
+            </button>
+            <input
+                type="number"
+                value={countValue}
+                className="w-[70px] py-2.5 outline-none dark:bg-transparent dark:text-[#abc2d3] focus:ring-0 border-none text-center text-[1.1rem]"
+                onInput={handleInputChange}
+            />
+            <button
+                className="bg-gray-100 p-[10px] dark:bg-slate-800 dark:text-[#abc2d3] rounded-full text-gray-700 text-[1.1rem]"
+                onClick={handleIncrement}
+            >
+                <FiPlus/>
+            </button>
         </div>
     );
 };
 
 export default NumberInput;
-                                "
-              />
+                    '
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className='mt-8'>
             <ContentHeader
@@ -314,144 +258,138 @@ export default NumberInput;
             />
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            Rounded button number input with flexible button positioning for
-            customizable numerical adjustments.
-          </p>
+          <ComponentDescription text='Rounded button number input with flexible button positioning for
+            customizable numerical adjustments.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  roundedButtonPositionPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[105px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  roundedButtonPositionPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleRoundedButtonPositionPreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  roundedButtonPositionCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleRoundedButtonPositionCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab setCode={setRoundedButtonPositionCode} code={roundedButtonPositionCode} setPreview={setRoundedButtonPositionPreview} preview={roundedButtonPositionPreview}/>
+
+          <ComponentWrapper>
             {roundedButtonPositionPreview && (
-              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                <div className='flex px-2 py-0.5 items-center mx-auto border border-gray-200 rounded-md'>
-                  <button
-                    className='bg-gray-100 p-[10px] mr-2 rounded-full text-gray-700 text-[1.1rem]'
-                    onClick={handleRoundedDecrement}
-                  >
-                    <FiMinus />
-                  </button>
-                  <button
-                    className='bg-gray-100 p-[10px] rounded-full text-gray-700 text-[1.1rem]'
-                    onClick={handleRoundedIncrement}
-                  >
-                    <FiPlus />
-                  </button>
+                <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                  <div className='flex px-2 py-0.5 items-center dark:border-slate-700 mx-auto border border-gray-200 rounded-md'>
+                    <button
+                        className='bg-gray-100 dark:bg-slate-800 dark:text-[#abc2d3] p-[10px] mr-2 rounded-full text-gray-700 text-[1.1rem]'
+                        onClick={handleRoundedDecrement}
+                    >
+                      <FiMinus />
+                    </button>
+                    <button
+                        className='bg-gray-100 dark:bg-slate-800 dark:text-[#abc2d3] p-[10px] rounded-full text-gray-700 text-[1.1rem]'
+                        onClick={handleRoundedIncrement}
+                    >
+                      <FiPlus />
+                    </button>
 
-                  <input
-                    type='number'
-                    value={roundedInputValue}
-                    className='w-[70px] px-2 py-2.5 outline-none focus:ring-0 border-none text-center text-[1.1rem]'
-                    onInput={handleRoundedInputValueChange}
-                  />
-                </div>
+                    <input
+                        type='number'
+                        value={roundedInputValue}
+                        className='w-[70px] px-2 py-2.5 outline-none dark:bg-transparent dark:text-[#abc2d3] focus:ring-0 border-none text-center text-[1.1rem]'
+                        onInput={handleRoundedInputValueChange}
+                    />
+                  </div>
 
-                <div className='flex px-2 py-0.5 items-center mx-auto border border-gray-200 rounded-md'>
-                  <input
-                    type='number'
-                    value={roundedInputValue}
-                    className='w-[70px] px-2 py-2.5 outline-none focus:ring-0 border-none text-center text-[1.1rem]'
-                    onInput={handleRoundedInputValueChange}
-                  />
-                  <button
-                    className='bg-gray-100 p-[10px] rounded-full text-gray-700 text-[1.1rem]'
-                    onClick={handleRoundedDecrement}
-                  >
-                    <FiMinus />
-                  </button>
-                  <button
-                    className='bg-gray-100 p-[10px] rounded-full ml-2 text-gray-700 text-[1.1rem]'
-                    onClick={handleRoundedIncrement}
-                  >
-                    <FiPlus />
-                  </button>
+                  <div className='flex px-2 py-0.5 items-center dark:border-slate-700 mx-auto border border-gray-200 rounded-md'>
+                    <input
+                        type='number'
+                        value={roundedInputValue}
+                        className='w-[70px] px-2 py-2.5 dark:bg-transparent dark:text-[#abc2d3] outline-none focus:ring-0 border-none text-center text-[1.1rem]'
+                        onInput={handleRoundedInputValueChange}
+                    />
+                    <button
+                        className='bg-gray-100 p-[10px] dark:bg-slate-800 dark:text-[#abc2d3] rounded-full text-gray-700 text-[1.1rem]'
+                        onClick={handleRoundedDecrement}
+                    >
+                      <FiMinus />
+                    </button>
+                    <button
+                        className='bg-gray-100 p-[10px] dark:bg-slate-800 dark:text-[#abc2d3] rounded-full ml-2 text-gray-700 text-[1.1rem]'
+                        onClick={handleRoundedIncrement}
+                    >
+                      <FiPlus />
+                    </button>
+                  </div>
                 </div>
-              </div>
             )}
 
             {roundedButtonPositionCode && (
-              <Showcode
-                code="
-import React, {useState} from 'react';
+                <Showcode
+                    code='
+import React, {useState} from "react";
 
-// react icon
-import {FiMinus, FiPlus} from 'react-icons/fi';
+// react icons
+import {FiMinus, FiPlus} from "react-icons/fi";
 
 const NumberInput = () => {
 
-    const [count, setCount] = useState(0);
+    const [countValue, setCountValue] = useState(0);
 
     const handleIncrement = () => {
-        setCount(prevValue => prevValue + 1);
-    }
+        setCountValue((prevValue) => prevValue + 1);
+    };
 
     const handleDecrement = () => {
-        setCount(prevValue => prevValue - 1);
-    }
+        setCountValue((prevValue) => prevValue - 1);
+    };
 
-    const handleInputValueChange = (e) => {
-        setCount(Number(e.target.value));
-    }
+    const handleInputChange = (e) => {
+        setCountValue(Number(e.target.value));
+    };
 
     return (
         <>
-            {/* button left position */}
-            <div
-                className='flex px-2 py-0.5 items-center mx-auto border border-gray-200 rounded-md'>
-                <button className='bg-gray-100 p-[10px] mr-2 rounded-full text-gray-700 text-[1.1rem]'
-                        onClick={handleDecrement}><FiMinus/></button>
-                <button className='bg-gray-100 p-[10px] rounded-full text-gray-700 text-[1.1rem]'
-                        onClick={handleIncrement}><FiPlus/></button>
+            {/* left button number input */}
+            <div className="flex px-2 py-0.5 items-center dark:border-slate-700 mx-auto border border-gray-200 rounded-md">
+                <button
+                    className="bg-gray-100 dark:bg-slate-800 dark:text-[#abc2d3] p-[10px] mr-2 rounded-full text-gray-700 text-[1.1rem]"
+                    onClick={handleDecrement}
+                >
+                    <FiMinus/>
+                </button>
+                <button
+                    className="bg-gray-100 dark:bg-slate-800 dark:text-[#abc2d3] p-[10px] rounded-full text-gray-700 text-[1.1rem]"
+                    onClick={handleIncrement}
+                >
+                    <FiPlus/>
+                </button>
 
-                <input type='number' value={count}
-                       className='w-[70px] px-2 py-2.5 outline-none focus:ring-0 border-none text-center text-[1.1rem]'
-                       onInput={handleInputValueChange}/>
-
+                <input
+                    type="number"
+                    value={countValue}
+                    className="w-[70px] px-2 py-2.5 outline-none dark:bg-transparent dark:text-[#abc2d3] focus:ring-0 border-none text-center text-[1.1rem]"
+                    onInput={handleInputChange}
+                />
             </div>
 
-            {/* button right position */}
-            <div
-                className='flex px-2 py-0.5 items-center mx-auto border border-gray-200 rounded-md'>
-                <input type='number' value={count}
-                       className='w-[70px] px-2 py-2.5 outline-none focus:ring-0 border-none text-center text-[1.1rem]'
-                       onInput={handleInputValueChange}/>
-                <button className='bg-gray-100 p-[10px] rounded-full text-gray-700 text-[1.1rem]'
-                        onClick={handleDecrement}><FiMinus/></button>
-                <button className='bg-gray-100 p-[10px] rounded-full ml-2 text-gray-700 text-[1.1rem]'
-                        onClick={handleIncrement}><FiPlus/></button>
+            {/* right button number input */}
+            <div className="flex px-2 py-0.5 items-center dark:border-slate-700 mx-auto border border-gray-200 rounded-md">
+                <input
+                    type="number"
+                    value={countValue}
+                    className="w-[70px] px-2 py-2.5 dark:bg-transparent dark:text-[#abc2d3] outline-none focus:ring-0 border-none text-center text-[1.1rem]"
+                    onInput={handleInputChange}
+                />
+                <button
+                    className="bg-gray-100 p-[10px] dark:bg-slate-800 dark:text-[#abc2d3] rounded-full text-gray-700 text-[1.1rem]"
+                    onClick={handleDecrement}
+                >
+                    <FiMinus/>
+                </button>
+                <button
+                    className="bg-gray-100 p-[10px] dark:bg-slate-800 dark:text-[#abc2d3] rounded-full ml-2 text-gray-700 text-[1.1rem]"
+                    onClick={handleIncrement}
+                >
+                    <FiPlus/>
+                </button>
             </div>
         </>
     );
 };
 
 export default NumberInput;
-                                "
-              />
+                    '
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <OverviewFooter
             backUrl='/components/input-textarea'
@@ -461,23 +399,8 @@ export default NumberInput;
           />
         </div>
 
-        <div className='1024px:flex hidden flex-col gap-4 sticky top-4 right-0 w-[55%]'>
-          <h2 className='text-[0.9rem] font-[600] text-text tracking-widest'>
-            CONTENTS
-          </h2>
-          {numberInputContents.map((item) => (
-            <a
-              key={item.id}
-              href={item.href}
-              className={`${
-                activeSection === item.href.slice(1) &&
-                '!text-primary !border-primary'
-              } text-[0.9rem] capitalize transition-all duration-300 text-text border-l border-transparent pl-4`}
-            >
-              {item.title}
-            </a>
-          ))}
-        </div>
+        <ContentNavbar contents={numberInputContents} width='55%' activeSection={activeSection}/>
+
       </aside>
       <Helmet>
         <title>Form - Number</title>

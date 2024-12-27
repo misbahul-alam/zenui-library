@@ -1,12 +1,12 @@
 import React from 'react';
 
-const ContentNavbar = ({contents, activeSection}) => {
+const ContentNavbar = ({contents, activeSection, width = '40%'}) => {
     return (
-        <div className='1024px:block sticky top-4 right-0 w-[40%] hidden'>
+        <div className={`1024px:block sticky top-4 right-0 w-[${width}] hidden`}>
             <h2 className='text-[0.9rem] dark:text-darkSubTextColor font-[600] text-text tracking-widest'>
                 CONTENTS
             </h2>
-            <div style={{scrollbarWidth:'none'}} className='flex flex-col border-l max-h-[77vh] overflow-scroll dark:border-darkBorderColor border-border mt-4 w-[80%]'>
+            <div style={{scrollbarWidth:'none'}} className='flex flex-col border-l max-h-[77vh] overflow-scroll dark:border-darkBorderColor border-border mt-4 w-[70%]'>
                 {contents?.map((item) => (
                     <a
                         key={item.id}

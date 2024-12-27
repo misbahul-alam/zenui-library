@@ -31,28 +31,28 @@ const ToggleTab = ({preview, code, setPreview, setCode}) => {
     }, [settingOpen, uniqueId]);
 
     return (
-        <div className='flex mt-8 mb-2 items-center justify-between w-full 425px:w-[80%]'>
+        <div className='flex mt-8 mb-2 items-end justify-between w-full 425px:w-[80%]'>
             <div
-                className='relative backdrop-blur-md overflow-hidden dark:border-darkBorderColor border border-border w-max rounded'>
+                className='relative backdrop-blur-md overflow-hidden bg-gray-200/80 dark:bg-slate-800 w-max rounded'>
                 <div
-                    className={`absolute top-[50%] translate-y-[-50%] dark:bg-slate-800 transform left-0 w-[50%] h-full z-[1] bg-border transition-all duration-500 ${
+                    className={`absolute top-[50%] translate-y-[-50%] dark:bg-darkBgColor shadow-sm shadow-gray-300 dark:shadow-slate-900 transform left-0 w-[50%] h-[85%] z-[1] bg-white transition-all rounded duration-500 ${
                         preview
-                            ? 'translate-x-[0%] w-[55%] rounded-r-none'
-                            : 'translate-x-[122%] !w-[45%] rounded-l-none'
+                            ? 'translate-x-[3%] w-[53%]'
+                            : 'translate-x-[128%] !w-[43%]'
                     }`}
                 ></div>
                 <button
                     className={`${
-                        preview && 'text-tabTextColor'
-                    } px-6 py-2 z-[2] relative text-center dark:text-darkSubTextColor transition-all duration-500 text-text`}
+                        preview && 'text-tabTextColor dark:text-darkTextColor/90'
+                    } px-6 py-2.5 z-[2] relative text-center dark:text-darkSubTextColor transition-all duration-500 text-text`}
                     onClick={() => isDarkCardView(setPreview, setCode, true)}
                 >
                     Preview
                 </button>
                 <button
                     className={`${
-                        code && ' text-tabTextColor'
-                    } px-6 py-2 z-[2] relative transition-all dark:text-darkSubTextColor/90 duration-500 text-text`}
+                        code && ' text-tabTextColor dark:text-darkTextColor/90'
+                    } px-6 py-2.5 z-[2] relative dark:text-darkSubTextColor transition-all dark:text-darkSubTextColor/90 duration-500 text-text`}
                     onClick={() => isDarkCardView(setPreview, setCode, false)}
                 >
                     Code
@@ -62,7 +62,7 @@ const ToggleTab = ({preview, code, setPreview, setCode}) => {
             <div
                 data-id={uniqueId}
                 onClick={() => setSettingOpen(!settingOpen)}
-                className='relative border dark:border-darkBorderColor px-[11px] cursor-pointer theme_setting_btn dark:hover:bg-slate-900 transition-all duration-500 py-[9px] rounded'
+                className='relative border dark:border-darkBorderColor px-[11px] cursor-pointer theme_setting_btn dark:hover:bg-slate-900 hover:bg-gray-50 transition-all duration-500 py-[9px] rounded'
             >
                 <div
                     onClick={(e) => e.stopPropagation()}

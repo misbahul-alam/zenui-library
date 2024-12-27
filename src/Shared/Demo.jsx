@@ -1,24 +1,72 @@
-import React from "react";
+import React, {useState} from "react";
 
-const TextInput = () => {
+// react icons
+import {FiMinus, FiPlus} from "react-icons/fi";
+
+const NumberInput = () => {
+
+    const [countValue, setCountValue] = useState(0);
+
+    const handleIncrement = () => {
+        setCountValue((prevValue) => prevValue + 1);
+    };
+
+    const handleDecrement = () => {
+        setCountValue((prevValue) => prevValue - 1);
+    };
+
+    const handleInputChange = (e) => {
+        setCountValue(Number(e.target.value));
+    };
     
     return (
-        <div className="w-full 1024px:w-[80%]">
-            <label
-                htmlFor="name"
-                className="text-[15px] dark:text-slate-300 text-text font-[400]"
-            >
-                Name <span className="text-red-500">*</span>
-            </label>
-            <input
-                type="text"
-                name="name"
-                id="name"
-                placeholder="Your name"
-                className="border-border dark:bg-transparent dark:border-slate-600 dark:placeholder:text-slate-600 dark:text-slate-300 border rounded-md outline-none px-4 w-full mt-1 py-3 focus:border-primary transition-colors duration-300"
-            />
-        </div>
+        <>
+            {/* left button number input */}
+            <div className="flex px-2 py-0.5 items-center dark:border-slate-700 mx-auto border border-gray-200 rounded-md">
+                <button
+                    className="bg-gray-100 dark:bg-slate-800 dark:text-[#abc2d3] p-[10px] mr-2 rounded-full text-gray-700 text-[1.1rem]"
+                    onClick={handleDecrement}
+                >
+                    <FiMinus/>
+                </button>
+                <button
+                    className="bg-gray-100 dark:bg-slate-800 dark:text-[#abc2d3] p-[10px] rounded-full text-gray-700 text-[1.1rem]"
+                    onClick={handleIncrement}
+                >
+                    <FiPlus/>
+                </button>
+
+                <input
+                    type="number"
+                    value={countValue}
+                    className="w-[70px] px-2 py-2.5 outline-none dark:bg-transparent dark:text-[#abc2d3] focus:ring-0 border-none text-center text-[1.1rem]"
+                    onInput={handleInputChange}
+                />
+            </div>
+
+            {/* right button number input */}
+            <div className="flex px-2 py-0.5 items-center dark:border-slate-700 mx-auto border border-gray-200 rounded-md">
+                <input
+                    type="number"
+                    value={countValue}
+                    className="w-[70px] px-2 py-2.5 dark:bg-transparent dark:text-[#abc2d3] outline-none focus:ring-0 border-none text-center text-[1.1rem]"
+                    onInput={handleInputChange}
+                />
+                <button
+                    className="bg-gray-100 p-[10px] dark:bg-slate-800 dark:text-[#abc2d3] rounded-full text-gray-700 text-[1.1rem]"
+                    onClick={handleDecrement}
+                >
+                    <FiMinus/>
+                </button>
+                <button
+                    className="bg-gray-100 p-[10px] dark:bg-slate-800 dark:text-[#abc2d3] rounded-full ml-2 text-gray-700 text-[1.1rem]"
+                    onClick={handleIncrement}
+                >
+                    <FiPlus/>
+                </button>
+            </div>
+        </>
     );
 };
 
-export default TextInput;
+export default NumberInput;

@@ -9,7 +9,7 @@ import NumberInput from "../../../Components/Overview/SidebarContent/Content/Inp
 
 const NumberInputPage = () => {
     return (
-        <>
+        <div className='dark:bg-darkBgColor'>
             <Navbar />
             <MobileNavbar/>
             <div className="flex w-full mx-auto max-w-[1700px]">
@@ -22,7 +22,7 @@ const NumberInputPage = () => {
                     <NumberInput />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

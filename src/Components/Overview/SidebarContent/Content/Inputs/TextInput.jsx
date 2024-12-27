@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 // components
 import OverviewFooter from '../../../../../Shared/OverviewFooter';
@@ -76,16 +76,6 @@ const TextInput = () => {
     setPriceDropdownOpen(false);
   };
 
-  function handleClassesBasedOnTheme(classString, isDark) {
-    const classes = classString.split(' ');
-
-    const filteredClasses = isDark
-        ? classes
-        : classes.filter(cls => !cls.startsWith('dark:'));
-
-    return filteredClasses.join(' ');
-  }
-
   return (
     <>
       <aside className='flex items-start justify-between gap-6 w-full 640px:pl-[2.5rem] px-6 640px:px-10'>
@@ -127,7 +117,7 @@ import React from "react";
 const TextInput = () => {
 
     return (
-        <div className="w-full 1024px:w-[80%]">
+        <div className="w-full md:w-[80%]">
             <label
                 htmlFor="name"
                 className="text-[15px] dark:text-slate-300 text-text font-[400]"
@@ -180,9 +170,14 @@ export default TextInput;
             {bottomBorderCode && (
                 <Showcode
                     code='
-<input type="text" name="name" id="name" placeholder="Your name" className="border-[#e5eaf2] border-b outline-none px-4 w-[80%] py-3 focus:border-[#3B9DF8] transition-colors duration-300"
+<input
+   type="text"
+   name="name"
+   id="name"
+   placeholder="Your name"
+   className="border-border dark:bg-slate-900 dark:text-[#abc2d3] dark:border-slate-600 border-b outline-none px-4 w-full 1024px:w-[80%] py-3 focus:border-primary transition-colors duration-300"
 />
-                '
+                    '
                 />
             )}
           </ComponentWrapper>
@@ -221,14 +216,28 @@ export default TextInput;
             {animateLabelCode && (
                 <Showcode
                     code='
-<label className="relative w-[80%]">
-  <input type="text" name="name" id="name" className="peer border-[#e5eaf2] border rounded-md outline-none px-4 py-3 w-full focus:border-[#3B9DF8] transition-colors duration-300"
-  />
-  <span className=" absolute top-3.5 left-5 peer-focus:-top-3 peer-focus:bg-white peer-focus:left-2 peer-focus:scale-[0.9] peer-focus:text-[#3B9DF8] text-[#777777] peer-focus:px-1 transition-all duration-300 ">
-      Your name
-  </span>
-</label>
-                '
+import React from "react";
+
+const TextInput = () => {
+
+    return (
+        <label className="relative w-full md:w-[80%]">
+            <input
+                type="text"
+                name="name"
+                id="name"
+                className="peer border-border dark:border-slate-600 bg-transparent border rounded-md outline-none px-4 py-3 w-full focus:border-primary transition-colors duration-300"
+            />
+            <span
+                className=" absolute top-3.5 dark:peer-focus:bg-darkBgColor left-5 peer-focus:-top-3 peer-focus:bg-white dark:text-slate-500 peer-focus:left-2 peer-focus:scale-[0.9] peer-focus:text-primary text-[#777777] peer-focus:px-1 transition-all duration-300 ">
+                    Your name
+                  </span>
+        </label>
+    );
+};
+
+export default TextInput;
+                    '
                 />
             )}
           </ComponentWrapper>
@@ -287,54 +296,61 @@ export default TextInput;
             {iconInputCode && (
                 <Showcode
                     code='
-// icons
-import { RiAccountCircleLine, RiLockPasswordLine } from "react-icons/ri";
-import { MdOutlineMail } from "react-icons/md";
+import React from "react";
 
-const Inputs = () => {
-  return (
-    <>
-      {/* username */}
-      <div className="w-[80%] relative">
-        <RiAccountCircleLine className=" absolute top-3.5 left-3 text-[1.5rem] text-[#777777]" />
-        <input
-          type="text"
-          name="text"
-          id="text"
-          placeholder="Username"
-          className="peer border-[#e5eaf2] border rounded-md outline-none pl-10 pr-4 py-3 w-full focus:border-[#3B9DF8] transition-colors duration-300"
-        />
-      </div>
+// react icons
+import {RiAccountCircleLine, RiLockPasswordLine} from "react-icons/ri";
+import {MdOutlineMail} from "react-icons/md";
 
-      {/* password */}
-      <div className="w-[80%] relative">
-        <RiLockPasswordLine className=" absolute top-3.5 left-3 text-[1.5rem] text-[#777777]" />
-        <input
-          type="password"
-          name="password"
-          id="password"
-          placeholder="Password"
-          className="peer border-[#e5eaf2] border rounded-md outline-none pl-10 pr-4 py-3 w-full focus:border-[#3B9DF8] transition-colors duration-300"
-        />
-      </div>
+const TextInput = () => {
 
-      {/* email */}
-      <div className="w-[80%] relative">
-        <MdOutlineMail className=" absolute top-3.5 left-3 text-[1.5rem] text-[#777777]" />
-        <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="Email address"
-          className="peer border-[#e5eaf2] border rounded-md outline-none pl-10 pr-4 py-3 w-full focus:border-[#3B9DF8] transition-colors duration-300"
-        />
-      </div>
-    </>
-  );
+    return (
+        <div className="p-8 mb-4 flex items-center flex-col gap-5 justify-center">
+
+            {/* username input with icon */}
+            <div className="w-full md:w-[80%] relative">
+                <RiAccountCircleLine
+                    className=" absolute top-3.5 left-3 text-[1.5rem] dark:text-slate-400 text-[#777777]"/>
+                <input
+                    type="text"
+                    name="text"
+                    id="text"
+                    placeholder="Username"
+                    className="peer border-border dark:bg-slate-900 dark:placeholder:text-slate-500 dark:text-[#abc2d3] dark:border-slate-600 border rounded-md outline-none pl-10 pr-4 py-3 w-full focus:border-primary transition-colors duration-300"
+                />
+            </div>
+
+            {/* password input with icon */}
+            <div className="w-full md:w-[80%] relative">
+                <RiLockPasswordLine
+                    className=" absolute top-3.5 left-3 text-[1.5rem] dark:text-slate-400 text-[#777777]"/>
+                <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="Password"
+                    className="peer border-border dark:bg-slate-900 dark:placeholder:text-slate-500 dark:text-[#abc2d3] dark:border-slate-600 border rounded-md outline-none pl-10 pr-4 py-3 w-full focus:border-primary transition-colors duration-300"
+                />
+            </div>
+
+            {/* email input with icon */}
+            <div className="w-full md:w-[80%] relative">
+                <MdOutlineMail
+                    className=" absolute top-3.5 left-3 text-[1.5rem] dark:text-slate-400 text-[#777777]"/>
+                <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="Email address"
+                    className="peer border-border dark:bg-slate-900 dark:placeholder:text-slate-500 dark:text-[#abc2d3] dark:border-slate-600 border rounded-md outline-none pl-10 pr-4 py-3 w-full focus:border-primary transition-colors duration-300"
+                />
+            </div>
+        </div>
+    );
 };
 
-export default Inputs;
-                '
+export default TextInput;
+'
                 />
             )}
           </ComponentWrapper>
@@ -386,37 +402,48 @@ export default Inputs;
             {passwordInputCode && (
                 <Showcode
                     code='
-const Textarea = () => {
-  return (
-    <div className="w-[80%]">
-      <label htmlFor="password" className="text-[15px] font-[400]">
-        Password
-      </label>
-      <div className="w-full relative">
-        <input
-          type={isEyeOpen ? "text" : "password"}
-          name="password"
-          id="password"
-          placeholder="Password"
-          className="peer border-[#e5eaf2] border rounded-md outline-none pl-4 pr-12 py-3 w-full mt-1 focus:border-[#3B9DF8] transition-colors duration-300"
-        />
-        {isEyeOpen ? (
-          <IoEyeOutline
-            className=" absolute top-4 right-4 text-[1.5rem] text-[#777777] cursor-pointer"
-            onClick={() => setIsEyeOpen(false)}
-          />
-        ) : (
-          <IoEyeOffOutline
-            className=" absolute top-4 right-4 text-[1.5rem] text-[#777777] cursor-pointer"
-            onClick={() => setIsEyeOpen(true)}
-          />
-        )}
-      </div>
-    </div>
-  );
+import React, {useState} from "react";
+
+// react icons
+import {IoEyeOffOutline, IoEyeOutline} from "react-icons/io5";
+
+const TextInput = () => {
+
+    const [isEyeOpen, setIsEyeOpen] = useState(false);
+
+    return (
+        <div className="w-full md:w-[80%]">
+            <label
+                htmlFor="password"
+                className="text-[15px] dark:text-[#abc2d3] text-text font-[400]"
+            >
+                Password
+            </label>
+            <div className="w-full relative">
+                <input
+                    type={isEyeOpen ? "text" : "password"}
+                    name="password"
+                    id="password"
+                    placeholder="Password"
+                    className="peer border-border dark:border-slate-600 dark:bg-slate-900 dark:placeholder:text-slate-500 border dark:text-[#abc2d3] rounded-md outline-none pl-4 pr-12 py-3 w-full mt-1 focus:border-primary transition-colors duration-300"
+                />
+                {isEyeOpen ? (
+                    <IoEyeOutline
+                        className=" absolute top-4 right-4 text-[1.5rem] dark:text-slate-400 text-[#777777] cursor-pointer"
+                        onClick={() => setIsEyeOpen(false)}
+                    />
+                ) : (
+                    <IoEyeOffOutline
+                        className=" absolute top-4 right-4 text-[1.5rem] dark:text-slate-400 text-[#777777] cursor-pointer"
+                        onClick={() => setIsEyeOpen(true)}
+                    />
+                )}
+            </div>
+        </div>
+    );
 };
 
-export default Textarea;
+export default TextInput;
                 '
                 />
             )}
@@ -452,13 +479,29 @@ export default Textarea;
 
             {linkInputCode && (
                 <Showcode
-                    code="
-<div className='w-full relative'>
-    <input type='text' placeholder='Website url' className='border border-[#e5eaf2] py-3 pr-4 pl-[90px] outline-none w-full rounded-md'/>
+                    code='
+import React from "react";
 
-    <span className='bg-gray-300 text-gray-500 text-[1rem] absolute top-0 left-0 h-full px-3 flex items-center justify-center rounded-l-md'>Https://</span>
-</div>
-                    "
+const TextInput = () => {
+
+    return (
+        <div className="w-full md:w-[80%] relative">
+            <input
+                type="text"
+                placeholder="Website url"
+                className="border dark:border-slate-600 dark:text-[#abc2d3] dark:placeholder:text-slate-500 bg-transparent border-border py-3 pr-4 pl-[90px] outline-none w-full rounded-md"
+            />
+
+            <span
+                className="bg-gray-300 dark:bg-slate-900 dark:border dark:border-slate-600 dark:text-slate-400 text-gray-500 text-[1rem] absolute top-0 left-0 h-full px-3 flex items-center justify-center rounded-l-md">
+                    Https://
+                  </span>
+        </div>
+    );
+};
+
+export default TextInput;
+                    '
                 />
             )}
           </ComponentWrapper>
@@ -538,74 +581,90 @@ export default Textarea;
 
             {priceInputCode && (
                 <Showcode
-                    code="
-import React, { useState } from 'react';
+                    code='
+import React, {useState} from "react";
 
-// react icon
-import {FaBangladeshiTakaSign} from 'react-icons/fa6';
-import {FaEuroSign} from 'react-icons/fa';
-import {IoIosArrowDown, IoLogoUsd} from 'react-icons/io';
+// react icons
+import {FaBangladeshiTakaSign} from "react-icons/fa6";
+import {FaEuroSign} from "react-icons/fa";
+import {IoIosArrowDown, IoLogoUsd} from "react-icons/io";
 
-const PriceInput = () => {
-    // price dropdown actions
+const PriceInputWithDropdown = () => {
+
     const [priceDropdownOpen, setPriceDropdownOpen] = useState(false);
-    const [selectedCurrencyType, setSelectedCurrencyType] = useState('USD');
+    const [selectedCurrencyType, setSelectedCurrencyType] = useState("USD");
 
-    const allCurrencyTypes = ['USD', 'EUR', 'BDT']
+    const allCurrencyTypes = ["USD", "EUR", "BDT"];
 
     const handlePriceDropdownClick = (currency) => {
-        setSelectedCurrencyType(currency)
-        setPriceDropdownOpen(false)
-    }
+        setSelectedCurrencyType(currency);
+        setPriceDropdownOpen(false);
+    };
 
     return (
-        <div className='w-full relative'>
-            <input type='number' placeholder='0'
-                   className='border border-[#e5eaf2] py-3 pl-[65px] pr-[80px] outline-none w-full rounded-md'/>
+        <div
+            className={`${
+                priceDropdownOpen ? "mb-[8rem]" : "mb-4"
+            } p-8 flex items-center flex-col gap-5 justify-center transition-all duration-200`}
+        >
+            <div className="w-full md:w-[80%] relative">
+                <input
+                    type="number"
+                    placeholder="0"
+                    className="border dark:border-slate-600 bg-transparent dark:text-[#abc2d3] dark:placeholder:text-slate-500 border-border py-3 pl-[65px] pr-[80px] outline-none w-full rounded-md"
+                />
 
-            <div
-                className='bg-gray-100 w-[50px] absolute top-0 h-full left-0 flex items-center justify-center rounded-l-md'>
-                {
-                    selectedCurrencyType === 'BDT' && (
-                        <FaBangladeshiTakaSign className='text-[1.2rem] text-gray-600'/>
-                    )
-                }
-                {
-                    selectedCurrencyType === 'EUR' && (
-                        <FaEuroSign className='text-[1.2rem] text-gray-600'/>
-                    )
-                }
-                {
-                    selectedCurrencyType === 'USD' && (
-                        <IoLogoUsd className='text-[1.2rem] text-gray-600'/>
-                    )
-                }
-            </div>
+                <div
+                    className="bg-gray-100 w-[50px] dark:bg-slate-900 dark:border dark:border-slate-600 absolute top-0 h-full left-0 flex items-center justify-center rounded-l-md">
+                    {selectedCurrencyType === "BDT" && (
+                        <FaBangladeshiTakaSign className="text-[1.2rem] dark:text-slate-400 text-gray-600"/>
+                    )}
+                    {selectedCurrencyType === "EUR" && (
+                        <FaEuroSign className="text-[1.2rem] dark:text-slate-400 text-gray-600"/>
+                    )}
+                    {selectedCurrencyType === "USD" && (
+                        <IoLogoUsd className="text-[1.2rem] dark:text-slate-400 text-gray-600"/>
+                    )}
+                </div>
 
-            <div onClick={() => setPriceDropdownOpen(!priceDropdownOpen)}
-                 className='absolute top-0 right-0 h-full flex items-center justify-center cursor-pointer border-l border-[#e5eaf2] px-4'>
-                      <span className='flex items-center gap-[8px] text-[#424242]'>
-                        {selectedCurrencyType}
-                          <IoIosArrowDown
-                              className={`${priceDropdownOpen ? 'rotate-[180deg]' : 'rotate-0'} transition-all duration-200`}/>
-                      </span>
+                <div
+                    onClick={() => setPriceDropdownOpen(!priceDropdownOpen)}
+                    className="absolute top-0 right-0 h-full flex dark:border-slate-600 items-center justify-center cursor-pointer border-l border-border px-4"
+                >
+                    <span className="flex items-center gap-[8px] dark:text-slate-300 text-text">
+                      {selectedCurrencyType}
+                        <IoIosArrowDown
+                            className={`${
+                                priceDropdownOpen ? "rotate-[180deg]" : "rotate-0"
+                            } transition-all duration-200`}
+                        />
+                    </span>
 
-                <ul className={`${priceDropdownOpen ? 'translate-y-0 opacity-100 z-30' : 'translate-y-[-10px] opacity-0 z-[-1]'} list-none absolute top-[53px] right-0 bg-white toastshadow w-[87px] flex flex-col items-center transition-all duration-200 justify-center py-1 rounded-md`}>
-                    {
-                        allCurrencyTypes?.map((currency, index) => (
-                            <li key={index} className='py-2 px-4 w-full hover:bg-gray-100 text-center cursor-pointer'
-                                onClick={() => handlePriceDropdownClick(currency)}>{currency}</li>
-                        ))
-                    }
-                </ul>
+                    <ul
+                        className={`${
+                            priceDropdownOpen
+                                ? "translate-y-0 opacity-100 z-30"
+                                : "translate-y-[-10px] opacity-0 z-[-1]"
+                        } list-none absolute top-[53px] dark:bg-slate-800 dark:text-slate-300 right-0 bg-white toastshadow w-[87px] flex flex-col items-center transition-all duration-200 justify-center py-1 rounded-md`}
+                    >
+                        {allCurrencyTypes?.map((currency, index) => (
+                            <li
+                                key={index}
+                                className="py-2 px-4 w-full dark:hover:bg-slate-700/30 hover:bg-gray-100 text-center cursor-pointer"
+                                onClick={() => handlePriceDropdownClick(currency)}
+                            >
+                                {currency}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
         </div>
-
     );
 };
 
-export default PriceInput;
-                    "
+export default PriceInputWithDropdown;
+                    '
                 />
             )}
           </ComponentWrapper>
@@ -664,49 +723,62 @@ export default PriceInput;
 
             {passwordInputCode && (
                 <Showcode
-                    code="
-import React from 'react';
+                    code='
+import React from "react";
 
-// react icon
-import {IoSearch} from 'react-icons/io5';
+// react icons
+import {IoSearch} from "react-icons/io5";
 
-const SearchInput = () => {
+const VariantInputs = () => {
 
     return (
-        <>
-            {/* 1st search input */}
-            <div className='w-full relative'>
-              <input type='text' placeholder='Search...'
-              className='border border-[#e5eaf2] py-3 pl-4 pr-[65px] outline-none w-full rounded-md'/>
+        <div className="p-8 mb-4 flex items-center flex-col gap-5 justify-center">
 
-              <span
-              className='bg-gray-300 text-gray-500 absolute top-0 right-0 h-full px-5 flex items-center justify-center rounded-r-md cursor-pointer hover:bg-gray-400 group'><IoSearch
-              className='text-[1.3rem]  group-hover:text-gray-200'/></span>
-              </div>
+            {/* search input with search icon */}
+            <div className="w-full md:w-[80%] relative">
+                <input
+                    type="text"
+                    placeholder="Search..."
+                    className="border dark:border-slate-600 bg-transparent dark:placeholder:text-slate-500 dark:text-[#abc2d3] border-border py-3 pl-4 pr-[65px] outline-none w-full rounded-md"
+                />
 
-            {/* 2nd search input */}
-            <div className='w-full relative'>
-              <input type='text' placeholder='Search...'
-                     className='border border-[#e5eaf2] py-3 pl-4 pr-[65px] outline-none w-full rounded-md'/>
-
-              <span
-                  className='bg-gray-300 text-gray-500 absolute top-0 right-0 h-full px-5 flex items-center justify-center rounded-r-md cursor-pointer hover:bg-gray-400 hover:text-gray-200'>Search</span>
+                <span
+                    className="bg-gray-300 dark:bg-slate-900 dark:border dark:border-slate-600 dark:text-slate-400 text-gray-500 absolute top-0 right-0 h-full px-5 flex items-center justify-center rounded-r-md cursor-pointer hover:bg-gray-400 group">
+                    <IoSearch className="text-[1.3rem]  group-hover:text-gray-200"/>
+                  </span>
             </div>
 
-            {/* 3rd search input */}
+            {/* search input with search text button */}
+            <div className="w-full md:w-[80%] relative">
+                <input
+                    type="text"
+                    placeholder="Search..."
+                    className="border dark:border-slate-600 dark:placeholder:text-slate-500 bg-transparent dark:text-[#abc2d3] border-border py-3 pl-4 pr-[65px] outline-none w-full rounded-md"
+                />
+
+                <span
+                    className="bg-gray-300 dark:bg-slate-900 dark:border-slate-600 dark:border dark:text-slate-300 text-gray-500 absolute top-0 right-0 h-full px-5 flex items-center justify-center rounded-r-md cursor-pointer hover:bg-gray-400 hover:text-gray-200">
+                    Search
+                  </span>
+            </div>
+
+            {/* search input with background color */}
             <div
-                className='bg-[#3B9DF8] py-4 w-full px-5 flex items-center justify-center rounded-full cursor-pointer relative'>
-              <IoSearch className='text-[1.3rem] text-white ml-auto'/>
+                className="bg-primary py-4 w-full md:w-[80%] px-5 flex items-center justify-center rounded-full cursor-pointer relative">
+                <IoSearch className="text-[1.3rem] text-white ml-auto"/>
 
-              <input type='text' placeholder='Search...'
-                     className='border border-[#e5eaf2] absolute top-[2px] left-[3px] h-[90%] w-[85%] py-3 px-4 outline-none rounded-full'/>
+                <input
+                    type="text"
+                    placeholder="Search..."
+                    className="border dark:bg-slate-900 dark:border-none dark:placeholder:text-slate-500 dark:text-[#abc2d3] border-border absolute top-[2px] left-[3px] h-[90%] w-[85%] py-3 px-4 outline-none rounded-full"
+                />
             </div>
-          </>
-          );
-          };
+        </div>
+    );
+};
 
-export default SearchInput;
-                    "
+export default VariantInputs;
+                    '
                 />
             )}
           </ComponentWrapper>
@@ -742,15 +814,29 @@ export default SearchInput;
 
             {joinInputCode && (
                 <Showcode
-                    code="
-<div className='w-full relative'>
-   <input type='email' placeholder='Email' className='border border-[#e5eaf2] py-3 pl-4 pr-[115px] outline-none w-full rounded-md'/>
+                    code='
+import React from "react";
 
-   <span className='bg-[#3B9DF8] text-white absolute top-0 right-0 h-full px-5 flex items-center justify-center rounded-r-md cursor-pointer hover:bg-gray-400 group'>
-       Subscribe
-    </span>
-</div>
-                    "
+const NewsletterSubscribeInput = () => {
+
+    return (
+        <div className="w-full md:w-[80%] relative">
+            <input
+                type="email"
+                placeholder="Email"
+                className="border bg-transparent dark:border-slate-500 dark:placeholder:text-slate-500 dark:text-[#abc2d3] border-border py-3 pl-4 pr-[115px] outline-none w-full rounded-md"
+            />
+
+            <span
+                className="bg-primary text-white absolute top-0 right-0 h-full px-5 flex items-center justify-center rounded-r-md cursor-pointer hover:bg-gray-400 group">
+                    Subscribe
+                  </span>
+        </div>
+    );
+};
+
+export default NewsletterSubscribeInput;
+                    '
                 />
             )}
           </ComponentWrapper>
