@@ -117,9 +117,10 @@ const PieChartPage = React.lazy(() => import("./Pages/Components/Data Display/Pi
 const CarouselPage = React.lazy(() => import("./Pages/Components/Surfaces/CarouselPage.jsx"));
 
 // become zenui hero docs
-const ZenUIHeroDocsPage = React.lazy(() => import("./Pages/ZenUIHeroDocsPage.jsx"));
-const TimerPage = React.lazy(() => import("./Pages/Components/Navigation/TimerPage.jsx"));
-const ShortcutGeneratorPage = React.lazy(() => import("./Pages/ShortcutGeneratorPage.jsx"));
+import ZenUIHeroDocsPage from "./Pages/ZenUIHeroDocsPage.jsx";
+import TimerPage from "./Pages/Components/Navigation/TimerPage.jsx";
+import ShortcutGeneratorPage from "./Pages/ShortcutGeneratorPage.jsx";
+import AIGeneratorPage from "./Pages/AIGeneratorPage.jsx";
 
 
 const App = () => {
@@ -267,6 +268,9 @@ const App = () => {
 
                 {/* layout playground */}
                 <Route path='/shortcut-generator' element={<ShortcutGeneratorPage/>}/>
+                
+                {/* AI Generator */}
+                <Route path="/config-generator" element={<AIGeneratorPage/>}/>
 
                 {/* become ZenUI Hero */}
                 <Route path='/zenui-hero-docs' element={<ZenUIHeroDocsPage/>}/>

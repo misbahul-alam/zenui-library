@@ -3,6 +3,7 @@ import {IoIosInformationCircleOutline} from "react-icons/io";
 import CodesSidebar from "./CodesSidebar.jsx";
 import {FiEye} from "react-icons/fi";
 import ShortcutCheatsheetModal from "./ShortcutCheatsheetModal.jsx";
+import {RiShiningFill} from "react-icons/ri";
 
 const VALID_MODIFIERS = ['ctrl', 'alt', 'shift', 'meta'];
 const VALID_KEYS = [
@@ -168,7 +169,7 @@ document.removeEventListener('keydown', ${functionName});
                 <div className='flex items-center gap-[15px] mt-7'>
                     <button onClick={generateCode}
                             className='code_generate_btn bg-gradient-to-r from-[#0FABCA] hover:from-[#0FABCA]/80 to-[#CD00F1] hover:to-[#CD00F1]/80 flex items-center gap-[6px] text-white py-2.5 px-6 rounded-md'>
-                        <img alt='magic/image' src='https://i.ibb.co.com/GFqqKxr/Sparkling.png' className='w-[25px]'/>
+                        <RiShiningFill className={isGenerating ? "animate-spin-zoom" : ""} />
                         {isGenerating ? 'Generating...' : 'Generate Code'}
                     </button>
 

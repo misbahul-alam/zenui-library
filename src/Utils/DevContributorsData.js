@@ -79,5 +79,14 @@ export const DevContributorsData = [
         website: '',
         zenuiHero: true,
     },
-
+    {
+        name: 'Misbahul Alam',
+        title: 'Full-stack Web Developer',
+        image: 'https://avatars.githubusercontent.com/u/88716007?v=4',
+        linkedinLink: 'https://www.linkedin.com/in/misbahul-alam',
+        twitterLink: '',
+        githubLink: 'https://github.com/misbahul-alam',
+        website: 'https://misbahulalam.vercel.app/',
+        zenuiHero: false,
+    },
 ]

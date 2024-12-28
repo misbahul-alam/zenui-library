@@ -27,6 +27,12 @@ const ZenUITools = () => {
             description: "Explore and enjoy ZenUI Library's collection of free icons, designed for customization and easy integration. Download and use them to enhance your projects."
         },
         {
+            title: "Config AI",
+            duration: '1000',
+            url: '/config-generator',
+            description: "Config AI will provide you with a ready-to-use configuration by generating a tailwind.config.js file with custom colors, fonts, and other settings tailored to your project needs."
+        },
+        {
             title: "Color Palette",
             duration: '1300',
             url: '/color-palette',
@@ -45,7 +51,7 @@ const ZenUITools = () => {
                     shortcut generator.</p>
             </div>
 
-            <div className='w-full px-8 425px:px-10 py-8 grid grid-cols-1 640px:grid-cols-2 1024px:grid-cols-3 gap-[20px] 1024px:w-[70%] 1024px:mt-[1rem] mx-auto'>
+            <div className='w-full px-8 425px:px-10 py-8 grid grid-cols-1 640px:grid-cols-2 1024px:grid-cols-4 gap-[20px] 1024px:mt-[1rem] mx-auto'>
                 {
                     cardData.map((card, index) => (
                         <SingleToolCard duration={card.duration} key={index} data={card}/>
