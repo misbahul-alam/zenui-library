@@ -156,7 +156,6 @@ const MobileNavbar = () => {
                                             <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
                                                 ShotKey
                                             </p>
-                                            <NewBadge/>
                                         </div>
                                         <span className='text-[0.8rem] font-[300] text-gray-500'>generate keyboard shortcuts easily.</span>
                                     </Link>
@@ -177,6 +176,18 @@ const MobileNavbar = () => {
                                         </p>
                                         <span
                                             className='text-[0.8rem] font-[300] text-gray-500'>Harmonized color sets.</span>
+                                    </Link>
+
+                                    <Link to='/config-generator'
+                                          className='!p-0'>
+                                        <div className='flex items-center gap-[10px]'>
+                                            <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
+                                                Config AI
+                                            </p>
+                                            <NewBadge/>
+                                        </div>
+                                        <span
+                                            className='text-[0.8rem] font-[300] text-gray-500'>Generate tailwind config file by AI.</span>
                                     </Link>
                                 </div>
                             </motion.div>

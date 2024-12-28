@@ -270,7 +270,7 @@ const App = () => {
                 <Route path='/shortcut-generator' element={<ShortcutGeneratorPage/>}/>
                 
                 {/* AI Generator */}
-                <Route path="/ai-generator" element={<AIGeneratorPage/>}/>
+                <Route path="/config-generator" element={<AIGeneratorPage/>}/>
 
                 {/* become ZenUI Hero */}
                 <Route path='/zenui-hero-docs' element={<ZenUIHeroDocsPage/>}/>

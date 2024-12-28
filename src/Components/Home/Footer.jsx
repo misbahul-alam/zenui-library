@@ -91,6 +91,10 @@ const Footer = () => {
                 <p><a href='/icons'>Icons</a></p>
                 <span><a href='/icons'>Icons</a></span>
               </li>
+              <li>
+                <p><a href='/config-generator'>Config AI</a></p>
+                <span><a href='/config-generator'>Config AI</a></span>
+              </li>
             </ul>
           </div>
 
