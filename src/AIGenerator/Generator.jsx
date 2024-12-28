@@ -22,6 +22,8 @@ const Generator = () => {
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
   const [typingText, setTypingText] = useState('');
 
+  const [promtFocused, setPromptFocused] = useState(false)
+
   const placeholders = [
     "E-Commerce Website",
     "Modern Blog Website",
@@ -97,7 +99,7 @@ const Generator = () => {
 * Date: ${currentDate}
 */
 
-      ${generatedConfig.replace(/```javascript/g, '').replace(/```/g, '').trim()}
+${generatedConfig.replace(/```javascript/g, '').replace(/```/g, '').trim()}
       `;
       
       setCodes(formattedCode);
@@ -114,61 +116,65 @@ const Generator = () => {
 
 return (
   <div className='w-full'>
-    <div className='relative'>
+    <div>
       <label
         htmlFor='manual-input'
-        className='text-[1rem] font-semibold text-gray-700 '
+        className='text-[1rem] font-semibold text-gray-70 dark:text-darkSubTextColor'
       >
         Write the project name
       </label>{" "}
       <br />
-      <input
-        id='manual-input'
-        type='text'
-        value={prompt}
-        onChange={(e) => setPrompt(e.target.value)}
-        className='py-2 px-4 w-full bg-transparent rounded-md border border-gray-300 mt-1.5 outline-none focus:ring-0 focus:border-[#0FABCA] text-gray-800'
-      />
-      <AnimatePresence>
-        {!prompt && (
-            <motion.span
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.5 }}
-                exit={{ opacity: 0 }}
-                className="absolute left-4 top-[50%] transform -translate-y-[-15%] text-gray-600 pointer-events-none"
-            >
-              {typingText}
+      <div className='relative'>
+        <input
+            id='manual-input'
+            type='text'
+            value={prompt}
+            onFocus={() => setPromptFocused(true)}
+            onBlur={() => setPromptFocused(false)}
+            onChange={(e) => setPrompt(e.target.value)}
+            className='py-2 px-4 w-full bg-transparent dark:border-darkBorderColor dark:text-darkSubTextColor rounded-md border border-gray-300 mt-1.5 outline-none focus:ring-0 focus:border-[#0FABCA] text-gray-800'
+        />
+        <AnimatePresence>
+          {(!promtFocused && !prompt) && (
               <motion.span
-                  animate={{ opacity: [0, 1, 0] }}
-                  transition={{ duration: 0.8, repeat: Infinity }}
+                  initial={{opacity: 0}}
+                  animate={{opacity: 0.5}}
+                  exit={{opacity: 0}}
+                  className="absolute left-4 top-[50%] transform dark:text-darkSubTextColor -translate-y-[35%] text-gray-600 pointer-events-none"
               >
-                |
+                {typingText}
+                <motion.span
+                    animate={{opacity: [0, 1, 0]}}
+                    transition={{duration: 0.8, repeat: Infinity}}
+                >
+                  |
+                </motion.span>
               </motion.span>
-            </motion.span>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>
+      </div>
       {inputError && (
-        <div className='text-red-500 text-sm mt-1'>{inputError}</div>
+          <div className='text-red-500 text-sm mt-1'>{inputError}</div>
       )}
     </div>
 
     <div className='flex items-center gap-[15px] mt-7'>
       <button
-        onClick={handleGenerateConfig}
-        className='flex items-center gap-[8px] code_generate_btn bg-gradient-to-r from-[#0FABCA] hover:from-[#0FABCA]/80 to-[#CD00F1] hover:to-[#CD00F1]/80 text-white py-2.5 px-6 rounded-md'
-        disabled={isGenerating}
+          onClick={handleGenerateConfig}
+          className='flex items-center gap-[8px] code_generate_btn bg-gradient-to-r from-[#0FABCA] hover:from-[#0FABCA]/80 to-[#CD00F1] hover:to-[#CD00F1]/80 text-white py-2.5 px-6 rounded-md'
+          disabled={isGenerating}
       >
-        <RiShiningFill className={isGenerating ? "animate-spin-zoom" : ""} />{" "}
+        <RiShiningFill className={isGenerating ? "animate-spin-zoom" : ""}/>{" "}
         {isGenerating ? "Generating..." : "Generate Config"}
       </button>
     </div>
     {error && <div className='text-red-500 mt-2'>{error}</div>}
 
     <AIResponseSidebar
-      sidebarOpen={sidebarOpen}
-      setSidebarOpen={setSidebarOpen}
-      codes={codes}
-      isGenerating={isGenerating}
+        sidebarOpen={sidebarOpen}
+        setSidebarOpen={setSidebarOpen}
+        codes={codes}
+        isGenerating={isGenerating}
     />
   </div>
 );

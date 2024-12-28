@@ -9,7 +9,7 @@ import MobileNavbar from "../Components/Home/MobileNavbar.jsx";
 
 const ZenUIHeroDocsPage = () => {
     return (
-        <>
+        <div className='dark:bg-darkBgColor'>
             <NewsBoard/>
             <Navbar/>
             <MobileNavbar/>
@@ -17,7 +17,7 @@ const ZenUIHeroDocsPage = () => {
                 <BecomeZenUIHero/>
                 <Footer/>
             </div>
-        </>
+        </div>
     );
 };
 

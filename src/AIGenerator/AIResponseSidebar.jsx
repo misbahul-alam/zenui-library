@@ -31,18 +31,18 @@ const AIResponseSidebar = ({ sidebarOpen, setSidebarOpen, codes, isGenerating })
   return (
     <aside className={`${
       sidebarOpen ? 'translate-x-0 1630px:translate-x-[-129px] 2000px:translate-x-[-200px]' : 'translate-x-[2000px]'
-    } w-full 640px:w-[60%] 1024px:w-[38%] bg-white fixed top-0 right-0 boxShadow min-h-screen transition-all z-[20000000000] duration-500 code_sidebar px-6 640px:px-8`}>
+    } w-full 640px:w-[60%] 1024px:w-[38%] bg-white dark:bg-slate-800 fixed top-0 right-0 boxShadow min-h-screen transition-all z-[20000000000] duration-500 code_sidebar px-6 640px:px-8`}>
       <div className='relative'>
         <RxCross1
           onClick={() => setSidebarOpen(false)}
-          className='p-[8px] absolute top-[15px] left-[-10px] 640px:left-[-15px] rounded-full transition-all duration-100 hover:bg-gray-100 text-[2rem] text-gray-800 cursor-pointer'
+          className='p-[8px] absolute top-[15px] left-[-10px] dark:text-darkSubTextColor dark:hover:bg-slate-900/80 640px:left-[-15px] rounded-full transition-all duration-100 hover:bg-gray-100 text-[2rem] text-gray-800 cursor-pointer'
         />
       </div>
 
       <div className='flex justify-end flex-col h-[85%] 1024px:h-[87%] mt-20'>
         <button
           onClick={handleCopy}
-          className='text-[1.rem] relative w-max ml-auto flex items-center gap-[8px] border border-gray-200 py-2 px-4 rounded-md hover:bg-gray-100 transition-all duration-200'
+          className='text-[1.rem] relative w-max ml-auto flex items-center gap-[8px] border border-gray-200 py-2 px-4 rounded-md hover:bg-gray-100 transition-all duration-200 dark:border-darkBorderColor dark:text-darkSubTextColor dark:hover:bg-slate-600/20'
         >
           <IoCodeSlashOutline />
           Copy Code
@@ -65,7 +65,7 @@ const AIResponseSidebar = ({ sidebarOpen, setSidebarOpen, codes, isGenerating })
             {[60, 40, 50, 30, 80, 65].map((height, index) => (
               <div
                 key={index}
-                className={`relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent before:via-slate-200/70 before:to-transparent w-${index === 2 || index === 3 ? '[50%]' : 'full'} h-[${height}px] rounded-md mt-3 bg-gray-100`}
+                className={`relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-200/40 before:bg-gradient-to-r before:from-transparent dark:before:via-slate-400 dark:bg-slate-700 before:via-slate-200/70 before:to-transparent rounded-md mt-3 bg-gray-100 w-${index === 2 || index === 3 ? '[50%]' : 'full'} h-[${height}px]`}
               />
             ))}
           </div>
@@ -73,7 +73,7 @@ const AIResponseSidebar = ({ sidebarOpen, setSidebarOpen, codes, isGenerating })
           <SyntaxHighlighter
             language="javascript"
             style={dracula}
-            className='overflow-x-scroll h-full 425px:max-w-[380px] 640px:max-w-[780px] 1605px:max-w-[1177px] text-[0.9rem] w-full 1404px:max-w-[1107px] 1024px:max-w-[730px] 1260px:max-w-[880px] max-h-[380px] 1024px:max-h-[430px] max-w-[325px]'
+            className='zenui_code_snippet overflow-x-scroll rounded-md dark:border-darkBorderColor dark:border h-full 425px:max-w-[380px] 640px:max-w-[780px] 1605px:max-w-[1177px] text-[0.9rem] w-full 1404px:max-w-[1107px] 1024px:max-w-[730px] 1260px:max-w-[880px] max-h-[380px] 1024px:max-h-[430px] max-w-[325px]'
             showLineNumbers
           >
             {codes}

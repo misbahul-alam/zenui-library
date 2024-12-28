@@ -3,14 +3,13 @@ import React from "react";
 // components
 import Navbar from "../../../Components/Home/Navbar";
 import Sidebar from "../../../Components/Overview/Sidebar";
-import FileInput from "../../../Components/Overview/SidebarContent/Content/Inputs/FileInput";
 import MobileNavbar from "../../../Components/Home/MobileNavbar.jsx";
 import MobileSidebar from "../../../Components/Overview/Sidebar/MobileSidebar.jsx";
 import CheckboxInput from "../../../Components/Overview/SidebarContent/Content/Inputs/CheckboxInput.jsx";
 
 const CheckboxInputPage = () => {
     return (
-        <>
+        <div className='dark:bg-darkBgColor'>
             <Navbar />
             <MobileNavbar/>
             <div className="flex w-full mx-auto max-w-[1700px]">
@@ -23,7 +22,7 @@ const CheckboxInputPage = () => {
                     <CheckboxInput />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

@@ -1,72 +1,109 @@
 import React, {useState} from "react";
 
-// react icons
-import {FiMinus, FiPlus} from "react-icons/fi";
+const SwitchInput = () => {
+    const [isToggle, setIsToggle] = useState(false);
+    const [widthIncrease, setWidthIncrease] = useState(false);
 
-const NumberInput = () => {
-
-    const [countValue, setCountValue] = useState(0);
-
-    const handleIncrement = () => {
-        setCountValue((prevValue) => prevValue + 1);
-    };
-
-    const handleDecrement = () => {
-        setCountValue((prevValue) => prevValue - 1);
-    };
-
-    const handleInputChange = (e) => {
-        setCountValue(Number(e.target.value));
+    const handleAnimatedSwitch = () => {
+        setWidthIncrease(true);
+        setTimeout(() => {
+            setWidthIncrease(false);
+            setIsToggle(!isToggle);
+        }, 300);
     };
     
     return (
-        <>
-            {/* left button number input */}
-            <div className="flex px-2 py-0.5 items-center dark:border-slate-700 mx-auto border border-gray-200 rounded-md">
-                <button
-                    className="bg-gray-100 dark:bg-slate-800 dark:text-[#abc2d3] p-[10px] mr-2 rounded-full text-gray-700 text-[1.1rem]"
-                    onClick={handleDecrement}
-                >
-                    <FiMinus/>
-                </button>
-                <button
-                    className="bg-gray-100 dark:bg-slate-800 dark:text-[#abc2d3] p-[10px] rounded-full text-gray-700 text-[1.1rem]"
-                    onClick={handleIncrement}
-                >
-                    <FiPlus/>
-                </button>
+        <div className="p-8 mb-4 flex flex-wrap items-center gap-5 justify-center">
 
-                <input
-                    type="number"
-                    value={countValue}
-                    className="w-[70px] px-2 py-2.5 outline-none dark:bg-transparent dark:text-[#abc2d3] focus:ring-0 border-none text-center text-[1.1rem]"
-                    onInput={handleInputChange}
-                />
+            {/* large */}
+            <div
+                className={`${
+                    isToggle
+                        ? "!bg-[#3B9DF8] !border-[#3B9DF8]"
+                        : "bg-[#f0f0f0] border-gray-200"
+                } border relative p-1 rounded-full dark:border-slate-700 dark:bg-slate-800 w-[70px] cursor-pointer transition-all h-[40px] duration-200`}
+                onClick={handleAnimatedSwitch}
+            >
+                <div className="absolute inset-0 flex items-center justify-center">
+                    <div
+                        className={`${
+                            isToggle
+                                ? "translate-x-[15px] !bg-white"
+                                : "translate-x-[-15px]"
+                        } ${
+                            widthIncrease ? "!w-[37px]" : "!w-[30px]"
+                        } w-[30px] h-[30px] dark:bg-slate-300 rounded-full bg-white transition-all duration-200`}
+                    ></div>
+                </div>
             </div>
 
-            {/* right button number input */}
-            <div className="flex px-2 py-0.5 items-center dark:border-slate-700 mx-auto border border-gray-200 rounded-md">
-                <input
-                    type="number"
-                    value={countValue}
-                    className="w-[70px] px-2 py-2.5 dark:bg-transparent dark:text-[#abc2d3] outline-none focus:ring-0 border-none text-center text-[1.1rem]"
-                    onInput={handleInputChange}
-                />
-                <button
-                    className="bg-gray-100 p-[10px] dark:bg-slate-800 dark:text-[#abc2d3] rounded-full text-gray-700 text-[1.1rem]"
-                    onClick={handleDecrement}
-                >
-                    <FiMinus/>
-                </button>
-                <button
-                    className="bg-gray-100 p-[10px] dark:bg-slate-800 dark:text-[#abc2d3] rounded-full ml-2 text-gray-700 text-[1.1rem]"
-                    onClick={handleIncrement}
-                >
-                    <FiPlus/>
-                </button>
+            {/* medium */}
+            <div
+                className={`${
+                    isToggle
+                        ? "!bg-[#3B9DF8] !border-[#3B9DF8]"
+                        : "bg-[#f0f0f0] border-gray-200"
+                } border relative p-1 dark:border-slate-700 dark:bg-slate-800 rounded-full w-[65px] cursor-pointer transition-all h-[37px] duration-200`}
+                onClick={handleAnimatedSwitch}
+            >
+                <div className="absolute inset-0 flex items-center justify-center">
+                    <div
+                        className={`${
+                            isToggle
+                                ? "translate-x-[13px] !bg-white"
+                                : "translate-x-[-13px]"
+                        } ${
+                            widthIncrease ? "!w-[35px]" : "!w-[28px]"
+                        } w-[28px] h-[28px] dark:bg-slate-300 rounded-full bg-white transition-all duration-200`}
+                    ></div>
+                </div>
             </div>
-        </>
+
+            {/* small */}
+            <div
+                className={`${
+                    isToggle
+                        ? "!bg-[#3B9DF8] !border-[#3B9DF8]"
+                        : "bg-[#f0f0f0] border-gray-200"
+                } border relative p-1 dark:border-slate-700 dark:bg-slate-800 rounded-full w-[60px] cursor-pointer transition-all h-[33px] duration-200`}
+                onClick={handleAnimatedSwitch}
+            >
+                <div className="absolute inset-0 flex items-center justify-center">
+                    <div
+                        className={`${
+                            isToggle
+                                ? "translate-x-[13px] !bg-white"
+                                : "translate-x-[-13px]"
+                        } ${
+                            widthIncrease ? "!w-[29px]" : "!w-[25px]"
+                        } w-[25px] h-[25px] dark:bg-slate-300 rounded-full bg-white transition-all duration-200`}
+                    ></div>
+                </div>
+            </div>
+
+            {/* extra small */}
+            <div
+                className={`${
+                    isToggle
+                        ? "!bg-[#3B9DF8] !border-[#3B9DF8]"
+                        : "bg-[#f0f0f0] border-gray-200"
+                } border relative p-1 dark:border-slate-700 dark:bg-slate-800 rounded-full w-[55px] cursor-pointer transition-all h-[30px] duration-200`}
+                onClick={handleAnimatedSwitch}
+            >
+                <div className="absolute inset-0 flex items-center justify-center">
+                    <div
+                        className={`${
+                            isToggle
+                                ? "translate-x-[13px] !bg-white"
+                                : "translate-x-[-13px]"
+                        } ${
+                            widthIncrease ? "!w-[25px]" : "!w-[22px]"
+                        } w-[22px] h-[22px] dark:bg-slate-300 rounded-full bg-white transition-all duration-200`}
+                    ></div>
+                </div>
+            </div>
+        </div>
     );
 };
 
-export default NumberInput;
+export default SwitchInput;

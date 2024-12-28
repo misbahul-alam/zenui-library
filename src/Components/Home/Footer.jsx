@@ -183,13 +183,13 @@ const Footer = () => {
             <p className='text-[14px] text-[#0FABCA]'>{result}</p>
 
             <a href='https://web.facebook.com/share/g/D8DbMaprfWPksSGF/' target='_blank'
-               className='p-3 cursor-pointer dark:bg-slate-800 bg-gray-100 rounded-md flex hover:bg-gray-200 items-center gap-[14px]'>
-              <img src='https://cdn.doplac.site/doplac-media/doplac/54/kkclZyRXclMgFEfFJfBd1716725266.png'
+               className='p-3 cursor-pointer dark:bg-slate-800 dark:hover:bg-slate-900 bg-gray-100 rounded-md flex hover:bg-gray-200 items-center gap-[14px]'>
+              <img src='https://i.ibb.co.com/vJynhGR/Facebook-Logo-2023.png'
                    alt='facebook' className='w-[30px]'/>
 
               <div>
                 <h4 className='text-[1rem] font-[600] text-gray-700 dark:text-darkSubTextColor/80'>Join Community</h4>
-                <p className='text-[0.9rem] font-[300] text-gray-700 dark:text-darkSubTextColor/80'>100+ Members</p>
+                <p className='text-[0.9rem] font-[300] text-gray-700 dark:text-darkSubTextColor/80'>115+ Members</p>
               </div>
             </a>
           </div>

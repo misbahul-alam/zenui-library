@@ -8,12 +8,12 @@ import MobileNavbar from "../Components/Home/MobileNavbar.jsx";
 
 const AIGeneratorPage = () => {
     return (
-        <>
+        <div className='dark:bg-darkBgColor'>
             <Navbar/>
             <MobileNavbar/>
             <AIGenerator />
             <Footer/>
-        </>
+        </div>
     );
 };
 
