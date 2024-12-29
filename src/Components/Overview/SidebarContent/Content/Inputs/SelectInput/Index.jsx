@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
 // components
-import OverviewFooter from '../../../../../Shared/OverviewFooter';
-import ContentHeader from '../../../../../Shared/ContentHeader';
+import OverviewFooter from '../../../../../../Shared/OverviewFooter.jsx';
+import ContentHeader from '../../../../../../Shared/ContentHeader.jsx';
 
 // contents for scrollspy
-import { selectInputContents } from '../../../../../Utils/ContentsConfig/InputContents';
-import { useScrollSpy } from '../../../../../CustomHooks/useScrollSpy';
+import { selectInputContents } from '../../../../../../Utils/ContentsConfig/InputContents.js';
+import { useScrollSpy } from '../../../../../../CustomHooks/useScrollSpy.js';
 
 // react helmet
 import { Helmet } from 'react-helmet';
@@ -18,10 +18,16 @@ import { MdOutlineSportsTennis, MdOutlineSportsCricket } from 'react-icons/md';
 import { GiTennisRacket } from 'react-icons/gi';
 
 // showing the code
-import Showcode from '../../../../../Shared/ShowCode';
+import Showcode from '../../../../../../Shared/ShowCode.jsx';
 
-const SelectInput = () => {
-  // const [contentActiveTab, setContentActiveTab] = useState(0);
+import ComponentDescription from '../../../../../../Shared/ComponentDescription';
+import ComponentWrapper from '../../../../../../Shared/ComponentWrapper';
+import ToggleTab from '../../../../../../Shared/ToggleTab';
+import ContentNavbar from '../../../../../../Shared/ContentNavbar';
+import SelectExample from "./SelectExample.jsx";
+import SelectWithIconExample from "./SelectWithIconExample.jsx";
+
+const Index = () => {
   const sectionIds = selectInputContents.map((item) => item.href.slice(1));
   const activeSection = useScrollSpy(sectionIds);
 
@@ -29,58 +35,18 @@ const SelectInput = () => {
   const [selectPreview, setSelectPreview] = useState(true);
   const [selectCode, setSelectCode] = useState(false);
 
-  const handleSelectPreview = () => {
-    setSelectPreview(true);
-    setSelectCode(false);
-  };
-
-  const handleSelectCode = () => {
-    setSelectCode(true);
-    setSelectPreview(false);
-  };
-
   // select with icon
   const [iconSelectPreview, setIconSelectPreview] = useState(true);
   const [iconSelectCode, setIconSelectCode] = useState(false);
-
-  const handleIconSelectPreview = () => {
-    setIconSelectPreview(true);
-    setIconSelectCode(false);
-  };
-
-  const handleIconSelectCode = () => {
-    setIconSelectCode(true);
-    setIconSelectPreview(false);
-  };
 
   // multiple section with search
   const [multipleWithSearchPreview, setMultipleWithSearchPreview] =
     useState(true);
   const [multipleWithSearchCode, setMultipleWithSearchCode] = useState(false);
 
-  const handleMultipleWithSearchPreview = () => {
-    setMultipleWithSearchPreview(true);
-    setMultipleWithSearchCode(false);
-  };
-
-  const handleMultipleWithSearchCode = () => {
-    setMultipleWithSearchCode(true);
-    setMultipleWithSearchPreview(false);
-  };
-
   // single section with search
   const [singleWithSearchPreview, setSingleWithSearchPreview] = useState(true);
   const [singleWithSearchCode, setSingleWithSearchCode] = useState(false);
-
-  const handleSingleWithSearchPreview = () => {
-    setSingleWithSearchPreview(true);
-    setSingleWithSearchCode(false);
-  };
-
-  const handleSingleWithSearchCode = () => {
-    setSingleWithSearchCode(true);
-    setSingleWithSearchPreview(false);
-  };
 
   // single select search with badge
   const [singleSearchWithBadgePreview, setSingleSearchWithBadgePreview] =
@@ -88,38 +54,17 @@ const SelectInput = () => {
   const [singleSearchWithBadgeCode, setSingleSearchWithBadgeCode] =
     useState(false);
 
-  const handleSingleSearchWithBadgePreview = () => {
-    setSingleSearchWithBadgePreview(true);
-    setSingleSearchWithBadgeCode(false);
-  };
-
-  const handleSingleSearchWithBadgeCode = () => {
-    setSingleSearchWithBadgeCode(true);
-    setSingleSearchWithBadgePreview(false);
-  };
-
   // multiple select search with badge
   const [multipleSearchWithBadgePreview, setMultipleSearchWithBadgePreview] =
     useState(true);
   const [multipleSearchWithBadgeCode, setMultipleSearchWithBadgeCode] =
     useState(false);
 
-  const handleMultipleSearchWithBadgePreview = () => {
-    setMultipleSearchWithBadgePreview(true);
-    setMultipleSearchWithBadgeCode(false);
-  };
-
-  const handleMultipleSearchWithBadgeCode = () => {
-    setMultipleSearchWithBadgeCode(true);
-    setMultipleSearchWithBadgePreview(false);
-  };
-
   // actions
   const [isActive, setIsActive] = useState(false);
   const [isActive2, setIsActive2] = useState(false);
   const [isActive3, setIsActive3] = useState(false);
   const [content, setContent] = useState('Select Option');
-  const [content1, setContent1] = useState('Select Option');
   const [content2, setContent2] = useState('Select Option');
 
   const optionArray = ['Football', 'Cricket', 'Tennis', 'Badminton'];
@@ -382,208 +327,41 @@ const SelectInput = () => {
         <div>
           <ContentHeader text={'Select'} id={'select'} />
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            This is a select component. Choose options from the dropdown menu
-            for seamless interaction.
-          </p>
+          <ComponentDescription text='This is a select component. Choose options from the dropdown menu
+            for seamless interaction.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  selectPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[105px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  selectPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleSelectPreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  selectCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleSelectCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={selectCode} setCode={setSelectCode} preview={selectPreview} setPreview={setSelectPreview}/>
+
+          <ComponentWrapper>
             {selectPreview && (
-              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                <button
-                  className='bg-[#fff] border border-[#d1d1d1] rounded-md w-[80%] justify-between px-3 py-2 flex items-center gap-8  relative cursor-pointer dropdown'
-                  onClick={() => setIsActive(!isActive)}
-                >
-                  {content}
-                  <IoChevronDown
-                    className={`${
-                      isActive ? ' rotate-[180deg]' : ' rotate-0'
-                    } transition-all duration-300 text-[1.2rem]`}
-                  />
-                  <div
-                    className={`${
-                      isActive
-                        ? ' z-[1] opacity-100 scale-[1]'
-                        : ' z-[-1] opacity-0 scale-[0.8]'
-                    } w-full absolute top-12 left-0 right-0 z-40 bg-[#fff] rounded-xl flex flex-col  overflow-hidden transition-all duration-300 ease-in-out`}
-                    style={{
-                      boxShadow: '0 15px 60px -15px rgba(0, 0, 0, 0.3)',
-                    }}
-                  >
-                    {optionArray?.map((option, index) => (
-                      <p
-                        className='py-2 px-4 hover:bg-[#ececec] transition-all duration-200'
-                        key={index}
-                        onClick={(e) => setContent(e.target.textContent)}
-                      >
-                        {option}
-                      </p>
-                    ))}
-                  </div>
-                </button>
-              </div>
+                <SelectExample/>
             )}
 
             {selectCode && (
-              <Showcode
-                code='
-// icons
-import { IoChevronDown } from "react-icons/io5";
-
-const Select = () => {
-  // close the dropdown is clicked outside
-  document.addEventListener("click", function (event) {
-    let target = event.target;
-
-    if (!target.closest(".dropdown")) {
-      setIsActive(false);
-    }
-  });
-
-  // actions
-  const [isActive, setIsActive] = useState(false);
-  const [content, setContent] = useState("Select Option");
-
-  const optionArray = ["Football", "Cricket", "Tennis", "Badminton"];
-  return (
-    <button
-      className="bg-[#fff] border border-[#d1d1d1] rounded-xl w-[200px] justify-between px-3 py-2 flex items-center gap-8  relative cursor-pointer dropdown"
-      onClick={() => setIsActive(!isActive)}
-    >
-      {content}
-      <IoChevronDown
-        className={`${
-          isActive ? " rotate-[180deg]" : " rotate-0"
-        } transition-all duration-300 text-[1.2rem]`}
-      />
-      <div
-        className={`${
-          isActive ? " opacity-100 scale-[1]" : " opacity-0 scale-[0.8]"
-        } w-full absolute top-12 left-0 right-0 z-40 bg-[#fff] rounded-xl flex flex-col  overflow-hidden transition-all duration-300 ease-in-out`}
-        style={{
-          boxShadow: "0 15px 60px -15px rgba(0, 0, 0, 0.3)",
-        }}
-      >
-        {optionArray?.map((option, index) => (
-          <p
-            className="py-2 px-4 hover:bg-[#ececec] transition-all duration-200"
-            key={index}
-            onClick={(e) => setContent(e.target.textContent)}
-          >
-            {option}
-          </p>
-        ))}
-      </div>
-    </button>
-  );
-};
-
-export default Select;
+                <Showcode
+                    code='
                 '
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className='mt-8'>
             <ContentHeader text={'Select with icon'} id={'select_with_icon'} />
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            This is a select with icon component. Select options from the
-            dropdown menu enriched with intuitive icons.
-          </p>
+          <ComponentDescription text='This is a select with icon component. Select options from the
+            dropdown menu enriched with intuitive icons.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  iconSelectPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[105px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  iconSelectPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleIconSelectPreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  iconSelectCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleIconSelectCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={iconSelectCode} setCode={setIconSelectCode} setPreview={setIconSelectPreview} preview={iconSelectPreview}/>
+
+          <ComponentWrapper>
             {iconSelectPreview && (
-              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                <button
-                  className='bg-[#fff] border border-[#d1d1d1] rounded-md w-[80%] justify-between px-3 py-2 flex items-center gap-8  relative cursor-pointer dropdown'
-                  onClick={() => setIsActive2(!isActive2)}
-                >
-                  {content2}
-                  <IoChevronDown
-                    className={`${
-                      isActive2 ? ' rotate-[180deg]' : ' rotate-0'
-                    } transition-all duration-300 text-[1.2rem]`}
-                  />
-                  <div
-                    className={`${
-                      isActive2
-                        ? 'z-[1] opacity-100 scale-[1]'
-                        : 'z-[-1] opacity-0 scale-[0.8]'
-                    } w-full absolute top-12 left-0 right-0 z-40 bg-[#fff] rounded-xl flex flex-col  overflow-hidden transition-all duration-300 ease-in-out`}
-                    style={{
-                      boxShadow: '0 15px 60px -15px rgba(0, 0, 0, 0.3)',
-                    }}
-                  >
-                    {optionArray2?.map((option, index) => (
-                      <p
-                        className='py-2 px-4 hover:bg-[#ececec] transition-all duration-200 flex items-center gap-2'
-                        key={index}
-                        onClick={(e) => setContent2(e.target.textContent)}
-                      >
-                        {option.icon}
-                        {option.title}
-                      </p>
-                    ))}
-                  </div>
-                </button>
-              </div>
+                <SelectWithIconExample/>
             )}
 
             {iconSelectCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 // icons
 import { IoChevronDown } from "react-icons/io5";
 import { IoMdFootball } from "react-icons/io";
@@ -659,9 +437,9 @@ const Select = () => {
 
 export default Select;
                 '
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className='mt-8'>
             <ContentHeader
@@ -670,94 +448,69 @@ export default Select;
             />
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            Multiple select dropdown with a search feature, allowing users to
-            easily find and select multiple options from a large list.
-          </p>
+          <ComponentDescription text=' Multiple select dropdown with a search feature, allowing users to
+            easily find and select multiple options from a large list.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  multipleWithSearchPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[105px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  multipleWithSearchPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleMultipleWithSearchPreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  multipleWithSearchCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleMultipleWithSearchCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={multipleWithSearchCode} setCode={setMultipleWithSearchCode} preview={multipleWithSearchPreview} setPreview={setMultipleWithSearchPreview}/>
+
+          <ComponentWrapper>
             {multipleWithSearchPreview && (
-              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                <div className='relative custom-select3 w-[80%]'>
-                  {/* Input field with search functionality */}
-                  <input
-                    type='text'
-                    placeholder='Search..'
-                    value={search3}
-                    onChange={(e) => setSearch3(e.target.value)}
-                    onFocus={() => setIsOpen3(true)}
-                    className={`w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none`}
-                  />
+                <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                  <div className='relative custom-select3 w-[80%]'>
+                    {/* Input field with search functionality */}
+                    <input
+                        type='text'
+                        placeholder='Search..'
+                        value={search3}
+                        onChange={(e) => setSearch3(e.target.value)}
+                        onFocus={() => setIsOpen3(true)}
+                        className={`w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none`}
+                    />
 
-                  <IoIosArrowDown
-                    className={`${
-                      isOpen3 ? 'rotate-[180deg]' : 'rotate-0'
-                    } transition-all duration-300 text-[1.3rem] absolute top-[50%] transform translate-y-[-50%] right-3 text-gray-500`}
-                  />
+                    <IoIosArrowDown
+                        className={`${
+                            isOpen3 ? 'rotate-[180deg]' : 'rotate-0'
+                        } transition-all duration-300 text-[1.3rem] absolute top-[50%] transform translate-y-[-50%] right-3 text-gray-500`}
+                    />
 
-                  {/* Dropdown menu */}
-                  {isOpen3 && (
-                    <div className='absolute left-0 w-full mt-1 border border-gray-200 rounded-md bg-white shadow-lg z-20'>
-                      <div className='w-full overflow-auto'>
-                        {filteredItems3.map((item) => (
-                          <p
-                            key={item.id}
-                            onClick={() => toggleSelection3(item)}
-                            className='cursor-pointer px-3 py-2 flex items-center hover:bg-gray-200'
-                          >
-                            <img
-                              src='https://besnik-space.fra1.cdn.digitaloceanspaces.com/doplac/dYj3EG2tlN8jM29cWxiA1711341238.svg'
-                              alt='checkicon'
-                              className={`${
-                                isSelected3(item)
-                                  ? 'scale-[1] opacity-100'
-                                  : 'scale-[0.5] opacity-0'
-                              } mr-2 transition-all duration-300 w-6 h-6`}
-                            />
-                            {item.name}
-                          </p>
-                        ))}
+                    {/* Dropdown menu */}
+                    {isOpen3 && (
+                        <div className='absolute left-0 w-full mt-1 border border-gray-200 rounded-md bg-white shadow-lg z-20'>
+                          <div className='w-full overflow-auto'>
+                            {filteredItems3.map((item) => (
+                                <p
+                                    key={item.id}
+                                    onClick={() => toggleSelection3(item)}
+                                    className='cursor-pointer px-3 py-2 flex items-center hover:bg-gray-200'
+                                >
+                                  <img
+                                      src='https://besnik-space.fra1.cdn.digitaloceanspaces.com/doplac/dYj3EG2tlN8jM29cWxiA1711341238.svg'
+                                      alt='checkicon'
+                                      className={`${
+                                          isSelected3(item)
+                                              ? 'scale-[1] opacity-100'
+                                              : 'scale-[0.5] opacity-0'
+                                      } mr-2 transition-all duration-300 w-6 h-6`}
+                                  />
+                                  {item.name}
+                                </p>
+                            ))}
 
-                        {filteredItems3?.length === 0 && (
-                          <p className='text-center text-[0.9rem] text-text py-8'>
-                            No search found!
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  )}
+                            {filteredItems3?.length === 0 && (
+                                <p className='text-center text-[0.9rem] text-text py-8'>
+                                  No search found!
+                                </p>
+                            )}
+                          </div>
+                        </div>
+                    )}
+                  </div>
                 </div>
-              </div>
             )}
 
             {multipleWithSearchCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 import React, {useEffect, useState} from "react";
 
 // react icons
@@ -857,9 +610,9 @@ const SearchSelect = () => {
 
 export default SearchSelect;
                 '
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className='mt-8'>
             <ContentHeader
@@ -868,94 +621,69 @@ export default SearchSelect;
             />
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            Single select dropdown with a search feature, enabling users to
-            quickly find and choose one option from a list.
-          </p>
+          <ComponentDescription text='Single select dropdown with a search feature, enabling users to
+            quickly find and choose one option from a list.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  singleWithSearchPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[105px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  singleWithSearchPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleSingleWithSearchPreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  singleWithSearchCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleSingleWithSearchCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={singleWithSearchCode} setCode={setSingleWithSearchCode} setPreview={setSingleWithSearchPreview} preview={singleWithSearchPreview}/>
+
+          <ComponentWrapper>
             {singleWithSearchPreview && (
-              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                <div className='relative custom-select4 w-[80%]'>
-                  {/* Input field with search functionality */}
-                  <input
-                    type='text'
-                    placeholder='Search..'
-                    value={search4}
-                    onChange={(e) => setSearch4(e.target.value)}
-                    onFocus={() => setIsOpen4(true)}
-                    className={`w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none`}
-                  />
+                <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                  <div className='relative custom-select4 w-[80%]'>
+                    {/* Input field with search functionality */}
+                    <input
+                        type='text'
+                        placeholder='Search..'
+                        value={search4}
+                        onChange={(e) => setSearch4(e.target.value)}
+                        onFocus={() => setIsOpen4(true)}
+                        className={`w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none`}
+                    />
 
-                  <IoIosArrowDown
-                    className={`${
-                      isOpen4 ? 'rotate-[180deg]' : 'rotate-0'
-                    } transition-all duration-300 text-[1.3rem] absolute top-[50%] transform translate-y-[-50%] right-3 text-gray-500`}
-                  />
+                    <IoIosArrowDown
+                        className={`${
+                            isOpen4 ? 'rotate-[180deg]' : 'rotate-0'
+                        } transition-all duration-300 text-[1.3rem] absolute top-[50%] transform translate-y-[-50%] right-3 text-gray-500`}
+                    />
 
-                  {/* Dropdown menu */}
-                  {isOpen4 && (
-                    <div className='absolute left-0 w-full mt-1 border border-gray-200 rounded-md bg-white shadow-lg z-20'>
-                      <div className='w-full overflow-auto'>
-                        {filteredItems4.map((item) => (
-                          <p
-                            key={item.id}
-                            onClick={() => toggleSelection4(item)}
-                            className='cursor-pointer px-3 py-2 flex items-center hover:bg-gray-200'
-                          >
-                            <img
-                              src='https://besnik-space.fra1.cdn.digitaloceanspaces.com/doplac/dYj3EG2tlN8jM29cWxiA1711341238.svg'
-                              alt='checkicon'
-                              className={`${
-                                isSelected4(item)
-                                  ? 'scale-[1] opacity-100'
-                                  : 'scale-[0.5] opacity-0'
-                              } mr-2 transition-all duration-300 w-6 h-6`}
-                            />
-                            {item.name}
-                          </p>
-                        ))}
+                    {/* Dropdown menu */}
+                    {isOpen4 && (
+                        <div className='absolute left-0 w-full mt-1 border border-gray-200 rounded-md bg-white shadow-lg z-20'>
+                          <div className='w-full overflow-auto'>
+                            {filteredItems4.map((item) => (
+                                <p
+                                    key={item.id}
+                                    onClick={() => toggleSelection4(item)}
+                                    className='cursor-pointer px-3 py-2 flex items-center hover:bg-gray-200'
+                                >
+                                  <img
+                                      src='https://besnik-space.fra1.cdn.digitaloceanspaces.com/doplac/dYj3EG2tlN8jM29cWxiA1711341238.svg'
+                                      alt='checkicon'
+                                      className={`${
+                                          isSelected4(item)
+                                              ? 'scale-[1] opacity-100'
+                                              : 'scale-[0.5] opacity-0'
+                                      } mr-2 transition-all duration-300 w-6 h-6`}
+                                  />
+                                  {item.name}
+                                </p>
+                            ))}
 
-                        {filteredItems4?.length === 0 && (
-                          <p className='text-center text-[0.9rem] text-text py-8'>
-                            No search found!
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  )}
+                            {filteredItems4?.length === 0 && (
+                                <p className='text-center text-[0.9rem] text-text py-8'>
+                                  No search found!
+                                </p>
+                            )}
+                          </div>
+                        </div>
+                    )}
+                  </div>
                 </div>
-              </div>
             )}
 
             {singleWithSearchCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 import React, {useEffect, useState} from "react";
 
 // react icons
@@ -1051,9 +779,9 @@ const SearchSelect = () => {
 
 export default SearchSelect;
                 '
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className='mt-8'>
             <ContentHeader
@@ -1062,111 +790,86 @@ export default SearchSelect;
             />
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            Single select dropdown with a search feature and a badge to
+          <ComponentDescription text='Single select dropdown with a search feature and a badge to
             highlight the selected option, making it easy to identify your
-            choice.
-          </p>
+            choice.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  singleSearchWithBadgePreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[105px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  singleSearchWithBadgePreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleSingleSearchWithBadgePreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  singleSearchWithBadgeCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleSingleSearchWithBadgeCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={singleSearchWithBadgeCode} setCode={setSingleSearchWithBadgeCode} preview={singleSearchWithBadgePreview} setPreview={setSingleSearchWithBadgePreview}/>
+
+          <ComponentWrapper>
             {singleSearchWithBadgePreview && (
-              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                <div className='relative custom-select5 w-[80%]'>
-                  {/* Input field with search functionality */}
-                  <input
-                    type='text'
-                    placeholder='Search..'
-                    value={search5}
-                    onChange={(e) => setSearch5(e.target.value)}
-                    onFocus={() => setIsOpen5(true)}
-                    className={`w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none`}
-                  />
+                <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                  <div className='relative custom-select5 w-[80%]'>
+                    {/* Input field with search functionality */}
+                    <input
+                        type='text'
+                        placeholder='Search..'
+                        value={search5}
+                        onChange={(e) => setSearch5(e.target.value)}
+                        onFocus={() => setIsOpen5(true)}
+                        className={`w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none`}
+                    />
 
-                  <IoIosArrowDown
-                    className={`${
-                      isOpen5 ? 'rotate-[180deg]' : 'rotate-0'
-                    } transition-all duration-300 text-[1.3rem] absolute top-[10px] right-3 text-gray-500`}
-                  />
+                    <IoIosArrowDown
+                        className={`${
+                            isOpen5 ? 'rotate-[180deg]' : 'rotate-0'
+                        } transition-all duration-300 text-[1.3rem] absolute top-[10px] right-3 text-gray-500`}
+                    />
 
-                  {/* Dropdown menu */}
-                  {isOpen5 && (
-                    <div className='absolute left-0 w-full mt-1 border border-gray-200 rounded-md bg-white shadow-lg z-20'>
-                      <div className='w-full overflow-auto'>
-                        {filteredItems5.map((item) => (
-                          <p
-                            key={item.id}
-                            onClick={() => toggleSelection5(item)}
-                            className='cursor-pointer px-3 py-2 flex items-center hover:bg-gray-200'
+                    {/* Dropdown menu */}
+                    {isOpen5 && (
+                        <div className='absolute left-0 w-full mt-1 border border-gray-200 rounded-md bg-white shadow-lg z-20'>
+                          <div className='w-full overflow-auto'>
+                            {filteredItems5.map((item) => (
+                                <p
+                                    key={item.id}
+                                    onClick={() => toggleSelection5(item)}
+                                    className='cursor-pointer px-3 py-2 flex items-center hover:bg-gray-200'
+                                >
+                                  <img
+                                      src='https://besnik-space.fra1.cdn.digitaloceanspaces.com/doplac/dYj3EG2tlN8jM29cWxiA1711341238.svg'
+                                      alt='checkicon'
+                                      className={`${
+                                          isSelected5(item)
+                                              ? 'scale-[1] opacity-100'
+                                              : 'scale-[0.5] opacity-0'
+                                      } mr-2 transition-all duration-300 w-6 h-6`}
+                                  />
+                                  {item.name}
+                                </p>
+                            ))}
+
+                            {filteredItems5?.length === 0 && (
+                                <p className='text-center text-[0.9rem] text-text py-8'>
+                                  No search found!
+                                </p>
+                            )}
+                          </div>
+                        </div>
+                    )}
+
+                    {/* Selected items */}
+                    {selected5Option !== null && (
+                        <div
+                            key={selected5Option.id}
+                            className='bg-blue-100 w-max text-blue-800 px-3 py-[0.1rem] text-[0.9rem] rounded-full flex items-center mt-2'
+                        >
+                          {selected5Option.name}
+                          <button
+                              onClick={() => removeOption5()}
+                              className='ml-2 text-blue-800 text-[1.2rem]'
                           >
-                            <img
-                              src='https://besnik-space.fra1.cdn.digitaloceanspaces.com/doplac/dYj3EG2tlN8jM29cWxiA1711341238.svg'
-                              alt='checkicon'
-                              className={`${
-                                isSelected5(item)
-                                  ? 'scale-[1] opacity-100'
-                                  : 'scale-[0.5] opacity-0'
-                              } mr-2 transition-all duration-300 w-6 h-6`}
-                            />
-                            {item.name}
-                          </p>
-                        ))}
-
-                        {filteredItems5?.length === 0 && (
-                          <p className='text-center text-[0.9rem] text-text py-8'>
-                            No search found!
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Selected items */}
-                  {selected5Option !== null && (
-                    <div
-                      key={selected5Option.id}
-                      className='bg-blue-100 w-max text-blue-800 px-3 py-[0.1rem] text-[0.9rem] rounded-full flex items-center mt-2'
-                    >
-                      {selected5Option.name}
-                      <button
-                        onClick={() => removeOption5()}
-                        className='ml-2 text-blue-800 text-[1.2rem]'
-                      >
-                        &times;
-                      </button>
-                    </div>
-                  )}
+                            &times;
+                          </button>
+                        </div>
+                    )}
+                  </div>
                 </div>
-              </div>
             )}
 
             {singleSearchWithBadgeCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 import React, {useEffect, useState} from "react";
 
 const SearchSelect = () => {
@@ -1280,9 +983,9 @@ const SearchSelect = () => {
 
 export default SearchSelect;
                 '
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className='mt-8'>
             <ContentHeader
@@ -1291,114 +994,89 @@ export default SearchSelect;
             />
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            Multiple select dropdown with search and badges, allowing users to
-            find options easily and display selected items with visual badges.
-          </p>
+          <ComponentDescription text='Multiple select dropdown with search and badges, allowing users to
+            find options easily and display selected items with visual badges.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  multipleSearchWithBadgePreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[105px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  multipleSearchWithBadgePreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleMultipleSearchWithBadgePreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  multipleSearchWithBadgeCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleMultipleSearchWithBadgeCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={multipleSearchWithBadgeCode} setCode={setMultipleSearchWithBadgeCode} setPreview={setMultipleSearchWithBadgePreview} preview={multipleSearchWithBadgePreview}/>
+
+          <ComponentWrapper>
             {multipleSearchWithBadgePreview && (
-              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                <div className='relative custom-select w-[80%]'>
-                  {/* Input field with search functionality */}
-                  <input
-                    type='text'
-                    placeholder='Search..'
-                    value={search6}
-                    onChange={(e) => setSearch6(e.target.value)}
-                    onFocus={() => setIsOpen6(true)}
-                    className={`w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none`}
-                  />
+                <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                  <div className='relative custom-select w-[80%]'>
+                    {/* Input field with search functionality */}
+                    <input
+                        type='text'
+                        placeholder='Search..'
+                        value={search6}
+                        onChange={(e) => setSearch6(e.target.value)}
+                        onFocus={() => setIsOpen6(true)}
+                        className={`w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none`}
+                    />
 
-                  <IoIosArrowDown
-                    className={`${
-                      isOpen6 ? 'rotate-[180deg]' : 'rotate-0'
-                    } transition-all duration-300 text-[1.3rem] absolute top-[10px] right-3 text-gray-500`}
-                  />
+                    <IoIosArrowDown
+                        className={`${
+                            isOpen6 ? 'rotate-[180deg]' : 'rotate-0'
+                        } transition-all duration-300 text-[1.3rem] absolute top-[10px] right-3 text-gray-500`}
+                    />
 
-                  {/* Dropdown menu */}
-                  {isOpen6 && (
-                    <div className='absolute left-0 w-full mt-1 border border-gray-200 rounded-md bg-white shadow-lg z-20'>
-                      <div className='w-full overflow-auto'>
-                        {filteredItems6.map((item) => (
-                          <p
-                            key={item.id}
-                            onClick={() => toggleSelection6(item)}
-                            className='cursor-pointer px-3 py-2 flex items-center hover:bg-gray-200'
-                          >
-                            <img
-                              src='https://besnik-space.fra1.cdn.digitaloceanspaces.com/doplac/dYj3EG2tlN8jM29cWxiA1711341238.svg'
-                              alt='checkicon'
-                              className={`${
-                                isSelected6(item)
-                                  ? 'scale-[1] opacity-100'
-                                  : 'scale-[0.5] opacity-0'
-                              } mr-2 transition-all duration-300 w-6 h-6`}
-                            />
-                            {item.name}
-                          </p>
-                        ))}
+                    {/* Dropdown menu */}
+                    {isOpen6 && (
+                        <div className='absolute left-0 w-full mt-1 border border-gray-200 rounded-md bg-white shadow-lg z-20'>
+                          <div className='w-full overflow-auto'>
+                            {filteredItems6.map((item) => (
+                                <p
+                                    key={item.id}
+                                    onClick={() => toggleSelection6(item)}
+                                    className='cursor-pointer px-3 py-2 flex items-center hover:bg-gray-200'
+                                >
+                                  <img
+                                      src='https://besnik-space.fra1.cdn.digitaloceanspaces.com/doplac/dYj3EG2tlN8jM29cWxiA1711341238.svg'
+                                      alt='checkicon'
+                                      className={`${
+                                          isSelected6(item)
+                                              ? 'scale-[1] opacity-100'
+                                              : 'scale-[0.5] opacity-0'
+                                      } mr-2 transition-all duration-300 w-6 h-6`}
+                                  />
+                                  {item.name}
+                                </p>
+                            ))}
 
-                        {filteredItems6?.length === 0 && (
-                          <p className='text-center text-[0.9rem] text-text py-8'>
-                            No search found!
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Selected items */}
-                  {selected6Options?.length > 0 && (
-                    <div className='flex items-center gap-[5px] flex-wrap'>
-                      {selected6Options?.map((item) => (
-                        <div
-                          key={item.id}
-                          className='bg-blue-100 min-w-fit text-blue-800 px-3 py-[0.1rem] text-[0.9rem] rounded-full flex items-center mt-2'
-                        >
-                          {item.name}
-                          <button
-                            onClick={() => removeOption6(item)}
-                            className='ml-2 text-blue-800 text-[1.2rem]'
-                          >
-                            &times;
-                          </button>
+                            {filteredItems6?.length === 0 && (
+                                <p className='text-center text-[0.9rem] text-text py-8'>
+                                  No search found!
+                                </p>
+                            )}
+                          </div>
                         </div>
-                      ))}
-                    </div>
-                  )}
+                    )}
+
+                    {/* Selected items */}
+                    {selected6Options?.length > 0 && (
+                        <div className='flex items-center gap-[5px] flex-wrap'>
+                          {selected6Options?.map((item) => (
+                              <div
+                                  key={item.id}
+                                  className='bg-blue-100 min-w-fit text-blue-800 px-3 py-[0.1rem] text-[0.9rem] rounded-full flex items-center mt-2'
+                              >
+                                {item.name}
+                                <button
+                                    onClick={() => removeOption6(item)}
+                                    className='ml-2 text-blue-800 text-[1.2rem]'
+                                >
+                                  &times;
+                                </button>
+                              </div>
+                          ))}
+                        </div>
+                    )}
+                  </div>
                 </div>
-              </div>
             )}
 
             {multipleSearchWithBadgeCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 import React, {useEffect, useState} from "react";
 
 const SearchSelect = () => {
@@ -1521,9 +1199,9 @@ const SearchSelect = () => {
 
 export default SearchSelect;
                 '
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <OverviewFooter
             backUrl='/components/strong-password'
@@ -1533,23 +1211,8 @@ export default SearchSelect;
           />
         </div>
 
-        <div className='1024px:flex hidden flex-col gap-4 sticky top-4 right-0 w-[40%]'>
-          <h2 className='text-[0.9rem] font-[600] text-text tracking-widest'>
-            CONTENTS
-          </h2>
-          {selectInputContents.map((item) => (
-            <a
-              key={item.id}
-              href={item.href}
-              className={`${
-                activeSection === item.href.slice(1) &&
-                '!text-primary !border-primary'
-              } text-[0.9rem] capitalize transition-all duration-300 text-text border-l border-transparent pl-4`}
-            >
-              {item.title}
-            </a>
-          ))}
-        </div>
+        <ContentNavbar activeSection={activeSection} contents={selectInputContents}/>
+
       </aside>
       <Helmet>
         <title>Form - Select</title>
@@ -1558,4 +1221,4 @@ export default SearchSelect;
   );
 };
 
-export default SelectInput;
+export default Index;
