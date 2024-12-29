@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import PropTypes from 'prop-types';
 
 // icons
 import { MdKeyboardArrowRight } from "react-icons/md";
@@ -6,15 +7,13 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 // react router dom
 import { Link } from "react-router-dom";
 import NewBadge from "../../../Shared/NewBadge.jsx";
-import UpdateBadge from "../../../Shared/UpdateBadge.jsx";
 import OverviewIcon from "../../../SvgIcons/OverviewIcon.jsx";
 import InstallationIcon from "../../../SvgIcons/InstallationIcon.jsx";
 import ResourceIcon from "../../../SvgIcons/ResourceIcon.jsx";
 import TemplatesIcon from "../../../SvgIcons/TemplatesIcon.jsx";
 import HookIcon from "../../../SvgIcons/HookIcon.jsx";
 
-const index = ({ startContent, setStartContent }) => {
-  const [start, setStart] = useState(true);
+const Sidebar = ({ startContent, setStartContent }) => {
   const [components, setComponents] = useState(true);
   const [blocks, setBlocks] = useState(true);
   const sidebarRef = useRef(null);
@@ -961,4 +960,9 @@ const index = ({ startContent, setStartContent }) => {
   );
 };
 
-export default index;
+Sidebar.propTypes = {
+  startContent: PropTypes.number.isRequired,
+  setStartContent: PropTypes.func.isRequired,
+};
+
+export default Sidebar;

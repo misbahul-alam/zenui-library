@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import PropTypes from 'prop-types';
 
 // icons
-import { MdKeyboardArrowRight, MdKeyboardArrowDown } from "react-icons/md";
+import { MdKeyboardArrowRight } from "react-icons/md";
 import { CiMenuFries } from "react-icons/ci";
 
 // react router dom
-import { Link, useNavigate } from "react-router-dom";
-import UpdateBadge from "../../../Shared/UpdateBadge.jsx";
+import { Link } from "react-router-dom";
 import NewBadge from "../../../Shared/NewBadge.jsx";
 import OverviewIcon from "../../../SvgIcons/OverviewIcon.jsx";
 import InstallationIcon from "../../../SvgIcons/InstallationIcon.jsx";
@@ -15,7 +15,6 @@ import TemplatesIcon from "../../../SvgIcons/TemplatesIcon.jsx";
 import HookIcon from "../../../SvgIcons/HookIcon.jsx";
 
 const MobileSidebar = ({ startContent, setStartContent }) => {
-    const [start, setStart] = useState(true);
     const [components, setComponents] = useState(true);
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [blocks, setBlocks] = useState(true);
@@ -921,4 +920,8 @@ const MobileSidebar = ({ startContent, setStartContent }) => {
     );
 };
 
+MobileSidebar.propTypes = {
+  startContent: PropTypes.number.isRequired,
+  setStartContent: PropTypes.func.isRequired,
+};
 export default MobileSidebar;
