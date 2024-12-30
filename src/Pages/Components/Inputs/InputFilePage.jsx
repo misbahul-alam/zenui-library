@@ -3,13 +3,13 @@ import React from "react";
 // components
 import Navbar from "../../../Components/Home/Navbar";
 import Sidebar from "../../../Components/Overview/Sidebar";
-import FileInput from "../../../Components/Overview/SidebarContent/Content/Inputs/FileInput";
+import Index from "../../../Components/Overview/SidebarContent/Content/Inputs/FileInput/Index.jsx";
 import MobileNavbar from "../../../Components/Home/MobileNavbar.jsx";
 import MobileSidebar from "../../../Components/Overview/Sidebar/MobileSidebar.jsx";
 
 const InputFilePage = () => {
   return (
-    <>
+    <div className='dark:bg-darkBgColor'>
       <Navbar />
         <MobileNavbar/>
       <div className="flex w-full mx-auto max-w-[1700px]">
@@ -19,10 +19,10 @@ const InputFilePage = () => {
 
         <div className="w-full max-h-[89vh] min-h-[89vh] overflow-y-auto pt-[5rem] 640px:pt-[5rem] 640px:py-[10rem] 1024px:py-[2rem] 1024px:px-[0.5rem] relative" style={{scrollbarWidth: 'none'}}>
             <MobileSidebar startContent={12}/>
-          <FileInput />
+          <Index />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

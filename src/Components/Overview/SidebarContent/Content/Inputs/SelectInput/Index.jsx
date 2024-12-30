@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 // components
 import OverviewFooter from '../../../../../../Shared/OverviewFooter.jsx';
@@ -11,12 +11,6 @@ import { useScrollSpy } from '../../../../../../CustomHooks/useScrollSpy.js';
 // react helmet
 import { Helmet } from 'react-helmet';
 
-// icons
-import { IoChevronDown } from 'react-icons/io5';
-import { IoIosArrowDown, IoMdFootball } from 'react-icons/io';
-import { MdOutlineSportsTennis, MdOutlineSportsCricket } from 'react-icons/md';
-import { GiTennisRacket } from 'react-icons/gi';
-
 // showing the code
 import Showcode from '../../../../../../Shared/ShowCode.jsx';
 
@@ -24,8 +18,14 @@ import ComponentDescription from '../../../../../../Shared/ComponentDescription'
 import ComponentWrapper from '../../../../../../Shared/ComponentWrapper';
 import ToggleTab from '../../../../../../Shared/ToggleTab';
 import ContentNavbar from '../../../../../../Shared/ContentNavbar';
+
+// all the examples
 import SelectExample from "./SelectExample.jsx";
 import SelectWithIconExample from "./SelectWithIconExample.jsx";
+import MultipleSelectWithSearch from "./MultipleSelectWithSearch.jsx";
+import SingleSelectWithSearch from "./SingleSelectWithSearch.jsx";
+import SingleSelectWithSearchAndBadge from "./SingleSelectWithSearchAndBadge.jsx";
+import MultipleSelectWithSearchAndBadge from "./MutipleSelectWithSearchAndBadge.jsx";
 
 const Index = () => {
   const sectionIds = selectInputContents.map((item) => item.href.slice(1));
@@ -60,267 +60,6 @@ const Index = () => {
   const [multipleSearchWithBadgeCode, setMultipleSearchWithBadgeCode] =
     useState(false);
 
-  // actions
-  const [isActive, setIsActive] = useState(false);
-  const [isActive2, setIsActive2] = useState(false);
-  const [isActive3, setIsActive3] = useState(false);
-  const [content, setContent] = useState('Select Option');
-  const [content2, setContent2] = useState('Select Option');
-
-  const optionArray = ['Football', 'Cricket', 'Tennis', 'Badminton'];
-  const optionArray2 = [
-    {
-      icon: <IoMdFootball />,
-      title: 'Football',
-    },
-    {
-      icon: <MdOutlineSportsCricket />,
-      title: 'Cricket',
-    },
-    {
-      icon: <MdOutlineSportsTennis />,
-      title: 'Tennis',
-    },
-    {
-      icon: <GiTennisRacket />,
-      title: 'Badminton',
-    },
-  ];
-
-  document.addEventListener('click', function (event) {
-    let target = event.target;
-
-    if (!target.closest('.dropdown')) {
-      setIsActive(false);
-      setIsActive2(false);
-      setIsActive3(false);
-    }
-  });
-
-  // search select 1
-  const [search, setSearch] = useState('');
-  const [isOpen, setIsOpen] = useState(false);
-
-  const items = [
-    { id: 1, name: 'Option 1' },
-    { id: 2, name: 'Option 2' },
-    { id: 3, name: 'Option 3' },
-    { id: 4, name: 'Option 4' },
-    { id: 5, name: 'Option 5' },
-  ];
-
-  const handleBlur = () => {
-    setTimeout(() => {
-      setIsOpen(false);
-    }, 200);
-  };
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (event.target.closest('.custom-select')) return;
-      handleBlur();
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  // search select 2
-  const [isOpen2, setIsOpen2] = useState(false);
-
-  const handleBlur2 = () => {
-    setTimeout(() => {
-      setIsOpen2(false);
-    }, 200);
-  };
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (event.target.closest('.custom-select2')) return;
-      handleBlur2();
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  // select 3
-  const [search3, setSearch3] = useState('');
-  const [isOpen3, setIsOpen3] = useState(false);
-  const [selected3Options, setSelected3Options] = useState([]);
-
-  const items3 = [
-    { id: 1, name: 'Option 1' },
-    { id: 2, name: 'Option 2' },
-    { id: 3, name: 'Option 3' },
-    { id: 4, name: 'Option 4' },
-    { id: 5, name: 'Option 5' },
-  ];
-
-  const filteredItems3 = items3.filter((item) =>
-    item.name.toLowerCase().includes(search3.toLowerCase())
-  );
-
-  const isSelected3 = (item) => {
-    return selected3Options.some((selectedItem) => selectedItem.id === item.id);
-  };
-
-  const toggleSelection3 = (item) => {
-    if (isSelected3(item)) {
-      setSelected3Options(
-        selected3Options.filter((selectedItem) => selectedItem.id !== item.id)
-      );
-    } else {
-      setSelected3Options([...selected3Options, item]);
-    }
-  };
-
-  const handleBlur3 = () => {
-    setTimeout(() => {
-      setIsOpen3(false);
-    }, 200);
-  };
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (event.target.closest('.custom-select3')) return;
-      handleBlur3();
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  // search select 4
-  const [search4, setSearch4] = useState('');
-  const [isOpen4, setIsOpen4] = useState(false);
-  const [selected4Option, setSelected4Option] = useState(null);
-
-  const items4 = [
-    { id: 1, name: 'Option 1' },
-    { id: 2, name: 'Option 2' },
-    { id: 3, name: 'Option 3' },
-    { id: 4, name: 'Option 4' },
-    { id: 5, name: 'Option 5' },
-  ];
-
-  const filteredItems4 = items4.filter((item) =>
-    item.name.toLowerCase().includes(search4.toLowerCase())
-  );
-
-  const isSelected4 = (item) => {
-    return selected4Option?.id === item.id;
-  };
-
-  const removeOption4 = () => {
-    setSelected4Option(null);
-  };
-
-  const toggleSelection4 = (item) => {
-    setSelected4Option(item);
-  };
-
-  const handleBlur4 = () => {
-    setTimeout(() => {
-      setIsOpen4(false);
-    }, 200);
-  };
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (event.target.closest('.custom-select4')) return;
-      handleBlur4();
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  // search select 5
-  const [search5, setSearch5] = useState('');
-  const [isOpen5, setIsOpen5] = useState(false);
-  const [selected5Option, setSelected5Option] = useState(null);
-
-  const items5 = [
-    { id: 1, name: 'Option 1' },
-    { id: 2, name: 'Option 2' },
-    { id: 3, name: 'Option 3' },
-    { id: 4, name: 'Option 4' },
-    { id: 5, name: 'Option 5' },
-  ];
-
-  const filteredItems5 = items5.filter((item) =>
-    item.name.toLowerCase().includes(search5.toLowerCase())
-  );
-
-  const isSelected5 = (item) => {
-    return selected5Option?.id === item.id;
-  };
-
-  const removeOption5 = () => {
-    setSelected5Option(null);
-  };
-
-  const toggleSelection5 = (item) => {
-    setSelected5Option(item);
-  };
-
-  const handleBlur5 = () => {
-    setTimeout(() => {
-      setIsOpen5(false);
-    }, 200);
-  };
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (event.target.closest('.custom-select5')) return;
-      handleBlur5();
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  // select 6
-  const [search6, setSearch6] = useState('');
-  const [isOpen6, setIsOpen6] = useState(false);
-  const [selected6Options, setSelected6Options] = useState([]);
-
-  const items6 = [
-    { id: 1, name: 'Option 1' },
-    { id: 2, name: 'Option 2' },
-    { id: 3, name: 'Option 3' },
-    { id: 4, name: 'Option 4' },
-    { id: 5, name: 'Option 5' },
-  ];
-
-  const filteredItems6 = items6.filter((item) =>
-    item.name.toLowerCase().includes(search6.toLowerCase())
-  );
-
-  const isSelected6 = (item) => {
-    return selected6Options.some((selectedItem) => selectedItem.id === item.id);
-  };
-
-  const toggleSelection6 = (item) => {
-    if (isSelected6(item)) {
-      setSelected6Options(
-        selected6Options.filter((selectedItem) => selectedItem.id !== item.id)
-      );
-    } else {
-      setSelected6Options([...selected6Options, item]);
-    }
-  };
-
-  const removeOption6 = (option) => {
-    setSelected6Options(
-      selected6Options.filter((selectedItem) => selectedItem.id !== option.id)
-    );
-  };
-
-  useEffect(() => {
-    document.addEventListener('click', (event) => {
-      if (!event.target.closest('.custom-select')) {
-        setIsOpen6(false);
-      }
-    });
-  }, [isOpen6]);
-
   return (
     <>
       <aside className='flex items-start justify-between gap-6 w-full 640px:pl-[2.5rem] px-6 640px:px-10'>
@@ -339,8 +78,70 @@ const Index = () => {
 
             {selectCode && (
                 <Showcode
-                    code='
-                '
+                    code="
+import React, {useEffect, useState} from 'react';
+
+// react icons
+import {IoChevronDown} from 'react-icons/io5';
+
+const SelectInput = () => {
+    const [isActive, setIsActive] = useState(false);
+    const [content, setContent] = useState('Select Option');
+
+    const options = ['Football', 'Cricket', 'Tennis', 'Badminton'];
+
+    // outside click to off dropdown
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            let target = event.target;
+
+            if (!target.closest('.dropdown')) {
+                setIsActive(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
+    return (
+        <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+            <button
+                className='bg-[#fff] dark:bg-transparent dark:border-slate-600 dark:text-[#abc2d3] border border-[#d1d1d1] rounded-md w-[80%] justify-between px-3 py-2 flex items-center gap-8  relative cursor-pointer dropdown'
+                onClick={() => setIsActive(!isActive)}
+            >
+                {content}
+                <IoChevronDown
+                    className={`${
+                        isActive ? ' rotate-[180deg]' : ' rotate-0'
+                    } transition-all duration-300 text-[1.2rem]`}
+                />
+                <div
+                    className={`${
+                        isActive
+                            ? ' z-[1] opacity-100 scale-[1]'
+                            : ' z-[-1] opacity-0 scale-[0.8]'
+                    } w-full absolute top-12 left-0 right-0 z-40 dark:bg-slate-800 bg-[#fff] rounded-xl flex flex-col overflow-hidden transition-all duration-300 ease-in-out`}
+                    style={{
+                        boxShadow: '0 15px 60px -15px rgba(0, 0, 0, 0.3)',
+                    }}
+                >
+                    {options?.map((option, index) => (
+                        <p
+                            className='py-2 px-4 dark:hover:bg-slate-900/40 hover:bg-[#ececec] transition-all duration-200'
+                            key={index}
+                            onClick={(e) => setContent(e.target.textContent)}
+                        >
+                            {option}
+                        </p>
+                    ))}
+                </div>
+            </button>
+        </div>
+    );
+};
+
+export default SelectInput;
+                    "
                 />
             )}
           </ComponentWrapper>
@@ -361,82 +162,91 @@ const Index = () => {
 
             {iconSelectCode && (
                 <Showcode
-                    code='
-// icons
-import { IoChevronDown } from "react-icons/io5";
-import { IoMdFootball } from "react-icons/io";
-import { MdOutlineSportsTennis, MdOutlineSportsCricket } from "react-icons/md";
-import { GiTennisRacket } from "react-icons/gi";
+                    code="
+import React, {useEffect, useState} from 'react';
 
-const Select = () => {
-  // close the dropdown is clicked outside
-  document.addEventListener("click", function (event) {
-    let target = event.target;
+// react icons
+import {IoMdFootball} from 'react-icons/io';
+import {MdOutlineSportsCricket, MdOutlineSportsTennis} from 'react-icons/md';
+import {GiTennisRacket} from 'react-icons/gi';
+import {IoChevronDown} from 'react-icons/io5';
 
-    if (!target.closest(".dropdown")) {
-      setIsActive(false);
-    }
-  });
+const SelectInput = () => {
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [selectedItem, setSelectedItem] = useState('Select Option');
 
-  // actions
-  const [isActive, setIsActive] = useState(false);
-  const [content, setContent] = useState("Select Option");
+    const options = [
+        {
+            icon: <IoMdFootball />,
+            title: 'Football',
+        },
+        {
+            icon: <MdOutlineSportsCricket />,
+            title: 'Cricket',
+        },
+        {
+            icon: <MdOutlineSportsTennis />,
+            title: 'Tennis',
+        },
+        {
+            icon: <GiTennisRacket />,
+            title: 'Badminton',
+        },
+    ];
 
-  const optionArray = [
-    {
-      icon: <IoMdFootball />,
-      title: "Football",
-    },
-    {
-      icon: <MdOutlineSportsCricket />,
-      title: "Cricket",
-    },
-    {
-      icon: <MdOutlineSportsTennis />,
-      title: "Tennis",
-    },
-    {
-      icon: <GiTennisRacket />,
-      title: "Badminton",
-    },
-  ];
+    // outside click to off the dropdown
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            let target = event.target;
 
-  return (
-    <button
-      className="bg-[#fff] border border-[#d1d1d1] rounded-xl w-[200px] justify-between px-3 py-2 flex items-center gap-8  relative cursor-pointer dropdown"
-      onClick={() => setIsActive(!isActive)}
-    >
-      {content}
-      <IoChevronDown
-        className={`${
-          isActive ? " rotate-[180deg]" : " rotate-0"
-        } transition-all duration-300 text-[1.2rem]`}
-      />
-      <div
-        className={`${
-          isActive ? " opacity-100 scale-[1]" : " opacity-0 scale-[0.8]"
-        } w-full absolute top-12 left-0 right-0 z-40 bg-[#fff] rounded-xl flex flex-col  overflow-hidden transition-all duration-300 ease-in-out`}
-        style={{
-          boxShadow: "0 15px 60px -15px rgba(0, 0, 0, 0.3)",
-        }}
-      >
-        {optionArray?.map((option, index) => (
-          <p
-            className="py-2 px-4 hover:bg-[#ececec] transition-all duration-200 flex items-center gap-2"
-            key={index}
-            onClick={(e) => setContent(e.target.textContent)}
-          >
-            {option.icon}
-            {option.title}
-          </p>
-        ))}
-      </div>
-    </button>
-  );
+            if (!target.closest('.dropdown')) {
+                setIsDropdownOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
+    return (
+        <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+            <button
+                className='bg-[#fff] dark:border-slate-600 dark:bg-transparent dark:text-[#abc2d3] border border-[#d1d1d1] rounded-md w-[80%] justify-between px-3 py-2 flex items-center gap-8  relative cursor-pointer dropdown'
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            >
+                {selectedItem}
+                <IoChevronDown
+                    className={`${
+                        isDropdownOpen ? ' rotate-[180deg]' : ' rotate-0'
+                    } transition-all duration-300 text-[1.2rem]`}
+                />
+                <div
+                    className={`${
+                        isDropdownOpen
+                            ? 'z-[1] opacity-100 scale-[1]'
+                            : 'z-[-1] opacity-0 scale-[0.8]'
+                    } w-full absolute top-12 dark:bg-slate-800 left-0 right-0 z-40 bg-[#fff] rounded-xl flex flex-col  overflow-hidden transition-all duration-300 ease-in-out`}
+                    style={{
+                        boxShadow: '0 15px 60px -15px rgba(0, 0, 0, 0.3)',
+                    }}
+                >
+                    {options?.map((option, index) => (
+                        <p
+                            className='py-2 px-4 dark:hover:bg-slate-900/40 hover:bg-[#ececec] transition-all duration-200 flex items-center gap-2'
+                            key={index}
+                            onClick={(e) => setSelectedItem(e.target.textContent)}
+                        >
+                            {option.icon}
+                            {option.title}
+                        </p>
+                    ))}
+                </div>
+            </button>
+        </div>
+    );
 };
 
-export default Select;
-                '
+export default SelectInput;
+                    "
                 />
             )}
           </ComponentWrapper>
@@ -455,57 +265,7 @@ export default Select;
 
           <ComponentWrapper>
             {multipleWithSearchPreview && (
-                <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                  <div className='relative custom-select3 w-[80%]'>
-                    {/* Input field with search functionality */}
-                    <input
-                        type='text'
-                        placeholder='Search..'
-                        value={search3}
-                        onChange={(e) => setSearch3(e.target.value)}
-                        onFocus={() => setIsOpen3(true)}
-                        className={`w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none`}
-                    />
-
-                    <IoIosArrowDown
-                        className={`${
-                            isOpen3 ? 'rotate-[180deg]' : 'rotate-0'
-                        } transition-all duration-300 text-[1.3rem] absolute top-[50%] transform translate-y-[-50%] right-3 text-gray-500`}
-                    />
-
-                    {/* Dropdown menu */}
-                    {isOpen3 && (
-                        <div className='absolute left-0 w-full mt-1 border border-gray-200 rounded-md bg-white shadow-lg z-20'>
-                          <div className='w-full overflow-auto'>
-                            {filteredItems3.map((item) => (
-                                <p
-                                    key={item.id}
-                                    onClick={() => toggleSelection3(item)}
-                                    className='cursor-pointer px-3 py-2 flex items-center hover:bg-gray-200'
-                                >
-                                  <img
-                                      src='https://besnik-space.fra1.cdn.digitaloceanspaces.com/doplac/dYj3EG2tlN8jM29cWxiA1711341238.svg'
-                                      alt='checkicon'
-                                      className={`${
-                                          isSelected3(item)
-                                              ? 'scale-[1] opacity-100'
-                                              : 'scale-[0.5] opacity-0'
-                                      } mr-2 transition-all duration-300 w-6 h-6`}
-                                  />
-                                  {item.name}
-                                </p>
-                            ))}
-
-                            {filteredItems3?.length === 0 && (
-                                <p className='text-center text-[0.9rem] text-text py-8'>
-                                  No search found!
-                                </p>
-                            )}
-                          </div>
-                        </div>
-                    )}
-                  </div>
-                </div>
+                <MultipleSelectWithSearch/>
             )}
 
             {multipleWithSearchCode && (
@@ -515,14 +275,15 @@ import React, {useEffect, useState} from "react";
 
 // react icons
 import {IoIosArrowDown} from "react-icons/io";
+import {IoCheckmark} from "react-icons/io5";
 
-const SearchSelect = () => {
+const SelectInput = () => {
+    const [searchValue, setSearchValue] = useState("");
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [selectedItems, setSelectedItems] = useState([]);
 
-    const [search, setSearch] = useState("");
-    const [isOpen, setIsOpen] = useState(false);
-    const [selectedOptions, setSelectedOptions] = useState([]);
-
-    const items = [
+    // all options
+    const options = [
         { id: 1, name: "Option 1" },
         { id: 2, name: "Option 2" },
         { id: 3, name: "Option 3" },
@@ -530,86 +291,95 @@ const SearchSelect = () => {
         { id: 5, name: "Option 5" },
     ];
 
-    const filteredItems = items.filter(item =>
-        item.name.toLowerCase().includes(search.toLowerCase())
+    // filtered items
+    const filteredItems = options.filter((item) =>
+        item.name.toLowerCase().includes(searchValue.toLowerCase())
     );
 
+    // checking is the item is selected or not
     const isSelected = (item) => {
-        return selectedOptions.some(selectedItem => selectedItem.id === item.id);
+        return selectedItems.some((selectedItem) => selectedItem.id === item.id);
     };
 
-    const toggleSelection = (item) => {
+    // the select toggle
+    const toggleSelect = (item) => {
         if (isSelected(item)) {
-            setSelectedOptions(selectedOptions.filter(selectedItem => selectedItem.id !== item.id));
+            setSelectedItems(
+                selectedItems.filter((selectedItem) => selectedItem.id !== item.id)
+            );
         } else {
-            setSelectedOptions([...selectedOptions, item]);
+            setSelectedItems([...selectedItems, item]);
         }
     };
 
-    const handleBlur = () => {
-        setTimeout(() => {
-            setIsOpen(false);
-        }, 200);
-    };
-
+    // outside click to off the dropdown
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (event.target.closest(".custom-select")) return;
-            handleBlur();
+            setTimeout(() => {
+                setIsDropdownOpen(false);
+            }, 200);
         };
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
     return (
-        <div className="relative custom-select">
+        <div className="p-8 mb-4 flex items-center flex-col gap-5 justify-center">
+            <div className="relative custom-select w-[80%]">
+                {/* Input field with search functionality */}
+                <input
+                    type="text"
+                    placeholder="Search.."
+                    value={searchValue}
+                    onChange={(e) => setSearchValue(e.target.value)}
+                    onFocus={() => setIsDropdownOpen(true)}
+                    className={`w-full border dark:bg-transparent dark:border-slate-600 dark:text-[#abc2d3] border-gray-300 rounded-md px-3 py-2 focus:outline-none`}
+                />
 
-            {/* Input field with search functionality */}
-            <input
-                type="text"
-                placeholder="Search.."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                onFocus={() => setIsOpen(true)}
-                className={`w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none`}
-            />
+                <IoIosArrowDown
+                    className={`${
+                        isDropdownOpen ? "rotate-[180deg]" : "rotate-0"
+                    } transition-all duration-300 text-[1.3rem] absolute top-[50%] transform translate-y-[-50%] right-3 text-gray-500`}
+                />
 
-            <IoIosArrowDown
-                className={`${isOpen ? "rotate-[180deg]" : "rotate-0"} transition-all duration-300 text-[1.3rem] absolute top-[50%] transform translate-y-[-50%] right-3 text-gray-500`}/>
+                {/* Dropdown menu */}
+                {isDropdownOpen && (
+                    <div
+                        className="absolute left-0 dark:border-slate-700 dark:bg-slate-800 w-full mt-1 border border-gray-200 rounded-md bg-white shadow-lg z-20">
+                        <div className="w-full overflow-auto">
+                            {filteredItems.map((item) => (
+                                <p
+                                    key={item.id}
+                                    onClick={() => toggleSelect(item)}
+                                    className="cursor-pointer px-3 dark:text-[#abc2d3] dark:hover:bg-slate-900/40 py-2 flex items-center hover:bg-gray-200"
+                                >
+                                    <IoCheckmark
+                                        className={`${
+                                            isSelected(item)
+                                                ? "scale-[1] opacity-100"
+                                                : "scale-[0.5] opacity-0"
+                                        } mr-2 transition-all text-[1.3rem] duration-300`}
+                                    />
+                                    {item.name}
+                                </p>
+                            ))}
 
-            {/* Dropdown menu */}
-            {isOpen && (
-                <div className="absolute left-0 w-full mt-1 border border-gray-200 rounded-md bg-white shadow-lg z-20">
-                    <div className="w-full overflow-auto">
-                        {filteredItems.map(item => (
-                            <p
-                                key={item.id}
-                                onClick={() => toggleSelection(item)}
-                                className="cursor-pointer px-3 py-2 flex items-center hover:bg-gray-200"
-                            >
-                                <img
-                                    src="https://besnik-space.fra1.cdn.digitaloceanspaces.com/doplac/dYj3EG2tlN8jM29cWxiA1711341238.svg"
-                                    alt="checkicon"
-                                    className={`${isSelected(item) ? "scale-[1] opacity-100" : "scale-[0.5] opacity-0"} mr-2 transition-all duration-300 w-6 h-6`}
-                                />
-                                {item.name}
-                            </p>
-                        ))}
-
-                        {
-                            filteredItems?.length === 0 && (
-                                <p className="text-center text-[0.9rem] text-text py-8">No search found!</p>
-                            )
-                        }
+                            {filteredItems?.length === 0 && (
+                                <p className="text-center dark:text-[#abc2d3] text-[0.9rem] text-text py-8">
+                                    No search found!
+                                </p>
+                            )}
+                        </div>
                     </div>
-                </div>
-            )}
+                )}
+            </div>
         </div>
     );
 };
 
-export default SearchSelect;
-                '
+export default SelectInput;
+                    '
                 />
             )}
           </ComponentWrapper>
@@ -628,57 +398,7 @@ export default SearchSelect;
 
           <ComponentWrapper>
             {singleWithSearchPreview && (
-                <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                  <div className='relative custom-select4 w-[80%]'>
-                    {/* Input field with search functionality */}
-                    <input
-                        type='text'
-                        placeholder='Search..'
-                        value={search4}
-                        onChange={(e) => setSearch4(e.target.value)}
-                        onFocus={() => setIsOpen4(true)}
-                        className={`w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none`}
-                    />
-
-                    <IoIosArrowDown
-                        className={`${
-                            isOpen4 ? 'rotate-[180deg]' : 'rotate-0'
-                        } transition-all duration-300 text-[1.3rem] absolute top-[50%] transform translate-y-[-50%] right-3 text-gray-500`}
-                    />
-
-                    {/* Dropdown menu */}
-                    {isOpen4 && (
-                        <div className='absolute left-0 w-full mt-1 border border-gray-200 rounded-md bg-white shadow-lg z-20'>
-                          <div className='w-full overflow-auto'>
-                            {filteredItems4.map((item) => (
-                                <p
-                                    key={item.id}
-                                    onClick={() => toggleSelection4(item)}
-                                    className='cursor-pointer px-3 py-2 flex items-center hover:bg-gray-200'
-                                >
-                                  <img
-                                      src='https://besnik-space.fra1.cdn.digitaloceanspaces.com/doplac/dYj3EG2tlN8jM29cWxiA1711341238.svg'
-                                      alt='checkicon'
-                                      className={`${
-                                          isSelected4(item)
-                                              ? 'scale-[1] opacity-100'
-                                              : 'scale-[0.5] opacity-0'
-                                      } mr-2 transition-all duration-300 w-6 h-6`}
-                                  />
-                                  {item.name}
-                                </p>
-                            ))}
-
-                            {filteredItems4?.length === 0 && (
-                                <p className='text-center text-[0.9rem] text-text py-8'>
-                                  No search found!
-                                </p>
-                            )}
-                          </div>
-                        </div>
-                    )}
-                  </div>
-                </div>
+                <SingleSelectWithSearch/>
             )}
 
             {singleWithSearchCode && (
@@ -688,14 +408,14 @@ import React, {useEffect, useState} from "react";
 
 // react icons
 import {IoIosArrowDown} from "react-icons/io";
+import {IoCheckmark} from "react-icons/io5";
 
-const SearchSelect = () => {
+const SelectInput = () => {
+    const [searchValue, setSearchValue] = useState("");
+    const [isOpenDropdown, setIsOpenDropdown] = useState(false);
+    const [selectedItem, setSelectedItem] = useState(null);
 
-    const [search, setSearch] = useState("");
-    const [isOpen, setIsOpen] = useState(false);
-    const [selectedOptions, setSelectedOptions] = useState(null);
-
-    const items = [
+    const options = [
         { id: 1, name: "Option 1" },
         { id: 2, name: "Option 2" },
         { id: 3, name: "Option 3" },
@@ -703,81 +423,85 @@ const SearchSelect = () => {
         { id: 5, name: "Option 5" },
     ];
 
-    const filteredItems = items.filter(item =>
-        item.name.toLowerCase().includes(search.toLowerCase())
+    const filteredItems = options.filter((item) =>
+        item.name.toLowerCase().includes(searchValue.toLowerCase())
     );
 
     const isSelected = (item) => {
-        return selectedOptions?.id === item.id;
+        return selectedItem?.id === item.id;
     };
 
-    const toggleSelection = (item) => {
-        setSelectedOptions(item);
+    const toggleItem = (item) => {
+        setSelectedItem(item);
     };
 
-    const handleBlur = () => {
-        setTimeout(() => {
-            setIsOpen(false);
-        }, 200);
-    };
-
+    // outside click to off the dropdown
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (event.target.closest(".custom-select")) return;
-            handleBlur();
+            setTimeout(() => {
+                setIsOpenDropdown(false);
+            }, 200);
         };
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
     return (
-        <div className="relative custom-select">
+        <div className="p-8 mb-4 flex items-center flex-col gap-5 justify-center">
+            <div className="relative custom-select w-[80%]">
+                {/* Input field with search functionality */}
+                <input
+                    type="text"
+                    placeholder="Search.."
+                    value={searchValue}
+                    onChange={(e) => setSearchValue(e.target.value)}
+                    onFocus={() => setIsOpenDropdown(true)}
+                    className={`w-full dark:border-slate-600 dark:bg-transparent dark:text-[#abc2d3] border border-gray-300 rounded-md px-3 py-2 focus:outline-none`}
+                />
 
-            {/* Input field with search functionality */}
-            <input
-                type="text"
-                placeholder="Search.."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                onFocus={() => setIsOpen(true)}
-                className={`w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none`}
-            />
+                <IoIosArrowDown
+                    className={`${
+                        isOpenDropdown ? "rotate-[180deg]" : "rotate-0"
+                    } transition-all duration-300 text-[1.3rem] absolute top-[50%] transform translate-y-[-50%] right-3 text-gray-500`}
+                />
 
-            <IoIosArrowDown
-                className={`${isOpen ? "rotate-[180deg]" : "rotate-0"} transition-all duration-300 text-[1.3rem] absolute top-[50%] transform translate-y-[-50%] right-3 text-gray-500`}/>
+                {/* Dropdown menu */}
+                {isOpenDropdown && (
+                    <div
+                        className="absolute left-0 w-full mt-1 border dark:border-slate-700 dark:bg-slate-800 border-gray-200 rounded-md bg-white shadow-lg z-20">
+                        <div className="w-full overflow-auto">
+                            {filteredItems.map((item) => (
+                                <p
+                                    key={item.id}
+                                    onClick={() => toggleItem(item)}
+                                    className="cursor-pointer px-3 py-2 dark:hover:bg-slate-900/40 flex items-center hover:bg-gray-200 dark:text-[#abc2d3]"
+                                >
+                                    <IoCheckmark
+                                        className={`${
+                                            isSelected(item)
+                                                ? "scale-[1] opacity-100"
+                                                : "scale-[0.5] opacity-0"
+                                        } mr-2 transition-all text-[1.3rem] duration-300`}
+                                    />
+                                    {item.name}
+                                </p>
+                            ))}
 
-            {/* Dropdown menu */}
-            {isOpen && (
-                <div className="absolute left-0 w-full mt-1 border border-gray-200 rounded-md bg-white shadow-lg z-20">
-                    <div className="w-full overflow-auto">
-                        {filteredItems.map(item => (
-                            <p
-                                key={item.id}
-                                onClick={() => toggleSelection(item)}
-                                className="cursor-pointer px-3 py-2 flex items-center hover:bg-gray-200"
-                            >
-                                <img
-                                    src="https://besnik-space.fra1.cdn.digitaloceanspaces.com/doplac/dYj3EG2tlN8jM29cWxiA1711341238.svg"
-                                    alt="checkicon"
-                                    className={`${isSelected(item) ? "scale-[1] opacity-100" : "scale-[0.5] opacity-0"} mr-2 transition-all duration-300 w-6 h-6`}
-                                />
-                                {item.name}
-                            </p>
-                        ))}
-
-                        {
-                            filteredItems?.length === 0 && (
-                                <p className="text-center text-[0.9rem] text-text py-8">No search found!</p>
-                            )
-                        }
+                            {filteredItems?.length === 0 && (
+                                <p className="text-center dark:text-[#abc2d3] text-[0.9rem] text-[#424242] py-8">
+                                    No search found!
+                                </p>
+                            )}
+                        </div>
                     </div>
-                </div>
-            )}
+                )}
+            </div>
         </div>
     );
 };
 
-export default SearchSelect;
+export default SelectInput;
                 '
                 />
             )}
@@ -798,73 +522,7 @@ export default SearchSelect;
 
           <ComponentWrapper>
             {singleSearchWithBadgePreview && (
-                <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                  <div className='relative custom-select5 w-[80%]'>
-                    {/* Input field with search functionality */}
-                    <input
-                        type='text'
-                        placeholder='Search..'
-                        value={search5}
-                        onChange={(e) => setSearch5(e.target.value)}
-                        onFocus={() => setIsOpen5(true)}
-                        className={`w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none`}
-                    />
-
-                    <IoIosArrowDown
-                        className={`${
-                            isOpen5 ? 'rotate-[180deg]' : 'rotate-0'
-                        } transition-all duration-300 text-[1.3rem] absolute top-[10px] right-3 text-gray-500`}
-                    />
-
-                    {/* Dropdown menu */}
-                    {isOpen5 && (
-                        <div className='absolute left-0 w-full mt-1 border border-gray-200 rounded-md bg-white shadow-lg z-20'>
-                          <div className='w-full overflow-auto'>
-                            {filteredItems5.map((item) => (
-                                <p
-                                    key={item.id}
-                                    onClick={() => toggleSelection5(item)}
-                                    className='cursor-pointer px-3 py-2 flex items-center hover:bg-gray-200'
-                                >
-                                  <img
-                                      src='https://besnik-space.fra1.cdn.digitaloceanspaces.com/doplac/dYj3EG2tlN8jM29cWxiA1711341238.svg'
-                                      alt='checkicon'
-                                      className={`${
-                                          isSelected5(item)
-                                              ? 'scale-[1] opacity-100'
-                                              : 'scale-[0.5] opacity-0'
-                                      } mr-2 transition-all duration-300 w-6 h-6`}
-                                  />
-                                  {item.name}
-                                </p>
-                            ))}
-
-                            {filteredItems5?.length === 0 && (
-                                <p className='text-center text-[0.9rem] text-text py-8'>
-                                  No search found!
-                                </p>
-                            )}
-                          </div>
-                        </div>
-                    )}
-
-                    {/* Selected items */}
-                    {selected5Option !== null && (
-                        <div
-                            key={selected5Option.id}
-                            className='bg-blue-100 w-max text-blue-800 px-3 py-[0.1rem] text-[0.9rem] rounded-full flex items-center mt-2'
-                        >
-                          {selected5Option.name}
-                          <button
-                              onClick={() => removeOption5()}
-                              className='ml-2 text-blue-800 text-[1.2rem]'
-                          >
-                            &times;
-                          </button>
-                        </div>
-                    )}
-                  </div>
-                </div>
+                <SingleSelectWithSearchAndBadge/>
             )}
 
             {singleSearchWithBadgeCode && (
@@ -872,14 +530,16 @@ export default SearchSelect;
                     code='
 import React, {useEffect, useState} from "react";
 
-const SearchSelect = () => {
+// react icons
+import {IoIosArrowDown} from "react-icons/io";
+import {IoCheckmark} from "react-icons/io5";
 
-    const [search, setSearch] = useState("");
-    const [isOpen, setIsOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState(null);
+const SelectInput = () => {
+    const [searchValue, setSearchValue] = useState("");
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [selectedItem, setSelectedItem] = useState(null);
 
-
-    const items = [
+    const options = [
         { id: 1, name: "Option 1" },
         { id: 2, name: "Option 2" },
         { id: 3, name: "Option 3" },
@@ -887,101 +547,105 @@ const SearchSelect = () => {
         { id: 5, name: "Option 5" },
     ];
 
-    const filteredItems = items.filter(item =>
-        item.name.toLowerCase().includes(search.toLowerCase())
+    const filteredItems = options.filter((item) =>
+        item.name.toLowerCase().includes(searchValue.toLowerCase())
     );
 
     const isSelected = (item) => {
-        return selectedOption?.id === item.id;
+        return selectedItem?.id === item.id;
     };
 
-    const toggleSelection = (item) => {
-        setSelectedOption(item);
+    const removeItem = () => {
+        setSelectedItem(null);
     };
 
-    const removeOption = () => {
-        setSelectedOption(null)
+    const toggleItem = (item) => {
+        setSelectedItem(item);
     };
 
-    const handleBlur = () => {
-        setTimeout(() => {
-            setIsOpen(false);
-        }, 200);
-    };
-
+    // outside click to off the dropdown
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (event.target.closest(".custom-select")) return;
-            handleBlur();
+            setTimeout(() => {
+                setIsDropdownOpen(false);
+            }, 200);
         };
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
     return (
-        <div className="relative custom-select2">
+        <div className="p-8 mb-4 flex items-center flex-col gap-5 justify-center">
+            <div className="relative custom-select w-[80%]">
+                {/* Input field with search functionality */}
+                <input
+                    type="text"
+                    placeholder="Search.."
+                    value={searchValue}
+                    onChange={(e) => setSearchValue(e.target.value)}
+                    onFocus={() => setIsDropdownOpen(true)}
+                    className={`w-full dark:bg-transparent dark:border-slate-600 dark:text-[#abc2d3] border border-gray-300 rounded-md px-3 py-2 focus:outline-none`}
+                />
 
-            {/* Input field with search functionality */}
-            <input
-                type="text"
-                placeholder="Search.."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                onFocus={() => setIsOpen(true)}
-                className={`w-full border-gray-300 border rounded-md px-3 py-2 focus:outline-none`}
-            />
+                <IoIosArrowDown
+                    className={`${
+                        isDropdownOpen ? "rotate-[180deg]" : "rotate-0"
+                    } transition-all duration-300 text-[1.3rem] absolute top-[10px] right-3 text-gray-500`}
+                />
 
-            <IoIosArrowDown
-                        className={`${isOpen ? "rotate-[180deg]" : "rotate-0"} transition-all duration-300 text-[1.3rem] absolute top-[10px] right-3 text-gray-500`}/>
+                {/* Dropdown menu */}
+                {isDropdownOpen && (
+                    <div
+                        className="absolute left-0 dark:border-slate-700 dark:bg-slate-800 w-full mt-1 border border-gray-200 rounded-md bg-white shadow-lg z-20">
+                        <div className="w-full overflow-auto">
+                            {filteredItems.map((item) => (
+                                <p
+                                    key={item.id}
+                                    onClick={() => toggleItem(item)}
+                                    className="cursor-pointer dark:text-[#abc2d3] dark:hover:bg-slate-900/40 px-3 py-2 flex items-center hover:bg-gray-200"
+                                >
+                                    <IoCheckmark
+                                        className={`${
+                                            isSelected(item)
+                                                ? "scale-[1] opacity-100"
+                                                : "scale-[0.5] opacity-0"
+                                        } mr-2 transition-all text-[1.3rem] duration-300`}
+                                    />
+                                    {item.name}
+                                </p>
+                            ))}
 
-            {/* Dropdown menu */}
-            {isOpen && (
-                <div className="absolute left-0 w-full mt-1 border border-gray-200 rounded-md bg-white shadow-lg z-20">
-                    <div className="w-full overflow-auto">
-                        {filteredItems.map(item => (
-                            <p
-                                key={item.id}
-                                onClick={() => toggleSelection(item)}
-                                className="cursor-pointer px-3 py-2 flex items-center hover:bg-gray-200"
-                            >
-                                <img
-                                    src="https://besnik-space.fra1.cdn.digitaloceanspaces.com/doplac/dYj3EG2tlN8jM29cWxiA1711341238.svg"
-                                    alt="checkicon"
-                                    className={`${isSelected(item) ? "scale-[1] opacity-100" : "scale-[0.5] opacity-0"} mr-2 transition-all duration-300 w-6 h-6`}
-                                />
-                                {item.name}
-                            </p>
-                        ))}
-
-                        {
-                            filteredItems?.length === 0 && (
-                                <p className="text-center text-[0.9rem] text-text py-8">No search found!</p>
-                            )
-                        }
+                            {filteredItems?.length === 0 && (
+                                <p className="text-center dark:text-[#abc2d3] text-[0.9rem] text-[#424242] py-8">
+                                    No search found!
+                                </p>
+                            )}
+                        </div>
                     </div>
-                </div>
-            )}
+                )}
 
-            {/* Selected items */}
-            {selectedOption !== null && (
-                <div
-                    key={selectedOption.id}
-                    className="bg-blue-100 w-max text-blue-800 px-3 py-[0.1rem] text-[0.9rem] rounded-full flex items-center mt-2"
-                >
-                    {selectedOption.name}
-                    <button
-                        onClick={() => removeOption()}
-                        className="ml-2 text-blue-800 text-[1.2rem]"
+                {/* Selected items */}
+                {selectedItem !== null && (
+                    <div
+                        key={selectedItem.id}
+                        className="bg-blue-100 dark:bg-slate-800 dark:border dark:border-slate-700 dark:text-[#abc2d3]/80 w-max text-blue-800 px-3 py-[0.1rem] text-[0.9rem] rounded-full flex items-center mt-2"
                     >
-                        &times;
-                    </button>
-                </div>
-            )}
+                        {selectedItem.name}
+                        <button
+                            onClick={() => removeItem()}
+                            className="ml-2 text-blue-800 dark:text-red-600 text-[1.2rem]"
+                        >
+                            &times;
+                        </button>
+                    </div>
+                )}
+            </div>
         </div>
     );
 };
 
-export default SearchSelect;
+export default SelectInput;
                 '
                 />
             )}
@@ -1001,77 +665,7 @@ export default SearchSelect;
 
           <ComponentWrapper>
             {multipleSearchWithBadgePreview && (
-                <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                  <div className='relative custom-select w-[80%]'>
-                    {/* Input field with search functionality */}
-                    <input
-                        type='text'
-                        placeholder='Search..'
-                        value={search6}
-                        onChange={(e) => setSearch6(e.target.value)}
-                        onFocus={() => setIsOpen6(true)}
-                        className={`w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none`}
-                    />
-
-                    <IoIosArrowDown
-                        className={`${
-                            isOpen6 ? 'rotate-[180deg]' : 'rotate-0'
-                        } transition-all duration-300 text-[1.3rem] absolute top-[10px] right-3 text-gray-500`}
-                    />
-
-                    {/* Dropdown menu */}
-                    {isOpen6 && (
-                        <div className='absolute left-0 w-full mt-1 border border-gray-200 rounded-md bg-white shadow-lg z-20'>
-                          <div className='w-full overflow-auto'>
-                            {filteredItems6.map((item) => (
-                                <p
-                                    key={item.id}
-                                    onClick={() => toggleSelection6(item)}
-                                    className='cursor-pointer px-3 py-2 flex items-center hover:bg-gray-200'
-                                >
-                                  <img
-                                      src='https://besnik-space.fra1.cdn.digitaloceanspaces.com/doplac/dYj3EG2tlN8jM29cWxiA1711341238.svg'
-                                      alt='checkicon'
-                                      className={`${
-                                          isSelected6(item)
-                                              ? 'scale-[1] opacity-100'
-                                              : 'scale-[0.5] opacity-0'
-                                      } mr-2 transition-all duration-300 w-6 h-6`}
-                                  />
-                                  {item.name}
-                                </p>
-                            ))}
-
-                            {filteredItems6?.length === 0 && (
-                                <p className='text-center text-[0.9rem] text-text py-8'>
-                                  No search found!
-                                </p>
-                            )}
-                          </div>
-                        </div>
-                    )}
-
-                    {/* Selected items */}
-                    {selected6Options?.length > 0 && (
-                        <div className='flex items-center gap-[5px] flex-wrap'>
-                          {selected6Options?.map((item) => (
-                              <div
-                                  key={item.id}
-                                  className='bg-blue-100 min-w-fit text-blue-800 px-3 py-[0.1rem] text-[0.9rem] rounded-full flex items-center mt-2'
-                              >
-                                {item.name}
-                                <button
-                                    onClick={() => removeOption6(item)}
-                                    className='ml-2 text-blue-800 text-[1.2rem]'
-                                >
-                                  &times;
-                                </button>
-                              </div>
-                          ))}
-                        </div>
-                    )}
-                  </div>
-                </div>
+                <MultipleSelectWithSearchAndBadge/>
             )}
 
             {multipleSearchWithBadgeCode && (
@@ -1079,13 +673,16 @@ export default SearchSelect;
                     code='
 import React, {useEffect, useState} from "react";
 
-const SearchSelect = () => {
+// react icons
+import {IoIosArrowDown} from "react-icons/io";
+import {IoCheckmark} from "react-icons/io5";
 
-    const [search, setSearch] = useState("");
-    const [isOpen, setIsOpen] = useState(false);
+const SelectInput = () => {
+    const [searchValue, setSearchValue] = useState("");
+    const [isOpenDropdown, setIsOpenDropdown] = useState(false);
     const [selectedOptions, setSelectedOptions] = useState([]);
 
-    const items = [
+    const options = [
         { id: 1, name: "Option 1" },
         { id: 2, name: "Option 2" },
         { id: 3, name: "Option 3" },
@@ -1093,111 +690,113 @@ const SearchSelect = () => {
         { id: 5, name: "Option 5" },
     ];
 
-    const filteredItems = items.filter(item =>
-        item.name.toLowerCase().includes(search.toLowerCase())
+    const filteredItems = options.filter((item) =>
+        item.name.toLowerCase().includes(searchValue.toLowerCase())
     );
 
     const isSelected = (item) => {
-        return selectedOptions.some(selectedItem => selectedItem.id === item.id);
+        return selectedOptions.some((selectedItem) => selectedItem.id === item.id);
     };
 
-    const toggleSelection = (item) => {
+    const toggleSelectItem = (item) => {
         if (isSelected(item)) {
-            setSelectedOptions(selectedOptions.filter(selectedItem => selectedItem.id !== item.id));
+            setSelectedOptions(
+                selectedOptions.filter((selectedItem) => selectedItem.id !== item.id)
+            );
         } else {
             setSelectedOptions([...selectedOptions, item]);
         }
     };
 
-    const removeOption = (option) => {
-        setSelectedOptions(selectedOptions.filter(selectedItem => selectedItem.id !== option.id));
-    };
-
-    const handleBlur = () => {
-        setTimeout(() => {
-            setIsOpen(false);
-        }, 200);
+    const removeItem = (option) => {
+        setSelectedOptions(
+            selectedOptions.filter((selectedItem) => selectedItem.id !== option.id)
+        );
     };
 
     useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (event.target.closest(".custom-select")) return;
-            handleBlur();
-        };
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => document.removeEventListener("mousedown", handleClickOutside);
-    }, []);
+        document.addEventListener("click", (event) => {
+            if (!event.target.closest(".custom-select")) {
+                setIsOpenDropdown(false);
+            }
+        });
+    }, [isOpenDropdown]);
 
     return (
-        <div className="relative custom-select">
+        <div className="p-8 mb-4 flex items-center flex-col gap-5 justify-center">
+            <div className="relative custom-select w-[80%]">
+                {/* Input field with search functionality */}
+                <input
+                    type="text"
+                    placeholder="Search.."
+                    value={searchValue}
+                    onChange={(e) => setSearchValue(e.target.value)}
+                    onFocus={() => setIsOpenDropdown(true)}
+                    className={`w-full dark:bg-transparent dark:border-slate-600 dark:text-[#abc2d3] border border-gray-300 rounded-md px-3 py-2 focus:outline-none`}
+                />
 
-            {/* Input field with search functionality */}
-            <input
-                type="text"
-                placeholder="Search.."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                onFocus={() => setIsOpen(true)}
-                className={`w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none`}
-            />
+                <IoIosArrowDown
+                    className={`${
+                        isOpenDropdown ? "rotate-[180deg]" : "rotate-0"
+                    } transition-all duration-300 text-[1.3rem] absolute top-[10px] right-3 text-gray-500`}
+                />
 
-            <IoIosArrowDown
-                        className={`${isOpen ? "rotate-[180deg]" : "rotate-0"} transition-all duration-300 text-[1.3rem] absolute top-[10px] right-3 text-gray-500`}/>
+                {/* Dropdown menu */}
+                {isOpenDropdown && (
+                    <div
+                        className="absolute dark:border-slate-700 dark:bg-slate-800 left-0 w-full mt-1 border border-gray-200 rounded-md bg-white shadow-lg z-20">
+                        <div className="w-full overflow-auto">
+                            {filteredItems.map((item) => (
+                                <p
+                                    key={item.id}
+                                    onClick={() => toggleSelectItem(item)}
+                                    className="cursor-pointer dark:text-[#abc2d3] dark:hover:bg-slate-900/40 px-3 py-2 flex items-center hover:bg-gray-200"
+                                >
+                                    <IoCheckmark
+                                        className={`${
+                                            isSelected(item)
+                                                ? "scale-[1] opacity-100"
+                                                : "scale-[0.5] opacity-0"
+                                        } mr-2 transition-all text-[1.3rem] duration-300`}
+                                    />
+                                    {item.name}
+                                </p>
+                            ))}
 
-            {/* Dropdown menu */}
-            {isOpen && (
-                <div className="absolute left-0 w-full mt-1 border border-gray-200 rounded-md bg-white shadow-lg z-20">
-                    <div className="w-full overflow-auto">
-                        {filteredItems.map(item => (
-                            <p
-                                key={item.id}
-                                onClick={() => toggleSelection(item)}
-                                className="cursor-pointer px-3 py-2 flex items-center hover:bg-gray-200"
-                            >
-                                <img
-                                    src="https://besnik-space.fra1.cdn.digitaloceanspaces.com/doplac/dYj3EG2tlN8jM29cWxiA1711341238.svg"
-                                    alt="checkicon"
-                                    className={`${isSelected(item) ? "scale-[1] opacity-100" : "scale-[0.5] opacity-0"} mr-2 transition-all duration-300 w-6 h-6`}
-                                />
-                                {item.name}
-                            </p>
-                        ))}
-
-                        {
-                            filteredItems?.length === 0 && (
-                                <p className="text-center text-[0.9rem] text-text py-8">No search found!</p>
-                            )
-                        }
+                            {filteredItems?.length === 0 && (
+                                <p className="text-center dark:text-[#abc2d3] text-[0.9rem] text-[#424242] py-8">
+                                    No search found!
+                                </p>
+                            )}
+                        </div>
                     </div>
-                </div>
-            )}
+                )}
 
-            {/* Selected items */}
-            {selectedOptions?.length > 0 && (
-                <div className="flex items-center gap-[5px]">
-                    {
-                        selectedOptions?.map((item) => (
+                {/* Selected items */}
+                {selectedOptions?.length > 0 && (
+                    <div className="flex items-center gap-[5px] flex-wrap">
+                        {selectedOptions?.map((item) => (
                             <div
                                 key={item.id}
-                                className="bg-blue-100 w-max text-blue-800 px-3 py-[0.1rem] text-[0.9rem] rounded-full flex items-center mt-2"
+                                className="bg-blue-100 dark:bg-slate-800 dark:border-slate-700 dark:border dark:text-[#abc2d3]/80 min-w-fit text-blue-800 px-3 py-[0.1rem] text-[0.9rem] rounded-full flex items-center mt-2"
                             >
                                 {item.name}
                                 <button
-                                    onClick={() => removeOption(item)}
-                                    className="ml-2 text-blue-800 text-[1.2rem]"
+                                    onClick={() => removeItem(item)}
+                                    className="ml-2 dark:text-red-600 text-blue-800 text-[1.2rem]"
                                 >
                                     &times;
                                 </button>
                             </div>
-                        ))
-                    }
-                </div>
-            )}
+                        ))}
+                    </div>
+                )}
+            </div>
         </div>
     );
 };
 
-export default SearchSelect;
+export default SelectInput;
                 '
                 />
             )}

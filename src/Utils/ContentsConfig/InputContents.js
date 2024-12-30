@@ -164,6 +164,16 @@ export const selectInputContents = [
     title: 'Single Select With Search',
     href: '#single_select_with_search',
   },
+  {
+    id: 5,
+    title: 'single select with search and badge',
+    href: '#single_select_with_search_and_badge',
+  },
+  {
+    id: 5,
+    title: 'Multiple Select With Search And Badge',
+    href: '#multiple_select_with_search_and_badge',
+  },
 ];
 
 export const radioInputContents = [

@@ -9,7 +9,7 @@ import OtpInput from "../../../Components/Overview/SidebarContent/Content/Inputs
 
 const OtpInputPage = () => {
     return (
-        <>
+        <div className='dark:bg-darkBgColor'>
             <Navbar />
             <MobileNavbar/>
             <div className="flex w-full mx-auto max-w-[1700px]">
@@ -22,7 +22,7 @@ const OtpInputPage = () => {
                     <OtpInput />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

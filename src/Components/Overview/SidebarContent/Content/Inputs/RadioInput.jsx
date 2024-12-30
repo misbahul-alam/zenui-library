@@ -14,8 +14,12 @@ import { Helmet } from 'react-helmet';
 // showing the code
 import Showcode from '../../../../../Shared/ShowCode';
 
+import ComponentDescription from '../../../../../Shared/ComponentDescription';
+import ComponentWrapper from '../../../../../Shared/ComponentWrapper';
+import ToggleTab from '../../../../../Shared/ToggleTab';
+import ContentNavbar from '../../../../../Shared/ContentNavbar';
+
 const RadioInput = () => {
-  // const [contentActiveTab, setContentActiveTab] = useState(0);
   const sectionIds = radioInputContents.map((item) => item.href.slice(1));
   const activeSection = useScrollSpy(sectionIds);
 
@@ -23,29 +27,9 @@ const RadioInput = () => {
   const [circlePreview, setCirclePreview] = useState(true);
   const [circleCode, setCircleCode] = useState(false);
 
-  const handleCirclePreview = () => {
-    setCirclePreview(true);
-    setCircleCode(false);
-  };
-
-  const handleCircleCode = () => {
-    setCircleCode(true);
-    setCirclePreview(false);
-  };
-
   // square radio
   const [squarePreview, setSquarePreview] = useState(true);
   const [squareCode, setSquareCode] = useState(false);
-
-  const handleSquarePreview = () => {
-    setSquarePreview(true);
-    setSquareCode(false);
-  };
-
-  const handleSquareCode = () => {
-    setSquareCode(true);
-    setSquarePreview(false);
-  };
 
   // actions
   const [toggle, setToggle] = useState(false);
@@ -57,188 +41,149 @@ const RadioInput = () => {
         <div>
           <ContentHeader text={'circle radio'} id={'circle_radio'} />
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            This is a circle radio button component. Select options with a click
-            on the elegant circular design.
-          </p>
+          <ComponentDescription text='This is a circle radio button component. Select options with a click
+            on the elegant circular design.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  circlePreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[105px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  circlePreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleCirclePreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  circleCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleCircleCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={circleCode} setCode={setCircleCode} setPreview={setCirclePreview} preview={circlePreview}/>
+
+          <ComponentWrapper>
             {circlePreview && (
-              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                <div className='flex items-center gap-[10px]'>
-                  <div
-                    className={` w-[35px] h-[35px] border border-primary  rounded-full flex items-center justify-center cursor-pointer `}
-                    onClick={() => setSquareToggle(!squareToggle)}
-                  >
+                <div className='p-8 flex items-center flex-col gap-5 justify-center'>
+                  <div className='flex items-center gap-[10px]'>
                     <div
-                      className={`${
-                        squareToggle
-                          ? 'bg-primary scale-[1]'
-                          : 'bg-transparent scale-[0.7]'
-                      } w-[25px] h-[25px] transition-all duration-200 rounded-full`}
-                    ></div>
+                        className={` w-[35px] h-[35px] border border-primary  rounded-full flex items-center justify-center cursor-pointer `}
+                        onClick={() => setSquareToggle(!squareToggle)}
+                    >
+                      <div
+                          className={`${
+                              squareToggle
+                                  ? 'bg-primary scale-[1]'
+                                  : 'bg-transparent scale-[0.7]'
+                          } w-[25px] h-[25px] transition-all duration-200 rounded-full`}
+                      ></div>
+                    </div>
+                    <p
+                        className='text-[1.2rem] font-bold dark:text-[#abc2d3] text-text cursor-pointer'
+                        onClick={() => setSquareToggle(!squareToggle)}
+                    >
+                      Toggle
+                    </p>
                   </div>
-                  <p
-                    className='text-[1.2rem] font-bold text-text cursor-pointer'
-                    onClick={() => setSquareToggle(!squareToggle)}
-                  >
-                    Toggle
-                  </p>
                 </div>
-              </div>
             )}
 
             {circleCode && (
-              <Showcode
-                code='
-import { useState } from "react";
+                <Showcode
+                    code='
+import React, {useState} from "react";
 
-const InputRadio = () => {
-  const [toggle, setToggle] = useState(false);
+const RadioInput = () => {
+    const [isToggle, setIsToggle] = useState(false);
 
-  return (
-    <>
-      <div className="flex items-center gap-[10px]">
-          <div className={` w-[35px] h-[35px] border border-[#3B9DF8]  rounded-full flex items-center justify-center cursor-pointer `}
-           onClick={() => setToggle(!toggle)}>
-            <div className={`${
-            toggle ? "bg-[#3B9DF8] scale-[1]" : "bg-transparent scale-[0.7]"} w-[21px] h-[21px] transition-all duration-200 rounded-full`}></div>
+    return (
+        <div className="flex items-center gap-[10px]">
+            <div
+                className={` w-[35px] h-[35px] border border-[#3B9DF8]  rounded-full flex items-center justify-center cursor-pointer `}
+                onClick={() => setIsToggle(!isToggle)}
+            >
+                <div
+                    className={`${
+                        isToggle
+                            ? "bg-primary scale-[1]"
+                            : "bg-transparent scale-[0.7]"
+                    } w-[25px] h-[25px] transition-all duration-200 rounded-full`}
+                ></div>
             </div>
-
-            <p className="text-[1.2rem] font-bold text-text cursor-pointer" onClick={() => setToggle(!toggle)}>Toggle</p>
-      </div>
-    </>
-  );
+            <p
+                className="text-[1.2rem] font-bold dark:text-[#abc2d3] text-[#424242] cursor-pointer"
+                onClick={() => setIsToggle(!isToggle)}
+            >
+                Toggle
+            </p>
+        </div>
+    );
 };
 
-export default InputRadio;
+export default RadioInput;
                 '
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className='mt-8'>
             <ContentHeader text={'Square Radio'} id={'square_radio'} />
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            This is a square radio button component. Choose options by clicking
-            on the modern, square design.
-          </p>
+          <ComponentDescription text='This is a square radio button component. Choose options by clicking
+            on the modern, square design.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  squarePreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[105px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  squarePreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleSquarePreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  squareCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleSquareCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={squareCode} setCode={setSquareCode} setPreview={setSquarePreview} preview={squarePreview}/>
+
+          <ComponentWrapper>
             {squarePreview && (
-              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                <div className='flex items-center gap-[10px]'>
-                  <div
-                    className={` w-[32px] h-[32px] border border-primary  rounded-md flex items-center justify-center cursor-pointer `}
-                    onClick={() => setToggle(!toggle)}
-                  >
+                <div className='p-8 flex items-center flex-col gap-5 justify-center'>
+                  <div className='flex items-center gap-[10px]'>
                     <div
-                      className={`${
-                        toggle
-                          ? 'bg-primary scale-[1]'
-                          : 'bg-transparent scale-[0.7]'
-                      } w-[25px] h-[25px] transition-all duration-200 rounded-md`}
-                    ></div>
-                  </div>
+                        className={` w-[32px] h-[32px] border border-primary  rounded-md flex items-center justify-center cursor-pointer `}
+                        onClick={() => setToggle(!toggle)}
+                    >
+                      <div
+                          className={`${
+                              toggle
+                                  ? 'bg-primary scale-[1]'
+                                  : 'bg-transparent scale-[0.7]'
+                          } w-[25px] h-[25px] transition-all duration-200 rounded-md`}
+                      ></div>
+                    </div>
 
-                  <p
-                    className='text-[1.2rem] font-bold text-text cursor-pointer'
-                    onClick={() => setToggle(!toggle)}
-                  >
-                    Toggle
-                  </p>
+                    <p
+                        className='text-[1.2rem] font-bold dark:text-[#abc2d3] text-text cursor-pointer'
+                        onClick={() => setToggle(!toggle)}
+                    >
+                      Toggle
+                    </p>
+                  </div>
                 </div>
-              </div>
             )}
 
             {squareCode && (
-              <Showcode
-                code='
-import React, { useState } from "react";
+                <Showcode
+                    code='
+import React, {useState} from "react";
 
-const InputRadio = () => {
-    const [toggle, setToggle] = useState(false);
+const RadioInput = () => {
+    const [isToggle, setIsToggle] = useState(false);
 
     return (
-        <>
-            <div className="flex items-center gap-[10px]">
-              <div
-              className={` w-[32px] h-[32px] border border-primary  rounded-md flex items-center justify-center cursor-pointer `}
-              onClick={() => setToggle(!toggle)}
-              >
-              <div
-              className={`${
-              toggle
-              ? "bg-primary scale-[1]"
-              : "bg-transparent scale-[0.7]"
-            } w-[25px] h-[25px] transition-all duration-200 rounded-md`}
-              ></div>
-              </div>
+        <div className="flex items-center gap-[10px]">
+            <div
+                className={` w-[32px] h-[32px] border border-[#3B9DF8]  rounded-md flex items-center justify-center cursor-pointer `}
+                onClick={() => setIsToggle(!isToggle)}
+            >
+                <div
+                    className={`${
+                        isToggle
+                            ? "bg-primary scale-[1]"
+                            : "bg-transparent scale-[0.7]"
+                    } w-[25px] h-[25px] transition-all duration-200 rounded-md`}
+                ></div>
+            </div>
 
-              <p className="text-[1.2rem] font-bold text-text cursor-pointer"
-              onClick={() => setToggle(!toggle)}>Toggle</p>
+            <p
+                className="text-[1.2rem] font-bold dark:text-[#abc2d3] text-[#424242] cursor-pointer"
+                onClick={() => setIsToggle(!isToggle)}
+            >
+                Toggle
+            </p>
         </div>
-      </>
-      );
-      };
+    );
+};
 
-export default InputRadio;
+export default RadioInput;
                 '
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <OverviewFooter
             backUrl='/components/input-select'
@@ -248,23 +193,8 @@ export default InputRadio;
           />
         </div>
 
-        <div className='1024px:flex hidden flex-col gap-4 sticky top-4 right-0 w-[40%]'>
-          <h2 className='text-[0.9rem] font-[600] text-text tracking-widest'>
-            CONTENTS
-          </h2>
-          {radioInputContents.map((item) => (
-            <a
-              key={item.id}
-              href={item.href}
-              className={`${
-                activeSection === item.href.slice(1) &&
-                '!text-primary !border-primary'
-              } text-[0.9rem] capitalize transition-all duration-300 text-text border-l border-transparent pl-4`}
-            >
-              {item.title}
-            </a>
-          ))}
-        </div>
+        <ContentNavbar contents={radioInputContents} activeSection={activeSection}/>
+
       </aside>
       <Helmet>
         <title>Form - Radio</title>
