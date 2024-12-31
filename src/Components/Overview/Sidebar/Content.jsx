@@ -350,8 +350,8 @@ const Content = () => {
                 parent: 'Sections'
               },
               {
-                title: "Price Section",
-                url: "/blocks/price-section",
+                title: "Pricing Section",
+                url: "/blocks/pricing-section",
                 parent: 'Sections'
               },
               {
