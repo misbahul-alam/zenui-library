@@ -31,7 +31,7 @@ const ToggleTab = ({preview, code, setPreview, setCode}) => {
     }, [settingOpen, uniqueId]);
 
     return (
-        <div className='flex mt-8 mb-2 items-end justify-between w-full 425px:w-[80%]'>
+        <div className='flex mt-8 mb-2 items-end justify-between w-full 1024px:w-[80%]'>
             <div
                 className='relative backdrop-blur-md overflow-hidden bg-gray-200/80 dark:bg-slate-800 w-max rounded'>
                 <div
@@ -66,7 +66,7 @@ const ToggleTab = ({preview, code, setPreview, setCode}) => {
             >
                 <div
                     onClick={(e) => e.stopPropagation()}
-                    className={`${settingOpen ? 'opacity-100 visible z-30 translate-y-0' : 'z-[-1] opacity-0 invisible translate-y-[10px]'} theme_setting_dropdown absolute w-max dark:bg-slate-800 rounded-md p-2 transition-all duration-300 bottom-[115%] dark:shadow-[2px_-3px_20px_#000] shadow-[2px_-1px_20px_#000] shadow-gray-200 dark:shadow-primary/30 right-0 flex items-center justify-between gap-[25px]`}>
+                    className={`${settingOpen ? 'opacity-100 visible z-30 translate-y-0' : 'z-[-1] opacity-0 invisible translate-y-[10px]'} theme_setting_dropdown absolute w-max dark:bg-slate-800 rounded-md p-2 transition-all duration-300 bg-white border border-gray-200/70 bottom-[115%] dark:shadow-[2px_-3px_30px_#000] dark:border-slate-700/50 shadow-[2px_1px_15px_rgba(0,0,0,0.1)] shadow-gray-200 dark:shadow-primary/30 right-0 flex items-center justify-between gap-[25px]`}>
                     <p className='text-[14px] dark:text-darkSubTextColor'>Copy to clipboard with <br/> <span
                         className='text-primary'>dark:</span> classes</p>
 

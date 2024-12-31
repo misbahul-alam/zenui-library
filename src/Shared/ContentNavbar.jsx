@@ -13,7 +13,7 @@ const ContentNavbar = ({contents, activeSection, width = '40%'}) => {
                         href={item.href}
                         className={`${
                             activeSection === item.href.slice(1) &&
-                            '!text-primary bg-gray-50 dark:bg-slate-900 !border-primary'
+                            '!text-primary bg-primary/5 dark:bg-slate-900 !border-primary'
                         } text-[0.9rem] capitalize py-[8px] dark:text-darkSubTextColor/90 transition-all duration-300 text-text border-l-2 border-transparent pl-4`}
                     >
                         {item.title}

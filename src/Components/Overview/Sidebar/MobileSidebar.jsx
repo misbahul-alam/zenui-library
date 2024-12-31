@@ -9,7 +9,6 @@ import Content from "./Content.jsx";
 const MobileSidebar = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
-
     useEffect(() => {
         const handleClick = (event) => {
             if (!event.target.closest('.mobileSidebar') && !event.target.closest('.mobilesidebarIcon')) {
