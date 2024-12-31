@@ -203,10 +203,10 @@ const TreeTimeline = () => {
                               }`}
                             >
                               <div>
-                                <div className="text-text text-lg font-semibold">
+                                <div className="text-[#424242] text-lg font-semibold">
                                   {milestone.title}
                                 </div>
-                                <div className="text-primary text-sm font-semibold">
+                                <div className="text-[#3B9DF8] text-sm font-semibold">
                                   {milestone.date}
                                 </div>
                               </div>

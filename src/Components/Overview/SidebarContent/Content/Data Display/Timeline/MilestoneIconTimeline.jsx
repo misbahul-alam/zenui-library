@@ -158,16 +158,16 @@ const MilestoneIconTimeline = () => {
                     <div key={index} className="mb-8 relative ">
                       <div
                         id="icon"
-                        className={`absolute border-2 border-white top-5 -left-[2.5px] transform -translate-x-1/2 -translate-y-1/2  bg-primary rounded-full p-2 z-10`}
+                        className={`absolute border-2 border-white top-5 -left-[2.5px] transform -translate-x-1/2 -translate-y-1/2  bg-[#3B9DF8] rounded-full p-2 z-10`}
                       >
                         {milestone.icon}
                       </div>
                       <div className="pl-6 ">
                         <div className="flex 640px:items-center 640px:flex-row flex-col">
-                          <div className="text-primary  font-semibold">
+                          <div className="text-[#3B9DF8]  font-semibold">
                             {milestone.date}
                           </div>
-                          <div className="640px:ml-4 text-text text-lg font-semibold">
+                          <div className="640px:ml-4 text-[#424242] text-lg font-semibold">
                             {milestone.title}
                           </div>
                         </div>
