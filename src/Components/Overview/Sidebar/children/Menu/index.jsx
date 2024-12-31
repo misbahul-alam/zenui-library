@@ -1,10 +1,11 @@
 import PropTypes, { string } from "prop-types";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { cn } from "../../../../../Utils/Style";
 import NewBadge from "../../../../../Shared/NewBadge";
 
+const prefix = 'sidebar'
 const DefaultMenu = ({ items }) => {
   return (
     <ul className="getStarted flex flex-col gap-[12px] mb-4">
@@ -50,26 +51,11 @@ const DefaultMenu = ({ items }) => {
 
 const CollapseMenu = ({ title, items }) => {
   const [isOpen, setIsOpen] = useState(true);
-  const location = useLocation();
 
-  const blockRef = useRef(null);
-  useEffect(() => {
-    const active = items.some((item) => item?.url === location.pathname);
-    setIsOpen(active);
 
-    if (active) {
-      if (blockRef && blockRef.current) {
-        blockRef.current.scrollIntoView({
-          behavior: "instant",
-          block: "center",
-        });
-      }
-    }
-  }, [location.pathname, items]);
   return (
     <div>
       <h3
-        ref={blockRef}
         className={`${
           isOpen ? "text-[#0471d6]" : "text-gray-500"
         } flex items-center justify-between gap-1 text-[1rem]  font-[500] capitalize cursor-pointer`}
@@ -99,12 +85,15 @@ const CollapseMenu = ({ title, items }) => {
   );
 };
 const Item = ({ title, url, label, isNewComponent = false }) => {
+  const location = useLocation();
+
   return (
     <>
       {/* inputs */}
       {label ? (
         <Link
           to={""}
+          id={prefix + label}
           className={`sectionHeader tracking-widest font-[500] relative mt-4 uppercase  border-l border-border !text-[0.750rem] `}
         >
           {label}
@@ -112,7 +101,7 @@ const Item = ({ title, url, label, isNewComponent = false }) => {
       ) : (
         <NavLink
           to={url}
-          id={url}
+          id={prefix + url}
           className={({ isActive }) =>
             cn(
               isActive &&
@@ -155,5 +144,6 @@ Item.propTypes = {
   url: PropTypes.string,
   label: PropTypes.string,
   isNewComponent: PropTypes.bool,
+  parent: PropTypes.string,
 };
 export { DefaultMenu, CollapseMenu };
