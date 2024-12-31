@@ -6,9 +6,6 @@ import {Route, Routes} from "react-router-dom";
 // home page
 const HomePage = React.lazy(() => import("./Pages/HomePage"));
 
-// components page
-const ComponentsPage = React.lazy(() => import("./Pages/ComponentsPage"));
-
 // documentation page
 const OverviewPage = React.lazy(() => import("./Pages/OverviewPage"));
 const FaqPage = React.lazy(() => import("./Pages/FaqPage"));
