@@ -16,7 +16,7 @@ const DefaultMenu = ({ items }) => {
           className={({ isActive }) =>
             cn(
               isActive && `!${item?.textColor}`,
-              "flex items-center group gap-[8px] text-[0.950rem] font-[500] cursor-pointer capitalize",
+              "flex items-center dark:text-darkSubTextColor group gap-[8px] text-[0.950rem] font-[500] cursor-pointer capitalize",
               "text-gray-600",
               `hover:${item?.textColor}`
             )
@@ -28,7 +28,7 @@ const DefaultMenu = ({ items }) => {
                 className={cn(
                   "transition-all duration-200",
                   "border p-[6px] rounded-md",
-                  `${item?.borderColor}/40  group-hover:${item?.bgColor} group-hover:${item?.borderColor}`,
+                  `${item?.borderColor}/40 dark:border-darkBorderColor group-hover:${item?.bgColor} group-hover:${item?.borderColor}`,
                   isActive && `${item?.bgColor} ${item.borderColor}`
                 )}
               >
@@ -57,7 +57,7 @@ const CollapseMenu = ({ title, items }) => {
     <div>
       <h3
         className={`${
-          isOpen ? "text-[#0471d6]" : "text-gray-500"
+          isOpen ? "text-[#0471d6]" : "text-gray-500 dark:text-darkSubTextColor"
         } flex items-center justify-between gap-1 text-[1rem]  font-[500] capitalize cursor-pointer`}
         onClick={() => setIsOpen(!isOpen)}
       >
@@ -93,7 +93,7 @@ const Item = ({ title, url, label, isNewComponent = false }) => {
         <Link
           to={""}
           id={prefix + label}
-          className={`sectionHeader !cursor-default tracking-widest font-[500] relative mt-4 uppercase  border-l border-border !text-[0.750rem] `}
+          className={`sectionHeader !cursor-default tracking-widest font-[500] relative mt-4 uppercase  border-l border-border dark:border-darkBorderColor dark:hover:border-darkBorderColor !text-[0.750rem] `}
         >
           {label}
         </Link>
@@ -104,8 +104,8 @@ const Item = ({ title, url, label, isNewComponent = false }) => {
           className={({ isActive }) =>
             cn(
               isActive &&
-                "border-l rounded-tr rounded-br border-primary hover:!bg-primary bg-[#3B9DF8] text-secondary font-[500]",
-              "border-l border-[#9caebc] flex items-center gap-[10px]"
+                "border-l rounded-tr rounded-br border-primary hover:!bg-primary bg-[#3B9DF8] !text-secondary font-[500]",
+              "border-l border-[#9caebc] dark:hover:!bg-slate-800 dark:hover:!border-darkBorderColor dark:border-darkBorderColor flex items-center dark:text-darkSubTextColor gap-[10px]"
             )
           }
         >
