@@ -121,6 +121,7 @@ import ZenUIHeroDocsPage from "./Pages/ZenUIHeroDocsPage.jsx";
 import TimerPage from "./Pages/Components/Navigation/TimerPage.jsx";
 import ShortcutGeneratorPage from "./Pages/ShortcutGeneratorPage.jsx";
 import AIGeneratorPage from "./Pages/AIGeneratorPage.jsx";
+import { MenuProvider } from "./Context/MenuContext.jsx";
 
 
 const App = () => {
@@ -137,7 +138,7 @@ const App = () => {
 
     return (
         <Suspense>
-
+            <MenuProvider>
             {/* all routes */}
             <Routes>
                 <Route path="/" element={<HomePage/>}/>
@@ -281,6 +282,7 @@ const App = () => {
             </Routes>
 
             <CookieModal isModalOpen={isCookie} setisModalOpen={setIsCookie}/>
+            </MenuProvider>
         </Suspense>
     );
 };
