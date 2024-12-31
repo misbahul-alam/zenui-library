@@ -144,7 +144,7 @@ const Navbar = () => {
                             )
                         }
 
-                        <div className='relative mr-6'>
+                        <div className='relative mr-6 h-[52px]'>
                             <span
                                 className='px-2.5 absolute right-[-40px] text-[#a4a4a8] top-0 py-0.5 bg-[#f0f0f1] rounded-full text-[12px]'>
                                 v2.2

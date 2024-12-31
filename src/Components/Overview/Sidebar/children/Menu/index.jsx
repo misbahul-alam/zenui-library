@@ -1,7 +1,7 @@
 import PropTypes, { string } from "prop-types";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { MdKeyboardArrowRight } from "react-icons/md";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { cn } from "../../../../../Utils/Style";
 import NewBadge from "../../../../../Shared/NewBadge";
 
@@ -85,7 +85,6 @@ const CollapseMenu = ({ title, items }) => {
   );
 };
 const Item = ({ title, url, label, isNewComponent = false }) => {
-  const location = useLocation();
 
   return (
     <>

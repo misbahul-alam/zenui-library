@@ -1,10 +1,28 @@
-import { useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import Content from "./Content";
+import { MenuContext } from "../../../Context/MenuContext";
 
 const Sidebar = () => {
   const sidebarRef = useRef(null);
-  
+  const {scrollY, setScrollY} = useContext(MenuContext)
+  useEffect(() => {
+    const ele = sidebarRef.current;
+    const scrollHandler = () => {
+      console.log(ele.scrollTop);
+      setScrollY(ele.scrollTop)
+    };
+    ele.addEventListener("scroll", scrollHandler);
+    return () => ele.removeEventListener("scroll", scrollHandler);
+  }, [setScrollY])
+
+  useEffect(() => {
+    if (sidebarRef && sidebarRef.current) {
+      sidebarRef.current.style.scrollBehavior = "auto";
+      sidebarRef.current.scrollTop = scrollY;
+      sidebarRef.current.style.scrollBehavior = "smooth";
+    }
+  }, [])
   return (
     <aside
       ref={sidebarRef}
