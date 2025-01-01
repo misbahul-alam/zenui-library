@@ -66,7 +66,7 @@ const Normal = () => {
             {normalButtonPreview && (
                 <div className="p-8 mb-4 flex items-center flex-wrap gap-5 justify-center">
                   <button
-                      className="px-6 py-2 border border-primary bg-primary text-secondary hover:bg-secondary hover:text-primary transition duration-300 rounded ">
+                      className="px-6 py-2 border border-primary bg-primary text-secondary hover:bg-secondary hover:text-primary dark:hover:bg-transparent transition duration-300 rounded ">
                     Button 1
                   </button>
                   <button
@@ -74,19 +74,19 @@ const Normal = () => {
                     Button 2
                   </button>
                   <button
-                      className="px-6 py-2 border border-[#3e3939] bg-[#000000] text-secondary hover:bg-secondary hover:text-[#000] transition duration-300 rounded ">
+                      className="px-6 py-2 dark:border-slate-800 dark:text-[#abc2d3] dark:bg-slate-800 dark:hover:bg-transparent dark:hover:text-[#abc2d3] border border-[#3e3939] bg-[#000000] text-secondary hover:bg-secondary hover:text-[#000] transition duration-300 rounded ">
                     Button 3
                   </button>
                   <button
-                      className="px-6 py-2 border border-[#3e3939] hover:bg-[#000000] text-[#000] hover:text-secondary  transition duration-300 rounded ">
+                      className="px-6 py-2 border dark:border-slate-800 dark:text-[#abc2d3] dark:hover:bg-slate-800 border-[#3e3939] hover:bg-[#000000] text-[#000] hover:text-secondary  transition duration-300 rounded ">
                     Button 4
                   </button>
                   <button
-                      className="px-6 py-2 border border-[#9d3533] bg-[#DE3B37] text-secondary hover:bg-secondary hover:text-[#000] transition duration-300 rounded ">
+                      className="px-6 py-2 border border-[#9d3533] bg-[#DE3B37] text-secondary hover:bg-secondary hover:text-[#000] dark:hover:bg-transparent dark:hover:text-[#abc2d3] transition duration-300 rounded ">
                     Button 5
                   </button>
                   <button
-                      className="px-6 py-2 border border-[#9d3533] hover:bg-[#DE3B37] text-[#000] hover:text-secondary  transition duration-300 rounded ">
+                      className="px-6 py-2 border dark:text-[#abc2d3] border-[#9d3533] hover:bg-[#DE3B37] text-[#000] hover:text-secondary  transition duration-300 rounded ">
                     Button 6
                   </button>
                 </div>
@@ -94,7 +94,43 @@ const Normal = () => {
 
             {normalButtonCode && (
                 <Showcode
-                    code=''
+                    code='
+import React from "react";
+
+const Button = () => {
+
+    return (
+        <div className="p-8 mb-4 flex items-center flex-wrap gap-5 justify-center">
+            <button
+                className="px-6 py-2 border border-[#3B9DF8] bg-primary text-[#fff] hover:bg-secondary hover:text-[#3B9DF8] dark:hover:bg-transparent transition duration-300 rounded ">
+                Button 1
+            </button>
+            <button
+                className="px-6 py-2 border border-[#3B9DF8] hover:bg-[#3B9DF8] text-primary hover:text-[#fff]  transition duration-300 rounded ">
+                Button 2
+            </button>
+            <button
+                className="px-6 py-2 dark:border-slate-800 dark:text-[#abc2d3] dark:bg-slate-800 dark:hover:bg-transparent dark:hover:text-[#abc2d3] border border-[#3e3939] bg-[#000000] text-[#fff] hover:bg-secondary hover:text-[#000] transition duration-300 rounded ">
+                Button 3
+            </button>
+            <button
+                className="px-6 py-2 border dark:border-slate-800 dark:text-[#abc2d3] dark:hover:bg-slate-800 border-[#3e3939] hover:bg-[#000000] text-[#000] hover:text-[#fff]  transition duration-300 rounded ">
+                Button 4
+            </button>
+            <button
+                className="px-6 py-2 border border-[#9d3533] bg-[#DE3B37] text-[#fff] hover:bg-secondary hover:text-[#000] dark:hover:bg-transparent dark:hover:text-[#abc2d3] transition duration-300 rounded ">
+                Button 5
+            </button>
+            <button
+                className="px-6 py-2 border dark:text-[#abc2d3] border-[#9d3533] hover:bg-[#DE3B37] text-[#000] hover:text-[#fff] transition duration-300 rounded ">
+                Button 6
+            </button>
+        </div>
+    );
+};
+
+export default Button;
+                    '
                 />
             )}
           </ComponentWrapper>
@@ -111,7 +147,7 @@ const Normal = () => {
             {appStoreButtonPreview && (
                 <div className="p-8 mb-4 flex flex-col items-center flex-wrap gap-5 justify-center">
                   <button
-                      className="px-6 py-2 bg-black rounded-md flex items-center gap-[17px]">
+                      className="px-6 py-2 bg-black dark:bg-slate-800 rounded-md flex items-center gap-[17px]">
                     <img src='https://i.ibb.co/xFjCsGm/download-1-removebg-preview.png' alt='apple logo'
                          className='w-[35px]'/>
                     <div>
@@ -121,12 +157,12 @@ const Normal = () => {
                   </button>
 
                   <button
-                      className="px-6 py-2 border border-text rounded-md flex items-center gap-[17px]">
+                      className="px-6 py-2 border border-text dark:border-slate-600 rounded-md flex items-center gap-[17px]">
                     <img src='https://i.ibb.co/6NFjc6z/download-removebg-preview.png' alt='apple logo'
                          className='w-[32px]'/>
                     <div>
-                      <span className='text-text text-[0.8rem] font-[500]'>Download on the</span>
-                      <h3 className='text-[1.5rem] font-[500] leading-[20px] mb-2'>AppStore</h3>
+                      <span className='text-text text-[0.8rem] dark:text-[#abc2d3] font-[500]'>Download on the</span>
+                      <h3 className='text-[1.5rem] font-[500] dark:text-[#abc2d3] leading-[20px] mb-2'>AppStore</h3>
                     </div>
                   </button>
 
@@ -145,6 +181,50 @@ const Normal = () => {
             {appStoreButtonCode && (
                 <Showcode
                     code='
+import React from "react";
+
+const Button = () => {
+
+    return (
+        <div className="p-8 mb-4 flex flex-col items-center flex-wrap gap-5 justify-center">
+
+            {/* bg black */}
+            <button
+                className="px-6 py-2 bg-black dark:bg-slate-800 rounded-md flex items-center gap-[17px]">
+                <img src="https://i.ibb.co/xFjCsGm/download-1-removebg-preview.png" alt="apple logo"
+                     className="w-[35px]"/>
+                <div>
+                    <span className="text-[0.8rem] font-[500] text-[#fff]">Download on the</span>
+                    <h3 className="text-[1.5rem] font-[500] leading-[20px] mb-2 text-[#fff]">AppStore</h3>
+                </div>
+            </button>
+
+            {/* icon black */}
+            <button
+                className="px-6 py-2 border border-[#424242] dark:border-slate-600 rounded-md flex items-center gap-[17px]">
+                <img src="https://i.ibb.co/6NFjc6z/download-removebg-preview.png" alt="apple logo"
+                     className="w-[32px]"/>
+                <div>
+                    <span className="text-[#424242] text-[0.8rem] dark:text-[#abc2d3] font-[500]">Download on the</span>
+                    <h3 className="text-[1.5rem] font-[500] dark:text-[#abc2d3] leading-[20px] mb-2">AppStore</h3>
+                </div>
+            </button>
+
+            {/* bg gradient */}
+            <button
+                className="px-6 py-2 bg-gradient-to-t from-pink-600 to-pink-300 rounded-md flex items-center gap-[17px]">
+                <img src="https://i.ibb.co/xFjCsGm/download-1-removebg-preview.png" alt="apple logo"
+                     className="w-[35px]"/>
+                <div>
+                    <span className="text-[#fff] text-[0.8rem] font-[500]">Download on the</span>
+                    <h3 className="text-[1.5rem] font-[500] leading-[20px] mb-2 text-[#fff]">AppStore</h3>
+                </div>
+            </button>
+        </div>
+    );
+};
+
+export default Button;
                     '
                 />
             )}
@@ -162,7 +242,7 @@ const Normal = () => {
             {playStoreButtonPreview && (
                 <div className="p-8 mb-4 flex flex-col items-center flex-wrap gap-5 justify-center">
                   <button
-                      className="px-6 py-2 bg-black rounded-md flex items-center gap-[17px]">
+                      className="px-6 py-2 bg-black dark:bg-slate-800 rounded-md flex items-center gap-[17px]">
                     <img src='https://i.ibb.co/s9dSrDs/download-2-removebg-preview-1.png' alt='playstore logo'
                          className='w-[35px]'/>
                     <div className='flex items-start flex-col'>
@@ -172,17 +252,17 @@ const Normal = () => {
                   </button>
 
                   <button
-                      className="px-6 py-2 border border-text rounded-md flex items-center gap-[17px]">
+                      className="px-6 py-2 border dark:border-slate-600 border-text rounded-md flex items-center gap-[17px]">
                     <img src='https://i.ibb.co/s9dSrDs/download-2-removebg-preview-1.png' alt='playstore logo'
                          className='w-[35px]'/>
                     <div className='flex items-start flex-col'>
-                      <span className='text-[0.850rem] font-[500] text-text'>Get it on</span>
-                      <h3 className='text-[1.5rem] font-[500] leading-[20px] mb-2'>Google Play</h3>
+                      <span className='text-[0.850rem] font-[500] dark:text-[#abc2d3] text-text'>Get it on</span>
+                      <h3 className='text-[1.5rem] font-[500] dark:text-[#abc2d3] leading-[20px] mb-2'>Google Play</h3>
                     </div>
                   </button>
 
                   <button
-                      className="px-6 py-2 bg-black rounded-md flex items-center gap-[17px]">
+                      className="px-6 py-2 bg-black dark:bg-slate-900 rounded-md flex items-center gap-[17px]">
                     <img src='https://i.ibb.co/0f4qnNX/images-removebg-preview.png' alt='playstore logo'
                          className='w-[40px]'/>
                     <div className='flex items-start flex-col'>
@@ -193,12 +273,12 @@ const Normal = () => {
 
 
                   <button
-                      className="px-6 py-2 border border-text rounded-md flex items-center gap-[17px]">
+                      className="px-6 py-2 border dark:border-slate-600 border-text rounded-md flex items-center gap-[17px]">
                     <img src='https://i.ibb.co/p1c3nqd/download-3-removebg-preview.png' alt='playstore logo'
                          className='w-[35px]'/>
                     <div className='flex items-start flex-col'>
-                      <span className='text-[0.850rem] font-[500] text-text'>Get it on</span>
-                      <h3 className='text-[1.5rem] font-[500] leading-[20px] mb-2'>Google Play</h3>
+                      <span className='text-[0.850rem] font-[500] dark:text-[#abc2d3] text-text'>Get it on</span>
+                      <h3 className='text-[1.5rem] font-[500] dark:text-[#abc2d3] leading-[20px] mb-2'>Google Play</h3>
                     </div>
                   </button>
 
@@ -217,6 +297,72 @@ const Normal = () => {
             {playStoreButtonCode && (
                 <Showcode
                     code='
+import React from "react";
+
+const Button = () => {
+
+    return (
+        <div className="p-8 mb-4 flex flex-col items-center flex-wrap gap-5 justify-center">
+
+            {/* bg black */}
+            <button
+                className="px-6 py-2 bg-black dark:bg-slate-800 rounded-md flex items-center gap-[17px]">
+                <img src="https://i.ibb.co/s9dSrDs/download-2-removebg-preview-1.png" alt="playstore logo"
+                     className="w-[35px]"/>
+                <div className="flex items-start flex-col">
+                    <span className="text-[0.850rem] font-[500] text-[#fff]">Get it on</span>
+                    <h3 className="text-[1.5rem] font-[500] leading-[20px] mb-2 text-[#fff]">Google Play</h3>
+                </div>
+            </button>
+
+            {/* bordered */}
+            <button
+                className="px-6 py-2 border dark:border-slate-600 border-text rounded-md flex items-center gap-[17px]">
+                <img src="https://i.ibb.co/s9dSrDs/download-2-removebg-preview-1.png" alt="playstore logo"
+                     className="w-[35px]"/>
+                <div className="flex items-start flex-col">
+                    <span className="text-[0.850rem] font-[500] dark:text-[#abc2d3] text-text">Get it on</span>
+                    <h3 className="text-[1.5rem] font-[500] dark:text-[#abc2d3] leading-[20px] mb-2">Google Play</h3>
+                </div>
+            </button>
+
+            {/* white icon */}
+            <button
+                className="px-6 py-2 bg-black dark:bg-slate-900 rounded-md flex items-center gap-[17px]">
+                <img src="https://i.ibb.co/0f4qnNX/images-removebg-preview.png" alt="playstore logo"
+                     className="w-[40px]"/>
+                <div className="flex items-start flex-col">
+                    <span className="text-[0.850rem] font-[500] text-[#fff]">Get it on</span>
+                    <h3 className="text-[1.5rem] font-[500] leading-[20px] mb-2 text-[#fff]">Google Play</h3>
+                </div>
+            </button>
+
+            {/* black icon */}
+            <button
+                className="px-6 py-2 border dark:border-slate-600 border-text rounded-md flex items-center gap-[17px]">
+                <img src="https://i.ibb.co/p1c3nqd/download-3-removebg-preview.png" alt="playstore logo"
+                     className="w-[35px]"/>
+                <div className="flex items-start flex-col">
+                    <span className="text-[0.850rem] font-[500] dark:text-[#abc2d3] text-text">Get it on</span>
+                    <h3 className="text-[1.5rem] font-[500] dark:text-[#abc2d3] leading-[20px] mb-2">Google Play</h3>
+                </div>
+            </button>
+
+            {/* bg gradient */}
+            <button
+                className="px-6 py-2 bg-gradient-to-t from-pink-600 to-pink-300 rounded-md flex items-center gap-[17px]">
+                <img src="https://i.ibb.co/0f4qnNX/images-removebg-preview.png" alt="playstore logo"
+                     className="w-[40px]"/>
+                <div className="flex items-start flex-col">
+                    <span className="text-[0.850rem] font-[500] text-[#fff]">Get it on</span>
+                    <h3 className="text-[1.5rem] font-[500] leading-[20px] mb-2 text-[#fff]">Google Play</h3>
+                </div>
+            </button>
+        </div>
+    );
+};
+
+export default Button;
                     '
                 />
             )}
@@ -267,6 +413,53 @@ const Normal = () => {
             {downloadButtonCode && (
                 <Showcode
                     code='
+import React from "react";
+
+// react icons
+import {MdOutlineFileDownload} from "react-icons/md";
+
+const Button = () => {
+
+    return (
+        <>
+            {/* solid color download button */}
+            <button
+                className="px-4 py-2 bg-[#3B9DF8] text-white text-[1.1rem] rounded-md flex items-center gap-[7px]">
+                <MdOutlineFileDownload className="text-[1.4rem]"/> Download
+            </button>
+
+            {/* bordered download button */}
+            <button
+                className="px-4 py-2 border border-[#3B9DF8] text-[#3B9DF8] text-[1.1rem] rounded-md flex items-center gap-[7px]">
+                Download <MdOutlineFileDownload className="text-[1.4rem]"/>
+            </button>
+
+            {/* button background solid color and icon background deep color button */}
+            <button
+                className="bg-[#3B9DF8] text-white text-[1.1rem] rounded-md flex items-center">
+                <span className="px-4 py-2">Download</span>
+                <div
+                    className="w-[40px] h-[43px] rounded-r-md bg-blue-500 hover:bg-blue-600 flex items-center justify-center">
+                    <MdOutlineFileDownload className="text-[1.4rem]"/>
+                </div>
+            </button>
+
+            {/* bordered button and icon have background color */}
+            <button
+                className=" border border-[#3B9DF8] text-[#3B9DF8] text-[1.1rem] rounded-full flex items-center">
+                <div
+                    className="w-[36px] h-[36px] rounded-full bg-blue-500 hover:bg-blue-600 flex items-center justify-center ml-1">
+                    <MdOutlineFileDownload className="text-[1.4rem] text-white"/>
+                </div>
+
+                <span className="pr-4 pl-2 py-2">Download</span>
+
+            </button>
+        </>
+    );
+};
+
+export default Button;
                     '
                 />
             )}
@@ -304,6 +497,37 @@ const Normal = () => {
             {addCartButtonCode && (
                 <Showcode
                     code='
+import React from "react";
+
+// react icons
+import {MdOutlineShoppingCart} from "react-icons/md";
+
+const Button = () => {
+
+    return (
+        <>
+            {/* solid background color cart button */}
+            <button
+                className="px-4 py-2 bg-[#3B9DF8] text-white text-[1.1rem] rounded-md flex items-center gap-[7px]">
+                <MdOutlineShoppingCart className="text-[1.4rem]"/> Add to cart
+            </button>
+
+            {/* bordered cart button */}
+            <button
+                className=" border border-[#3B9DF8] text-[#3B9DF8] text-[1.1rem] rounded-full flex items-center">
+                <div
+                    className="w-[36px] h-[36px] rounded-full bg-blue-500 hover:bg-blue-600 flex items-center justify-center ml-1">
+                    <MdOutlineShoppingCart className="text-[1.4rem] text-white"/>
+                </div>
+
+                <span className="pr-4 pl-2 py-2">Add to cart</span>
+
+            </button>
+        </>
+    );
+};
+
+export default Button;
                     '
                 />
             )}
@@ -365,6 +589,78 @@ const Normal = () => {
             {variantButtonCode && (
                 <Showcode
                     code='
+import React from "react";
+
+// react icons
+import {FaArrowRightLong, FaPlus} from "react-icons/fa6";
+import {RxCross2} from "react-icons/rx";
+import {BiMessageDetail} from "react-icons/bi";
+import {AiOutlineDelete} from "react-icons/ai";
+import {MdOutlineEdit} from "react-icons/md";
+import {IoCodeSlashOutline} from "react-icons/io5";
+
+const Button = () => {
+
+    return (
+        <>
+            {/* text with icon create button */}
+            <button
+                className="px-4 py-2 bg-[#3B9DF8] text-white text-[1.1rem] rounded-full flex items-center gap-[10px]">
+                <FaPlus className="text-[1.1rem]"/> Create
+            </button>
+
+            {/* icon create button */}
+            <button className="bg-[#3B9DF8] w-[40px] h-[40px] rounded-full flex items-center justify-center text-white">
+                <FaPlus/>
+            </button>
+
+            {/* cross button with background color */}
+            <button className="bg-primary w-[40px] h-[40px] rounded-full flex items-center justify-center text-white">
+                <RxCross2/>
+            </button>
+
+            {/* bordered cross button */}
+            <button
+                className="border border-[#3B9DF8] text-[#3B9DF8] w-[40px] h-[40px] rounded-full flex items-center justify-center">
+                <RxCross2/>
+            </button>
+
+            {/* bordered message button */}
+            <button
+                className="border border-[#3B9DF8] text-[#3B9DF8] w-[40px] h-[40px] rounded-md flex items-center justify-center">
+                <BiMessageDetail className="text-[1.3rem]"/>
+            </button>
+
+            {/* bordered delete button */}
+            <button
+                className="border border-[#3B9DF8] text-[#3B9DF8] w-[40px] h-[40px] rounded-md flex items-center justify-center">
+                <AiOutlineDelete className="text-[1.3rem]"/>
+            </button>
+
+            {/* view page button with arrow icon */}
+            <button className="bg-[#3B9DF8] py-2 px-4 rounded-md flex items-center gap-[12px] text-[1rem] text-white">
+                View page
+                <FaArrowRightLong className="text-[1.1rem]"/>
+            </button>
+
+            {/* edit button with edit icon */}
+            <button className="bg-[#3B9DF8] py-2 px-4 rounded-md flex items-center gap-[8px] text-[1rem] text-white">
+                <MdOutlineEdit className="text-[1.1rem]"/>
+                Edit
+            </button>
+
+            {/* bordered developer button with code icon */}
+            <button
+                className="border border-[#3B9DF8] text-[#3B9DF8] py-2 px-4 rounded-md flex items-center gap-[8px] text-[1rem]">
+                <IoCodeSlashOutline className="text-[1.2rem]"/>
+                Developer
+            </button>
+
+        </>
+    );
+};
+
+export default Button;
                     '
                 />
             )}
@@ -396,6 +692,28 @@ const Normal = () => {
             {shapeButtonCode && (
                 <Showcode
                     code='
+import React from "react";
+
+const Button = () => {
+
+    return (
+        <>
+            {/* left side shape button */}
+            <button
+                className="py-2.5 px-6 border border-[#3B9DF8] text-[#3B9DF8] rounded-tr-[30px] rounded-bl-[30px] hover:bg-[#3B9DF8] hover:text-white transition-all duration-200">
+                ZenUI Library
+            </button>
+
+            {/* right side shape button */}
+            <button
+                className="py-2.5 px-6 border border-[#3B9DF8] text-[#3B9DF8] rounded-tl-[30px] rounded-br-[30px] hover:bg-[#3B9DF8] hover:text-white transition-all duration-200">
+                ZenUI Library
+            </button>
+        </>
+    );
+};
+
+export default Button;
                     '
                 />
             )}

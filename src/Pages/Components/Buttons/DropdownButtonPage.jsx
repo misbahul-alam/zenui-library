@@ -8,7 +8,7 @@ import DropdownButton from "../../../Components/Overview/SidebarContent/Content/
 
 const AnimatedButtonPage = () => {
     return (
-        <>
+        <div className='dark:bg-darkBgColor'>
             <Navbar />
             <MobileNavbar/>
             <div className="flex w-full mx-auto max-w-[1700px]">
@@ -21,7 +21,7 @@ const AnimatedButtonPage = () => {
                     <DropdownButton />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

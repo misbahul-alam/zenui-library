@@ -33,9 +33,4 @@ const Sidebar = () => {
   );
 };
 
-Sidebar.propTypes = {
-  startContent: PropTypes.number.isRequired,
-  setStartContent: PropTypes.func.isRequired,
-};
-
 export default Sidebar;

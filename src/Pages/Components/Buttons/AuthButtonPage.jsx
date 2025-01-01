@@ -8,7 +8,7 @@ import AuthButton from "../../../Components/Overview/SidebarContent/Content/Butt
 
 const AuthButtonPage = () => {
     return (
-        <>
+        <div className='dark:bg-darkBgColor'>
             <Navbar />
             <MobileNavbar/>
             <div className="flex w-full mx-auto max-w-[1700px]">
@@ -21,7 +21,7 @@ const AuthButtonPage = () => {
                     <AuthButton />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

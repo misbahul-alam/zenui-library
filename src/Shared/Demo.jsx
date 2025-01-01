@@ -1,72 +1,71 @@
-import React, {useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 
 // react icons
-import {FaBriefcase, FaGraduationCap} from "react-icons/fa";
+import {MdKeyboardArrowDown} from "react-icons/md";
+import {AiOutlineDelete, AiOutlineSchedule} from "react-icons/ai";
+import {LuSaveAll} from "react-icons/lu";
 
-const MilestoneTimeline = () => {
-    const briefcaseIcon = <FaBriefcase className="fill-white w-5 h-5" />;
-    const graduationCapIcon = <FaGraduationCap className="fill-white w-5 h-5" />;
+const DropdownButton = () => {
+    const [actionButtonActive, setActionButtonActive] = useState(false);
+    const [sendButtonText, setSendButtonText] = useState("Send");
 
-    const milestones = [
+    const sendButtonContent = [
         {
-            date: "January 2024",
-            title: "B.Tech",
-            description: "B.Tech graduate with specialization in CSE",
-            icon: graduationCapIcon,
+            label: "Schedule for later",
+            icon: <AiOutlineSchedule/>
+        },{
+            label: "Save draft",
+            icon: <LuSaveAll/>
+        },{
+            label: "Delete",
+            icon: <AiOutlineDelete/>
         },
-        {
-            date: "February 2024",
-            title: "Design Phase",
-            description: "Finalizing designs and mockups.",
-            icon: briefcaseIcon,
-        },
-        {
-            date: "March 2024",
-            title: "Development Phase",
-            description: "Starting the development of the project.",
-            icon: briefcaseIcon,
-        },
-        {
-            date: "April 2024",
-            title: "Testing Phase",
-            description: "Testing and quality assurance.",
-            icon: briefcaseIcon,
-        },
-        {
-            date: "May 2024",
-            title: "Launch",
-            description: "Official project launch.",
-            icon: briefcaseIcon,
-        },
-    ];
+    ]
 
+    const handleSendButtonClick = (item) => {
+        setSendButtonText(item)
+        setActionButtonActive(false)
+    }
+
+    useEffect(() => {
+        const handleClick = (event) => {
+            if(!event.target.closest(".publishButtonOptions") && !event.target.closest(".publishButton")){
+                setActionButtonActive(false)
+            }
+        };
+        document.addEventListener("click", handleClick);
+        return () => {
+            document.removeEventListener("click", handleClick);
+        };
+    }, []);
     return (
-        <div className="relative border-l-[5px] border-gray-300">
-            {milestones.map((milestone, index) => (
-                <div key={index} className="mb-8 relative ">
-                    <div
-                        id="icon"
-                        className={`absolute border-2 border-white top-5 -left-[2.5px] transform -translate-x-1/2 -translate-y-1/2  bg-[#3B9DF8] rounded-full p-2 z-10`}
-                    >
-                        {milestone.icon}
-                    </div>
-                    <div className="pl-6 ">
-                        <div className="flex 640px:items-center 640px:flex-row flex-col">
-                            <div className="text-[#3B9DF8]  font-semibold">
-                                {milestone.date}
-                            </div>
-                            <div className="640px:ml-4 text-[#424242] text-lg font-semibold">
-                                {milestone.title}
-                            </div>
-                        </div>
-                        <p className="text-gray-500 text-[0.9rem] mt-1">
-                            {milestone.description}
-                        </p>
-                    </div>
-                </div>
-            ))}
+        <div
+            className="flex items-center rounded bg-[#3B9DF8] border-none outline-none text-[#fff] justify-between relative">
+            <button
+                className=" text-[1rem] px-6 py-1.5 transition-all duration-500 cursor-auto">
+                {sendButtonText}
+            </button>
+
+            <div onClick={() => setActionButtonActive(!actionButtonActive)}
+                 className="bg-[#005fb2] w-[50px] py-1.5 flex items-center justify-center cursor-pointer rounded-r publishButton">
+                <MdKeyboardArrowDown className="text-[2rem]"/>
+            </div>
+
+            <ul className={`${actionButtonActive ? "opacity-100 z-20 translate-y-4" : " opacity-0 z-[-1] translate-y-[-20px]"} publishButtonOptions transition-all duration-500 flex flex-col boxShadow bg-white py-1 w-max dark:bg-slate-800 dark:border-slate-700 dark:text-[#abc2d3] absolute top-[46px] rounded border border-[#e6e6e6] right-0 text-text text-[0.9rem]`}>
+                <div
+                    className="absolute -top-[8px] dark:bg-slate-800 dark:border-slate-700 right-3 border-l border-b border-[#e6e6e6] bg-white w-[15px] h-[15px] rotate-[135deg]"></div>
+                {
+                    sendButtonContent?.map((item, index) => (
+                        <li className="z-20 py-2 px-3 dark:hover:bg-slate-900/40 flex items-center gap-[8px] hover:bg-gray-50 rounded cursor-pointer"
+                            key={index} onClick={() => handleSendButtonClick(item.label)}>
+                            <span className="text-primary">{item.icon}</span>
+                            {item.label}
+                        </li>
+                    ))
+                }
+            </ul>
         </div>
     );
 };
 
-export default MilestoneTimeline;
+export default DropdownButton;
