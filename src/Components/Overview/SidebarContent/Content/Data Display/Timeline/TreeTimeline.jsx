@@ -18,8 +18,8 @@ const TreeTimeline = () => {
     setMilestoneTimelinePreview(false);
   };
 
-  const briefcaseIcon = <FaBriefcase className="fill-white w-5 h-5" />;
-  const graduationCapIcon = <FaGraduationCap className="fill-white w-5 h-5" />;
+  const briefcaseIcon = <FaBriefcase className="fill-gray-500 w-5 h-5" />;
+  const graduationCapIcon = <FaGraduationCap className="fill-gray-500 w-5 h-5" />;
 
   const milestones = [
     {
@@ -102,7 +102,7 @@ const TreeTimeline = () => {
               </h1>
 
               <div>
-                <ul className="relative h-fit before:content-[''] before:absolute before:w-1 before:h-full before:bg-gray-300 before:left-1/2 before:transform before:-translate-x-1/2 before:rounded-md before:z-10">
+                <ul className="relative h-fit before:content-[''] before:absolute before:w-1 before:h-full before:bg-gray-200 before:left-1/2 before:transform before:-translate-x-1/2 before:rounded-md before:z-10">
                   {milestones.map((milestone, index) => (
                     <li
                       key={index}
@@ -116,30 +116,28 @@ const TreeTimeline = () => {
                           index % 2 === 0
                             ? "translate-x-1/2 right-0"
                             : "-translate-x-1/2"
-                        }  bg-gray-500 rounded-full p-2 z-10`}
+                        }  bg-gray-200 rounded-full p-2 z-10`}
                       >
                         {milestone.icon}
                       </div>
 
                       <div
-                        className={`relative border border-gray-200 shadow-md ${
-                          index % 2 === 0 ? "-left-5" : "-right-5"
+                        className={`relative border rounded-md shadow-gray-50 border-gray-200/60 shadow-md ${
+                          index % 2 === 0 ? "-left-8" : "-right-8"
                         }`}
                       >
                         <div
-                          className={`p-2 pr-8 ${
-                            index % 2 === 0 ? "pr-8" : "pl-8"
-                          }`}
+                          className='py-3 px-4'
                         >
                           <div>
                             <div className="text-text text-lg font-semibold">
                               {milestone.title}
                             </div>
-                            <div className="text-primary text-sm font-semibold">
+                            <div className="text-primary text-sm">
                               {milestone.date}
                             </div>
                           </div>
-                          <p className="mt-1">{milestone.description}</p>
+                          <p className="mt-1 text-sm text-gray-600">{milestone.description}</p>
                         </div>
                       </div>
                     </li>
@@ -153,76 +151,96 @@ const TreeTimeline = () => {
         {treeTimelineCode && (
           <ShowCode
             code='
-      import React from "react";
-      import { FaBriefcase, FaGraduationCap } from "react-icons/fa";
-      
-      const Timeline = () => {
-      const milestones = [
-      { date: "January 2024",title: "B.Tech", description: "B.Tech graduate with specialization in CSE",icon: graduationCapIcon},
-      { date: "February 2024",title: "Design Phase", description: "Finalizing designs and mockups.",icon: briefcaseIcon,},
-      { date: "March 2024",title: "Development Phase", description: "Starting the development of the project.",icon: briefcaseIcon,},
-      { date: "April 2024",title: "Testing Phase", description: "Testing and quality assurance.",icon: briefcaseIcon,},
-      { date: "May 2024",title: "Launch", description: "Official project launch.",icon: briefcaseIcon,}
-      ];
+import React from "react";
 
-          return (
-              <div className="p-8 mb-4 flex items-center flex-col gap-5 justify-center">
-                <div className="w-full mx-auto p-6 ">
-                  <h1 className="text-3xl font-bold mb-16 text-center">
-                    Tree Timeline
-                  </h1>
+// react icons
+import {FaBriefcase, FaGraduationCap} from "react-icons/fa";
 
-                  <div>
-                    <ul className="relative h-fit before:content-[""] before:absolute before:w-1 before:h-full before:bg-gray-300 before:left-1/2 before:transform before:-translate-x-1/2 before:rounded-md before:z-10">
-                      {milestones.map((milestone, index) => (
-                        <li
-                          key={index}
-                          className={`relative w-1/2  mb-4 ${
+const TreeTimeline = () => {
+    const briefcaseIcon = <FaBriefcase className="fill-gray-500 w-5 h-5" />;
+    const graduationCapIcon = <FaGraduationCap className="fill-gray-500 w-5 h-5" />;
+
+    const milestones = [
+        {
+            date: "January 2024",
+            title: "B.Tech",
+            description: "B.Tech graduate with specialization in CSE",
+            icon: graduationCapIcon,
+        },
+        {
+            date: "February 2024",
+            title: "Design Phase",
+            description: "Finalizing designs and mockups.",
+            icon: briefcaseIcon,
+        },
+        {
+            date: "March 2024",
+            title: "Development Phase",
+            description: "Starting the development of the project.",
+            icon: briefcaseIcon,
+        },
+        {
+            date: "April 2024",
+            title: "Testing Phase",
+            description: "Testing and quality assurance.",
+            icon: briefcaseIcon,
+        },
+        {
+            date: "May 2024",
+            title: "Launch",
+            description: "Official project launch.",
+            icon: briefcaseIcon,
+        },
+    ];
+
+    return (
+        <div>
+            <ul className="relative h-fit before:content-[""] before:absolute before:w-1 before:h-full before:bg-gray-200 before:left-1/2 before:transform before:-translate-x-1/2 before:rounded-md before:z-10">
+                {milestones.map((milestone, index) => (
+                    <li
+                        key={index}
+                        className={`relative w-1/2  mb-4 ${
                             index % 2 === 0 ? "text-right" : " left-1/2 text-left"
-                          }`}
-                        >
-                          <div
+                        }`}
+                    >
+                        <div
                             id="icon"
                             className={`absolute top-1/2 -translate-y-1/2  ${
-                              index % 2 === 0
-                                ? "translate-x-1/2 right-0"
-                                : "-translate-x-1/2"
-                            }  bg-gray-500 rounded-full p-2 z-10`}
-                          >
+                                index % 2 === 0
+                                    ? "translate-x-1/2 right-0"
+                                    : "-translate-x-1/2"
+                            }  bg-gray-200 rounded-full p-2 z-10`}
+                        >
                             {milestone.icon}
-                          </div>
+                        </div>
 
-                          <div
-                            className={`relative border border-gray-200 shadow-md ${
-                              index % 2 === 0 ? "-left-5" : "-right-5"
+                        <div
+                            className={`relative border rounded-md shadow-gray-50 border-gray-200/60 shadow-md ${
+                                index % 2 === 0 ? "-left-8" : "-right-8"
                             }`}
-                          >
+                        >
                             <div
-                              className={`p-2 pr-8 ${
-                                index % 2 === 0 ? "pr-8" : "pl-8"
-                              }`}
+                                className="py-3 px-4"
                             >
-                              <div>
-                                <div className="text-[#424242] text-lg font-semibold">
-                                  {milestone.title}
+                                <div>
+                                    <div className="text-[#424242] text-lg font-semibold">
+                                        {milestone.title}
+                                    </div>
+                                    <div className="text-[#3B9DF8] text-sm">
+                                        {milestone.date}
+                                    </div>
                                 </div>
-                                <div className="text-[#3B9DF8] text-sm font-semibold">
-                                  {milestone.date}
-                                </div>
-                              </div>
-                              <p className="mt-1">{milestone.description}</p>
+                                <p className="mt-1 text-sm text-gray-600">{milestone.description}</p>
                             </div>
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-          );
-      };
+                        </div>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
+};
 
-      export default Timeline;
+export default TreeTimeline;
     '
           />
         )}

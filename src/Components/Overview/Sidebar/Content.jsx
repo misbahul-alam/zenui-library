@@ -296,7 +296,8 @@ const Content = () => {
               {
                 title: "Timeline",
                 url: "/components/timeline",
-                parent: 'DATA DISPLAY'
+                parent: 'DATA DISPLAY',
+                  isUpdated: true,
               },
               {
                 label: "E-COMMERCE",

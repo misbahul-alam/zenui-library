@@ -4,6 +4,7 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import { Link, NavLink } from "react-router-dom";
 import { cn } from "../../../../../Utils/Style";
 import NewBadge from "../../../../../Shared/NewBadge";
+import UpdateBadge from "../../../../../Shared/UpdateBadge.jsx";
 
 const prefix = 'sidebar'
 const DefaultMenu = ({ items }) => {
@@ -84,7 +85,7 @@ const CollapseMenu = ({ title, items }) => {
     </div>
   );
 };
-const Item = ({ title, url, label, isNewComponent = false }) => {
+const Item = ({ title, url, label, isNewComponent = false, isUpdated= false}) => {
 
   return (
     <>
@@ -111,6 +112,7 @@ const Item = ({ title, url, label, isNewComponent = false }) => {
         >
           {title}
           {isNewComponent && <NewBadge />}
+          {isUpdated && <UpdateBadge />}
         </NavLink>
       )}
     </>
