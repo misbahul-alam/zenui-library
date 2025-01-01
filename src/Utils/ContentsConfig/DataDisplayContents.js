@@ -66,6 +66,16 @@ export const timelineContents = [
     id: 2,
     title: 'work progress timeline',
     href: '#work_progress_timeline'
+  },
+  {
+    id: 3,
+    title: 'tree timeline',
+    href: '#tree_timeline'
+  },
+  {
+    id: 4,
+    title: 'milestone icon timeline',
+    href: '#milestone_icon_timeline'
   }
 ];
 

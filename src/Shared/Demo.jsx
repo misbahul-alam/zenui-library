@@ -1,59 +1,72 @@
 import React, {useRef, useState} from "react";
 
-const OtpInput = () => {
-    const [autoOtp, setAutoOtp] = useState("")
-    const navigationInputs = useRef([])
+// react icons
+import {FaBriefcase, FaGraduationCap} from "react-icons/fa";
 
-    const length = 4
+const MilestoneTimeline = () => {
+    const briefcaseIcon = <FaBriefcase className="fill-white w-5 h-5" />;
+    const graduationCapIcon = <FaGraduationCap className="fill-white w-5 h-5" />;
 
-    const onChange = (value) => {
-        setAutoOtp(value)
-    }
-
-    const handleInputChange = (e, index) => {
-        const { value } = e.target;
-        const newOtp = [...navigationInputs.current.map(input => input.value)];
-
-        // Ensure only a single digit is entered per box
-        if (/^[0-9]$/.test(value) && value.length === 1) {
-            newOtp[index] = value;
-            onChange(newOtp.join(""));
-
-            if (index < length - 1) {
-                navigationInputs.current[index + 1].focus();
-            }
-        } else if (value === "") {
-            newOtp[index] = "";
-            onChange(newOtp.join(""));
-        } else {
-            e.target.value = value.slice(0, 1);
-        }
-    };
-    
-    const handleKeydown = (e, index) => {
-        if (e.key === "Backspace" && !navigationInputs.current[index].value && index > 0) {
-            navigationInputs.current[index - 1].focus()
-        }
-    }
+    const milestones = [
+        {
+            date: "January 2024",
+            title: "B.Tech",
+            description: "B.Tech graduate with specialization in CSE",
+            icon: graduationCapIcon,
+        },
+        {
+            date: "February 2024",
+            title: "Design Phase",
+            description: "Finalizing designs and mockups.",
+            icon: briefcaseIcon,
+        },
+        {
+            date: "March 2024",
+            title: "Development Phase",
+            description: "Starting the development of the project.",
+            icon: briefcaseIcon,
+        },
+        {
+            date: "April 2024",
+            title: "Testing Phase",
+            description: "Testing and quality assurance.",
+            icon: briefcaseIcon,
+        },
+        {
+            date: "May 2024",
+            title: "Launch",
+            description: "Official project launch.",
+            icon: briefcaseIcon,
+        },
+    ];
 
     return (
-        <div className="grid grid-cols-4 gap-[10px] w-full md:w-[50%]">
-            {
-                Array.from({length}).map((_, index) => (
-                    <input
-                        key={index}
-                        ref={(el) => (navigationInputs.current[index] = el)}
-                        className="p-3 text-center dark:bg-transparent dark:border-slate-700 dark:text-[#abc2d3] dark:placeholder:text-slate-500 border border-[#bcbcbc] rounded-md outline-none focus:border-[#3B9DF8]"
-                        placeholder="0"
-                        max="1"
-                        onChange={(e) => handleInputChange(e, index)}
-                        onKeyDown={(e) => handleKeydown(e, index)}
-                        type="number"
-                    />
-                ))
-            }
+        <div className="relative border-l-[5px] border-gray-300">
+            {milestones.map((milestone, index) => (
+                <div key={index} className="mb-8 relative ">
+                    <div
+                        id="icon"
+                        className={`absolute border-2 border-white top-5 -left-[2.5px] transform -translate-x-1/2 -translate-y-1/2  bg-[#3B9DF8] rounded-full p-2 z-10`}
+                    >
+                        {milestone.icon}
+                    </div>
+                    <div className="pl-6 ">
+                        <div className="flex 640px:items-center 640px:flex-row flex-col">
+                            <div className="text-[#3B9DF8]  font-semibold">
+                                {milestone.date}
+                            </div>
+                            <div className="640px:ml-4 text-[#424242] text-lg font-semibold">
+                                {milestone.title}
+                            </div>
+                        </div>
+                        <p className="text-gray-500 text-[0.9rem] mt-1">
+                            {milestone.description}
+                        </p>
+                    </div>
+                </div>
+            ))}
         </div>
     );
 };
 
-export default OtpInput;
+export default MilestoneTimeline;

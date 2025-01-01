@@ -89,4 +89,14 @@ export const DevContributorsData = [
         website: 'https://misbahulalam.vercel.app/',
         zenuiHero: false,
     },
+    {
+        name: 'Mohammad Shahnwaz',
+        title: 'Full-stack Web Developer',
+        image: 'https://i.ibb.co.com/pwqnW7M/34994498.jpg',
+        linkedinLink: '',
+        twitterLink: '',
+        githubLink: 'https://github.com/Shahnwazh170',
+        website: 'https://shahnwazh170.github.io/',
+        zenuiHero: false,
+    },
 ]

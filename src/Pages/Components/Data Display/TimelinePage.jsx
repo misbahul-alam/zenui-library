@@ -5,7 +5,7 @@ import Navbar from "../../../Components/Home/Navbar";
 import Sidebar from "../../../Components/Overview/Sidebar";
 import MobileNavbar from "../../../Components/Home/MobileNavbar.jsx";
 import MobileSidebar from "../../../Components/Overview/Sidebar/MobileSidebar.jsx";
-import Timeline from "../../../Components/Overview/SidebarContent/Content/Data Display/Timeline.jsx";
+import Timeline from "../../../Components/Overview/SidebarContent/Content/Data Display/Timeline/Timeline.jsx";
 
 const TooltipPage = () => {
     return (
