@@ -105,7 +105,7 @@ const Item = ({ title, url, label, isNewComponent = false, isUpdated= false}) =>
           className={({ isActive }) =>
             cn(
               isActive &&
-                "border-l rounded-tr rounded-br border-primary hover:!bg-primary bg-[#3B9DF8] text-secondary font-[500]",
+                "border-l rounded-tr rounded-br border-primary hover:!bg-primary bg-[#3B9DF8] text-secondary",
               "border-l border-[#9caebc] flex items-center gap-[10px]"
             )
           }

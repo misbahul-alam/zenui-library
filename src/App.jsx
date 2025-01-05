@@ -122,6 +122,7 @@ import TimerPage from "./Pages/Components/Navigation/TimerPage.jsx";
 import ShortcutGeneratorPage from "./Pages/ShortcutGeneratorPage.jsx";
 import AIGeneratorPage from "./Pages/AIGeneratorPage.jsx";
 import { MenuProvider } from "./Context/MenuContext.jsx";
+import GithubActivityGraphPage from "./Pages/Components/Data Display/GithubActivityGraphPage.jsx";
 
 
 const App = () => {
@@ -224,6 +225,7 @@ const App = () => {
                 {/* data display */}
                 <Route path="/components/badge" element={<BadgePage/>}/>
                 <Route path="/components/table" element={<TablePage/>}/>
+                <Route path="/components/github-activity-graph" element={<GithubActivityGraphPage/>}/>
                 <Route path="/components/pie-chart" element={<PieChartPage/>}/>
                 <Route path="/components/tooltip" element={<TooltipPage/>}/>
                 <Route path="/components/timeline" element={<TimelinePage/>}/>
