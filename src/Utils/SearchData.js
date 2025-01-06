@@ -126,6 +126,12 @@ export const componentSearchData = [
         tags: ['ui', 'data', 'display']
     },
     {
+        title: 'Github Activity Graph',
+        description: 'Track user activity like github activity tracker graph.',
+        url: '/components/github-activity-graph',
+        tags: ['ui', 'data', 'display', 'graph']
+    },
+    {
         title: 'Image Gallery',
         description: 'Interactive image display and browsing component',
         url: '/components/image-gallery',

@@ -284,6 +284,12 @@ const Content = () => {
                 parent: 'DATA DISPLAY'
               },
               {
+                title: "Github Activity Graph",
+                url: "/components/github-activity-graph",
+                parent: 'DATA DISPLAY',
+                isNewComponent: true
+              },
+              {
                 title: "Tooltip",
                 url: "/components/tooltip",
                 parent: 'DATA DISPLAY'
