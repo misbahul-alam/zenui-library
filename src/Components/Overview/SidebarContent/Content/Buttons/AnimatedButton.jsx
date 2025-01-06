@@ -5,11 +5,15 @@ import OverviewFooter from "../../../../../Shared/OverviewFooter";
 import ShowCode from "../../../../../Shared/ShowCode";
 import ContentHeader from "../../../../../Shared/ContentHeader";
 import { Helmet } from "react-helmet";
-import Showcode from "../../../../../Shared/ShowCode.jsx";
 
 // contents for crollspy
 import { animatedButtonContents } from '../../../../../Utils/ContentsConfig/ButtonsContents.js';
 import { useScrollSpy } from '../../../../../CustomHooks/useScrollSpy';
+
+import ComponentDescription from "../../../../../Shared/ComponentDescription.jsx";
+import ToggleTab from "../../../../../Shared/ToggleTab.jsx";
+import ComponentWrapper from "../../../../../Shared/ComponentWrapper.jsx";
+import ContentNavbar from "../../../../../Shared/ContentNavbar.jsx";
 
 const AnimatedButton = () => {
   const sectionIds = animatedButtonContents.map(item => item.href.slice(1));
@@ -20,159 +24,49 @@ const AnimatedButton = () => {
   const [clickAnimatedButtonPreview, setClickAnimatedButtonPreview] = useState(true);
   const [clickAnimatedButtonCode, setClickAnimatedButtonCode] = useState(false);
 
-  const handleClickAnimatedButtonPreview = () => {
-    setClickAnimatedButtonPreview(true);
-    setClickAnimatedButtonCode(false);
-  };
-
-  const handleClickAnimatedButtonCode = () => {
-    setClickAnimatedButtonCode(true);
-    setClickAnimatedButtonPreview(false);
-  };
-
   // hover animated button
   const [hoverAnimatedButtonPreview, setHoverAnimatedButtonPreview] = useState(true);
   const [hoverAnimatedButtonCode, setHoverAnimatedButtonCode] = useState(false);
-
-  const handleHoverAnimatedButtonPreview = () => {
-    setHoverAnimatedButtonPreview(true);
-    setHoverAnimatedButtonCode(false);
-  };
-
-  const handleHoverAnimatedButtonCode = () => {
-    setHoverAnimatedButtonCode(true);
-    setHoverAnimatedButtonPreview(false);
-  };
 
   // hover bg animated button
   const [hoverBgAnimatedButtonPreview, setHoverBgAnimatedButtonPreview] = useState(true);
   const [hoverBgAnimatedButtonCode, setHoverBgAnimatedButtonCode] = useState(false);
 
-  const handleHoverBgAnimatedButtonPreview = () => {
-    setHoverBgAnimatedButtonPreview(true);
-    setHoverBgAnimatedButtonCode(false);
-  };
-
-  const handleHoverBgAnimatedButtonCode = () => {
-    setHoverBgAnimatedButtonCode(true);
-    setHoverBgAnimatedButtonPreview(false);
-  };
-
   // slide up animated button
   const [slideUpAnimationButtonPreview, setSlideUpAnimationButtonPreview] = useState(true);
   const [slideUpAnimationButtonCode, setSlideUpAnimationButtonCode] = useState(false);
-
-  const handleSlideUpAnimationButtonPreview = () => {
-    setSlideUpAnimationButtonPreview(true);
-    setSlideUpAnimationButtonCode(false);
-  };
-
-  const handleSlideUpAnimationButtonCode = () => {
-    setSlideUpAnimationButtonCode(true);
-    setSlideUpAnimationButtonPreview(false);
-  };
 
   // slide animated button
   const [slideAnimationButtonPreview, setSlideAnimationButtonPreview] = useState(true);
   const [slideAnimationButtonCode, setSlideAnimationButtonCode] = useState(false);
 
-  const handleSlideAnimationButtonPreview = () => {
-    setSlideAnimationButtonPreview(true);
-    setSlideAnimationButtonCode(false);
-  };
-
-  const handleSlideAnimationButtonCode = () => {
-    setSlideAnimationButtonCode(true);
-    setSlideAnimationButtonPreview(false);
-  };
-
   // bounce up animated button
   const [bounceUpAnimationButtonPreview, setBounceUpAnimationButtonPreview] = useState(true);
   const [bounceUpAnimationButtonCode, setBounceUpAnimationButtonCode] = useState(false);
-
-  const handleBounceUpAnimationButtonPreview = () => {
-    setBounceUpAnimationButtonPreview(true);
-    setBounceUpAnimationButtonCode(false);
-  };
-
-  const handleBounceUpAnimationButtonCode = () => {
-    setBounceUpAnimationButtonCode(true);
-    setBounceUpAnimationButtonPreview(false);
-  };
 
   // bottom border animated button
   const [bottomBorderAnimationButtonPreview, setBottomBorderAnimationButtonPreview] = useState(true);
   const [bottomBorderAnimationButtonCode, setBottomBorderAnimationButtonCode] = useState(false);
 
-  const handleBottomBorderAnimationButtonPreview = () => {
-    setBottomBorderAnimationButtonPreview(true);
-    setBottomBorderAnimationButtonCode(false);
-  };
-
-  const handleBottomBorderAnimationButtonCode = () => {
-    setBottomBorderAnimationButtonCode(true);
-    setBottomBorderAnimationButtonPreview(false);
-  };
-
   // bg fill animated button
   const [bgFillAnimationPreview, setBgFillAnimationPreview] = useState(true);
   const [bgFillAnimationCode, setBgFillAnimationCode] = useState(false);
 
-  const handleBgFillAnimationPreview = () => {
-    setBgFillAnimationPreview(true);
-    setBgFillAnimationCode(false);
-  };
-
-  const handleBgFillAnimationCode = () => {
-    setBgFillAnimationCode(true);
-    setBgFillAnimationPreview(false);
-  };
-
   // 2 part marge animated button
   const [margeAnimationPreview, setMargeAnimationPreview] = useState(true);
   const [margeAnimationCode, setMargeAnimationCode] = useState(false);
-
-  const handleMargeAnimationPreview = () => {
-    setMargeAnimationPreview(true);
-    setMargeAnimationCode(false);
-  };
-
-  const handleMargeAnimationCode = () => {
-    setMargeAnimationCode(true);
-    setMargeAnimationPreview(false);
-  };
 
   return (
     <aside className="flex items-start justify-between gap-6 w-full 640px:pl-[2.5rem] px-6 640px:px-10">
       <div>
         <ContentHeader text={"click animation"} id={"click_animation"}/>
 
-        <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-          This is an animated button on click component. Enjoy dynamic responses with captivating animations upon
-          clicking.
-        </p>
+        <ComponentDescription text='This is an animated button on click component. Enjoy dynamic responses with captivating animations upon
+          clicking.'/>
 
-        <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-          <div className="relative">
-            <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${clickAnimatedButtonPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-            <button
-                className={`${
-                    clickAnimatedButtonPreview && "text-tabTextColor"
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleClickAnimatedButtonPreview}
-            >
-              Preview
-            </button>
-            <button
-                className={`${
-                    clickAnimatedButtonCode && "text-tabTextColor"
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleClickAnimatedButtonCode}
-            >
-              Code
-            </button>
-          </div>
+        <ToggleTab setCode={setClickAnimatedButtonCode} code={clickAnimatedButtonCode} preview={clickAnimatedButtonPreview} setPreview={setClickAnimatedButtonPreview}/>
+
+        <ComponentWrapper>
           {clickAnimatedButtonPreview && (
               <div className="p-8 mb-4 flex flex-wrap items-center gap-5 justify-center">
                 <button
@@ -196,8 +90,7 @@ const AnimatedButton = () => {
     Click Me
 </button>
           '/>}
-        </div>
-
+        </ComponentWrapper>
 
         <div className="mt-8">
           <ContentHeader
@@ -206,40 +99,20 @@ const AnimatedButton = () => {
           />
         </div>
 
-        <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-          This is a hover animated button component. Experience dynamic interaction with engaging animations on hover.
-        </p>
+        <ComponentDescription text=' This is a hover animated button component. Experience dynamic interaction with engaging animations on hover.'/>
 
-        <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-          <div className="relative">
-            <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${hoverAnimatedButtonPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-            <button
-                className={`${
-                    hoverAnimatedButtonPreview && "text-tabTextColor"
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleHoverAnimatedButtonPreview}
-            >
-              Preview
-            </button>
-            <button
-                className={`${
-                    hoverAnimatedButtonCode && "text-tabTextColor"
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleHoverAnimatedButtonCode}
-            >
-              Code
-            </button>
-          </div>
+        <ToggleTab setCode={setHoverAnimatedButtonCode} code={hoverAnimatedButtonCode} setPreview={setHoverAnimatedButtonPreview} preview={hoverAnimatedButtonPreview}/>
+
+        <ComponentWrapper>
           {hoverAnimatedButtonPreview && (
               <div className="p-8 mb-4 flex items-center gap-5 flex-wrap justify-center">
                 <button
-                    className="px-8 py-3 relative shadow-lg before:absolute before:top-0 before:left-0 before:w-0 before:h-0 before:border-l-[4px] before:border-t-[4px] before:border-transparent hover:before:w-full hover:before:h-full hover:before:border-primary hover:before:transition-all hover:before:duration-500 after:border-r-[4px] after:border-b-[4px] after:border-transparent hover:after:border-primary after:absolute after:bottom-0 after:right-0 after:w-0 after:h-0 hover:after:w-full hover:after:h-full hover:after:transition-all hover:after:duration-500">
+                    className="px-8 py-3 relative shadow-lg before:absolute before:top-0 before:left-0 before:w-0 before:h-0 before:border-l-[4px] before:border-t-[4px] before:border-transparent dark:bg-slate-800 dark:text-slate-300 hover:before:w-full hover:before:h-full hover:before:border-primary hover:before:transition-all hover:before:duration-500 after:border-r-[4px] after:border-b-[4px] after:border-transparent hover:after:border-primary after:absolute after:bottom-0 after:right-0 after:w-0 after:h-0 hover:after:w-full hover:after:h-full hover:after:transition-all hover:after:duration-500">
                   Animate 1
                 </button>
 
                 <button
-                    className="py-2 px-6 shadow-lg before:block before:-left-1 before:-top-1 before:bg-primary before:absolute before:h-0 before:w-0 before:hover:w-[100%] before:hover:h-[100%]  before:duration-500 before:-z-40 after:block after:-right-1 after:-bottom-1 after:bg-primary after:absolute after:h-0 after:w-0 after:hover:w-[100%] after:hover:h-[100%] after:duration-500 after:-z-40 bg-secondary relative ">
+                    className="py-2 px-6 shadow-lg before:block before:-left-1 before:-top-1 before:border-t-[4px] before:invisible before:hover:visible before:border-l-[4px] before:border-primary before:absolute before:h-0 before:w-0 before:hover:w-[100%] before:hover:h-[100%] dark:bg-slate-800 dark:text-slate-200 before:duration-500 before:-z-40 after:block dark:z-0 after:-right-1 after:-bottom-1 after:border-r-[4px] after:border-b-[4px] after:border-primary after:invisible after:hover:visible after:absolute after:h-0 after:w-0 after:hover:w-[100%] after:hover:h-[100%] after:duration-500 after:-z-40 bg-secondary relative ">
                   Animate 2
                 </button>
               </div>
@@ -247,29 +120,31 @@ const AnimatedButton = () => {
 
           {hoverAnimatedButtonCode && (
               <ShowCode
-                  code={`
-// Animate 1
-<button className="px-8 py-3 relative shadow-lg before:absolute 
-before:top-0 before:left-0 before:w-0 before:h-0 before:border-l-[4px] before:border-t-[4px] before:border-transparent 
-hover:before:w-full hover:before:h-full hover:before:border-primary hover:before:transition-all hover:before:duration-500 
-after:border-r-[4px] after:border-b-[4px] after:border-transparent hover:after:border-primary 
-after:absolute after:bottom-0 after:right-0 after:w-0 
-after:h-0 hover:after:w-full hover:after:h-full hover:after:transition-all hover:after:duration-500"> Animate 1
-</button>
+                  code='
+import React from "react";
 
-// Animate 2
-<button className="py-2 px-6 shadow-lg before:block 
-before:-left-1 before:-top-1 before:bg-primary before:absolute 
-before:h-0 before:w-0 before:hover:w-[100%] before:hover:h-[100%]  before:duration-500 
-before:-z-40 after:block after:-right-1 after:-bottom-1 
-after:bg-primary after:absolute after:h-0 after:w-0 
-after:hover:w-[100%] after:hover:h-[100%] after:duration-500 
-after:-z-40 bg-secondary relative "> Animate 2
-</button>
-`}
+const AnimatedButton = () => {
+
+    return (
+        <>
+            <button
+                className="px-8 py-3 relative shadow-lg before:absolute before:top-0 before:left-0 before:w-0 before:h-0 before:border-l-[4px] before:border-t-[4px] before:border-transparent dark:bg-slate-800 dark:text-slate-300 hover:before:w-full hover:before:h-full hover:before:border-primary hover:before:transition-all hover:before:duration-500 after:border-r-[4px] after:border-b-[4px] after:border-transparent hover:after:border-primary after:absolute after:bottom-0 after:right-0 after:w-0 after:h-0 hover:after:w-full hover:after:h-full hover:after:transition-all hover:after:duration-500">
+                Animate 1
+            </button>
+
+            <button
+                className="py-2 px-6 shadow-lg before:block before:-left-1 before:-top-1 before:border-t-[4px] before:invisible before:hover:visible before:border-l-[4px] before:border-primary before:absolute before:h-0 before:w-0 before:hover:w-[100%] before:hover:h-[100%] dark:bg-slate-800 dark:text-slate-200 before:duration-500 before:-z-40 after:block dark:z-0 after:-right-1 after:-bottom-1 after:border-r-[4px] after:border-b-[4px] after:border-primary after:invisible after:hover:visible after:absolute after:h-0 after:w-0 after:hover:w-[100%] after:hover:h-[100%] after:duration-500 after:-z-40 bg-secondary relative ">
+                Animate 2
+            </button>
+        </>
+    );
+};
+
+export default AnimatedButton;
+                  '
               />
           )}
-        </div>
+        </ComponentWrapper>
 
         <div className="mt-8">
           <ContentHeader
@@ -278,60 +153,40 @@ after:-z-40 bg-secondary relative "> Animate 2
           />
         </div>
 
-        <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-          Button with background hover animation, creating a dynamic effect when users hover over it.
-        </p>
+        <ComponentDescription text='Button with background hover animation, creating a dynamic effect when users hover over it.'/>
 
-        <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-          <div className="relative">
-            <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${hoverBgAnimatedButtonPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-            <button
-                className={`${
-                    hoverBgAnimatedButtonPreview && "text-tabTextColor"
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleHoverBgAnimatedButtonPreview}
-            >
-              Preview
-            </button>
-            <button
-                className={`${
-                    hoverBgAnimatedButtonCode && "text-tabTextColor"
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleHoverBgAnimatedButtonCode}
-            >
-              Code
-            </button>
-          </div>
+        <ToggleTab setCode={setHoverBgAnimatedButtonCode} code={hoverBgAnimatedButtonCode} setPreview={setHoverBgAnimatedButtonPreview} preview={hoverBgAnimatedButtonPreview}/>
+
+        <ComponentWrapper>
           {hoverBgAnimatedButtonPreview && (
               <div className="p-8 mb-4 flex items-center gap-5 justify-center flex-wrap">
                 <button
-                    className="px-6 rounded-md py-2 border border-primary relative before:absolute overflow-hidden before:translate-x-[-200px] hover:before:translate-x-0 before:z-[-1] before:translate-y-12 before:transition hover:before:translate-y-0 before:duration-300 hover:text-secondary  before:w-full before:h-full before:bg-primary before:top-0 before:left-0">
+                    className="px-6 rounded-md py-2 border border-primary relative before:absolute overflow-hidden before:translate-x-[-200px] hover:before:translate-x-0 before:z-[-1] before:translate-y-12 dark:text-slate-200 dark:border-slate-700 dark:z-0 dark:before:bg-slate-700 before:transition hover:before:translate-y-0 before:duration-300 hover:text-secondary  before:w-full before:h-full before:bg-primary before:top-0 before:left-0">
                   Left Bottom
                 </button>
 
                 <button
-                    className="px-6 py-2 rounded-md border border-primary relative before:absolute overflow-hidden before:translate-x-[200px] hover:before:translate-x-0 before:-translate-y-12 hover:before:-translate-y-0 before:z-[-1] before:transition before:duration-300 hover:text-secondary  before:w-full before:h-full before:bg-primary before:top-0 before:left-0">
+                    className="px-6 py-2 rounded-md border border-primary relative before:absolute overflow-hidden before:translate-x-[200px] hover:before:translate-x-0 before:-translate-y-12 dark:text-slate-200 dark:border-slate-700 dark:z-0 dark:before:bg-slate-700 hover:before:-translate-y-0 before:z-[-1] before:transition before:duration-300 hover:text-secondary  before:w-full before:h-full before:bg-primary before:top-0 before:left-0">
                   Right Top
                 </button>
 
                 <button
-                    className="px-6 py-2 rounded-md border border-primary relative before:absolute overflow-hidden before:translate-x-[-200px] hover:before:translate-x-0 before:z-[-1] before:transition before:duration-300 hover:text-secondary  before:w-full before:h-full before:bg-primary before:top-0 before:left-0">
+                    className="px-6 py-2 rounded-md border border-primary relative before:absolute overflow-hidden before:translate-x-[-200px] hover:before:translate-x-0 before:z-[-1] before:transition dark:text-slate-200 dark:border-slate-700 dark:z-0 dark:before:bg-slate-700 before:duration-300 hover:text-secondary  before:w-full before:h-full before:bg-primary before:top-0 before:left-0">
                   Left
                 </button>
 
                 <button
-                    className="px-6 py-2 rounded-md border border-primary relative before:absolute overflow-hidden before:translate-x-[200px] hover:before:translate-x-0 before:z-[-1] before:transition before:duration-300 hover:text-secondary  before:w-full before:h-full before:bg-primary before:top-0 before:left-0">
+                    className="px-6 py-2 rounded-md border border-primary relative before:absolute overflow-hidden dark:text-slate-200 dark:border-slate-700 dark:z-0 dark:before:bg-slate-700 before:translate-x-[200px] hover:before:translate-x-0 before:z-[-1] before:transition before:duration-300 hover:text-secondary  before:w-full before:h-full before:bg-primary before:top-0 before:left-0">
                   Right
                 </button>
 
                 <button
-                    className="px-6 py-2 rounded-md border border-primary relative before:absolute overflow-hidden before:translate-y-[-200px] hover:before:translate-y-0 before:z-[-1] before:transition before:duration-300 hover:text-secondary  before:w-full before:h-full before:bg-primary before:top-0 before:left-0">
+                    className="px-6 py-2 rounded-md border border-primary relative before:absolute overflow-hidden dark:text-slate-200 dark:border-slate-700 dark:z-0 dark:before:bg-slate-700 before:translate-y-[-200px] hover:before:translate-y-0 before:z-[-1] before:transition before:duration-300 hover:text-secondary  before:w-full before:h-full before:bg-primary before:top-0 before:left-0">
                   Top
                 </button>
 
                 <button
-                    className="px-6 py-2 rounded-md border border-primary relative before:absolute overflow-hidden before:translate-y-[200px] hover:before:translate-y-0 before:z-[-1] before:transition before:duration-300 hover:text-secondary  before:w-full before:h-full before:bg-primary before:top-0 before:left-0">
+                    className="px-6 py-2 rounded-md border border-primary relative before:absolute overflow-hidden dark:text-slate-200 dark:border-slate-700 dark:z-0 dark:before:bg-slate-700 before:translate-y-[200px] hover:before:translate-y-0 before:z-[-1] before:transition before:duration-300 hover:text-secondary  before:w-full before:h-full before:bg-primary before:top-0 before:left-0">
                   Bottom
                 </button>
               </div>
@@ -339,45 +194,56 @@ after:-z-40 bg-secondary relative "> Animate 2
 
           {hoverBgAnimatedButtonCode &&
               <ShowCode code='
-            {/* left bottom */}
+import React from "react";
+
+const AnimatedButton = () => {
+
+    return (
+        <>
+            {/* left bottom animation */}
             <button
-                className="px-6 rounded-md py-2 border border-primary relative before:absolute overflow-hidden before:translate-x-[-200px] hover:before:translate-x-0 before:z-[-1] before:translate-y-12 before:transition hover:before:translate-y-0 before:duration-300 hover:text-secondary  before:w-full before:h-full before:bg-primary before:top-0 before:left-0">
+                className="px-6 rounded-md py-2 border border-primary relative before:absolute overflow-hidden before:translate-x-[-200px] hover:before:translate-x-0 before:z-[-1] before:translate-y-12 dark:text-slate-200 dark:border-slate-700 dark:z-0 dark:before:bg-slate-700 before:transition hover:before:translate-y-0 before:duration-300 hover:text-secondary  before:w-full before:h-full before:bg-primary before:top-0 before:left-0">
                 Left Bottom
             </button>
 
-            {/* right top */}
+            {/* right to animation */}
             <button
-                className="px-6 py-2 rounded-md border border-primary relative before:absolute overflow-hidden before:translate-x-[200px] hover:before:translate-x-0 before:-translate-y-12 hover:before:-translate-y-0 before:z-[-1] before:transition before:duration-300 hover:text-secondary  before:w-full before:h-full before:bg-primary before:top-0 before:left-0">
+                className="px-6 py-2 rounded-md border border-primary relative before:absolute overflow-hidden before:translate-x-[200px] hover:before:translate-x-0 before:-translate-y-12 dark:text-slate-200 dark:border-slate-700 dark:z-0 dark:before:bg-slate-700 hover:before:-translate-y-0 before:z-[-1] before:transition before:duration-300 hover:text-secondary  before:w-full before:h-full before:bg-primary before:top-0 before:left-0">
                 Right Top
             </button>
 
-            {/* left */}
+            {/* left animation */}
             <button
-                className="px-6 py-2 rounded-md border border-primary relative before:absolute overflow-hidden before:translate-x-[-200px] hover:before:translate-x-0 before:z-[-1] before:transition before:duration-300 hover:text-secondary  before:w-full before:h-full before:bg-primary before:top-0 before:left-0">
+                className="px-6 py-2 rounded-md border border-primary relative before:absolute overflow-hidden before:translate-x-[-200px] hover:before:translate-x-0 before:z-[-1] before:transition dark:text-slate-200 dark:border-slate-700 dark:z-0 dark:before:bg-slate-700 before:duration-300 hover:text-secondary  before:w-full before:h-full before:bg-primary before:top-0 before:left-0">
                 Left
             </button>
 
-            {/* right */}
+            {/* right animation */}
             <button
-                className="px-6 py-2 rounded-md border border-primary relative before:absolute overflow-hidden before:translate-x-[200px] hover:before:translate-x-0 before:z-[-1] before:transition before:duration-300 hover:text-secondary  before:w-full before:h-full before:bg-primary before:top-0 before:left-0">
+                className="px-6 py-2 rounded-md border border-primary relative before:absolute overflow-hidden dark:text-slate-200 dark:border-slate-700 dark:z-0 dark:before:bg-slate-700 before:translate-x-[200px] hover:before:translate-x-0 before:z-[-1] before:transition before:duration-300 hover:text-secondary  before:w-full before:h-full before:bg-primary before:top-0 before:left-0">
                 Right
             </button>
 
-            {/* top */}
+            {/* top animation */}
             <button
-                className="px-6 py-2 rounded-md border border-primary relative before:absolute overflow-hidden before:translate-y-[-200px] hover:before:translate-y-0 before:z-[-1] before:transition before:duration-300 hover:text-secondary  before:w-full before:h-full before:bg-primary before:top-0 before:left-0">
+                className="px-6 py-2 rounded-md border border-primary relative before:absolute overflow-hidden dark:text-slate-200 dark:border-slate-700 dark:z-0 dark:before:bg-slate-700 before:translate-y-[-200px] hover:before:translate-y-0 before:z-[-1] before:transition before:duration-300 hover:text-secondary  before:w-full before:h-full before:bg-primary before:top-0 before:left-0">
                 Top
             </button>
 
-            {/* bottom */}
+            {/* bottom animation */}
             <button
-                className="px-6 py-2 rounded-md border border-primary relative before:absolute overflow-hidden before:translate-y-[200px] hover:before:translate-y-0 before:z-[-1] before:transition before:duration-300 hover:text-secondary  before:w-full before:h-full before:bg-primary before:top-0 before:left-0">
+                className="px-6 py-2 rounded-md border border-primary relative before:absolute overflow-hidden dark:text-slate-200 dark:border-slate-700 dark:z-0 dark:before:bg-slate-700 before:translate-y-[200px] hover:before:translate-y-0 before:z-[-1] before:transition before:duration-300 hover:text-secondary  before:w-full before:h-full before:bg-primary before:top-0 before:left-0">
                 Bottom
             </button>
+        </>
+    );
+};
+
+export default AnimatedButton;
               '
               />
           }
-        </div>
+        </ComponentWrapper>
 
         <div className="mt-8">
           <ContentHeader
@@ -386,35 +252,15 @@ after:-z-40 bg-secondary relative "> Animate 2
           />
         </div>
 
-        <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-          Button with a background slide-up animation, where the background color smoothly slides up when hovered over.
-        </p>
+        <ComponentDescription text='Button with a background slide-up animation, where the background color smoothly slides up when hovered over.'/>
 
-        <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-          <div className="relative">
-            <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${slideUpAnimationButtonPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-            <button
-                className={`${
-                    slideUpAnimationButtonPreview && "text-tabTextColor"
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleSlideUpAnimationButtonPreview}
-            >
-              Preview
-            </button>
-            <button
-                className={`${
-                    slideUpAnimationButtonCode && "text-tabTextColor"
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleSlideUpAnimationButtonCode}
-            >
-              Code
-            </button>
-          </div>
+        <ToggleTab setCode={setSlideUpAnimationButtonCode} code={slideUpAnimationButtonCode} preview={slideUpAnimationButtonPreview} setPreview={setSlideUpAnimationButtonPreview}/>
+
+        <ComponentWrapper>
           {slideUpAnimationButtonPreview && (
               <div className="p-8 mb-4 flex items-center gap-5 justify-center">
                 <button
-                    className="relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold text-primary transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-gray-50 group">
+                    className="relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold text-primary transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-gray-50 dark:bg-slate-800 group">
                   <span
                       className="absolute bottom-0 left-0 w-full h-1 transition-all duration-150 ease-in-out bg-primary group-hover:h-full"></span>
                   <span className="absolute right-0 pr-4 duration-200 ease-out group-hover:translate-x-12">
@@ -436,26 +282,34 @@ after:-z-40 bg-secondary relative "> Animate 2
 
           {slideUpAnimationButtonCode &&
               <ShowCode code='
-<button
-    className="relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold text-primary transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-gray-50 group">
-      <span
-          className="absolute bottom-0 left-0 w-full h-1 transition-all duration-150 ease-in-out bg-primary group-hover:h-full"></span>
-    <span className="absolute right-0 pr-4 duration-200 ease-out group-hover:translate-x-12">
-        <svg className="w-5 h-5 text-green-400" fill="none" stroke="#3B9DF8" viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-        </svg>
-    </span>
-        <span
-        className="absolute left-0 pl-2.5 -translate-x-12 group-hover:translate-x-0 ease-out duration-200">
-            <svg className="w-5 h-5 text-green-400" fill="none" stroke="#fff" viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-            </svg>
-        </span>
-    <span className="relative w-full text-left transition-colors duration-200 ease-in-out group-hover:text-white">ZenUI Library</span>
-</button>
+import React from "react";
+
+const AnimatedButton = () => {
+
+    return (
+        <button
+            className="relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold text-primary transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-gray-50 dark:bg-slate-800 group">
+                  <span
+                      className="absolute bottom-0 left-0 w-full h-1 transition-all duration-150 ease-in-out bg-primary group-hover:h-full"></span>
+                  <span className="absolute right-0 pr-4 duration-200 ease-out group-hover:translate-x-12">
+                        <svg className="w-5 h-5 text-green-400" fill="none" stroke="#3B9DF8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                  </span>
+
+                  <span
+                      className="absolute left-0 pl-2.5 -translate-x-12 group-hover:translate-x-0 ease-out duration-200">
+                      <svg className="w-5 h-5 text-green-400" fill="none" stroke="#fff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                  </span>
+
+                  <span
+                      className="relative w-full text-left transition-colors duration-200 ease-in-out group-hover:text-white">ZenUI Library</span>
+        </button>
+    );
+};
+
+export default AnimatedButton;
               '
               />}
-        </div>
+        </ComponentWrapper>
 
         <div className="mt-8">
           <ContentHeader
@@ -464,31 +318,11 @@ after:-z-40 bg-secondary relative "> Animate 2
           />
         </div>
 
-        <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-          Button with a background slide animation, where the background color slides in from a specified direction on hover.
-        </p>
+        <ComponentDescription text='Button with a background slide animation, where the background color slides in from a specified direction on hover.'/>
 
-        <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-          <div className="relative">
-            <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${slideAnimationButtonPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-            <button
-                className={`${
-                    slideAnimationButtonPreview && "text-tabTextColor"
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleSlideAnimationButtonPreview}
-            >
-              Preview
-            </button>
-            <button
-                className={`${
-                    slideAnimationButtonCode && "text-tabTextColor"
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleSlideAnimationButtonCode}
-            >
-              Code
-            </button>
-          </div>
+        <ToggleTab setCode={setSlideAnimationButtonCode} code={slideAnimationButtonCode} setPreview={setSlideAnimationButtonPreview} preview={slideAnimationButtonPreview}/>
+
+        <ComponentWrapper>
           {slideAnimationButtonPreview && (
               <div className="p-8 mb-4 flex items-center gap-5 justify-center">
                 <button
@@ -519,7 +353,7 @@ after:-z-40 bg-secondary relative "> Animate 2
 </button>
               '
               />}
-        </div>
+        </ComponentWrapper>
 
         <div className="mt-8">
           <ContentHeader
@@ -528,31 +362,11 @@ after:-z-40 bg-secondary relative "> Animate 2
           />
         </div>
 
-        <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-          Button with a background bounce-up animation, where the background color bounces upward with a dynamic effect when hovered over.
-        </p>
+        <ComponentDescription text='Button with a background bounce-up animation, where the background color bounces upward with a dynamic effect when hovered over.'/>
 
-        <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-          <div className="relative">
-            <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${bounceUpAnimationButtonPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-            <button
-                className={`${
-                    bounceUpAnimationButtonPreview && "text-tabTextColor"
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleBounceUpAnimationButtonPreview}
-            >
-              Preview
-            </button>
-            <button
-                className={`${
-                    bounceUpAnimationButtonCode && "text-tabTextColor"
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleBounceUpAnimationButtonCode}
-            >
-              Code
-            </button>
-          </div>
+        <ToggleTab setCode={setBounceUpAnimationButtonCode} code={bounceUpAnimationButtonCode} preview={bounceUpAnimationButtonPreview} setPreview={setBounceUpAnimationButtonPreview}/>
+
+        <ComponentWrapper>
           {bounceUpAnimationButtonPreview && (
               <div className="p-8 mb-4 flex items-center gap-5 justify-center">
                 <button
@@ -585,7 +399,7 @@ after:-z-40 bg-secondary relative "> Animate 2
 </button>
               '
               />}
-        </div>
+        </ComponentWrapper>
 
         <div className="mt-8">
           <ContentHeader
@@ -594,38 +408,18 @@ after:-z-40 bg-secondary relative "> Animate 2
           />
         </div>
 
-        <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-          Button with a bottom border animation, featuring a dynamic effect where the bottom border slides in or changes style on hover.
-        </p>
+        <ComponentDescription text='Button with a bottom border animation, featuring a dynamic effect where the bottom border slides in or changes style on hover.'/>
 
-        <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-          <div className="relative">
-            <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${bottomBorderAnimationButtonPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-            <button
-                className={`${
-                    bottomBorderAnimationButtonPreview && "text-tabTextColor"
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleBottomBorderAnimationButtonPreview}
-            >
-              Preview
-            </button>
-            <button
-                className={`${
-                    bottomBorderAnimationButtonCode && "text-tabTextColor"
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleBottomBorderAnimationButtonCode}
-            >
-              Code
-            </button>
-          </div>
+        <ToggleTab setCode={setBottomBorderAnimationButtonCode} code={bottomBorderAnimationButtonCode} setPreview={setBottomBorderAnimationButtonPreview} preview={bottomBorderAnimationButtonPreview}/>
+
+        <ComponentWrapper>
           {bottomBorderAnimationButtonPreview && (
               <div className="p-8 mb-4 flex items-center gap-5 justify-center">
                 <button
                     className="relative inline-flex items-center justify-center px-6 py-3 text-lg font-medium tracking-tighter text-white bg-gray-800 rounded-md group">
                   <span
                       className="absolute inset-0 w-full h-full mt-1 ml-1 transition-all duration-300 ease-in-out bg-primary rounded-md group-hover:mt-0 group-hover:ml-0"></span>
-                  <span className="absolute inset-0 w-full h-full bg-white rounded-md "></span>
+                  <span className="absolute inset-0 w-full h-full dark:bg-slate-800 bg-white rounded-md "></span>
                   <span
                       className="absolute inset-0 w-full h-full transition-all duration-200 ease-in-out delay-100 bg-primary rounded-md opacity-0 group-hover:opacity-100 "></span>
                   <span
@@ -636,19 +430,28 @@ after:-z-40 bg-secondary relative "> Animate 2
 
           {bottomBorderAnimationButtonCode &&
               <ShowCode code='
-<button
-    className="relative inline-flex items-center justify-center px-6 py-3 text-lg font-medium tracking-tighter text-white bg-gray-800 rounded-md group">
-  <span
-      className="absolute inset-0 w-full h-full mt-1 ml-1 transition-all duration-300 ease-in-out bg-primary rounded-md group-hover:mt-0 group-hover:ml-0"></span>
-  <span className="absolute inset-0 w-full h-full bg-white rounded-md "></span>
-  <span
-      className="absolute inset-0 w-full h-full transition-all duration-200 ease-in-out delay-100 bg-primary rounded-md opacity-0 group-hover:opacity-100 "></span>
-  <span
-      className="relative text-primary transition-colors duration-200 ease-in-out delay-100 group-hover:text-white">ZenUI Library</span>
-</button>
+import React from "react";
+
+const AnimatedButton = () => {
+
+    return (
+        <button
+            className="relative inline-flex items-center justify-center px-6 py-3 text-lg font-medium tracking-tighter text-white bg-gray-800 rounded-md group">
+                  <span
+                      className="absolute inset-0 w-full h-full mt-1 ml-1 transition-all duration-300 ease-in-out bg-primary rounded-md group-hover:mt-0 group-hover:ml-0"></span>
+            <span className="absolute inset-0 w-full h-full dark:bg-slate-800 bg-white rounded-md "></span>
+            <span
+                className="absolute inset-0 w-full h-full transition-all duration-200 ease-in-out delay-100 bg-primary rounded-md opacity-0 group-hover:opacity-100 "></span>
+            <span
+                className="relative text-primary transition-colors duration-200 ease-in-out delay-100 group-hover:text-white">ZenUI Library</span>
+        </button>
+    );
+};
+
+export default AnimatedButton;
               '
               />}
-        </div>
+        </ComponentWrapper>
 
         <div className="mt-8">
           <ContentHeader
@@ -657,57 +460,46 @@ after:-z-40 bg-secondary relative "> Animate 2
           />
         </div>
 
-        <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-          Button with a hover background fill animation, where the background color smoothly fills the button from one side to the other when hovered over.
-        </p>
+        <ComponentDescription text='Button with a hover background fill animation, where the background color smoothly fills the button from one side to the other when hovered over.'/>
 
-        <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-          <div className="relative">
-            <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${bgFillAnimationPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-            <button
-                className={`${
-                    bgFillAnimationPreview && "text-tabTextColor"
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleBgFillAnimationPreview}
-            >
-              Preview
-            </button>
-            <button
-                className={`${
-                    bgFillAnimationCode && "text-tabTextColor"
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleBgFillAnimationCode}
-            >
-              Code
-            </button>
-          </div>
+        <ToggleTab setCode={setBgFillAnimationCode} code={bgFillAnimationCode} preview={bgFillAnimationPreview} setPreview={setBgFillAnimationPreview}/>
+
+        <ComponentWrapper>
           {bgFillAnimationPreview && (
               <div className="p-8 mb-4 flex items-center gap-5 justify-center">
                 <button
-                    className="relative inline-flex items-center justify-center px-8 py-3.5 overflow-hidden font-mono  tracking-tighter text-white bg-gray-300 rounded-lg group">
+                    className="relative inline-flex items-center justify-center px-8 py-3.5 overflow-hidden font-mono dark:bg-slate-800 tracking-tighter text-white bg-gray-300 rounded-lg group">
                   <span
                       className="absolute w-0 h-0 transition-all duration-500 ease-out bg-primary rounded-full group-hover:w-56 group-hover:h-56"></span>
                   <span
                       className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-300"></span>
-                  <span className="relative text-text group-hover:text-white">ZenUI Library</span>
+                  <span className="relative text-text dark:text-slate-200 group-hover:text-white">ZenUI Library</span>
                 </button>
               </div>
           )}
 
           {bgFillAnimationCode &&
               <ShowCode code='
-<button
-    className="relative inline-flex items-center justify-center px-8 py-3.5 overflow-hidden font-mono  tracking-tighter text-white bg-gray-300 rounded-lg group">
-  <span
-      className="absolute w-0 h-0 transition-all duration-500 ease-out bg-primary rounded-full group-hover:w-56 group-hover:h-56"></span>
-  <span
-      className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-300"></span>
-  <span className="relative text-text group-hover:text-white">ZenUI Library</span>
-</button>
+import React from "react";
+
+const AnimatedButton = () => {
+
+    return (
+        <button
+            className="relative inline-flex items-center justify-center px-8 py-3.5 overflow-hidden font-mono dark:bg-slate-800 tracking-tighter text-white bg-gray-300 rounded-lg group">
+                  <span
+                      className="absolute w-0 h-0 transition-all duration-500 ease-out bg-primary rounded-full group-hover:w-56 group-hover:h-56"></span>
+            <span
+                className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-300"></span>
+            <span className="relative text-text dark:text-slate-200 group-hover:text-white">ZenUI Library</span>
+        </button>
+    );
+};
+
+export default AnimatedButton;
               '
               />}
-        </div>
+        </ComponentWrapper>
 
         <div className="mt-8">
           <ContentHeader
@@ -716,31 +508,11 @@ after:-z-40 bg-secondary relative "> Animate 2
           />
         </div>
 
-        <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-          Button with a two-part merge animation, where two distinct sections of the button smoothly combine into a single cohesive design on hover.
-        </p>
+        <ComponentDescription text='Button with a two-part merge animation, where two distinct sections of the button smoothly combine into a single cohesive design on hover.'/>
 
-        <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-          <div className="relative">
-            <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${margeAnimationPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-            <button
-                className={`${
-                    margeAnimationPreview && "text-tabTextColor"
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleMargeAnimationPreview}
-            >
-              Preview
-            </button>
-            <button
-                className={`${
-                    margeAnimationCode && "text-tabTextColor"
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleMargeAnimationCode}
-            >
-              Code
-            </button>
-          </div>
+        <ToggleTab setCode={setMargeAnimationCode} code={margeAnimationCode} setPreview={setMargeAnimationPreview} preview={margeAnimationPreview}/>
+
+        <ComponentWrapper>
           {margeAnimationPreview && (
               <div className="p-8 mb-4 flex items-center gap-5 justify-center">
                 <button className="relative px-6 py-3 font-bold text-white rounded-lg group">
@@ -764,29 +536,13 @@ after:-z-40 bg-secondary relative "> Animate 2
 </button>
               '
               />}
-        </div>
+        </ComponentWrapper>
 
         <OverviewFooter backUrl='/components/dropdown-button' backName='dropdown button' forwardName='cards' forwardUrl='/components/cards'/>
       </div>
 
-      <div className="1024px:flex hidden flex-col gap-4 sticky top-4 right-0 w-[40%]">
-        <h2 className="text-[0.9rem] font-[600] text-text tracking-widest">
-          CONTENTS
-        </h2>
-        {
-            animatedButtonContents.map((item) => (
-              <a
-                key={item.id}
-                href={item.href}
-                className={`${
-                  activeSection === item.href.slice(1) && "!text-primary !border-primary"
-                } text-[0.9rem] text-text border-l border-transparent pl-4`}
-              >
-                {item.title}
-              </a>
-            ))
-          }
-      </div>
+      <ContentNavbar activeSection={activeSection} contents={animatedButtonContents}/>
+
       <Helmet>
         <title>Buttons - Animated Button</title>
       </Helmet>

@@ -9,7 +9,7 @@ import DragAndDrop from "../../../Components/Overview/SidebarContent/Content/Sur
 
 const CardPage = () => {
     return (
-        <>
+        <div className='dark:bg-darkBgColor'>
             <Navbar />
             <MobileNavbar/>
             <div className="flex w-full mx-auto max-w-[1700px]">
@@ -22,7 +22,7 @@ const CardPage = () => {
                     <DragAndDrop />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

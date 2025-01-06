@@ -30,6 +30,10 @@ import {IoBookmarkOutline, IoLocationOutline} from "react-icons/io5";
 import {GoShareAndroid} from "react-icons/go";
 import {AiOutlineDelete} from "react-icons/ai";
 
+import ComponentDescription from "../../../../../Shared/ComponentDescription.jsx";
+import ToggleTab from "../../../../../Shared/ToggleTab.jsx";
+import ComponentWrapper from "../../../../../Shared/ComponentWrapper.jsx";
+import ContentNavbar from "../../../../../Shared/ContentNavbar.jsx";
 
 import {useToggleCardView} from "../../../../../CustomHooks/ButtonToggle.js";
 
@@ -41,113 +45,34 @@ const Card = () => {
   const sectionIds = cardContents.map(item => item.href.slice(1));
   const activeSection = useScrollSpy(sectionIds);
 
-  const handleBlogCardPreview = () => {
-    setBlogCardPreview(true);
-    setBlogCardCode(false);
-  };
-
-  const handleBlogCardCode = () => {
-    setBlogCardCode(true);
-    setBlogCardPreview(false);
-  };
   // products card
   const [productCardPreview, setProductCardPreview] = useState(true);
   const [productCardCode, setProductCardCode] = useState(false);
 
-  const handleProductCardPreview = () => {
-    setProductCardPreview(true);
-    setProductCardCode(false);
-  };
-
-  const handleProductCardCode = () => {
-    setProductCardCode(true);
-    setProductCardPreview(false);
-  };
   //Music Card
   const [musicCardPreview, setMusicCardPreview] = useState(true);
   const [musicCardCode, setMusicCardCode] = useState(false);
 
-  const handleMusicCardPreview = () => {
-    setMusicCardPreview(true);
-    setMusicCardCode(false);
-  };
-
-  const handleMusicCardCode = () => {
-    setMusicCardCode(true);
-    setMusicCardPreview(false);
-  };
   // simple Profile card
   const [simpleProfileCardPreview, setSimpleProfileCardPreview] =
     useState(true);
   const [simpleProfileCardCode, setSimpleProfileCardCode] = useState(false);
 
-  const handleSimpleProfileCardPreview = () => {
-    setSimpleProfileCardPreview(true);
-    setSimpleProfileCardCode(false);
-  };
-
-  const handleSimpleProfileCardCode = () => {
-    setSimpleProfileCardCode(true);
-    setSimpleProfileCardPreview(false);
-  };
-
   // Profile Card
   const [profileCardPreview, setProfileCardPreview] = useState(true);
   const [profileCardCode, setProfileCardCode] = useState(false);
-
-  const handleProfileCardPreview = () => {
-    setProfileCardPreview(true);
-    setProfileCardCode(false);
-  };
-
-  const handleProfileCardCode = () => {
-    setProfileCardCode(true);
-    setProfileCardPreview(false);
-  };
 
   // Team Card
   const [teamCardPreview, setTeamCardPreview] = useState(true);
   const [teamCardCode, setTeamCardCode] = useState(false);
 
-  const handleTeamCardPreview = () => {
-    setTeamCardPreview(true);
-    setTeamCardCode(false);
-  };
-
-  const handleTeamCardCode = () => {
-    setTeamCardCode(true);
-    setTeamCardPreview(false);
-  };
-
   // Pricing Card
   const [pricingCardPreview, setPricingCardPreview] = useState(true);
   const [pricingCardCode, setPricingCardCode] = useState(false);
 
-  const handlePricingCardPreview = () => {
-    setPricingCardPreview(true);
-    setPricingCardCode(false);
-  };
-
-  const handlePricingCardCode = () => {
-    setPricingCardCode(true);
-    setPricingCardPreview(false);
-  };
-
   // Pricing Card 2
   const [pricingCard2Preview, setPricingCard2Preview] = useState(true);
   const [pricingCard2Code, setPricingCard2Code] = useState(false);
-
-  const handlePricingCard2Preview = () => {
-    setPricingCard2Preview(true);
-    setPricingCard2Code(false);
-  };
-
-  const handlePricingCard2Code = () => {
-    setPricingCard2Code(true);
-    setPricingCard2Preview(false);
-  };
-
-  const toggleCardView = useToggleCardView();
 
   // random Card 1
   const [randomCardPreview1, setRandomCardPreview1] = useState(true);
@@ -206,31 +131,11 @@ const Card = () => {
         <div className="w-full 425px:w-[80%]">
           <ContentHeader id="ticket_card" text={"ticket Card"}/>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            A compact card displaying essential ticket information such as title, location, and due date for quick reference.
-          </p>
+          <ComponentDescription text='A compact card displaying essential ticket information such as title, location, and due date for quick reference.'/>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded my-8">
-            <div className="relative">
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${ticketCardPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-              <button
-                  className={`${
-                      ticketCardPreview && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={() => toggleCardView(setTicketCardPreview, setTicketCardCode, true)}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      ticketCardCode && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={() => toggleCardView(setTicketCardPreview, setTicketCardCode, false)}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={ticketCardCode} preview={ticketCardPreview} setPreview={setTicketCardPreview} setCode={setTicketCardCode}/>
+
+          <ComponentWrapper>
             {ticketCardPreview && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
                   <div className='bg-blue-50 w-full justify-between rounded-xl flex '>
@@ -258,7 +163,7 @@ const Card = () => {
                     <div
                         className='flex flex-col justify-between relative w-[45%] 1024px:w-[40%] items-center border-l-[2px] p-[15px] 1024px:p-[20px]  border-dashed border-gray-200'>
 
-                    {/* top carve */}
+                      {/* top carve */}
                       <div className='w-[45px] h-[45px] rounded-full bg-white absolute top-[-15%] 1024px:top-[-13%] 425px:left-[-13.5%] left-[-19%] 1024px:left-[-11.5%]'></div>
 
                       <h4 className='text-[0.9rem] 1024px:text-[1.3rem] font-bold text-blue-800'>9:00 AM</h4>
@@ -339,36 +244,18 @@ export default TicketCard;
             '
                 />
             )}
+          </ComponentWrapper>
+
+          <div className='mt-8'>
+            <ContentHeader id="Blog_Card" text={"Blog Card"}/>
           </div>
 
-          <ContentHeader id="Blog_Card" text={"Blog Card"}/>
+          <ComponentDescription text='This is a blog card with icon and dropdown component. Explore content with icons and interactive dropdowns
+            for seamless navigation.'/>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            This is a blog card with icon and dropdown component. Explore content with icons and interactive dropdowns
-            for seamless navigation.
-          </p>
+          <ToggleTab code={blogCardCode} setCode={setBlogCardCode} setPreview={setBlogCardPreview} preview={blogCardPreview}/>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded my-8">
-            <div className="relative">
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${blogCardPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-              <button
-                  className={`${
-                      blogCardPreview && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={handleBlogCardPreview}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      blogCardCode && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={handleBlogCardCode}
-              >
-                Code
-              </button>
-            </div>
+          <ComponentWrapper>
             {blogCardPreview && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
                   <div className="w-full 1024px:w-[70%] shadow-lg bg-secondary rounded">
@@ -579,7 +466,7 @@ export default BlogCard;
             '
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <ContentHeader
               id="product_card"
@@ -587,31 +474,12 @@ export default BlogCard;
               text={"Product Card"}
           />
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            This is a product card with icon and add to cart button. Browse products and add them to your cart
-            effortlessly.
-          </p>
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${productCardPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-              <button
-                  className={`${
-                      productCardPreview && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={handleProductCardPreview}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      productCardCode && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={handleProductCardCode}
-              >
-                Code
-              </button>
-            </div>
+          <ComponentDescription text='This is a product card with icon and add to cart button. Browse products and add them to your cart
+            effortlessly.'/>
+
+          <ToggleTab code={productCardCode} preview={productCardPreview} setPreview={setProductCardPreview} setCode={setProductCardCode}/>
+
+          <ComponentWrapper>
             {productCardPreview && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
                   <div className="w-full 1024px:w-[70%] shadow-lg bg-secondary rounded">
@@ -742,9 +610,8 @@ export default SimpleProfileCard;
             '
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
-          <div>
             <div className="mt-8">
               <ContentHeader
                   id="music_card"
@@ -753,31 +620,11 @@ export default SimpleProfileCard;
               />
             </div>
 
-            <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-              This is a music card component. Explore tracks, albums, and artists with ease and convenience.
-            </p>
+            <ComponentDescription text='This is a music card component. Explore tracks, albums, and artists with ease and convenience.'/>
 
-            <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-              <div className="relative">
-                <div
-                    className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${musicCardPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-                <button
-                    className={`${
-                        musicCardPreview && "text-tabTextColor"
-                    } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                    onClick={handleMusicCardPreview}
-                >
-                  Preview
-                </button>
-                <button
-                    className={`${
-                        musicCardCode && "text-tabTextColor"
-                    } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                    onClick={handleMusicCardCode}
-                >
-                  Code
-                </button>
-              </div>
+            <ToggleTab code={musicCardCode} setCode={setMusicCardCode} setPreview={setMusicCardPreview} preview={musicCardPreview}/>
+
+            <ComponentWrapper>
               {musicCardPreview && (
                   <div className="p-8 mb-4 flex items-center gap-5 justify-center">
                     <div className="w-full 1024px:w-[80%] shadow-lg bg-secondary rounded">
@@ -830,10 +677,10 @@ export default SimpleProfileCard;
                 } from "react-icons/fa";
                 import { HiMiniShare } from "react-icons/hi2";
                 import { MdPlayArrow } from "react-icons/md";
-                
+
                 const MusicCard = () => {
                   const [isFavorite, setIsFavorite] = useState(false);
-                
+
                   return (
                     <div className="w-[100%] lg:w-[80%] shadow-lg bg-secondary rounded">
                       <div className="grid grid-cols-12 w-full  items-center bg-black text-white ">
@@ -848,7 +695,7 @@ export default SimpleProfileCard;
                             <FaArrowAltCircleRight className="text-2xl" />
                           </div>
                         </div>
-                
+
                         <div className="grid col-span-7">
                           <img
                             src="https://media.istockphoto.com/id/1388162040/photo/a-crowded-concert-hall-with-scene-stage-in-red-lights-rock-show-performance-with-people.jpg?s=1024x1024&w=is&k=20&c=NARCbVE2aAOnSEVWr1ZxK0G4fpr60vMY7iDMsjnHjFg="
@@ -857,7 +704,7 @@ export default SimpleProfileCard;
                           />
                         </div>
                       </div>
-                
+
                       <div className="flex items-center justify-between w-full p-4 ">
                         <div className="flex items-center gap-4 ">
                           <FaHeart
@@ -872,44 +719,24 @@ export default SimpleProfileCard;
                     </div>
                   );
                 };
-                
+
                 export default MusicCard;
-                 
+
             '
                   />
               )}
-            </div>
-          </div>
+            </ComponentWrapper>
 
           <div className="mt-8">
             <ContentHeader id={"profile_card_2"} text={"Simple profile card"}/>
+          </div>
 
-            <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-              This is a profile card with statistics component. View detailed insights and information about profiles
-              seamlessly.
-            </p>
+            <ComponentDescription text='This is a profile card with statistics component. View detailed insights and information about profiles
+              seamlessly.'/>
 
-            <div className="w-full 425px:w-[80%] border border-border rounded mt-3">
-              <div className="relative">
-                <div
-                    className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${simpleProfileCardPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-                <button
-                    className={`${
-                        simpleProfileCardPreview && "text-tabTextColor"
-                    } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                    onClick={handleSimpleProfileCardPreview}
-                >
-                  Preview
-                </button>
-                <button
-                    className={`${
-                        simpleProfileCardCode && "text-tabTextColor"
-                    } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                    onClick={handleSimpleProfileCardCode}
-                >
-                  Code
-                </button>
-              </div>
+            <ToggleTab code={simpleProfileCardCode} preview={simpleProfileCardPreview} setPreview={setSimpleProfileCardPreview} setCode={setSimpleProfileCardCode}/>
+
+            <ComponentWrapper>
               {simpleProfileCardPreview && (
                   <div className="p-8 mb-4 flex items-center gap-5 justify-center">
                     <div className="w-full 1024px:w-[60%] mt-16 1024px:mt-0 shadow-lg rounded flex flex-col">
@@ -1001,38 +828,17 @@ export default SimpleProfileCard;
           `}
                   />
               )}
-            </div>
-          </div>
+            </ComponentWrapper>
 
           <div className="mt-8">
             <ContentHeader id="profile_card" text={"profile card"}/>
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            This is a profile card displaying followers, posts, and likes. Explore engagement metrics effortlessly.
-          </p>
+          <ComponentDescription text='This is a profile card displaying followers, posts, and likes. Explore engagement metrics effortlessly.'/>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${profileCardPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-              <button
-                  className={`${
-                      profileCardPreview && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={handleProfileCardPreview}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      profileCardCode && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={handleProfileCardCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={profileCardCode} setCode={setProfileCardCode} setPreview={setProfileCardPreview} preview={profileCardPreview}/>
+
+          <ComponentWrapper>
             {profileCardPreview && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
                   <div className="w-full 1024px:w-[60%] shadow-lg rounded">
@@ -1118,37 +924,17 @@ export default profileCard;
           `}
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className="mt-8">
             <ContentHeader id="Team_card" text={"Team card"}/>
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            This is a team member card with elegant alignment. View team details with stylish presentation.
-          </p>
+          <ComponentDescription text='This is a team member card with elegant alignment. View team details with stylish presentation.'/>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${teamCardPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-              <button
-                  className={`${
-                      teamCardPreview && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={handleTeamCardPreview}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      teamCardCode && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={handleTeamCardCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={teamCardCode} preview={teamCardPreview} setPreview={setTeamCardPreview} setCode={setTeamCardCode}/>
+
+          <ComponentWrapper>
             {teamCardPreview && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
                   <div className="w-full 1024px:w-[60%] rounded shadow-lg p-4">
@@ -1301,38 +1087,18 @@ export default TeamCard;
           `}
                 />
             )}
-          </div>
+          </ComponentWrapper>]
 
           <div className="mt-8">
             <ContentHeader id="Pricing_card_1" text={"Pricing card 1"}/>
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            This is a pricing card with highlighted points. Compare plans with clear, marked features for easy
-            selection.
-          </p>
+          <ComponentDescription text='This is a pricing card with highlighted points. Compare plans with clear, marked features for easy
+            selection.'/>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${pricingCardPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-              <button
-                  className={`${
-                      pricingCardPreview && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={handlePricingCardPreview}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      pricingCardCode && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={handlePricingCardCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={pricingCardCode} setCode={setPricingCardCode} setPreview={setPricingCardPreview} preview={pricingCardPreview}/>
+
+          <ComponentWrapper>
             {pricingCardPreview && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
                   <div className="w-full 1024px:w-[80%] border border-border p-2 rounded-2xl">
@@ -1456,38 +1222,18 @@ export default PricingCard;
           `}
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className="mt-8">
             <ContentHeader id="Pricing_card_2" text={"Pricing card 2"}/>
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            This is a pricing card with check and cross icons for feature comparison. Easily assess options with clear
-            indicators.
-          </p>
+          <ComponentDescription text='This is a pricing card with check and cross icons for feature comparison. Easily assess options with clear
+            indicators.'/>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${pricingCard2Preview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-              <button
-                  className={`${
-                      pricingCard2Preview && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={handlePricingCard2Preview}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      pricingCard2Code && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={handlePricingCard2Code}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={pricingCard2Code} preview={pricingCard2Preview} setPreview={setPricingCard2Preview} setCode={setPricingCard2Code}/>
+
+          <ComponentWrapper>
             {pricingCard2Preview && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
                   <div className="w-full 1024px:w-[80%] border border-border shadow-lg">
@@ -1609,38 +1355,17 @@ export default PricingCard;
           `}
                 />
             )}
-          </div>
-
+          </ComponentWrapper>
 
           <div className="mt-8">
             <ContentHeader id="random_card_1" text={"random card 1"}/>
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            A container for displaying content and actions on a single topic, often used for organizing information into sections.
-          </p>
+          <ComponentDescription text='A container for displaying content and actions on a single topic, often used for organizing information into sections.'/>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${randomCardPreview1 ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-              <button
-                  className={`${
-                      randomCardPreview1 && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={() => toggleCardView(setRandomCardPreview1, setRandomCardCode1, true)}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      randomCardCode1 && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={() => toggleCardView(setRandomCardPreview1, setRandomCardCode1, false)}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={randomCardCode1} setCode={setRandomCardCode1} setPreview={setRandomCardPreview1} preview={randomCardPreview1}/>
+
+          <ComponentWrapper>
             {randomCardPreview1 && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
                   <div className='bg-white rounded-md boxShadow relative min-w-[60%]'>
@@ -1707,38 +1432,17 @@ export default Card;
                     '
                 />
             )}
-          </div>
-
+          </ComponentWrapper>
 
           <div className="mt-8">
             <ContentHeader id="random_card_2" text={"random card 2"}/>
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            A container for displaying content and actions on a single topic, often used for organizing information into sections.
-          </p>
+          <ComponentDescription text='A container for displaying content and actions on a single topic, often used for organizing information into sections.'/>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${randomCardPreview2 ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-              <button
-                  className={`${
-                      randomCardPreview2 && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={() => toggleCardView(setRandomCardPreview2, setRandomCardCode2, true)}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      randomCardCode2 && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={() => toggleCardView(setRandomCardPreview2, setRandomCardCode2, false)}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={randomCardCode2} preview={randomCardPreview2} setCode={setRandomCardCode2} setPreview={setRandomCardPreview2}/>
+
+          <ComponentWrapper>
             {randomCardPreview2 && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
                   <div className='bg-white rounded-md boxShadow relative w-full 1024px:min-w-[60%]'>
@@ -1875,37 +1579,17 @@ export default Card;
                     '
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className="mt-8">
             <ContentHeader id="random_card_3" text={"random card 3"}/>
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            A container for displaying content and actions on a single topic, often used for organizing information into sections.
-          </p>
+          <ComponentDescription text='A container for displaying content and actions on a single topic, often used for organizing information into sections.'/>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${randomCardPreview3 ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-              <button
-                  className={`${
-                      randomCardPreview3 && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={() => toggleCardView(setRandomCardPreview3, setRandomCardCode3, true)}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      randomCardCode3 && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={() => toggleCardView(setRandomCardPreview3, setRandomCardCode3, false)}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={randomCardCode3} setPreview={setRandomCardPreview3} setCode={setRandomCardCode3} preview={randomCardPreview3}/>
+
+          <ComponentWrapper>
             {randomCardPreview3 && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
                   <div className='bg-white rounded-md boxShadow w-full 1024px:min-w-[60%]'>
@@ -1962,37 +1646,17 @@ export default Card;
                     '
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className="mt-8">
             <ContentHeader id="random_card_4" text={"random card 4"}/>
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            A container for displaying content and actions on a single topic, often used for organizing information into sections.
-          </p>
+          <ComponentDescription text=' A container for displaying content and actions on a single topic, often used for organizing information into sections.'/>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${randomCardPreview4 ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-              <button
-                  className={`${
-                      randomCardPreview4 && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={() => toggleCardView(setRandomCardPreview4, setRandomCardCode4, true)}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      randomCardCode4 && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={() => toggleCardView(setRandomCardPreview4, setRandomCardCode4, false)}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={randomCardCode4} preview={randomCardPreview4} setCode={setRandomCardCode4} setPreview={setRandomCardPreview4}/>
+
+          <ComponentWrapper>
             {randomCardPreview4 && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
                   <div className='bg-white rounded-md boxShadow w-full 1024px:min-w-[70%] 1024px:max-w-[80%]'>
@@ -2080,37 +1744,17 @@ export default Card;
                     '
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className="mt-8">
             <ContentHeader id="random_card_5" text={"random card 5"}/>
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            A container for displaying content and actions on a single topic, often used for organizing information into sections.
-          </p>
+          <ComponentDescription text='A container for displaying content and actions on a single topic, often used for organizing information into sections.'/>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${randomCardPreview5 ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-              <button
-                  className={`${
-                      randomCardPreview5 && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={() => toggleCardView(setRandomCardPreview5, setRandomCardCode5, true)}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      randomCardCode5 && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={() => toggleCardView(setRandomCardPreview5, setRandomCardCode5, false)}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={randomCardCode5} setPreview={setRandomCardPreview5} setCode={setRandomCardCode5} preview={randomCardPreview5}/>
+
+          <ComponentWrapper>
             {randomCardPreview5 && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
                   <div
@@ -2155,37 +1799,17 @@ export default Card;
                     '
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className="mt-8">
             <ContentHeader id="random_card_6" text={"random card 6"}/>
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            A container for displaying content and actions on a single topic, often used for organizing information into sections.
-          </p>
+          <ComponentDescription text='A container for displaying content and actions on a single topic, often used for organizing information into sections.'/>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${randomCardPreview6 ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-              <button
-                  className={`${
-                      randomCardPreview6 && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={() => toggleCardView(setRandomCardPreview6, setRandomCardCode6, true)}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      randomCardCode6 && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={() => toggleCardView(setRandomCardPreview6, setRandomCardCode6, false)}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={randomCardCode6} preview={randomCardPreview6} setCode={setRandomCardCode6} setPreview={setRandomCardPreview6}/>
+
+          <ComponentWrapper>
             {randomCardPreview6 && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
                   <div className='w-full 1024px:min-w-[60%] 1024px:max-w-[75%] relative'>
@@ -2244,37 +1868,17 @@ export default Card;
                     '
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className="mt-8">
             <ContentHeader id="random_card_7" text={"random card 7"}/>
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            A container for displaying content and actions on a single topic, often used for organizing information into sections.
-          </p>
+         <ComponentDescription text='A container for displaying content and actions on a single topic, often used for organizing information into sections.'/>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${randomCardPreview7 ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-              <button
-                  className={`${
-                      randomCardPreview7 && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={() => toggleCardView(setRandomCardPreview7, setRandomCardCode7, true)}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      randomCardCode7 && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={() => toggleCardView(setRandomCardPreview7, setRandomCardCode7, false)}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={randomCardCode7} setPreview={setRandomCardPreview7} setCode={setRandomCardCode7} preview={randomCardPreview7}/>
+
+          <ComponentWrapper>
             {randomCardPreview7 && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
                   <div className='w-full 1024px:min-w-[60%] 1024px:max-w-[75%] relative bg-white boxShadow rounded-xl'>
@@ -2340,37 +1944,17 @@ export default Card;
                     '
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className="mt-8">
             <ContentHeader id="random_card_8" text={"random card 8"}/>
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            A container for displaying content and actions on a single topic, often used for organizing information into sections.
-          </p>
+          <ComponentDescription text='A container for displaying content and actions on a single topic, often used for organizing information into sections.'/>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${randomCardPreview8 ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-              <button
-                  className={`${
-                      randomCardPreview8 && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={() => toggleCardView(setRandomCardPreview8, setRandomCardCode8, true)}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      randomCardCode8 && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={() => toggleCardView(setRandomCardPreview8, setRandomCardCode8, false)}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={randomCardCode8} preview={randomCardPreview8} setCode={setRandomCardCode8} setPreview={setRandomCardPreview8}/>
+
+          <ComponentWrapper>
             {randomCardPreview8 && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
                   <div className='1024px:min-w-[60%] w-full 1024px:max-w-[75%] relative bg-white boxShadow rounded-xl'>
@@ -2437,37 +2021,17 @@ export default Card;
                     '
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className="mt-8">
             <ContentHeader id="random_card_9" text={"random card 9"}/>
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            A container for displaying content and actions on a single topic, often used for organizing information into sections.
-          </p>
+          <ComponentDescription text='A container for displaying content and actions on a single topic, often used for organizing information into sections.'/>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${randomCardPreview9 ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-              <button
-                  className={`${
-                      randomCardPreview9 && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={() => toggleCardView(setRandomCardPreview9, setRandomCardCode9, true)}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      randomCardCode9 && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={() => toggleCardView(setRandomCardPreview9, setRandomCardCode9, false)}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={randomCardCode9} setPreview={setRandomCardPreview9} setCode={setRandomCardCode9} preview={randomCardPreview9}/>
+
+          <ComponentWrapper>
             {randomCardPreview9 && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
                   <div className='w-full 1024px:min-w-[60%] 1024px:max-w-[90%] relative bg-white boxShadow rounded-xl flex-col 640px:flex gap-[20px] p-4'>
@@ -2602,38 +2166,17 @@ export default Card;
                     '
                 />
             )}
-          </div>
-
+          </ComponentWrapper>
 
           <div className="mt-8">
             <ContentHeader id="random_card_10" text={"random card 10"}/>
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            A container for displaying content and actions on a single topic, often used for organizing information into sections.
-          </p>
+          <ComponentDescription text='A container for displaying content and actions on a single topic, often used for organizing information into sections.'/>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${randomCardPreview10 ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-              <button
-                  className={`${
-                      randomCardPreview10 && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={() => toggleCardView(setRandomCardPreview10, setRandomCardCode10, true)}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      randomCardCode10 && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={() => toggleCardView(setRandomCardPreview10, setRandomCardCode10, false)}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={randomCardCode10} preview={randomCardPreview10} setCode={setRandomCardCode10} setPreview={setRandomCardPreview10}/>
+
+          <ComponentWrapper>
             {randomCardPreview10 && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
                   <div className='w-full 1024px:min-w-[60%] 1024px:max-w-[90%] relative bg-white boxShadow rounded-xl flex 640px:flex-row flex-col gap-[20px] p-4'>
@@ -2688,37 +2231,17 @@ export default Card;
                     '
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className="mt-8">
             <ContentHeader id="random_card_11" text={"random card 11"}/>
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            A container for displaying content and actions on a single topic, often used for organizing information into sections.
-          </p>
+          <ComponentDescription text='A container for displaying content and actions on a single topic, often used for organizing information into sections.'/>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${randomCardPreview11 ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-              <button
-                  className={`${
-                      randomCardPreview11 && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={() => toggleCardView(setRandomCardPreview11, setRandomCardCode11, true)}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      randomCardCode11 && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={() => toggleCardView(setRandomCardPreview11, setRandomCardCode11, false)}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={randomCardCode11} setPreview={setRandomCardPreview11} setCode={setRandomCardCode11} preview={randomCardPreview11}/>
+
+          <ComponentWrapper>
             {randomCardPreview11 && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
                   <div className='bg-white boxShadow rounded-md w-full 1024px:max-w-[80%]'>
@@ -2766,37 +2289,17 @@ export default Card;
                     '
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className="mt-8">
             <ContentHeader id="random_card_12" text={"random card 12"}/>
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            A container for displaying content and actions on a single topic, often used for organizing information into sections.
-          </p>
+          <ComponentDescription text='A container for displaying content and actions on a single topic, often used for organizing information into sections.'/>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${randomCardPreview12 ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-              <button
-                  className={`${
-                      randomCardPreview12 && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={() => toggleCardView(setRandomCardPreview12, setRandomCardCode12, true)}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      randomCardCode12 && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={() => toggleCardView(setRandomCardPreview12, setRandomCardCode12, false)}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={randomCardCode12} preview={randomCardPreview12} setCode={setRandomCardCode12} setPreview={setRandomCardPreview12}/>
+
+          <ComponentWrapper>
             {randomCardPreview12 && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
                   <div className='bg-white boxShadow rounded-md w-full 1024px:max-w-[80%] px-2'>
@@ -2808,7 +2311,7 @@ export default Card;
 
                     <div className='flex flex-col'>
                       <div className='flex items-start gap-[8px] py-3 hover:bg-gray-100 px-3 rounded-md cursor-pointer'>
-                      <MdOutlineEmail className='text-[1.3rem] mt-[3px]'/>
+                        <MdOutlineEmail className='text-[1.3rem] mt-[3px]'/>
                         <p className='text-[1.1rem]'>Meeting Reminder: Project Kickoff</p>
                       </div>
                       <div className='flex items-start gap-[8px] py-3 hover:bg-gray-100 px-3 rounded-md cursor-pointer'>
@@ -2893,37 +2396,17 @@ export default Card;
                     '
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className="mt-8">
             <ContentHeader id="random_card_13" text={"random card 13"}/>
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            A container for displaying content and actions on a single topic, often used for organizing information into sections.
-          </p>
+          <ComponentDescription text='A container for displaying content and actions on a single topic, often used for organizing information into sections.'/>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${randomCardPreview13 ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-              <button
-                  className={`${
-                      randomCardPreview13 && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={() => toggleCardView(setRandomCardPreview13, setRandomCardCode13, true)}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      randomCardCode13 && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={() => toggleCardView(setRandomCardPreview13, setRandomCardCode13, false)}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={randomCardCode13} setPreview={setRandomCardPreview13} setCode={setRandomCardCode13} preview={randomCardPreview13} />
+
+          <ComponentWrapper>
             {randomCardPreview13 && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
                   <div className='w-full 1024px:max-w-[80%] boxShadow rounded-md'>
@@ -2935,7 +2418,7 @@ export default Card;
                       </div>
                     </div>
                     <img src='https://img.freepik.com/free-photo/strawberry-dessert-gourmet-sweet-food-chocolate-indulgence-generative-ai_188544-8522.jpg?t=st=1722622233~exp=1722625833~hmac=92966e9ba3da795adaeb9da7587107d51eaff15f0424bf9628d286a28b2486b6&w=1060' alt='icecream'
-                    className='w-full'
+                         className='w-full'
                     />
 
                     <div className='p-4'>
@@ -3010,37 +2493,17 @@ export default Card;
                     '
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className="mt-8">
             <ContentHeader id="random_card_14" text={"random card 14"}/>
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            A container for displaying content and actions on a single topic, often used for organizing information into sections.
-          </p>
+          <ComponentDescription text='A container for displaying content and actions on a single topic, often used for organizing information into sections.'/>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${randomCardPreview14 ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
-              <button
-                  className={`${
-                      randomCardPreview14 && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={() => toggleCardView(setRandomCardPreview14, setRandomCardCode14, true)}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      randomCardCode14 && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={() => toggleCardView(setRandomCardPreview14, setRandomCardCode14, false)}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={randomCardCode14} preview={randomCardPreview14} setCode={setRandomCardCode14} setPreview={setRandomCardPreview14}/>
+
+          <ComponentWrapper>
             {randomCardPreview14 && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
                   <div className='w-full 1024px:max-w-[80%] boxShadow rounded-md'>
@@ -3126,7 +2589,7 @@ export default Card;
                     </div>
 
                     <div className='bg-gray-100 p-4 rounded-b-md flex items-center justify-between w-full'>
-                        <span className='text-[0.9rem] text-gray-400'>543 students</span>
+                      <span className='text-[0.9rem] text-gray-400'>543 students</span>
                       <button className='text-[0.9rem] text-gray-700 font-[500]'>VIEW ALL MEMBER</button>
                     </div>
                   </div>
@@ -3235,31 +2698,13 @@ export default Card;
                     '
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <OverviewFooter backUrl='/components/drag-and-drop' backName='Drag & Drop' forwardName='animated cards' forwardUrl='/components/animated-cards'/>
         </div>
 
-        <div className="1024px:block hidden sticky top-4 right-0 w-[40%]">
-          <h2 className="text-[0.9rem] font-[600] text-text tracking-widest pb-[15px]">
-            CONTENTS
-          </h2>
-          <div className="flex flex-col gap-4 overflow-y-auto h-[90vh] pb-[120px] w-[40%]"
-               style={{scrollbarWidth: 'none'}}>
-            {cardContents.map((item) => (
-            <a
-              key={item.id}
-              href={item.href}
-              className={`${
-                activeSection === item.href.slice(1) &&
-                '!text-primary !border-primary'
-              } text-[0.9rem] text-text border-l border-transparent pl-4`}
-            >
-              {item.title}
-            </a>
-          ))}
-          </div>
-        </div>
+        <ContentNavbar activeSection={activeSection} contents={cardContents}/>
+
       </aside>
 
       <Helmet>
