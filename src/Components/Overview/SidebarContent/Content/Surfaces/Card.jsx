@@ -35,8 +35,6 @@ import ToggleTab from "../../../../../Shared/ToggleTab.jsx";
 import ComponentWrapper from "../../../../../Shared/ComponentWrapper.jsx";
 import ContentNavbar from "../../../../../Shared/ContentNavbar.jsx";
 
-import {useToggleCardView} from "../../../../../CustomHooks/ButtonToggle.js";
-
 const Card = () => {
   // blog card
   const [blogCardPreview, setBlogCardPreview] = useState(true);
@@ -138,42 +136,42 @@ const Card = () => {
           <ComponentWrapper>
             {ticketCardPreview && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
-                  <div className='bg-blue-50 w-full justify-between rounded-xl flex '>
+                  <div className='bg-blue-50 dark:bg-slate-800 w-full justify-between rounded-xl flex '>
 
                     {/* left side */}
                     <div className='flex flex-col p-[15px] 1024px:p-[20px] gap-[18px]'>
-                      <h1 className='text-[1rem] 1024px:text-[1.3rem] font-bold text-blue-800'>Ticket Title</h1>
+                      <h1 className='text-[1rem] 1024px:text-[1.3rem] font-bold dark:text-blue-600 text-blue-800'>Ticket Title</h1>
                       <div className='flex items-center gap-[10px]'>
-                        <BsSend className='p-[8px] 1024px:p-[10px] rounded-xl bg-blue-100 text-blue-800 text-[2rem] 1024px:text-[3rem]'/>
+                        <BsSend className='p-[8px] 1024px:p-[10px] dark:text-[#abc2d3] dark:bg-slate-700 rounded-xl bg-blue-100 text-blue-800 text-[2rem] 1024px:text-[3rem]'/>
                         <div>
-                          <h4 className='text-[0.8rem] 1024px:text-[1.1rem] font-[600] text-gray-800'>Place Name</h4>
-                          <p className='text-[0.6rem] 1024px:text-[0.9rem] font-[400] text-gray-500'>15-Dec-2020</p>
+                          <h4 className='text-[0.8rem] 1024px:text-[1.1rem] font-[600] dark:text-[#abc2d3] text-gray-800'>Place Name</h4>
+                          <p className='text-[0.6rem] 1024px:text-[0.9rem] font-[400] dark:text-[#abc2d3]/70 text-gray-500'>15-Dec-2020</p>
                         </div>
                       </div>
                       <div className='flex items-center gap-[10px]'>
-                        <IoLocationOutline className='p-[8px] 1024px:p-[10px] rounded-xl bg-blue-100 text-blue-800 text-[2rem] 1024px:text-[3rem]'/>
+                        <IoLocationOutline className='p-[8px] 1024px:p-[10px] dark:bg-slate-700 dark:text-[#abc2d3] rounded-xl bg-blue-100 text-blue-800 text-[2rem] 1024px:text-[3rem]'/>
                         <div>
-                          <h4 className='text-[0.8rem] 1024px:text-[1.1rem] font-[600] text-gray-800'>Location</h4>
-                          <p className='text-[0.6rem] 1024px:text-[0.9rem] font-[400] text-gray-500'>15-Dec-2020</p>
+                          <h4 className='text-[0.8rem] 1024px:text-[1.1rem] font-[600] dark:text-[#abc2d3] text-gray-800'>Location</h4>
+                          <p className='text-[0.6rem] 1024px:text-[0.9rem] font-[400] dark:text-[#abc2d3]/70 text-gray-500'>15-Dec-2020</p>
                         </div>
                       </div>
                     </div>
 
                     {/* right side */}
                     <div
-                        className='flex flex-col justify-between relative w-[45%] 1024px:w-[40%] items-center border-l-[2px] p-[15px] 1024px:p-[20px]  border-dashed border-gray-200'>
+                        className='flex flex-col justify-between relative w-[45%] 1024px:w-[40%] items-center border-l-[2px] p-[15px] 1024px:p-[20px] dark:border-slate-600 border-dashed border-gray-200'>
 
                       {/* top carve */}
-                      <div className='w-[45px] h-[45px] rounded-full bg-white absolute top-[-15%] 1024px:top-[-13%] 425px:left-[-13.5%] left-[-19%] 1024px:left-[-11.5%]'></div>
+                      <div className='w-[45px] h-[45px] dark:bg-[#020617] rounded-full bg-white absolute top-[-15%] 1024px:top-[-13%] 425px:left-[-13.5%] left-[-19%] 1024px:left-[-11.5%]'></div>
 
-                      <h4 className='text-[0.9rem] 1024px:text-[1.3rem] font-bold text-blue-800'>9:00 AM</h4>
+                      <h4 className='text-[0.9rem] 1024px:text-[1.3rem] font-bold dark:text-blue-600 text-blue-800'>9:00 AM</h4>
 
                       <button className='px-2 1024px:px-4 py-1 text-[0.8rem] 1024px:text-[1.1rem] 1024px:py-2 bg-blue-700 text-white rounded-xl hover:bg-blue-600'>Buy Ticket</button>
 
-                      <p className='text-[0.9rem] 1024px:text-[1.1rem] text-gray-500'>Price: <span className='text-red-600 font-semibold'>$70</span></p>
+                      <p className='text-[0.9rem] 1024px:text-[1.1rem] dark:text-[#abc2d3] text-gray-500'>Price: <span className='text-red-600 font-semibold'>$70</span></p>
 
                       {/* bottom carve */}
-                      <div className='w-[45px] h-[45px] rounded-full bg-white absolute bottom-[-15%] 1024px:bottom-[-13%] left-[-18.5%] 425px:left-[-13.5%] 1024px:left-[-11.5%]'></div>
+                      <div className='w-[45px] h-[45px] dark:bg-[#020617] rounded-full bg-white absolute bottom-[-15%] 1024px:bottom-[-13%] left-[-18.5%] 425px:left-[-13.5%] 1024px:left-[-11.5%]'></div>
                     </div>
                   </div>
                 </div>
@@ -185,62 +183,65 @@ const Card = () => {
 import React from "react";
 
 // react icons
-import {IoLocationOutline} from "react-icons/io5";
 import {BsSend} from "react-icons/bs";
+import {IoLocationOutline} from "react-icons/io5";
 
-const TicketCard = () => {
+const Card = () => {
 
     return (
-        <div className="bg-blue-50 w-full justify-between rounded-xl flex ">
+        <div className="bg-blue-50 dark:bg-slate-800 w-full justify-between rounded-xl flex ">
 
             {/* left side */}
-            <div className="flex flex-col p-[15px] lg:p-[20px] gap-[18px]">
-                <h1 className="text-[1rem] lg:text-[1.3rem] font-bold text-blue-800">Ticket Title</h1>
+            <div className="flex flex-col p-[15px] md:p-[20px] gap-[18px]">
+                <h1 className="text-[1rem] md:text-[1.3rem] font-bold dark:text-blue-600 text-blue-800">Ticket
+                    Title</h1>
                 <div className="flex items-center gap-[10px]">
                     <BsSend
-                        className="p-[8px] lg:p-[10px] rounded-xl bg-blue-100 text-blue-800 text-[2rem] lg:text-[3rem]"/>
+                        className="p-[8px] md:p-[10px] dark:text-[#abc2d3] dark:bg-slate-700 rounded-xl bg-blue-100 text-blue-800 text-[2rem] md:text-[3rem]"/>
                     <div>
-                        <h4 className="text-[0.8rem] lg:text-[1.1rem] font-[600] text-gray-800">Place Name</h4>
-                        <p className="text-[0.6rem] lg:text-[0.9rem] font-[400] text-gray-500">15-Dec-2020</p>
+                        <h4 className="text-[0.8rem] md:text-[1.1rem] font-[600] dark:text-[#abc2d3] text-gray-800">Place
+                            Name</h4>
+                        <p className="text-[0.6rem] md:text-[0.9rem] font-[400] dark:text-[#abc2d3]/70 text-gray-500">15-Dec-2020</p>
                     </div>
                 </div>
                 <div className="flex items-center gap-[10px]">
                     <IoLocationOutline
-                        className="p-[8px] lg:p-[10px] rounded-xl bg-blue-100 text-blue-800 text-[2rem] lg:text-[3rem]"/>
+                        className="p-[8px] md:p-[10px] dark:bg-slate-700 dark:text-[#abc2d3] rounded-xl bg-blue-100 text-blue-800 text-[2rem] md:text-[3rem]"/>
                     <div>
-                        <h4 className="text-[0.8rem] lg:text-[1.1rem] font-[600] text-gray-800">Location</h4>
-                        <p className="text-[0.6rem] lg:text-[0.9rem] font-[400] text-gray-500">15-Dec-2020</p>
+                        <h4 className="text-[0.8rem] md:text-[1.1rem] font-[600] dark:text-[#abc2d3] text-gray-800">Location</h4>
+                        <p className="text-[0.6rem] md:text-[0.9rem] font-[400] dark:text-[#abc2d3]/70 text-gray-500">15-Dec-2020</p>
                     </div>
                 </div>
             </div>
 
             {/* right side */}
             <div
-                className="flex flex-col justify-between relative w-[45%] lg:w-[40%] items-center border-l-[2px] p-[15px] lg:p-[20px]  border-dashed border-gray-200">
+                className="flex flex-col justify-between relative w-[45%] md:w-[40%] items-center border-l-[2px] p-[15px] md:p-[20px] dark:border-slate-600 border-dashed border-gray-200">
 
                 {/* top carve */}
                 <div
-                    className="w-[45px] h-[45px] rounded-full bg-white absolute top-[-15%] lg:top-[-13%] sm:left-[-13.5%] left-[-19%] lg:left-[-11.5%]"></div>
+                    className="w-[45px] h-[45px] dark:bg-[#020617] rounded-full bg-white absolute top-[-15%] md:top-[-13%] 425px:left-[-13.5%] left-[-19%] md:left-[-11.5%]"></div>
 
-                <h4 className="text-[0.9rem] lg:text-[1.3rem] font-bold text-blue-800">9:00 AM</h4>
+                <h4 className="text-[0.9rem] md:text-[1.3rem] font-bold dark:text-blue-600 text-blue-800">9:00
+                    AM</h4>
 
                 <button
-                    className="px-2 lg:px-4 py-1 text-[0.8rem] lg:text-[1.1rem] lg:py-2 bg-blue-700 text-white rounded-xl hover:bg-blue-600">Buy
+                    className="px-2 md:px-4 py-1 text-[0.8rem] md:text-[1.1rem] md:py-2 bg-blue-700 text-white rounded-xl hover:bg-blue-600">Buy
                     Ticket
                 </button>
 
-                <p className="text-[0.9rem] lg:text-[1.1rem] text-gray-500">Price: <span
+                <p className="text-[0.9rem] md:text-[1.1rem] dark:text-[#abc2d3] text-gray-500">Price: <span
                     className="text-red-600 font-semibold">$70</span></p>
 
                 {/* bottom carve */}
                 <div
-                    className="w-[45px] h-[45px] rounded-full bg-white absolute bottom-[-15%] lg:bottom-[-13%] left-[-18.5%] sm:left-[-13.5%] lg:left-[-11.5%]"></div>
+                    className="w-[45px] h-[45px] dark:bg-[#020617] rounded-full bg-white absolute bottom-[-15%] md:bottom-[-13%] left-[-18.5%] 425px:left-[-13.5%] md:left-[-11.5%]"></div>
             </div>
         </div>
     );
 };
 
-export default TicketCard;
+export default Card;
             '
                 />
             )}
@@ -258,7 +259,7 @@ export default TicketCard;
           <ComponentWrapper>
             {blogCardPreview && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
-                  <div className="w-full 1024px:w-[70%] shadow-lg bg-secondary rounded">
+                  <div className="w-full 1024px:w-[70%] shadow-lg dark:bg-slate-800 bg-secondary rounded">
                     <div className="flex w-full justify-between items-center p-4">
                       <div className="flex items-center gap-4">
                         <div
@@ -267,16 +268,16 @@ export default TicketCard;
                         </div>
 
                         <div className="">
-                          <h2 className="font-[500] text-[1.2rem]">
+                          <h2 className="font-[500] dark:text-[#abc2d3] text-[1.2rem]">
                             Author Name
                           </h2>
-                          <p className="text-text text-[0.9rem]">
+                          <p className="text-text dark:text-[#abc2d3]/70 text-[0.9rem]">
                             September 14, 2016
                           </p>
                         </div>
                       </div>
                       <BsThreeDotsVertical
-                          className="text-text rounded-full text-[2.5rem] p-2 hover:bg-[#ececec] cursor-pointer"/>
+                          className="text-text dark:hover:bg-slate-900/60 dark:text-[#abc2d3] rounded-full text-[2.5rem] p-2 hover:bg-[#ececec] cursor-pointer"/>
                     </div>
 
                     <img
@@ -285,7 +286,7 @@ export default TicketCard;
                         className="w-full h-[250px] object-cover"
                     />
 
-                    <p className="text-text p-4">
+                    <p className="text-text dark:text-[#abc2d3] p-4">
                       This impressive paella is a perfect party dish and a fun
                       meal to cook together with your guests. Add 1 cup of frozen
                       peas along with the mussels, if you like.
@@ -295,20 +296,20 @@ export default TicketCard;
                       <div className="flex items-center gap-4 ">
                         <FaHeart
                             className={`${
-                                isFavorite ? "text-[#ff3d3d]" : "text-text"
+                                isFavorite ? "text-[#ff3d3d]" : "text-text dark:text-[#abc2d3]"
                             } text-[1.4rem] cursor-pointer`}
                             onClick={() => setIsFavorite(!isFavorite)}
                         />
-                        <HiMiniShare className="text-text text-[1.4rem] cursor-pointer"/>
+                        <HiMiniShare className="text-text dark:text-[#abc2d3] text-[1.4rem] cursor-pointer"/>
                       </div>
                       {isOpen ? (
                           <IoIosArrowUp
-                              className="text-text text-[1.4rem] cursor-pointer"
+                              className="text-text text-[1.4rem] dark:text-[#abc2d3] cursor-pointer"
                               onClick={() => setIsOpen(false)}
                           />
                       ) : (
                           <IoIosArrowDown
-                              className="text-text text-[1.4rem] cursor-pointer"
+                              className="text-text text-[1.4rem] dark:text-[#abc2d3] cursor-pointer"
                               onClick={() => setIsOpen(true)}
                           />
                       )}
@@ -317,7 +318,7 @@ export default TicketCard;
                     <div
                         className={`grid overflow-hidden px-4 transition-all duration-300 ${
                             isOpen ? "grid-rows-[1fr] py-4" : "grid-rows-[0fr]"
-                        } text-[0.9rem] `}
+                        } text-[0.9rem] dark:text-[#abc2d3]`}
                     >
                       <div className=" overflow-hidden">
                         <b>Method:</b>
@@ -360,109 +361,120 @@ export default TicketCard;
             {blogCardCode && (
                 <Showcode
                     code='
-import React from "react";
+import React, {useState} from "react";
 
-// icons
-import { BsThreeDotsVertical } from "react-icons/bs";
-import { FaHeart } from "react-icons/fa";
-import { HiMiniShare } from "react-icons/hi2";
-import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+// react icons
+import {BsThreeDotsVertical} from "react-icons/bs";
+import {FaHeart} from "react-icons/fa";
+import {HiMiniShare} from "react-icons/hi2";
+import {IoIosArrowDown, IoIosArrowUp} from "react-icons/io";
 
-const BlogCard = () => {
-  // action constrols
-  const [isOpen, setIsOpen] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(false);
+const DropdownCard = () => {
 
-  return (
-    <div className="w-[70%] shadow-lg bg-[#fff] rounded">
-      <div className="flex w-full justify-between items-center p-4">
-        <div className="flex items-center gap-4">
-          <div className="w-[50px] h-[50px] flex items-center
-          justify-center text-[#fff] text-[1.3rem] rounded-full bg-[#f36f23]">
-            R
-          </div>
+    const [isOpen, setIsOpen] = useState(false);
+    const [isFavorite, setIsFavorite] = useState(false);
 
-          <div className="">
-            <h2 className="font-[500] text-[1.2rem]">Author Name</h2>
-            <p className="text-[#424242] text-[0.9rem]">September 14, 2016</p>
-          </div>
+    return (
+        <div className="w-full md:w-[70%] shadow-lg dark:bg-slate-800 bg-white rounded">
+            <div className="flex w-full justify-between items-center p-4">
+                <div className="flex items-center gap-4">
+                    <div
+                        className="w-[50px] h-[50px] flex items-center justify-center text-secondary text-[1.3rem] rounded-full bg-[#f36f23]">
+                        R
+                    </div>
+
+                    <div className="">
+                        <h2 className="font-[500] dark:text-[#abc2d3] text-[1.2rem]">
+                            Author Name
+                        </h2>
+                        <p className="text-[#424242] dark:text-[#abc2d3]/70 text-[0.9rem]">
+                            September 14, 2016
+                        </p>
+                    </div>
+                </div>
+                <BsThreeDotsVertical
+                    className="text-[#424242] dark:hover:bg-slate-900/60 dark:text-[#abc2d3] rounded-full text-[2.5rem] p-2 hover:bg-[#ececec] cursor-pointer"/>
+            </div>
+
+            <img
+                src="https://img.freepik.com/premium-photo/tasty-tofu-stir-fry-with-veggies-crispy-tofu-fresh-cilantro-perfect-vegan-meal-healthy_763042-1514.jpg"
+                alt=""
+                className="w-full h-[250px] object-cover"
+            />
+
+            <p className="text-[#424242] dark:text-[#abc2d3] p-4">
+                This impressive paella is a perfect party dish and a fun
+                meal to cook together with your guests. Add 1 cup of frozen
+                peas along with the mussels, if you like.
+            </p>
+
+            <div className="flex items-center justify-between w-full p-4 ">
+                <div className="flex items-center gap-4 ">
+                    <FaHeart
+                        className={`${
+                            isFavorite ? "text-[#ff3d3d]" : "text-[#424242] dark:text-[#abc2d3]"
+                        } text-[1.4rem] cursor-pointer`}
+                        onClick={() => setIsFavorite(!isFavorite)}
+                    />
+                    <HiMiniShare className="text-[#424242] dark:text-[#abc2d3] text-[1.4rem] cursor-pointer"/>
+                </div>
+                {isOpen ? (
+                    <IoIosArrowUp
+                        className="text-[#424242] text-[1.4rem] dark:text-[#abc2d3] cursor-pointer"
+                        onClick={() => setIsOpen(false)}
+                    />
+                ) : (
+                    <IoIosArrowDown
+                        className="text-[#424242] text-[1.4rem] dark:text-[#abc2d3] cursor-pointer"
+                        onClick={() => setIsOpen(true)}
+                    />
+                )}
+            </div>
+
+            <div
+                className={`grid overflow-hidden px-4 transition-all duration-300 ${
+                    isOpen ? "grid-rows-[1fr] py-4" : "grid-rows-[0fr]"
+                } text-[0.9rem] dark:text-[#abc2d3]`}
+            >
+                <div className=" overflow-hidden">
+                    <b>Method:</b>
+                    <p className="mt-3">
+                        Heat 1/2 cup of the broth in a pot until simmering, add
+                        saffron and set aside for 10 minutes.
+                    </p>
+                    <p className="mt-5">
+                        Heat oil in a (14- to 16-inch) paella pan or a large,
+                        deep skillet over medium-high heat. Add chicken, shrimp
+                        and chorizo, and cook, stirring occasionally until
+                        lightly browned, 6 to 8 minutes. Transfer shrimp to a
+                        large plate and set aside, leaving chicken and chorizo
+                        in the pan. Add pimentón, bay leaves, garlic, tomatoes,
+                        onion, salt and pepper, and cook, stirring often until
+                        thickened and fragrant, about 10 minutes. Add saffron
+                        broth and remaining 4 1/2 cups chicken broth; bring to a
+                        boil.
+                    </p>
+                    <p className="mt-5">
+                        Add rice and stir very gently to distribute. Top with
+                        artichokes and peppers, and cook without stirring, until
+                        most of the liquid is absorbed, 15 to 18 minutes. Reduce
+                        heat to medium-low, add reserved shrimp and mussels,
+                        tucking them down
+                    </p>
+                    <p className="mt-5">
+                        into the rice, and cook again without stirring, until
+                        mussels have opened and rice is just tender, 5 to 7
+                        minutes more. (Discard any mussels that don"t open.) Set
+                        aside off of the heat to let rest for 10 minutes, and
+                        then serve.
+                    </p>
+                </div>
+            </div>
         </div>
-        <BsThreeDotsVertical className="text-text rounded-full
-        text-[2.5rem] p-2 hover:bg-[#ececec] cursor-pointer" />
-      </div>
-
-       <img
-        src="https://img.freepik.com/premium-photo/tasty-tofu-stir-fry-with-veggies-crispy-tofu-
-        fresh-cilantro-perfect-vegan-meal-healthy_763042-1514.jpg"
-        alt=""
-        className="w-full h-[250px] object-cover"
-        />
-
-      <p className="text-[#424242] p-4">
-        This impressive paella is a perfect party dish and a fun meal to cook
-        together with your guests. Add 1 cup of frozen peas along with the
-        mussels, if you like.
-      </p>
-
-      <div className="flex items-center justify-between w-full p-4 ">
-        <div className="flex items-center gap-4 ">
-          <FaHeart
-            className={`${
-              isFavorite ? "text-[#ff3d3d]" : "text-[#424242]"
-            } text-[1.4rem] cursor-pointer`}
-            onClick={() => setIsFavorite(!isFavorite)}
-          />
-          <HiMiniShare className="text-[#424242] text-[1.4rem] cursor-pointer" />
-        </div>
-        {isOpen ? (
-          <IoIosArrowUp
-            className="text-[#424242] text-[1.4rem] cursor-pointer"
-            onClick={() => setIsOpen(false)}
-          />
-        ) : (
-          <IoIosArrowDown
-            className="text-[#424242] text-[1.4rem] cursor-pointer"
-            onClick={() => setIsOpen(true)}
-          />
-        )}
-      </div>
-
-      {isOpen && (
-        <div className={`p-4 text-[0.9rem] `}>
-          <b>Method:</b>
-          <p className="mt-3">
-            Heat 1/2 cup of the broth in a pot until simmering, add saffron and
-            set aside for 10 minutes.
-          </p>
-          <p className="mt-5">
-            Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet
-            over medium-high heat. Add chicken, shrimp and chorizo, and cook,
-            stirring occasionally until lightly browned, 6 to 8 minutes.
-            Transfer shrimp to a large plate and set aside, leaving chicken and
-            chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes,
-            onion, salt and pepper, and cook, stirring often until thickened and
-            fragrant, about 10 minutes. Add saffron broth and remaining 4 1/2
-            cups chicken broth; bring to a boil.
-          </p>
-          <p className="mt-5">
-            Add rice and stir very gently to distribute. Top with artichokes and
-            peppers, and cook without stirring, until most of the liquid is
-            absorbed, 15 to 18 minutes. Reduce heat to medium-low, add reserved
-            shrimp and mussels, tucking them down
-          </p>
-          <p className="mt-5">
-            into the rice, and cook again without stirring, until mussels have
-            opened and rice is just tender, 5 to 7 minutes more. (Discard any
-            mussels that don"t open.) Set aside off of the heat to let rest for
-            10 minutes, and then serve.
-          </p>
-        </div>
-      )}
-    </div>
-  );
+    );
 };
 
-export default BlogCard;
+export default DropdownCard;
             '
                 />
             )}
@@ -482,7 +494,7 @@ export default BlogCard;
           <ComponentWrapper>
             {productCardPreview && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
-                  <div className="w-full 1024px:w-[70%] shadow-lg bg-secondary rounded">
+                  <div className="w-full 1024px:w-[70%] shadow-lg dark:bg-slate-800 bg-secondary rounded">
                     <img
                         src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHNob2VzfGVufDB8fDB8fHww"
                         alt=""
@@ -491,14 +503,14 @@ export default BlogCard;
                     <div className="flex w-full justify-between items-center p-4">
                       <div className="flex  items-center gap-4">
                         <div className=" flex flex-col items-center">
-                          <h2 className="font-semibold text-3xl">Shoes</h2>
+                          <h2 className="font-semibold dark:text-[#abc2d3] text-3xl">Shoes</h2>
                         </div>
                       </div>
                       <BsThreeDotsVertical
-                          className="text-text rounded-full text-[2.5rem] p-2 hover:bg-[#ececec] cursor-pointer"/>
+                          className="text-text dark:text-[#abc2d3] dark:hover:bg-slate-900/60 rounded-full text-[2.5rem] p-2 hover:bg-[#ececec] cursor-pointer"/>
                     </div>
 
-                    <p className="text-text p-4">
+                    <p className="text-text dark:text-[#abc2d3] p-4">
                       <div className="flex flex-row ">
                         <button className="flex flex-row ">
                           {" "}
@@ -517,21 +529,21 @@ export default BlogCard;
                       <div className="flex flex-col items-center gap-4 ">
                         <div>
                           {" "}
-                          <p className="text-text text-[0.9rem]">
+                          <p className="text-text dark:text-[#abc2d3] text-[0.9rem]">
                             Price : $25
                           </p>{" "}
                         </div>
                         <div className="flex flex-row gap-5">
                           <FaHeart
                               className={`${
-                                  isFavorite ? "text-[#ff3d3d]" : "text-text"
+                                  isFavorite ? "text-[#ff3d3d]" : "text-text dark:text-[#abc2d3]"
                               } text-[1.4rem] cursor-pointer`}
                               onClick={() => setIsFavorite(!isFavorite)}
                           />
-                          <HiMiniShare className="text-text text-[1.4rem] cursor-pointer"/>
+                          <HiMiniShare className="text-text dark:text-[#abc2d3] text-[1.4rem] cursor-pointer"/>
                         </div>
                       </div>
-                      <button className="btn p-3 rounded border bg-black text-white hover:bg-blue-700 hover:text-white">
+                      <button className="btn p-3 rounded dark:bg-slate-900 dark:border-slate-700 border bg-black text-white hover:bg-blue-700 hover:text-white">
                         Add to cart
                       </button>
                     </div>
@@ -542,71 +554,78 @@ export default BlogCard;
             {productCardCode && (
                 <Showcode
                     code='
-                import { useState } from "react";
-import { BiLike } from "react-icons/bi";
-import { BsEye, BsThreeDotsVertical } from "react-icons/bs";
-import { FaHeart } from "react-icons/fa";
-import { HiMiniShare } from "react-icons/hi2";
+import React, {useState} from "react";
 
-const SimpleProfileCard = () => {
-  const [isFavorite, setIsFavorite] = useState(false);
-  return (
-    <div className="w-[70%] shadow-lg bg-secondary rounded">
-      <img
-        src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHNob2VzfGVufDB8fDB8fHww"
-        alt=""
-        className="w-full h-64 object-cover"
-      />
-      <div className="flex w-full justify-between items-center p-4">
-        <div className="flex  items-center gap-4">
-          <div className=" flex flex-col items-center">
-            <h2 className="font-semibold text-3xl">Shoes</h2>
-          </div>
-        </div>
-        <BsThreeDotsVertical className="text-text rounded-full text-[2.5rem] p-2 hover:bg-[#ececec] cursor-pointer" />
-      </div>
+// react icons
+import {BsEye, BsThreeDotsVertical} from "react-icons/bs";
+import {FaHeart} from "react-icons/fa";
+import {HiMiniShare} from "react-icons/hi2";
+import {BiLike} from "react-icons/bi";
 
-      <p className="text-text p-4">
-        <div className="flex flex-row ">
-          <button className="flex flex-row ">
-            {" "}
-            <BsEye className="text-2xl p-1" /> 50
-          </button>
-          <button className="flex flex-row ">
-            <BiLike className="text-2xl p-1" /> 10
-          </button>
-        </div>
-        This impressive paella is a perfect party dish and a fun meal to cook
-        together with your guests. Add 1 cup of frozen peas along with the
-        mussels, if you like.
-      </p>
+const ProductCard = () => {
 
-      <div className="flex items-center justify-between w-full p-4 ">
-        <div className="flex flex-col items-center gap-4 ">
-          <div>
-            {" "}
-            <p className="text-text text-[0.9rem]">Price : $25</p>{" "}
-          </div>
-          <div className="flex flex-row gap-5">
-            <FaHeart
-              className={`${
-                isFavorite ? "text-[#ff3d3d]" : "text-text"
-              } text-[1.4rem] cursor-pointer`}
-              onClick={() => setIsFavorite(!isFavorite)}
+    const [isFavorite, setIsFavorite] = useState(false);
+
+    return (
+        <div className="w-full md:w-[70%] shadow-lg dark:bg-slate-800 bg-white rounded">
+            <img
+                src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHNob2VzfGVufDB8fDB8fHww"
+                alt=""
+                className="w-full h-64 object-cover"
             />
-            <HiMiniShare className="text-text text-[1.4rem] cursor-pointer" />
-          </div>
+            <div className="flex w-full justify-between items-center p-4">
+                <div className="flex  items-center gap-4">
+                    <div className=" flex flex-col items-center">
+                        <h2 className="font-semibold dark:text-[#abc2d3] text-3xl">Shoes</h2>
+                    </div>
+                </div>
+                <BsThreeDotsVertical
+                    className="text-[#424242] dark:text-[#abc2d3] dark:hover:bg-slate-900/60 rounded-full text-[2.5rem] p-2 hover:bg-[#ececec] cursor-pointer"/>
+            </div>
+
+            <p className="text-[#424242] dark:text-[#abc2d3] p-4">
+                <div className="flex flex-row ">
+                    <button className="flex flex-row ">
+                        {" "}
+                        <BsEye className="text-2xl p-1"/> 50
+                    </button>
+                    <button className="flex flex-row ">
+                        <BiLike className="text-2xl p-1"/> 10
+                    </button>
+                </div>
+                This impressive paella is a perfect party dish and a fun
+                meal to cook together with your guests. Add 1 cup of frozen
+                peas along with the mussels, if you like.
+            </p>
+
+            <div className="flex items-center justify-between w-full p-4 ">
+                <div className="flex flex-col items-center gap-4 ">
+                    <div>
+                        {" "}
+                        <p className="text-[#424242] dark:text-[#abc2d3] text-[0.9rem]">
+                            Price : $25
+                        </p>{" "}
+                    </div>
+                    <div className="flex flex-row gap-5">
+                        <FaHeart
+                            className={`${
+                                isFavorite ? "text-[#ff3d3d]" : "text-[#424242] dark:text-[#abc2d3]"
+                            } text-[1.4rem] cursor-pointer`}
+                            onClick={() => setIsFavorite(!isFavorite)}
+                        />
+                        <HiMiniShare className="text-[#424242] dark:text-[#abc2d3] text-[1.4rem] cursor-pointer"/>
+                    </div>
+                </div>
+                <button
+                    className="btn p-3 rounded dark:bg-slate-900 dark:border-slate-700 border bg-black text-white hover:bg-blue-700 hover:text-white">
+                    Add to cart
+                </button>
+            </div>
         </div>
-        <button className="btn p-3 rounded border bg-black text-white hover:bg-blue-700 hover:text-white">
-          Add to cart
-        </button>
-      </div>
-    </div>
-  );
+    );
 };
 
-export default SimpleProfileCard;
-
+export default ProductCard;
             '
                 />
             )}
@@ -627,7 +646,7 @@ export default SimpleProfileCard;
             <ComponentWrapper>
               {musicCardPreview && (
                   <div className="p-8 mb-4 flex items-center gap-5 justify-center">
-                    <div className="w-full 1024px:w-[80%] shadow-lg bg-secondary rounded">
+                    <div className="w-full 1024px:w-[80%] shadow-lg dark:bg-slate-800 bg-secondary rounded">
                       <div className="grid grid-cols-12 w-full  items-center bg-black text-white ">
                         <div className="grid col-span-5 justify-center gap-3 ">
                           <div>
@@ -654,11 +673,11 @@ export default SimpleProfileCard;
                         <div className="flex items-center gap-4 ">
                           <FaHeart
                               className={`${
-                                  isFavorite ? "text-[#ff3d3d]" : "text-text"
+                                  isFavorite ? "text-[#ff3d3d]" : "text-text dark:text-[#abc2d3]"
                               } text-[1.4rem] cursor-pointer`}
                               onClick={() => setIsFavorite(!isFavorite)}
                           />
-                          <HiMiniShare className="text-text text-[1.4rem] cursor-pointer"/>
+                          <HiMiniShare className="text-text dark:text-[#abc2d3] text-[1.4rem] cursor-pointer"/>
                         </div>
                       </div>
                     </div>
@@ -668,60 +687,57 @@ export default SimpleProfileCard;
               {musicCardCode && (
                   <Showcode
                       code='
-                import React, { useState } from "react";
+import React, {useState} from "react";
 
-                import {
-                  FaArrowAltCircleLeft,
-                  FaArrowAltCircleRight,
-                  FaHeart,
-                } from "react-icons/fa";
-                import { HiMiniShare } from "react-icons/hi2";
-                import { MdPlayArrow } from "react-icons/md";
+// react icons
+import {FaArrowAltCircleLeft, FaArrowAltCircleRight, FaHeart} from "react-icons/fa";
+import {HiMiniShare} from "react-icons/hi2";
+import {MdPlayArrow} from "react-icons/md";
 
-                const MusicCard = () => {
-                  const [isFavorite, setIsFavorite] = useState(false);
+const Card = () => {
 
-                  return (
-                    <div className="w-[100%] lg:w-[80%] shadow-lg bg-secondary rounded">
-                      <div className="grid grid-cols-12 w-full  items-center bg-black text-white ">
-                        <div className="grid col-span-5 justify-center gap-3 ">
-                          <div>
-                            <h1 className="text-2xl">Pop Music</h1>
-                            <p>Arjit singh</p>
-                          </div>
-                          <div className="flex flex-row gap-3">
-                            <FaArrowAltCircleLeft className="text-2xl" />
-                            <MdPlayArrow className="text-2xl" />
-                            <FaArrowAltCircleRight className="text-2xl" />
-                          </div>
-                        </div>
+    const [isFavorite, setIsFavorite] = useState(false);
 
-                        <div className="grid col-span-7">
-                          <img
-                            src="https://media.istockphoto.com/id/1388162040/photo/a-crowded-concert-hall-with-scene-stage-in-red-lights-rock-show-performance-with-people.jpg?s=1024x1024&w=is&k=20&c=NARCbVE2aAOnSEVWr1ZxK0G4fpr60vMY7iDMsjnHjFg="
-                            alt=""
-                            className="w-full h-64 cover"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="flex items-center justify-between w-full p-4 ">
-                        <div className="flex items-center gap-4 ">
-                          <FaHeart
-                            className={`${
-                              isFavorite ? "text-[#ff3d3d]" : "text-text"
-                            } text-[1.4rem] cursor-pointer`}
-                            onClick={() => setIsFavorite(!isFavorite)}
-                          />
-                          <HiMiniShare className="text-text text-[1.4rem] cursor-pointer" />
-                        </div>
-                      </div>
+    return (
+        <div className="w-full md:w-[80%] shadow-lg dark:bg-slate-800 bg-secondary rounded">
+            <div className="grid grid-cols-12 w-full  items-center bg-black text-white ">
+                <div className="grid col-span-5 justify-center gap-3 ">
+                    <div>
+                        <h1 className="text-2xl">Pop Music</h1>
+                        <p>Arjit singh</p>
                     </div>
-                  );
-                };
+                    <div className="flex flex-row gap-3">
+                        <FaArrowAltCircleLeft className="text-2xl"/>
+                        <MdPlayArrow className="text-2xl"/>
+                        <FaArrowAltCircleRight className="text-2xl"/>
+                    </div>
+                </div>
 
-                export default MusicCard;
+                <div className="grid col-span-7">
+                    <img
+                        src="https://media.istockphoto.com/id/1388162040/photo/a-crowded-concert-hall-with-scene-stage-in-red-lights-rock-show-performance-with-people.jpg?s=1024x1024&w=is&k=20&c=NARCbVE2aAOnSEVWr1ZxK0G4fpr60vMY7iDMsjnHjFg="
+                        alt=""
+                        className="w-full h-64 cover"
+                    />
+                </div>
+            </div>
 
+            <div className="flex items-center justify-between w-full p-4 ">
+                <div className="flex items-center gap-4 ">
+                    <FaHeart
+                        className={`${
+                            isFavorite ? "text-[#ff3d3d]" : "text-[#424242] dark:text-[#abc2d3]"
+                        } text-[1.4rem] cursor-pointer`}
+                        onClick={() => setIsFavorite(!isFavorite)}
+                    />
+                    <HiMiniShare className="text-[#424242] dark:text-[#abc2d3] text-[1.4rem] cursor-pointer"/>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default Card;
             '
                   />
               )}
@@ -738,9 +754,9 @@ export default SimpleProfileCard;
 
             <ComponentWrapper>
               {simpleProfileCardPreview && (
-                  <div className="p-8 mb-4 flex items-center gap-5 justify-center">
-                    <div className="w-full 1024px:w-[60%] mt-16 1024px:mt-0 shadow-lg rounded flex flex-col">
-                      <div className="w-full  flex justify-center items-center  ">
+                  <div className="p-8 mt-20 mb-4 flex items-center gap-5 justify-center">
+                    <div className="w-full 1024px:w-[60%] mt-16 1024px:mt-0 dark:bg-slate-800 shadow-lg rounded flex flex-col">
+                      <div className="w-full flex justify-center items-center">
                         <img
                             src="https://images.pexels.com/photos/3772623/pexels-photo-3772623.jpeg"
                             alt=""
@@ -750,10 +766,10 @@ export default SimpleProfileCard;
 
                       <div>
                         <div className="w-full start mt-3 px-2">
-                          <h2 className="font-[600] text-center text-[1.4rem]">
+                          <h2 className="font-[600] dark:text-[#abc2d3] text-center text-[1.4rem]">
                             Description
                           </h2>
-                          <p className="text-text text-[0.9rem]">
+                          <p className="text-text dark:text-[#abc2d3] text-[0.9rem]">
                             Lorem ipsum dolor sit amet consectetur adipisicing
                             elit. Fugit voluptatibus porro at praesentium enim
                             animi deserunt totam voluptatem tempora repudiandae
@@ -762,20 +778,20 @@ export default SimpleProfileCard;
                           </p>
                         </div>
 
-                        <div className="w-full p-4 mt-8 border-t border-border flex items-center justify-between">
+                        <div className="w-full p-4 mt-8 border-t dark:border-slate-600 border-border flex items-center justify-between">
                           <div className="flex items-center justify-center flex-col">
-                            <h2 className=" text-[1.2rem] font-[600]">80k</h2>
-                            <p className="text-text text-[0.9rem]">Post</p>
+                            <h2 className=" text-[1.2rem] dark:text-[#abc2d3] font-[600]">80k</h2>
+                            <p className="text-text dark:text-[#abc2d3]/80 text-[0.9rem]">Post</p>
                           </div>
 
                           <div className="flex items-center justify-center flex-col">
-                            <h2 className=" text-[1.2rem] font-[600]">8k</h2>
-                            <p className="text-text text-[0.9rem]">Following</p>
+                            <h2 className=" text-[1.2rem] dark:text-[#abc2d3] font-[600]">8k</h2>
+                            <p className="text-text dark:text-[#abc2d3]/80 text-[0.9rem]">Following</p>
                           </div>
 
                           <div className="flex items-center justify-center flex-col">
-                            <h2 className=" text-[1.2rem] font-[600]">200k</h2>
-                            <p className="text-text text-[0.9rem]">Followers</p>
+                            <h2 className=" text-[1.2rem] dark:text-[#abc2d3] font-[600]">200k</h2>
+                            <p className="text-text dark:text-[#abc2d3]/80 text-[0.9rem]">Followers</p>
                           </div>
                         </div>
                       </div>
@@ -785,47 +801,59 @@ export default SimpleProfileCard;
 
               {simpleProfileCardCode && (
                   <Showcode
-                      code={`
-                const SimpleProfileCard = () => {
-                  return (
-                    <div className="w-[60%] shadow-lg rounded">
-                      <div className="w-full h-[150px] relative bg-[url('https://img.freepik.com/premium-vector/content-writer-vector-colored-round-line-illustration_104589-2571.jpg')] bg-center">
-                        <img
-                          src="https://images.pexels.com/photos/3772623/pexels-photo-3772623.jpeg"
-                          alt=""
-                          className="w-[80px] h-[80px] rounded-full border-secondary border-4 absolute -bottom-12 left-1/2 transform -translate-x-1/2 object-cover"
-                        />
-                      </div>
-                
-                      <div className="w-full text-center mt-16">
-                        <h2 className="font-[600] text-[1.4rem]">User Name</h2>
-                        <p className="text-text text-[0.9rem]">London</p>
-                      </div>
-                
-                      <div className="w-full p-4 mt-8 border-t border-border flex items-center justify-between">
-                        <div className="flex items-center justify-center flex-col">
-                          <h2 className=" text-[1.2rem] font-[600]">80k</h2>
-                          <p className="text-text text-[0.9rem]">Post</p>
-                        </div>
-                
-                        <div className="flex items-center justify-center flex-col">
-                          <h2 className=" text-[1.2rem] font-[600]">8k</h2>
-                          <p className="text-text text-[0.9rem]">Following</p>
-                        </div>
-                
-                        <div className="flex items-center justify-center flex-col">
-                          <h2 className=" text-[1.2rem] font-[600]">200k</h2>
-                          <p className="text-text text-[0.9rem]">Followers</p>
-                        </div>
-                      </div>
+                      code='
+import React from "react";
+
+const Card = () => {
+
+    return (
+        <div className="w-full md:w-[60%] mt-16 md:mt-0 dark:bg-slate-800 shadow-lg rounded flex flex-col">
+            <div className="w-full flex justify-center items-center">
+                <img
+                    src="https://images.pexels.com/photos/3772623/pexels-photo-3772623.jpeg"
+                    alt=""
+                    className="w-[80px] h-[80px] rounded-full  flex justify-center border-blue-800 border-2   -mt-16 object-cover"
+                />
+            </div>
+
+            <div>
+                <div className="w-full start mt-3 px-2">
+                    <h2 className="font-[600] dark:text-[#abc2d3] text-center text-[1.4rem]">
+                        Description
+                    </h2>
+                    <p className="text-[#424242] dark:text-[#abc2d3] text-[0.9rem]">
+                        Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Fugit voluptatibus porro at praesentium enim
+                        animi deserunt totam voluptatem tempora repudiandae
+                        possimus iure cum veniam nesciunt, ipsa ad illo,
+                        magnam tenetur?
+                    </p>
+                </div>
+
+                <div
+                    className="w-full p-4 mt-8 border-t dark:border-slate-600 border-border flex items-center justify-between">
+                    <div className="flex items-center justify-center flex-col">
+                        <h2 className=" text-[1.2rem] dark:text-[#abc2d3] font-[600]">80k</h2>
+                        <p className="text-[#424242] dark:text-[#abc2d3]/80 text-[0.9rem]">Post</p>
                     </div>
-                  );
-                };
-                
-                export default SimpleProfileCard;
-                
-                
-          `}
+
+                    <div className="flex items-center justify-center flex-col">
+                        <h2 className=" text-[1.2rem] dark:text-[#abc2d3] font-[600]">8k</h2>
+                        <p className="text-[#424242] dark:text-[#abc2d3]/80 text-[0.9rem]">Following</p>
+                    </div>
+
+                    <div className="flex items-center justify-center flex-col">
+                        <h2 className=" text-[1.2rem] dark:text-[#abc2d3] font-[600]">200k</h2>
+                        <p className="text-[#424242] dark:text-[#abc2d3]/80 text-[0.9rem]">Followers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default Card;
+                     '
                   />
               )}
             </ComponentWrapper>
@@ -841,9 +869,9 @@ export default SimpleProfileCard;
           <ComponentWrapper>
             {profileCardPreview && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
-                  <div className="w-full 1024px:w-[60%] shadow-lg rounded">
+                  <div className="w-full 1024px:w-[60%] shadow-lg bg-white dark:bg-slate-800 rounded">
                     <div
-                        className="w-full h-[150px] relative bg-[url('https://img.freepik.com/premium-vector/content-writer-vector-colored-round-line-illustration_104589-2571.jpg')] bg-center">
+                        className="w-full h-[150px] rounded-t-md relative bg-[url('https://img.freepik.com/premium-vector/content-writer-vector-colored-round-line-illustration_104589-2571.jpg')] bg-center">
                       <img
                           src="https://images.pexels.com/photos/3772623/pexels-photo-3772623.jpeg"
                           alt=""
@@ -852,24 +880,24 @@ export default SimpleProfileCard;
                     </div>
 
                     <div className="w-full text-center mt-16">
-                      <h2 className="font-[600] text-[1.4rem]">User Name</h2>
-                      <p className="text-text text-[0.9rem]">London</p>
+                      <h2 className="font-[600] dark:text-[#abc2d3] text-[1.4rem]">User Name</h2>
+                      <p className="text-text dark:text-[#abc2d3]/80 text-[0.9rem]">London</p>
                     </div>
 
-                    <div className="w-full p-4 mt-8 border-t border-border flex items-center justify-between">
+                    <div className="w-full p-4 mt-8 border-t dark:border-slate-700 border-border flex items-center justify-between">
                       <div className="flex items-center justify-center flex-col">
-                        <h2 className=" text-[1.2rem] font-[600]">80k</h2>
-                        <p className="text-text text-[0.9rem]">Post</p>
+                        <h2 className=" text-[1.2rem] dark:text-[#abc2d3] font-[600]">80k</h2>
+                        <p className="text-text dark:text-[#abc2d3]/80 text-[0.9rem]">Post</p>
                       </div>
 
                       <div className="flex items-center justify-center flex-col">
-                        <h2 className=" text-[1.2rem] font-[600]">8k</h2>
-                        <p className="text-text text-[0.9rem]">Following</p>
+                        <h2 className=" text-[1.2rem] dark:text-[#abc2d3] font-[600]">8k</h2>
+                        <p className="text-text dark:text-[#abc2d3]/80 text-[0.9rem]">Following</p>
                       </div>
 
                       <div className="flex items-center justify-center flex-col">
-                        <h2 className=" text-[1.2rem] font-[600]">200k</h2>
-                        <p className="text-text text-[0.9rem]">Followers</p>
+                        <h2 className=" text-[1.2rem] dark:text-[#abc2d3] font-[600]">200k</h2>
+                        <p className="text-text dark:text-[#abc2d3]/80 text-[0.9rem]">Followers</p>
                       </div>
                     </div>
                   </div>
@@ -881,47 +909,47 @@ export default SimpleProfileCard;
                     code={`
 import React from "react";
 
-const profileCard = () => {
-  return (
-    <div className="w-[60%] shadow-lg rounded">
-      <div className="w-full h-[150px] relative bg-[url('https://img.freepik.com/premium-vector/
-      content-writer-vector-colored-round-line-illustration_104589-2571.jpg')] bg-center">
-        <img
-          src="https://images.pexels.com/photos/3772623/
-          pexels-photo-3772623.jpeg"
-          alt=""
-          className="w-[80px] h-[80px] rounded-full border-[#ffff] 
-          border-4 absolute -bottom-12 left-1/2 transform -translate-x-1/2 object-cover"
-        />
-      </div>
+const Card = () => {
+    
+    return (
+        <div className="w-full md:w-[60%] shadow-lg bg-white dark:bg-slate-800 rounded">
+            <div
+                className="w-full h-[150px] rounded-t-md relative bg-[url('https://img.freepik.com/premium-vector/content-writer-vector-colored-round-line-illustration_104589-2571.jpg')] bg-center">
+                <img
+                    src="https://images.pexels.com/photos/3772623/pexels-photo-3772623.jpeg"
+                    alt=""
+                    className="w-[80px] h-[80px] rounded-full border-secondary border-4 absolute -bottom-12 left-1/2 transform -translate-x-1/2 object-cover"
+                />
+            </div>
 
-      <div className="w-full text-center mt-16">
-        <h2 className="font-[600] text-[1.4rem]">User Name</h2>
-        <p className="text-[#424242] text-[0.9rem]">London</p>
-      </div>
+            <div className="w-full text-center mt-16">
+                <h2 className="font-[600] dark:text-[#abc2d3] text-[1.4rem]">User Name</h2>
+                <p className="text-[#424242] dark:text-[#abc2d3]/80 text-[0.9rem]">London</p>
+            </div>
 
-      <div className="w-full p-4 mt-8 border-t border-[#fff] flex items-center justify-between">
-        <div className="flex items-center justify-center flex-col">
-          <h2 className=" text-[1.2rem] font-[600]">80k</h2>
-          <p className="text-[#424242] text-[0.9rem]">Post</p>
+            <div
+                className="w-full p-4 mt-8 border-t dark:border-slate-700 border-border flex items-center justify-between">
+                <div className="flex items-center justify-center flex-col">
+                    <h2 className=" text-[1.2rem] dark:text-[#abc2d3] font-[600]">80k</h2>
+                    <p className="text-[#424242] dark:text-[#abc2d3]/80 text-[0.9rem]">Post</p>
+                </div>
+
+                <div className="flex items-center justify-center flex-col">
+                    <h2 className=" text-[1.2rem] dark:text-[#abc2d3] font-[600]">8k</h2>
+                    <p className="text-[#424242] dark:text-[#abc2d3]/80 text-[0.9rem]">Following</p>
+                </div>
+
+                <div className="flex items-center justify-center flex-col">
+                    <h2 className=" text-[1.2rem] dark:text-[#abc2d3] font-[600]">200k</h2>
+                    <p className="text-[#424242] dark:text-[#abc2d3]/80 text-[0.9rem]">Followers</p>
+                </div>
+            </div>
         </div>
-
-        <div className="flex items-center justify-center flex-col">
-          <h2 className=" text-[1.2rem] font-[600]">8k</h2>
-          <p className="text-[#424242] text-[0.9rem]">Following</p>
-        </div>
-
-        <div className="flex items-center justify-center flex-col">
-          <h2 className=" text-[1.2rem] font-[600]">200k</h2>
-          <p className="text-[#424242] text-[0.9rem]">Followers</p>
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 
-export default profileCard;
-          `}
+export default Card;
+                    `}
                 />
             )}
           </ComponentWrapper>
@@ -937,15 +965,15 @@ export default profileCard;
           <ComponentWrapper>
             {teamCardPreview && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
-                  <div className="w-full 1024px:w-[60%] rounded shadow-lg p-4">
+                  <div className="w-full 1024px:w-[60%] bg-white dark:bg-slate-800 rounded shadow-lg p-4">
                     <div className="w-full flex items-center justify-between mb-4">
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center dark:text-[#abc2d3] gap-2">
                         <RiTeamFill
-                            className="text-[2rem] p-2 rounded-full bg-[#3b9df828] text-[#3B9DF8] cursor-pointer"/>
+                            className="text-[2rem] p-2 dark:text-[#abc2d3] rounded-full bg-[#3b9df828] text-[#3B9DF8] cursor-pointer"/>
                         <h3>Teams</h3>
                       </div>
                       <BsThreeDotsVertical
-                          className="text-[2rem] p-2 rounded-full bg-[#3b9df828] text-[#3B9DF8] cursor-pointer"/>
+                          className="text-[2rem] p-2 dark:text-[#abc2d3] rounded-full bg-[#3b9df828] text-[#3B9DF8] cursor-pointer"/>
                     </div>
 
                     <img
@@ -954,12 +982,12 @@ export default profileCard;
                         className="rounded-lg"
                     />
 
-                    <h2 className="font-[600] text-[1.3rem] py-4">
+                    <h2 className="font-[600] dark:text-[#abc2d3] text-[1.3rem] py-4">
                       Simple Design
                     </h2>
 
                     <div className="w-full flex items-center justify-between relative">
-                      <button className="py-1 px-4 bg-[#3b9df828] text-[#2367a7] rounded">
+                      <button className="py-1 px-4 dark:text-[#abc2d3] bg-[#3b9df828] text-[#2367a7] rounded">
                         Design
                       </button>
                       <div className=" w-[50%] h-full">
@@ -1002,89 +1030,81 @@ export default profileCard;
 
             {teamCardCode && (
                 <Showcode
-                    code={`
+                    code='
 import React from "react";
 
-// icons
-import { RiTeamFill } from "react-icons/ri";
-import { BsThreeDotsVertical } from "react-icons/bs";
+// react icons
+import {RiTeamFill} from "react-icons/ri";
+import {BsThreeDotsVertical} from "react-icons/bs";
 
-const TeamCard = () => {
-  return (
-    <div className="w-[60%] rounded shadow-lg p-4">
-      <div className="w-full flex items-center justify-between mb-4">
-        <div className="flex items-center gap-2">
-          <RiTeamFill className="text-[2rem] p-2 rounded-full 
-          bg-[#3b9df828] text-[#3B9DF8] cursor-pointer" />
-          <h3>Teams</h3>
-        </div>
-        <BsThreeDotsVertical className="text-[2rem] p-2 
-        rounded-full bg-[#3b9df828] text-[#3B9DF8] cursor-pointer" />
-      </div>
+const Card = () => {
 
-      <img
-        src="https://img.freepik.com/free-psd/3d-interface-website-presentation-mockup-isolated_359791-208.jpg"
-        alt=""
-        className="rounded-lg"
-      />
-
-      <h2 className="font-[600] text-[1.3rem] py-4">Simple Design</h2>
-
-      <div className="w-full flex items-center justify-between relative">
-        <button className="py-1 px-4 bg-[#3b9df828] text-[#2367a7] rounded">
-          Design
-        </button>
-        <div className=" w-[50%] h-full">
-          <div className="flex items-center">
-            <img
-              src="https://img.freepik.com/free-photo/
-              young-bearded-man-with-striped-shirt_273609-5677.jpg"
-              alt=""
-              className="w-[30px] h-[30px] object-cover rounded-full 
-              border border-[#ffff] absolute right-[25%] top-0"
-            />
-            <img
-              src="https://img.freepik.com/free-photo/confident-attractive-caucasian-guy-beige-pullon-smiling-
-              broadly-while-standing-against-gray_176420-44508.jpg"
-              alt=""
-              className="w-[30px] h-[30px] object-cover rounded-full 
-              border border-[#ffff] absolute right-[20%] top-0"
-            />
-            <img
-              src="https://img.freepik.com/free-photo/indoor-picture-cheerful-handsome-young-man-having-folded-hands-
-              looking-directly-smiling-sincerely-wearing-casual-clothes_176532-10257.jpg"
-              alt=""
-              className="w-[30px] h-[30px] object-cover rounded-full 
-              border border-[#ffff] absolute right-[15%] top-0"
-            />
-            <img
-              src="https://img.freepik.com/free-photo/handsome-confident-smiling-man-with-hands-crossed-chest_176420-
-              18743.jpg"
-              alt=""
-              className="w-[30px] h-[30px] object-cover rounded-full 
-              border border-[#ffff] absolute right-[10%] top-0"
-            />
-            <img
-              src="https://img.freepik.com/free-photo/
-              portrait-hacker_23-2148165910.jpg"
-              alt=""
-              className="w-[30px] h-[30px] object-cover rounded-full 
-              border border-[#ffff] absolute top-0 right-[5%]"
-            />
-            <div className="w-[30px] h-[30px] object-cover rounded-full 
-            border border-[#ffff] bg-[#e5eaf2] text-[#424242] absolute top-0 right-[0%] 
-            flex items-center justify-center">
-              <p className="text-[0.7rem] cursor-pointer">18+</p>
+    return (
+        <div className="w-full md:w-[60%] bg-white dark:bg-slate-800 rounded shadow-lg p-4">
+            <div className="w-full flex items-center justify-between mb-4">
+                <div className="flex items-center dark:text-[#abc2d3] gap-2">
+                    <RiTeamFill
+                        className="text-[2rem] p-2 dark:text-[#abc2d3] rounded-full bg-[#3b9df828] text-[#3B9DF8] cursor-pointer"/>
+                    <h3>Teams</h3>
+                </div>
+                <BsThreeDotsVertical
+                    className="text-[2rem] p-2 dark:text-[#abc2d3] rounded-full bg-[#3b9df828] text-[#3B9DF8] cursor-pointer"/>
             </div>
-          </div>
+
+            <img
+                src="https://img.freepik.com/free-psd/3d-interface-website-presentation-mockup-isolated_359791-208.jpg"
+                alt=""
+                className="rounded-lg"
+            />
+
+            <h2 className="font-[600] dark:text-[#abc2d3] text-[1.3rem] py-4">
+                Simple Design
+            </h2>
+
+            <div className="w-full flex items-center justify-between relative">
+                <button className="py-1 px-4 dark:text-[#abc2d3] bg-[#3b9df828] text-[#2367a7] rounded">
+                    Design
+                </button>
+                <div className=" w-[50%] h-full">
+                    <div className="flex items-center">
+                        <img
+                            src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg"
+                            alt=""
+                            className="w-[30px] h-[30px] object-cover rounded-full border border-secondary absolute right-[25%] top-0"
+                        />
+                        <img
+                            src="https://img.freepik.com/free-photo/confident-attractive-caucasian-guy-beige-pullon-smiling-broadly-while-standing-against-gray_176420-44508.jpg"
+                            alt=""
+                            className="w-[30px] h-[30px] object-cover rounded-full border border-secondary absolute right-[20%] top-0"
+                        />
+                        <img
+                            src="https://img.freepik.com/free-photo/indoor-picture-cheerful-handsome-young-man-having-folded-hands-looking-directly-smiling-sincerely-wearing-casual-clothes_176532-10257.jpg"
+                            alt=""
+                            className="w-[30px] h-[30px] object-cover rounded-full border border-secondary absolute right-[15%] top-0"
+                        />
+                        <img
+                            src="https://img.freepik.com/free-photo/handsome-confident-smiling-man-with-hands-crossed-chest_176420-18743.jpg"
+                            alt=""
+                            className="w-[30px] h-[30px] object-cover rounded-full border border-secondary absolute right-[10%] top-0"
+                        />
+                        <img
+                            src="https://img.freepik.com/free-photo/portrait-hacker_23-2148165910.jpg"
+                            alt=""
+                            className="w-[30px] h-[30px] object-cover rounded-full border border-secondary absolute top-0 right-[5%]"
+                        />
+                        <div
+                            className="w-[30px] h-[30px] object-cover rounded-full border border-secondary bg-[#e5eaf2] text-[#424242] absolute top-0 right-[0%] flex items-center justify-center">
+                            <p className="text-[0.7rem] cursor-pointer">18+</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
-export default TeamCard;
-          `}
+export default Card;
+                   '
                 />
             )}
           </ComponentWrapper>]
@@ -1101,7 +1121,7 @@ export default TeamCard;
           <ComponentWrapper>
             {pricingCardPreview && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
-                  <div className="w-full 1024px:w-[80%] border border-border p-2 rounded-2xl">
+                  <div className="w-full 1024px:w-[80%] border bg-white dark:bg-slate-800 dark:border-slate-700 border-border p-2 rounded-2xl">
                     <div className="w-full bg-primary rounded-2xl p-4">
                       <div className="flex items-center justify-between w-full mb-5">
                         <IoIosRocket className="text-secondary text-[3.5rem]"/>
@@ -1119,24 +1139,24 @@ export default TeamCard;
                     </div>
 
                     <div className="flex flex-col px-8 text-text mt-6">
-                      <p className="flex items-center gap-2 py-3 border-b border-border text-[1rem]">
-                        <FaRegDotCircle className="text-[1rem] text-[#000]"/>
+                      <p className="flex items-center gap-2 py-3 border-b border-border dark:text-[#abc2d3] text-[1rem]">
+                        <FaRegDotCircle className="text-[1rem] dark:text-[#abc2d3] text-[#000]"/>
                         Lorem ipsum dolor sit.
                       </p>
-                      <p className="flex items-center gap-2 py-3 border-b border-border text-[1rem]">
-                        <FaRegDotCircle className="text-[1rem] text-[#000]"/>
+                      <p className="flex items-center gap-2 py-3 border-b border-border dark:text-[#abc2d3] text-[1rem]">
+                        <FaRegDotCircle className="text-[1rem] dark:text-[#abc2d3] text-[#000]"/>
                         Lorem ipsum dolor sit.
                       </p>
-                      <p className="flex items-center gap-2 py-3 border-b border-border text-[1rem]">
-                        <FaRegDotCircle className="text-[1rem] text-[#000]"/>
+                      <p className="flex items-center gap-2 py-3 border-b border-border dark:text-[#abc2d3] text-[1rem]">
+                        <FaRegDotCircle className="text-[1rem] dark:text-[#abc2d3] text-[#000]"/>
                         Lorem ipsum dolor sit.
                       </p>
-                      <p className="flex items-center gap-2 py-3 border-b border-border text-[1rem]">
-                        <FaRegDotCircle className="text-[1rem] text-[#000]"/>
+                      <p className="flex items-center gap-2 py-3 border-b border-border dark:text-[#abc2d3] text-[1rem]">
+                        <FaRegDotCircle className="text-[1rem] dark:text-[#abc2d3] text-[#000]"/>
                         Lorem ipsum dolor sit.
                       </p>
-                      <p className="flex items-center gap-2 py-3 text-[1rem]">
-                        <FaRegDotCircle className="text-[1rem] text-[#000]"/>
+                      <p className="flex items-center gap-2 py-3 dark:text-[#abc2d3] text-[1rem]">
+                          <FaRegDotCircle className="text-[1rem] dark:text-[#abc2d3] text-[#000]"/>
                         Lorem ipsum dolor sit.
                       </p>
                     </div>
@@ -1154,72 +1174,71 @@ export default TeamCard;
 
             {pricingCardCode && (
                 <Showcode
-                    code={`
+                    code='
 import React from "react";
 
-// icons
-import { IoIosRocket } from "react-icons/io";
-import { BiRightArrowAlt } from "react-icons/bi";
-import { FaRegDotCircle } from "react-icons/fa";
+// react icons
+import {IoIosRocket} from "react-icons/io";
+import {FaRegDotCircle} from "react-icons/fa";
+import {BiRightArrowAlt} from "react-icons/bi";
 
-const PricingCard = () => {
-  return (
-    <div className="w-[80%] border border-[#e5eaf2] p-2 rounded-2xl">
-      <div className="w-full bg-[#3B9DF8] rounded-2xl p-4">
-        <div className="flex items-center justify-between w-full mb-5">
-          <IoIosRocket className="text-[#ffffff] text-[3.5rem]" />
-          <button className="px-2 py-1 border
-           border-[#ffffff] rounded-md text-[0.8rem] bg-[#ffffff]">
-            ENTERPRISE
-          </button>
+const Card = () => {
+
+    return (
+        <div
+            className="w-full 1024px:w-[80%] border bg-white dark:bg-slate-800 dark:border-slate-700 border-[#e5eaf2] p-2 rounded-2xl">
+            <div className="w-full bg-[#3B9DF8] rounded-2xl p-4">
+                <div className="flex items-center justify-between w-full mb-5">
+                    <IoIosRocket className="text-[#fff] text-[3.5rem]"/>
+                    <button className="px-2 py-1 border border-[#fff] rounded-md text-[0.8rem] bg-[#fff]">
+                        ENTERPRISE
+                    </button>
+                </div>
+                <h2 className="text-[2.3rem] font-[800] text-[#fff]">
+                    $79.58{" "}
+                    <span className="text-[1rem] font-[400]">/ month</span>
+                </h2>
+                <p className="text-[1rem] text-[#fff]">
+                    True power of marketing
+                </p>
+            </div>
+
+            <div className="flex flex-col px-8 text-[#424242] mt-6">
+                <p className="flex items-center gap-2 py-3 border-b border-[#e5eaf2] dark:text-[#abc2d3] text-[1rem]">
+                    <FaRegDotCircle className="text-[1rem] dark:text-[#abc2d3] text-[#000]"/>
+                    Lorem ipsum dolor sit.
+                </p>
+                <p className="flex items-center gap-2 py-3 border-b border-[#e5eaf2] dark:text-[#abc2d3] text-[1rem]">
+                    <FaRegDotCircle className="text-[1rem] dark:text-[#abc2d3] text-[#000]"/>
+                    Lorem ipsum dolor sit.
+                </p>
+                <p className="flex items-center gap-2 py-3 border-b border-[#e5eaf2] dark:text-[#abc2d3] text-[1rem]">
+                    <FaRegDotCircle className="text-[1rem] dark:text-[#abc2d3] text-[#000]"/>
+                    Lorem ipsum dolor sit.
+                </p>
+                <p className="flex items-center gap-2 py-3 border-b border-[#e5eaf2] dark:text-[#abc2d3] text-[1rem]">
+                    <FaRegDotCircle className="text-[1rem] dark:text-[#abc2d3] text-[#000]"/>
+                    Lorem ipsum dolor sit.
+                </p>
+                <p className="flex items-center gap-2 py-3 dark:text-[#abc2d3] text-[1rem]">
+                    <FaRegDotCircle className="text-[1rem] dark:text-[#abc2d3] text-[#000]"/>
+                    Lorem ipsum dolor sit.
+                </p>
+            </div>
+
+            <div className="px-8 my-5">
+                <button
+                    className="px-4 py-2 border border-[#3B9DF8] bg-[#3B9DF8] rounded-2xl text-[#fff] flex items-center gap-1 group">
+                    GET STARTED
+                    <BiRightArrowAlt className="text-[1.4rem] group-hover:ml-3 transition-all duration-300"/>
+                </button>
+            </div>
         </div>
-        <h2 className="text-[2.3rem] font-[800] text-secondary">
-          $79.58 <span className="text-[1rem] font-[400]">/ month</span>
-        </h2>
-        <p className="text-[1rem] text-[#ffffff]">True power of marketing</p>
-      </div>
-
-      <div className="flex flex-col px-8 text-[#424242] mt-6">
-        <p className="flex items-center gap-2 py-3 border-b 
-        border-[#e5eaf2] text-[1rem]">
-          <FaRegDotCircle className="text-[1rem] text-[#000]" />
-          Lorem ipsum dolor sit.
-        </p>
-        <p className="flex items-center gap-2 py-3 border-b
-         border-[#e5eaf2] text-[1rem]">
-          <FaRegDotCircle className="text-[1rem] text-[#000]" />
-          Lorem ipsum dolor sit.
-        </p>
-        <p className="flex items-center gap-2 py-3 border-b
-         border-[#e5eaf2] text-[1rem]">
-          <FaRegDotCircle className="text-[1rem] text-[#000]" />
-          Lorem ipsum dolor sit.
-        </p>
-        <p className="flex items-center gap-2 py-3 border-b
-         border-[#e5eaf2] text-[1rem]">
-          <FaRegDotCircle className="text-[1rem] text-[#000]" />
-          Lorem ipsum dolor sit.
-        </p>
-        <p className="flex items-center gap-2 py-3 text-[1rem]">
-          <FaRegDotCircle className="text-[1rem] text-[#000]" />
-          Lorem ipsum dolor sit.
-        </p>
-      </div>
-
-      <div className="px-8 my-5">
-        <button className="px-4 py-2 border border-[#3B9DF8]
-         bg-[#3B9DF8] rounded-2xl text-secondary flex items-center gap-1 group">
-          GET STARTED
-          <BiRightArrowAlt className="text-[1.4rem] 
-          group-hover:ml-3 transition-all duration-300" />
-        </button>
-      </div>
-    </div>
-  );
+    );
 };
 
-export default PricingCard;
-          `}
+export default Card;
+                    '
                 />
             )}
           </ComponentWrapper>
@@ -1236,52 +1255,52 @@ export default PricingCard;
           <ComponentWrapper>
             {pricingCard2Preview && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
-                  <div className="w-full 1024px:w-[80%] border border-border shadow-lg">
+                  <div className="w-full 1024px:w-[80%] border bg-white dark:bg-slate-800 dark:border-slate-700 border-border shadow-lg">
                     <div className="w-full flex items-center justify-center flex-col p-6">
                       <h2 className="text-[1.5rem] text-primary font-[600]">
                         Standard
                       </h2>
-                      <p className="text-text text-[1rem]">
+                      <p className="text-text dark:text-[#abc2d3] text-[1rem]">
                         Ideal for growing businesses
                       </p>
 
                       <div className="flex mt-6 gap-1">
-                        <h2 className="font-[800] text-[4rem] leading-[4rem]">
+                        <h2 className="font-[800] dark:text-[#abc2d3] text-[4rem] leading-[4rem]">
                           49.50
                         </h2>
-                        <span className="text-[1.2rem] font-[500]">$</span>
+                        <span className="text-[1.2rem] dark:text-[#abc2d3] font-[500]">$</span>
                       </div>
-                      <p className="text-text text-[0.9rem]">per month</p>
+                      <p className="text-text dark:text-[#abc2d3]/70 text-[0.9rem]">per month</p>
 
                       <button className="px-12 py-2 bg-primary rounded-3xl text-secondary text-[1rem] my-6">
                         Buy Now
                       </button>
                     </div>
 
-                    <h3 className="text-[1.2rem] font-[600] text-text mt-3 px-6">
+                    <h3 className="text-[1.2rem] dark:text-[#abc2d3] font-[600] text-text mt-3 px-6">
                       What you will get?
                     </h3>
                     <div className="flex gap-3 flex-col py-4 px-6">
-                      <p className="flex items-center gap-2 text-text text-[1rem]">
+                      <p className="flex items-center gap-2 dark:text-[#abc2d3] text-text text-[1rem]">
                         <MdDone className="text-primary text-[1.5rem]"/>5 Users
                       </p>
-                      <p className="flex items-center gap-2 text-text text-[1rem]">
+                      <p className="flex items-center gap-2 dark:text-[#abc2d3] text-text text-[1rem]">
                         <MdDone className="text-primary text-[1.5rem]"/>
                         50GB Storage
                       </p>
-                      <p className="flex items-center gap-2 text-text text-[1rem]">
+                      <p className="flex items-center gap-2 dark:text-[#abc2d3] text-text text-[1rem]">
                         <MdDone className="text-primary text-[1.5rem]"/>
                         Priority Email Support
                       </p>
-                      <p className="flex items-center gap-3 text-text text-[1rem]">
+                      <p className="flex items-center gap-3 dark:text-[#abc2d3] text-text text-[1rem]">
                         <RxCross1 className="text-[#e73939] text-[1.2rem]"/>
                         Unlimited Users
                       </p>
-                      <p className="flex items-center gap-3 text-text text-[1rem]">
+                      <p className="flex items-center gap-3 dark:text-[#abc2d3] text-text text-[1rem]">
                         <RxCross1 className="text-[#e73939] text-[1.2rem]"/>
                         100GB Storage
                       </p>
-                      <p className="flex items-center gap-3 text-text text-[1rem]">
+                      <p className="flex items-center gap-3 dark:text-[#abc2d3] text-text text-[1rem]">
                         <RxCross1 className="text-[#e73939] text-[1.2rem]"/>
                         24/7 Live Chat Support
                       </p>
@@ -1293,66 +1312,74 @@ export default PricingCard;
 
             {pricingCard2Code && (
                 <Showcode
-                    code={`
+                    code='
 import React from "react";
 
-// icons
-import { MdDone } from "react-icons/md";
-import { RxCross1 } from "react-icons/rx";
+// react icons
+import {MdDone} from "react-icons/md";
+import {RxCross1} from "react-icons/rx";
 
-const PricingCard = () => {
-  return (
-    <div className="w-[80%] border border-[#e5eaf2] shadow-lg">
-      <div className="w-full flex items-center justify-center flex-col p-6">
-        <h2 className="text-[1.5rem] text-[#3B9DF8] font-[600]">Standard</h2>
-        <p className="text-[#424242] text-[1rem]">Ideal for growing businesses</p>
+const Card = () => {
 
-        <div className="flex mt-6 gap-1">
-          <h2 className="font-[800] text-[4rem] leading-[4rem]">49.50</h2>
-          <span className="text-[1.2rem] font-[500]">$</span>
+    return (
+        <div
+            className="w-full md:w-[80%] border bg-white dark:bg-slate-800 dark:border-slate-700 border-[#e5eaf2] shadow-lg">
+            <div className="w-full flex items-center justify-center flex-col p-6">
+                <h2 className="text-[1.5rem] text-[#3B9DF8] font-[600]">
+                    Standard
+                </h2>
+                <p className="text-[#424242] dark:text-[#abc2d3] text-[1rem]">
+                    Ideal for growing businesses
+                </p>
+
+                <div className="flex mt-6 gap-1">
+                    <h2 className="font-[800] dark:text-[#abc2d3] text-[4rem] leading-[4rem]">
+                        49.50
+                    </h2>
+                    <span className="text-[1.2rem] dark:text-[#abc2d3] font-[500]">$</span>
+                </div>
+                <p className="text-[#424242] dark:text-[#abc2d3]/70 text-[0.9rem]">per month</p>
+
+                <button className="px-12 py-2 text-[#3B9DF8] rounded-3xl text-[#fff] text-[1rem] my-6">
+                    Buy Now
+                </button>
+            </div>
+
+            <h3 className="text-[1.2rem] dark:text-[#abc2d3] font-[600] text-[#424242] mt-3 px-6">
+                What you will get?
+            </h3>
+            <div className="flex gap-3 flex-col py-4 px-6">
+                <p className="flex items-center gap-2 dark:text-[#abc2d3] text-[#424242] text-[1rem]">
+                    <MdDone className="text-[#3B9DF8] text-[1.5rem]"/>5 Users
+                </p>
+                <p className="flex items-center gap-2 dark:text-[#abc2d3] text-[#424242] text-[1rem]">
+                    <MdDone className="text-[#3B9DF8] text-[1.5rem]"/>
+                    50GB Storage
+                </p>
+                <p className="flex items-center gap-2 dark:text-[#abc2d3] text-[#424242] text-[1rem]">
+                    <MdDone className="text-[#3B9DF8] text-[1.5rem]"/>
+                    Priority Email Support
+                </p>
+                <p className="flex items-center gap-3 dark:text-[#abc2d3] text-[#424242] text-[1rem]">
+                    <RxCross1 className="text-[#e73939] text-[1.2rem]"/>
+                    Unlimited Users
+                </p>
+                <p className="flex items-center gap-3 dark:text-[#abc2d3] text-[#424242] text-[1rem]">
+                    <RxCross1 className="text-[#e73939] text-[1.2rem]"/>
+                    100GB Storage
+                </p>
+                <p className="flex items-center gap-3 dark:text-[#abc2d3] text-[#424242] text-[1rem]">
+                    <RxCross1 className="text-[#e73939] text-[1.2rem]"/>
+                    24/7 Live Chat Support
+                </p>
+            </div>
+            <div className="w-full h-[10px] text-[#3B9DF8]"></div>
         </div>
-        <p className="text-[#424242] text-[0.9rem]">per month</p>
-
-        <button className="px-12 py-2 bg-[#3B9DF8] rounded-3xl text-[#ffffff] text-[1rem] my-6">
-          Buy Now
-        </button>
-      </div>
-
-      <h3 className="text-[1.2rem] font-[600] text-[#424242] mt-3 px-6">
-        What you will get?
-      </h3>
-      <div className="flex gap-3 flex-col py-4 px-6">
-        <p className="flex items-center gap-2 text-[#424242] text-[1rem]">
-          <MdDone className="text-[#3B9DF8] text-[1.5rem]" />5 Users
-        </p>
-        <p className="flex items-center gap-2 text-[#424242] text-[1rem]">
-          <MdDone className="text-[#3B9DF8] text-[1.5rem]" />
-          50GB Storage
-        </p>
-        <p className="flex items-center gap-2 text-[#424242] text-[1rem]">
-          <MdDone className="text-[#3B9DF8] text-[1.5rem]" />
-          Priority Email Support
-        </p>
-        <p className="flex items-center gap-3 text-[#424242] text-[1rem]">
-          <RxCross1 className="text-[#e73939] text-[1.2rem]" />
-          Unlimited Users
-        </p>
-        <p className="flex items-center gap-3 text-[#424242] text-[1rem]">
-          <RxCross1 className="text-[#e73939] text-[1.2rem]" />
-          100GB Storage
-        </p>
-        <p className="flex items-center gap-3 text-[#424242] text-[1rem]">
-          <RxCross1 className="text-[#e73939] text-[1.2rem]" />
-          24/7 Live Chat Support
-        </p>
-      </div>
-      <div className="w-full h-[10px] bg-[#3B9DF8]"></div>
-    </div>
-  );
+    );
 };
 
-export default PricingCard;
-          `}
+export default Card;
+                    '
                 />
             )}
           </ComponentWrapper>
@@ -1368,7 +1395,7 @@ export default PricingCard;
           <ComponentWrapper>
             {randomCardPreview1 && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
-                  <div className='bg-white rounded-md boxShadow relative min-w-[60%]'>
+                  <div className='bg-white dark:bg-slate-800 rounded-md boxShadow relative min-w-[60%]'>
                     <img
                         src='https://img.freepik.com/free-photo/glassclad-skyscrapers-central-mumbai-reflecting-sunset-hues-blue-hour_469504-15.jpg?t=st=1722609658~exp=1722613258~hmac=9c702195fba04c4449f371fd0f0f6bee3b7a911e1ee29e31032dd3683b9458f3&w=740'
                         alt='image'
@@ -1387,7 +1414,7 @@ export default PricingCard;
                         <FaStar className='text-yellow-400 cursor-pointer'/>
                       </div>
 
-                      <h1 className='text-[20px] font-bold text-black leading-[24px] mt-1.5'>Minimal Pattern</h1>
+                      <h1 className='text-[20px] dark:text-[#abc2d3] font-bold text-black leading-[24px] mt-1.5'>Minimal Pattern</h1>
                     </div>
                   </div>
                 </div>
@@ -1398,12 +1425,13 @@ export default PricingCard;
                     code='
 import React from "react";
 
+// react icons
 import {FaStar} from "react-icons/fa";
 
 const Card = () => {
 
     return (
-        <div className="bg-white rounded-md shadow-md relative min-w-[60%]">
+        <div className="bg-white dark:bg-slate-800 rounded-md boxShadow relative min-w-[60%]">
             <img
                 src="https://img.freepik.com/free-photo/glassclad-skyscrapers-central-mumbai-reflecting-sunset-hues-blue-hour_469504-15.jpg?t=st=1722609658~exp=1722613258~hmac=9c702195fba04c4449f371fd0f0f6bee3b7a911e1ee29e31032dd3683b9458f3&w=740"
                 alt="image"
@@ -1422,7 +1450,8 @@ const Card = () => {
                     <FaStar className="text-yellow-400 cursor-pointer"/>
                 </div>
 
-                <h1 className="text-[20px] font-bold text-black leading-[24px] mt-1.5">Minimal Pattern</h1>
+                <h1 className="text-[20px] dark:text-[#abc2d3] font-bold text-black leading-[24px] mt-1.5">Minimal
+                    Pattern</h1>
             </div>
         </div>
     );
@@ -1445,7 +1474,7 @@ export default Card;
           <ComponentWrapper>
             {randomCardPreview2 && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
-                  <div className='bg-white rounded-md boxShadow relative w-full 1024px:min-w-[60%]'>
+                  <div className='bg-white dark:bg-slate-800 rounded-md boxShadow relative w-full 1024px:max-w-[60%]'>
                     <img
                         src='https://img.freepik.com/free-vector/linear-flat-ninja-logo-template_23-2149002586.jpg?t=st=1722611270~exp=1722614870~hmac=4b39b45933e0b6565a25aedef8699d55fa1efa00e29ea31ac6b0a16464783f4e&w=740'
                         alt='image'
@@ -1497,8 +1526,8 @@ export default Card;
                     </div>
 
                     <div className='p-3'>
-                      <p className='text-[1rem] text-gray-300'>Recommended</p>
-                      <h1 className='text-[20px] font-bold text-black leading-[24px] mt-0.5'>Silent Ninja Stalker</h1>
+                      <p className='text-[1rem] dark:text-[#abc2d3]/90 text-gray-300'>Recommended</p>
+                      <h1 className='text-[20px] font-bold text-black dark:text-[#abc2d3] leading-[24px] mt-0.5'>Silent Ninja Stalker</h1>
 
                       <button className='py-2 px-4 bg-blue-500 text-white rounded-md min-w-[40%] mt-3'>Play</button>
                     </div>
@@ -1514,7 +1543,7 @@ import React from "react";
 const Card = () => {
 
     return (
-        <div className="bg-white rounded-md shadow-md relative min-w-[60%]">
+        <div className="bg-white dark:bg-slate-800 rounded-md boxShadow relative w-full md:max-w-[60%]">
             <img
                 src="https://img.freepik.com/free-vector/linear-flat-ninja-logo-template_23-2149002586.jpg?t=st=1722611270~exp=1722614870~hmac=4b39b45933e0b6565a25aedef8699d55fa1efa00e29ea31ac6b0a16464783f4e&w=740"
                 alt="image"
@@ -1566,8 +1595,9 @@ const Card = () => {
             </div>
 
             <div className="p-3">
-                <p className="text-[1rem] text-gray-300">Recommended</p>
-                <h1 className="text-[20px] font-bold text-black leading-[24px] mt-0.5">Silent Ninja Stalker</h1>
+                <p className="text-[1rem] dark:text-[#abc2d3]/90 text-gray-300">Recommended</p>
+                <h1 className="text-[20px] font-bold text-black dark:text-[#abc2d3] leading-[24px] mt-0.5">Silent Ninja
+                    Stalker</h1>
 
                 <button className="py-2 px-4 bg-blue-500 text-white rounded-md min-w-[40%] mt-3">Play</button>
             </div>
@@ -1592,7 +1622,7 @@ export default Card;
           <ComponentWrapper>
             {randomCardPreview3 && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
-                  <div className='bg-white rounded-md boxShadow w-full 1024px:min-w-[60%]'>
+                  <div className='bg-white dark:bg-slate-800 rounded-md boxShadow w-full 1024px:max-w-[60%]'>
                     <img
                         src='https://img.freepik.com/free-psd/office-desktop-icon-isolated-3d-render-illustration_47987-8371.jpg?t=st=1722612330~exp=1722615930~hmac=ba682f8b80331752dd6f2a5f6ea1694b67b8493cf7c0f14059916cbe7f93fb57&w=740'
                         alt='image'
@@ -1602,11 +1632,11 @@ export default Card;
                     <div className='py-6 px-4 relative'>
 
                       <span
-                          className='w-[40px] h-[40px] rounded-full bg-white absolute -top-5 right-5 boxShadow flex items-center justify-center'>
+                          className='w-[40px] dark:bg-slate-900 h-[40px] rounded-full bg-white absolute -top-5 right-5 boxShadow flex items-center justify-center'>
                         <IoBookmarkOutline className='text-gray-500'/>
                       </span>
 
-                      <h1 className='text-[20px] font-bold text-black leading-[24px]'>ZenUI Library</h1>
+                      <h1 className='text-[20px] font-bold text-black dark:text-[#abc2d3] leading-[24px]'>ZenUI Library</h1>
                     </div>
                   </div>
                 </div>
@@ -1617,12 +1647,13 @@ export default Card;
                     code='
 import React from "react";
 
+// react icons
 import {IoBookmarkOutline} from "react-icons/io5";
 
 const Card = () => {
 
     return (
-        <div className="bg-white rounded-md shadow-md min-w-[60%]">
+        <div className="bg-white dark:bg-slate-800 rounded-md boxShadow w-full md:max-w-[60%]">
             <img
                 src="https://img.freepik.com/free-psd/office-desktop-icon-isolated-3d-render-illustration_47987-8371.jpg?t=st=1722612330~exp=1722615930~hmac=ba682f8b80331752dd6f2a5f6ea1694b67b8493cf7c0f14059916cbe7f93fb57&w=740"
                 alt="image"
@@ -1632,11 +1663,11 @@ const Card = () => {
             <div className="py-6 px-4 relative">
 
                       <span
-                          className="w-[40px] h-[40px] rounded-full bg-white absolute -top-5 right-5 boxShadow flex items-center justify-center">
+                          className="w-[40px] dark:bg-slate-900 h-[40px] rounded-full bg-white absolute -top-5 right-5 boxShadow flex items-center justify-center">
                         <IoBookmarkOutline className="text-gray-500"/>
                       </span>
 
-                <h1 className="text-[20px] font-bold text-black leading-[24px]">ZenUI Library</h1>
+                <h1 className="text-[20px] font-bold text-black dark:text-[#abc2d3] leading-[24px]">ZenUI Library</h1>
             </div>
         </div>
     );
@@ -1659,7 +1690,7 @@ export default Card;
           <ComponentWrapper>
             {randomCardPreview4 && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
-                  <div className='bg-white rounded-md boxShadow w-full 1024px:min-w-[70%] 1024px:max-w-[80%]'>
+                  <div className='bg-white dark:bg-slate-800 rounded-md boxShadow w-full 1024px:min-w-[70%] 1024px:max-w-[80%]'>
                     <img
                         src='https://img.freepik.com/free-photo/hip-hop-dancer-dance_144627-7472.jpg?t=st=1722613350~exp=1722616950~hmac=4f3bd5464609f60d787b0be2c0981f9fc8fc2dab52d7880508ddaf081c6f8e4b&w=360'
                         alt='image'
@@ -1669,23 +1700,23 @@ export default Card;
                     <div className='p-4 relative'>
 
                       <div
-                          className='rounded-xl w-[70px] py-3 bg-white absolute -top-9 right-6 boxShadow flex items-center flex-col justify-center'>
+                          className='rounded-xl w-[70px] dark:bg-slate-900 dark:text-[#abc2d3] py-3 bg-white absolute -top-9 right-6 boxShadow flex items-center flex-col justify-center'>
                         <b className='text-[1.4rem] leading-[1.4rem]'>18</b>
                         <span className='text-[1rem]'>JAN</span>
                       </div>
 
-                      <p className='text-[1rem] text-gray-300 mt-6'>Performance</p>
-                      <h1 className='text-[22px] font-bold text-black leading-[28px] mt-1.5'>Hip hop dancer in
+                      <p className='text-[1rem] dark:text-[#abc2d3]/90 text-gray-300 mt-6'>Performance</p>
+                      <h1 className='text-[22px] font-bold dark:text-[#abc2d3] text-black leading-[28px] mt-1.5'>Hip hop dancer in
                         dance</h1>
 
                       <div className='mt-5 flex items-center gap-[10px]'>
                         <span
-                            className='w-[40px] cursor-pointer h-[40px] rounded-full border border-[#959393] flex items-center justify-center'>
-                        <IoBookmarkOutline className='text-[#959393]'/>
+                            className='w-[40px] dark:border-slate-500 cursor-pointer h-[40px] rounded-full border border-[#959393] flex items-center justify-center'>
+                        <IoBookmarkOutline className='text-[#959393] dark:text-[#abc2d3]'/>
                         </span>
                         <span
-                            className='w-[40px] cursor-pointer h-[40px] rounded-full border border-[#959393] flex items-center justify-center'>
-                        <GoShareAndroid className='text-[#959393]'/>
+                            className='w-[40px] dark:border-slate-500 cursor-pointer h-[40px] rounded-full border border-[#959393] flex items-center justify-center'>
+                        <GoShareAndroid className='text-[#959393] dark:text-[#abc2d3]'/>
                         </span>
 
                       </div>
@@ -1699,13 +1730,14 @@ export default Card;
                     code='
 import React from "react";
 
+// react icons
 import {IoBookmarkOutline} from "react-icons/io5";
 import {GoShareAndroid} from "react-icons/go";
 
 const Card = () => {
 
     return (
-        <div className="bg-white rounded-md shadow-md min-w-[70%] max-w-[80%]">
+        <div className="bg-white dark:bg-slate-800 rounded-md boxShadow w-full md:min-w-[70%] md:max-w-[80%]">
             <img
                 src="https://img.freepik.com/free-photo/hip-hop-dancer-dance_144627-7472.jpg?t=st=1722613350~exp=1722616950~hmac=4f3bd5464609f60d787b0be2c0981f9fc8fc2dab52d7880508ddaf081c6f8e4b&w=360"
                 alt="image"
@@ -1715,23 +1747,24 @@ const Card = () => {
             <div className="p-4 relative">
 
                 <div
-                    className="rounded-xl w-[70px] py-3 bg-white absolute -top-9 right-6 boxShadow flex items-center flex-col justify-center">
+                    className="rounded-xl w-[70px] dark:bg-slate-900 dark:text-[#abc2d3] py-3 bg-white absolute -top-9 right-6 boxShadow flex items-center flex-col justify-center">
                     <b className="text-[1.4rem] leading-[1.4rem]">18</b>
                     <span className="text-[1rem]">JAN</span>
                 </div>
 
-                <p className="text-[1rem] text-gray-300 mt-6">Performance</p>
-                <h1 className="text-[22px] font-bold text-black leading-[28px] mt-1.5">Hip hop dancer in
+                <p className="text-[1rem] dark:text-[#abc2d3]/90 text-gray-300 mt-6">Performance</p>
+                <h1 className="text-[22px] font-bold dark:text-[#abc2d3] text-black leading-[28px] mt-1.5">Hip hop
+                    dancer in
                     dance</h1>
 
                 <div className="mt-5 flex items-center gap-[10px]">
                         <span
-                            className="w-[40px] cursor-pointer h-[40px] rounded-full border border-[#959393] flex items-center justify-center">
-                        <IoBookmarkOutline className="text-[#959393]"/>
+                            className="w-[40px] dark:border-slate-500 cursor-pointer h-[40px] rounded-full border border-[#959393] flex items-center justify-center">
+                        <IoBookmarkOutline className="text-[#959393] dark:text-[#abc2d3]"/>
                         </span>
                     <span
-                        className="w-[40px] cursor-pointer h-[40px] rounded-full border border-[#959393] flex items-center justify-center">
-                        <GoShareAndroid className="text-[#959393]"/>
+                        className="w-[40px] dark:border-slate-500 cursor-pointer h-[40px] rounded-full border border-[#959393] flex items-center justify-center">
+                        <GoShareAndroid className="text-[#959393] dark:text-[#abc2d3]"/>
                         </span>
 
                 </div>
@@ -1758,15 +1791,15 @@ export default Card;
             {randomCardPreview5 && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
                   <div
-                      className='bg-white rounded-md boxShadow w-full 1024px:min-w-[60%] px-4 py-8 flex items-center justify-center flex-col'>
+                      className='bg-white dark:bg-slate-800 rounded-md boxShadow w-full 1024px:max-w-[60%] px-4 py-8 flex items-center justify-center flex-col'>
                     <img
                         src='https://img.freepik.com/free-photo/handsome-man-with-glasses_144627-18666.jpg?t=st=1722611499~exp=1722615099~hmac=cde3d70c79e64336ce0f8d5f88de5fabc9d64ba95983ff1f84b6d9dba91df349&w=360'
                         alt='image'
                         className='w-[100px] h-[100px] rounded-full object-cover'
                     />
 
-                    <h1 className='text-[1.3rem] font-[500] leading-[24px] mt-4'>Bruce Lee</h1>
-                    <p className='text-[0.9rem] text-gray-500 font-[400]'>Front-End Developer</p>
+                    <h1 className='text-[1.3rem] font-[500] leading-[24px] dark:text-[#abc2d3] mt-4'>Bruce Lee</h1>
+                    <p className='text-[0.9rem] text-gray-500 font-[400] dark:text-[#abc2d3]/80'>Front-End Developer</p>
                     <button className='py-1.5 mt-3 px-6 border border-blue-500 rounded-md text-blue-500'>Follow</button>
                   </div>
                 </div>
@@ -1781,15 +1814,15 @@ const Card = () => {
 
     return (
         <div
-            className="bg-white rounded-md shadow-md min-w-[60%] px-4 py-8 flex items-center justify-center flex-col">
+            className="bg-white dark:bg-slate-800 rounded-md boxShadow w-full md:max-w-[60%] px-4 py-8 flex items-center justify-center flex-col">
             <img
                 src="https://img.freepik.com/free-photo/handsome-man-with-glasses_144627-18666.jpg?t=st=1722611499~exp=1722615099~hmac=cde3d70c79e64336ce0f8d5f88de5fabc9d64ba95983ff1f84b6d9dba91df349&w=360"
                 alt="image"
                 className="w-[100px] h-[100px] rounded-full object-cover"
             />
 
-            <h1 className="text-[1.3rem] font-[500] leading-[24px] mt-4">Bruce Lee</h1>
-            <p className="text-[0.9rem] text-gray-500 font-[400]">Front-End Developer</p>
+            <h1 className="text-[1.3rem] font-[500] leading-[24px] dark:text-[#abc2d3] mt-4">Bruce Lee</h1>
+            <p className="text-[0.9rem] text-gray-500 font-[400] dark:text-[#abc2d3]/80">Front-End Developer</p>
             <button className="py-1.5 mt-3 px-6 border border-blue-500 rounded-md text-blue-500">Follow</button>
         </div>
     );
@@ -1881,7 +1914,7 @@ export default Card;
           <ComponentWrapper>
             {randomCardPreview7 && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
-                  <div className='w-full 1024px:min-w-[60%] 1024px:max-w-[75%] relative bg-white boxShadow rounded-xl'>
+                  <div className='w-full 1024px:min-w-[60%] 1024px:max-w-[75%] relative dark:bg-slate-800 bg-white boxShadow rounded-xl'>
                     <img
                         src='https://img.freepik.com/free-psd/3d-render-illustration-chair-isolated-icon_439185-11403.jpg?t=st=1722616457~exp=1722620057~hmac=1956ee771d405caa2cd12e766fd036b10624a3976be109881a8954d10655285a&w=740'
                         alt='image'
@@ -1893,12 +1926,12 @@ export default Card;
                     </div>
 
                     <div className='p-4'>
-                      <h1 className='text-[1.3rem] font-bold leading-[34px]'>Minimal Chair</h1>
-                      <p className='text-[0.9rem] text-gray-400'>Elegant Simplicity: The Essence of Minimalist Design in
+                      <h1 className='text-[1.3rem] font-bold dark:text-[#abc2d3] leading-[34px]'>Minimal Chair</h1>
+                      <p className='text-[0.9rem] dark:text-[#abc2d3]/80 text-gray-400'>Elegant Simplicity: The Essence of Minimalist Design in
                         Chairs</p>
                     </div>
 
-                    <div className='float-right p-2 hover:bg-gray-100 cursor-pointer mr-2 mb-2 rounded-full group'>
+                    <div className='float-right p-2 dark:hover:bg-slate-900/70 hover:bg-gray-100 cursor-pointer mr-2 mb-2 rounded-full group'>
                       <BsArrowRight className='text-[1.5rem] text-gray-400'/>
                     </div>
                   </div>
@@ -1910,13 +1943,15 @@ export default Card;
                     code='
 import React from "react";
 
+// react icons
 import {IoIosNotificationsOutline} from "react-icons/io";
 import {BsArrowRight} from "react-icons/bs";
 
 const Card = () => {
 
     return (
-        <div className="min-w-[60%] max-w-[75%] relative bg-white shadow-md rounded-xl">
+        <div
+            className="w-full md:min-w-[60%] md:max-w-[75%] relative dark:bg-slate-800 bg-white boxShadow rounded-xl">
             <img
                 src="https://img.freepik.com/free-psd/3d-render-illustration-chair-isolated-icon_439185-11403.jpg?t=st=1722616457~exp=1722620057~hmac=1956ee771d405caa2cd12e766fd036b10624a3976be109881a8954d10655285a&w=740"
                 alt="image"
@@ -1928,12 +1963,14 @@ const Card = () => {
             </div>
 
             <div className="p-4">
-                <h1 className="text-[1.3rem] font-bold leading-[34px]">Minimal Chair</h1>
-                <p className="text-[0.9rem] text-gray-400">Elegant Simplicity: The Essence of Minimalist Design in
+                <h1 className="text-[1.3rem] font-bold dark:text-[#abc2d3] leading-[34px]">Minimal Chair</h1>
+                <p className="text-[0.9rem] dark:text-[#abc2d3]/80 text-gray-400">Elegant Simplicity: The Essence of
+                    Minimalist Design in
                     Chairs</p>
             </div>
 
-            <div className="float-right p-2 hover:bg-gray-100 cursor-pointer mr-2 mb-2 rounded-full group">
+            <div
+                className="float-right p-2 dark:hover:bg-slate-900/70 hover:bg-gray-100 cursor-pointer mr-2 mb-2 rounded-full group">
                 <BsArrowRight className="text-[1.5rem] text-gray-400"/>
             </div>
         </div>
@@ -1957,25 +1994,25 @@ export default Card;
           <ComponentWrapper>
             {randomCardPreview8 && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
-                  <div className='1024px:min-w-[60%] w-full 1024px:max-w-[75%] relative bg-white boxShadow rounded-xl'>
+                  <div className='1024px:min-w-[60%] dark:bg-slate-800 w-full 1024px:max-w-[75%] relative bg-white boxShadow rounded-xl'>
                     <img
-                        src='https://media.licdn.com/dms/image/D5603AQEipbuCEqCp2g/profile-displayphoto-shrink_800_800/0/1719018874117?e=1727913600&v=beta&t=AihY-rjDq8HfVWMHn3jURlA1Zd_VdrQPUcY1_SJPBUg'
+                        src='https://i.ibb.co.com/Mn0DzdL/asfak-ahmed-ceo-of-zenui.jpg'
                         alt='image'
                         className='w-full h-[260px] object-cover rounded-t-xl'
                     />
 
                     <div className='p-5'>
-                      <h1 className='text-[1.3rem] font-bold leading-[24px]'>Asfak Ahmed</h1>
-                      <span className='text-[0.9rem] text-gray-400'>Founder & CEO of ZenUI Library</span>
+                      <h1 className='text-[1.3rem] font-bold dark:text-[#abc2d3] leading-[24px]'>Asfak Ahmed</h1>
+                      <span className='text-[0.9rem] dark:text-[#abc2d3]/80 text-gray-400'>Founder & CEO of ZenUI Library</span>
 
-                      <p className='text-gray-600 mt-3'>Asfak Ahmed is a professional Front-End Web Developer. He born (
+                      <p className='text-gray-600 dark:text-[#abc2d3] mt-3'>Asfak Ahmed is a professional Front-End Web Developer. He born (
                         12 Oct 2004 ). His full name is Asfak Ahmed.....</p>
 
                       <button
-                          className='py-2.5 px-4 bg-gray-300 mt-4 rounded-md w-full flex items-center justify-center gap-[10px] group'>
+                          className='py-2.5 px-4 bg-gray-300 dark:bg-slate-700 mt-4 rounded-md w-full flex items-center justify-center gap-[10px] dark:text-[#abc2d3] group'>
                         Learn more
                         <BsArrowRight
-                            className='text-[1.3rem] text-gray-600 group-hover:ml-2 transition-all duration-200'/>
+                            className='text-[1.3rem] text-gray-600 dark:text-[#abc2d3] group-hover:ml-2 transition-all duration-200'/>
                       </button>
                     </div>
                   </div>
@@ -1987,30 +2024,34 @@ export default Card;
                     code='
 import React from "react";
 
+// react icons
 import {BsArrowRight} from "react-icons/bs";
 
 const Card = () => {
 
     return (
-        <div className="min-w-[60%] max-w-[75%] relative bg-white shadow-md rounded-xl">
+        <div
+            className="md:min-w-[60%] dark:bg-slate-800 w-full md:max-w-[75%] relative bg-white boxShadow rounded-xl">
             <img
-                src="https://media.licdn.com/dms/image/D5603AQEipbuCEqCp2g/profile-displayphoto-shrink_800_800/0/1719018874117?e=1727913600&v=beta&t=AihY-rjDq8HfVWMHn3jURlA1Zd_VdrQPUcY1_SJPBUg"
+                src="https://i.ibb.co.com/Mn0DzdL/asfak-ahmed-ceo-of-zenui.jpg"
                 alt="image"
                 className="w-full h-[260px] object-cover rounded-t-xl"
             />
 
             <div className="p-5">
-                <h1 className="text-[1.3rem] font-bold leading-[24px]">Asfak Ahmed</h1>
-                <span className="text-[0.9rem] text-gray-400">Founder & CEO of ZenUI Library</span>
+                <h1 className="text-[1.3rem] font-bold dark:text-[#abc2d3] leading-[24px]">Asfak Ahmed</h1>
+                <span
+                    className="text-[0.9rem] dark:text-[#abc2d3]/80 text-gray-400">Founder & CEO of ZenUI Library</span>
 
-                <p className="text-gray-600 mt-3">Asfak Ahmed is a professional Front-End Web Developer. He born (
+                <p className="text-gray-600 dark:text-[#abc2d3] mt-3">Asfak Ahmed is a professional Front-End Web
+                    Developer. He born (
                     12 Oct 2004 ). His full name is Asfak Ahmed.....</p>
 
                 <button
-                    className="py-2.5 px-4 bg-gray-300 mt-4 rounded-md w-full flex items-center justify-center gap-[10px] group">
+                    className="py-2.5 px-4 bg-gray-300 dark:bg-slate-700 mt-4 rounded-md w-full flex items-center justify-center gap-[10px] dark:text-[#abc2d3] group">
                     Learn more
                     <BsArrowRight
-                        className="text-[1.3rem] text-gray-600 group-hover:ml-2 transition-all duration-200"/>
+                        className="text-[1.3rem] text-gray-600 dark:text-[#abc2d3] group-hover:ml-2 transition-all duration-200"/>
                 </button>
             </div>
         </div>
@@ -2034,8 +2075,8 @@ export default Card;
           <ComponentWrapper>
             {randomCardPreview9 && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
-                  <div className='w-full 1024px:min-w-[60%] 1024px:max-w-[90%] relative bg-white boxShadow rounded-xl flex-col 640px:flex gap-[20px] p-4'>
-                    <div className='w-full 640px:w-[25%]'>
+                  <div className='w-full dark:bg-slate-800 1024px:min-w-[60%] 1024px:max-w-[90%] relative bg-white boxShadow rounded-xl flex-col 640px:flex gap-[20px] p-4'>
+                    <div className='w-full 640px:w-[23.5%]'>
                       <img
                           src='https://img.freepik.com/free-photo/portrait-young-bearded-man-looking-camera_23-2148187159.jpg?t=st=1722619967~exp=1722623567~hmac=c60da5db6ff09019a7669117874a5a90fd04fb132355f1558d5067773698dfaa&w=740'
                           alt='image'
@@ -2043,23 +2084,23 @@ export default Card;
                       />
                     </div>
 
-                    <div className='w-full 640px:w-[75%] mt-5 640px:mt-0'>
+                    <div className='w-full mt-5 640px:mt-0'>
                       <div className='flex 640px:items-center justify-between w-full'>
                         <div className='flex 640px:flex-row flex-col 640px:items-center 640px:gap-[5px]'>
-                          <h1 className='text-[1.2rem] font-bold'>Jerome Bell</h1>
-                          <span className='text-gray-400'> • 2 week ago</span>
+                          <h1 className='text-[1.2rem] dark:text-[#abc2d3] font-bold'>Jerome Bell</h1>
+                          <span className='text-gray-400 dark:text-[#abc2d3]/90'> • 2 week ago</span>
                         </div>
 
                         <div className='relative'>
-                          <BsThreeDots className='text-gray-700 text-[1.2rem] cursor-pointer'
+                          <BsThreeDots className='text-gray-700 dark:text-[#abc2d3] text-[1.2rem] cursor-pointer'
                                        onClick={() => setOpenThreeDotMenu(!openthreeDotMenu)}/>
 
-                          <ul className={`${openthreeDotMenu ? 'translate-y-0 opacity-100 z-20 h-auto' : 'translate-y-[-10px] opacity-0 z-[-1] h-0'} transition-all duration-200 bg-white w-max boxShadow py-1 rounded-md absolute top-6 right-0`}>
-                            <li className='py-2 px-4 hover:bg-gray-100 cursor-pointer flex items-center gap-[8px] text-[0.9rem] text-gray-600'>
+                          <ul className={`${openthreeDotMenu ? 'translate-y-0 opacity-100 z-20 h-auto' : 'translate-y-[-10px] opacity-0 z-[-1] h-0'} transition-all duration-200 bg-white w-max boxShadow py-1 rounded-md dark:bg-slate-900 absolute top-6 right-0`}>
+                            <li className='py-2 px-4 dark:hover:bg-slate-800/60 dark:text-[#abc2d3] hover:bg-gray-100 cursor-pointer flex items-center gap-[8px] text-[0.9rem] text-gray-600'>
                               <FaRegBookmark/>
                               Make favorite
                             </li>
-                            <li className='py-2 px-4 hover:bg-gray-100 cursor-pointer flex items-center gap-[8px] text-[0.9rem] text-red-500'>
+                            <li className='py-2 px-4 dark:hover:bg-slate-800/60 hover:bg-gray-100 cursor-pointer flex items-center gap-[8px] text-[0.9rem] text-red-500'>
                               <AiOutlineDelete/>
                               Delete
                             </li>
@@ -2067,7 +2108,7 @@ export default Card;
                         </div>
                       </div>
 
-                      <p className='text-gray-600 mt-3 text-[0.9rem]'>Amet minim mollit non deserunt ullamco est sit
+                      <p className='text-gray-600 mt-3 dark:text-[#abc2d3]/90 text-[0.9rem]'>Amet minim mollit non deserunt ullamco est sit
                         aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam
                         consequat sunt nostrud amet.</p>
 
@@ -2095,6 +2136,7 @@ export default Card;
                     code='
 import React, {useState} from "react";
 
+// react icons
 import {BsThreeDots} from "react-icons/bs";
 import {FaRegBookmark, FaRegHeart} from "react-icons/fa";
 import {AiOutlineDelete} from "react-icons/ai";
@@ -2102,12 +2144,12 @@ import {BiComment} from "react-icons/bi";
 
 const Card = () => {
 
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [openthreeDotMenu, setOpenThreeDotMenu] = useState(false);
 
     return (
         <div
-            className="min-w-[60%] max-w-[90%] relative bg-white boxShadow rounded-xl flex-col sm:flex gap-[20px] p-4">
-            <div className="w-full sm:w-[25%]">
+            className="w-full dark:bg-slate-800 md:min-w-[60%] md:max-w-[90%] relative bg-white boxShadow rounded-xl flex-col sm:flex gap-[20px] p-4">
+            <div className="w-full sm:w-[23.5%]">
                 <img
                     src="https://img.freepik.com/free-photo/portrait-young-bearded-man-looking-camera_23-2148187159.jpg?t=st=1722619967~exp=1722623567~hmac=c60da5db6ff09019a7669117874a5a90fd04fb132355f1558d5067773698dfaa&w=740"
                     alt="image"
@@ -2115,23 +2157,23 @@ const Card = () => {
                 />
             </div>
 
-            <div className="w-full sm:w-[75%] mt-5 sm:mt-0">
+            <div className="w-full mt-5 sm:mt-0">
                 <div className="flex sm:items-center justify-between w-full">
                     <div className="flex sm:flex-row flex-col sm:items-center sm:gap-[5px]">
-                        <h1 className="text-[1.2rem] font-bold">Jerome Bell</h1>
-                        <span className="text-gray-400"> • 2 week ago</span>
+                        <h1 className="text-[1.2rem] dark:text-[#abc2d3] font-bold">Jerome Bell</h1>
+                        <span className="text-gray-400 dark:text-[#abc2d3]/90"> • 2 week ago</span>
                     </div>
 
                     <div className="relative">
-                        <BsThreeDots className="text-gray-700 text-[1.2rem] cursor-pointer"
-                                     onClick={() => setIsMenuOpen(!isMenuOpen)}/>
+                        <BsThreeDots className="text-gray-700 dark:text-[#abc2d3] text-[1.2rem] cursor-pointer"
+                                     onClick={() => setOpenThreeDotMenu(!openthreeDotMenu)}/>
 
-                        <ul className={`${isMenuOpen ? "translate-y-0 opacity-100 z-20 h-auto" : "translate-y-[-10px] opacity-0 z-[-1] h-0"} transition-all duration-200 bg-white w-max boxShadow py-1 rounded-md absolute top-6 right-0`}>
-                            <li className="py-2 px-4 hover:bg-gray-100 cursor-pointer flex items-center gap-[8px] text-[0.9rem] text-gray-600">
+                        <ul className={`${openthreeDotMenu ? "translate-y-0 opacity-100 z-20 h-auto" : "translate-y-[-10px] opacity-0 z-[-1] h-0"} transition-all duration-200 bg-white w-max boxShadow py-1 rounded-md dark:bg-slate-900 absolute top-6 right-0`}>
+                            <li className="py-2 px-4 dark:hover:bg-slate-800/60 dark:text-[#abc2d3] hover:bg-gray-100 cursor-pointer flex items-center gap-[8px] text-[0.9rem] text-gray-600">
                                 <FaRegBookmark/>
                                 Make favorite
                             </li>
-                            <li className="py-2 px-4 hover:bg-gray-100 cursor-pointer flex items-center gap-[8px] text-[0.9rem] text-red-500">
+                            <li className="py-2 px-4 dark:hover:bg-slate-800/60 hover:bg-gray-100 cursor-pointer flex items-center gap-[8px] text-[0.9rem] text-red-500">
                                 <AiOutlineDelete/>
                                 Delete
                             </li>
@@ -2139,7 +2181,8 @@ const Card = () => {
                     </div>
                 </div>
 
-                <p className="text-gray-600 mt-3 text-[0.9rem]">Amet minim mollit non deserunt ullamco est sit
+                <p className="text-gray-600 mt-3 dark:text-[#abc2d3]/90 text-[0.9rem]">Amet minim mollit non deserunt
+                    ullamco est sit
                     aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam
                     consequat sunt nostrud amet.</p>
 
@@ -2179,7 +2222,7 @@ export default Card;
           <ComponentWrapper>
             {randomCardPreview10 && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
-                  <div className='w-full 1024px:min-w-[60%] 1024px:max-w-[90%] relative bg-white boxShadow rounded-xl flex 640px:flex-row flex-col gap-[20px] p-4'>
+                  <div className='w-full dark:bg-slate-800 1024px:min-w-[60%] 1024px:max-w-[90%] relative bg-white boxShadow rounded-xl flex 640px:flex-row flex-col gap-[20px] p-4'>
                     <div className='w-full 640px:w-[50%]'>
                       <img
                           src='https://img.freepik.com/free-photo/close-up-portrait-handsome-young-hipster-man-hazel-eyes-wearing-trendy-plaid-shirt-posing-near-city-cafe_291049-1495.jpg?t=st=1722616951~exp=1722620551~hmac=88c27af52ea53d69a3f15a046cd8f7fe8c8036a5c733e1e1449b78bc68aeef24&w=360'
@@ -2189,10 +2232,10 @@ export default Card;
                     </div>
 
                     <div className=''>
-                      <h1 className='text-[1.4rem] font-bold leading-[24px]'>Jhon Dee</h1>
+                      <h1 className='text-[1.4rem] dark:text-[#abc2d3] font-bold leading-[24px]'>Jhon Dee</h1>
                       <span className='text-[0.9rem] text-gray-400'>UI/UX Designer</span>
 
-                      <p className='text-gray-600 mt-3 text-[0.9rem]'>UI is the saddle, the stirrups, & the reins. UX is
+                      <p className='text-gray-600 mt-3 dark:text-[#abc2d3]/90 text-[0.9rem]'>UI is the saddle, the stirrups, & the reins. UX is
                         the feeling you get being able to ride the horse.</p>
                     </div>
                   </div>
@@ -2207,7 +2250,8 @@ import React from "react";
 const Card = () => {
 
     return (
-        <div className="min-w-[60%] max-w-[90%] relative bg-white shadow-md rounded-xl flex sm:flex-row flex-col gap-[20px] p-4">
+        <div
+            className="w-full dark:bg-slate-800 md:min-w-[60%] md:max-w-[90%] relative bg-white boxShadow rounded-xl flex sm:flex-row flex-col gap-[20px] p-4">
             <div className="w-full sm:w-[50%]">
                 <img
                     src="https://img.freepik.com/free-photo/close-up-portrait-handsome-young-hipster-man-hazel-eyes-wearing-trendy-plaid-shirt-posing-near-city-cafe_291049-1495.jpg?t=st=1722616951~exp=1722620551~hmac=88c27af52ea53d69a3f15a046cd8f7fe8c8036a5c733e1e1449b78bc68aeef24&w=360"
@@ -2217,10 +2261,11 @@ const Card = () => {
             </div>
 
             <div className="">
-                <h1 className="text-[1.4rem] font-bold leading-[24px]">Jhon Dee</h1>
+                <h1 className="text-[1.4rem] dark:text-[#abc2d3] font-bold leading-[24px]">Jhon Dee</h1>
                 <span className="text-[0.9rem] text-gray-400">UI/UX Designer</span>
 
-                <p className="text-gray-600 mt-3 text-[0.9rem]">UI is the saddle, the stirrups, & the reins. UX is
+                <p className="text-gray-600 mt-3 dark:text-[#abc2d3]/90 text-[0.9rem]">UI is the saddle, the stirrups, &
+                    the reins. UX is
                     the feeling you get being able to ride the horse.</p>
             </div>
         </div>
@@ -2244,16 +2289,16 @@ export default Card;
           <ComponentWrapper>
             {randomCardPreview11 && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
-                  <div className='bg-white boxShadow rounded-md w-full 1024px:max-w-[80%]'>
+                  <div className='bg-white dark:bg-slate-800 boxShadow rounded-md w-full 1024px:max-w-[80%]'>
                     <div className='p-5'>
-                      <h1 className='text-[1.5rem] font-semibold leading-[28px]'>Constructive and destructive waves</h1>
-                      <p className='text-[1rem] text-gray-600 mt-2 mb-4'>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.</p>
-                      <span className='text-[0.9rem] text-gray-400 font-[300]'>2 hours 40 minutes</span>
+                      <h1 className='text-[1.5rem] dark:text-[#abc2d3] font-semibold leading-[28px]'>Constructive and destructive waves</h1>
+                      <p className='text-[1rem] dark:text-[#abc2d3]/80 text-gray-600 mt-2 mb-4'>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.</p>
+                      <span className='text-[0.9rem] text-gray-400 dark:text-[#abc2d3] font-[300]'>2 hours 40 minutes</span>
                     </div>
 
-                    <div className='border-t border-gray-200 p-5 flex items-center justify-between w-full'>
-                      <button className='font-semibold text-gray-700'>View More</button>
-                      <RiArrowRightSLine className='text-[1.4rem] cursor-pointer'/>
+                    <div className='border-t dark:border-slate-600 border-gray-200 p-5 flex items-center justify-between w-full'>
+                      <button className='font-semibold dark:text-[#abc2d3] text-gray-700'>View More</button>
+                      <RiArrowRightSLine className='text-[1.4rem] dark:text-[#abc2d3] cursor-pointer'/>
                     </div>
                   </div>
                 </div>
@@ -2264,22 +2309,25 @@ export default Card;
                     code='
 import React from "react";
 
+// react icons
 import {RiArrowRightSLine} from "react-icons/ri";
 
 const Card = () => {
 
     return (
-        <div className="bg-white shadow-md rounded-md max-w-[80%]">
+        <div className="bg-white dark:bg-slate-800 boxShadow rounded-md w-full md:max-w-[80%]">
             <div className="p-5">
-                <h1 className="text-[1.5rem] font-semibold leading-[28px]">Constructive and destructive waves</h1>
-                <p className="text-[1rem] text-gray-600 mt-2 mb-4">Amet minim mollit non deserunt ullamco est sit aliqua
-                    dolor do amet sint.</p>
-                <span className="text-[0.9rem] text-gray-400 font-[300]">2 hours 40 minutes</span>
+                <h1 className="text-[1.5rem] dark:text-[#abc2d3] font-semibold leading-[28px]">Constructive and
+                    destructive waves</h1>
+                <p className="text-[1rem] dark:text-[#abc2d3]/80 text-gray-600 mt-2 mb-4">Amet minim mollit non deserunt
+                    ullamco est sit aliqua dolor do amet sint.</p>
+                <span className="text-[0.9rem] text-gray-400 dark:text-[#abc2d3] font-[300]">2 hours 40 minutes</span>
             </div>
 
-            <div className="border-t border-gray-200 p-5 flex items-center justify-between w-full">
-                <button className="font-semibold text-gray-700">View More</button>
-                <RiArrowRightSLine className="text-[1.4rem] cursor-pointer"/>
+            <div
+                className="border-t dark:border-slate-600 border-gray-200 p-5 flex items-center justify-between w-full">
+                <button className="font-semibold dark:text-[#abc2d3] text-gray-700">View More</button>
+                <RiArrowRightSLine className="text-[1.4rem] dark:text-[#abc2d3] cursor-pointer"/>
             </div>
         </div>
     );
@@ -2302,39 +2350,39 @@ export default Card;
           <ComponentWrapper>
             {randomCardPreview12 && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
-                  <div className='bg-white boxShadow rounded-md w-full 1024px:max-w-[80%] px-2'>
+                  <div className='bg-white dark:bg-slate-800 boxShadow rounded-md w-full 1024px:max-w-[80%] px-2'>
                     <div className='py-5 px-3'>
-                      <span className='text-[0.9rem] text-gray-400 font-[300]'>Reading Task</span>
-                      <h1 className='text-[1.5rem] font-semibold leading-[28px] mt-2'>Constructive and destructive
+                      <span className='text-[0.9rem] dark:text-[#abc2d3] text-gray-400 font-[300]'>Reading Task</span>
+                      <h1 className='text-[1.5rem] dark:text-[#abc2d3] font-semibold leading-[28px] mt-2'>Constructive and destructive
                         waves</h1>
                     </div>
 
                     <div className='flex flex-col'>
-                      <div className='flex items-start gap-[8px] py-3 hover:bg-gray-100 px-3 rounded-md cursor-pointer'>
-                        <MdOutlineEmail className='text-[1.3rem] mt-[3px]'/>
-                        <p className='text-[1.1rem]'>Meeting Reminder: Project Kickoff</p>
+                      <div className='flex items-start gap-[8px] dark:hover:bg-slate-700 py-3 hover:bg-gray-100 px-3 rounded-md cursor-pointer'>
+                        <MdOutlineEmail className='text-[1.3rem] dark:text-[#abc2d3]/90 mt-[3px]'/>
+                        <p className='text-[1.1rem] dark:text-[#abc2d3]/90'>Meeting Reminder: Project Kickoff</p>
                       </div>
-                      <div className='flex items-start gap-[8px] py-3 hover:bg-gray-100 px-3 rounded-md cursor-pointer'>
-                        <MdOutlineEmail className='text-[1.3rem] mt-[3px]'/>
-                        <p className='text-[1.1rem]'>Invitation: Web Development Webinar</p>
+                      <div className='flex items-start gap-[8px] dark:hover:bg-slate-700 py-3 hover:bg-gray-100 px-3 rounded-md cursor-pointer'>
+                        <MdOutlineEmail className='text-[1.3rem] dark:text-[#abc2d3]/90 mt-[3px]'/>
+                        <p className='text-[1.1rem] dark:text-[#abc2d3]/90'>Invitation: Web Development Webinar</p>
                       </div>
-                      <div className='flex items-start gap-[8px] py-3 hover:bg-gray-100 px-3 rounded-md cursor-pointer'>
-                        <MdOutlineEmail className='text-[1.3rem] mt-[3px]'/>
-                        <p className='text-[1.1rem]'>Invoice #12345 Due Tomorrow</p>
+                      <div className='flex items-start gap-[8px] dark:hover:bg-slate-700 py-3 hover:bg-gray-100 px-3 rounded-md cursor-pointer'>
+                        <MdOutlineEmail className='text-[1.3rem] dark:text-[#abc2d3]/90 mt-[3px]'/>
+                        <p className='text-[1.1rem] dark:text-[#abc2d3]/90'>Invoice #12345 Due Tomorrow</p>
                       </div>
-                      <div className='flex items-start gap-[8px] py-3 hover:bg-gray-100 px-3 rounded-md cursor-pointer'>
-                        <MdOutlineEmail className='text-[1.3rem] mt-[3px]'/>
-                        <p className='text-[1.1rem]'>Your Order Has Shipped</p>
+                      <div className='flex items-start gap-[8px] dark:hover:bg-slate-700 py-3 hover:bg-gray-100 px-3 rounded-md cursor-pointer'>
+                        <MdOutlineEmail className='text-[1.3rem] dark:text-[#abc2d3]/90 mt-[3px]'/>
+                        <p className='text-[1.1rem] dark:text-[#abc2d3]/90'>Your Order Has Shipped</p>
                       </div>
-                      <div className='flex items-start gap-[8px] py-3 hover:bg-gray-100 px-3 rounded-md cursor-pointer'>
-                        <MdOutlineEmail className='text-[1.3rem] mt-[3px]'/>
-                        <p className='text-[1.1rem]'>Update: New Policy Changes</p>
+                      <div className='flex items-start gap-[8px] dark:hover:bg-slate-700 py-3 hover:bg-gray-100 px-3 rounded-md cursor-pointer'>
+                        <MdOutlineEmail className='text-[1.3rem] dark:text-[#abc2d3]/90 mt-[3px]'/>
+                        <p className='text-[1.1rem] dark:text-[#abc2d3]/90'>Update: New Policy Changes</p>
                       </div>
                     </div>
 
                     <div className='mx-3'>
                       <button
-                          className='w-full mx-auto py-2.5 px-6 text-center bg-[#e9e1ff] text-[#7949ff] my-5 rounded-md '>Continue
+                          className='w-full mx-auto dark:bg-slate-700 dark:text-[#abc2d3] py-2.5 px-6 text-center bg-[#e9e1ff] text-[#7949ff] my-5 rounded-md '>Continue
                       </button>
                     </div>
 
@@ -2347,44 +2395,51 @@ export default Card;
                     code='
 import React from "react";
 
+// react icons
 import {MdOutlineEmail} from "react-icons/md";
 
 const Card = () => {
 
     return (
-        <div className="bg-white shadow-md rounded-md max-w-[80%] px-2">
+        <div className="bg-white dark:bg-slate-800 boxShadow rounded-md w-full md:max-w-[80%] px-2">
             <div className="py-5 px-3">
-                <span className="text-[0.9rem] text-gray-400 font-[300]">Reading Task</span>
-                <h1 className="text-[1.5rem] font-semibold leading-[28px] mt-2">Constructive and destructive
+                <span className="text-[0.9rem] dark:text-[#abc2d3] text-gray-400 font-[300]">Reading Task</span>
+                <h1 className="text-[1.5rem] dark:text-[#abc2d3] font-semibold leading-[28px] mt-2">Constructive and
+                    destructive
                     waves</h1>
             </div>
 
             <div className="flex flex-col">
-                <div className="flex items-start gap-[8px] py-3 hover:bg-gray-100 px-3 rounded-md cursor-pointer">
-                    <MdOutlineEmail className="text-[1.3rem] mt-[3px]"/>
-                    <p className="text-[1.1rem]">Meeting Reminder: Project Kickoff</p>
+                <div
+                    className="flex items-start gap-[8px] dark:hover:bg-slate-700 py-3 hover:bg-gray-100 px-3 rounded-md cursor-pointer">
+                    <MdOutlineEmail className="text-[1.3rem] dark:text-[#abc2d3]/90 mt-[3px]"/>
+                    <p className="text-[1.1rem] dark:text-[#abc2d3]/90">Meeting Reminder: Project Kickoff</p>
                 </div>
-                <div className="flex items-start gap-[8px] py-3 hover:bg-gray-100 px-3 rounded-md cursor-pointer">
-                    <MdOutlineEmail className="text-[1.3rem] mt-[3px]"/>
-                    <p className="text-[1.1rem]">Invitation: Web Development Webinar</p>
+                <div
+                    className="flex items-start gap-[8px] dark:hover:bg-slate-700 py-3 hover:bg-gray-100 px-3 rounded-md cursor-pointer">
+                    <MdOutlineEmail className="text-[1.3rem] dark:text-[#abc2d3]/90 mt-[3px]"/>
+                    <p className="text-[1.1rem] dark:text-[#abc2d3]/90">Invitation: Web Development Webinar</p>
                 </div>
-                <div className="flex items-start gap-[8px] py-3 hover:bg-gray-100 px-3 rounded-md cursor-pointer">
-                    <MdOutlineEmail className="text-[1.3rem] mt-[3px]"/>
-                    <p className="text-[1.1rem]">Invoice #12345 Due Tomorrow</p>
+                <div
+                    className="flex items-start gap-[8px] dark:hover:bg-slate-700 py-3 hover:bg-gray-100 px-3 rounded-md cursor-pointer">
+                    <MdOutlineEmail className="text-[1.3rem] dark:text-[#abc2d3]/90 mt-[3px]"/>
+                    <p className="text-[1.1rem] dark:text-[#abc2d3]/90">Invoice #12345 Due Tomorrow</p>
                 </div>
-                <div className="flex items-start gap-[8px] py-3 hover:bg-gray-100 px-3 rounded-md cursor-pointer">
-                    <MdOutlineEmail className="text-[1.3rem] mt-[3px]"/>
-                    <p className="text-[1.1rem]">Your Order Has Shipped</p>
+                <div
+                    className="flex items-start gap-[8px] dark:hover:bg-slate-700 py-3 hover:bg-gray-100 px-3 rounded-md cursor-pointer">
+                    <MdOutlineEmail className="text-[1.3rem] dark:text-[#abc2d3]/90 mt-[3px]"/>
+                    <p className="text-[1.1rem] dark:text-[#abc2d3]/90">Your Order Has Shipped</p>
                 </div>
-                <div className="flex items-start gap-[8px] py-3 hover:bg-gray-100 px-3 rounded-md cursor-pointer">
-                    <MdOutlineEmail className="text-[1.3rem] mt-[3px]"/>
-                    <p className="text-[1.1rem]">Update: New Policy Changes</p>
+                <div
+                    className="flex items-start gap-[8px] dark:hover:bg-slate-700 py-3 hover:bg-gray-100 px-3 rounded-md cursor-pointer">
+                    <MdOutlineEmail className="text-[1.3rem] dark:text-[#abc2d3]/90 mt-[3px]"/>
+                    <p className="text-[1.1rem] dark:text-[#abc2d3]/90">Update: New Policy Changes</p>
                 </div>
             </div>
 
             <div className="mx-3">
                 <button
-                    className="w-full mx-auto py-2.5 px-6 text-center bg-[#e9e1ff] text-[#7949ff] my-5 rounded-md ">Continue
+                    className="w-full mx-auto dark:bg-slate-700 dark:text-[#abc2d3] py-2.5 px-6 text-center bg-[#e9e1ff] text-[#7949ff] my-5 rounded-md ">Continue
                 </button>
             </div>
 
@@ -2409,9 +2464,9 @@ export default Card;
           <ComponentWrapper>
             {randomCardPreview13 && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
-                  <div className='w-full 1024px:max-w-[80%] boxShadow rounded-md'>
+                  <div className='w-full bg-white dark:bg-slate-800 1024px:max-w-[80%] boxShadow rounded-md'>
                     <div className='flex items-center justify-between w-full p-4'>
-                      <h2 className='text-[1.4rem] font-semibold'>Strawberry Cake</h2>
+                      <h2 className='text-[1.4rem] dark:text-[#abc2d3] font-semibold'>Strawberry Cake</h2>
                       <div className='flex items-center gap-[5px]'>
                         <BiSolidLeaf className='py-[4px] rounded-full text-[1.5rem] bg-green-300 text-green-900 cursor-pointer'/>
                         <FaFire className='py-[4px] rounded-full text-[1.5rem] bg-red-300 text-red-800 cursor-pointer'/>
@@ -2422,19 +2477,19 @@ export default Card;
                     />
 
                     <div className='p-4'>
-                      <p className='text-[1rem] text-gray-700'>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      <p className='text-[1rem] dark:text-[#abc2d3]/90 text-gray-700'>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt.</p>
 
                       <div className='mt-5 flex 640px:flex-row flex-col gap-[15px] 640px:gap-[5px] 640px:items-center justify-between w-full'>
-                        <h3 className='text-[1.4rem] font-semibold flex items-center gap-[4px]'>
+                        <h3 className='text-[1.4rem] dark:text-[#abc2d3] font-semibold flex items-center gap-[4px]'>
                           $13.90
 
-                          <del className='text-[1rem] text-red-500 font-[300]'>
+                          <del className='text-[1rem] dark:text-[#abc2d3] text-red-500 font-[300]'>
                             $18.90
                           </del>
                         </h3>
 
-                        <button className='py-2 px-6 border border-gray-600 text-gray-700 rounded-md'>Order now</button>
+                        <button className='py-2 px-6 border dark:border-slate-600 dark:text-[#abc2d3] border-gray-600 text-gray-700 rounded-md'>Order now</button>
                       </div>
                     </div>
 
@@ -2447,15 +2502,16 @@ export default Card;
                     code='
 import React from "react";
 
+// react icons
 import {BiSolidLeaf} from "react-icons/bi";
 import {FaFire} from "react-icons/fa";
 
 const Card = () => {
 
     return (
-        <div className="max-w-[80%] shadow-md rounded-md">
+        <div className="w-full bg-white dark:bg-slate-800 md:max-w-[80%] boxShadow rounded-md">
             <div className="flex items-center justify-between w-full p-4">
-                <h2 className="text-[1.4rem] font-semibold">Strawberry Cake</h2>
+                <h2 className="text-[1.4rem] dark:text-[#abc2d3] font-semibold">Strawberry Cake</h2>
                 <div className="flex items-center gap-[5px]">
                     <BiSolidLeaf
                         className="py-[4px] rounded-full text-[1.5rem] bg-green-300 text-green-900 cursor-pointer"/>
@@ -2469,19 +2525,24 @@ const Card = () => {
             />
 
             <div className="p-4">
-                <p className="text-[1rem] text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                <p className="text-[1rem] dark:text-[#abc2d3]/90 text-gray-700">Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit,
                     sed do eiusmod tempor incididunt.</p>
 
-                <div className="mt-5 flex items-center justify-between w-full">
-                    <h3 className="text-[1.4rem] font-semibold flex items-center gap-[4px]">
+                <div
+                    className="mt-5 flex 640px:flex-row flex-col gap-[15px] 640px:gap-[5px] 640px:items-center justify-between w-full">
+                    <h3 className="text-[1.4rem] dark:text-[#abc2d3] font-semibold flex items-center gap-[4px]">
                         $13.90
 
-                        <del className="text-[1rem] text-red-500 font-[300]">
+                        <del className="text-[1rem] dark:text-[#abc2d3] text-red-500 font-[300]">
                             $18.90
                         </del>
                     </h3>
 
-                    <button className="py-2 px-6 border border-gray-600 text-gray-700 rounded-md">Order now</button>
+                    <button
+                        className="py-2 px-6 border dark:border-slate-600 dark:text-[#abc2d3] border-gray-600 text-gray-700 rounded-md">Order
+                        now
+                    </button>
                 </div>
             </div>
 
@@ -2506,35 +2567,35 @@ export default Card;
           <ComponentWrapper>
             {randomCardPreview14 && (
                 <div className="p-8 mb-4 flex items-center gap-5 justify-center">
-                  <div className='w-full 1024px:max-w-[80%] boxShadow rounded-md'>
+                  <div className='w-full bg-white dark:bg-slate-800 1024px:max-w-[80%] boxShadow rounded-md'>
                     <div className='p-4'>
-                      <h1 className='text-[1.5rem] font-semibold'>Minim dolorin</h1>
-                      <p className='text-[0.9rem] text-gray-500'>Minim dolor in amet nulla laboris enim dolore consequat.</p>
+                      <h1 className='text-[1.5rem] dark:text-[#abc2d3] font-semibold'>Minim dolorin</h1>
+                      <p className='text-[0.9rem] dark:text-[#abc2d3]/80 text-gray-500'>Minim dolor in amet nulla laboris enim dolore consequat.</p>
                     </div>
 
                     <div className='mt-4'>
-                      <div className='flex 640px:flex-row flex-col 640px:items-center w-full justify-between py-3 hover:bg-gray-100 px-4'>
+                      <div className='flex 640px:flex-row flex-col dark:hover:bg-slate-700 640px:items-center w-full justify-between py-3 hover:bg-gray-100 px-4'>
                         <div className='flex gap-[10px]'>
                           <img
                               src='https://img.freepik.com/free-photo/cheerful-young-man-posing-isolated-grey_171337-10579.jpg?t=st=1722623111~exp=1722626711~hmac=b17f00e5dcf0abc6acd95e3cc2c38c402f1215a1d21f8581ebcf6a2de0b668a0&w=996'
                               alt='avatar' className='w-[60px] h-[60px] object-cover rounded-full '/>
                           <div className='flex flex-col'>
-                            <h3 className='text-[1.2rem] font-semibold'>Wade Warren</h3>
-                            <span className='text-[0.9rem] text-gray-500'>Dog Trainer</span>
+                            <h3 className='text-[1.2rem] dark:text-[#abc2d3] font-semibold'>Wade Warren</h3>
+                            <span className='text-[0.9rem] dark:text-[#abc2d3]/80 text-gray-500'>Dog Trainer</span>
                           </div>
                         </div>
 
                         <button className='py-2 w-max 640px:m-0 mx-auto px-6 bg-purple-500 text-white rounded-md'>Follow</button>
                       </div>
 
-                      <div className='flex 640px:flex-row flex-col 640px:items-center w-full justify-between py-3 hover:bg-gray-100 px-4'>
+                      <div className='flex 640px:flex-row flex-col dark:hover:bg-slate-700 640px:items-center w-full justify-between py-3 hover:bg-gray-100 px-4'>
                         <div className='flex gap-[10px]'>
                           <img
                               src='https://img.freepik.com/free-photo/bearded-man-listening-music-through-earphones_53876-129947.jpg?t=st=1722623213~exp=1722626813~hmac=b7deb7ad2af8b5966d5cac476223699db295447ed386ee6c02e43c44e1b12a5b&w=996'
                               alt='avatar' className='w-[60px] h-[60px] object-cover rounded-full '/>
                           <div className='flex flex-col'>
-                            <h3 className='text-[1.2rem] font-semibold'>Robert Fox</h3>
-                            <span className='text-[0.9rem] text-gray-500'>President of Sales</span>
+                            <h3 className='text-[1.2rem] dark:text-[#abc2d3] font-semibold'>Robert Fox</h3>
+                            <span className='text-[0.9rem] dark:text-[#abc2d3]/80 text-gray-500'>President of Sales</span>
                           </div>
                         </div>
 
@@ -2542,14 +2603,14 @@ export default Card;
 
                       </div>
 
-                      <div className='flex 640px:flex-row flex-col 640px:items-center w-full justify-between py-3 hover:bg-gray-100 px-4'>
+                      <div className='flex 640px:flex-row flex-col dark:hover:bg-slate-700 640px:items-center w-full justify-between py-3 hover:bg-gray-100 px-4'>
                         <div className='flex gap-[10px]'>
                           <img
                               src='https://img.freepik.com/free-photo/porait-cute-boy-cafe_23-2148436119.jpg?t=st=1722623263~exp=1722626863~hmac=6620b351cf7c4d56d5209fd59eadfa696d1edbdafbf1db30e5ab2c9e303cfa4a&w=996'
                               alt='avatar' className='w-[60px] h-[60px] object-cover rounded-full '/>
                           <div className='flex flex-col'>
-                            <h3 className='text-[1.2rem] font-semibold'>Jane Cooper</h3>
-                            <span className='text-[0.9rem] text-gray-500'>Nursing Assistant</span>
+                            <h3 className='text-[1.2rem] dark:text-[#abc2d3] font-semibold'>Jane Cooper</h3>
+                            <span className='text-[0.9rem] dark:text-[#abc2d3]/80 text-gray-500'>Nursing Assistant</span>
                           </div>
                         </div>
 
@@ -2557,14 +2618,14 @@ export default Card;
 
                       </div>
 
-                      <div className='flex 640px:flex-row flex-col 640px:items-center w-full justify-between py-3 hover:bg-gray-100 px-4'>
+                      <div className='flex 640px:flex-row flex-col dark:hover:bg-slate-700 640px:items-center w-full justify-between py-3 hover:bg-gray-100 px-4'>
                         <div className='flex gap-[10px]'>
                           <img
                               src='https://img.freepik.com/free-photo/portrait-male-traveler-looking-camera-outdoors_23-2148148710.jpg?t=st=1722623296~exp=1722626896~hmac=29e65db6c3e3bbf68796e9342afee5e3595eaa67bbe65a2688fdac5d45041201&w=996'
                               alt='avatar' className='w-[60px] h-[60px] object-cover rounded-full '/>
                           <div className='flex flex-col'>
-                            <h3 className='text-[1.2rem] font-semibold'>Frank Esteban</h3>
-                            <span className='text-[0.9rem] text-gray-500'>Software Tester</span>
+                            <h3 className='text-[1.2rem] dark:text-[#abc2d3] font-semibold'>Frank Esteban</h3>
+                            <span className='text-[0.9rem] dark:text-[#abc2d3]/80 text-gray-500'>Software Tester</span>
                           </div>
                         </div>
 
@@ -2572,14 +2633,14 @@ export default Card;
 
                       </div>
 
-                      <div className='flex 640px:flex-row flex-col 640px:items-center w-full justify-between py-3 hover:bg-gray-100 px-4'>
+                      <div className='flex 640px:flex-row flex-col dark:hover:bg-slate-700 640px:items-center w-full justify-between py-3 hover:bg-gray-100 px-4'>
                         <div className='flex gap-[10px]'>
                           <img
                               src='https://img.freepik.com/free-photo/handsome-sensitive-red-head-man-smiling_23-2149509820.jpg?t=st=1722623336~exp=1722626936~hmac=f02780547f6a8bc7020a8ab4cf2bbfd1b0b559812cf7f3aea793970ee9a14dc8&w=996'
                               alt='avatar' className='w-[60px] h-[60px] object-cover rounded-full '/>
                           <div className='flex flex-col'>
-                            <h3 className='text-[1.2rem] font-semibold'>Dianne Russell</h3>
-                            <span className='text-[0.9rem] text-gray-500'>Web Designer</span>
+                            <h3 className='text-[1.2rem] dark:text-[#abc2d3] font-semibold'>Dianne Russell</h3>
+                            <span className='text-[0.9rem] dark:text-[#abc2d3]/80 text-gray-500'>Web Designer</span>
                           </div>
                         </div>
 
@@ -2588,9 +2649,9 @@ export default Card;
                       </div>
                     </div>
 
-                    <div className='bg-gray-100 p-4 rounded-b-md flex items-center justify-between w-full'>
-                      <span className='text-[0.9rem] text-gray-400'>543 students</span>
-                      <button className='text-[0.9rem] text-gray-700 font-[500]'>VIEW ALL MEMBER</button>
+                    <div className='bg-gray-100 dark:bg-slate-600 p-4 rounded-b-md flex items-center justify-between w-full'>
+                      <span className='text-[0.9rem] dark:text-[#abc2d3] text-gray-400'>543 students</span>
+                      <button className='text-[0.9rem] dark:text-[#abc2d3] text-gray-700 font-[500]'>VIEW ALL MEMBER</button>
                     </div>
                   </div>
                 </div>
@@ -2604,91 +2665,104 @@ import React from "react";
 const Card = () => {
 
     return (
-        <div className="max-w-[80%] shadow-md rounded-md">
+        <div className="w-full bg-white dark:bg-slate-800 md:max-w-[80%] boxShadow rounded-md">
             <div className="p-4">
-                <h1 className="text-[1.5rem] font-semibold">Minim dolorin</h1>
-                <p className="text-[0.9rem] text-gray-500">Minim dolor in amet nulla laboris enim dolore consequat.</p>
+                <h1 className="text-[1.5rem] dark:text-[#abc2d3] font-semibold">Minim dolorin</h1>
+                <p className="text-[0.9rem] dark:text-[#abc2d3]/80 text-gray-500">Minim dolor in amet nulla laboris enim
+                    dolore consequat.</p>
             </div>
 
             <div className="mt-4">
-                <div className="flex sm:flex-row flex-col sm:items-center w-full justify-between py-3 hover:bg-gray-100 px-4">
+                <div
+                    className="flex sm:flex-row flex-col dark:hover:bg-slate-700 sm:items-center w-full justify-between py-3 hover:bg-gray-100 px-4">
                     <div className="flex gap-[10px]">
                         <img
                             src="https://img.freepik.com/free-photo/cheerful-young-man-posing-isolated-grey_171337-10579.jpg?t=st=1722623111~exp=1722626711~hmac=b17f00e5dcf0abc6acd95e3cc2c38c402f1215a1d21f8581ebcf6a2de0b668a0&w=996"
                             alt="avatar" className="w-[60px] h-[60px] object-cover rounded-full "/>
                         <div className="flex flex-col">
-                            <h3 className="text-[1.2rem] font-semibold">Wade Warren</h3>
-                            <span className="text-[0.9rem] text-gray-500">Dog Trainer</span>
+                            <h3 className="text-[1.2rem] dark:text-[#abc2d3] font-semibold">Wade Warren</h3>
+                            <span className="text-[0.9rem] dark:text-[#abc2d3]/80 text-gray-500">Dog Trainer</span>
                         </div>
                     </div>
 
-                    <button className="py-2 w-max sm:m-0 mx-auto px-6 bg-purple-500 text-white rounded-md">Follow</button>
+                    <button className="py-2 w-max sm:m-0 mx-auto px-6 bg-purple-500 text-white rounded-md">Follow
+                    </button>
                 </div>
 
-                <div className="flex sm:flex-row flex-col sm:items-center w-full justify-between py-3 hover:bg-gray-100 px-4">
+                <div
+                    className="flex sm:flex-row flex-col dark:hover:bg-slate-700 sm:items-center w-full justify-between py-3 hover:bg-gray-100 px-4">
                     <div className="flex gap-[10px]">
                         <img
                             src="https://img.freepik.com/free-photo/bearded-man-listening-music-through-earphones_53876-129947.jpg?t=st=1722623213~exp=1722626813~hmac=b7deb7ad2af8b5966d5cac476223699db295447ed386ee6c02e43c44e1b12a5b&w=996"
                             alt="avatar" className="w-[60px] h-[60px] object-cover rounded-full "/>
                         <div className="flex flex-col">
-                            <h3 className="text-[1.2rem] font-semibold">Robert Fox</h3>
-                            <span className="text-[0.9rem] text-gray-500">President of Sales</span>
+                            <h3 className="text-[1.2rem] dark:text-[#abc2d3] font-semibold">Robert Fox</h3>
+                            <span
+                                className="text-[0.9rem] dark:text-[#abc2d3]/80 text-gray-500">President of Sales</span>
                         </div>
                     </div>
 
-                    <button className="py-2 w-max sm:m-0 mx-auto px-6 bg-purple-500 text-white rounded-md">Follow</button>
+                    <button className="py-2 w-max sm:m-0 mx-auto px-6 bg-purple-500 text-white rounded-md">Follow
+                    </button>
 
                 </div>
 
-                <div className="flex sm:flex-row flex-col sm:items-center w-full justify-between py-3 hover:bg-gray-100 px-4">
+                <div
+                    className="flex sm:flex-row flex-col dark:hover:bg-slate-700 sm:items-center w-full justify-between py-3 hover:bg-gray-100 px-4">
                     <div className="flex gap-[10px]">
                         <img
                             src="https://img.freepik.com/free-photo/porait-cute-boy-cafe_23-2148436119.jpg?t=st=1722623263~exp=1722626863~hmac=6620b351cf7c4d56d5209fd59eadfa696d1edbdafbf1db30e5ab2c9e303cfa4a&w=996"
                             alt="avatar" className="w-[60px] h-[60px] object-cover rounded-full "/>
                         <div className="flex flex-col">
-                            <h3 className="text-[1.2rem] font-semibold">Jane Cooper</h3>
-                            <span className="text-[0.9rem] text-gray-500">Nursing Assistant</span>
+                            <h3 className="text-[1.2rem] dark:text-[#abc2d3] font-semibold">Jane Cooper</h3>
+                            <span
+                                className="text-[0.9rem] dark:text-[#abc2d3]/80 text-gray-500">Nursing Assistant</span>
                         </div>
                     </div>
 
-                    <button className="py-2 w-max sm:m-0 mx-auto px-6 bg-purple-500 text-white rounded-md">Follow</button>
+                    <button className="py-2 w-max sm:m-0 mx-auto px-6 bg-purple-500 text-white rounded-md">Follow
+                    </button>
 
                 </div>
 
-                <div className="flex sm:flex-row flex-col sm:items-center w-full justify-between py-3 hover:bg-gray-100 px-4">
+                <div
+                    className="flex sm:flex-row flex-col dark:hover:bg-slate-700 sm:items-center w-full justify-between py-3 hover:bg-gray-100 px-4">
                     <div className="flex gap-[10px]">
                         <img
                             src="https://img.freepik.com/free-photo/portrait-male-traveler-looking-camera-outdoors_23-2148148710.jpg?t=st=1722623296~exp=1722626896~hmac=29e65db6c3e3bbf68796e9342afee5e3595eaa67bbe65a2688fdac5d45041201&w=996"
                             alt="avatar" className="w-[60px] h-[60px] object-cover rounded-full "/>
                         <div className="flex flex-col">
-                            <h3 className="text-[1.2rem] font-semibold">Frank Esteban</h3>
-                            <span className="text-[0.9rem] text-gray-500">Software Tester</span>
+                            <h3 className="text-[1.2rem] dark:text-[#abc2d3] font-semibold">Frank Esteban</h3>
+                            <span className="text-[0.9rem] dark:text-[#abc2d3]/80 text-gray-500">Software Tester</span>
                         </div>
                     </div>
 
-                    <button className="py-2 w-max sm:m-0 mx-auto px-6 bg-purple-500 text-white rounded-md">Follow</button>
+                    <button className="py-2 w-max sm:m-0 mx-auto px-6 bg-purple-500 text-white rounded-md">Follow
+                    </button>
 
                 </div>
 
-                <div className="flex sm:flex-row flex-col sm:items-center w-full justify-between py-3 hover:bg-gray-100 px-4">
+                <div
+                    className="flex sm:flex-row flex-col dark:hover:bg-slate-700 sm:items-center w-full justify-between py-3 hover:bg-gray-100 px-4">
                     <div className="flex gap-[10px]">
                         <img
                             src="https://img.freepik.com/free-photo/handsome-sensitive-red-head-man-smiling_23-2149509820.jpg?t=st=1722623336~exp=1722626936~hmac=f02780547f6a8bc7020a8ab4cf2bbfd1b0b559812cf7f3aea793970ee9a14dc8&w=996"
                             alt="avatar" className="w-[60px] h-[60px] object-cover rounded-full "/>
                         <div className="flex flex-col">
-                            <h3 className="text-[1.2rem] font-semibold">Dianne Russell</h3>
-                            <span className="text-[0.9rem] text-gray-500">Web Designer</span>
+                            <h3 className="text-[1.2rem] dark:text-[#abc2d3] font-semibold">Dianne Russell</h3>
+                            <span className="text-[0.9rem] dark:text-[#abc2d3]/80 text-gray-500">Web Designer</span>
                         </div>
                     </div>
 
-                    <button className="py-2 w-max sm:m-0 mx-auto px-6 bg-purple-500 text-white rounded-md">Follow</button>
+                    <button className="py-2 w-max sm:m-0 mx-auto px-6 bg-purple-500 text-white rounded-md">Follow
+                    </button>
 
                 </div>
             </div>
 
-            <div className="bg-gray-100 p-4 rounded-b-md flex items-center justify-between w-full">
-                <span className="text-[0.9rem] text-gray-400">543 students</span>
-                <button className="text-[0.9rem] text-gray-700 font-[500]">VIEW ALL MEMBER</button>
+            <div className="bg-gray-100 dark:bg-slate-600 p-4 rounded-b-md flex items-center justify-between w-full">
+                <span className="text-[0.9rem] dark:text-[#abc2d3] text-gray-400">543 students</span>
+                <button className="text-[0.9rem] dark:text-[#abc2d3] text-gray-700 font-[500]">VIEW ALL MEMBER</button>
             </div>
         </div>
     );

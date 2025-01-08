@@ -9,7 +9,7 @@ import AnimatedCards from "../../../Components/Overview/SidebarContent/Content/S
 
 const AnimatedCardsPage = () => {
     return (
-        <>
+        <div className='dark:bg-darkBgColor'>
             <Navbar />
             <MobileNavbar/>
             <div className="flex w-full mx-auto max-w-[1700px]">
@@ -22,7 +22,7 @@ const AnimatedCardsPage = () => {
                     <AnimatedCards />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 
