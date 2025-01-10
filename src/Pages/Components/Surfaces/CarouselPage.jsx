@@ -9,7 +9,7 @@ import Carousel from "../../../Components/Overview/SidebarContent/Content/Surfac
 
 const CarouselPage = () => {
   return (
-    <>
+    <div className='dark:bg-darkBgColor'>
       <Navbar />
         <MobileNavbar/>
       <div className="flex w-full mx-auto max-w-[1700px]">
@@ -22,7 +22,7 @@ const CarouselPage = () => {
           <Carousel />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

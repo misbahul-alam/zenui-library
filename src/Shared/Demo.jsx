@@ -1,109 +1,95 @@
-import React from "react";
+import React, {useState} from "react";
 
-const Card = () => {
+const Accordion = () => {
+    const accordingData = [
+        {
+            title: "What is the purpose of wireframing in design?",
+            description:
+                "Wireframing outlines the basic structure and layout of a design, serving as a visual guide before detailed development.",
+        },
+        {
+            title: "Why is user-centered design important?",
+            description:
+                "User-centered design ensures products meet the needs and preferences of the end-users, enhancing usability and satisfaction.",
+        },
+        {
+            title: "What role does contrast play in graphic design?",
+            description:
+                "Contrast in graphic design emphasizes differences, making elements stand out and improving visual hierarchy.",
+        },
 
+        {
+            title: `Define the term "responsive design" in web development.`,
+            description:
+                "Responsive design ensures web pages adapt to various screen sizes, providing an optimal user experience on different devices.",
+        },
+
+        {
+            title: "What is the significance of color theory in design?",
+            description:
+                "Color theory guides the selection and combination of colors to evoke specific emotions, enhance readability, and create visually appealing designs.",
+        },
+    ];
+    
+    const [bgAccording, setBgAccording] = useState(null);
+    
+    const handleBgAccording = (index) =>
+        setBgAccording((prevIndex) => (prevIndex === index ? null : index));
+    
     return (
-        <div className="w-full bg-white dark:bg-slate-800 md:max-w-[80%] boxShadow rounded-md">
-            <div className="p-4">
-                <h1 className="text-[1.5rem] dark:text-[#abc2d3] font-semibold">Minim dolorin</h1>
-                <p className="text-[0.9rem] dark:text-[#abc2d3]/80 text-gray-500">Minim dolor in amet nulla laboris enim
-                    dolore consequat.</p>
-            </div>
-
-            <div className="mt-4">
-                <div
-                    className="flex sm:flex-row flex-col dark:hover:bg-slate-700 sm:items-center w-full justify-between py-3 hover:bg-gray-100 px-4">
-                    <div className="flex gap-[10px]">
-                        <img
-                            src="https://img.freepik.com/free-photo/cheerful-young-man-posing-isolated-grey_171337-10579.jpg?t=st=1722623111~exp=1722626711~hmac=b17f00e5dcf0abc6acd95e3cc2c38c402f1215a1d21f8581ebcf6a2de0b668a0&w=996"
-                            alt="avatar" className="w-[60px] h-[60px] object-cover rounded-full "/>
-                        <div className="flex flex-col">
-                            <h3 className="text-[1.2rem] dark:text-[#abc2d3] font-semibold">Wade Warren</h3>
-                            <span className="text-[0.9rem] dark:text-[#abc2d3]/80 text-gray-500">Dog Trainer</span>
+        <div className="flex gap-3 flex-col w-full">
+            {accordingData?.map((according, index) => (
+                <article key={index} className="bg-[#e5eaf2] dark:bg-transparent rounded">
+                    <div
+                        className={`${bgAccording === index ? "rounded-t-sm" : "rounded"} flex gap-2 cursor-pointer items-center justify-between dark:bg-slate-800 w-full bg-gray-700 p-3`}
+                        onClick={() => handleBgAccording(index)}
+                    >
+                        <h2
+                            className={`dark:text-[#abc2d3] text-white font-[600] text-[1.2rem]`}
+                        >
+                            {according.title}
+                        </h2>
+                        <svg
+                            className="dark:fill-[#abc2d3] fill-[#ffffff] shrink-0 ml-8"
+                            width="16"
+                            height="16"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <rect
+                                y="7"
+                                width="16"
+                                height="2"
+                                rx="1"
+                                className={`transform origin-center transition duration-200 ease-out ${
+                                    bgAccording === index && "!rotate-180"
+                                }`}
+                            />
+                            <rect
+                                y="7"
+                                width="16"
+                                height="2"
+                                rx="1"
+                                className={`transform origin-center rotate-90 transition duration-200 ease-out ${
+                                    bgAccording === index && "!rotate-180"
+                                }`}
+                            />
+                        </svg>
+                    </div>
+                    <div
+                        className={`grid transition-all duration-300 dark:bg-slate-900 overflow-hidden ease-in-out bg-gray-100 ${
+                            bgAccording === index
+                                ? "grid-rows-[1fr] opacity-100 px-3 py-3"
+                                : "grid-rows-[0fr] opacity-0 px-3"
+                        }`}
+                    >
+                        <div className="text-[#424242] dark:text-[#abc2d3] text-[0.9rem] overflow-hidden">
+                            {according.description}
                         </div>
                     </div>
-
-                    <button className="py-2 w-max sm:m-0 mx-auto px-6 bg-purple-500 text-white rounded-md">Follow
-                    </button>
-                </div>
-
-                <div
-                    className="flex sm:flex-row flex-col dark:hover:bg-slate-700 sm:items-center w-full justify-between py-3 hover:bg-gray-100 px-4">
-                    <div className="flex gap-[10px]">
-                        <img
-                            src="https://img.freepik.com/free-photo/bearded-man-listening-music-through-earphones_53876-129947.jpg?t=st=1722623213~exp=1722626813~hmac=b7deb7ad2af8b5966d5cac476223699db295447ed386ee6c02e43c44e1b12a5b&w=996"
-                            alt="avatar" className="w-[60px] h-[60px] object-cover rounded-full "/>
-                        <div className="flex flex-col">
-                            <h3 className="text-[1.2rem] dark:text-[#abc2d3] font-semibold">Robert Fox</h3>
-                            <span
-                                className="text-[0.9rem] dark:text-[#abc2d3]/80 text-gray-500">President of Sales</span>
-                        </div>
-                    </div>
-
-                    <button className="py-2 w-max sm:m-0 mx-auto px-6 bg-purple-500 text-white rounded-md">Follow
-                    </button>
-
-                </div>
-
-                <div
-                    className="flex sm:flex-row flex-col dark:hover:bg-slate-700 sm:items-center w-full justify-between py-3 hover:bg-gray-100 px-4">
-                    <div className="flex gap-[10px]">
-                        <img
-                            src="https://img.freepik.com/free-photo/porait-cute-boy-cafe_23-2148436119.jpg?t=st=1722623263~exp=1722626863~hmac=6620b351cf7c4d56d5209fd59eadfa696d1edbdafbf1db30e5ab2c9e303cfa4a&w=996"
-                            alt="avatar" className="w-[60px] h-[60px] object-cover rounded-full "/>
-                        <div className="flex flex-col">
-                            <h3 className="text-[1.2rem] dark:text-[#abc2d3] font-semibold">Jane Cooper</h3>
-                            <span
-                                className="text-[0.9rem] dark:text-[#abc2d3]/80 text-gray-500">Nursing Assistant</span>
-                        </div>
-                    </div>
-
-                    <button className="py-2 w-max sm:m-0 mx-auto px-6 bg-purple-500 text-white rounded-md">Follow
-                    </button>
-
-                </div>
-
-                <div
-                    className="flex sm:flex-row flex-col dark:hover:bg-slate-700 sm:items-center w-full justify-between py-3 hover:bg-gray-100 px-4">
-                    <div className="flex gap-[10px]">
-                        <img
-                            src="https://img.freepik.com/free-photo/portrait-male-traveler-looking-camera-outdoors_23-2148148710.jpg?t=st=1722623296~exp=1722626896~hmac=29e65db6c3e3bbf68796e9342afee5e3595eaa67bbe65a2688fdac5d45041201&w=996"
-                            alt="avatar" className="w-[60px] h-[60px] object-cover rounded-full "/>
-                        <div className="flex flex-col">
-                            <h3 className="text-[1.2rem] dark:text-[#abc2d3] font-semibold">Frank Esteban</h3>
-                            <span className="text-[0.9rem] dark:text-[#abc2d3]/80 text-gray-500">Software Tester</span>
-                        </div>
-                    </div>
-
-                    <button className="py-2 w-max sm:m-0 mx-auto px-6 bg-purple-500 text-white rounded-md">Follow
-                    </button>
-
-                </div>
-
-                <div
-                    className="flex sm:flex-row flex-col dark:hover:bg-slate-700 sm:items-center w-full justify-between py-3 hover:bg-gray-100 px-4">
-                    <div className="flex gap-[10px]">
-                        <img
-                            src="https://img.freepik.com/free-photo/handsome-sensitive-red-head-man-smiling_23-2149509820.jpg?t=st=1722623336~exp=1722626936~hmac=f02780547f6a8bc7020a8ab4cf2bbfd1b0b559812cf7f3aea793970ee9a14dc8&w=996"
-                            alt="avatar" className="w-[60px] h-[60px] object-cover rounded-full "/>
-                        <div className="flex flex-col">
-                            <h3 className="text-[1.2rem] dark:text-[#abc2d3] font-semibold">Dianne Russell</h3>
-                            <span className="text-[0.9rem] dark:text-[#abc2d3]/80 text-gray-500">Web Designer</span>
-                        </div>
-                    </div>
-
-                    <button className="py-2 w-max sm:m-0 mx-auto px-6 bg-purple-500 text-white rounded-md">Follow
-                    </button>
-
-                </div>
-            </div>
-
-            <div className="bg-gray-100 dark:bg-slate-600 p-4 rounded-b-md flex items-center justify-between w-full">
-                <span className="text-[0.9rem] dark:text-[#abc2d3] text-gray-400">543 students</span>
-                <button className="text-[0.9rem] dark:text-[#abc2d3] text-gray-700 font-[500]">VIEW ALL MEMBER</button>
-            </div>
+                </article>
+            ))}
         </div>
     );
 };
 
-export default Card;
+export default Accordion;

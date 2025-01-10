@@ -15,6 +15,11 @@ import { useScrollSpy } from '../../../../../CustomHooks/useScrollSpy';
 // icons
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
+import ComponentDescription from "../../../../../Shared/ComponentDescription.jsx";
+import ToggleTab from "../../../../../Shared/ToggleTab.jsx";
+import ComponentWrapper from "../../../../../Shared/ComponentWrapper.jsx";
+import ContentNavbar from "../../../../../Shared/ContentNavbar.jsx";
+
 const Carousel = () => {
   const sectionIds = carouselContents.map((item) => item.href.slice(1));
   const activeSection = useScrollSpy(sectionIds);
@@ -96,66 +101,42 @@ const Carousel = () => {
         <div className='w-full 425px:w-[80%]'>
           <ContentHeader id='normal-carousel' text={'Carousel 1'} />
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            This is a carousel component with manual navigation to cycle through
-            slides.
-          </p>
+          <ComponentDescription text='This is a carousel component with manual navigation to cycle through
+            slides.'/>
 
-          {/* First Carousel Container */}
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${carouselPreview1
-                  ? 'translate-x-[0px] !w-[100px]'
-                  : 'translate-x-[106px] rounded-br'
-                  }`}
-              ></div>
-              <button
-                className={`${carouselPreview1 && 'text-tabTextColor'
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleCarouselPreview1}
-              >
-                Preview
-              </button>
-              <button
-                className={`${carouselCode1 && 'text-tabTextColor'
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleCarouselCode1}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab setPreview={setCarouselPreview1} preview={carouselPreview1} code={carouselCode1} setCode={setCarouselCode1}/>
 
+          <ComponentWrapper>
             {carouselPreview1 && (
-              <div className='p-8 mb-4 flex flex-col items-center gap-5  h-[400px] justify-center'>
-                <div className='relative flex items-center border-black justify-center w-full h-[200px] rounded-lg'>
-                  <FiChevronLeft
-                    className='absolute left-5 text-secondary text-[1.8rem] cursor-pointer'
-                    onClick={prevSlide1}
-                  />
-                  <div className='text-[1.3rem] text-secondary font-[600] flex flex-col items-center'>
-                    {/* Display the content text */}
-                    {/* <p className='mb-2'>{slides1[currentSlide1].content}</p> */}
+                <div className='p-8 mb-4 flex flex-col items-center gap-5  h-[400px] justify-center'>
+                  <div className='relative flex items-center border-black justify-center w-full h-[200px] rounded-lg'>
+                    <FiChevronLeft
+                        className='absolute left-5 text-secondary text-[1.8rem] cursor-pointer'
+                        onClick={prevSlide1}
+                    />
+                    <div className='text-[1.3rem] text-secondary font-[600] flex flex-col items-center'>
+                      {/* Display the content text */}
+                      {/* <p className='mb-2'>{slides1[currentSlide1].content}</p> */}
 
-                    {/* Display the image */}
-                    <img
-                      src={slides1[currentSlide1].imgSrc}
-                      alt={`Slide ${currentSlide1 + 1}`}
-                      className="w-full object-cover mb-2"
+                      {/* Display the image */}
+                      <img
+                          src={slides1[currentSlide1].imgSrc}
+                          alt={`Slide ${currentSlide1 + 1}`}
+                          className="w-full object-cover mb-2"
+                      />
+                    </div>
+
+                    <FiChevronRight
+                        className='absolute right-5 text-secondary text-[1.8rem] cursor-pointer'
+                        onClick={nextSlide1}
                     />
                   </div>
-
-                  <FiChevronRight
-                    className='absolute right-5 text-secondary text-[1.8rem] cursor-pointer'
-                    onClick={nextSlide1}
-                  />
                 </div>
-              </div>
             )}
 
             {carouselCode1 && (
-              <Showcode
-                code={`
+                <Showcode
+                    code={`
 import React, { useState, useEffect } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
@@ -201,70 +182,48 @@ const CarouselComponent1 = () => {
 
 export default CarouselComponent1;
                                 `}
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           {/* Second Carousel Container */}
           <div className='mt-8'>
             <ContentHeader id='second-carousel' text={'Carousel 2'} />
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            This is a carousel component with automatic navigation to cycle
-            through slides.
-          </p>
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${carouselPreview2
-                  ? 'translate-x-[0px] !w-[100px]'
-                  : 'translate-x-[106px] rounded-br'
-                  }`}
-              ></div>
-              <button
-                className={`${carouselPreview2 && 'text-tabTextColor'
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleCarouselPreview2}
-              >
-                Preview
-              </button>
-              <button
-                className={`${carouselCode2 && 'text-tabTextColor'
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleCarouselCode2}
-              >
-                Code
-              </button>
-            </div>
+          <ComponentDescription text='This is a carousel component with automatic navigation to cycle
+            through slides.'/>
 
+          <ToggleTab setPreview={setCarouselPreview2} preview={carouselPreview2} code={carouselCode2} setCode={setCarouselCode2}/>
+
+          <ComponentWrapper>
             {carouselPreview2 && (
-              <div className='p-8 mb-4 flex flex-col items-center gap-5 h-[400px] justify-center'>
-                <div className='relative flex items-center justify-center w-full h-[200px] rounded-lg'>
-                  <FiChevronLeft
-                    className='absolute left-5 text-secondary text-[1.8rem] cursor-pointer'
-                    onClick={prevSlide2}
-                  />
-                  <div className='text-[1.3rem] text-secondary font-[600]'>
-                    {/* {slides2[currentSlide2].content} */}
-                    {/* Display the image */}
-                    <img
-                      src={slides2[currentSlide2].imgSrc}
-                      alt={`Slide ${currentSlide2 + 1}`}
-                      className="w-full object-cover mb-2"
+                <div className='p-8 mb-4 flex flex-col items-center gap-5 h-[400px] justify-center'>
+                  <div className='relative flex items-center justify-center w-full h-[200px] rounded-lg'>
+                    <FiChevronLeft
+                        className='absolute left-5 text-secondary text-[1.8rem] cursor-pointer'
+                        onClick={prevSlide2}
+                    />
+                    <div className='text-[1.3rem] text-secondary font-[600]'>
+                      {/* {slides2[currentSlide2].content} */}
+                      {/* Display the image */}
+                      <img
+                          src={slides2[currentSlide2].imgSrc}
+                          alt={`Slide ${currentSlide2 + 1}`}
+                          className="w-full object-cover mb-2"
+                      />
+                    </div>
+                    <FiChevronRight
+                        className='absolute right-5 text-secondary text-[1.8rem] cursor-pointer'
+                        onClick={nextSlide2}
                     />
                   </div>
-                  <FiChevronRight
-                    className='absolute right-5 text-secondary text-[1.8rem] cursor-pointer'
-                    onClick={nextSlide2}
-                  />
                 </div>
-              </div>
             )}
 
             {carouselCode2 && (
-              <Showcode
-                code={`
+                <Showcode
+                    code={`
 import React, { useState, useEffect } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
@@ -318,9 +277,9 @@ const CarouselComponent2 = () => {
 
 export default CarouselComponent2;
                                 `}
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <OverviewFooter
             backUrl='/components/image-gallery'
@@ -330,22 +289,8 @@ export default CarouselComponent2;
           />
         </div>
 
-        <div className='1024px:flex hidden flex-col gap-4 sticky top-4 right-0 w-[35%]'>
-          <h2 className='text-[0.9rem] font-[600] text-text tracking-widest'>
-            CONTENTS
-          </h2>
-          {carouselContents.map((item) => (
-            <a
-              key={item.id}
-              href={item.href}
-              className={`${activeSection === item.href.slice(1) &&
-                '!text-primary !border-primary'
-                } text-[0.9rem] text-text border-l border-transparent pl-4`}
-            >
-              {item.title}
-            </a>
-          ))}
-        </div>
+        <ContentNavbar contents={carouselContents} activeSection={activeSection} width='35%'/>
+        
       </aside>
       <Helmet>
         <title>Components - Carousel</title>

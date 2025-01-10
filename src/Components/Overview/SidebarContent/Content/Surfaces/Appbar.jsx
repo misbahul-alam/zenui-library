@@ -19,51 +19,23 @@ import { CiSearch } from 'react-icons/ci';
 import { IoIosNotifications } from 'react-icons/io';
 import { IoCartOutline } from 'react-icons/io5';
 
+import ComponentDescription from "../../../../../Shared/ComponentDescription.jsx";
+import ToggleTab from "../../../../../Shared/ToggleTab.jsx";
+import ComponentWrapper from "../../../../../Shared/ComponentWrapper.jsx";
+import ContentNavbar from "../../../../../Shared/ContentNavbar.jsx";
+
 const Appbar = () => {
-  // basicApp
   const [basicAppPreview, setBasicAppPreview] = useState(true);
   const [basicAppCode, setBasicAppCode] = useState(false);
 
   const sectionIds = appbarContents.map((item) => item.href.slice(1));
   const activeSection = useScrollSpy(sectionIds);
 
-  const handleBasicAppPreview = () => {
-    setBasicAppPreview(true);
-    setBasicAppCode(false);
-  };
-
-  const handleBasicAppCode = () => {
-    setBasicAppCode(true);
-    setBasicAppPreview(false);
-  };
-
-  // appbarwithsearch
   const [appBarWithSearchPreview, setAppBarWithSearchPreview] = useState(true);
   const [appBarWithSearchCode, setAppBarWithSearchCode] = useState(false);
 
-  const handleAppbarSearchPreview = () => {
-    setAppBarWithSearchPreview(true);
-    setAppBarWithSearchCode(false);
-  };
-
-  const handleAppbarSearchCode = () => {
-    setAppBarWithSearchCode(true);
-    setAppBarWithSearchPreview(false);
-  };
-
-  // appbarwithicons
   const [appbarWithIconsPreview, setAppbarWithIconsPreview] = useState(true);
   const [appbarWithIconsCode, setAppbarWithIconsCode] = useState(false);
-
-  const handleAppbarWithIconsPreview = () => {
-    setAppbarWithIconsPreview(true);
-    setAppbarWithIconsCode(false);
-  };
-
-  const handleAppbarWithIconsCode = () => {
-    setAppbarWithIconsCode(true);
-    setAppbarWithIconsPreview(false);
-  };
 
   const [isLogout, setIsLogout] = useState(false);
 
@@ -76,73 +48,48 @@ const Appbar = () => {
             text={'app bar with manu & profile'}
           />
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            This is an app bar with profile login/logout component. Manage user
-            sessions seamlessly with profile access.
-          </p>
+          <ComponentDescription text='This is an app bar with profile login/logout component. Manage user
+            sessions seamlessly with profile access.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  basicAppPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[106px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  basicAppPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleBasicAppPreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  basicAppCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleBasicAppCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={basicAppCode} preview={basicAppPreview} setCode={setBasicAppCode} setPreview={setBasicAppPreview}/>
+
+          <ComponentWrapper>
             {basicAppPreview && (
-              <div className='p-8 mb-4 flex flex-col items-center gap-5 justify-center'>
-                <div className='p-4 bg-primary w-full flex items-center justify-between'>
-                  <div className='flex items-center gap-4'>
-                    <FiMenu className='text-secondary text-[1.7rem] cursor-pointer' />
-                    <h2 className='text-[1.3rem] text-secondary font-[600]'>
-                      Logo
-                    </h2>
+                <div className='p-8 mb-4 flex flex-col items-center gap-5 justify-center'>
+                  <div className='p-4 bg-primary w-full flex items-center justify-between'>
+                    <div className='flex items-center gap-4'>
+                      <FiMenu className='text-secondary text-[1.7rem] cursor-pointer' />
+                      <h2 className='text-[1.3rem] text-secondary font-[600]'>
+                        Logo
+                      </h2>
+                    </div>
+                    {!isLogout && (
+                        <FaRegCircleUser className='text-secondary text-[1.5rem] cursor-pointer' />
+                    )}
                   </div>
-                  {!isLogout && (
-                    <FaRegCircleUser className='text-secondary text-[1.5rem] cursor-pointer' />
-                  )}
-                </div>
-                <div className='flex items-center gap-3'>
-                  <div
-                    className={`${
-                      isLogout ? '!bg-[#b3b3b3]' : '!bg-[#83c2fd]'
-                    } cursor-pointer px-4 py-2 rounded-lg before:bg-transparent before:w-[20px] before:h-[20px] before:rounded-full before:absolute relative before:top-[-12%] before:right-[-15%] before:cursor-pointer after:bg-primary after:absolute after:top-[-12%] after:left-[-15%] after:cursor-pointer  after:h-[20px] after:w-[20px] after:rounded-full transition-all duration-300 ${
-                      isLogout && 'after:!bg-transparent before:!bg-primary '
-                    }`}
-                    onClick={() => setIsLogout(!isLogout)}
-                  ></div>
-                  <span
-                    className={`text-[1.2rem] font-[500] ${
-                      isLogout ? 'text-text' : 'text-primary'
-                    }`}
-                  >
+                  <div className='flex items-center gap-3'>
+                    <div
+                        className={`${
+                            isLogout ? '!bg-[#b3b3b3]' : '!bg-[#83c2fd]'
+                        } cursor-pointer px-4 py-2 rounded-lg before:bg-transparent before:w-[20px] before:h-[20px] before:rounded-full before:absolute relative before:top-[-12%] before:right-[-15%] before:cursor-pointer after:bg-primary after:absolute after:top-[-12%] after:left-[-15%] after:cursor-pointer  after:h-[20px] after:w-[20px] after:rounded-full transition-all duration-300 ${
+                            isLogout && 'after:!bg-transparent before:!bg-primary '
+                        }`}
+                        onClick={() => setIsLogout(!isLogout)}
+                    ></div>
+                    <span
+                        className={`text-[1.2rem] font-[500] ${
+                            isLogout ? 'text-text' : 'text-primary'
+                        }`}
+                    >
                     Logout
                   </span>
+                  </div>
                 </div>
-              </div>
             )}
 
             {basicAppCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 import React, { useState } from "react";
 
 // icons
@@ -184,9 +131,9 @@ const AppbarWithUsericon = () => {
 
 export default AppbarWithUsericon;
               '
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className='mt-8'>
             <ContentHeader
@@ -195,61 +142,36 @@ export default AppbarWithUsericon;
             />
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            This is an app bar with menu and search bar for intuitive navigation
-            and quick access.
-          </p>
+          <ComponentDescription text='This is an app bar with menu and search bar for intuitive navigation
+            and quick access.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  appBarWithSearchPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[106px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  appBarWithSearchPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleAppbarSearchPreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  appBarWithSearchCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleAppbarSearchCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={appBarWithSearchCode} setPreview={setAppBarWithSearchPreview} preview={appBarWithSearchPreview} setCode={setAppBarWithSearchCode}/>
+
+          <ComponentWrapper>
             {appBarWithSearchPreview && (
-              <div className='p-8 mb-4 flex items-center gap-5 justify-center'>
-                <div className='px-4 py-2 bg-primary w-full flex items-center justify-between'>
-                  <div className='flex items-center gap-4'>
-                    <FiMenu className='text-secondary text-[1.7rem] cursor-pointer' />
-                    <h2 className='text-[1.3rem] text-secondary font-[600]'>
-                      Logo
-                    </h2>
-                  </div>
-                  <div className='relative'>
-                    <input
-                      type='search'
-                      className='pl-10 py-2 bg-[#104c853d] w-full border-none outline-none text-secondary placeholder:text-[#ffffffa8] '
-                      placeholder='Search...'
-                    />
-                    <CiSearch className=' absolute top-2 left-3 text-secondary text-[1.4rem]' />
+                <div className='p-8 mb-4 flex items-center gap-5 justify-center'>
+                  <div className='px-4 py-2 bg-primary w-full flex items-center justify-between'>
+                    <div className='flex items-center gap-4'>
+                      <FiMenu className='text-secondary text-[1.7rem] cursor-pointer' />
+                      <h2 className='text-[1.3rem] text-secondary font-[600]'>
+                        Logo
+                      </h2>
+                    </div>
+                    <div className='relative'>
+                      <input
+                          type='search'
+                          className='pl-10 py-2 bg-[#104c853d] w-full border-none outline-none text-secondary placeholder:text-[#ffffffa8] '
+                          placeholder='Search...'
+                      />
+                      <CiSearch className=' absolute top-2 left-3 text-secondary text-[1.4rem]' />
+                    </div>
                   </div>
                 </div>
-              </div>
             )}
 
             {appBarWithSearchCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 import React, { useState } from "react";
 
 // icons
@@ -279,11 +201,11 @@ const AppbarWithSearchbar = () => {
   );
 };
 
-export default AppbarWithSearchbar;  
+export default AppbarWithSearchbar;
             '
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className='mt-8'>
             <ContentHeader
@@ -292,84 +214,59 @@ export default AppbarWithSearchbar;
             />
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            This is an app bar with menu, cart, notification icons, and search
-            bar for comprehensive navigation and interaction.
-          </p>
+          <ComponentDescription text='This is an app bar with menu, cart, notification icons, and search
+            bar for comprehensive navigation and interaction.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  appbarWithIconsPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[106px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  appbarWithIconsPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleAppbarWithIconsPreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  appbarWithIconsCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleAppbarWithIconsCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={appbarWithIconsCode} setCode={setAppbarWithIconsCode} preview={appbarWithIconsPreview} setPreview={setAppbarWithIconsPreview}/>
+
+          <ComponentWrapper>
             {appbarWithIconsPreview && (
-              <div className='p-8 mb-4 flex items-center gap-5 justify-center'>
-                <div className='px-4 py-2 bg-primary w-full gap-2 flex-wrap flex items-center justify-between'>
-                  <div className='flex items-center gap-5'>
+                <div className='p-8 mb-4 flex items-center gap-5 justify-center'>
+                  <div className='px-4 py-2 bg-primary w-full gap-2 flex-wrap flex items-center justify-between'>
+                    <div className='flex items-center gap-5'>
+                      <div className='flex items-center gap-4'>
+                        <FiMenu className='text-secondary text-[1.7rem] cursor-pointer' />
+                        <h2 className='text-[1.3rem] text-secondary font-[600]'>
+                          Logo
+                        </h2>
+                      </div>
+                      <div className='relative'>
+                        <input
+                            type='search'
+                            className='pl-10 py-2 bg-[#104c853d] w-full border-none outline-none text-secondary placeholder:text-[#ffffffa8] '
+                            placeholder='Search...'
+                        />
+                        <CiSearch className=' absolute top-2 left-3 text-secondary text-[1.4rem]' />
+                      </div>
+                    </div>
+
                     <div className='flex items-center gap-4'>
-                      <FiMenu className='text-secondary text-[1.7rem] cursor-pointer' />
-                      <h2 className='text-[1.3rem] text-secondary font-[600]'>
-                        Logo
-                      </h2>
-                    </div>
-                    <div className='relative'>
-                      <input
-                        type='search'
-                        className='pl-10 py-2 bg-[#104c853d] w-full border-none outline-none text-secondary placeholder:text-[#ffffffa8] '
-                        placeholder='Search...'
-                      />
-                      <CiSearch className=' absolute top-2 left-3 text-secondary text-[1.4rem]' />
-                    </div>
-                  </div>
-
-                  <div className='flex items-center gap-4'>
-                    <div className='relative'>
-                      <IoCartOutline className='text-[1.8rem] text-[#ffffff]' />
-                      <div className=' absolute top-[-30%] right-[-10%]  text-secondary min-w-[20px] min-h-[20px] text-center'>
+                      <div className='relative'>
+                        <IoCartOutline className='text-[1.8rem] text-[#ffffff]' />
+                        <div className=' absolute top-[-30%] right-[-10%]  text-secondary min-w-[20px] min-h-[20px] text-center'>
                         <span className='text-[0.6rem] bg-[#cf0e0e] py-1 px-1 rounded-full w-full h-full'>
                           10
                         </span>
+                        </div>
                       </div>
-                    </div>
 
-                    <div className='relative'>
-                      <IoIosNotifications className='text-[1.8rem] text-[#ffffff]' />
-                      <div className=' absolute top-[-30%] right-[-10%]  text-secondary min-w-[20px] min-h-[20px] text-center'>
+                      <div className='relative'>
+                        <IoIosNotifications className='text-[1.8rem] text-[#ffffff]' />
+                        <div className=' absolute top-[-30%] right-[-10%]  text-secondary min-w-[20px] min-h-[20px] text-center'>
                         <span className='text-[0.6rem] bg-[#cf0e0e] py-1 px-1 rounded-full w-full h-full'>
                           10
                         </span>
+                        </div>
                       </div>
+                      <FaRegCircleUser className='text-[1.4rem] text-[#ffffff]' />
                     </div>
-                    <FaRegCircleUser className='text-[1.4rem] text-[#ffffff]' />
                   </div>
                 </div>
-              </div>
             )}
 
             {appbarWithIconsCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 import React, { useState } from "react";
 
 // icons
@@ -424,11 +321,11 @@ const AppbarWithIcons = () => {
   );
 };
 
-export default AppbarWithIcons;              
+export default AppbarWithIcons;
               '
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <OverviewFooter
             backUrl='/components/according'
@@ -438,23 +335,8 @@ export default AppbarWithIcons;
           />
         </div>
 
-        <div className='1024px:flex hidden flex-col gap-4 sticky top-4 right-0 w-[40%]'>
-          <h2 className='text-[0.9rem] font-[600] text-text tracking-widest'>
-            CONTENTS
-          </h2>
-          {appbarContents.map((item) => (
-            <a
-              key={item.id}
-              href={item.href}
-              className={`${
-                activeSection === item.href.slice(1) &&
-                '!text-primary !border-primary'
-              } text-[0.9rem] text-text border-l border-transparent pl-4`}
-            >
-              {item.title}
-            </a>
-          ))}
-        </div>
+        <ContentNavbar contents={appbarContents} activeSection={activeSection}/>
+
       </aside>
       <Helmet>
         <title>Surfaces - App Bar</title>
