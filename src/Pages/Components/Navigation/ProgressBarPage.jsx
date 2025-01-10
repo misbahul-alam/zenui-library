@@ -9,7 +9,7 @@ import ProgressBar from "../../../Components/Overview/SidebarContent/Content/Nav
 
 const ProgressBarPage = () => {
     return (
-        <>
+        <div className='dark:bg-darkBgColor'>
             <Navbar />
             <MobileNavbar/>
             <div className="flex w-full mx-auto max-w-[1700px]">
@@ -22,7 +22,7 @@ const ProgressBarPage = () => {
                     <ProgressBar />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

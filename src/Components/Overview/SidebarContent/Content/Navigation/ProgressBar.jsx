@@ -11,15 +11,14 @@ import { useScrollSpy } from '../../../../../CustomHooks/useScrollSpy';
 // react helmet
 import { Helmet } from 'react-helmet';
 
-// icons
-import { MdDone } from 'react-icons/md';
-import { IoMdNotifications } from 'react-icons/io';
-import { TbPointFilled } from 'react-icons/tb';
-import { RxCross2 } from 'react-icons/rx';
-
 // showing the code
 import Showcode from '../../../../../Shared/ShowCode';
 import utils from '../../../../../Utils/index.jsx';
+
+import ComponentDescription from "../../../../../Shared/ComponentDescription.jsx";
+import ToggleTab from "../../../../../Shared/ToggleTab.jsx";
+import ComponentWrapper from "../../../../../Shared/ComponentWrapper.jsx";
+import ContentNavbar from "../../../../../Shared/ContentNavbar.jsx";
 
 const ProgressBar = () => {
   const sectionIds = progressBarContents.map((item) => item.href.slice(1));
@@ -29,59 +28,19 @@ const ProgressBar = () => {
   const [basicProgressBarPreview, setBasicProgressBarPreview] = useState(true);
   const [basicProgressBarCode, setBasicProgressBarCode] = useState(false);
 
-  const handleBasicProgressBarPreview = () => {
-    setBasicProgressBarPreview(true);
-    setBasicProgressBarCode(false);
-  };
-
-  const handleBasicProgressBarCode = () => {
-    setBasicProgressBarCode(true);
-    setBasicProgressBarPreview(false);
-  };
-
   // progress with tooltip
   const [progressBarWithTooltipPreview, setProgressBarWithTooltipPreview] =
     useState(true);
   const [progressBarWithTooltipCode, setProgressBarWithTooltipCode] =
     useState(false);
 
-  const handleProgressBarWithTooltipPreview = () => {
-    setProgressBarWithTooltipPreview(true);
-    setProgressBarWithTooltipCode(false);
-  };
-
-  const handleProgressBarWithTooltipCode = () => {
-    setProgressBarWithTooltipCode(true);
-    setProgressBarWithTooltipPreview(false);
-  };
-
   // counting progress bar
   const [countingPreview, setCountingPreview] = useState(true);
   const [countingCode, setCountingCode] = useState(false);
 
-  const handleCountingPreview = () => {
-    setCountingPreview(true);
-    setCountingCode(false);
-  };
-
-  const handleCountingCode = () => {
-    setCountingCode(true);
-    setCountingPreview(false);
-  };
-
   // circle progress bar
   const [circlePreview, setCirclePreview] = useState(true);
   const [circleCode, setCircleCode] = useState(false);
-
-  const handleCirclePreview = () => {
-    setCirclePreview(true);
-    setCircleCode(false);
-  };
-
-  const handleCircleCode = () => {
-    setCircleCode(true);
-    setCirclePreview(false);
-  };
 
   const [progress, setProgress] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
@@ -126,58 +85,33 @@ const ProgressBar = () => {
             id={'basic_progress_bar'}
           />
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            A simple progress bar that visually represents the completion
-            percentage of a task or process.
-          </p>
+          <ComponentDescription text='A simple progress bar that visually represents the completion
+            percentage of a task or process.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  basicProgressBarPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[106px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  basicProgressBarPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleBasicProgressBarPreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  basicProgressBarCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleBasicProgressBarCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab setPreview={setBasicProgressBarPreview} code={basicProgressBarCode} setCode={setBasicProgressBarCode} preview={basicProgressBarPreview}/>
+
+          <ComponentWrapper>
             {basicProgressBarPreview && (
-              <div className='p-8 mb-4 flex flex-wrap items-center gap-5 justify-center'>
-                <div className='relative bg-gray-200 w-[80%] h-[15px] rounded-full'>
-                  <div
-                    className='absolute top-0 left-0 bg-primary h-full rounded-full'
-                    style={{ width: `${progress}%` }}
-                  ></div>
-                </div>
+                <div className='p-8 mb-4 flex flex-wrap items-center gap-5 justify-center'>
+                  <div className='relative dark:bg-slate-700 bg-gray-200 w-[80%] h-[15px] rounded-full'>
+                    <div
+                        className='absolute top-0 left-0 bg-primary h-full rounded-full'
+                        style={{ width: `${progress}%` }}
+                    ></div>
+                  </div>
 
-                <button
-                  onClick={handleStartLoading}
-                  className={`${utils.buttonSecondary} text-[0.8rem] !px-2 !py-1`}
-                >
-                  Start Loading
-                </button>
-              </div>
+                  <button
+                      onClick={handleStartLoading}
+                      className={`${utils.buttonSecondary} text-[0.8rem] !px-2 !py-1`}
+                  >
+                    Start Loading
+                  </button>
+                </div>
             )}
 
             {basicProgressBarCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 import React, {useState} from "react";
 
 const ProgressBar = () => {
@@ -197,7 +131,7 @@ const ProgressBar = () => {
     return (
         <>
             <div className="relative bg-gray-200 w-[80%] h-[15px] rounded-full">
-                <div className="absolute top-0 left-0 bg-primary h-full rounded-full"
+                <div className="absolute dark:bg-slate-700 top-0 left-0 bg-primary h-full rounded-full"
                      style={{width: `${progress}%`}}></div>
             </div>
 
@@ -210,9 +144,9 @@ const ProgressBar = () => {
 
 export default ProgressBar;
                                 '
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className='mt-8'>
             <ContentHeader
@@ -221,66 +155,41 @@ export default ProgressBar;
             />
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            A progress bar that displays the completion percentage within a
-            tooltip when hovered over, providing precise progress information.
-          </p>
+          <ComponentDescription text='A progress bar that displays the completion percentage within a
+            tooltip when hovered over, providing precise progress information.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  progressBarWithTooltipPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[106px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  progressBarWithTooltipPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleProgressBarWithTooltipPreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  progressBarWithTooltipCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleProgressBarWithTooltipCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab setPreview={setProgressBarWithTooltipPreview} code={progressBarWithTooltipCode} preview={progressBarWithTooltipPreview} setCode={setProgressBarWithTooltipCode}/>
+
+          <ComponentWrapper>
             {progressBarWithTooltipPreview && (
-              <div className='p-8 mb-4 mt-8 flex flex-wrap items-start gap-5 justify-center'>
-                <div className='relative bg-gray-200 w-[80%] h-[15px] rounded-full'>
-                  {progress !== 0 && (
+                <div className='p-8 mb-4 mt-8 flex flex-wrap items-start gap-5 justify-center'>
+                  <div className='relative dark:bg-slate-700 bg-gray-200 w-[80%] h-[15px] rounded-full'>
+                    {progress !== 0 && (
+                        <div
+                            style={{ left: `calc(${progress}% - 40px)` }}
+                            className={`left-[${progress}%] bg-primary rounded-[5px] absolute top-[-40px] text-white px-2 py-0.5 before:w-[8px] before:h-[8px] before:bg-primary before:absolute before:bottom-[-4px] before:left-[35%] before:transform before:translate-x-1/2 before:rotate-[45deg]`}
+                        >
+                          {progress}%
+                        </div>
+                    )}
                     <div
-                      style={{ left: `calc(${progress}% - 40px)` }}
-                      className={`left-[${progress}%] bg-primary rounded-[5px] absolute top-[-40px] text-white px-2 py-0.5 before:w-[8px] before:h-[8px] before:bg-primary before:absolute before:bottom-[-4px] before:left-[35%] before:transform before:translate-x-1/2 before:rotate-[45deg]`}
-                    >
-                      {progress}%
-                    </div>
-                  )}
-                  <div
-                    className='absolute top-0 left-0 bg-primary h-full rounded-full'
-                    style={{ width: `${progress}%` }}
-                  ></div>
-                </div>
+                        className='absolute top-0 left-0 bg-primary h-full rounded-full'
+                        style={{ width: `${progress}%` }}
+                    ></div>
+                  </div>
 
-                <button
-                  onClick={handleStartLoading}
-                  className={`${utils.buttonSecondary} text-[0.8rem] !px-2 !py-1`}
-                >
-                  Start Loading
-                </button>
-              </div>
+                  <button
+                      onClick={handleStartLoading}
+                      className={`${utils.buttonSecondary} text-[0.8rem] !px-2 !py-1`}
+                  >
+                    Start Loading
+                  </button>
+                </div>
             )}
 
             {progressBarWithTooltipCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 import React, {useState} from "react";
 
 const ProgressBar = () => {
@@ -299,7 +208,7 @@ const ProgressBar = () => {
 
     return (
         <>
-            <div className="relative bg-gray-200 w-[80%] h-[15px] rounded-full">
+            <div className="relative dark:bg-slate-700 bg-gray-200 w-[80%] h-[15px] rounded-full">
                 {
                     progress !== 0 && (
                         <div
@@ -322,9 +231,9 @@ const ProgressBar = () => {
 
 export default ProgressBar;
                                 '
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className='mt-8'>
             <ContentHeader
@@ -333,64 +242,39 @@ export default ProgressBar;
             />
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            A progress bar that visibly shows the completion percentage directly
-            on the bar, giving a clear indication of progress.
-          </p>
+          <ComponentDescription text='A progress bar that visibly shows the completion percentage directly
+            on the bar, giving a clear indication of progress.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  countingPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[106px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  countingPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleCountingPreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  countingCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleCountingCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab setPreview={setCountingPreview} code={countingCode} setCode={setCountingCode} preview={countingPreview}/>
+
+          <ComponentWrapper>
             {countingPreview && (
-              <div className='p-8 mb-4 mt-8 flex flex-wrap items-start gap-5 justify-center'>
-                <div className='flex flex-col items-center justify-center w-full gap-[10px]'>
-                  <div className='relative bg-gray-200 w-[80%] h-[15px] rounded-full'>
-                    <div
-                      className='absolute top-0 left-0 bg-primary h-full rounded-full'
-                      style={{ width: `${progress}%` }}
-                    ></div>
+                <div className='p-8 mb-4 mt-8 flex flex-wrap items-start gap-5 justify-center'>
+                  <div className='flex flex-col items-center justify-center w-full gap-[10px]'>
+                    <div className='relative dark:bg-slate-700 bg-gray-200 w-[80%] h-[15px] rounded-full'>
+                      <div
+                          className='absolute top-0 left-0 bg-primary h-full rounded-full'
+                          style={{ width: `${progress}%` }}
+                      ></div>
+                    </div>
+
+                    <p>
+                      Loading: <b>{progress}%</b>
+                    </p>
                   </div>
 
-                  <p>
-                    Loading: <b>{progress}%</b>
-                  </p>
+                  <button
+                      onClick={handleStartLoading}
+                      className={`${utils.buttonSecondary} text-[0.8rem] !px-2 !py-1`}
+                  >
+                    Start Loading
+                  </button>
                 </div>
-
-                <button
-                  onClick={handleStartLoading}
-                  className={`${utils.buttonSecondary} text-[0.8rem] !px-2 !py-1`}
-                >
-                  Start Loading
-                </button>
-              </div>
             )}
 
             {countingCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 import React, {useState} from "react";
 
 const ProgressBar = () => {
@@ -410,7 +294,7 @@ const ProgressBar = () => {
     return (
         <>
             <div className="flex flex-col items-center justify-center w-full gap-[10px]">
-                <div className="relative bg-gray-200 w-[80%] h-[15px] rounded-full">
+                <div className="relative dark:bg-slate-700 bg-gray-200 w-[80%] h-[15px] rounded-full">
                     <div className="absolute top-0 left-0 bg-primary h-full rounded-full"
                          style={{width: `${progress}%`}}></div>
                 </div>
@@ -427,9 +311,9 @@ const ProgressBar = () => {
 
 export default ProgressBar;
                                 '
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className='mt-8'>
             <ContentHeader
@@ -438,104 +322,80 @@ export default ProgressBar;
             />
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            A circular progress bar that displays the completion percentage in
+          <ComponentDescription text='A circular progress bar that displays the completion percentage in
             the center of the circle, offering a visually appealing way to track
-            progress.
-          </p>
+            progress.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  circlePreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[106px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  circlePreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleCirclePreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  circleCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleCircleCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab setPreview={setCirclePreview} code={circleCode} preview={circlePreview} setCode={setCircleCode}/>
+
+          <ComponentWrapper>
             {circlePreview && (
-              <div className='p-8 mb-4 mt-8 flex flex-col items-start gap-5 justify-center'>
-                <div className='relative w-[150px] h-[150px] mx-auto'>
-                  <svg className='w-full h-full' viewBox='0 0 100 100'>
-                    <circle
-                      cx='50'
-                      cy='50'
-                      r='45'
-                      className='text-gray-200'
-                      strokeWidth='10'
-                      fill='none'
-                    />
+                <div className='p-8 mb-4 mt-8 flex flex-col items-start gap-5 justify-center'>
+                  <div className='relative w-[150px] h-[150px] mx-auto'>
+                    <svg className='w-full h-full' viewBox='0 0 100 100'>
+                      <circle
+                          cx='50'
+                          cy='50'
+                          r='45'
+                          className='text-gray-200'
+                          strokeWidth='10'
+                          fill='none'
+                      />
 
-                    <circle
-                      cx='50'
-                      cy='50'
-                      r='45'
-                      stroke='#e2e2e2'
-                      strokeWidth='10'
-                      fill='none'
-                      strokeDasharray='282.6'
-                      strokeDashoffset={0}
-                      strokeLinecap='round'
-                      transform='rotate(-90 50 50)'
-                    />
+                      <circle
+                          cx='50'
+                          cy='50'
+                          r='45'
+                          className='dark:stroke-[#334155]'
+                          stroke='#e2e2e2'
+                          strokeWidth='10'
+                          fill='none'
+                          strokeDasharray='282.6'
+                          strokeDashoffset={0}
+                          strokeLinecap='round'
+                          transform='rotate(-90 50 50)'
+                      />
 
-                    <circle
-                      cx='50'
-                      cy='50'
-                      r='45'
-                      className='text-gray-200'
-                      strokeWidth='10'
-                      fill='none'
-                    />
+                      <circle
+                          cx='50'
+                          cy='50'
+                          r='45'
+                          className='text-gray-200'
+                          strokeWidth='10'
+                          fill='none'
+                      />
 
-                    <circle
-                      cx='50'
-                      cy='50'
-                      r='45'
-                      stroke='#3B9DF8'
-                      strokeWidth='10'
-                      fill='none'
-                      strokeDasharray='282.6'
-                      strokeDashoffset={(1 - progress / 100) * 282.6}
-                      strokeLinecap='round'
-                      transform='rotate(-90 50 50)'
-                    />
-                  </svg>
+                      <circle
+                          cx='50'
+                          cy='50'
+                          r='45'
+                          stroke='#3B9DF8'
+                          strokeWidth='10'
+                          fill='none'
+                          strokeDasharray='282.6'
+                          strokeDashoffset={(1 - progress / 100) * 282.6}
+                          strokeLinecap='round'
+                          transform='rotate(-90 50 50)'
+                      />
+                    </svg>
 
-                  <p className='absolute top-[35%] left-[30%] translate-x-1/2 transform translate-y-1/2'>
-                    {progress}%
-                  </p>
+                    <p className='absolute top-[35%] left-[30%] translate-x-1/2 transform translate-y-1/2'>
+                      {progress}%
+                    </p>
+                  </div>
+
+                  <button
+                      onClick={handleStartLoading}
+                      className={`${utils.buttonSecondary} text-[0.8rem] !px-2 !py-1 mx-auto`}
+                  >
+                    Start Loading
+                  </button>
                 </div>
-
-                <button
-                  onClick={handleStartLoading}
-                  className={`${utils.buttonSecondary} text-[0.8rem] !px-2 !py-1 mx-auto`}
-                >
-                  Start Loading
-                </button>
-              </div>
             )}
 
             {circleCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 import React, {useState} from "react";
 
 const ProgressBar = () => {
@@ -569,6 +429,7 @@ const ProgressBar = () => {
                         cx="50"
                         cy="50"
                         r="45"
+                        className="dark:stroke-[#334155]"
                         stroke="#e2e2e2"
                         strokeWidth="10"
                         fill="none"
@@ -613,9 +474,9 @@ const ProgressBar = () => {
 
 export default ProgressBar;
                                 '
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <OverviewFooter
             backUrl='/components/pagination'
@@ -625,23 +486,8 @@ export default ProgressBar;
           />
         </div>
 
-        <div className='1024px:flex hidden flex-col gap-4 sticky top-4 right-0 w-[40%]'>
-          <h2 className='text-[0.9rem] font-[600] text-text tracking-widest'>
-            CONTENTS
-          </h2>
-          {progressBarContents.map((item) => (
-            <a
-              key={item.id}
-              href={item.href}
-              className={`${
-                activeSection === item.href.slice(1) &&
-                '!text-primary !border-primary'
-              } text-[0.9rem] text-text border-l border-transparent pl-4`}
-            >
-              {item.title}
-            </a>
-          ))}
-        </div>
+        <ContentNavbar contents={progressBarContents} activeSection={activeSection}/>
+
       </aside>
       <Helmet>
         <title>Navigation - Progress Bar</title>

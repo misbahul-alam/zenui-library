@@ -9,12 +9,13 @@ import { Helmet } from 'react-helmet';
 // contents for scrollspy
 import {timerContents} from '../../../../../Utils/ContentsConfig/NavigationContents';
 import { useScrollSpy } from '../../../../../CustomHooks/useScrollSpy';
-import {useToggleCardView} from "../../../../../CustomHooks/ButtonToggle.js";
+
+import ComponentDescription from "../../../../../Shared/ComponentDescription.jsx";
+import ToggleTab from "../../../../../Shared/ToggleTab.jsx";
+import ComponentWrapper from "../../../../../Shared/ComponentWrapper.jsx";
+import ContentNavbar from "../../../../../Shared/ContentNavbar.jsx";
 
 const Timer = () => {
-
-    const toggleCardView = useToggleCardView();
-
     // toggle actions
     const [timerStyle1Preview, setTimerStyle1Preview] = useState(true);
     const [timerStyle1Code, setTimeStyle1Code] = useState(false);
@@ -34,7 +35,7 @@ const Timer = () => {
     const [timerStyle6Preview, setTimerStyle6Preview] = useState(true);
     const [timerStyle6Code, setTimeStyle6Code] = useState(false);
 
-    // scrollspy
+
     const sectionIds = timerContents.map((item) => item.href.slice(1));
     const activeSection = useScrollSpy(sectionIds);
 
@@ -44,7 +45,7 @@ const Timer = () => {
         minutes: 0,
         seconds: 0
     });
-    const targetDate = '2024-12-31T23:59:59'
+    const targetDate = '2025-03-31T23:59:59'
 
     useEffect(() => {
         const calculateTimeLeft = () => {
@@ -126,6 +127,7 @@ const Timer = () => {
                         r={radius}
                         fill="transparent"
                         stroke="#e5e5e5"
+                        className='dark:stroke-[#1e293b]'
                         strokeWidth={strokeWidth}
                     />
                 </svg>
@@ -168,53 +170,28 @@ const Timer = () => {
                         text={'timer style 1'}
                     />
 
-                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        A timer lets you set a specific duration, and it counts down based on that duration, notifying you when the time is up.
-                    </p>
+                   <ComponentDescription text='A timer lets you set a specific duration, and it counts down based on that duration, notifying you when the time is up.'/>
 
-                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    timerStyle1Preview
-                                        ? 'translate-x-[0px] !w-[100px]'
-                                        : 'translate-x-[107px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${
-                                    timerStyle1Preview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={()=> toggleCardView(setTimerStyle1Preview, setTimeStyle1Code, true)}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    timerStyle1Code && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={()=> toggleCardView(setTimerStyle1Preview, setTimeStyle1Code, false)}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={timerStyle1Code} setCode={setTimeStyle1Code} setPreview={setTimerStyle1Preview} preview={timerStyle1Preview}/>
+
+                    <ComponentWrapper>
                         {timerStyle1Preview && (
                             <div className='p-8 mb-4 flex items-center gap-5 justify-center'>
                                 <div className='grid grid-cols-4 gap-[10px] mt-2'>
                                     <div className='flex items-center justify-center flex-col gap-[0.2rem]'>
-                                        <h5 className='py-2 px-3 bg-[#d2f1f7] text-[1.9rem] font-semibold'>{formatNumber(timeLeft.days)}</h5>
+                                        <h5 className='py-2 px-3 dark:bg-slate-700 dark:text-[#abc2d3] bg-[#d2f1f7] text-[1.9rem] font-semibold'>{formatNumber(timeLeft.days)}</h5>
                                         <span className='text-[0.7rem]'>Days</span>
                                     </div>
                                     <div className='flex items-center justify-center flex-col gap-[0.2rem]'>
-                                        <h5 className='py-2 px-3 bg-[#d2f1f7] text-[1.9rem] font-semibold'>{formatNumber(timeLeft.hours)}</h5>
+                                        <h5 className='py-2 px-3 dark:bg-slate-700 dark:text-[#abc2d3] bg-[#d2f1f7] text-[1.9rem] font-semibold'>{formatNumber(timeLeft.hours)}</h5>
                                         <span className='text-[0.7rem]'>Hours</span>
                                     </div>
                                     <div className='flex items-center justify-center flex-col gap-[0.2rem]'>
-                                        <h5 className='py-2 px-3 bg-[#d2f1f7] text-[1.9rem] font-semibold'>{formatNumber(timeLeft.minutes)}</h5>
+                                        <h5 className='py-2 px-3 dark:bg-slate-700 dark:text-[#abc2d3] bg-[#d2f1f7] text-[1.9rem] font-semibold'>{formatNumber(timeLeft.minutes)}</h5>
                                         <span className='text-[0.7rem]'>Minutes</span>
                                     </div>
                                     <div className='flex items-center justify-center flex-col gap-[0.2rem]'>
-                                        <h5 className='py-2 px-3 bg-[#d2f1f7] text-[1.9rem] font-semibold'>{formatNumber(timeLeft.seconds)}</h5>
+                                        <h5 className='py-2 px-3 dark:bg-slate-700 dark:text-[#abc2d3] bg-[#d2f1f7] text-[1.9rem] font-semibold'>{formatNumber(timeLeft.seconds)}</h5>
                                         <span className='text-[0.7rem]'>Seconds</span>
                                     </div>
                                 </div>
@@ -224,17 +201,16 @@ const Timer = () => {
                         {timerStyle1Code && (
                             <Showcode
                                 code='
-import React, {useEffect, useState} from "react";
+import React, {useState, useEffect} from "react";
 
 const Timer = () => {
-
     const [timeLeft, setTimeLeft] = useState({
         days: 0,
         hours: 0,
         minutes: 0,
         seconds: 0
     });
-    const targetDate = "2024-12-31T23:59:59"
+    const targetDate = "2025-03-31T23:59:59"
 
     useEffect(() => {
         const calculateTimeLeft = () => {
@@ -251,7 +227,7 @@ const Timer = () => {
         };
 
         const timer = setInterval(calculateTimeLeft, 1000);
-        calculateTimeLeft(); // Initial call
+        calculateTimeLeft();
 
         return () => clearInterval(timer);
     }, [targetDate]);
@@ -260,22 +236,27 @@ const Timer = () => {
 
     return (
         <div className="grid grid-cols-4 gap-[10px] mt-2">
+
             <div className="flex items-center justify-center flex-col gap-[0.2rem]">
-                <h5 className="py-2 px-3 bg-[#d2f1f7] text-[1.9rem] font-semibold">{formatNumber(timeLeft.days)}</h5>
+                <h5 className="py-2 px-3 dark:bg-slate-700 dark:text-[#abc2d3] bg-[#d2f1f7] text-[1.9rem] font-semibold">{formatNumber(timeLeft.days)}</h5>
                 <span className="text-[0.7rem]">Days</span>
             </div>
+
             <div className="flex items-center justify-center flex-col gap-[0.2rem]">
-                <h5 className="py-2 px-3 bg-[#d2f1f7] text-[1.9rem] font-semibold">{formatNumber(timeLeft.hours)}</h5>
+                <h5 className="py-2 px-3 dark:bg-slate-700 dark:text-[#abc2d3] bg-[#d2f1f7] text-[1.9rem] font-semibold">{formatNumber(timeLeft.hours)}</h5>
                 <span className="text-[0.7rem]">Hours</span>
             </div>
+
             <div className="flex items-center justify-center flex-col gap-[0.2rem]">
-                <h5 className="py-2 px-3 bg-[#d2f1f7] text-[1.9rem] font-semibold">{formatNumber(timeLeft.minutes)}</h5>
+                <h5 className="py-2 px-3 dark:bg-slate-700 dark:text-[#abc2d3] bg-[#d2f1f7] text-[1.9rem] font-semibold">{formatNumber(timeLeft.minutes)}</h5>
                 <span className="text-[0.7rem]">Minutes</span>
             </div>
+
             <div className="flex items-center justify-center flex-col gap-[0.2rem]">
-                <h5 className="py-2 px-3 bg-[#d2f1f7] text-[1.9rem] font-semibold">{formatNumber(timeLeft.seconds)}</h5>
+                <h5 className="py-2 px-3 dark:bg-slate-700 dark:text-[#abc2d3] bg-[#d2f1f7] text-[1.9rem] font-semibold">{formatNumber(timeLeft.seconds)}</h5>
                 <span className="text-[0.7rem]">Seconds</span>
             </div>
+
         </div>
     );
 };
@@ -284,7 +265,7 @@ export default Timer;
                                 '
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
                     <div className='mt-8'>
                         <ContentHeader
@@ -293,36 +274,11 @@ export default Timer;
                         />
                     </div>
 
-                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        A timer lets you set a specific duration, and it counts down based on that duration, notifying you when the time is up.
-                    </p>
+                    <ComponentDescription text='A timer lets you set a specific duration, and it counts down based on that duration, notifying you when the time is up.'/>
 
-                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    timerStyle2Preview
-                                        ? 'translate-x-[0px] !w-[100px]'
-                                        : 'translate-x-[107px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${
-                                    timerStyle2Preview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={()=> toggleCardView(setTimerStyle2Preview, setTimeStyle2Code, true)}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    timerStyle2Code && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={()=> toggleCardView(setTimerStyle2Preview, setTimeStyle2Code, false)}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={timerStyle2Code} setCode={setTimeStyle2Code} preview={timerStyle2Preview} setPreview={setTimerStyle2Preview}/>
+
+                    <ComponentWrapper>
                         {timerStyle2Preview && (
                             <div className='p-8 mb-4 flex items-center gap-5 justify-center'>
                                 <div className="grid grid-cols-4 gap-8 p-4">
@@ -353,17 +309,16 @@ export default Timer;
                         {timerStyle2Code && (
                             <Showcode
                                 code='
-import React, {useEffect, useState} from "react";
+import React, {useState, useEffect} from "react";
 
 const Timer = () => {
-
     const [timeLeft, setTimeLeft] = useState({
         days: 0,
         hours: 0,
         minutes: 0,
         seconds: 0
     });
-    const targetDate = "2024-12-31T23:59:59"
+    const targetDate = "2025-03-31T23:59:59"
 
     useEffect(() => {
         const calculateTimeLeft = () => {
@@ -380,7 +335,7 @@ const Timer = () => {
         };
 
         const timer = setInterval(calculateTimeLeft, 1000);
-        calculateTimeLeft(); // Initial call
+        calculateTimeLeft();
 
         return () => clearInterval(timer);
     }, [targetDate]);
@@ -389,26 +344,31 @@ const Timer = () => {
 
     return (
         <div className="grid grid-cols-4 gap-8 p-4">
+
             <div className="text-center">
                 <div
                     className="text-[2.2rem] leading-[38px] font-bold text-[#17b4d3]">{formatNumber(timeLeft.days)}</div>
                 <div className="text-[0.7rem] text-gray-500">Days</div>
             </div>
+
             <div className="text-center">
                 <div
                     className="text-[2.2rem] leading-[38px] font-bold text-[#17b4d3]">{formatNumber(timeLeft.hours)}</div>
                 <div className="text-[0.7rem] text-gray-500">Hours</div>
             </div>
+
             <div className="text-center">
                 <div
                     className="text-[2.2rem] leading-[38px] font-bold text-[#17b4d3]">{formatNumber(timeLeft.minutes)}</div>
                 <div className="text-[0.7rem] text-gray-500">Minutes</div>
             </div>
+
             <div className="text-center">
                 <div
                     className="text-[2.2rem] leading-[38px] font-bold text-[#17b4d3]">{formatNumber(timeLeft.seconds)}</div>
                 <div className="text-[0.7rem] text-gray-500">Seconds</div>
             </div>
+
         </div>
     );
 };
@@ -417,7 +377,7 @@ export default Timer;
                                 '
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
                     <div className='mt-8'>
                         <ContentHeader
@@ -426,63 +386,38 @@ export default Timer;
                         />
                     </div>
 
-                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        A timer lets you set a specific duration, and it counts down based on that duration, notifying you when the time is up.
-                    </p>
+                    <ComponentDescription text='A timer lets you set a specific duration, and it counts down based on that duration, notifying you when the time is up.'/>
 
-                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    timerStyle3Preview
-                                        ? 'translate-x-[0px] !w-[100px]'
-                                        : 'translate-x-[107px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${
-                                    timerStyle3Preview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={()=> toggleCardView(setTimerStyle3Preview, setTimeStyle3Code, true)}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    timerStyle3Code && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={()=> toggleCardView(setTimerStyle3Preview, setTimeStyle3Code, false)}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={timerStyle3Code} setCode={setTimeStyle3Code} setPreview={setTimerStyle3Preview} preview={timerStyle3Preview}/>
+
+                    <ComponentWrapper>
                         {timerStyle3Preview && (
                             <div className='p-8 mb-4 flex items-center gap-5 justify-center'>
-                                <div className='w-full bg-blue-50 flex items-center justify-center py-12 rounded-md'>
+                                <div className='w-full bg-blue-50 dark:bg-slate-900 flex items-center justify-center py-12 rounded-md'>
                                     <div className='grid grid-cols-4 gap-[15px] mt-2'>
                                         <div
                                             className='py-3 pt-2.5 rounded-md rounded-b-xl px-[15px] 640px:px-[23px] shadow-xl bg-blue-500 relative flex items-center justify-center flex-col'>
                                             <h5 className='text-white text-[1.3rem] 640px:text-[1.9rem] pb-4 font-semibold'>{formatNumber(timeLeft.days)}</h5>
                                             <span
-                                                className='absolute bottom-0 z-20 text-[0.8rem] bg-white w-full text-center py-0.5 rounded-b-md'>Days</span>
+                                                className='absolute bottom-0 z-20 text-[0.8rem] bg-white w-full text-center py-0.5 dark:bg-slate-600 dark:text-[#abc2d3] rounded-b-md'>Days</span>
                                         </div>
                                         <div
                                             className='py-3 pt-2.5 rounded-md rounded-b-xl px-[15px] 640px:px-[23px] shadow-xl bg-blue-500 relative  flex items-center justify-center flex-col'>
                                             <h5 className='text-white text-[1.3rem] 640px:text-[1.9rem] pb-4 font-semibold'>{formatNumber(timeLeft.hours)}</h5>
                                             <span
-                                                className='absolute bottom-0 z-20 text-[0.8rem] bg-white w-full text-center py-0.5 rounded-b-md'>Hours</span>
+                                                className='absolute bottom-0 z-20 text-[0.8rem] bg-white w-full text-center py-0.5 dark:bg-slate-600 dark:text-[#abc2d3] rounded-b-md'>Hours</span>
                                         </div>
                                         <div
                                             className='py-3 pt-2.5 rounded-md rounded-b-xl px-[15px] 640px:px-[23px] shadow-xl bg-blue-500 relative flex items-center justify-center flex-col'>
                                             <h5 className='text-white text-[1.3rem] 640px:text-[1.9rem] pb-4 font-semibold'>{formatNumber(timeLeft.minutes)}</h5>
                                             <span
-                                                className='absolute bottom-0 z-20 text-[0.8rem] bg-white w-full text-center py-0.5 rounded-b-md'>Minutes</span>
+                                                className='absolute bottom-0 z-20 text-[0.8rem] bg-white w-full text-center py-0.5 dark:bg-slate-600 dark:text-[#abc2d3] rounded-b-md'>Minutes</span>
                                         </div>
                                         <div
                                             className='py-3 pt-2.5 rounded-md rounded-b-xl px-[15px] 640px:px-[23px] shadow-xl bg-blue-500 relative flex items-center justify-center flex-col'>
                                             <h5 className='text-white text-[1.3rem] 640px:text-[1.9rem] pb-4 font-semibold'>{formatNumber(timeLeft.seconds)}</h5>
                                             <span
-                                                className='absolute bottom-0 z-20 text-[0.8rem] bg-white w-full text-center py-0.5 rounded-b-md'>Seconds</span>
+                                                className='absolute bottom-0 z-20 text-[0.8rem] bg-white w-full text-center py-0.5 dark:bg-slate-600 dark:text-[#abc2d3] rounded-b-md'>Seconds</span>
                                         </div>
                                     </div>
                                 </div>
@@ -492,17 +427,16 @@ export default Timer;
                         {timerStyle3Code && (
                             <Showcode
                                 code='
-import React, {useEffect, useState} from "react";
+import React, {useState, useEffect} from "react";
 
 const Timer = () => {
-
     const [timeLeft, setTimeLeft] = useState({
         days: 0,
         hours: 0,
         minutes: 0,
         seconds: 0
     });
-    const targetDate = "2024-12-31T23:59:59"
+    const targetDate = "2025-03-31T23:59:59"
 
     useEffect(() => {
         const calculateTimeLeft = () => {
@@ -519,7 +453,7 @@ const Timer = () => {
         };
 
         const timer = setInterval(calculateTimeLeft, 1000);
-        calculateTimeLeft(); // Initial call
+        calculateTimeLeft();
 
         return () => clearInterval(timer);
     }, [targetDate]);
@@ -527,32 +461,37 @@ const Timer = () => {
     const formatNumber = (number) => number.toString().padStart(2, "0");
 
     return (
-        <div className="w-full bg-blue-50 flex items-center justify-center py-12 rounded-md">
+        <div className="w-full bg-blue-50 dark:bg-slate-900 flex items-center justify-center py-12 rounded-md">
             <div className="grid grid-cols-4 gap-[15px] mt-2">
+
                 <div
                     className="py-3 pt-2.5 rounded-md rounded-b-xl px-[15px] sm:px-[23px] shadow-xl bg-blue-500 relative flex items-center justify-center flex-col">
                     <h5 className="text-white text-[1.3rem] sm:text-[1.9rem] pb-4 font-semibold">{formatNumber(timeLeft.days)}</h5>
                     <span
-                        className="absolute bottom-0 z-20 text-[0.8rem] bg-white w-full text-center py-0.5 rounded-b-md">Days</span>
+                        className="absolute bottom-0 z-20 text-[0.8rem] bg-white w-full text-center py-0.5 dark:bg-slate-600 dark:text-[#abc2d3] rounded-b-md">Days</span>
                 </div>
+
                 <div
                     className="py-3 pt-2.5 rounded-md rounded-b-xl px-[15px] sm:px-[23px] shadow-xl bg-blue-500 relative  flex items-center justify-center flex-col">
                     <h5 className="text-white text-[1.3rem] sm:text-[1.9rem] pb-4 font-semibold">{formatNumber(timeLeft.hours)}</h5>
                     <span
-                        className="absolute bottom-0 z-20 text-[0.8rem] bg-white w-full text-center py-0.5 rounded-b-md">Hours</span>
+                        className="absolute bottom-0 z-20 text-[0.8rem] bg-white w-full text-center py-0.5 dark:bg-slate-600 dark:text-[#abc2d3] rounded-b-md">Hours</span>
                 </div>
+
                 <div
                     className="py-3 pt-2.5 rounded-md rounded-b-xl px-[15px] sm:px-[23px] shadow-xl bg-blue-500 relative flex items-center justify-center flex-col">
                     <h5 className="text-white text-[1.3rem] sm:text-[1.9rem] pb-4 font-semibold">{formatNumber(timeLeft.minutes)}</h5>
                     <span
-                        className="absolute bottom-0 z-20 text-[0.8rem] bg-white w-full text-center py-0.5 rounded-b-md">Minutes</span>
+                        className="absolute bottom-0 z-20 text-[0.8rem] bg-white w-full text-center py-0.5 dark:bg-slate-600 dark:text-[#abc2d3] rounded-b-md">Minutes</span>
                 </div>
+
                 <div
                     className="py-3 pt-2.5 rounded-md rounded-b-xl px-[15px] sm:px-[23px] shadow-xl bg-blue-500 relative flex items-center justify-center flex-col">
                     <h5 className="text-white text-[1.3rem] sm:text-[1.9rem] pb-4 font-semibold">{formatNumber(timeLeft.seconds)}</h5>
                     <span
-                        className="absolute bottom-0 z-20 text-[0.8rem] bg-white w-full text-center py-0.5 rounded-b-md">Seconds</span>
+                        className="absolute bottom-0 z-20 text-[0.8rem] bg-white w-full text-center py-0.5 dark:bg-slate-600 dark:text-[#abc2d3] rounded-b-md">Seconds</span>
                 </div>
+
             </div>
         </div>
     );
@@ -562,7 +501,7 @@ export default Timer;
                                 '
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
                     <div className='mt-8'>
                         <ContentHeader
@@ -571,36 +510,11 @@ export default Timer;
                         />
                     </div>
 
-                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        A timer lets you set a specific duration, and it counts down based on that duration, notifying you when the time is up.
-                    </p>
+                    <ComponentDescription text='A timer lets you set a specific duration, and it counts down based on that duration, notifying you when the time is up.'/>
 
-                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    timerStyle4Preview
-                                        ? 'translate-x-[0px] !w-[100px]'
-                                        : 'translate-x-[107px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${
-                                    timerStyle4Preview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={()=> toggleCardView(setTimerStyle4Preview, setTimeStyle4Code, true)}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    timerStyle4Code && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={()=> toggleCardView(setTimerStyle4Preview, setTimeStyle4Code, false)}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={timerStyle4Code} setCode={setTimeStyle4Code} preview={timerStyle4Preview} setPreview={setTimerStyle4Preview}/>
+
+                    <ComponentWrapper>
                         {timerStyle4Preview && (
                             <div className='p-8 mb-4 flex items-center gap-5 justify-center'>
                                 <div className='bg-gradient-to-b from-[#4c468f] to-[#c65f72] w-full py-12 rounded-md'>
@@ -640,17 +554,16 @@ export default Timer;
                         {timerStyle4Code && (
                             <Showcode
                                 code='
-import React, {useEffect, useState} from "react";
+import React, {useState, useEffect} from "react";
 
 const Timer = () => {
-
     const [timeLeft, setTimeLeft] = useState({
         days: 0,
         hours: 0,
         minutes: 0,
         seconds: 0
     });
-    const targetDate = "2024-12-31T23:59:59"
+    const targetDate = "2025-03-31T23:59:59"
 
     useEffect(() => {
         const calculateTimeLeft = () => {
@@ -667,7 +580,7 @@ const Timer = () => {
         };
 
         const timer = setInterval(calculateTimeLeft, 1000);
-        calculateTimeLeft(); // Initial call
+        calculateTimeLeft();
 
         return () => clearInterval(timer);
     }, [targetDate]);
@@ -677,6 +590,7 @@ const Timer = () => {
     return (
         <div className="bg-gradient-to-b from-[#4c468f] to-[#c65f72] w-full py-12 rounded-md">
             <div className="flex items-start gap-[5px] sm:gap-[15px] justify-center">
+
                 <div className="flex items-center justify-center flex-col gap-[0.5rem]">
                     <div className="flex items-center gap-[8px]">
                         <p className="bg-white sm:px-4 py-3 w-[35px] sm:w-[50px] text-center rounded-sm text-gray-900 font-normal text-[1rem] sm:text-[2rem]">{formatNumber(timeLeft.hours).slice(0, 1)}</p>
@@ -704,6 +618,7 @@ const Timer = () => {
                     </div>
                     <span className="text-white font-normal text-[0.8rem] sm:text-[0.9rem]">Seconds</span>
                 </div>
+
             </div>
         </div>
     );
@@ -713,7 +628,7 @@ export default Timer;
                                 '
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
                     <div className='mt-8'>
                         <ContentHeader
@@ -722,52 +637,27 @@ export default Timer;
                         />
                     </div>
 
-                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        A timer lets you set a specific duration, and it counts down based on that duration, notifying you when the time is up.
-                    </p>
+                    <ComponentDescription text=' A timer lets you set a specific duration, and it counts down based on that duration, notifying you when the time is up.'/>
 
-                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    timerStyle5Preview
-                                        ? 'translate-x-[0px] !w-[100px]'
-                                        : 'translate-x-[107px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${
-                                    timerStyle5Preview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={()=> toggleCardView(setTimerStyle5Preview, setTimeStyle5Code, true)}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    timerStyle5Code && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={()=> toggleCardView(setTimerStyle5Preview, setTimeStyle5Code, false)}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={timerStyle5Code} setPreview={setTimerStyle5Preview} preview={timerStyle5Preview} setCode={setTimeStyle5Code}/>
+
+                    <ComponentWrapper>
                         {timerStyle5Preview && (
                             <div className='p-8 mb-4 flex items-center gap-5 justify-center'>
                                 <div className="flex items-end gap-[5px] p-4">
                                     <div className='flex items-end gap-[1px]'>
-                                        <h4 className='text-[2.5rem] 640px:text-[3rem] leading-[45px] 640px:leading-[50px] font-semibold text-gray-900'>{formatNumber(timeLeft.days)}</h4>
+                                        <h4 className='text-[2.5rem] dark:text-[#abc2d3] 640px:text-[3rem] leading-[45px] 640px:leading-[50px] font-semibold text-gray-900'>{formatNumber(timeLeft.days)}</h4>
                                         <span className='text-[1.3rem] font-semibold text-orange-500'>d</span>
                                     </div>
                                     <div className='flex items-end gap-[1px]'>
-                                        <h4 className='text-[2.5rem] 640px:text-[3rem] leading-[45px] 640px:leading-[50px] font-semibold text-gray-900'>{formatNumber(timeLeft.hours)}</h4>
+                                        <h4 className='text-[2.5rem] dark:text-[#abc2d3] 640px:text-[3rem] leading-[45px] 640px:leading-[50px] font-semibold text-gray-900'>{formatNumber(timeLeft.hours)}</h4>
                                         <span className='text-[1.3rem] font-semibold text-orange-500'>h</span>
                                     </div>
                                     <div className='flex items-end gap-[1px]'>
-                                        <h4 className='text-[2.5rem] 640px:text-[3rem] leading-[45px] 640px:leading-[50px] font-semibold text-gray-900'>{formatNumber(timeLeft.minutes)}</h4>
+                                        <h4 className='text-[2.5rem] dark:text-[#abc2d3] 640px:text-[3rem] leading-[45px] 640px:leading-[50px] font-semibold text-gray-900'>{formatNumber(timeLeft.minutes)}</h4>
                                         <span className='text-[1.3rem] font-semibold text-orange-500'>m</span>
                                     </div>
-                                    <p className='text-[1.3rem] font-semibold text-gray-900'>{formatNumber(timeLeft.seconds)}</p>
+                                    <p className='text-[1.3rem] dark:text-[#abc2d3] font-semibold text-gray-900'>{formatNumber(timeLeft.seconds)}</p>
                                 </div>
                             </div>
                         )}
@@ -775,17 +665,16 @@ export default Timer;
                         {timerStyle5Code && (
                             <Showcode
                                 code='
-import React, {useEffect, useState} from "react";
+import React, {useState, useEffect} from "react";
 
 const Timer = () => {
-
     const [timeLeft, setTimeLeft] = useState({
         days: 0,
         hours: 0,
         minutes: 0,
         seconds: 0
     });
-    const targetDate = "2024-12-31T23:59:59"
+    const targetDate = "2025-03-31T23:59:59"
 
     useEffect(() => {
         const calculateTimeLeft = () => {
@@ -802,7 +691,7 @@ const Timer = () => {
         };
 
         const timer = setInterval(calculateTimeLeft, 1000);
-        calculateTimeLeft(); // Initial call
+        calculateTimeLeft();
 
         return () => clearInterval(timer);
     }, [targetDate]);
@@ -811,19 +700,24 @@ const Timer = () => {
 
     return (
         <div className="flex items-end gap-[5px] p-4">
+
             <div className="flex items-end gap-[1px]">
-                <h4 className="text-[2.5rem] sm:text-[3rem] leading-[45px] sm:leading-[50px] font-semibold text-gray-900">{formatNumber(timeLeft.days)}</h4>
+                <h4 className="text-[2.5rem] dark:text-[#abc2d3] sm:text-[3rem] leading-[45px] sm:leading-[50px] font-semibold text-gray-900">{formatNumber(timeLeft.days)}</h4>
                 <span className="text-[1.3rem] font-semibold text-orange-500">d</span>
             </div>
+
             <div className="flex items-end gap-[1px]">
-                <h4 className="text-[2.5rem] sm:text-[3rem] leading-[45px] sm:leading-[50px] font-semibold text-gray-900">{formatNumber(timeLeft.hours)}</h4>
+                <h4 className="text-[2.5rem] dark:text-[#abc2d3] sm:text-[3rem] leading-[45px] sm:leading-[50px] font-semibold text-gray-900">{formatNumber(timeLeft.hours)}</h4>
                 <span className="text-[1.3rem] font-semibold text-orange-500">h</span>
             </div>
+
             <div className="flex items-end gap-[1px]">
-                <h4 className="text-[2.5rem] sm:text-[3rem] leading-[45px] sm:leading-[50px] font-semibold text-gray-900">{formatNumber(timeLeft.minutes)}</h4>
+                <h4 className="text-[2.5rem] dark:text-[#abc2d3] sm:text-[3rem] leading-[45px] sm:leading-[50px] font-semibold text-gray-900">{formatNumber(timeLeft.minutes)}</h4>
                 <span className="text-[1.3rem] font-semibold text-orange-500">m</span>
             </div>
-            <p className="text-[1.3rem] font-semibold text-gray-900">{formatNumber(timeLeft.seconds)}</p>
+
+            <p className="text-[1.3rem] dark:text-[#abc2d3] font-semibold text-gray-900">{formatNumber(timeLeft.seconds)}</p>
+
         </div>
     );
 };
@@ -832,7 +726,7 @@ export default Timer;
                                 '
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
                     <div className='mt-8'>
                         <ContentHeader
@@ -841,36 +735,11 @@ export default Timer;
                         />
                     </div>
 
-                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        A timer lets you set a specific duration, and it counts down based on that duration, notifying you when the time is up.
-                    </p>
+                    <ComponentDescription text='A timer lets you set a specific duration, and it counts down based on that duration, notifying you when the time is up.'/>
 
-                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    timerStyle6Preview
-                                        ? 'translate-x-[0px] !w-[100px]'
-                                        : 'translate-x-[107px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${
-                                    timerStyle6Preview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={()=> toggleCardView(setTimerStyle6Preview, setTimeStyle6Code, true)}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    timerStyle6Code && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={()=> toggleCardView(setTimerStyle6Preview, setTimeStyle6Code, false)}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={timerStyle6Code} setCode={setTimeStyle6Code} preview={timerStyle6Preview} setPreview={setTimerStyle6Preview}/>
+
+                    <ComponentWrapper>
                         {timerStyle6Preview && (
                             <div className='p-8 mb-4 flex items-center gap-5 justify-center'>
                                 <div className="flex flex-wrap justify-center items-center space-x-6 p-4">
@@ -884,10 +753,9 @@ export default Timer;
                         {timerStyle6Code && (
                             <Showcode
                                 code='
-import React, {useEffect, useState} from "react";
+import React, {useState, useEffect} from "react";
 
 const Timer = () => {
-
     const [timeLeft, setTimeLeft] = useState({
         days: 0,
         hours: 0,
@@ -901,7 +769,8 @@ const Timer = () => {
         }
     });
 
-    const targetDate = "2024-12-31T23:59:59"
+    const targetDate = "2025-03-31T23:59:59"
+
     const size = 100
 
     useEffect(() => {
@@ -947,6 +816,7 @@ const Timer = () => {
                         r={radius}
                         fill="transparent"
                         stroke="#e5e5e5"
+                        className="dark:stroke-[#1e293b]"
                         strokeWidth={strokeWidth}
                     />
                 </svg>
@@ -993,7 +863,7 @@ export default Timer;
                                 '
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
                     <OverviewFooter
                         backUrl='/components/chip'
@@ -1003,23 +873,8 @@ export default Timer;
                     />
                 </div>
 
-                <div className='1024px:flex hidden flex-col gap-4 sticky top-4 right-0 w-[40%]'>
-                    <h2 className='text-[0.9rem] font-[600] text-text tracking-widest'>
-                        CONTENTS
-                    </h2>
-                    {timerContents.map((item) => (
-                        <a
-                            key={item.id}
-                            href={item.href}
-                            className={`${
-                                activeSection === item.href.slice(1) &&
-                                '!text-primary !border-primary'
-                            } text-[0.9rem] capitalize transition-all duration-300 text-text border-l border-transparent pl-4`}
-                        >
-                            {item.title}
-                        </a>
-                    ))}
-                </div>
+                <ContentNavbar contents={timerContents} activeSection={activeSection}/>
+
             </aside>
 
             <Helmet>

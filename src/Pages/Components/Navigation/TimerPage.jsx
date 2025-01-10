@@ -9,7 +9,7 @@ import Timer from "../../../Components/Overview/SidebarContent/Content/Navigatio
 
 const TimerPage = () => {
     return (
-        <>
+        <div className='dark:bg-darkBgColor'>
             <Navbar />
             <MobileNavbar/>
             <div className="flex w-full mx-auto max-w-[1700px]">
@@ -22,7 +22,7 @@ const TimerPage = () => {
                     <Timer />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

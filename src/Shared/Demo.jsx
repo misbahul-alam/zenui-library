@@ -1,95 +1,107 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 
-const Accordion = () => {
-    const accordingData = [
-        {
-            title: "What is the purpose of wireframing in design?",
-            description:
-                "Wireframing outlines the basic structure and layout of a design, serving as a visual guide before detailed development.",
-        },
-        {
-            title: "Why is user-centered design important?",
-            description:
-                "User-centered design ensures products meet the needs and preferences of the end-users, enhancing usability and satisfaction.",
-        },
-        {
-            title: "What role does contrast play in graphic design?",
-            description:
-                "Contrast in graphic design emphasizes differences, making elements stand out and improving visual hierarchy.",
-        },
+const Timer = () => {
+    const [timeLeft, setTimeLeft] = useState({
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+        durations: {
+            days: 365,
+            hours: 24,
+            minutes: 60,
+            seconds: 60
+        }
+    });
 
-        {
-            title: `Define the term "responsive design" in web development.`,
-            description:
-                "Responsive design ensures web pages adapt to various screen sizes, providing an optimal user experience on different devices.",
-        },
+    const targetDate = "2025-03-31T23:59:59"
 
-        {
-            title: "What is the significance of color theory in design?",
-            description:
-                "Color theory guides the selection and combination of colors to evoke specific emotions, enhance readability, and create visually appealing designs.",
-        },
-    ];
-    
-    const [bgAccording, setBgAccording] = useState(null);
-    
-    const handleBgAccording = (index) =>
-        setBgAccording((prevIndex) => (prevIndex === index ? null : index));
+    const size = 100
+
+    useEffect(() => {
+        const calculateTimeLeft = () => {
+            const difference = new Date(targetDate) - new Date();
+
+            if (difference > 0) {
+                setTimeLeft({
+                    days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+                    hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+                    minutes: Math.floor((difference / 1000 / 60) % 60),
+                    seconds: Math.floor((difference / 1000) % 60),
+                    durations: {
+                        days: 365,
+                        hours: 24,
+                        minutes: 60,
+                        seconds: 60
+                    }
+                });
+            }
+        };
+
+        const timer = setInterval(calculateTimeLeft, 1000);
+        calculateTimeLeft();
+
+        return () => clearInterval(timer);
+    }, [targetDate]);
+
+    const CircleTimer = ({ value, type }) => {
+        const strokeWidth = 7;
+        const radius = (size - strokeWidth) / 2;
+        const circumference = radius * 2 * Math.PI;
+        const progress = (value / timeLeft.durations[type]) * 100;
+        const strokeDashoffset = circumference - (progress / 100) * circumference;
+
+        return (
+            <div className="relative" style={{ width: size, height: size }}>
+                {/* Background Circle */}
+                <svg className="absolute top-0 left-0" width={size} height={size}>
+                    <circle
+                        cx={size/2}
+                        cy={size/2}
+                        r={radius}
+                        fill="transparent"
+                        stroke="#e5e5e5"
+                        className="dark:stroke-[#1e293b]"
+                        strokeWidth={strokeWidth}
+                    />
+                </svg>
+
+                {/* Progress Circle */}
+                <svg className="absolute top-0 left-0" width={size} height={size}>
+                    <circle
+                        cx={size/2}
+                        cy={size/2}
+                        r={radius}
+                        fill="transparent"
+                        stroke="#17b4d3"
+                        strokeWidth={strokeWidth}
+                        strokeDasharray={circumference}
+                        strokeDashoffset={strokeDashoffset}
+                        strokeLinecap="round"
+                        style={{
+                            transition: "stroke-dashoffset 1s linear",
+                            transform: "rotate(-90deg)",
+                            transformOrigin: "50% 50%"
+                        }}
+                    />
+                </svg>
+
+                {/* Time Display */}
+                <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center">
+                    <div className="text-[1.2rem] font-semibold text-[#17b4d3]">{value}</div>
+                    <div className="text-[0.6rem] text-gray-500">{type.charAt(0).toUpperCase() + type.slice(1)}</div>
+                </div>
+            </div>
+        );
+    };
     
     return (
-        <div className="flex gap-3 flex-col w-full">
-            {accordingData?.map((according, index) => (
-                <article key={index} className="bg-[#e5eaf2] dark:bg-transparent rounded">
-                    <div
-                        className={`${bgAccording === index ? "rounded-t-sm" : "rounded"} flex gap-2 cursor-pointer items-center justify-between dark:bg-slate-800 w-full bg-gray-700 p-3`}
-                        onClick={() => handleBgAccording(index)}
-                    >
-                        <h2
-                            className={`dark:text-[#abc2d3] text-white font-[600] text-[1.2rem]`}
-                        >
-                            {according.title}
-                        </h2>
-                        <svg
-                            className="dark:fill-[#abc2d3] fill-[#ffffff] shrink-0 ml-8"
-                            width="16"
-                            height="16"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <rect
-                                y="7"
-                                width="16"
-                                height="2"
-                                rx="1"
-                                className={`transform origin-center transition duration-200 ease-out ${
-                                    bgAccording === index && "!rotate-180"
-                                }`}
-                            />
-                            <rect
-                                y="7"
-                                width="16"
-                                height="2"
-                                rx="1"
-                                className={`transform origin-center rotate-90 transition duration-200 ease-out ${
-                                    bgAccording === index && "!rotate-180"
-                                }`}
-                            />
-                        </svg>
-                    </div>
-                    <div
-                        className={`grid transition-all duration-300 dark:bg-slate-900 overflow-hidden ease-in-out bg-gray-100 ${
-                            bgAccording === index
-                                ? "grid-rows-[1fr] opacity-100 px-3 py-3"
-                                : "grid-rows-[0fr] opacity-0 px-3"
-                        }`}
-                    >
-                        <div className="text-[#424242] dark:text-[#abc2d3] text-[0.9rem] overflow-hidden">
-                            {according.description}
-                        </div>
-                    </div>
-                </article>
-            ))}
+        <div className="flex flex-wrap justify-center items-center space-x-6 p-4">
+            <CircleTimer value={timeLeft.hours} type="hours"/>
+            <CircleTimer value={timeLeft.minutes} type="minutes"/>
+            <CircleTimer value={timeLeft.seconds} type="seconds"/>
         </div>
     );
 };
 
-export default Accordion;
+export default Timer;
