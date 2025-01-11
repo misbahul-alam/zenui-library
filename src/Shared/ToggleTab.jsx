@@ -95,7 +95,7 @@ const ToggleTab = ({preview, code, setPreview, setCode}) => {
                     >
                         <div
                             className={`${
-                                store.withDarkClasses ? " translate-x-[23px]" : "translate-x-[1px]"
+                                store.withDarkClasses ? " translate-x-[23px] !bg-white" : "translate-x-[1px]"
                             } w-[20px] h-[19.5px] pb-1 transition-all duration-500 dark:bg-slate-300 rounded-full bg-[#fff]`}
                             style={{boxShadow: "1px 2px 5px 2px rgb(0,0,0,0.1)"}}
                         ></div>

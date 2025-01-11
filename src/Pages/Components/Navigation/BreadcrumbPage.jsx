@@ -9,7 +9,7 @@ import Breadcrumb from "../../../Components/Overview/SidebarContent/Content/Navi
 
 const ChipPage = () => {
     return (
-        <>
+        <div className='dark:bg-darkBgColor'>
             <Navbar />
             <MobileNavbar/>
             <div className="flex w-full mx-auto max-w-[1700px]">
@@ -22,7 +22,7 @@ const ChipPage = () => {
                     <Breadcrumb />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

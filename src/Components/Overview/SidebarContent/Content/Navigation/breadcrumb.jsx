@@ -17,6 +17,11 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 // showing the code
 import Showcode from '../../../../../Shared/ShowCode';
 
+import ComponentDescription from "../../../../../Shared/ComponentDescription.jsx";
+import ToggleTab from "../../../../../Shared/ToggleTab.jsx";
+import ComponentWrapper from "../../../../../Shared/ComponentWrapper.jsx";
+import ContentNavbar from "../../../../../Shared/ContentNavbar.jsx";
+
 const Breadcrumb = () => {
   const sectionIds = breadcrumbContents.map((item) => item.href.slice(1));
   const activeSection = useScrollSpy(sectionIds);
@@ -25,65 +30,20 @@ const Breadcrumb = () => {
   const [nonClickablePreview, setNonClickablePreview] = useState(true);
   const [nonClickableCode, setNonClickableCode] = useState(false);
 
-  const handleNonClickablePreview = () => {
-    setNonClickablePreview(true);
-    setNonClickableCode(false);
-  };
-
-  const handleNonClickableCode = () => {
-    setNonClickableCode(true);
-    setNonClickablePreview(false);
-  };
-
   // clickable
   const [clickablePreview, setClickablePreview] = useState(true);
   const [clickableCode, setClickableCode] = useState(false);
-
-  const handleClickablePreview = () => {
-    setClickablePreview(true);
-    setClickableCode(false);
-  };
-
-  const handleClickableCode = () => {
-    setClickableCode(true);
-    setClickablePreview(false);
-  };
-
-  const handleAvatarChipCode = () => {
-    setAvatarChipCode(true);
-    setAvatarChipPreview(false);
-  };
 
   // dropdown breadcrumb
   const [dropdownBreadcrumbPreview, setDropdownBreadcrumbPreview] =
     useState(true);
   const [dropdownBreadcrumbCode, setDropdownBreadcrumbCode] = useState(false);
 
-  const handleDropdownBreadcrumbPreview = () => {
-    setDropdownBreadcrumbPreview(true);
-    setDropdownBreadcrumbCode(false);
-  };
-
-  const handleDropdownBreadcrumbCode = () => {
-    setDropdownBreadcrumbCode(true);
-    setDropdownBreadcrumbPreview(false);
-  };
-
   // customizable breadcrumb
   const [customizableBreadcrumbPreview, setCustomizableBreadcrumbPreview] =
     useState(true);
   const [customizableBreadcrumbCode, setCustomizableBreadcrumbCode] =
     useState(false);
-
-  const handleCustomizableBreadcrumbPreview = () => {
-    setCustomizableBreadcrumbPreview(true);
-    setCustomizableBreadcrumbCode(false);
-  };
-
-  const handleCustomizableBreadcrumbCode = () => {
-    setCustomizableBreadcrumbCode(true);
-    setCustomizableBreadcrumbPreview(false);
-  };
 
   const nonClickableItems = [
     {
@@ -158,64 +118,39 @@ const Breadcrumb = () => {
             id={'non_clickable_breadcrumb'}
           />
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            A breadcrumb navigation that displays the user's path but with
+          <ComponentDescription text="A breadcrumb navigation that displays the user's path but with
             non-clickable links, serving as a visual guide without interactive
-            functionality.
-          </p>
+            functionality."/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  nonClickablePreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[107px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  nonClickablePreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleNonClickablePreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  nonClickableCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleNonClickableCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={nonClickableCode} setCode={setNonClickableCode} setPreview={setNonClickablePreview} preview={nonClickablePreview}/>
+
+          <ComponentWrapper>
             {nonClickablePreview && (
-              <div className='p-8 mb-4 flex flex-wrap items-center gap-5 justify-center'>
-                <ol className='flex items-center gap-[5px]'>
-                  {nonClickableItems?.map((item, index) => (
-                    <>
-                      <li
-                        key={index}
-                        className={`text-[0.9rem] text-text ${
-                          index === nonClickableItems.length - 1 &&
-                          '!text-primary'
-                        }`}
-                      >
-                        {item.label}
-                      </li>
-                      {index !== nonClickableItems.length - 1 && (
-                        <MdKeyboardArrowDown className='rotate-[-90deg] text-[0.9rem]' />
-                      )}
-                    </>
-                  ))}
-                </ol>
-              </div>
+                <div className='p-8 mb-4 flex flex-wrap items-center gap-5 justify-center'>
+                  <ol className='flex items-center gap-[5px]'>
+                    {nonClickableItems?.map((item, index) => (
+                        <>
+                          <li
+                              key={index}
+                              className={`text-[0.9rem] dark:text-[#abc2d3] text-text ${
+                                  index === nonClickableItems.length - 1 &&
+                                  '!text-primary'
+                              }`}
+                          >
+                            {item.label}
+                          </li>
+                          {index !== nonClickableItems.length - 1 && (
+                              <MdKeyboardArrowDown className='rotate-[-90deg] dark:text-[#abc2d3] text-[0.9rem]' />
+                          )}
+                        </>
+                    ))}
+                  </ol>
+                </div>
             )}
 
             {nonClickableCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 import React from "react";
 
 // react icons
@@ -249,10 +184,10 @@ const Breadcrumb = () => {
                 breadcrumbItems?.map((item, index) => (
                     <>
                         <li key={index}
-                            className={`text-[0.9rem] text-text ${index === breadcrumbItems.length - 1 && "!text-primary"}`}>{item.label}</li>
+                            className={`text-[0.9rem] dark:text-[#abc2d3] text-text ${index === breadcrumbItems.length - 1 && "!text-primary"}`}>{item.label}</li>
                         {
                             index !== breadcrumbItems.length - 1 && (
-                                <MdKeyboardArrowDown className="rotate-[-90deg] text-[0.9rem]"/>
+                                <MdKeyboardArrowDown className="rotate-[-90deg] dark:text-[#abc2d3] text-[0.9rem]"/>
                             )
                         }
                     </>
@@ -264,9 +199,9 @@ const Breadcrumb = () => {
 
 export default Breadcrumb;
                                 '
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className='mt-8'>
             <ContentHeader
@@ -275,64 +210,39 @@ export default Breadcrumb;
             />
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            A breadcrumb navigation with clickable links, allowing users to
-            easily navigate back to previous pages or sections.
-          </p>
+          <ComponentDescription text='A breadcrumb navigation with clickable links, allowing users to
+            easily navigate back to previous pages or sections.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  clickablePreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[107px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  clickablePreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleClickablePreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  clickableCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleClickableCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={clickableCode} setCode={setClickableCode} preview={clickablePreview} setPreview={setClickablePreview}/>
+
+          <ComponentWrapper>
             {clickablePreview && (
-              <div className='p-8 mb-4 flex flex-wrap items-center gap-5 justify-center'>
-                <div className='flex items-center gap-[5px]'>
-                  {nonClickableItems?.map((item, index) => (
-                    <>
-                      <a
-                        key={index}
-                        href={item.path}
-                        className={`text-[0.9rem] text-text hover:underline ${
-                          index === nonClickableItems.length - 1 &&
-                          '!text-primary'
-                        }`}
-                      >
-                        {item.label}
-                      </a>
-                      {index !== nonClickableItems.length - 1 && (
-                        <MdKeyboardArrowDown className='rotate-[-90deg] text-[0.9rem]' />
-                      )}
-                    </>
-                  ))}
+                <div className='p-8 mb-4 flex flex-wrap items-center gap-5 justify-center'>
+                  <div className='flex items-center gap-[5px]'>
+                    {nonClickableItems?.map((item, index) => (
+                        <>
+                          <a
+                              key={index}
+                              href={item.path}
+                              className={`text-[0.9rem] dark:text-[#abc2d3] text-text hover:underline ${
+                                  index === nonClickableItems.length - 1 &&
+                                  '!text-primary'
+                              }`}
+                          >
+                            {item.label}
+                          </a>
+                          {index !== nonClickableItems.length - 1 && (
+                              <MdKeyboardArrowDown className='rotate-[-90deg] dark:text-[#abc2d3] text-[0.9rem]' />
+                          )}
+                        </>
+                    ))}
+                  </div>
                 </div>
-              </div>
             )}
 
             {clickableCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 import React from "react";
 
 // react icons
@@ -366,10 +276,10 @@ const Breadcrumb = () => {
                 breadcrumbItems?.map((item, index) => (
                     <>
                         <a key={index} href={item.path}
-                           className={`text-[0.9rem] text-text hover:underline ${index === breadcrumbItems.length - 1 && "!text-primary"}`}>{item.label}</a>
+                           className={`text-[0.9rem] dark:text-[#abc2d3] text-text hover:underline ${index === breadcrumbItems.length - 1 && "!text-primary"}`}>{item.label}</a>
                         {
                             index !== breadcrumbItems.length - 1 && (
-                                <MdKeyboardArrowDown className="rotate-[-90deg] text-[0.9rem]"/>
+                                <MdKeyboardArrowDown className="rotate-[-90deg] dark:text-[#abc2d3] text-[0.9rem]"/>
                             )
                         }
                     </>
@@ -381,9 +291,9 @@ const Breadcrumb = () => {
 
 export default Breadcrumb;
                                 '
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className='mt-8'>
             <ContentHeader
@@ -392,98 +302,73 @@ export default Breadcrumb;
             />
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            A breadcrumb navigation with a dropdown that appears after a certain
+          <ComponentDescription text='A breadcrumb navigation with a dropdown that appears after a certain
             number of links, allowing users to access additional navigation
-            options from the dropdown menu.
-          </p>
+            options from the dropdown menu.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  dropdownBreadcrumbPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[107px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  dropdownBreadcrumbPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleDropdownBreadcrumbPreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  dropdownBreadcrumbCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleDropdownBreadcrumbCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={dropdownBreadcrumbCode} setCode={setDropdownBreadcrumbCode} setPreview={setDropdownBreadcrumbPreview} preview={dropdownBreadcrumbPreview}/>
+
+          <ComponentWrapper>
             {dropdownBreadcrumbPreview && (
-              <div
-                className={`${
-                  dropdownOpen ? 'mb-[8rem]' : 'mb-4'
-                } p-8 flex flex-wrap items-center gap-5 justify-center transition-all duration-300`}
-              >
-                <div className='flex items-center gap-[5px]'>
-                  {dropdownBreadcrumbArray?.slice(0, 3)?.map((item, index) => (
-                    <>
-                      <a
-                        key={index}
-                        href={item.path}
-                        className={`text-[0.9rem] text-text hover:underline ${
-                          index === nonClickableItems.length - 1 &&
-                          '!text-primary'
-                        }`}
-                      >
-                        {item.label}
-                      </a>
-                      {index !== nonClickableItems.length - 1 && (
-                        <MdKeyboardArrowDown className='rotate-[-90deg] text-[0.9rem]' />
-                      )}
-                    </>
-                  ))}
-
-                  <div className='relative'>
-                    <p
-                      className='dropdownButton cursor-pointer'
-                      onClick={() => setDropdownOpen(!dropdownOpen)}
-                    >
-                      ....
-                    </p>
-
-                    <div
-                      className={`${
-                        dropdownOpen
-                          ? 'translate-y-0 opacity-100 z-30'
-                          : 'translate-y-[-20px] opacity-0 z-[-1]'
-                      } flex flex-col text-[0.8rem] bg-white boxShadow dropdownModal transition-all duration-300 rounded-md py-1 absolute top-[25px] left-[-20px] w-max`}
-                    >
-                      {dropdownBreadcrumbArray
-                        ?.slice(3, dropdownBreadcrumbArray.length)
-                        .map((item, index) => (
+                <div
+                    className={`${
+                        dropdownOpen ? 'mb-[8rem]' : 'mb-4'
+                    } p-8 flex flex-wrap items-center gap-5 justify-center transition-all duration-300`}
+                >
+                  <div className='flex items-center gap-[5px]'>
+                    {dropdownBreadcrumbArray?.slice(0, 3)?.map((item, index) => (
+                        <>
                           <a
-                            href={item.path}
-                            key={index}
-                            className='w-full hover:bg-gray-100 px-8 py-2 cursor-pointer'
+                              key={index}
+                              href={item.path}
+                              className={`text-[0.9rem] dark:text-[#abc2d3] text-text hover:underline ${
+                                  index === nonClickableItems.length - 1 &&
+                                  '!text-primary'
+                              }`}
                           >
                             {item.label}
                           </a>
-                        ))}
+                          {index !== nonClickableItems.length - 1 && (
+                              <MdKeyboardArrowDown className='rotate-[-90deg] dark:text-[#abc2d3] text-[0.9rem]' />
+                          )}
+                        </>
+                    ))}
+
+                    <div className='relative'>
+                      <p
+                          className='dropdownButton dark:text-[#abc2d3] cursor-pointer'
+                          onClick={() => setDropdownOpen(!dropdownOpen)}
+                      >
+                        ....
+                      </p>
+
+                      <div
+                          className={`${
+                              dropdownOpen
+                                  ? 'translate-y-0 opacity-100 z-30'
+                                  : 'translate-y-[-20px] opacity-0 z-[-1]'
+                          } flex flex-col text-[0.8rem] dark:bg-slate-800 dark:text-[#abc2d3] bg-white boxShadow dropdownModal transition-all duration-300 rounded-md py-1 absolute top-[25px] left-[-20px] w-max`}
+                      >
+                        {dropdownBreadcrumbArray
+                            ?.slice(3, dropdownBreadcrumbArray.length)
+                            .map((item, index) => (
+                                <a
+                                    href={item.path}
+                                    key={index}
+                                    className='w-full hover:bg-gray-100 dark:hover:bg-slate-900/40 px-8 py-2 cursor-pointer'
+                                >
+                                  {item.label}
+                                </a>
+                            ))}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
             )}
 
             {dropdownBreadcrumbCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 import React, {useState} from "react";
 
 // react icons
@@ -533,11 +418,11 @@ const Breadcrumb = () => {
                 breadcrumbItems?.slice(0, 3)?.map((item, index) => (
                     <>
                         <a key={index} href={item.path}
-                           className={`text-[0.9rem] text-text hover:underline ${index === breadcrumbItems.length - 1 && "!text-primary"}`}>{item.label}</a>
+                           className={`text-[0.9rem] text-text dark:text-[#abc2d3] hover:underline ${index === breadcrumbItems.length - 1 && "!text-primary"}`}>{item.label}</a>
                         {
                             index !== breadcrumbItems.length - 1 && (
                                 <MdKeyboardArrowDown
-                                    className="rotate-[-90deg] text-[0.9rem]"/>
+                                    className="rotate-[-90deg] dark:text-[#abc2d3] text-[0.9rem]"/>
                             )
                         }
 
@@ -549,11 +434,11 @@ const Breadcrumb = () => {
                 <p className="dropdownButton cursor-pointer" onClick={() => setDropdownOpen(!dropdownOpen)}>....</p>
 
                 <div
-                    className={`${dropdownOpen ? "translate-y-0 opacity-100 z-30" : "translate-y-[-20px] opacity-0 z-[-1]"} flex flex-col text-[0.8rem] bg-white boxShadow dropdownModal transition-all duration-300 rounded-md py-1 absolute top-[25px] left-[-20px] w-max`}>
+                    className={`${dropdownOpen ? "translate-y-0 opacity-100 z-30" : "translate-y-[-20px] opacity-0 z-[-1]"} flex flex-col text-[0.8rem] dark:bg-slate-800 dark:text-[#abc2d3] bg-white boxShadow dropdownModal transition-all duration-300 rounded-md py-1 absolute top-[25px] left-[-20px] w-max`}>
                     {
                         breadcrumbItems?.slice(3, breadcrumbItems.length).map((item, index) => (
                             <a href={item.path} key={index}
-                               className="w-full hover:bg-gray-100 px-8 py-2 cursor-pointer">{item.label}</a>
+                               className="w-full hover:bg-gray-100 px-8 dark:hover:bg-slate-900/40 py-2 cursor-pointer">{item.label}</a>
                         ))
                     }
                 </div>
@@ -564,9 +449,9 @@ const Breadcrumb = () => {
 
 export default Breadcrumb;
                                 '
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className='mt-8'>
             <ContentHeader
@@ -575,107 +460,82 @@ export default Breadcrumb;
             />
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            This is a basic chip component. Use it to display concise
-            information or tags in a compact form.
-          </p>
+          <ComponentDescription text='This is a basic chip component. Use it to display concise
+            information or tags in a compact form.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  customizableBreadcrumbPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[107px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  customizableBreadcrumbPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleCustomizableBreadcrumbPreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  customizableBreadcrumbCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleCustomizableBreadcrumbCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={customizableBreadcrumbCode} setCode={setCustomizableBreadcrumbCode} preview={customizableBreadcrumbPreview} setPreview={setCustomizableBreadcrumbPreview}/>
+
+          <ComponentWrapper>
             {customizableBreadcrumbPreview && (
-              <div
-                className={`${
-                  dropdownOpen ? 'mb-[8rem]' : 'mb-4'
-                } p-8 flex flex-wrap items-center gap-5 justify-center transition-all duration-300`}
-              >
-                <div className='flex flex-col gap-[10px]'>
-                  <ol className='flex items-center gap-[5px] bg-blue-50 py-2.5 px-3 rounded-md'>
-                    {nonClickableItems?.map((item, index) => (
-                      <>
-                        <li
-                          key={index}
-                          className={`text-[0.9rem] text-blue-900 ${
-                            index === nonClickableItems.length - 1 &&
-                            'font-bold'
-                          }`}
-                        >
-                          {item.label}
-                        </li>
-                        {index !== nonClickableItems.length - 1 && (
-                          <MdKeyboardArrowDown className='rotate-[-90deg] text-blue-900 text-[0.9rem]' />
-                        )}
-                      </>
-                    ))}
-                  </ol>
+                <div
+                    className={`${
+                        dropdownOpen ? 'mb-[8rem]' : 'mb-4'
+                    } p-8 flex flex-wrap items-center gap-5 justify-center transition-all duration-300`}
+                >
+                  <div className='flex flex-col gap-[10px]'>
+                    <ol className='flex items-center gap-[5px] dark:bg-blue-800/20 bg-blue-50 py-2.5 px-3 rounded-md'>
+                      {nonClickableItems?.map((item, index) => (
+                          <>
+                            <li
+                                key={index}
+                                className={`text-[0.9rem] dark:text-blue-600 text-blue-900 ${
+                                    index === nonClickableItems.length - 1 &&
+                                    'font-bold'
+                                }`}
+                            >
+                              {item.label}
+                            </li>
+                            {index !== nonClickableItems.length - 1 && (
+                                <MdKeyboardArrowDown className='rotate-[-90deg] text-blue-900 text-[0.9rem]' />
+                            )}
+                          </>
+                      ))}
+                    </ol>
 
-                  <ol className='flex items-center gap-[5px] bg-orange-50 py-2.5 px-3 rounded-md'>
-                    {nonClickableItems?.map((item, index) => (
-                      <>
-                        <li
-                          key={index}
-                          className={`text-[0.9rem] text-orange-900 ${
-                            index === nonClickableItems.length - 1 &&
-                            'font-bold'
-                          }`}
-                        >
-                          {item.label}
-                        </li>
-                        {index !== nonClickableItems.length - 1 && (
-                          <MdKeyboardArrowDown className='rotate-[-90deg] text-orange-900 text-[0.9rem]' />
-                        )}
-                      </>
-                    ))}
-                  </ol>
+                    <ol className='flex items-center gap-[5px] dark:bg-orange-800/20 bg-orange-50 py-2.5 px-3 rounded-md'>
+                      {nonClickableItems?.map((item, index) => (
+                          <>
+                            <li
+                                key={index}
+                                className={`text-[0.9rem] dark:text-orange-600 text-orange-900 ${
+                                    index === nonClickableItems.length - 1 &&
+                                    'font-bold'
+                                }`}
+                            >
+                              {item.label}
+                            </li>
+                            {index !== nonClickableItems.length - 1 && (
+                                <MdKeyboardArrowDown className='rotate-[-90deg] text-orange-900 text-[0.9rem]' />
+                            )}
+                          </>
+                      ))}
+                    </ol>
 
-                  <ol className='flex items-center gap-[5px] bg-green-50 py-2.5 px-3 rounded-md'>
-                    {nonClickableItems?.map((item, index) => (
-                      <>
-                        <li
-                          key={index}
-                          className={`text-[0.9rem] text-green-900 ${
-                            index === nonClickableItems.length - 1 &&
-                            'font-bold'
-                          }`}
-                        >
-                          {item.label}
-                        </li>
-                        {index !== nonClickableItems.length - 1 && (
-                          <MdKeyboardArrowDown className='rotate-[-90deg] text-green-900 text-[0.9rem]' />
-                        )}
-                      </>
-                    ))}
-                  </ol>
+                    <ol className='flex items-center gap-[5px] dark:bg-green-800/20 bg-green-50 py-2.5 px-3 rounded-md'>
+                      {nonClickableItems?.map((item, index) => (
+                          <>
+                            <li
+                                key={index}
+                                className={`text-[0.9rem] dark:text-green-600 text-green-900 ${
+                                    index === nonClickableItems.length - 1 &&
+                                    'font-bold'
+                                }`}
+                            >
+                              {item.label}
+                            </li>
+                            {index !== nonClickableItems.length - 1 && (
+                                <MdKeyboardArrowDown className='rotate-[-90deg] text-green-900 text-[0.9rem]' />
+                            )}
+                          </>
+                      ))}
+                    </ol>
+                  </div>
                 </div>
-              </div>
             )}
 
             {customizableBreadcrumbCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 import React from "react";
 
 // react icons
@@ -705,12 +565,12 @@ const Breadcrumb = () => {
 
     return (
         <div className="flex flex-col gap-[10px]">
-            <ol className="flex items-center gap-[5px] bg-blue-50 py-2.5 px-3 rounded-md">
+            <ol className="flex items-center gap-[5px] dark:bg-blue-800/20 bg-blue-50 py-2.5 px-3 rounded-md">
                 {
                     breadcrumbItems?.map((item, index) => (
                         <>
                             <li key={index}
-                                className={`text-[0.9rem] text-blue-900 ${index === breadcrumbItems.length - 1 && "font-bold"}`}>{item.label}</li>
+                                className={`text-[0.9rem] dark:text-blue-600 text-blue-900 ${index === breadcrumbItems.length - 1 && "font-bold"}`}>{item.label}</li>
                             {
                                 index !== breadcrumbItems.length - 1 && (
                                     <MdKeyboardArrowDown
@@ -722,12 +582,12 @@ const Breadcrumb = () => {
                 }
             </ol>
 
-            <ol className="flex items-center gap-[5px] bg-orange-50 py-2.5 px-3 rounded-md">
+            <ol className="flex items-center gap-[5px] dark:bg-orange-800/20 bg-orange-50 py-2.5 px-3 rounded-md">
                 {
                     breadcrumbItems?.map((item, index) => (
                         <>
                             <li key={index}
-                                className={`text-[0.9rem] text-orange-900 ${index === breadcrumbItems.length - 1 && "font-bold"}`}>{item.label}</li>
+                                className={`text-[0.9rem] dark:text-orange-600 text-orange-900 ${index === breadcrumbItems.length - 1 && "font-bold"}`}>{item.label}</li>
                             {
                                 index !== breadcrumbItems.length - 1 && (
                                     <MdKeyboardArrowDown
@@ -739,12 +599,12 @@ const Breadcrumb = () => {
                 }
             </ol>
 
-            <ol className="flex items-center gap-[5px] bg-green-50 py-2.5 px-3 rounded-md">
+            <ol className="flex items-center gap-[5px] dark:bg-green-800/20 bg-green-50 py-2.5 px-3 rounded-md">
                 {
                     breadcrumbItems?.map((item, index) => (
                         <>
                             <li key={index}
-                                className={`text-[0.9rem] text-green-900 ${index === breadcrumbItems.length - 1 && "font-bold"}`}>{item.label}</li>
+                                className={`text-[0.9rem] dark:text-green-600 text-green-900 ${index === breadcrumbItems.length - 1 && "font-bold"}`}>{item.label}</li>
                             {
                                 index !== breadcrumbItems.length - 1 && (
                                     <MdKeyboardArrowDown
@@ -761,9 +621,9 @@ const Breadcrumb = () => {
 
 export default Breadcrumb;
                                 '
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <OverviewFooter
             backUrl='/components/chip'
@@ -773,23 +633,8 @@ export default Breadcrumb;
           />
         </div>
 
-        <div className='1024px:flex hidden flex-col gap-4 sticky top-4 right-0 w-[40%]'>
-          <h2 className='text-[0.9rem] font-[600] text-text tracking-widest'>
-            CONTENTS
-          </h2>
-          {breadcrumbContents.map((item) => (
-            <a
-              key={item.id}
-              href={item.href}
-              className={`${
-                activeSection === item.href.slice(1) &&
-                '!text-primary !border-primary'
-              } text-[0.9rem] text-text border-l border-transparent pl-4`}
-            >
-              {item.title}
-            </a>
-          ))}
-        </div>
+        <ContentNavbar activeSection={activeSection} contents={breadcrumbContents}/>
+
       </aside>
       <Helmet>
         <title>Navigation - Breadcrumb</title>

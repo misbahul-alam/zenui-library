@@ -9,7 +9,7 @@ import Rating from "../../../Components/Overview/SidebarContent/Content/Navigati
 
 const RatingPage = () => {
     return (
-        <>
+        <div className='dark:bg-darkBgColor'>
             <Navbar />
             <MobileNavbar/>
             <div className="flex w-full mx-auto max-w-[1700px]">
@@ -22,7 +22,7 @@ const RatingPage = () => {
                     <Rating />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

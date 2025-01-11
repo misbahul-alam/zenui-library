@@ -9,7 +9,7 @@ import Steps from "../../../Components/Overview/SidebarContent/Content/Navigatio
 
 const StepsPage = () => {
     return (
-        <>
+        <div className='dark:bg-darkBgColor'>
             <Navbar />
             <MobileNavbar/>
             <div className="flex w-full mx-auto max-w-[1700px]">
@@ -22,7 +22,7 @@ const StepsPage = () => {
                     <Steps />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 
