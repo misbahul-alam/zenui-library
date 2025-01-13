@@ -185,50 +185,59 @@ const Modals = () => {
             {alertModalCode && (
                 <Showcode
                     code='
-import React from "react";
+import React, {useState} from "react";
 
-// icons
-import { RxCross1 } from "react-icons/rx";
+// react icons
+import {RxCross1} from "react-icons/rx";
 
 const Modal = () => {
-  return (
-    <>
-      <div
-        className={`${
-          modalOpen ? " scale-[1] opacity-100" : " scale-[0] opacity-0"
-        } w-full h-screen fixed top-0 left-0 z-50 bg-[#0000002a] flex items-center justify-center transition-all duration-300 `}>
-        <div className="w-[90%] lg:w-[40%] bg-[#ffffff] rounded-lg p-4 ">
-          <div className="w-full flex items-end justify-end">
-            <RxCross1
-              className="p-2 text-[2.5rem] hover:bg-[#e7e7e7] rounded-full transition-all duration-300 cursor-pointer"
-              onClick={() => setModalOpen(false)}
-            />
-          </div>
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-          <div className="w-full pl-3 lg:pl-8">
-            <h2 className="text-[1.7rem] font-[500] text-[#202020]">
-              Are you sure about it?
-            </h2>
-            <p className="text-[1rem] text-[#525252]">
-              you cant undo this action
-            </p>
-          </div>
-          <div className="flex items-center gap-3 lg:gap-5 w-full justify-end mt-6">
-            <button
-              className="px-4 py-2 border border-[#a8a8a8] rounded-lg text-[#585858]"
-              onClick={() => setModalOpen(false)}>
-              Cancel
-            </button>
-            <button
-              className="px-4 py-2 bg-[#3B9DF8] rounded-lg text-[#ffffff]"
-              onClick={() => setModalOpen(false)}>
-              Confirm
-            </button>
-          </div>
+    return (
+        <div
+            className={`${
+                isModalOpen
+                    ? " scale-[1] opacity-100"
+                    : " scale-[0] opacity-0"
+            } w-full h-screen fixed top-0 left-0 z-[200000000] dark:bg-black/40 bg-[#0000002a] flex items-center justify-center transition-all duration-300`}
+        >
+            <div
+                className={`w-[90%] md:w-[30%] dark:bg-slate-800 bg-secondary rounded-lg p-4`}
+            >
+                <div className="w-full flex justify-between">
+                    <div>
+                        <h2 className="text-[1.7rem] dark:text-[#abc2d3] font-[500] text-[#202020]">
+                            Are you sure about it?
+                        </h2>
+                        <p className="text-[1rem] dark:text-[#abc2d3]/80 text-[#525252]">
+                            you can"t undo this action
+                        </p>
+                    </div>
+
+                    <RxCross1
+                        className="p-2 text-[2.5rem] dark:text-[#abc2d3]/80 dark:hover:bg-slate-900/70 hover:bg-[#e7e7e7] rounded-full transition-all duration-300 cursor-pointer"
+                        onClick={() => setIsModalOpen(false)}
+                    />
+                </div>
+
+                <div className="flex items-center gap-2 md:gap-3 w-full justify-end mt-6">
+                    <button
+                        className="px-4 py-2 dark:hover:bg-slate-900/50 hover:bg-gray-100 border dark:border-slate-700 dark:text-[#abc2d3] border-[#a8a8a8] rounded-lg text-[#585858]"
+                        onClick={() => setIsModalOpen(false)}
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        className="px-4 py-2 bg-[#3B9DF8] rounded-lg text-[#fff]"
+                        onClick={() => setIsModalOpen(false)}
+                    >
+                        Confirm
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
-    </>
-  );
+    )
+        ;
 };
 
 export default Modal;
@@ -295,42 +304,50 @@ export default Modal;
             {successModalCode && (
                 <Showcode
                     code='
-import React from "react";
+import React, {useState} from "react";
 
-// icons
-import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
+// react icons
+import {RxCross1} from "react-icons/rx";
+import {IoCheckmarkDoneCircleOutline} from "react-icons/io5";
 
 const Modal = () => {
-  return (
-    <>
-      <div
-        className={`${
-          modalOpen ? " visible" : " invisible"
-        } w-full h-screen fixed top-0 left-0 z-50 bg-[#0000002a] flex items-center justify-center transition-all duration-300`}>
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    return (
         <div
-          className={`${
-            modalOpen ? " scale-[1] opacity-100" : " scale-[0] opacity-0"
-          } w-[90%] md:w-[70%] lg:w-[30%] bg-[#ffffff] rounded-lg p-4 transition-all duration-300`}>
-          <div className="w-full flex items-end justify-end">
-            <RxCross1
-              className="p-2 text-[2.5rem] hover:bg-[#e7e7e7] rounded-full transition-all duration-300 cursor-pointer"
-              onClick={() => setModalOpen(false)}
-            />
-          </div>
+            className={`${
+                isModalOpen ? " visible" : " invisible"
+            } w-full h-screen fixed top-0 left-0 z-[200000000] dark:bg-black/40 bg-[#0000002a] flex items-center justify-center transition-all duration-300`}
+        >
+            <div
+                className={`${
+                    isModalOpen
+                        ? " scale-[1] opacity-100"
+                        : " scale-[0] opacity-0"
+                } w-[90%] sm:w-[80%] md:w-[30%] dark:bg-slate-800 bg-[#fff] rounded-lg p-4 transition-all duration-300`}
+            >
+                <div className="w-full flex items-end justify-end">
+                    <RxCross1
+                        className="p-2 text-[2.5rem] dark:text-[#abc2d3]/70 dark:hover:bg-slate-900/50 hover:bg-[#e7e7e7] rounded-full transition-all duration-300 cursor-pointer"
+                        onClick={() => setIsModalOpen(false)}
+                    />
+                </div>
 
-          <div className="w-full flex items-center justify-center flex-col">
-            <h2 className="text-[#2cac9f] text-[2rem] font-[500]">Success!</h2>
-            <IoCheckmarkDoneCircleOutline className="p-2 text-[6rem] text-[#2cac9f]" />
+                <div className="w-full flex items-center justify-center flex-col">
+                    <h2 className="text-[#2cac9f] text-[2rem] font-[500]">
+                        Success!
+                    </h2>
+                    <IoCheckmarkDoneCircleOutline className="p-2 text-[6rem] text-[#2cac9f]"/>
 
-            <p className="text-[1.5rem] text-gray-900 text-center mt-4">
-              Thank you for <br />
-              <span className="font-[600] ">Subscribing</span>
-            </p>
-          </div>
+                    <p className="text-[1.5rem] text-gray-900 dark:text-[#abc2d3] text-center mt-4 mb-2">
+                        Thank you for <br/>
+                        <span className="font-[600] ">Subscribing</span>
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
-    </>
-  );
+    )
+        ;
 };
 
 export default Modal;
@@ -407,62 +424,63 @@ export default Modal;
             {infoModalCode && (
                 <Showcode
                     code='
-import React, { useState } from "react";
+import React, {useState} from "react";
 
-// icons
-import { RxCross1 } from "react-icons/rx";
+// react icons
+import {RxCross1} from "react-icons/rx";
 
-const DropDown = () => {
-  const [isModalOpen, setisModalOpen] = useState(false);
-  return (
-    <>
-      <div
-        className={`${
-          isModalOpen ? " visible" : " invisible"
-        } w-full h-screen fixed top-0 left-0 z-50 bg-[#0000002a] transition-all duration-300`}
-      >
+const Modal = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    return (
         <div
-          className={`${
-            isModalOpen
-              ? " translate-y-[0px] opacity-100"
-              : " translate-y-[-200px] opacity-0"
-          } w-[90%] md:w-[80%] lg:w-[40%] bg-[#ffffff] rounded-lg transition-all duration-300 mx-auto mt-8`}
+            className={`${
+                isModalOpen ? " visible" : " invisible"
+            } w-full h-screen fixed top-0 left-0 z-[200000000] dark:bg-black/40 bg-[#0000002a] transition-all duration-300`}
         >
-          <div className="w-full flex items-end p-4 justify-between border-b border-[#d1d1d1]">
-            <h1 className="text-[1.5rem] font-bold">Modal Header</h1>
-            <RxCross1
-              className="p-2 text-[2.5rem] hover:bg-[#e7e7e7] rounded-full transition-all duration-300 cursor-pointer"
-              onClick={() => setisModalOpen(false)}
-            />
-          </div>
-
-          <div className="p-4 border-b border-[#d1d1d1]">
-            <p className="text-[1rem] text-[#424242]">
-              Woohoo, you are reading this text in a modal!
-            </p>
-          </div>
-
-          <div className="flex items-end justify-end gap-4 p-4 ">
-            <button
-              className="py-2 px-4 border border-[#d1d1d1] rounded-md outline-none text-[#353535]"
-              onClick={() => setisModalOpen(false)}
+            <div
+                className={`${
+                    isModalOpen
+                        ? " translate-y-[0px] opacity-100"
+                        : " translate-y-[-200px] opacity-0"
+                } w-[80%] sm:w-[90%] md:w-[40%] bg-[#fff] dark:bg-slate-800 rounded-lg transition-all duration-300 mx-auto mt-8`}
             >
-              Cancel
-            </button>
-            <button
-              className="py-2 px-4 border border-[#d1d1d1] rounded-md outline-none bg-[#3B9DF8] text-[#fff]"
-              onClick={() => setisModalOpen(false)}
-            >
-              Confirm
-            </button>
-          </div>
+                <div
+                    className="w-full flex items-end p-4 justify-between dark:border-slate-700 border-b border-[#d1d1d1]">
+                    <h1 className="text-[1.5rem] dark:text-[#abc2d3] font-bold">Modal Header</h1>
+                    <RxCross1
+                        className="p-2 text-[2.5rem] dark:text-[#abc2d3]/70 dark:hover:bg-slate-900/50 hover:bg-[#e7e7e7] rounded-full transition-all duration-300 cursor-pointer"
+                        onClick={() => setIsModalOpen(false)}
+                    />
+                </div>
+
+                <div className="p-4 border-b dark:border-slate-700 border-[#d1d1d1]">
+                    <p className="text-[1rem] dark:text-[#abc2d3] text-[#424242]">
+                        Woohoo, you are reading this text in a modal!
+                    </p>
+                </div>
+
+                <div className="flex items-end justify-end gap-4 p-4 ">
+                    <button
+                        className="py-2 px-4 dark:hover:bg-slate-900/50 hover:bg-gray-100 border dark:text-[#abc2d3] dark:border-slate-700 border-[#d1d1d1] rounded-md outline-none text-[#353535]"
+                        onClick={() => setIsModalOpen(false)}
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        className="py-2 px-4 border dark:border-slate-800 border-[#d1d1d1] rounded-md outline-none bg-[#3B9DF8] text-[#fff]"
+                        onClick={() => setIsModalOpen(false)}
+                    >
+                        Confirm
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
-    </>
-  );
+    )
+        ;
 };
 
-export default DropDown;
+export default Modal;
           '
                 />
             )}
@@ -550,80 +568,77 @@ export default DropDown;
             {permissionModalCode && (
                 <Showcode
                     code='
-import React, { useState } from "react";
+import React, {useState} from "react";
 
-// icons
-import { RxCross1 } from "react-icons/rx";
+// react icons
+import {RxCross1} from "react-icons/rx";
 
-const DropDown = () => {
-  const [isModalOpen, setisModalOpen] = useState(false);
-  return (
-    <>
-      <div className="p-8 mb-4 flex items-center gap-5 justify-center">
-        <div className="w-full flex items-center justify-center">
-          <button
-            className="px-4 py-2 bg-[#3B9DF8] text-[#fff] rounded "
-            onClick={() => setisModalOpen(true)}
-          >
-            Open Modal
-          </button>
-        </div>
+const Modal = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    return (
         <div
-          className={`${
-            isModalOpen ? " visible" : " invisible"
-          } w-full h-screen fixed top-0 left-0 z-50 bg-[#0000002a] transition-all duration-300 flex items-center justify-center`}
-        >
-          <div
             className={`${
-              isModalOpen ? " scale-[1] opacity-100" : " scale-[0] opacity-0"
-            } w-[90%] md:w-[80%] lg:w-[60%] bg-[#fff] rounded-lg transition-all duration-300 mx-auto mt-8`}
-          >
-            <div className="w-full flex items-end p-4 justify-between border-b border-[#d1d1d1]">
-              <h1 className="text-[1.5rem] font-bold">Terms of Service</h1>
-              <RxCross1
-                className="p-2 text-[2.5rem] hover:bg-[#e7e7e7] rounded-full transition-all duration-300 cursor-pointer"
-                onClick={() => setisModalOpen(false)}
-              />
-            </div>
+                isModalOpen ? " visible" : " invisible"
+            } w-full h-screen fixed top-0 left-0 z-[200000000] dark:bg-black/40 bg-[#0000002a] transition-all duration-300 flex items-center justify-center`}
+        >
+            <div
+                className={`${
+                    isModalOpen
+                        ? " scale-[1] opacity-100"
+                        : " scale-[0] opacity-0"
+                } w-[90%] sm:w-[80%] md:w-[60%] dark:bg-slate-800 bg-[#fff] rounded-lg transition-all duration-300 mx-auto mt-8`}
+            >
+                <div
+                    className="w-full flex items-end p-4 justify-between dark:border-slate-700 border-b border-[#d1d1d1]">
+                    <h1 className="text-[1.5rem] font-bold dark:text-[#abc2d3]">
+                        Terms of Service
+                    </h1>
+                    <RxCross1
+                        className="p-2 text-[2.5rem] dark:text-[#abc2d3]/70 dark:hover:bg-slate-900/50 hover:bg-[#e7e7e7] rounded-full transition-all duration-300 cursor-pointer"
+                        onClick={() => setIsModalOpen(false)}
+                    />
+                </div>
 
-            <div className="p-4 border-b border-[#d1d1d1]">
-              <p className="text-[1.2rem] text-text">
-                With less than a month to go before the European Union enacts
-                new consumer privacy laws for its citizens, companies around the
-                world are updating their terms of service agreements to comply.
-              </p>
+                <div className="p-4 border-b dark:border-slate-700 border-[#d1d1d1]">
+                    <p className="text-[1.2rem] dark:text-[#abc2d3] text-[#424242]">
+                        With less than a month to go before the European Union
+                        enacts new consumer privacy laws for its citizens,
+                        companies around the world are updating their terms of
+                        service agreements to comply.
+                    </p>
 
-              <p className="text-[1.2rem] text-[#424242] mt-8">
-                The European Union’s General Data Protection Regulation
-                (G.D.P.R.) goes into effect on May 25 and is meant to ensure a
-                common set of data rights in the European Union. It requires
-                organizations to notify users as soon as possible of high-risk
-                data breaches that could personally affect them.
-              </p>
-            </div>
+                    <p className="text-[1.2rem] dark:text-[#abc2d3] text-[#424242] mt-8">
+                        The European Union’s General Data Protection Regulation
+                        (G.D.P.R.) goes into effect on May 25 and is meant to
+                        ensure a common set of data rights in the European
+                        Union. It requires organizations to notify users as soon
+                        as possible of high-risk data breaches that could
+                        personally affect them.
+                    </p>
+                </div>
 
-            <div className="flex items-center gap-4 p-4 ">
-              <button
-                className="py-2 px-4 rounded-md outline-none bg-[#3B9DF8] text-[#fff]"
-                onClick={() => setisModalOpen(false)}
-              >
-                I Accept
-              </button>
-              <button
-                className="py-2 px-4 border border-[#d1d1d1] rounded-md outline-none text-[#353535]"
-                onClick={() => setisModalOpen(false)}
-              >
-                Decline
-              </button>
+                <div className="flex items-center gap-4 p-4 ">
+                    <button
+                        className="py-2 px-4 rounded-md outline-none bg-[#3B9DF8] text-[#fff]"
+                        onClick={() => setIsModalOpen(false)}
+                    >
+                        I Accept
+                    </button>
+                    <button
+                        className="py-2 px-4 dark:border-slate-700 dark:text-[#abc2d3] dark:hover:bg-slate-900/50 hover:bg-gray-100 border border-[#d1d1d1] rounded-md outline-none text-[#353535]"
+                        onClick={() => setIsModalOpen(false)}
+                    >
+                        Decline
+                    </button>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </>
-  );
+    )
+        ;
 };
 
-export default DropDown;
+export default Modal;
               '
                 />
             )}
@@ -747,117 +762,113 @@ export default DropDown;
             {formModalCode && (
                 <Showcode
                     code='
-import React, { useState } from "react";
+import React, {useState} from "react";
 
-// icons
-import { RxCross1 } from "react-icons/rx";
+// react icons
+import {RxCross1} from "react-icons/rx";
 
-const DropDown = () => {
-  const [isModalOpen, setisModalOpen] = useState(false);
-  return (
-    <>
-      <div className="p-8 mb-4 flex items-center gap-5 justify-center">
-        <div className="w-full flex items-center justify-center">
-          <button
-            className="px-4 py-2 bg-[#3B9DF8] text-[#fff] rounded "
-            onClick={() => setisModalOpen(true)}
-          >
-            Open Modal
-          </button>
-        </div>
+const Modal = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    return (
         <div
-          className={`${
-            isModalOpen ? " visible" : " invisible"
-          } w-full h-screen fixed top-0 left-0 z-50 bg-[#0000002a] transition-all duration-300 flex items-center justify-center`}
-        >
-          <div
             className={`${
-              isModalOpen ? " scale-[1] opacity-100" : " scale-[0] opacity-0"
-            } w-[90%] md:w-[80%] lg:w-[35%] bg-[#fff] rounded-lg transition-all duration-300 mx-auto mt-8`}
-          >
-            <div className="w-full flex items-end p-4 justify-between border-b border-[#d1d1d1]">
-              <h1 className="text-[1.5rem] font-bold">
-                Sign in to our platform
-              </h1>
-              <RxCross1
-                className="p-2 text-[2.5rem] hover:bg-[#e7e7e7] rounded-full transition-all duration-300 cursor-pointer"
-                onClick={() => setisModalOpen(false)}
-              />
-            </div>
-
-            <form className="flex flex-col gap-5 p-4">
-              <div>
-                <label
-                  htmlFor="email"
-                  className="text-[1rem] font-[500] text-[#464646]"
-                >
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="zenuilibrary@gmail.com"
-                  className="py-2 px-3 border border-[#d1d1d1] rounded-md w-full focus:outline-none mt-1 focus:border-[#3B9DF8]"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="password"
-                  className="text-[1rem] font-[500] text-[#464646]"
-                >
-                  Password
-                </label>
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  placeholder="**********"
-                  className="py-2 px-3 border border-[#d1d1d1] rounded-md w-full focus:outline-none mt-1 focus:border-[#3B9DF8]"
-                />
-              </div>
-
-              <div className="flex items-center justify-between w-full">
-                <div className="flex items-center gap-2">
-                  <input
-                    type="checkbox"
-                    name="checkbox"
-                    id="checkbox"
-                    className="w-[17px] h-[17px]"
-                  />
-                  <label htmlFor="checkbox">Remember me</label>
+                isModalOpen ? " visible" : " invisible"
+            } w-full h-screen fixed top-0 left-0 z-[200000000] dark:bg-black/40 bg-[#0000002a] transition-all duration-300 flex items-center justify-center`}
+        >
+            <div
+                className={`${
+                    isModalOpen
+                        ? " scale-[1] opacity-100"
+                        : " scale-[0] opacity-0"
+                } w-[90%] sm:w-[80%] md:w-[35%] dark:bg-slate-800 bg-[#fff] rounded-lg transition-all duration-300 mx-auto mt-8`}
+            >
+                <div
+                    className="w-full flex items-end p-4 justify-between border-b dark:border-slate-700 border-[#d1d1d1]">
+                    <h1 className="text-[1.5rem] dark:text-[#abc2d3] font-bold">
+                        Sign in to our platform
+                    </h1>
+                    <RxCross1
+                        className="p-2 text-[2.5rem] dark:text-[#abc2d3]/70 dark:hover:bg-slate-900/50 hover:bg-[#e7e7e7] rounded-full transition-all duration-300 cursor-pointer"
+                        onClick={() => setIsModalOpen(false)}
+                    />
                 </div>
 
-                <a href="#" className="text-[#3B9DF8] font-[400] text-[1rem]">
-                  Forget Password
-                </a>
-              </div>
+                <form className="flex flex-col gap-5 p-4">
+                    <div>
+                        <label
+                            htmlFor="email"
+                            className="text-[1rem] dark:text-[#abc2d3] font-[500] text-[#464646]"
+                        >
+                            Email
+                        </label>
+                        <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            placeholder="zenuilibrary@gmail.com"
+                            className="py-2 px-3 border dark:border-slate-700 dark:bg-slate-900 dark:placeholder:text-slate-500 dark:text-[#abc2d3] border-[#d1d1d1] rounded-md w-full focus:outline-none mt-1 focus:border-[#3B9DF8]"
+                        />
+                    </div>
 
-              <button
-                type="submit"
-                className="py-2 px-4 w-full bg-[#3B9DF8] text-[#fff] rounded-md"
-              >
-                Sign In
-              </button>
-            </form>
+                    <div>
+                        <label
+                            htmlFor="password"
+                            className="text-[1rem] font-[500] dark:text-[#abc2d3] text-[#464646]"
+                        >
+                            Password
+                        </label>
+                        <input
+                            type="password"
+                            name="password"
+                            id="password"
+                            placeholder="**********"
+                            className="py-2 px-3 border border-[#d1d1d1] dark:border-slate-700 dark:bg-slate-900 dark:placeholder:text-slate-500 dark:text-[#abc2d3] rounded-md w-full focus:outline-none mt-1 focus:border-[#3B9DF8]"
+                        />
+                    </div>
 
-            <div className="flex items-center justify-center w-full pb-4">
-              <p className="text-[1rem] font-[400] text-[#464646c]">
-                Not have any account?{" "}
-                <a href="#" className="text-[#3B9DF8] underline">
-                  Sign Up
-                </a>
-              </p>
+                    <div className="flex items-center justify-between w-full">
+                        <div className="flex items-center gap-2">
+                            <input
+                                type="checkbox"
+                                name="checkbox"
+                                id="checkbox"
+                                className="w-[17px] h-[17px]"
+                            />
+                            <label htmlFor="checkbox" className="dark:text-[#abc2d3]">Remember me</label>
+                        </div>
+
+                        <a
+                            href="#"
+                            className="text-[#3B9DF8] font-[400] text-[1rem]"
+                        >
+                            Forget Password
+                        </a>
+                    </div>
+
+                    <button
+                        type="submit"
+                        className="py-2 px-4 w-full bg-[#3B9DF8] text-[#fff] rounded-md"
+                    >
+                        Sign In
+                    </button>
+                </form>
+
+                <div className="flex items-center justify-center w-full pb-4">
+                    <p className="text-[1rem] font-[400] dark:text-[#abc2d3] text-[#464646c]">
+                        Not have any account?{" "}
+                        <a href="#" className="text-[#3B9DF8] underline">
+                            Sign Up
+                        </a>
+                    </p>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </>
-  );
+    )
+        ;
 };
 
-export default DropDown;
+export default Modal;
               '
                 />
             )}
@@ -928,65 +939,56 @@ export default DropDown;
             {cookieModalCode && (
                 <Showcode
                     code='
-import React, { useState } from "react";
+import React, {useState} from "react";
 
-const DropDown = () => {
-  const [isModalOpen, setisModalOpen] = useState(false);
-  return (
-    <>
-      <div className="p-8 mb-4 flex items-center gap-5 justify-center">
-        <div className="w-full flex items-center justify-center">
-          <button
-            className="px-4 py-2 bg-[#3B9DF8] text-[#fff] rounded "
-            onClick={() => setisModalOpen(true)}
-          >
-            Open Modal
-          </button>
-        </div>
+const Modal = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    return (
         <div
-          className={`${
-            isModalOpen ? " visible" : " invisible"
-          } w-full h-screen fixed flex items-end justify-end top-0 left-0 z-50   transition-all duration-300`}
-        >
-          <div
             className={`${
-              isModalOpen
-                ? " translate-y-[0px] opacity-100"
-                : " translate-y-[200px] opacity-0"
-            } w-full  bg-[#fff] rounded-lg transition-all shadow-primary duration-300 mx-auto mt-8`}
-          >
-            <div className="flex justify-between md:flex-row flex-col w-full gap-5 px-8 py-12">
-              <p className="text-[1.2rem] text-[#424242] w-full md:w-[70%]">
-                This site uses cookies and related technologies, as described in
-                our privacy policy, for purposes that may include site
-                operation, analytics, enhanced user experience, or advertising.
-                You may choose to consent to our use of these technologies, or
-                manage your own preferences.
-              </p>
+                isModalOpen ? " visible" : " invisible"
+            } w-full h-screen fixed flex items-end justify-end top-0 left-0 z-[200000000] dark:bg-black/40 transition-all duration-300`}
+        >
+            <div
+                className={`${
+                    isModalOpen
+                        ? " translate-y-[0px] opacity-100"
+                        : " translate-y-[200px] opacity-0"
+                } w-full dark:bg-slate-800 bg-[#fff] transition-all duration-300 mx-auto mt-8`}
+            >
+                <div className="flex sm:flex-row flex-col justify-between w-full gap-5 px-8 py-12">
+                    <p className="text-[1.2rem] dark:text-[#abc2d3] text-text w-full sm:w-[70%]">
+                        This site uses cookies and related technologies, as
+                        described in our privacy policy, for purposes that may
+                        include site operation, analytics, enhanced user
+                        experience, or advertising. You may choose to consent to
+                        our use of these technologies, or manage your own
+                        preferences.
+                    </p>
 
-              <div className="flex items-end justify-end gap-4 flex-col w-full md:w-[20%]">
-                <button
-                  className="py-2 w-full px-4 border border-[#d1d1d1] rounded-md outline-none bg-[#3B9DF8] text-[#fff]"
-                  onClick={() => setisModalOpen(false)}
-                >
-                  Accept
-                </button>
-                <button
-                  className="py-2 w-full px-4 border border-[#d1d1d1] rounded-md outline-none text-[#353535]"
-                  onClick={() => setisModalOpen(false)}
-                >
-                  Dicline
-                </button>
-              </div>
+                    <div className="flex items-end justify-end gap-4 flex-col md:flex-row w-full sm:w-[20%]">
+                        <button
+                            className="py-2 w-full px-4 dark:border-slate-800 border border-[#d1d1d1] rounded-md outline-none bg-[#3B9DF8] text-[#fff]"
+                            onClick={() => setIsModalOpen(false)}
+                        >
+                            Accept
+                        </button>
+                        <button
+                            className="py-2 w-full dark:border-slate-700 dark:text-[#abc2d3] dark:hover:bg-slate-900/50 hover:bg-gray-100 px-4 border border-[#d1d1d1] rounded-md outline-none text-[#353535]"
+                            onClick={() => setIsModalOpen(false)}
+                        >
+                            Decline
+                        </button>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </>
-  );
+    )
+        ;
 };
 
-export default DropDown;
+export default Modal;
               '
                 />
             )}
@@ -1192,197 +1194,199 @@ export default DropDown;
             {fullScreenModalCode && (
                 <Showcode
                     code='
-import React, { useState } from "react";
+import React, {useState} from "react";
 
-// icons
-import { RxCross1 } from "react-icons/rx";
+// react icons
+import {RxCross1} from "react-icons/rx";
 
-const DropDown = () => {
-  const [isModalOpen, setisModalOpen] = useState(false);
-  return (
-    <>
-      <div className="p-8 mb-4 flex items-center gap-5 justify-center">
-        <div className="w-full flex items-center justify-cente  r">
-          <button
-            className="px-4 py-2 bg-[#3B9DF8] text-[#fff] rounded "
-            onClick={() => setisModalOpen(true)}
-          >
-            Open Modal
-          </button>
-        </div>
+const Modal = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    return (
         <div
-          className={`${
-            isModalOpen ? " visible" : " invisible"
-          } overflow-y-scroll w-full h-screen fixed flex items-end justify-end top-0 left-0 z-50   transition-all duration-300`}
-        >
-          <div
             className={`${
-              isModalOpen
-                ? " translate-y-[0px] opacity-100"
-                : " translate-y-[200px] opacity-0"
-            } w-full h-full bg-[#eceef6] rounded-lg transition-all shadow-primary duration-300 mx-auto mt-8`}
-          >
-            <div className="w-full flex items-end p-4 justify-end">
-              <RxCross1
-                className="p-2 text-[2.5rem] hover:bg-[#e7e7e7] rounded-full transition-all duration-300 cursor-pointer"
-                onClick={() => setisModalOpen(false)}
-              />
+                isModalOpen ? " visible" : " invisible"
+            } w-full h-screen fixed flex items-end justify-end top-0 left-0 z-[200000000] dark:bg-black/40 transition-all duration-300`}
+        >
+            <div
+                className={`${
+                    isModalOpen
+                        ? " translate-y-[0px] opacity-100"
+                        : " translate-y-[200px] opacity-0"
+                } overflow-y-scroll w-full h-full dark:bg-slate-800 bg-[#eceef6] transition-all duration-300 mx-auto mt-8`}
+            >
+                <div className="w-full flex items-end p-4 justify-end">
+                    <RxCross1
+                        className="p-2 text-[2.5rem] dark:text-[#abc2d3]/70 dark:hover:bg-slate-900/50 hover:bg-[#e7e7e7] rounded-full transition-all duration-300 cursor-pointer"
+                        onClick={() => setIsModalOpen(false)}
+                    />
+                </div>
+                <div className="flex items-start md:flex-row flex-col justify-between gap-8">
+                    <div className="bg-[#fff] dark:bg-slate-900 min-h-screen rounded-md p-6 w-full md:w-[70%]">
+                        {/* steps */}
+                        <div
+                            className="flex items-center md:flex-row flex-col justify-between dark:border-slate-700 w-full border-b border-[#d1d1d1]">
+                            <div className="flex items-center gap-5">
+                            <span className="text-[1rem] font-[500] text-[#3B9DF8] border-b border-[#3B9DF8] pb-3">
+                              1.Cart
+                            </span>
+                                <span className="text-[1rem] font-[500] dark:text-[#abc2d3] text-[#424242] pb-3">
+                              2. Shipping & Payment
+                            </span>
+                                <span className="text-[1rem] font-[500] dark:text-[#abc2d3] text-[#424242] pb-3">
+                              3. Confimation
+                            </span>
+                            </div>
+
+                            <a
+                                href="#"
+                                className="underline text-[#3B9DF8] font-[500] pb-3"
+                            >
+                                Why is subscribing better?
+                            </a>
+                        </div>
+
+                        {/* products */}
+                        <div
+                            className="mt-12 flex items-start border-b dark:border-slate-700 border-[#d1d1d1] pb-6 justify-between w-full">
+                            <div className="flex items-start gap-5">
+                                <img
+                                    src="https://img.freepik.com/free-photo/still-life-skincare-products_23-2149371284.jpg?t=st=1711125399~exp=1711128999~hmac=012d9b565ec8c14efb41ddb92d6adaa9a7902802e6c884a3051fb6d449837afe&w=740"
+                                    alt="Still life of skincare products"
+                                    className="w-[90px] h-[60px] object-cover rounded-md"
+                                />
+
+                                <div className="">
+                                    <h2 className="text-[1.2rem] font-[600] text-[#3B9DF8]">
+                                        Still life of skincare products
+                                    </h2>
+                                    <p className="text-[1rem] font-[500] dark:text-[#abc2d3] text-[#424242]">
+                                        25 items
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="flex items-center gap-12">
+                                <h3 className="text-[1.2rem] font-[600] dark:text-slate-500 text-[#6d6d6d]">
+                                    $32 <span className="text-[#3B9DF8] pl-1">$12</span>
+                                </h3>
+
+                                <RxCross1 className="text-[#6d6d6d] dark:text-slate-400"/>
+                            </div>
+                        </div>
+                        <div
+                            className="mt-12 flex items-start border-b dark:border-slate-700 border-[#d1d1d1] pb-6 justify-between w-full">
+                            <div className="flex items-start gap-5">
+                                <img
+                                    src="https://img.freepik.com/free-photo/levitating-music-headphones-display_23-2149817605.jpg?t=st=1711125916~exp=1711129516~hmac=26762a7dd8eb383d3eccccb2cc232b163699fd9bf408804d4ad09f8ea127f639&w=740"
+                                    alt="Levitating music headphones display"
+                                    className="w-[90px] h-[60px] object-cover rounded-md"
+                                />
+
+                                <div className="">
+                                    <h2 className="text-[1.2rem] font-[600] text-[#3B9DF8]">
+                                        Still life of skincare products
+                                    </h2>
+                                    <p className="text-[1rem] font-[500] dark:text-[#abc2d3] text-[#424242]">
+                                        8 items
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="flex items-center gap-12">
+                                <h3 className="text-[1.2rem] font-[600] dark:text-slate-500 text-[#6d6d6d]">
+                                    $32 <span className="text-[#3B9DF8] pl-1">$12</span>
+                                </h3>
+
+                                <RxCross1 className="text-[#6d6d6d] dark:text-slate-400"/>
+                            </div>
+                        </div>
+                        <div
+                            className="mt-12 flex items-start border-b dark:border-slate-700 border-[#d1d1d1] pb-6 justify-between w-full">
+                            <div className="flex items-start gap-5">
+                                <img
+                                    src="https://img.freepik.com/free-vector/set-aloe-vera-cosmetic-products_23-2147638007.jpg?t=st=1711125950~exp=1711129550~hmac=cdcb71b9735c22a4a1f74488397d71d0d32e20fed7c2ca003d8396db00961620&w=740"
+                                    alt="Set of aloe vera cosmetic products"
+                                    className="w-[90px] h-[60px] object-cover rounded-md"
+                                />
+
+                                <div className="">
+                                    <h2 className="text-[1.2rem] font-[600] text-[#3B9DF8]">
+                                        Still life of skincare products
+                                    </h2>
+                                    <p className="text-[1rem] dark:text-[#abc2d3] font-[500] text-[#424242]">
+                                        2 items
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="flex items-center gap-12">
+                                <h3 className="text-[1.2rem] font-[600] dark:text-slate-500 text-[#6d6d6d]">
+                                    $32 <span className="text-[#3B9DF8] pl-1">$12</span>
+                                </h3>
+
+                                <RxCross1 className="text-[#6d6d6d] dark:text-slate-400"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="w-full md:w-[30%] mr-8">
+                        <div className="bg-[#fff] dark:bg-slate-900 rounded-md p-6 ">
+                            <h3 className="text-[1rem] text-[#3B9DF8] font-[500] dark:border-slate-700 border-b border-[#d1d1d1] pb-4 text-center">
+                                Order Summary
+                            </h3>
+
+                            <div className="flex flex-col gap-5 mt-4">
+                                <div className="flex items-center justify-between w-full">
+                                    <h4 className="text-[1rem] font-[500] text-[#3B9DF8]">
+                                        Item Total
+                                    </h4>
+                                    <span className="text-text dark:text-[#abc2d3] font-[500]">
+                                $180.00
+                              </span>
+                                </div>
+
+                                <div className="flex items-center justify-between w-full">
+                                    <h4 className="text-[1rem] font-[500] text-[#3B9DF8]">
+                                        Subcription savings (15% off)
+                                    </h4>
+                                    <span className="text-[#3B9DF8] font-[500]">
+                                - $18.00
+                              </span>
+                                </div>
+
+                                <div className="flex items-center justify-between w-full">
+                                    <h4 className="text-[1rem] font-[500] text-[#3B9DF8]">
+                                        Shipping
+                                    </h4>
+                                    <span className="text-[#3B9DF8] font-[500]">
+                                free
+                              </span>
+                                </div>
+
+                                <div
+                                    className="flex items-center justify-between w-full dark:border-slate-700 border-t border-[#d1d1d1] pt-4">
+                                    <h4 className="text-[1rem] font-[500] dark:text-[#abc2d3] text-text">
+                                        Order Total
+                                    </h4>
+                                    <span className="text-text dark:text-[#abc2d3] font-[500]">
+                                $200.00
+                              </span>
+                                </div>
+                            </div>
+                        </div>
+                        <button className="w-full py-2 px-6 mt-6 tracking-widest bg-[#3B9DF8] rounded-md text-[#fff]">
+                            Checkout
+                        </button>
+                    </div>
+                </div>
             </div>
-
-            <div className="flex items-start justify-between gap-8">
-              <div className="bg-[#fff] min-h-screen rounded-md p-6 w-full lg:w-[70%]">
-                {/* steps */}
-                <div className="flex items-center lg:flex-row flex-col justify-between w-full border-b border-[#d1d1d1]">
-                  <div className="flex items-center gap-5">
-                    <span className="text-[1rem] font-[500] text-[#3B9DF8] border-b border-[#3B9DF8] pb-3">
-                      1.Cart
-                    </span>
-                    <span className="text-[1rem] font-[500] text-[#424242] pb-3">
-                      2. Shipping & Payment
-                    </span>
-                    <span className="text-[1rem] font-[500] text-[#424242] pb-3">
-                      3. Confimation
-                    </span>
-                  </div>
-
-                  <a
-                    href="#"
-                    className="underline text-[#3B9DF8] font-[500] pb-3"
-                  >
-                    Why is subscribing better?
-                  </a>
-                </div>
-
-                {/* products */}
-                <div className="mt-12 flex items-start border-b border-[#d1d1d1] pb-6 justify-between w-full">
-                  <div className="flex items-start gap-5">
-                    <img
-                      src="https://img.freepik.com/free-photo/still-life-skincare-products_23-2149371284.jpg?t=st=1711125399~exp=1711128999~hmac=012d9b565ec8c14efb41ddb92d6adaa9a7902802e6c884a3051fb6d449837afe&w=740"
-                      alt="Still life of skincare products"
-                      className="w-[90px] h-[60px] object-cover rounded-md"
-                    />
-
-                    <div className="">
-                      <h2 className="text-[1.2rem] font-[600] text-[#3B9DF8]">
-                        Still life of skincare products
-                      </h2>
-                      <p className="text-[1rem] font-[500] text-[#424242]">
-                        25 items
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-12">
-                    <h3 className="text-[1.2rem] font-[600] text-[#6d6d6d]">
-                      $32 <span className="text-[#3B9DF8] pl-1">$12</span>
-                    </h3>
-
-                    <RxCross1 className="text-[#6d6d6d]" />
-                  </div>
-                </div>
-                <div className="mt-12 flex items-start border-b border-[#d1d1d1] pb-6 justify-between w-full">
-                  <div className="flex items-start gap-5">
-                    <img
-                      src="https://img.freepik.com/free-photo/levitating-music-headphones-display_23-2149817605.jpg?t=st=1711125916~exp=1711129516~hmac=26762a7dd8eb383d3eccccb2cc232b163699fd9bf408804d4ad09f8ea127f639&w=740"
-                      alt="Levitating music headphones display"
-                      className="w-[90px] h-[60px] object-cover rounded-md"
-                    />
-
-                    <div className="">
-                      <h2 className="text-[1.2rem] font-[600] text-[#3B9DF8]">
-                        Still life of skincare products
-                      </h2>
-                      <p className="text-[1rem] font-[500] text-[#424242]">
-                        8 items
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-12">
-                    <h3 className="text-[1.2rem] font-[600] text-[#6d6d6d]">
-                      $32 <span className="text-[#3B9DF8] pl-1">$12</span>
-                    </h3>
-
-                    <RxCross1 className="text-[#6d6d6d]" />
-                  </div>
-                </div>
-                <div className="mt-12 flex items-start border-b border-[#d1d1d1] pb-6 justify-between w-full">
-                  <div className="flex items-start gap-5">
-                    <img
-                      src="https://img.freepik.com/free-vector/set-aloe-vera-cosmetic-products_23-2147638007.jpg?t=st=1711125950~exp=1711129550~hmac=cdcb71b9735c22a4a1f74488397d71d0d32e20fed7c2ca003d8396db00961620&w=740"
-                      alt="Set of aloe vera cosmetic products"
-                      className="w-[90px] h-[60px] object-cover rounded-md"
-                    />
-
-                    <div className="">
-                      <h2 className="text-[1.2rem] font-[600] text-[#3B9DF8]">
-                        Still life of skincare products
-                      </h2>
-                      <p className="text-[1rem] font-[500] text-[#424242]">
-                        2 items
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-12">
-                    <h3 className="text-[1.2rem] font-[600] text-[#6d6d6d]">
-                      $32 <span className="text-[#3B9DF8] pl-1">$12</span>
-                    </h3>
-
-                    <RxCross1 className="text-[#6d6d6d]" />
-                  </div>
-                </div>
-              </div>
-
-              <div className="w-full lg:w-[30%] mr-8">
-                <div className="bg-[#fff] rounded-md p-6 ">
-                  <h3 className="text-[1rem] text-[#3B9DF8] font-[500] border-b border-[#d1d1d1] pb-4 text-center">
-                    Order Summary
-                  </h3>
-
-                  <div className="flex flex-col gap-5 mt-4">
-                    <div className="flex items-center justify-between w-full">
-                      <h4 className="text-[1rem] font-[500] text-[#3B9DF8]">
-                        Item Total
-                      </h4>
-                      <span className="text-[#424242] font-[500]">$180.00</span>
-                    </div>
-
-                    <div className="flex items-center justify-between w-full">
-                      <h4 className="text-[1rem] font-[500] text-[#3B9DF8]">
-                        Subcription savings (15% off)
-                      </h4>
-                      <span className="text-[#3B9DF8] font-[500]">- $18.00</span>
-                    </div>
-
-                    <div className="flex items-center justify-between w-full">
-                      <h4 className="text-[1rem] font-[500] text-[#3B9DF8]">
-                        Shipping
-                      </h4>
-                      <span className="text-[#3B9DF8] font-[500]">free</span>
-                    </div>
-
-                    <div className="flex items-center justify-between w-full border-t border-[#d1d1d1] pt-4">
-                      <h4 className="text-[1rem] font-[500] text-[#424242]">
-                        Order Total
-                      </h4>
-                      <span className="text-[#424242] font-[500]">$200.00</span>
-                    </div>
-                  </div>
-                </div>
-                <button className="w-full py-2 px-6 mt-6 tracking-widest bg-[#3B9DF8] rounded-md text-[#fff]">
-                  Checkout
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-    </>
-  );
+    )
+        ;
 };
 
-export default DropDown;
+export default Modal;
               '
                 />
             )}
@@ -1418,34 +1422,34 @@ export default DropDown;
                     <div
                         className={`${
                             modal9Open ? ' visible' : ' invisible'
-                        } w-full h-screen fixed bg-[rgb(0,0,0,0.2)] top-0 left-0 z-50  transition-all duration-300 z-[999]`}
+                        } w-full h-screen fixed bg-[rgb(0,0,0,0.2)] top-0 left-0 z-[200000000] dark:bg-black/40 transition-all duration-300`}
                     >
                       <div
                           className={`${
                               modal9Open
                                   ? ' translate-x-[0px] opacity-100'
                                   : ' translate-x-[-200px] opacity-0'
-                          } overflow-y-scroll zenUIRightModal w-[40%] h-screen bg-[#eceef6] transition-all duration-300`}
+                          } overflow-y-scroll zenUIRightModal w-[40%] dark:bg-slate-800 h-screen bg-[#eceef6] transition-all duration-300`}
                       >
                         <div className='w-full flex items-end p-4 justify-end'>
                           <RxCross1
-                              className='p-2 w-fit   text-[2.5rem] hover:bg-[#e7e7e7] rounded-full transition-all duration-300 cursor-pointer'
+                              className='p-2 w-fit dark:text-slate-300 dark:hover:bg-slate-900/50 text-[2.5rem] hover:bg-[#e7e7e7] rounded-full transition-all duration-300 cursor-pointer'
                               onClick={() => setModal9Open(false)}
                           />
                         </div>
 
                         <div className='flex items-start flex-col p-12 justify-between gap-8'>
-                          <div className='bg-[#fff] min-h-screen rounded-md p-6 w-full'>
+                          <div className='bg-[#fff] dark:bg-slate-900 min-h-screen rounded-md p-6 w-full'>
                             {/* steps */}
-                            <div className='flex items-center 1024px:flex-row flex-col justify-between w-full border-b border-[#d1d1d1]'>
-                              <div className='flex items-center gap-5'>
+                            <div className='flex items-center 1024px:flex-row flex-col justify-between w-full border-b border-[#d1d1d1] dark:border-slate-700 flex-wrap gap-y-6'>
+                              <div className='flex items-center flex-wrap gap-5'>
                               <span className='text-[1rem] font-[500] text-primary border-b border-primary pb-3'>
                                 1.Cart
                               </span>
-                                <span className='text-[1rem] font-[500] text-text pb-3'>
+                                <span className='text-[1rem] dark:text-[#abc2d3] font-[500] text-text pb-3'>
                                 2. Shipping & Payment
                               </span>
-                                <span className='text-[1rem] font-[500] text-text pb-3'>
+                                <span className='text-[1rem] dark:text-[#abc2d3] font-[500] text-text pb-3'>
                                 3. Confimation
                               </span>
                               </div>
@@ -1459,7 +1463,7 @@ export default DropDown;
                             </div>
 
                             {/* products */}
-                            <div className='mt-12 flex items-start border-b border-[#d1d1d1] pb-6 justify-between w-full'>
+                            <div className='mt-12 flex items-start dark:border-slate-700 border-b border-[#d1d1d1] pb-6 justify-between w-full'>
                               <div className='flex items-start gap-5'>
                                 <img
                                     src='https://img.freepik.com/free-photo/still-life-skincare-products_23-2149371284.jpg?t=st=1711125399~exp=1711128999~hmac=012d9b565ec8c14efb41ddb92d6adaa9a7902802e6c884a3051fb6d449837afe&w=740'
@@ -1471,22 +1475,22 @@ export default DropDown;
                                   <h2 className='text-[1.2rem] font-[600] text-primary'>
                                     Still life of skincare products
                                   </h2>
-                                  <p className='text-[1rem] font-[500] text-text'>
+                                  <p className='text-[1rem] dark:text-slate-400 font-[500] text-text'>
                                     25 items
                                   </p>
                                 </div>
                               </div>
 
                               <div className='flex items-center gap-12'>
-                                <h3 className='text-[1.2rem] font-[600] text-[#6d6d6d]'>
+                                <h3 className='text-[1.2rem] font-[600] dark:text-slate-400 text-[#6d6d6d]'>
                                   $32{' '}
                                   <span className='text-primary pl-1'>$12</span>
                                 </h3>
 
-                                <RxCross1 className='text-[#6d6d6d]' />
+                                <RxCross1 className='text-[#6d6d6d] dark:text-slate-400' />
                               </div>
                             </div>
-                            <div className='mt-12 flex items-start border-b border-[#d1d1d1] pb-6 justify-between w-full'>
+                            <div className='mt-12 flex items-start dark:border-slate-700 border-b border-[#d1d1d1] pb-6 justify-between w-full'>
                               <div className='flex items-start gap-5'>
                                 <img
                                     src='https://img.freepik.com/free-photo/levitating-music-headphones-display_23-2149817605.jpg?t=st=1711125916~exp=1711129516~hmac=26762a7dd8eb383d3eccccb2cc232b163699fd9bf408804d4ad09f8ea127f639&w=740'
@@ -1498,22 +1502,22 @@ export default DropDown;
                                   <h2 className='text-[1.2rem] font-[600] text-primary'>
                                     Still life of skincare products
                                   </h2>
-                                  <p className='text-[1rem] font-[500] text-text'>
+                                  <p className='text-[1rem] dark:text-slate-400 font-[500] text-text'>
                                     8 items
                                   </p>
                                 </div>
                               </div>
 
                               <div className='flex items-center gap-12'>
-                                <h3 className='text-[1.2rem] font-[600] text-[#6d6d6d]'>
+                                <h3 className='text-[1.2rem] font-[600] dark:text-slate-400 text-[#6d6d6d]'>
                                   $32{' '}
                                   <span className='text-primary pl-1'>$12</span>
                                 </h3>
 
-                                <RxCross1 className='text-[#6d6d6d]' />
+                                <RxCross1 className='text-[#6d6d6d] dark:text-slate-400' />
                               </div>
                             </div>
-                            <div className='mt-12 flex items-start border-b border-[#d1d1d1] pb-6 justify-between w-full'>
+                            <div className='mt-12 flex items-start dark:border-slate-700 border-b border-[#d1d1d1] pb-6 justify-between w-full'>
                               <div className='flex items-start gap-5'>
                                 <img
                                     src='https://img.freepik.com/free-vector/set-aloe-vera-cosmetic-products_23-2147638007.jpg?t=st=1711125950~exp=1711129550~hmac=cdcb71b9735c22a4a1f74488397d71d0d32e20fed7c2ca003d8396db00961620&w=740'
@@ -1525,26 +1529,26 @@ export default DropDown;
                                   <h2 className='text-[1.2rem] font-[600] text-primary'>
                                     Still life of skincare products
                                   </h2>
-                                  <p className='text-[1rem] font-[500] text-text'>
+                                  <p className='text-[1rem] dark:text-slate-400 font-[500] text-text'>
                                     2 items
                                   </p>
                                 </div>
                               </div>
 
                               <div className='flex items-center gap-12'>
-                                <h3 className='text-[1.2rem] font-[600] text-[#6d6d6d]'>
+                                <h3 className='text-[1.2rem] font-[600] dark:text-slate-400 text-[#6d6d6d]'>
                                   $32{' '}
                                   <span className='text-primary pl-1'>$12</span>
                                 </h3>
 
-                                <RxCross1 className='text-[#6d6d6d]' />
+                                <RxCross1 className='text-[#6d6d6d] dark:text-slate-400' />
                               </div>
                             </div>
                           </div>
 
                           <div className='w-full mr-8'>
-                            <div className='bg-[#fff] rounded-md p-6 '>
-                              <h3 className='text-[1rem] text-primary font-[500] border-b border-[#d1d1d1] pb-4 text-center'>
+                            <div className='bg-[#fff] dark:bg-slate-900 rounded-md p-6 '>
+                              <h3 className='text-[1rem] text-primary dark:border-slate-700 font-[500] border-b border-[#d1d1d1] pb-4 text-center'>
                                 Order Summary
                               </h3>
 
@@ -1553,7 +1557,7 @@ export default DropDown;
                                   <h4 className='text-[1rem] font-[500] text-primary'>
                                     Item Total
                                   </h4>
-                                  <span className='text-text font-[500]'>
+                                  <span className='text-text dark:text-[#abc2d3] font-[500]'>
                                   $180.00
                                 </span>
                                 </div>
@@ -1576,11 +1580,11 @@ export default DropDown;
                                 </span>
                                 </div>
 
-                                <div className='flex items-center justify-between w-full border-t border-[#d1d1d1] pt-4'>
-                                  <h4 className='text-[1rem] font-[500] text-text'>
+                                <div className='flex items-center dark:border-slate-700 justify-between w-full border-t border-[#d1d1d1] pt-4'>
+                                  <h4 className='text-[1rem] dark:text-[#abc2d3] font-[500] text-text'>
                                     Order Total
                                   </h4>
-                                  <span className='text-text font-[500]'>
+                                  <span className='text-text font-[500] dark:text-[#abc2d3]'>
                                   $200.00
                                 </span>
                                 </div>
@@ -1598,35 +1602,35 @@ export default DropDown;
                     <div
                         className={`${
                             modal8Open ? ' visible' : ' invisible'
-                        } w-full h-screen fixed bg-[rgb(0,0,0,0.2)] top-0 left-0 z-50  transition-all duration-300 z-[999]`}
+                        } w-full h-screen fixed bg-[rgb(0,0,0,0.2)] top-0 left-0 z-[200000000] dark:bg-black/40 transition-all duration-300`}
                     >
                       <div
                           className={`${
                               modal8Open
                                   ? ' translate-x-[0px] opacity-100'
                                   : ' translate-x-[200px] opacity-0'
-                          } overflow-y-scroll zenUIRightModal w-[40%] h-screen bg-[#eceef6] transition-all duration-300 float-right`}
+                          } overflow-y-scroll zenUIRightModal w-[40%] dark:bg-slate-800 h-screen bg-[#eceef6] transition-all duration-300 float-right`}
                       >
                         <div className='w-full flex items-end p-4 justify-end'>
                           <RxCross1
-                              className='p-2 w-fit   text-[2.5rem] hover:bg-[#e7e7e7] rounded-full transition-all duration-300 cursor-pointer'
+                              className='p-2 w-fit dark:text-slate-400 dark:hover:bg-slate-900/50 text-[2.5rem] hover:bg-[#e7e7e7] rounded-full transition-all duration-300 cursor-pointer'
                               onClick={() => setModal8Open(false)}
                           />
                         </div>
 
                         <div className='flex items-start flex-col p-12 justify-between gap-8'>
-                          <div className='bg-[#fff] min-h-screen rounded-md p-6 w-full'>
+                          <div className='bg-[#fff] dark:bg-slate-900 min-h-screen rounded-md p-6 w-full'>
                             {/* steps */}
-                            <div className='flex items-center 1024px:flex-row flex-col justify-between w-full border-b border-[#d1d1d1]'>
+                            <div className='flex items-center 1024px:flex-row flex-col justify-between w-full border-b border-[#d1d1d1] dark:border-slate-700 flex-wrap gap-y-6'>
                               <div className='flex items-center gap-5'>
                               <span className='text-[1rem] font-[500] text-primary border-b border-primary pb-3'>
                                 1.Cart
                               </span>
-                                <span className='text-[1rem] font-[500] text-text pb-3'>
+                                <span className='text-[1rem] dark:text-[#abc2d3] font-[500] text-text pb-3'>
                                 2. Shipping & Payment
                               </span>
-                                <span className='text-[1rem] font-[500] text-text pb-3'>
-                                3. Confimation
+                                <span className='text-[1rem] dark:text-[#abc2d3] font-[500] text-text pb-3'>
+                                3. Confirmation
                               </span>
                               </div>
 
@@ -1639,7 +1643,7 @@ export default DropDown;
                             </div>
 
                             {/* products */}
-                            <div className='mt-12 flex items-start border-b border-[#d1d1d1] pb-6 justify-between w-full'>
+                            <div className='mt-12 flex items-start dark:border-slate-700 border-b border-[#d1d1d1] pb-6 justify-between w-full'>
                               <div className='flex items-start gap-5'>
                                 <img
                                     src='https://img.freepik.com/free-photo/still-life-skincare-products_23-2149371284.jpg?t=st=1711125399~exp=1711128999~hmac=012d9b565ec8c14efb41ddb92d6adaa9a7902802e6c884a3051fb6d449837afe&w=740'
@@ -1651,22 +1655,22 @@ export default DropDown;
                                   <h2 className='text-[1.2rem] font-[600] text-primary'>
                                     Still life of skincare products
                                   </h2>
-                                  <p className='text-[1rem] font-[500] text-text'>
+                                  <p className='text-[1rem] dark:text-slate-400 font-[500] text-text'>
                                     25 items
                                   </p>
                                 </div>
                               </div>
 
                               <div className='flex items-center gap-12'>
-                                <h3 className='text-[1.2rem] font-[600] text-[#6d6d6d]'>
+                                <h3 className='text-[1.2rem] font-[600] dark:text-slate-400 text-[#6d6d6d]'>
                                   $32{' '}
                                   <span className='text-primary pl-1'>$12</span>
                                 </h3>
 
-                                <RxCross1 className='text-[#6d6d6d]' />
+                                <RxCross1 className='text-[#6d6d6d] dark:text-slate-400' />
                               </div>
                             </div>
-                            <div className='mt-12 flex items-start border-b border-[#d1d1d1] pb-6 justify-between w-full'>
+                            <div className='mt-12 flex items-start dark:border-slate-700 border-b border-[#d1d1d1] pb-6 justify-between w-full'>
                               <div className='flex items-start gap-5'>
                                 <img
                                     src='https://img.freepik.com/free-photo/levitating-music-headphones-display_23-2149817605.jpg?t=st=1711125916~exp=1711129516~hmac=26762a7dd8eb383d3eccccb2cc232b163699fd9bf408804d4ad09f8ea127f639&w=740'
@@ -1678,22 +1682,22 @@ export default DropDown;
                                   <h2 className='text-[1.2rem] font-[600] text-primary'>
                                     Still life of skincare products
                                   </h2>
-                                  <p className='text-[1rem] font-[500] text-text'>
+                                  <p className='text-[1rem] dark:text-slate-400 font-[500] text-text'>
                                     8 items
                                   </p>
                                 </div>
                               </div>
 
                               <div className='flex items-center gap-12'>
-                                <h3 className='text-[1.2rem] font-[600] text-[#6d6d6d]'>
+                                <h3 className='text-[1.2rem] font-[600] dark:text-slate-400 text-[#6d6d6d]'>
                                   $32{' '}
                                   <span className='text-primary pl-1'>$12</span>
                                 </h3>
 
-                                <RxCross1 className='text-[#6d6d6d]' />
+                                <RxCross1 className='text-[#6d6d6d] dark:text-slate-400' />
                               </div>
                             </div>
-                            <div className='mt-12 flex items-start border-b border-[#d1d1d1] pb-6 justify-between w-full'>
+                            <div className='mt-12 flex items-start dark:border-slate-700 border-b border-[#d1d1d1] pb-6 justify-between w-full'>
                               <div className='flex items-start gap-5'>
                                 <img
                                     src='https://img.freepik.com/free-vector/set-aloe-vera-cosmetic-products_23-2147638007.jpg?t=st=1711125950~exp=1711129550~hmac=cdcb71b9735c22a4a1f74488397d71d0d32e20fed7c2ca003d8396db00961620&w=740'
@@ -1705,26 +1709,26 @@ export default DropDown;
                                   <h2 className='text-[1.2rem] font-[600] text-primary'>
                                     Still life of skincare products
                                   </h2>
-                                  <p className='text-[1rem] font-[500] text-text'>
+                                  <p className='text-[1rem] dark:text-slate-400 font-[500] text-text'>
                                     2 items
                                   </p>
                                 </div>
                               </div>
 
                               <div className='flex items-center gap-12'>
-                                <h3 className='text-[1.2rem] font-[600] text-[#6d6d6d]'>
+                                <h3 className='text-[1.2rem] font-[600] dark:text-slate-400 text-[#6d6d6d]'>
                                   $32{' '}
                                   <span className='text-primary pl-1'>$12</span>
                                 </h3>
 
-                                <RxCross1 className='text-[#6d6d6d]' />
+                                <RxCross1 className='text-[#6d6d6d] dark:text-slate-400' />
                               </div>
                             </div>
                           </div>
 
                           <div className='w-full mr-8'>
-                            <div className='bg-[#fff] rounded-md p-6 '>
-                              <h3 className='text-[1rem] text-primary font-[500] border-b border-[#d1d1d1] pb-4 text-center'>
+                            <div className='bg-[#fff] dark:bg-slate-900 rounded-md p-6 '>
+                              <h3 className='text-[1rem] text-primary dark:border-slate-700 font-[500] border-b border-[#d1d1d1] pb-4 text-center'>
                                 Order Summary
                               </h3>
 
@@ -1733,7 +1737,7 @@ export default DropDown;
                                   <h4 className='text-[1rem] font-[500] text-primary'>
                                     Item Total
                                   </h4>
-                                  <span className='text-text font-[500]'>
+                                  <span className='text-text dark:text-[#abc2d3] font-[500]'>
                                   $180.00
                                 </span>
                                 </div>
@@ -1756,11 +1760,11 @@ export default DropDown;
                                 </span>
                                 </div>
 
-                                <div className='flex items-center justify-between w-full border-t border-[#d1d1d1] pt-4'>
-                                  <h4 className='text-[1rem] font-[500] text-text'>
+                                <div className='flex items-center dark:border-slate-700 justify-between w-full border-t border-[#d1d1d1] pt-4'>
+                                  <h4 className='text-[1rem] dark:text-[#abc2d3] font-[500] text-text'>
                                     Order Total
                                   </h4>
-                                  <span className='text-text font-[500]'>
+                                  <span className='text-text dark:text-[#abc2d3] font-[500]'>
                                   $200.00
                                 </span>
                                 </div>
@@ -1780,89 +1784,79 @@ export default DropDown;
             {customizeModalCode && (
                 <Showcode
                     code='
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 // react icons
 import {RxCross1} from "react-icons/rx";
 
 const Modal = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const [rightModalOpen, setRightModalOpen] = useState(false);
-    const [leftModalOpen, setLeftModalOpen] = useState(false);
+    // outside click modal close
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (
+                !e.target.closest(".zenUIModal") &&
+                !e.target.closest(".zenUIModalButton")
+            ) {
+                setIsModalOpen(false);
+            }
+        };
 
-    const handleLeftSideModal = () => {
-        setLeftModalOpen(true)
-        setRightModalOpen(false)
-    }
-
-    const handleRightSideModal = () => {
-        setRightModalOpen(true)
-        setLeftModalOpen(false)
-    }
+        document.addEventListener("click", handleClickOutside);
+        return () => {
+            document.removeEventListener("click", handleClickOutside);
+        };
+    }, []);
 
     return (
-        <div className="w-full flex items-center justify-center gap-[20px]">
-            <button
-                className="px-4 py-2 zenUIRightModalButton bg-primary text-secondary rounded "
-                onClick={handleLeftSideModal}
-            >
-                Left Modal
-            </button>
-            <button
-                className="px-4 py-2 zenUIRightModalButton bg-primary text-secondary rounded "
-                onClick={handleRightSideModal}
-            >
-                Right Modal
-            </button>
-
-            {/*  left modal  */}
+        <>
+            {/*  left side modal */}
             <div
                 className={`${
-                    leftModalOpen ? " visible" : " invisible"
-                } w-full h-screen fixed bg-[rgb(0,0,0,0.2)] top-0 left-0 z-50  transition-all duration-300`}
+                    isModalOpen ? " visible" : " invisible"
+                } w-full h-screen fixed bg-[rgb(0,0,0,0.2)] top-0 left-0 z-[200000000] dark:bg-black/40 transition-all duration-300`}
             >
                 <div
                     className={`${
-                        leftModalOpen
+                        isModalOpen
                             ? " translate-x-[0px] opacity-100"
                             : " translate-x-[-200px] opacity-0"
-                    } overflow-y-scroll zenUIRightModal w-[40%] h-screen bg-[#eceef6] transition-all duration-300`}
+                    } overflow-y-scroll zenUIModal w-[40%] dark:bg-slate-800 h-screen bg-[#eceef6] transition-all duration-300`}
                 >
                     <div className="w-full flex items-end p-4 justify-end">
                         <RxCross1
-                            className="p-2 w-fit   text-[2.5rem] hover:bg-[#e7e7e7] rounded-full transition-all duration-300 cursor-pointer"
-                            onClick={() => setLeftModalOpen(false)}
+                            className="p-2 w-fit dark:text-slate-300 dark:hover:bg-slate-900/50 text-[2.5rem] hover:bg-[#e7e7e7] rounded-full transition-all duration-300 cursor-pointer"
+                            onClick={() => setIsModalOpen(false)}
                         />
                     </div>
 
                     <div className="flex items-start flex-col p-12 justify-between gap-8">
-                        <div className="bg-[#fff] min-h-screen rounded-md p-6 w-full">
+                        <div className="bg-[#fff] dark:bg-slate-900 min-h-screen rounded-md p-6 w-full">
                             {/* steps */}
-                            <div
-                                className="flex items-center md:flex-row flex-col justify-between w-full border-b border-[#d1d1d1]">
-                                <div className="flex items-center gap-5">
-                            <span className="text-[1rem] font-[500] text-primary border-b border-primary pb-3">
-                              1.Cart
-                            </span>
-                                    <span className="text-[1rem] font-[500] text-text pb-3">
-                              2. Shipping & Payment
-                            </span>
-                                    <span className="text-[1rem] font-[500] text-text pb-3">
-                              3. Confimation
-                            </span>
+                            <div className="flex items-center md:flex-row flex-col justify-between w-full border-b border-[#d1d1d1] dark:border-slate-700 flex-wrap gap-y-6">
+                                <div className="flex items-center flex-wrap gap-5">
+                              <span className="text-[1rem] font-[500] text-[#3B9DF8] border-b border-[#3B9DF8] pb-3">
+                                1.Cart
+                              </span>
+                                    <span className="text-[1rem] dark:text-[#abc2d3] font-[500] text-[#424242] pb-3">
+                                2. Shipping & Payment
+                              </span>
+                                    <span className="text-[1rem] dark:text-[#abc2d3] font-[500] text-[#424242] pb-3">
+                                3. Confimation
+                              </span>
                                 </div>
 
                                 <a
                                     href="#"
-                                    className="underline text-primary font-[500] pb-3"
+                                    className="underline text-[#3B9DF8] font-[500] pb-3"
                                 >
                                     Why is subscribing better?
                                 </a>
                             </div>
 
                             {/* products */}
-                            <div
-                                className="mt-12 flex items-start border-b border-[#d1d1d1] pb-6 justify-between w-full">
+                            <div className="mt-12 flex items-start dark:border-slate-700 border-b border-[#d1d1d1] pb-6 justify-between w-full">
                                 <div className="flex items-start gap-5">
                                     <img
                                         src="https://img.freepik.com/free-photo/still-life-skincare-products_23-2149371284.jpg?t=st=1711125399~exp=1711128999~hmac=012d9b565ec8c14efb41ddb92d6adaa9a7902802e6c884a3051fb6d449837afe&w=740"
@@ -1871,25 +1865,25 @@ const Modal = () => {
                                     />
 
                                     <div className="">
-                                        <h2 className="text-[1.2rem] font-[600] text-primary">
+                                        <h2 className="text-[1.2rem] font-[600] text-[#3B9DF8]">
                                             Still life of skincare products
                                         </h2>
-                                        <p className="text-[1rem] font-[500] text-text">
+                                        <p className="text-[1rem] dark:text-slate-400 font-[500] text-[#424242]">
                                             25 items
                                         </p>
                                     </div>
                                 </div>
 
                                 <div className="flex items-center gap-12">
-                                    <h3 className="text-[1.2rem] font-[600] text-[#6d6d6d]">
-                                        $32 <span className="text-primary pl-1">$12</span>
+                                    <h3 className="text-[1.2rem] font-[600] dark:text-slate-400 text-[#6d6d6d]">
+                                        $32{" "}
+                                        <span className="text-[#3B9DF8] pl-1">$12</span>
                                     </h3>
 
-                                    <RxCross1 className="text-[#6d6d6d]"/>
+                                    <RxCross1 className="text-[#6d6d6d] dark:text-slate-400" />
                                 </div>
                             </div>
-                            <div
-                                className="mt-12 flex items-start border-b border-[#d1d1d1] pb-6 justify-between w-full">
+                            <div className="mt-12 flex items-start dark:border-slate-700 border-b border-[#d1d1d1] pb-6 justify-between w-full">
                                 <div className="flex items-start gap-5">
                                     <img
                                         src="https://img.freepik.com/free-photo/levitating-music-headphones-display_23-2149817605.jpg?t=st=1711125916~exp=1711129516~hmac=26762a7dd8eb383d3eccccb2cc232b163699fd9bf408804d4ad09f8ea127f639&w=740"
@@ -1898,25 +1892,25 @@ const Modal = () => {
                                     />
 
                                     <div className="">
-                                        <h2 className="text-[1.2rem] font-[600] text-primary">
+                                        <h2 className="text-[1.2rem] font-[600] text-[#3B9DF8]">
                                             Still life of skincare products
                                         </h2>
-                                        <p className="text-[1rem] font-[500] text-text">
+                                        <p className="text-[1rem] dark:text-slate-400 font-[500] text-[#424242]">
                                             8 items
                                         </p>
                                     </div>
                                 </div>
 
                                 <div className="flex items-center gap-12">
-                                    <h3 className="text-[1.2rem] font-[600] text-[#6d6d6d]">
-                                        $32 <span className="text-primary pl-1">$12</span>
+                                    <h3 className="text-[1.2rem] font-[600] dark:text-slate-400 text-[#6d6d6d]">
+                                        $32{" "}
+                                        <span className="text-[#3B9DF8] pl-1">$12</span>
                                     </h3>
 
-                                    <RxCross1 className="text-[#6d6d6d]"/>
+                                    <RxCross1 className="text-[#6d6d6d] dark:text-slate-400" />
                                 </div>
                             </div>
-                            <div
-                                className="mt-12 flex items-start border-b border-[#d1d1d1] pb-6 justify-between w-full">
+                            <div className="mt-12 flex items-start dark:border-slate-700 border-b border-[#d1d1d1] pb-6 justify-between w-full">
                                 <div className="flex items-start gap-5">
                                     <img
                                         src="https://img.freepik.com/free-vector/set-aloe-vera-cosmetic-products_23-2147638007.jpg?t=st=1711125950~exp=1711129550~hmac=cdcb71b9735c22a4a1f74488397d71d0d32e20fed7c2ca003d8396db00961620&w=740"
@@ -1925,71 +1919,71 @@ const Modal = () => {
                                     />
 
                                     <div className="">
-                                        <h2 className="text-[1.2rem] font-[600] text-primary">
+                                        <h2 className="text-[1.2rem] font-[600] text-[#3B9DF8]">
                                             Still life of skincare products
                                         </h2>
-                                        <p className="text-[1rem] font-[500] text-text">
+                                        <p className="text-[1rem] dark:text-slate-400 font-[500] text-[#424242]">
                                             2 items
                                         </p>
                                     </div>
                                 </div>
 
                                 <div className="flex items-center gap-12">
-                                    <h3 className="text-[1.2rem] font-[600] text-[#6d6d6d]">
-                                        $32 <span className="text-primary pl-1">$12</span>
+                                    <h3 className="text-[1.2rem] font-[600] dark:text-slate-400 text-[#6d6d6d]">
+                                        $32{" "}
+                                        <span className="text-[#3B9DF8] pl-1">$12</span>
                                     </h3>
 
-                                    <RxCross1 className="text-[#6d6d6d]"/>
+                                    <RxCross1 className="text-[#6d6d6d] dark:text-slate-400" />
                                 </div>
                             </div>
                         </div>
 
                         <div className="w-full mr-8">
-                            <div className="bg-[#fff] rounded-md p-6 ">
-                                <h3 className="text-[1rem] text-primary font-[500] border-b border-[#d1d1d1] pb-4 text-center">
+                            <div className="bg-[#fff] dark:bg-slate-900 rounded-md p-6 ">
+                                <h3 className="text-[1rem] text-[#3B9DF8] dark:border-slate-700 font-[500] border-b border-[#d1d1d1] pb-4 text-center">
                                     Order Summary
                                 </h3>
 
                                 <div className="flex flex-col gap-5 mt-4">
                                     <div className="flex items-center justify-between w-full">
-                                        <h4 className="text-[1rem] font-[500] text-primary">
+                                        <h4 className="text-[1rem] font-[500] text-[#3B9DF8]">
                                             Item Total
                                         </h4>
-                                        <span className="text-text font-[500]">
-                                $180.00
-                              </span>
+                                        <span className="text-[#424242] dark:text-[#abc2d3] font-[500]">
+                                  $180.00
+                                </span>
                                     </div>
 
                                     <div className="flex items-center justify-between w-full">
-                                        <h4 className="text-[1rem] font-[500] text-primary">
+                                        <h4 className="text-[1rem] font-[500] text-[#3B9DF8]">
                                             Subcription savings (15% off)
                                         </h4>
-                                        <span className="text-primary font-[500]">
-                                - $18.00
-                              </span>
+                                        <span className="text-[#3B9DF8] font-[500]">
+                                  - $18.00
+                                </span>
                                     </div>
 
                                     <div className="flex items-center justify-between w-full">
-                                        <h4 className="text-[1rem] font-[500] text-primary">
+                                        <h4 className="text-[1rem] font-[500] text-[#3B9DF8]">
                                             Shipping
                                         </h4>
-                                        <span className="text-primary font-[500]">
-                                free
-                              </span>
+                                        <span className="text-[#3B9DF8] font-[500]">
+                                  free
+                                </span>
                                     </div>
 
-                                    <div
-                                        className="flex items-center justify-between w-full border-t border-[#d1d1d1] pt-4">
-                                        <h4 className="text-[1rem] font-[500] text-text">
+                                    <div className="flex items-center dark:border-slate-700 justify-between w-full border-t border-[#d1d1d1] pt-4">
+                                        <h4 className="text-[1rem] dark:text-[#abc2d3] font-[500] text-[#424242]">
                                             Order Total
                                         </h4>
-                                        <span className="text-text font-[500]">
-                                $200.00
-                              </span>
+                                        <span className="text-[#424242] font-[500] dark:text-[#abc2d3]">
+                                  $200.00
+                                </span>
                                     </div>
                                 </div>
                             </div>
-                            <button className="w-full py-2 px-6 mt-6 tracking-widest bg-primary rounded-md text-[#fff]">
+                            <button className="w-full py-2 px-6 mt-6 tracking-widest bg-[#3B9DF8] rounded-md text-[#fff]">
                                 Checkout
                             </button>
                         </div>
@@ -1997,54 +1991,52 @@ const Modal = () => {
                 </div>
             </div>
 
-            {/*  right modal  */}
+            {/*  right side modal */}
             <div
                 className={`${
-                    rightModalOpen ? " visible" : " invisible"
-                } w-full h-screen fixed bg-[rgb(0,0,0,0.2)] top-0 left-0 z-50  transition-all duration-300`}
+                    isModalOpen ? " visible" : " invisible"
+                } w-full h-screen fixed bg-[rgb(0,0,0,0.2)] top-0 left-0 z-[200000000] dark:bg-black/40 transition-all duration-300`}
             >
                 <div
                     className={`${
-                        rightModalOpen
+                        isModalOpen
                             ? " translate-x-[0px] opacity-100"
                             : " translate-x-[200px] opacity-0"
-                    } overflow-y-scroll zenUIRightModal w-[40%] h-screen bg-[#eceef6] transition-all duration-300 float-right`}
+                    } overflow-y-scroll zenUIModal w-[40%] dark:bg-slate-800 h-screen bg-[#eceef6] transition-all duration-300 float-right`}
                 >
                     <div className="w-full flex items-end p-4 justify-end">
                         <RxCross1
-                            className="p-2 w-fit   text-[2.5rem] hover:bg-[#e7e7e7] rounded-full transition-all duration-300 cursor-pointer"
-                            onClick={() => setRightModalOpen(false)}
+                            className="p-2 w-fit dark:text-slate-400 dark:hover:bg-slate-900/50 text-[2.5rem] hover:bg-[#e7e7e7] rounded-full transition-all duration-300 cursor-pointer"
+                            onClick={() => setIsModalOpen(false)}
                         />
                     </div>
 
                     <div className="flex items-start flex-col p-12 justify-between gap-8">
-                        <div className="bg-[#fff] min-h-screen rounded-md p-6 w-full">
+                        <div className="bg-[#fff] dark:bg-slate-900 min-h-screen rounded-md p-6 w-full">
                             {/* steps */}
-                            <div
-                                className="flex items-center md:flex-row flex-col justify-between w-full border-b border-[#d1d1d1]">
+                            <div className="flex items-center md:flex-row flex-col justify-between w-full border-b border-[#d1d1d1] dark:border-slate-700 flex-wrap gap-y-6">
                                 <div className="flex items-center gap-5">
-                            <span className="text-[1rem] font-[500] text-primary border-b border-primary pb-3">
-                              1.Cart
-                            </span>
-                                    <span className="text-[1rem] font-[500] text-text pb-3">
-                              2. Shipping & Payment
-                            </span>
-                                    <span className="text-[1rem] font-[500] text-text pb-3">
-                              3. Confimation
-                            </span>
+                              <span className="text-[1rem] font-[500] text-[#3B9DF8] border-b border-[#3B9DF8] pb-3">
+                                1.Cart
+                              </span>
+                                    <span className="text-[1rem] dark:text-[#abc2d3] font-[500] text-[#424242] pb-3">
+                                2. Shipping & Payment
+                              </span>
+                                    <span className="text-[1rem] dark:text-[#abc2d3] font-[500] text-[#424242] pb-3">
+                                3. Confirmation
+                              </span>
                                 </div>
 
                                 <a
                                     href="#"
-                                    className="underline text-primary font-[500] pb-3"
+                                    className="underline text-[#3B9DF8] font-[500] pb-3"
                                 >
                                     Why is subscribing better?
                                 </a>
                             </div>
 
                             {/* products */}
-                            <div
-                                className="mt-12 flex items-start border-b border-[#d1d1d1] pb-6 justify-between w-full">
+                            <div className="mt-12 flex items-start dark:border-slate-700 border-b border-[#d1d1d1] pb-6 justify-between w-full">
                                 <div className="flex items-start gap-5">
                                     <img
                                         src="https://img.freepik.com/free-photo/still-life-skincare-products_23-2149371284.jpg?t=st=1711125399~exp=1711128999~hmac=012d9b565ec8c14efb41ddb92d6adaa9a7902802e6c884a3051fb6d449837afe&w=740"
@@ -2053,25 +2045,25 @@ const Modal = () => {
                                     />
 
                                     <div className="">
-                                        <h2 className="text-[1.2rem] font-[600] text-primary">
+                                        <h2 className="text-[1.2rem] font-[600] text-[#3B9DF8]">
                                             Still life of skincare products
                                         </h2>
-                                        <p className="text-[1rem] font-[500] text-text">
+                                        <p className="text-[1rem] dark:text-slate-400 font-[500] text-[#424242]">
                                             25 items
                                         </p>
                                     </div>
                                 </div>
 
                                 <div className="flex items-center gap-12">
-                                    <h3 className="text-[1.2rem] font-[600] text-[#6d6d6d]">
-                                        $32 <span className="text-primary pl-1">$12</span>
+                                    <h3 className="text-[1.2rem] font-[600] dark:text-slate-400 text-[#6d6d6d]">
+                                        $32{" "}
+                                        <span className="text-[#3B9DF8] pl-1">$12</span>
                                     </h3>
 
-                                    <RxCross1 className="text-[#6d6d6d]"/>
+                                    <RxCross1 className="text-[#6d6d6d] dark:text-slate-400" />
                                 </div>
                             </div>
-                            <div
-                                className="mt-12 flex items-start border-b border-[#d1d1d1] pb-6 justify-between w-full">
+                            <div className="mt-12 flex items-start dark:border-slate-700 border-b border-[#d1d1d1] pb-6 justify-between w-full">
                                 <div className="flex items-start gap-5">
                                     <img
                                         src="https://img.freepik.com/free-photo/levitating-music-headphones-display_23-2149817605.jpg?t=st=1711125916~exp=1711129516~hmac=26762a7dd8eb383d3eccccb2cc232b163699fd9bf408804d4ad09f8ea127f639&w=740"
@@ -2080,25 +2072,25 @@ const Modal = () => {
                                     />
 
                                     <div className="">
-                                        <h2 className="text-[1.2rem] font-[600] text-primary">
+                                        <h2 className="text-[1.2rem] font-[600] text-[#3B9DF8]">
                                             Still life of skincare products
                                         </h2>
-                                        <p className="text-[1rem] font-[500] text-text">
+                                        <p className="text-[1rem] dark:text-slate-400 font-[500] text-[#424242]">
                                             8 items
                                         </p>
                                     </div>
                                 </div>
 
                                 <div className="flex items-center gap-12">
-                                    <h3 className="text-[1.2rem] font-[600] text-[#6d6d6d]">
-                                        $32 <span className="text-primary pl-1">$12</span>
+                                    <h3 className="text-[1.2rem] font-[600] dark:text-slate-400 text-[#6d6d6d]">
+                                        $32{" "}
+                                        <span className="text-[#3B9DF8] pl-1">$12</span>
                                     </h3>
 
-                                    <RxCross1 className="text-[#6d6d6d]"/>
+                                    <RxCross1 className="text-[#6d6d6d] dark:text-slate-400" />
                                 </div>
                             </div>
-                            <div
-                                className="mt-12 flex items-start border-b border-[#d1d1d1] pb-6 justify-between w-full">
+                            <div className="mt-12 flex items-start dark:border-slate-700 border-b border-[#d1d1d1] pb-6 justify-between w-full">
                                 <div className="flex items-start gap-5">
                                     <img
                                         src="https://img.freepik.com/free-vector/set-aloe-vera-cosmetic-products_23-2147638007.jpg?t=st=1711125950~exp=1711129550~hmac=cdcb71b9735c22a4a1f74488397d71d0d32e20fed7c2ca003d8396db00961620&w=740"
@@ -2107,79 +2099,80 @@ const Modal = () => {
                                     />
 
                                     <div className="">
-                                        <h2 className="text-[1.2rem] font-[600] text-primary">
+                                        <h2 className="text-[1.2rem] font-[600] text-[#3B9DF8]">
                                             Still life of skincare products
                                         </h2>
-                                        <p className="text-[1rem] font-[500] text-text">
+                                        <p className="text-[1rem] dark:text-slate-400 font-[500] text-[#424242]">
                                             2 items
                                         </p>
                                     </div>
                                 </div>
 
                                 <div className="flex items-center gap-12">
-                                    <h3 className="text-[1.2rem] font-[600] text-[#6d6d6d]">
-                                        $32 <span className="text-primary pl-1">$12</span>
+                                    <h3 className="text-[1.2rem] font-[600] dark:text-slate-400 text-[#6d6d6d]">
+                                        $32{" "}
+                                        <span className="text-[#3B9DF8] pl-1">$12</span>
                                     </h3>
 
-                                    <RxCross1 className="text-[#6d6d6d]"/>
+                                    <RxCross1 className="text-[#6d6d6d] dark:text-slate-400" />
                                 </div>
                             </div>
                         </div>
 
                         <div className="w-full mr-8">
-                            <div className="bg-[#fff] rounded-md p-6 ">
-                                <h3 className="text-[1rem] text-primary font-[500] border-b border-[#d1d1d1] pb-4 text-center">
+                            <div className="bg-[#fff] dark:bg-slate-900 rounded-md p-6 ">
+                                <h3 className="text-[1rem] text-[#3B9DF8] dark:border-slate-700 font-[500] border-b border-[#d1d1d1] pb-4 text-center">
                                     Order Summary
                                 </h3>
 
                                 <div className="flex flex-col gap-5 mt-4">
                                     <div className="flex items-center justify-between w-full">
-                                        <h4 className="text-[1rem] font-[500] text-primary">
+                                        <h4 className="text-[1rem] font-[500] text-[#3B9DF8]">
                                             Item Total
                                         </h4>
-                                        <span className="text-text font-[500]">
-                                $180.00
-                              </span>
+                                        <span className="text-[#424242] dark:text-[#abc2d3] font-[500]">
+                                  $180.00
+                                </span>
                                     </div>
 
                                     <div className="flex items-center justify-between w-full">
-                                        <h4 className="text-[1rem] font-[500] text-primary">
+                                        <h4 className="text-[1rem] font-[500] text-[#3B9DF8]">
                                             Subcription savings (15% off)
                                         </h4>
-                                        <span className="text-primary font-[500]">
-                                - $18.00
-                              </span>
+                                        <span className="text-[#3B9DF8] font-[500]">
+                                  - $18.00
+                                </span>
                                     </div>
 
                                     <div className="flex items-center justify-between w-full">
-                                        <h4 className="text-[1rem] font-[500] text-primary">
+                                        <h4 className="text-[1rem] font-[500] text-[#3B9DF8]">
                                             Shipping
                                         </h4>
-                                        <span className="text-primary font-[500]">
-                                free
-                              </span>
+                                        <span className="text-[#3B9DF8] font-[500]">
+                                  free
+                                </span>
                                     </div>
 
-                                    <div
-                                        className="flex items-center justify-between w-full border-t border-[#d1d1d1] pt-4">
-                                        <h4 className="text-[1rem] font-[500] text-text">
+                                    <div className="flex items-center dark:border-slate-700 justify-between w-full border-t border-[#d1d1d1] pt-4">
+                                        <h4 className="text-[1rem] dark:text-[#abc2d3] font-[500] text-[#424242]">
                                             Order Total
                                         </h4>
-                                        <span className="text-text font-[500]">
-                                $200.00
-                              </span>
+                                        <span className="text-[#424242] dark:text-[#abc2d3] font-[500]">
+                                  $200.00
+                                </span>
                                     </div>
                                 </div>
                             </div>
-                            <button className="w-full py-2 px-6 mt-6 tracking-widest bg-primary rounded-md text-[#fff]">
+                            <button className="w-full py-2 px-6 mt-6 tracking-widest bg-[#3B9DF8] rounded-md text-[#fff]">
                                 Checkout
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    );
+        </>
+    )
+        ;
 };
 
 export default Modal;
@@ -2212,46 +2205,46 @@ export default Modal;
                   <div
                       className={`${
                           modal10Open ? ' visible' : ' invisible'
-                      } w-full h-screen fixed top-0 left-0 z-50 bg-[#0000002a] flex items-center justify-center transition-all duration-300 z-[999]`}
+                      } w-full h-screen fixed top-0 left-0 z-[200000000] dark:bg-black/40 bg-[#0000002a] flex items-center justify-center transition-all duration-300`}
                   >
                     <div
                         className={`${
                             modal10Open
                                 ? ' scale-[1] opacity-100'
                                 : ' scale-[0] opacity-0'
-                        } w-[90%] 640px:w-[80%] 1024px:w-[30%] bg-secondary rounded-lg p-5 transition-all duration-300 z-[999]`}
+                        } w-[90%] 640px:w-[80%] 1024px:w-[30%] dark:bg-slate-800 bg-secondary rounded-lg p-5 transition-all duration-300 z-[999]`}
                     >
                       <div className='w-full flex items-center justify-between'>
-                        <h2 className='text-[#000] text-[1.3rem] font-[500]'>
+                        <h2 className='text-[#000] dark:text-[#abc2d3] text-[1.3rem] font-[500]'>
                           Delete Modal
                         </h2>
                         <RxCross1
-                            className='p-2 text-[2rem] hover:bg-[#e7e7e7] rounded-full transition-all duration-300 cursor-pointer'
+                            className='p-2 text-[2rem] dark:text-slate-400 dark:hover:bg-slate-900/50 hover:bg-[#e7e7e7] rounded-full transition-all duration-300 cursor-pointer'
                             onClick={() => setModal10Open(false)}
                         />
                       </div>
 
                       <div className='w-full'>
-                        <p className='text-text text-[1rem] font-[400]'>
+                        <p className='text-text dark:text-slate-400 text-[1rem] font-[400]'>
                           Are You sure want to delete it?
                         </p>
 
                         <div className='mt-5'>
-                          <label className='font-[400] text-black'>
+                          <label className='font-[400] dark:text-[#abc2d3] text-black'>
                             Type <b>"DELETE"</b> to confirm
                           </label>{' '}
                           <br />
                           <input
                               onChange={checkDeleteModalChange}
                               type='text'
-                              className='py-3 px-4 border border-gray-200 rounded-md mt-1 w-full outline-none focus:border-primary'
+                              className='py-3 px-4 dark:bg-slate-900 dark:border-slate-700 dark:text-[#abc2d3] border border-gray-200 rounded-md mt-1 w-full outline-none focus:border-primary'
                           />
                         </div>
 
                         <div className='mt-8 flex w-full items-end justify-end gap-[13px]'>
                           <button
                               onClick={() => setModal10Open(false)}
-                              className={`py-2 px-6 rounded font-[500] z-10 border border-[#cecece] text-gray-500`}
+                              className={`py-2 px-6 dark:border-slate-700 dark:text-[#abc2d3] dark:hover:bg-slate-700/50 rounded font-[500] z-10 border border-[#cecece] text-gray-500`}
                           >
                             Cancel
                           </button>
@@ -2259,7 +2252,7 @@ export default Modal;
                               onClick={() => setModal10Open(false)}
                               className={`${utils.buttonPrimary} ${
                                   disabledButton
-                                      ? '!bg-[#FDECEB] !border-[#FDECEB] text-red-200 cursor-not-allowed'
+                                      ? '!bg-[#FDECEB] dark:!bg-red-800/30 dark:!border-red-900/30 dark:text-slate-500 !border-[#FDECEB] text-red-200 cursor-not-allowed'
                                       : 'bg-red-600 text-white border-red-600'
                               }`}
                               disabled={disabledButton}
@@ -2282,73 +2275,80 @@ import React, {useState} from "react";
 import {RxCross1} from "react-icons/rx";
 
 const Modal = () => {
-
-    const [modalOpen, setModalOpen] = useState(false);
-
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [disabledButton, setDisabledButton] = useState(true);
 
-    const checkIsConfirmAction = (event) => {
-        setDisabledButton(true)
-        if(event.target.value === "DELETE"){
-            setDisabledButton(false)
+    const checkDeleteModalChange = (event) => {
+        setDisabledButton(true);
+        if (event.target.value === "DELETE") {
+            setDisabledButton(false);
         }
-    }
+    };
 
     return (
-        <>
-            <div className="w-full flex items-center justify-center">
-                <button
-                    className="px-4 py-2 bg-primary text-secondary rounded "
-                    onClick={() => setModalOpen(true)}
-                >
-                    Open Modal
-                </button>
-            </div>
+        <div
+            className={`${
+                isModalOpen ? " visible" : " invisible"
+            } w-full h-screen fixed top-0 left-0 z-[200000000] dark:bg-black/40 bg-[#0000002a] flex items-center justify-center transition-all duration-300`}
+        >
             <div
                 className={`${
-                    modalOpen ? " visible" : " invisible"
-                } w-full h-screen fixed top-0 left-0 z-50 bg-[#0000002a] flex items-center justify-center transition-all duration-300`}
+                    isModalOpen
+                        ? " scale-[1] opacity-100"
+                        : " scale-[0] opacity-0"
+                } w-[90%] sm:w-[80%] md:w-[30%] dark:bg-slate-800 bg-[#fff] rounded-lg p-5 transition-all duration-300 z-[999]`}
             >
-                <div
-                    className={`${
-                        modalOpen
-                            ? " scale-[1] opacity-100"
-                            : " scale-[0] opacity-0"
-                    } w-[90%] 640px:w-[80%] 1024px:w-[30%] bg-secondary rounded-lg p-5 transition-all duration-300`}
-                >
-                    <div className="w-full flex items-center justify-between">
-                        <h2 className="text-[#000] text-[1.3rem] font-[500]">Delete Modal</h2>
-                        <RxCross1
-                            className="p-2 text-[2rem] hover:bg-[#e7e7e7] rounded-full transition-all duration-300 cursor-pointer"
-                            onClick={() => setModalOpen(false)}
+                <div className="w-full flex items-center justify-between">
+                    <h2 className="text-[#000] dark:text-[#abc2d3] text-[1.3rem] font-[500]">
+                        Delete Modal
+                    </h2>
+                    <RxCross1
+                        className="p-2 text-[2rem] dark:text-slate-400 dark:hover:bg-slate-900/50 hover:bg-[#e7e7e7] rounded-full transition-all duration-300 cursor-pointer"
+                        onClick={() => setIsModalOpen(false)}
+                    />
+                </div>
+
+                <div className="w-full">
+                    <p className="text-[#424242] dark:text-slate-400 text-[1rem] font-[400]">
+                        Are You sure want to delete it?
+                    </p>
+
+                    <div className="mt-5">
+                        <label className="font-[400] dark:text-[#abc2d3] text-black">
+                            Type <b>"DELETE"</b> to confirm
+                        </label>{" "}
+                        <br/>
+                        <input
+                            onChange={checkDeleteModalChange}
+                            type="text"
+                            className="py-3 px-4 dark:bg-slate-900 dark:border-slate-700 dark:text-[#abc2d3] border border-gray-200 rounded-md mt-1 w-full outline-none focus:border-[#3B9DF8]"
                         />
                     </div>
 
-                    <div className="w-full">
-                        <p className="text-text text-[1rem] font-[400]">
-                            Are You sure want to delete it?
-                        </p>
-
-                        <div className="mt-5">
-                            <label className="font-[400] text-black">Type <b>"DELETE"</b> to confirm</label> <br/>
-                            <input onChange={checkIsConfirmAction} type="text"
-                                   className="py-3 px-4 border border-gray-200 rounded-md mt-1 w-full outline-none focus:border-primary"/>
-                        </div>
-
-                        <div className="mt-8 flex w-full items-end justify-end gap-[13px]">
-                            <button onClick={() => setModalOpen(false)}
-                                    className={`py-2 px-6 rounded font-[500] z-10 border border-[#cecece] text-gray-500`}>Cancel
-                            </button>
-                            <button onClick={() => setModalOpen(false)}
-                                    className={`py-3 px-5 rounded-md ${disabledButton ? "!bg-[#FDECEB] !border-[#FDECEB] text-red-200 cursor-not-allowed" : "bg-red-600 text-white border-red-600"}`}
-                                    disabled={disabledButton}>Yes, Delete
-                            </button>
-                        </div>
+                    <div className="mt-8 flex w-full items-end justify-end gap-[13px]">
+                        <button
+                            onClick={() => setIsModalOpen(false)}
+                            className={`py-2 px-6 dark:border-slate-700 dark:text-[#abc2d3] dark:hover:bg-slate-700/50 rounded font-[500] z-10 border border-[#cecece] text-gray-500`}
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            onClick={() => setIsModalOpen(false)}
+                            className={`${
+                                disabledButton
+                                    ? "!bg-[#FDECEB] dark:!bg-red-800/30 dark:!border-red-900/30 dark:text-slate-500 !border-[#FDECEB] text-red-200 cursor-not-allowed"
+                                    : "bg-red-600 text-white border-red-600 py-2 px-6 border rounded font-[500]"
+                            }`}
+                            disabled={disabledButton}
+                        >
+                            Yes, Delete
+                        </button>
                     </div>
                 </div>
             </div>
-        </>
-    );
+        </div>
+    )
+        ;
 };
 
 export default Modal;
