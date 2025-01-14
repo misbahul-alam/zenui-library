@@ -5,100 +5,78 @@ const HorizontalComparisonCard = () => {
     const containerRef = useRef(null);
     const isDragging = useRef(false);
 
-    // handle mouse down event
-    const handleMouseDown = (e) => {
-        isDragging.current = true;
-        handleMouseMove(e);
-    };
-
-    // handle sliding via tracking the mouse move
-    const handleMouseMove = (e) => {
+    const handleMove = (clientX) => {
         if (!isDragging.current) return;
 
         const container = containerRef.current;
         if (!container) return;
 
         const rect = container.getBoundingClientRect();
-        const x = e.clientX - rect.left;
+        const x = Math.min(Math.max(0, clientX - rect.left), rect.width);
         const position = (x / rect.width) * 100;
 
-        setSliderPosition(Math.min(Math.max(0, position), 100));
+        setSliderPosition(position);
     };
 
-    // handle mouse up and stop the dragging state
-    const handleMouseUp = () => {
+    const handleMouseMove = (e) => handleMove(e.clientX);
+    const handleTouchMove = (e) => handleMove(e.touches[0].clientX);
+
+    const startDragging = () => {
+        isDragging.current = true;
+    };
+
+    const stopDragging = () => {
         isDragging.current = false;
     };
 
-    // handle touch move for mobile devices
-    const handleTouchMove = (e) => {
-        if (!isDragging.current) return;
-
-        const container = containerRef.current;
-        if (!container) return;
-
-        const rect = container.getBoundingClientRect();
-        const x = e.touches[0].clientX - rect.left;
-        const position = (x / rect.width) * 100;
-
-        setSliderPosition(Math.min(Math.max(0, position), 100));
-    };
-
     useEffect(() => {
-        window.addEventListener("mouseup", handleMouseUp);
-        window.addEventListener("mousemove", handleMouseMove);
-        window.addEventListener("touchend", handleMouseUp);
-        window.addEventListener("touchmove", handleTouchMove);
+        document.addEventListener("mousemove", handleMouseMove);
+        document.addEventListener("mouseup", stopDragging);
+        document.addEventListener("touchmove", handleTouchMove, { passive: true });
+        document.addEventListener("touchend", stopDragging);
 
         return () => {
-            window.removeEventListener("mouseup", handleMouseUp);
-            window.removeEventListener("mousemove", handleMouseMove);
-            window.removeEventListener("touchend", handleMouseUp);
-            window.removeEventListener("touchmove", handleTouchMove);
+            document.removeEventListener("mousemove", handleMouseMove);
+            document.removeEventListener("mouseup", stopDragging);
+            document.removeEventListener("touchmove", handleTouchMove);
+            document.removeEventListener("touchend", stopDragging);
         };
     }, []);
 
     return (
         <div
             ref={containerRef}
-            className="relative w-full h-full select-none overflow-hidden"
+            className="relative w-full aspect-video select-none bg-gray-100"
         >
             {/* Before Image */}
             <img
                 src="https://i.ibb.co.com/YXzxRBv/before.png"
                 alt="Before"
-                className="absolute top-0 left-0 w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover"
             />
 
             {/* After Image */}
-            <div
-                className="absolute top-0 left-0 h-full overflow-hidden"
-                style={{ width: `${sliderPosition}%` }}
-            >
-                <img
-                    src="https://i.ibb.co.com/1ZKL4wK/after.png"
-                    alt="After"
-                    className="absolute top-0 left-0 w-full h-full object-cover"
-                />
-            </div>
-
-            {/* Slider Line */}
-            <div
-                className="absolute top-0 bottom-0 w-1 translate-x-[-50%] bg-white cursor-ew-resize"
-                onMouseDown={handleMouseDown}
-                onTouchStart={handleMouseDown}
+            <img
+                src="https://i.ibb.co.com/1ZKL4wK/after.png"
+                alt="After"
+                className="absolute inset-0 w-full h-full object-cover"
                 style={{
-                    left: `${sliderPosition}%`,
+                    clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)`
                 }}
+            />
+
+            {/* Slider Handle */}
+            <div
+                className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize"
+                style={{ left: `${sliderPosition}%` }}
+                onMouseDown={startDragging}
+                onTouchStart={startDragging}
             >
-                {/* Slider Handle */}
-                <div
-                    className="absolute top-1/2 left-1/2 w-8 h-8 -translate-x-1/2 -translate-y-1/2 rounded-full border-[3px] bg-[#0FABCA] border-white"
-                >
-                    <div className="flex h-full items-center justify-center">
-                        <div className="w-4 flex justify-evenly gap-[5px]">
-                            <div className="w-[2.5px] h-3 bg-white"></div>
-                            <div className="w-[2px] h-3 bg-white"></div>
+                <div className="absolute top-1/2 left-1/2 w-8 h-8 -translate-x-1/2 -translate-y-1/2">
+                    <div className="w-full h-full rounded-full border-[3px] border-white bg-[#0FABCA] shadow-lg flex items-center justify-center">
+                        <div className="flex gap-[5px] justify-evenly">
+                            <div className="w-0.5 h-4 bg-white"></div>
+                            <div className="w-0.5 h-4 bg-white"></div>
                         </div>
                     </div>
                 </div>
