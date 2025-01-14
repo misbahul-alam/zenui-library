@@ -2774,7 +2774,7 @@ export default Card;
             )}
           </ComponentWrapper>
 
-          <OverviewFooter backUrl='/components/drag-and-drop' backName='Drag & Drop' forwardName='animated cards' forwardUrl='/components/animated-cards'/>
+          <OverviewFooter backUrl='/components/comparison-card' backName='Comparison Card' forwardName='animated cards' forwardUrl='/components/animated-cards'/>
         </div>
 
         <ContentNavbar activeSection={activeSection} contents={cardContents}/>

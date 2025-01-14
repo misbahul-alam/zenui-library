@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from 'react';
 
-const HorizontalComparisonCard = () => {
+const HorizontalComparisonExample = () => {
     const [sliderPosition, setSliderPosition] = useState(50);
     const containerRef = useRef(null);
     const isDragging = useRef(false);
@@ -30,16 +30,16 @@ const HorizontalComparisonCard = () => {
     };
 
     useEffect(() => {
-        document.addEventListener("mousemove", handleMouseMove);
-        document.addEventListener("mouseup", stopDragging);
-        document.addEventListener("touchmove", handleTouchMove, { passive: true });
-        document.addEventListener("touchend", stopDragging);
+        document.addEventListener('mousemove', handleMouseMove);
+        document.addEventListener('mouseup', stopDragging);
+        document.addEventListener('touchmove', handleTouchMove, { passive: true });
+        document.addEventListener('touchend', stopDragging);
 
         return () => {
-            document.removeEventListener("mousemove", handleMouseMove);
-            document.removeEventListener("mouseup", stopDragging);
-            document.removeEventListener("touchmove", handleTouchMove);
-            document.removeEventListener("touchend", stopDragging);
+            document.removeEventListener('mousemove', handleMouseMove);
+            document.removeEventListener('mouseup', stopDragging);
+            document.removeEventListener('touchmove', handleTouchMove);
+            document.removeEventListener('touchend', stopDragging);
         };
     }, []);
 
@@ -82,8 +82,7 @@ const HorizontalComparisonCard = () => {
                 </div>
             </div>
         </div>
-    )
-        ;
+    );
 };
 
-export default HorizontalComparisonCard;
+export default HorizontalComparisonExample;

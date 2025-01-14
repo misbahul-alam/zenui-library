@@ -18,6 +18,12 @@ export const componentSearchData = [
         tags: ['form', 'toggle', 'boolean']
     },
     {
+        title: 'Comparison Card',
+        description: 'Compare items side-by-side for easy analysis.',
+        url: '/components/comparison-card',
+        tags: ['slider', 'comparison', 'card']
+    },
+    {
         title: 'Select',
         description: 'Dropdown selection component for choosing from multiple options',
         url: '/components/input-select',

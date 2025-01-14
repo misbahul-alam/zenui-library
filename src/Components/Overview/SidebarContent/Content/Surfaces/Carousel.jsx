@@ -293,7 +293,7 @@ export default CarouselComponent2;
         
       </aside>
       <Helmet>
-        <title>Components - Carousel</title>
+        <title>Surfaces - Carousel</title>
       </Helmet>
     </>
   );
