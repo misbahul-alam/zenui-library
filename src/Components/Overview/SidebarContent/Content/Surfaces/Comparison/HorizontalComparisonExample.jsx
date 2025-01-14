@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from 'react';
 
-const HorizontalComparisonCard = () => {
+const HorizontalComparisonExample = () => {
     const [sliderPosition, setSliderPosition] = useState(50);
     const containerRef = useRef(null);
     const isDragging = useRef(false);
@@ -45,16 +45,16 @@ const HorizontalComparisonCard = () => {
     };
 
     useEffect(() => {
-        window.addEventListener("mouseup", handleMouseUp);
-        window.addEventListener("mousemove", handleMouseMove);
-        window.addEventListener("touchend", handleMouseUp);
-        window.addEventListener("touchmove", handleTouchMove);
+        window.addEventListener('mouseup', handleMouseUp);
+        window.addEventListener('mousemove', handleMouseMove);
+        window.addEventListener('touchend', handleMouseUp);
+        window.addEventListener('touchmove', handleTouchMove);
 
         return () => {
-            window.removeEventListener("mouseup", handleMouseUp);
-            window.removeEventListener("mousemove", handleMouseMove);
-            window.removeEventListener("touchend", handleMouseUp);
-            window.removeEventListener("touchmove", handleTouchMove);
+            window.removeEventListener('mouseup', handleMouseUp);
+            window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('touchend', handleMouseUp);
+            window.removeEventListener('touchmove', handleTouchMove);
         };
     }, []);
 
@@ -65,7 +65,7 @@ const HorizontalComparisonCard = () => {
         >
             {/* Before Image */}
             <img
-                src="https://i.ibb.co.com/YXzxRBv/before.png"
+                src='https://i.ibb.co.com/YXzxRBv/before.png'
                 alt="Before"
                 className="absolute top-0 left-0 w-full h-full object-cover"
             />
@@ -76,7 +76,7 @@ const HorizontalComparisonCard = () => {
                 style={{ width: `${sliderPosition}%` }}
             >
                 <img
-                    src="https://i.ibb.co.com/1ZKL4wK/after.png"
+                    src='https://i.ibb.co.com/1ZKL4wK/after.png'
                     alt="After"
                     className="absolute top-0 left-0 w-full h-full object-cover"
                 />
@@ -107,4 +107,4 @@ const HorizontalComparisonCard = () => {
     );
 };
 
-export default HorizontalComparisonCard;
+export default HorizontalComparisonExample;

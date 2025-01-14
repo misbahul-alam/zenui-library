@@ -1420,8 +1420,8 @@ export default DragAndDrop;
           <OverviewFooter
             backUrl='/components/animated-button'
             backName='animated button'
-            forwardName='cards'
-            forwardUrl='/components/cards'
+            forwardName='Comparison Card'
+            forwardUrl='/components/comparison-card'
           />
         </div>
 

@@ -252,6 +252,20 @@ export const carouselContents = [
   },
 ];
 
+// Comparison contents
+export const comparisonContents = [
+  {
+    id: 1,
+    title: 'Vertical Comparison',
+    href: '#vertical_comparison',
+  },
+  {
+    id: 2,
+    title: 'Horizontal Comparison',
+    href: '#horizontal_comparison',
+  },
+];
+
 // Image Gallery contents
 export const imageGalleryContents = [
   {

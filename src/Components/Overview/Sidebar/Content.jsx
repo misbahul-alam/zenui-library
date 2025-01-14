@@ -151,6 +151,12 @@ const Content = () => {
                 parent: 'SURFACES'
               },
               {
+                title: "Comparison Card",
+                url: "/components/comparison-card",
+                parent: 'SURFACES',
+                  isNewComponent: true
+              },
+              {
                 title: "Cards",
                 url: "/components/cards",
               },

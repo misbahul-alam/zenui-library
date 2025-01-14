@@ -123,6 +123,7 @@ import ShortcutGeneratorPage from "./Pages/ShortcutGeneratorPage.jsx";
 import AIGeneratorPage from "./Pages/AIGeneratorPage.jsx";
 import { MenuProvider } from "./Context/MenuContext.jsx";
 import GithubActivityGraphPage from "./Pages/Components/Data Display/GithubActivityGraphPage.jsx";
+import ComparisonCardPage from "./Pages/Components/Surfaces/ComparisonCardPage.jsx";
 
 
 const App = () => {
@@ -212,6 +213,7 @@ const App = () => {
                 {/* surface */}
                 <Route path="/components/cards" element={<CardPage/>}/>
                 <Route path="/components/drag-and-drop" element={<DragAndDropPage/>}/>
+                <Route path="/components/comparison-card" element={<ComparisonCardPage/>}/>
                 <Route path="/components/animated-cards" element={<AnimatedCardsPage/>}/>
                 <Route
                     path="/components/image-gallery"

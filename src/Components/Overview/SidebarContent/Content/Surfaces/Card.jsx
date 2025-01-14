@@ -3237,7 +3237,7 @@ export default Card;
             )}
           </div>
 
-          <OverviewFooter backUrl='/components/drag-and-drop' backName='Drag & Drop' forwardName='animated cards' forwardUrl='/components/animated-cards'/>
+          <OverviewFooter backUrl='/components/comparison-card' backName='Comparison Card' forwardName='animated cards' forwardUrl='/components/animated-cards'/>
         </div>
 
         <div className="1024px:block hidden sticky top-4 right-0 w-[40%]">
