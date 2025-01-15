@@ -9,7 +9,7 @@ import ContextMenu from "../../../Components/Overview/SidebarContent/Content/Fee
 
 const DialogPage = () => {
     return (
-        <>
+        <div className='dark:bg-darkBgColor'>
             <Navbar />
             <MobileNavbar/>
             <div className="flex w-full mx-auto max-w-[1700px]">
@@ -22,7 +22,7 @@ const DialogPage = () => {
                     <ContextMenu />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

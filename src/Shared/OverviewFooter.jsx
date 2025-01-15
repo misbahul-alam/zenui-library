@@ -15,7 +15,7 @@ import {Link} from "react-router-dom";
 const OverviewFooter = ({backUrl, forwardUrl, backName, forwardName, isBackButton = true, isForwardButton = true}) => {
 
     return (
-        <footer className="w-full 1024px:w-[80%] mt-8">
+        <footer className="w-full 1024px:w-[90%] mt-8">
 
             {
                 (isBackButton || isForwardButton) && (

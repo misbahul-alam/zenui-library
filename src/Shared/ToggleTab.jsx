@@ -4,11 +4,9 @@ import {LuSettings2} from "react-icons/lu";
 
 // store
 import useZenuiStore from "../Store/Index.js";
-import PremiumTooltip from "./PremiumTooltip.jsx";
 
 const ToggleTab = ({preview, code, setPreview, setCode}) => {
 
-    var componentUrl, setIsPremiumModalOpen, isPremiumModalOpen, isPremium;
     const[settingOpen, setSettingOpen] = useState(false);
 
     const store = useZenuiStore(state => state);
@@ -32,22 +30,8 @@ const ToggleTab = ({preview, code, setPreview, setCode}) => {
         return () => document.removeEventListener('click', handleClick);
     }, [settingOpen, uniqueId]);
 
-    const handleCodeToggle = () => {
-        if(isPremium) {
-            setIsPremiumModalOpen(true)
-        }else {
-            isDarkCardView(setPreview, setCode, false)
-        }
-    }
-
     return (
-        <div className='flex mt-8 mb-2 relative items-end justify-between w-full 1024px:w-[80%]'>
-
-            <PremiumTooltip
-                setIsPremiumModalOpen={setIsPremiumModalOpen}
-                isPremiumModalOpen={isPremiumModalOpen}
-                url={componentUrl}
-            />
+        <div className='flex mt-8 mb-2 relative items-end justify-between w-full 1024px:w-[90%]'>
 
             <div
                 className='relative backdrop-blur-md overflow-hidden bg-gray-200/80 dark:bg-slate-800 w-max rounded'>
@@ -70,7 +54,7 @@ const ToggleTab = ({preview, code, setPreview, setCode}) => {
                     className={`${
                         code && ' text-tabTextColor dark:text-darkTextColor/90'
                     } px-6 py-2.5 z-[2] relative dark:text-darkSubTextColor transition-all dark:text-darkSubTextColor/90 duration-500 text-text`}
-                    onClick={handleCodeToggle}
+                    onClick={()=> isDarkCardView(setPreview, setCode, false)}
                 >
                     Code
                 </button>

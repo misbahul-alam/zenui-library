@@ -8,6 +8,11 @@ import ContentHeader from '../../../../../Shared/ContentHeader';
 import OverviewFooter from '../../../../../Shared/OverviewFooter';
 import Showcode from '../../../../../Shared/ShowCode';
 
+import ComponentDescription from "../../../../../Shared/ComponentDescription.jsx";
+import ToggleTab from "../../../../../Shared/ToggleTab.jsx";
+import ComponentWrapper from "../../../../../Shared/ComponentWrapper.jsx";
+import ContentNavbar from "../../../../../Shared/ContentNavbar.jsx";
+
 // contents for scrollspy
 import {skeletonContents} from '../../../../../Utils/ContentsConfig/FeedbackContents';
 import {useScrollSpy} from '../../../../../CustomHooks/useScrollSpy';
@@ -20,85 +25,85 @@ const Skeleton = () => {
     const [cardSkeletonPreview, setCardSkeletonPreview] = useState(true);
     const [cardSkeletonCode, setCardSkeletonCode] = useState(false);
 
-    const handleCardSkeletonPreview = () => {
-        setCardSkeletonPreview(true);
-        setCardSkeletonCode(false);
-    };
-
-    const handleCardSkeletonCode = () => {
-        setCardSkeletonCode(true);
-        setCardSkeletonPreview(false);
-    };
-
     // imageGellaryPreview
     const [imageGellaryPreview, setImageGellaryPreview] = useState(true);
     const [imageGellaryCode, setImageGellaryCode] = useState(false);
-
-    const handleImageGellaryPreview = () => {
-        setImageGellaryPreview(true);
-        setImageGellaryCode(false);
-    };
-
-    const handleImageGellaryCode = () => {
-        setImageGellaryCode(true);
-        setImageGellaryPreview(false);
-    };
 
     // socialPostPreview
     const [socialPostPreview, setSocialPostPreview] = useState(true);
     const [socialPostCode, setSocialPostCode] = useState(false);
 
-    const handleSocialPostPreview = () => {
-        setSocialPostPreview(true);
-        setSocialPostCode(false);
-    };
-
-    const handleSocialPostCode = () => {
-        setSocialPostCode(true);
-        setSocialPostPreview(false);
-    };
-
     // product details skeleton
     const [productDetailsPreview, setProductDetailsPreview] = useState(true);
     const [productDetailsCode, setProductDetailsCode] = useState(false);
-
-    const handleProductDetailsPreview = () => {
-        setProductDetailsPreview(true);
-        setProductDetailsCode(false);
-    };
-
-    const handleProductDetailsCode = () => {
-        setProductDetailsCode(true);
-        setProductDetailsPreview(false);
-    };
 
     // blog skeleton
     const [blogSkeletonPreview, setBlogSkeletonPreview] = useState(true);
     const [blogSkeletonCode, setBlogSkeletonCode] = useState(false);
 
-    const handleBlogSkeletonPreview = () => {
-        setBlogSkeletonPreview(true);
-        setBlogSkeletonCode(false);
-    };
-
-    const handleBlogSkeletonCode = () => {
-        setBlogSkeletonCode(true);
-        setBlogSkeletonPreview(false);
-    };
-
     // shine skeleton
     const [shineSkeletonPreview, setShineSkeletonPreview] = useState(true);
     const [shineSkeletonCode, setShineSkeletonCode] = useState(false);
 
-    const handleShineSkeletonPreview = () => {
-        setShineSkeletonPreview(true);
-        setShineSkeletonCode(false);
-    };
-
-    const handleShineSkeletonCode = () => {
-        setShineSkeletonCode(true);
-        setShineSkeletonPreview(false);
-    };
+    const shimmerSkeletonCodes = [
+        {
+            id: 'skeleton_component',
+            displayText: 'Skeleton Component',
+            language: 'jsx',
+            code: 'import React from "react";\n' +
+                '\n' +
+                'const Skeleton = () => {\n' +
+                '\n' +
+                '    return (\n' +
+                '        <div className="grid w-full px-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">\n' +
+                '\n' +
+                '            <div\n' +
+                '                className="relative space-y-5 border border-slate-100 dark:border-slate-700 overflow-hidden rounded-2xl bg-white/5 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-100/10 before:bg-gradient-to-r before:from-transparent before:via-slate-100/70 dark:before:via-slate-100/10 before:to-transparent">\n' +
+                '                <div className="h-24 rounded-lg dark:bg-slate-700 bg-slate-100/80"></div>\n' +
+                '                <div className="space-y-3">\n' +
+                '                    <div className="h-3 w-3/5 rounded-lg dark:bg-slate-700 bg-slate-100/50"></div>\n' +
+                '                    <div className="h-3 w-4/5 rounded-lg dark:bg-slate-700 bg-slate-100/60"></div>\n' +
+                '                    <div className="h-3 w-2/5 rounded-lg dark:bg-slate-700 bg-slate-100/60"></div>\n' +
+                '                </div>\n' +
+                '            </div>\n' +
+                '\n' +
+                '            <div\n' +
+                '                className="relative space-y-5 border border-slate-100 dark:border-slate-700 overflow-hidden rounded-2xl bg-white/5 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-100/10 before:bg-gradient-to-r before:from-transparent before:via-slate-100/70 dark:before:via-slate-100/10 before:to-transparent">\n' +
+                '                <div className="h-24 rounded-lg dark:bg-slate-700 bg-slate-100/80"></div>\n' +
+                '                <div className="space-y-3">\n' +
+                '                    <div className="h-3 w-3/5 rounded-lg dark:bg-slate-700 bg-slate-100/50"></div>\n' +
+                '                    <div className="h-3 w-4/5 rounded-lg dark:bg-slate-700 bg-slate-100/60"></div>\n' +
+                '                    <div className="h-3 w-2/5 rounded-lg dark:bg-slate-700 bg-slate-100/60"></div>\n' +
+                '                </div>\n' +
+                '            </div>\n' +
+                '\n' +
+                '            <div\n' +
+                '                className="relative space-y-5 border border-slate-100 dark:border-slate-700 overflow-hidden rounded-2xl bg-white/5 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-100/10 before:bg-gradient-to-r before:from-transparent before:via-slate-100/70 dark:before:via-slate-100/10 before:to-transparent">\n' +
+                '                <div className="h-24 rounded-lg dark:bg-slate-700 bg-slate-100/80"></div>\n' +
+                '                <div className="space-y-3">\n' +
+                '                    <div className="h-3 w-3/5 rounded-lg dark:bg-slate-700 bg-slate-100/50"></div>\n' +
+                '                    <div className="h-3 w-4/5 rounded-lg dark:bg-slate-700 bg-slate-100/60"></div>\n' +
+                '                    <div className="h-3 w-2/5 rounded-lg dark:bg-slate-700 bg-slate-100/60"></div>\n' +
+                '                </div>\n' +
+                '            </div>\n' +
+                '\n' +
+                '        </div>\n' +
+                '    );\n' +
+                '};\n' +
+                '\n' +
+                'export default Skeleton;'
+        },
+        {
+            id: 'css',
+            displayText: 'CSS',
+            language: 'css',
+            code: '@keyframes shimmer {\n' +
+                '  100% {\n' +
+                '        transform: translateX(100%)\n' +
+                '      }\n' +
+                '}'
+        }
+    ]
 
     return (
         <>
@@ -106,66 +111,41 @@ const Skeleton = () => {
                 <div className='w-full 425px:w-[80%]'>
                     <ContentHeader text={'Card Skeleton'} id={'card_skeleton'}/>
 
-                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        This is a card skeleton component. Display placeholder content while
-                        the actual content is loading.
-                    </p>
+                   <ComponentDescription text='This is a card skeleton component. Display placeholder content while
+                        the actual content is loading.'/>
 
-                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    cardSkeletonPreview
-                                        ? 'translate-x-[0px] !w-[100px]'
-                                        : 'translate-x-[107px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${
-                                    cardSkeletonPreview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={handleCardSkeletonPreview}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    cardSkeletonCode && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={handleCardSkeletonCode}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={cardSkeletonCode} setPreview={setCardSkeletonPreview} setCode={setCardSkeletonCode} preview={cardSkeletonPreview}/>
+
+                    <ComponentWrapper>
                         {cardSkeletonPreview && (
                             <div className='p-8 mb-4 flex items-center gap-5 justify-center'>
                                 <div
-                                    className='w-full 425px:w-[400px] border border-[#00000017] animate-pulse rounded-md'>
-                                    <div className='w-full bg-border h-[130px] relative'>
-                                        <img
-                                            className='w-[120px] h-[120px] rounded-full bg-[#cecece] absolute bottom-[-40%] right-1/2 transform translate-x-1/2'/>
+                                    className='w-full 425px:w-[400px] border dark:border-slate-700 border-[#00000017] animate-pulse rounded-md'>
+                                    <div className='w-full bg-border dark:bg-slate-900 rounded-t-md h-[130px] relative'>
+                                        <div
+                                            className='w-[120px] h-[120px] rounded-full dark:bg-slate-800 bg-[#cecece] absolute bottom-[-40%] right-1/2 transform translate-x-1/2'></div>
                                     </div>
 
                                     <div className='flex flex-col gap-3 items-center justify-center w-full py-8 mt-12'>
-                                        <h1 className='w-[70%] h-[35px] bg-border'></h1>
-                                        <p className='w-[50%] h-[20px] bg-border'></p>
+                                        <h1 className='w-[70%] h-[35px] dark:bg-slate-800 bg-border'></h1>
+                                        <p className='w-[50%] h-[20px] dark:bg-slate-800 bg-border'></p>
                                     </div>
 
                                     <div
-                                        className=' border-t p-4 border-gray-200 w-full flex items-center justify-between'>
+                                        className=' border-t p-4 dark:border-slate-700 border-gray-200 w-full flex items-center justify-between'>
                                         <div className='w-[30%] flex flex-col gap-2'>
-                                            <h1 className=' h-[35px] bg-border'></h1>
-                                            <p className='h-[20px] bg-border'></p>
+                                            <h1 className=' h-[35px] dark:bg-slate-800 bg-border'></h1>
+                                            <p className='h-[20px] dark:bg-slate-800 bg-border'></p>
                                         </div>
 
                                         <div className='w-[30%] flex flex-col gap-2'>
-                                            <h1 className='h-[35px] bg-border'></h1>
-                                            <p className='h-[20px] bg-border'></p>
+                                            <h1 className='h-[35px] dark:bg-slate-800 bg-border'></h1>
+                                            <p className='h-[20px] dark:bg-slate-800 bg-border'></p>
                                         </div>
 
                                         <div className=' w-[30%] flex flex-col gap-2'>
-                                            <h1 className='h-[35px] bg-border'></h1>
-                                            <p className='h-[20px] bg-border'></p>
+                                            <h1 className='h-[35px] dark:bg-slate-800 bg-border'></h1>
+                                            <p className='h-[20px] dark:bg-slate-800 bg-border'></p>
                                         </div>
                                     </div>
                                 </div>
@@ -174,50 +154,50 @@ const Skeleton = () => {
 
                         {cardSkeletonCode && (
                             <Showcode
-                                code="
-import React from 'react';
+                                code='
+import React from "react";
 
-const CardSkeleton = () => {
-  return (
-    <div className='w-[400px] border border-[#00000017] animate-pulse rounded-md'>
+const Skeleton = () => {
 
-    // Background image & profile image
-      <div className='w-full bg-[#e5eaf2] h-[130px] relative'>
-        <img className='w-[120px] h-[120px] rounded-full bg-[#cecece] absolute bottom-[-40%] right-1/2 transform translate-x-1/2' />
-      </div>
+    return (
+        <div
+            className="w-full sm:w-[400px] border dark:border-slate-700 border-[#00000017] animate-pulse rounded-md">
+            <div className="w-full bg-[#e5eaf2] dark:bg-slate-900 rounded-t-md h-[130px] relative">
+                <div
+                    className="w-[120px] h-[120px] rounded-full dark:bg-slate-800 bg-[#cecece] absolute bottom-[-40%] right-1/2 transform translate-x-1/2"></div>
+            </div>
 
-      // Name & Bio
-      <div className='flex flex-col gap-3 items-center justify-center w-full py-8 mt-12'>
-        <h1 className='w-[70%] h-[35px] bg-[#e5eaf2]'></h1>
-        <p className='w-[50%] h-[20px] bg-[#e5eaf2]'></p>
-      </div>
+            <div className="flex flex-col gap-3 items-center justify-center w-full py-8 mt-12">
+                <h1 className="w-[70%] h-[35px] dark:bg-slate-800 bg-[#e5eaf2]"></h1>
+                <p className="w-[50%] h-[20px] dark:bg-slate-800 bg-[#e5eaf2]"></p>
+            </div>
 
-      // Follower count
-      <div className='border-t p-4 border-gray-200 w-full flex items-center justify-between'>
-        <div className='w-[30%] flex flex-col gap-2'>
-          <h1 className='h-[35px] bg-[#e5eaf2]'></h1>
-          <p className='h-[20px] bg-[#e5eaf2]'></p>
+            <div
+                className=" border-t p-4 dark:border-slate-700 border-gray-200 w-full flex items-center justify-between">
+                <div className="w-[30%] flex flex-col gap-2">
+                    <h1 className=" h-[35px] dark:bg-slate-800 bg-[#e5eaf2]"></h1>
+                    <p className="h-[20px] dark:bg-slate-800 bg-[#e5eaf2]"></p>
+                </div>
+
+                <div className="w-[30%] flex flex-col gap-2">
+                    <h1 className="h-[35px] dark:bg-slate-800 bg-[#e5eaf2]"></h1>
+                    <p className="h-[20px] dark:bg-slate-800 bg-[#e5eaf2]"></p>
+                </div>
+
+                <div className=" w-[30%] flex flex-col gap-2">
+                    <h1 className="h-[35px] dark:bg-slate-800 bg-[#e5eaf2]"></h1>
+                    <p className="h-[20px] dark:bg-slate-800 bg-[#e5eaf2]"></p>
+                </div>
+            </div>
         </div>
-
-        <div className='w-[30%] flex flex-col gap-2'>
-          <h1 className='h-[35px] bg-[#e5eaf2]'></h1>
-          <p className='h-[20px] bg-[#e5eaf2]'></p>
-        </div>
-
-        <div className='w-[30%] flex flex-col gap-2'>
-          <h1 className='h-[35px] bg-[#e5eaf2]'></h1>
-          <p className='h-[20px] bg-[#e5eaf2]'></p>
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 
-export default CardSkeleton;
-              "
+export default Skeleton;
+                                '
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
                     <div className='mt-8'>
                         <ContentHeader
@@ -226,51 +206,26 @@ export default CardSkeleton;
                         />
                     </div>
 
-                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        This is a grid image gallery skeleton component. Display
-                        placeholders for images while loading content.
-                    </p>
+                    <ComponentDescription text='This is a grid image gallery skeleton component. Display
+                        placeholders for images while loading content.'/>
 
-                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    imageGellaryPreview
-                                        ? 'translate-x-[0px] !w-[100px]'
-                                        : 'translate-x-[107px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${
-                                    imageGellaryPreview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={handleImageGellaryPreview}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    imageGellaryCode && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={handleImageGellaryCode}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={imageGellaryCode} setCode={setImageGellaryCode} preview={imageGellaryPreview} setPreview={setImageGellaryPreview}/>
+
+                    <ComponentWrapper>
                         {imageGellaryPreview && (
                             <div className='p-8 mb-4 flex items-center gap-5 justify-center'>
                                 <div className='animate-pulse'>
                                     <div className='flex gap-5'>
-                                        <img className='w-[200px] h-[300px] bg-border'/>
+                                        <div className='w-[200px] h-[300px] dark:bg-slate-800 bg-border'></div>
 
                                         <div className='flex flex-col gap-5'>
-                                            <img className='w-[200px] h-[140px] bg-border'/>
+                                            <div className='w-[200px] h-[140px] dark:bg-slate-800 bg-border'></div>
 
-                                            <img className='w-[200px] h-[140px] bg-border'/>
+                                            <div className='w-[200px] h-[140px] dark:bg-slate-800 bg-border'></div>
                                         </div>
                                     </div>
 
-                                    <img className='w-full h-[150px] mt-5 bg-border'/>
+                                    <div className='w-full h-[150px] mt-5 dark:bg-slate-800 bg-border'></div>
                                 </div>
                             </div>
                         )}
@@ -280,32 +235,30 @@ export default CardSkeleton;
                                 code='
 import React from "react";
 
-const ImageGallery = () => {
-  return (
-    <div className=" animate-pulse">
-      <div className="flex gap-5">
-      // first iamge
-        <img className="w-[200px] h-[300px] bg-[#e5eaf2]" />
+const Skeleton = () => {
 
-        // second & third image
-        <div className="flex flex-col gap-5">
-          <img className="w-[200px] h-[140px] bg-[#e5eaf2]" />
-          <img className="w-[200px] h-[140px] bg-[#e5eaf2]" />
+    return (
+        <div className="animate-pulse">
+            <div className="flex gap-5">
+                <div className="w-[200px] h-[300px] dark:bg-slate-800 bg-[#e5eaf2]"></div>
+
+                <div className="flex flex-col gap-5">
+                    <div className="w-[200px] h-[140px] dark:bg-slate-800 bg-[#e5eaf2]"></div>
+
+                    <div className="w-[200px] h-[140px] dark:bg-slate-800 bg-[#e5eaf2]"></div>
+                </div>
+            </div>
+
+            <div className="w-full h-[150px] mt-5 dark:bg-slate-800 bg-[#e5eaf2]"></div>
         </div>
-      </div>
-
-      // bottom image
-      <img className="w-full h-[150px] mt-5 bg-[#e5eaf2]" />
-    </div>
-  );
+    );
 };
 
-export default ImageGallery;
-
+export default Skeleton;
               '
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
                     <div className='mt-8'>
                         <ContentHeader
@@ -314,55 +267,30 @@ export default ImageGallery;
                         />
                     </div>
 
-                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        This is a social card skeleton component. Show placeholders for
-                        social media content while it loads.
-                    </p>
+                    <ComponentDescription text='This is a social card skeleton component. Show placeholders for
+                        social media content while it loads.'/>
 
-                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    socialPostPreview
-                                        ? 'translate-x-[0px] !w-[100px]'
-                                        : 'translate-x-[107px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${
-                                    socialPostPreview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={handleSocialPostPreview}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    socialPostCode && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={handleSocialPostCode}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={socialPostCode} setCode={setSocialPostCode} setPreview={setSocialPostPreview} preview={socialPostPreview}/>
+
+                    <ComponentWrapper>
                         {socialPostPreview && (
                             <div className='p-8 mb-4 flex items-center gap-5 justify-center'>
                                 <div
-                                    className='w-full 425px:w-[450px] bg-secondary p-6 border border-border rounded animate-pulse'>
+                                    className='w-full 425px:w-[450px] dark:bg-slate-900 dark:border-slate-700 bg-secondary p-6 border border-border rounded animate-pulse'>
                                     <div className='flex items-center'>
                                         <div className='w-[40%] 425px:w-[20%]'>
-                                            <img className='w-[60px] h-[60px] rounded-full bg-border'/>
+                                            <div className='w-[60px] h-[60px] rounded-full dark:bg-slate-800 bg-border'></div>
                                         </div>
 
                                         <div className='flex flex-col gap-3 w-[80%]'>
-                                            <h1 className='w-[60%] h-[25px] bg-border'></h1>
-                                            <p className='w-[80%] h-[15px] bg-border'></p>
+                                            <h1 className='w-[60%] h-[25px] dark:bg-slate-800 bg-border'></h1>
+                                            <p className='w-[80%] h-[15px] dark:bg-slate-800 bg-border'></p>
                                         </div>
                                     </div>
 
                                     <div className='mt-10 flex flex-col gap-3'>
-                                        <p className='w-[90%] h-[15px] bg-border'></p>
-                                        <p className='w-[80%] h-[15px] bg-border'></p>
+                                        <p className='w-[90%] h-[15px] dark:bg-slate-800 bg-border'></p>
+                                        <p className='w-[80%] h-[15px] dark:bg-slate-800 bg-border'></p>
                                     </div>
                                 </div>
                             </div>
@@ -373,33 +301,35 @@ export default ImageGallery;
                                 code='
 import React from "react";
 
-const SocialPostSkeleton = () => {
-  return (
-    <div className="w-[450px] bg-[#ffff] p-6 border border-[#e5eaf2] rounded animate-pulse">
-      <div className="flex items-center">
-        <div className="w-[20%]">
-          <img className="w-[60px] h-[60px] rounded-full bg-[#e5eaf2]" />
-        </div>
+const Skeleton = () => {
 
-        <div className="flex flex-col gap-3 w-[80%]">
-          <h1 className="w-[60%] h-[25px] bg-[#e5eaf2]"></h1>
-          <p className="w-[80%] h-[15px] bg-[#e5eaf2]"></p>
-        </div>
-      </div>
+    return (
+        <div
+            className="w-full sm:w-[450px] dark:bg-slate-900 dark:border-slate-700 bg-secondary p-6 border border-border rounded animate-pulse">
+            <div className="flex items-center">
+                <div className="w-[40%] sm:w-[20%]">
+                    <div className="w-[60px] h-[60px] rounded-full dark:bg-slate-800 bg-[#e5eaf2]"></div>
+                </div>
 
-      <div className="mt-10 flex flex-col gap-3">
-        <p className="w-[90%] h-[15px] bg-[#e5eaf2]"></p>
-        <p className="w-[80%] h-[15px] bg-[#e5eaf2]"></p>
-      </div>
-    </div>
-  );
+                <div className="flex flex-col gap-3 w-[80%]">
+                    <h1 className="w-[60%] h-[25px] dark:bg-slate-800 bg-[#e5eaf2]"></h1>
+                    <p className="w-[80%] h-[15px] dark:bg-slate-800 bg-[#e5eaf2]"></p>
+                </div>
+            </div>
+
+            <div className="mt-10 flex flex-col gap-3">
+                <p className="w-[90%] h-[15px] dark:bg-slate-800 bg-[#e5eaf2]"></p>
+                <p className="w-[80%] h-[15px] dark:bg-slate-800 bg-[#e5eaf2]"></p>
+            </div>
+        </div>
+    );
 };
 
-export default SocialPostSkeleton;
+export default Skeleton;
         '
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
                     <div className='mt-8'>
                         <ContentHeader
@@ -408,59 +338,34 @@ export default SocialPostSkeleton;
                         />
                     </div>
 
-                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        This is the skeleton of the product details page. You can use this
+                    <ComponentDescription text=' This is the skeleton of the product details page. You can use this
                         skeleton on the product details page of any of your e-commerce
-                        websites. Each section is marked with comments within the code.
-                    </p>
+                        websites. Each section is marked with comments within the code.'/>
 
-                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    productDetailsPreview
-                                        ? 'translate-x-[0px] !w-[100px]'
-                                        : 'translate-x-[107px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${
-                                    productDetailsPreview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={handleProductDetailsPreview}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    productDetailsCode && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={handleProductDetailsCode}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={productDetailsCode} setCode={setProductDetailsCode} preview={productDetailsPreview} setPreview={setProductDetailsPreview}/>
+
+                    <ComponentWrapper>
                         {productDetailsPreview && (
                             <div className='p-8 mb-4 flex items-center gap-5 justify-center'>
                                 <div className='flex gap-6 w-full animate-pulse'>
                                     <div>
-                                        <img className='w-[450px] h-[300px] bg-border'/>
+                                        <div className='flex-1 h-[300px] dark:bg-slate-800 bg-border'></div>
                                         <div className='flex gap-3 mt-3'>
-                                            <img className='w-[130px] h-[100px] bg-border'/>
-                                            <img className='w-[130px] h-[100px] bg-border'/>
+                                            <div className='w-[130px] h-[100px] dark:bg-slate-800 bg-border'></div>
+                                            <div className='w-[130px] h-[100px] dark:bg-slate-800 bg-border'></div>
                                         </div>
                                     </div>
 
                                     <div className='flex flex-col gap-4 w-full'>
-                                        <h2 className='w-[100%] h-[35px] bg-border'></h2>
-                                        <p className='w-[100%] h-[200px] bg-border'></p>
-                                        <span className='w-[30%] h-[30px] bg-border'></span>
+                                        <h2 className='w-[100%] h-[35px] dark:bg-slate-800 bg-border'></h2>
+                                        <p className='w-[100%] h-[200px] dark:bg-slate-800 bg-border'></p>
+                                        <span className='w-[30%] h-[30px] dark:bg-slate-800 bg-border'></span>
                                         <div className='flex items-center justify-between w-full'>
-                                            <button className='w-[30%] h-[40px] bg-border'></button>
-                                            <i className='w-[40px] h-[40px] rounded-full bg-border'></i>
+                                            <button className='w-[30%] h-[40px] dark:bg-slate-800 bg-border'></button>
+                                            <i className='w-[40px] h-[40px] rounded-full dark:bg-slate-800 bg-border'></i>
                                         </div>
 
-                                        <button className='w-[35%] h-[40px] bg-border'></button>
+                                        <button className='w-[35%] h-[40px] dark:bg-slate-800 bg-border'></button>
                                     </div>
                                 </div>
                             </div>
@@ -471,44 +376,38 @@ export default SocialPostSkeleton;
                                 code='
 import React from "react";
 
-const ProductDetailsSkeleton = () => {
-  return (
-    <div className="flex gap-6 w-full animate-pulse">
-      // product image & prodcut sub images
-      <div>
-        <img className="w-[450px] h-[300px] bg-[#e5eaf2]" />
-        <div className="flex gap-3 mt-3">
-          <img className="w-[130px] h-[100px] bg-[#e5eaf2]" />
-          <img className="w-[130px] h-[100px] bg-[#e5eaf2]" />
-        </div>
-      </div>
+const Skeleton = () => {
 
-      <div className="flex flex-col gap-4 w-full">
-        // product name
-        <h2 className="w-[100%] h-[35px] bg-[#e5eaf2]"></h2>
-        // product description
-        <p className="w-[100%] h-[200px] bg-[#e5eaf2]"></p>
-        // product price
-        <span className="w-[30%] h-[30px] bg-[#e5eaf2]"></span>
-        <div className="flex items-center justify-between w-full">
-          // quantity button
-          <button className="w-[30%] h-[40px] bg-[#e5eaf2]"></button>
-          // favorite button
-          <i className="w-[40px] h-[40px] rounded-full bg-[#e5eaf2]"></i>
+    return (
+        <div className="flex gap-6 w-full animate-pulse">
+            <div>
+                <div className="flex-1 h-[300px] dark:bg-slate-800 bg-[#e5eaf2]"></div>
+                <div className="flex gap-3 mt-3">
+                    <div className="w-[130px] h-[100px] dark:bg-slate-800 bg-[#e5eaf2]"></div>
+                    <div className="w-[130px] h-[100px] dark:bg-slate-800 bg-[#e5eaf2]"></div>
+                </div>
+            </div>
+
+            <div className="flex flex-col gap-4 w-full">
+                <h2 className="w-[100%] h-[35px] dark:bg-slate-800 bg-[#e5eaf2]"></h2>
+                <p className="w-[100%] h-[200px] dark:bg-slate-800 bg-[#e5eaf2]"></p>
+                <span className="w-[30%] h-[30px] dark:bg-slate-800 bg-[#e5eaf2]"></span>
+                <div className="flex items-center justify-between w-full">
+                    <button className="w-[30%] h-[40px] dark:bg-slate-800 bg-[#e5eaf2]"></button>
+                    <i className="w-[40px] h-[40px] rounded-full dark:bg-slate-800 bg-[#e5eaf2]"></i>
+                </div>
+
+                <button className="w-[35%] h-[40px] dark:bg-slate-800 bg-[#e5eaf2]"></button>
+            </div>
         </div>
-        // add to cart button
-        <button className="w-[35%] h-[40px] bg-[#e5eaf2]"></button>
-      </div>
-    </div>
-  );
+    );
 };
 
-export default ProductDetailsSkeleton;
-
+export default Skeleton;
               '
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
                     <div className='mt-8'>
                         <ContentHeader
@@ -517,91 +416,66 @@ export default ProductDetailsSkeleton;
                         />
                     </div>
 
-                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        A skeleton screen for a post list, displaying placeholder elements
+                    <ComponentDescription text='A skeleton screen for a post list, displaying placeholder elements
                         such as rectangles and lines, mimicking the structure of the content
-                        while it loads.
-                    </p>
+                        while it loads.'/>
 
-                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    socialPostPreview
-                                        ? 'translate-x-[0px] !w-[100px]'
-                                        : 'translate-x-[107px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${
-                                    socialPostPreview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={handleSocialPostPreview}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    socialPostCode && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={handleSocialPostCode}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={socialPostPreview} setPreview={setSocialPostPreview} preview={socialPostPreview} setCode={setSocialPostCode}/>
+
+                    <ComponentWrapper>
                         {socialPostPreview && (
                             <div className='p-8 mb-4 flex items-center gap-5 justify-center'>
                                 <div className='w-full flex flex-col gap-[20px]'>
                                     <div
-                                        className='w-full mx-auto bg-secondary p-3 rounded-md border border-border boxShadow animate-pulse'>
+                                        className='w-full mx-auto dark:bg-slate-900 dark:border-slate-700 bg-secondary p-3 rounded-md border border-border boxShadow animate-pulse'>
                                         <div className='flex items-center gap-[20px]'>
                                             <div className='w-[40%] 425px:w-[20%]'>
-                                                <img className='w-[80px] h-[80px] rounded-full bg-border'/>
+                                                <div className='w-[80px] h-[80px] rounded-full dark:bg-slate-800 bg-border'></div>
                                             </div>
 
                                             <div className='flex flex-col gap-[10px] w-[80%]'>
-                                                <h1 className='w-[80%] h-[25px] bg-border rounded-md'></h1>
+                                                <h1 className='w-[80%] h-[25px] dark:bg-slate-800 bg-border rounded-md'></h1>
 
                                                 <div className='flex flex-col gap-2'>
-                                                    <p className='w-[90%] h-[7px] bg-border rounded-md'></p>
-                                                    <p className='w-[80%] h-[7px] bg-border rounded-md'></p>
-                                                    <p className='w-[50%] h-[7px] bg-border rounded-md'></p>
+                                                    <p className='w-[90%] h-[7px] dark:bg-slate-800 bg-border rounded-md'></p>
+                                                    <p className='w-[80%] h-[7px] dark:bg-slate-800 bg-border rounded-md'></p>
+                                                    <p className='w-[50%] h-[7px] dark:bg-slate-800 bg-border rounded-md'></p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div
-                                        className='w-full mx-auto bg-secondary p-3 rounded-md border border-border boxShadow animate-pulse'>
+                                        className='w-full mx-auto dark:bg-slate-900 dark:border-slate-700 bg-secondary p-3 rounded-md border border-border boxShadow animate-pulse'>
                                         <div className='flex items-center gap-[20px]'>
                                             <div className='w-[40%] 425px:w-[20%]'>
-                                                <img className='w-[80px] h-[80px] rounded-full bg-border'/>
+                                                <div className='w-[80px] h-[80px] rounded-full dark:bg-slate-800 bg-border'></div>
                                             </div>
 
                                             <div className='flex flex-col gap-[10px] w-[80%]'>
-                                                <h1 className='w-[80%] h-[25px] bg-border rounded-md'></h1>
+                                                <h1 className='w-[80%] h-[25px] dark:bg-slate-800 bg-border rounded-md'></h1>
 
                                                 <div className='flex flex-col gap-2'>
-                                                    <p className='w-[90%] h-[7px] bg-border rounded-md'></p>
-                                                    <p className='w-[80%] h-[7px] bg-border rounded-md'></p>
-                                                    <p className='w-[50%] h-[7px] bg-border rounded-md'></p>
+                                                    <p className='w-[90%] h-[7px] dark:bg-slate-800 bg-border rounded-md'></p>
+                                                    <p className='w-[80%] h-[7px] dark:bg-slate-800 bg-border rounded-md'></p>
+                                                    <p className='w-[50%] h-[7px] dark:bg-slate-800 bg-border rounded-md'></p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div
-                                        className='w-full mx-auto bg-secondary p-3 rounded-md border border-border boxShadow animate-pulse'>
+                                        className='w-full mx-auto dark:bg-slate-900 dark:border-slate-700 bg-secondary p-3 rounded-md border border-border boxShadow animate-pulse'>
                                         <div className='flex items-center gap-[20px]'>
                                             <div className='w-[40%] 425px:w-[20%]'>
-                                                <img className='w-[80px] h-[80px] rounded-full bg-border'/>
+                                                <div className='w-[80px] h-[80px] rounded-full dark:bg-slate-800 bg-border'></div>
                                             </div>
 
                                             <div className='flex flex-col gap-[10px] w-[80%]'>
-                                                <h1 className='w-[80%] h-[25px] bg-border rounded-md'></h1>
+                                                <h1 className='w-[80%] h-[25px] dark:bg-slate-800 bg-border rounded-md'></h1>
 
                                                 <div className='flex flex-col gap-2'>
-                                                    <p className='w-[90%] h-[7px] bg-border rounded-md'></p>
-                                                    <p className='w-[80%] h-[7px] bg-border rounded-md'></p>
-                                                    <p className='w-[50%] h-[7px] bg-border rounded-md'></p>
+                                                    <p className='w-[90%] h-[7px] dark:bg-slate-800 bg-border rounded-md'></p>
+                                                    <p className='w-[80%] h-[7px] dark:bg-slate-800 bg-border rounded-md'></p>
+                                                    <p className='w-[50%] h-[7px] dark:bg-slate-800 bg-border rounded-md'></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -620,59 +494,55 @@ const Skeleton = () => {
     return (
         <div className="w-full flex flex-col gap-[20px]">
             <div
-                className="w-full mx-auto bg-secondary p-3 rounded-md border border-border boxShadow animate-pulse">
+                className="w-full mx-auto dark:bg-slate-900 dark:border-slate-700 bg-secondary p-3 rounded-md border border-[e5eaf2] boxShadow animate-pulse">
                 <div className="flex items-center gap-[20px]">
-                    <div className="w-[40%] 425px:w-[20%]">
-                        <img className="w-[80px] h-[80px] rounded-full bg-border"/>
+                    <div className="w-[40%] sm:w-[20%]">
+                        <div className="w-[80px] h-[80px] rounded-full dark:bg-slate-800 bg-[#e5eaf2]"></div>
                     </div>
 
                     <div className="flex flex-col gap-[10px] w-[80%]">
-                        <h1 className="w-[80%] h-[25px] bg-border rounded-md"></h1>
+                        <h1 className="w-[80%] h-[25px] dark:bg-slate-800 bg-[#e5eaf2] rounded-md"></h1>
 
                         <div className="flex flex-col gap-2">
-                            <p className="w-[90%] h-[7px] bg-border rounded-md"></p>
-                            <p className="w-[80%] h-[7px] bg-border rounded-md"></p>
-                            <p className="w-[50%] h-[7px] bg-border rounded-md"></p>
+                            <p className="w-[90%] h-[7px] dark:bg-slate-800 bg-[#e5eaf2] rounded-md"></p>
+                            <p className="w-[80%] h-[7px] dark:bg-slate-800 bg-[#e5eaf2] rounded-md"></p>
+                            <p className="w-[50%] h-[7px] dark:bg-slate-800 bg-[#e5eaf2] rounded-md"></p>
                         </div>
                     </div>
                 </div>
-
-
             </div>
             <div
-                className="w-full mx-auto bg-secondary p-3 rounded-md border border-border boxShadow animate-pulse">
+                className="w-full mx-auto dark:bg-slate-900 dark:border-slate-700 bg-secondary p-3 rounded-md border border-[e5eaf2] boxShadow animate-pulse">
                 <div className="flex items-center gap-[20px]">
-                    <div className="w-[40%] 425px:w-[20%]">
-                        <img className="w-[80px] h-[80px] rounded-full bg-border"/>
+                    <div className="w-[40%] sm:w-[20%]">
+                        <div className="w-[80px] h-[80px] rounded-full dark:bg-slate-800 bg-[#e5eaf2]"></div>
                     </div>
 
                     <div className="flex flex-col gap-[10px] w-[80%]">
-                        <h1 className="w-[80%] h-[25px] bg-border rounded-md"></h1>
+                        <h1 className="w-[80%] h-[25px] dark:bg-slate-800 bg-[#e5eaf2] rounded-md"></h1>
 
                         <div className="flex flex-col gap-2">
-                            <p className="w-[90%] h-[7px] bg-border rounded-md"></p>
-                            <p className="w-[80%] h-[7px] bg-border rounded-md"></p>
-                            <p className="w-[50%] h-[7px] bg-border rounded-md"></p>
+                            <p className="w-[90%] h-[7px] dark:bg-slate-800 bg-[#e5eaf2] rounded-md"></p>
+                            <p className="w-[80%] h-[7px] dark:bg-slate-800 bg-[#e5eaf2] rounded-md"></p>
+                            <p className="w-[50%] h-[7px] dark:bg-slate-800 bg-[#e5eaf2] rounded-md"></p>
                         </div>
                     </div>
                 </div>
-
-
             </div>
             <div
-                className="w-full mx-auto bg-secondary p-3 rounded-md border border-border boxShadow animate-pulse">
+                className="w-full mx-auto dark:bg-slate-900 dark:border-slate-700 bg-secondary p-3 rounded-md border border-[e5eaf2] boxShadow animate-pulse">
                 <div className="flex items-center gap-[20px]">
-                    <div className="w-[40%] 425px:w-[20%]">
-                        <img className="w-[80px] h-[80px] rounded-full bg-border"/>
+                    <div className="w-[40%] sm:w-[20%]">
+                        <div className="w-[80px] h-[80px] rounded-full dark:bg-slate-800 bg-[#e5eaf2]"></div>
                     </div>
 
                     <div className="flex flex-col gap-[10px] w-[80%]">
-                        <h1 className="w-[80%] h-[25px] bg-border rounded-md"></h1>
+                        <h1 className="w-[80%] h-[25px] dark:bg-slate-800 bg-[#e5eaf2] rounded-md"></h1>
 
                         <div className="flex flex-col gap-2">
-                            <p className="w-[90%] h-[7px] bg-border rounded-md"></p>
-                            <p className="w-[80%] h-[7px] bg-border rounded-md"></p>
-                            <p className="w-[50%] h-[7px] bg-border rounded-md"></p>
+                            <p className="w-[90%] h-[7px] dark:bg-slate-800 bg-[#e5eaf2] rounded-md"></p>
+                            <p className="w-[80%] h-[7px] dark:bg-slate-800 bg-[#e5eaf2] rounded-md"></p>
+                            <p className="w-[50%] h-[7px] dark:bg-slate-800 bg-[#e5eaf2] rounded-md"></p>
                         </div>
                     </div>
                 </div>
@@ -685,7 +555,7 @@ export default Skeleton;
         '
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
                     <div className='mt-8'>
                         <ContentHeader
@@ -694,63 +564,39 @@ export default Skeleton;
                         />
                     </div>
 
-                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        A skeleton screen for a blog post, showing placeholders for the
+                    <ComponentDescription text='A skeleton screen for a blog post, showing placeholders for the
                         title, text blocks, and images, simulating the layout while the
-                        content is loading.
-                    </p>
+                        content is loading.'/>
 
-                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    blogSkeletonPreview
-                                        ? 'translate-x-[0px] !w-[100px]'
-                                        : 'translate-x-[107px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${
-                                    blogSkeletonPreview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={handleBlogSkeletonPreview}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    blogSkeletonCode && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={handleBlogSkeletonCode}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={blogSkeletonCode} setCode={setBlogSkeletonCode}
+                    setPreview={setBlogSkeletonPreview} preview={blogSkeletonPreview}/>
+
+                    <ComponentWrapper>
                         {blogSkeletonPreview && (
                             <div className='p-8 mb-4 flex items-center gap-5 justify-center'>
                                 <div className='w-full flex flex-col gap-[20px]'>
                                     <div
-                                        className='w-full mx-auto bg-secondary p-4 rounded-md border border-border boxShadow animate-pulse'>
+                                        className='w-full mx-auto dark:bg-slate-900 dark:border-slate-700 bg-secondary p-4 rounded-md border border-border boxShadow animate-pulse'>
                                         <div className='flex gap-[20px]'>
                                             <div className='flex flex-col justify-between w-full 640px:w-[80%]'>
                                                 <div className='flex flex-col gap-2'>
-                                                    <p className='w-[90%] h-[7px] bg-border rounded-md'></p>
-                                                    <p className='w-[90%] h-[7px] bg-border rounded-md'></p>
-                                                    <p className='w-[80%] h-[7px] bg-border rounded-md'></p>
+                                                    <p className='w-[90%] h-[7px] dark:bg-slate-700 bg-border rounded-md'></p>
+                                                    <p className='w-[90%] h-[7px] dark:bg-slate-700 bg-border rounded-md'></p>
+                                                    <p className='w-[80%] h-[7px] dark:bg-slate-700 bg-border rounded-md'></p>
                                                 </div>
 
                                                 <div className='flex items-center gap-[10px] w-full'>
-                                                    <img className='w-[40px] h-[40px] rounded-full bg-border'/>
+                                                    <div className='w-[40px] h-[40px] rounded-full dark:bg-slate-700 bg-border'></div>
 
                                                     <div className='flex flex-col gap-2 w-[80%]'>
-                                                        <p className='w-[60%] h-[7px] bg-border rounded-md'></p>
-                                                        <span className='w-[50%] h-[7px] bg-border rounded-md'></span>
+                                                        <p className='w-[60%] h-[7px] dark:bg-slate-700 bg-border rounded-md'></p>
+                                                        <span className='w-[50%] h-[7px] dark:bg-slate-700 bg-border rounded-md'></span>
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <div className='w-[40%] 425px:w-[35%]'>
-                                                <img className='w-[120px] h-[120px] rounded-md bg-border'/>
+                                                <div className='w-[120px] h-[120px] rounded-md dark:bg-slate-700 bg-border'></div>
                                             </div>
                                         </div>
                                     </div>
@@ -768,27 +614,27 @@ const Skeleton = () => {
     return (
         <div className="w-full flex flex-col gap-[20px]">
             <div
-                className="w-full mx-auto bg-secondary p-4 rounded-md border border-border boxShadow animate-pulse">
+                className="w-full mx-auto dark:bg-slate-900 dark:border-slate-700 bg-secondary p-4 rounded-md border border-[e5eaf2] boxShadow animate-pulse">
                 <div className="flex gap-[20px]">
-                    <div className="flex flex-col justify-between w-full sm:w-[80%]">
+                    <div className="flex flex-col justify-between w-full 640px:w-[80%]">
                         <div className="flex flex-col gap-2">
-                            <p className="w-[90%] h-[7px] bg-border rounded-md"></p>
-                            <p className="w-[90%] h-[7px] bg-border rounded-md"></p>
-                            <p className="w-[80%] h-[7px] bg-border rounded-md"></p>
+                            <p className="w-[90%] h-[7px] dark:bg-slate-700 bg-[e5eaf2] rounded-md"></p>
+                            <p className="w-[90%] h-[7px] dark:bg-slate-700 bg-[e5eaf2] rounded-md"></p>
+                            <p className="w-[80%] h-[7px] dark:bg-slate-700 bg-[e5eaf2] rounded-md"></p>
                         </div>
 
                         <div className="flex items-center gap-[10px] w-full">
-                            <img className="w-[40px] h-[40px] rounded-full bg-border"/>
+                            <div className="w-[40px] h-[40px] rounded-full dark:bg-slate-700 bg-[e5eaf2]"></div>
 
                             <div className="flex flex-col gap-2 w-[80%]">
-                                <p className="w-[60%] h-[7px] bg-border rounded-md"></p>
-                                <span className="w-[50%] h-[7px] bg-border rounded-md"></span>
+                                <p className="w-[60%] h-[7px] dark:bg-slate-700 bg-[e5eaf2] rounded-md"></p>
+                                <span className="w-[50%] h-[7px] dark:bg-slate-700 bg-[e5eaf2] rounded-md"></span>
                             </div>
                         </div>
                     </div>
 
-                    <div className="w-[40%] 425px:w-[35%]">
-                        <img className="w-[120px] h-[120px] rounded-md bg-border"/>
+                    <div className="w-[40%] sm:w-[35%]">
+                        <div className="w-[120px] h-[120px] rounded-md dark:bg-slate-700 bg-[e5eaf2]"></div>
                     </div>
                 </div>
             </div>
@@ -800,75 +646,49 @@ export default Skeleton;
         '
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
-                    {/*Shine Skeletion*/}
                     <div className='mt-8'>
                         <ContentHeader text={'Shine Skeleton'} id={'shine_skeleton'}/>
                     </div>
 
-                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        This is a card skeleton component. Display placeholder content while
-                        the actual content is loading.
-                    </p>
+                    <ComponentDescription text='This is a card skeleton component. Display placeholder content while
+                        the actual content is loading.'/>
 
-                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    shineSkeletonPreview
-                                        ? 'translate-x-[0px] !w-[100px]'
-                                        : 'translate-x-[107px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${
-                                    shineSkeletonPreview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={handleShineSkeletonPreview}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    cardSkeletonCode && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={handleShineSkeletonCode}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={shineSkeletonCode} setCode={setShineSkeletonCode} preview={shineSkeletonPreview} setPreview={setShineSkeletonPreview}/>
+
+                    <ComponentWrapper>
                         {shineSkeletonPreview && (
                             <div className="flex py-8 items-center justify-center">
                                 <div className="grid w-full px-4 grid-cols-1 640px:grid-cols-2 1024px:grid-cols-3 gap-6">
 
                                     <div
                                         className="relative space-y-5 border border-slate-100 dark:border-slate-700 overflow-hidden rounded-2xl bg-white/5 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-100/10 before:bg-gradient-to-r before:from-transparent before:via-slate-100/70 dark:before:via-slate-100/10 before:to-transparent">
-                                        <div className="h-24 rounded-lg bg-slate-100/80"></div>
+                                        <div className="h-24 rounded-lg dark:bg-slate-700 bg-slate-100/80"></div>
                                         <div className="space-y-3">
-                                            <div className="h-3 w-3/5 rounded-lg bg-slate-100/50"></div>
-                                            <div className="h-3 w-4/5 rounded-lg bg-slate-100/60"></div>
-                                            <div className="h-3 w-2/5 rounded-lg bg-slate-100/60"></div>
+                                            <div className="h-3 w-3/5 rounded-lg dark:bg-slate-700 bg-slate-100/50"></div>
+                                            <div className="h-3 w-4/5 rounded-lg dark:bg-slate-700 bg-slate-100/60"></div>
+                                            <div className="h-3 w-2/5 rounded-lg dark:bg-slate-700 bg-slate-100/60"></div>
                                         </div>
                                     </div>
 
                                     <div
                                         className="relative space-y-5 border border-slate-100 dark:border-slate-700 overflow-hidden rounded-2xl bg-white/5 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-100/10 before:bg-gradient-to-r before:from-transparent before:via-slate-100/70 dark:before:via-slate-100/10 before:to-transparent">
-                                        <div className="h-24 rounded-lg bg-slate-100/80"></div>
+                                        <div className="h-24 rounded-lg dark:bg-slate-700 bg-slate-100/80"></div>
                                         <div className="space-y-3">
-                                            <div className="h-3 w-3/5 rounded-lg bg-slate-100/50"></div>
-                                            <div className="h-3 w-4/5 rounded-lg bg-slate-100/60"></div>
-                                            <div className="h-3 w-2/5 rounded-lg bg-slate-100/60"></div>
+                                            <div className="h-3 w-3/5 rounded-lg dark:bg-slate-700 bg-slate-100/50"></div>
+                                            <div className="h-3 w-4/5 rounded-lg dark:bg-slate-700 bg-slate-100/60"></div>
+                                            <div className="h-3 w-2/5 rounded-lg dark:bg-slate-700 bg-slate-100/60"></div>
                                         </div>
                                     </div>
 
                                     <div
                                         className="relative space-y-5 border border-slate-100 dark:border-slate-700 overflow-hidden rounded-2xl bg-white/5 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-100/10 before:bg-gradient-to-r before:from-transparent before:via-slate-100/70 dark:before:via-slate-100/10 before:to-transparent">
-                                        <div className="h-24 rounded-lg bg-slate-100/80"></div>
+                                        <div className="h-24 rounded-lg dark:bg-slate-700 bg-slate-100/80"></div>
                                         <div className="space-y-3">
-                                            <div className="h-3 w-3/5 rounded-lg bg-slate-100/50"></div>
-                                            <div className="h-3 w-4/5 rounded-lg bg-slate-100/60"></div>
-                                            <div className="h-3 w-2/5 rounded-lg bg-slate-100/60"></div>
+                                            <div className="h-3 w-3/5 rounded-lg dark:bg-slate-700 bg-slate-100/50"></div>
+                                            <div className="h-3 w-4/5 rounded-lg dark:bg-slate-700 bg-slate-100/60"></div>
+                                            <div className="h-3 w-2/5 rounded-lg dark:bg-slate-700 bg-slate-100/60"></div>
                                         </div>
                                     </div>
 
@@ -879,62 +699,10 @@ export default Skeleton;
 
                         {shineSkeletonCode && (
                             <Showcode
-                                code="
-// Add keyframes in your index.css file
-@keyframes shimmer {
-  100% {
-        transform: translateX(100%)
-      }
-}
-
-//_________COMPONENT_____________
-import React from 'react';
-
-const ShineSkeleton = () => {
-  return (
-    <div className='flex py-8 items-center justify-center'>
-        <div className='grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6'>
-
-        // Card 1
-        <div className='relative space-y-5 border border-slate-100 dark:border-slate-700 overflow-hidden rounded-2xl bg-white/5 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-100/10 before:bg-gradient-to-r before:from-transparent before:via-slate-100/70 dark:before:via-slate-100/10 before:to-transparent'>
-           <div className='h-24 rounded-lg bg-slate-100/80'></div>
-              <div className='space-y-3'>
-                <div className='h-3 w-3/5 rounded-lg bg-slate-100/50'></div>
-                <div className='h-3 w-4/5 rounded-lg bg-slate-100/60'></div>
-                <div className='h-3 w-2/5 rounded-lg bg-slate-100/60'></div>
-            </div>
-        </div>
-
-        // Card 2
-        <div className='relative space-y-5 border border-slate-100 dark:border-slate-700 overflow-hidden rounded-2xl bg-white/5 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-100/10 before:bg-gradient-to-r before:from-transparent before:via-slate-100/70 dark:before:via-slate-100/10 before:to-transparent'>
-            <div className='h-24 rounded-lg bg-slate-100/80'></div>
-            <div className='space-y-3'>
-                <div className='h-3 w-3/5 rounded-lg bg-slate-100/50'></div>
-                <div className='h-3 w-4/5 rounded-lg bg-slate-100/60'></div>
-                <div className='h-3 w-2/5 rounded-lg bg-slate-100/60'></div>
-            </div>
-        </div>
-
-        // Card 3
-        <div className='relative space-y-5 border border-slate-100 dark:border-slate-700 overflow-hidden rounded-2xl bg-white/5 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-slate-100/10 before:bg-gradient-to-r before:from-transparent before:via-slate-100/70 dark:before:via-slate-100/10 before:to-transparent'>
-            <div className='h-24 rounded-lg bg-slate-100/80'></div>
-            <div className='space-y-3'>
-                <div className='h-3 w-3/5 rounded-lg bg-slate-100/50'></div>
-                <div className='h-3 w-4/5 rounded-lg bg-slate-100/60'></div>
-                <div className='h-3 w-2/5 rounded-lg bg-slate-100/60'></div>
-            </div>
-        </div>
-
-    </div>
-    </div>
-  );
-};
-
-export default ShineSkeleton;
-              "
+                                code={shimmerSkeletonCodes}
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
                     <OverviewFooter
                         backUrl='/components/tabs'
@@ -944,23 +712,8 @@ export default ShineSkeleton;
                     />
                 </div>
 
-                <div className='1024px:flex hidden flex-col gap-4 sticky top-4 right-0 w-[37%]'>
-                    <h2 className='text-[0.9rem] font-[600] text-text tracking-widest'>
-                        CONTENTS
-                    </h2>
-                    {skeletonContents.map((item) => (
-                        <a
-                            key={item.id}
-                            href={item.href}
-                            className={`${
-                                activeSection === item.href.slice(1) &&
-                                '!text-primary !border-primary'
-                            } text-[0.9rem] text-text border-l border-transparent pl-4`}
-                        >
-                            {item.title}
-                        </a>
-                    ))}
-                </div>
+                <ContentNavbar activeSection={activeSection} contents={skeletonContents} width='37%'/>
+
             </aside>
             <Helmet>
                 <title>Feedback - Skeleton</title>

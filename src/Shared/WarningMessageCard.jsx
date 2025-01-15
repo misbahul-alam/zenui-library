@@ -5,7 +5,7 @@ import {SlInfo} from "react-icons/sl";
 
 const WarningMessageCard = ({children, text}) => {
     return (
-        <div className='p-4 flex gap-2 w-full 425px:w-[80%] bg-[#d18f0011] border border-[#d18e00]  rounded mb-8'>
+        <div className='p-4 flex gap-2 w-full 425px:w-[90%] bg-[#d18f0011] border border-[#d18e00]  rounded mb-8'>
             <p>
                 <SlInfo className='text-[#d17d00] text-[1.2rem]'/>
             </p>
