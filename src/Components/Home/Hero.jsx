@@ -34,6 +34,7 @@ import AnimatedButtonCard from "../HomePageComponents/AnimatedButton.jsx";
 import ChipCard from "../HomePageComponents/Chip.jsx";
 import StrongPasswordCard from "../HomePageComponents/StrongPasswordCard.jsx";
 import AnimatedProductCard from "../HomePageComponents/AnimatedProductCard.jsx";
+import {SiNpm} from "react-icons/si";
 
 const Hero = () => {
 
@@ -181,25 +182,29 @@ const Hero = () => {
 
                     <motion.div
                         variants={FADE_DOWN_ANIMATION_VARIANTS}
-                        className="flex items-center flex-wrap gap-x-[20px] 640px:gap-3 425px:gap-6 mt-6">
-                        <div title='Components'
-                             className='flex items-center gap-[1px] text-[2.4rem] 640px:text-[2.5rem] font-[600] bg-gradient-to-r from-[#0FABCA] to-[#DB06F9] bg-clip-text text-transparent'>
-                            <LuLayoutTemplate className='text-[2rem] 640px:text-[2.2rem] text-[#0FABCA] mr-1.5'/>
-                            <CountUp start={0} end={600} duration={5} ></CountUp>
-                            <p className='mb-1'>+</p>
-                        </div>
-                        <div title='Icons'
-                             className='flex items-center gap-[1px] text-[2.4rem] 640px:text-[2.5rem] font-[600] bg-gradient-to-r from-[#0FABCA] to-[#DB06F9] bg-clip-text text-transparent'>
-                            <TbIcons className='text-[2rem] 640px:text-[2.2rem] text-[#0FABCA] mr-1.5'/>
-                            <CountUp start={0} end={500} duration={5} ></CountUp>
-                            <p className='mb-1'>+</p>
-                        </div>
-                        <div title='Templates'
-                             className='flex items-center gap-[1px] text-[2.4rem] 640px:text-[2.5rem] font-[600] bg-gradient-to-r from-[#0FABCA] to-[#DB06F9] bg-clip-text text-transparent'>
-                            <CgTemplate className='text-[2rem] 640px:text-[2.4rem] text-[#0FABCA] mr-1.5'/>
-                            <CountUp start={0} end={20} duration={5} ></CountUp>
-                            <p className='mb-1'>+</p>
-                        </div>
+                        className="flex items-center flex-wrap gap-x-[20px] 640px:gap-3 425px:gap-6 mt-5">
+                        {/*<div title='Components'*/}
+                        {/*     className='flex items-center gap-[1px] text-[2.4rem] 640px:text-[2.5rem] font-[600] bg-gradient-to-r from-[#0FABCA] to-[#DB06F9] bg-clip-text text-transparent'>*/}
+                        {/*    <LuLayoutTemplate className='text-[2rem] 640px:text-[2.2rem] text-[#0FABCA] mr-1.5'/>*/}
+                        {/*    <CountUp start={0} end={600} duration={5} ></CountUp>*/}
+                        {/*    <p className='mb-1'>+</p>*/}
+                        {/*</div>*/}
+                        {/*<div title='Icons'*/}
+                        {/*     className='flex items-center gap-[1px] text-[2.4rem] 640px:text-[2.5rem] font-[600] bg-gradient-to-r from-[#0FABCA] to-[#DB06F9] bg-clip-text text-transparent'>*/}
+                        {/*    <TbIcons className='text-[2rem] 640px:text-[2.2rem] text-[#0FABCA] mr-1.5'/>*/}
+                        {/*    <CountUp start={0} end={500} duration={5} ></CountUp>*/}
+                        {/*    <p className='mb-1'>+</p>*/}
+                        {/*</div>*/}
+                        {/*<div title='Templates'*/}
+                        {/*     className='flex items-center gap-[1px] text-[2.4rem] 640px:text-[2.5rem] font-[600] bg-gradient-to-r from-[#0FABCA] to-[#DB06F9] bg-clip-text text-transparent'>*/}
+                        {/*    <CgTemplate className='text-[2rem] 640px:text-[2.4rem] text-[#0FABCA] mr-1.5'/>*/}
+                        {/*    <CountUp start={0} end={20} duration={5} ></CountUp>*/}
+                        {/*    <p className='mb-1'>+</p>*/}
+                        {/*</div>*/}
+                        <a href='https://www.npmjs.com/package/zenui-image-react' target='_blank' className='border flex items-center rounded-md bg-gray-50 gap-[10px] border-gray-200 py-3 px-3 cursor-pointer'>
+                            <SiNpm className='text-[2rem] text-red-600'/>
+                            <p className='text-[0.84rem] 640px:text-[1rem] font-[600] text-gray-700'>Try Our Lazy Image React Package</p>
+                        </a>
                     </motion.div>
                 </motion.div>
 
