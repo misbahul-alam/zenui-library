@@ -121,6 +121,7 @@ import AIGeneratorPage from "./Pages/AIGeneratorPage.jsx";
 import { MenuProvider } from "./Context/MenuContext.jsx";
 import GithubActivityGraphPage from "./Pages/Components/Data Display/GithubActivityGraphPage.jsx";
 import ComparisonCardPage from "./Pages/Components/Surfaces/ComparisonCardPage.jsx";
+import LazyImagePackagePlaygroundPage from "./Pages/LazyImagePackagePlaygroundPage.jsx";
 
 
 const App = () => {
@@ -276,6 +277,9 @@ const App = () => {
 
                 {/* become ZenUI Hero */}
                 <Route path='/zenui-hero-docs' element={<ZenUIHeroDocsPage/>}/>
+
+                {/* zenui lazy image package */}
+                <Route path='/zenui-image-react-playground' element={<LazyImagePackagePlaygroundPage/>}/>
 
                 {/*  empty route  */}
                 <Route path="*" element={<EmptyPage/>}/>
