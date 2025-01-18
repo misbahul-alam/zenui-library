@@ -16,6 +16,12 @@ import { useScrollSpy } from '../../../../../CustomHooks/useScrollSpy';
 import { MdOutlineMail, MdVerified } from 'react-icons/md';
 import { IoCartOutline } from 'react-icons/io5';
 
+import ComponentDescription from "../../../../../Shared/ComponentDescription.jsx";
+import ToggleTab from "../../../../../Shared/ToggleTab.jsx";
+import ComponentWrapper from "../../../../../Shared/ComponentWrapper.jsx";
+import ContentNavbar from "../../../../../Shared/ContentNavbar.jsx";
+
+
 const Badge = () => {
   const sectionIds = badgeContents.map((item) => item.href.slice(1));
   const activeSection = useScrollSpy(sectionIds);
@@ -24,57 +30,17 @@ const Badge = () => {
   const [messageBadgePreview, setMessageBadgePreview] = useState(true);
   const [messageBadgeCode, setMessageBadgeCode] = useState(false);
 
-  const handleMessageBadgePreview = () => {
-    setMessageBadgePreview(true);
-    setMessageBadgeCode(false);
-  };
-
-  const handleMessageBadgeCode = () => {
-    setMessageBadgeCode(true);
-    setMessageBadgePreview(false);
-  };
-
   // cartBadgePreview
   const [cartBadgePreview, setCartBadgePreview] = useState(true);
   const [cartBadgeCode, setCartBadgeCode] = useState(false);
-
-  const handleCartBadgePreview = () => {
-    setCartBadgePreview(true);
-    setCartBadgeCode(false);
-  };
-
-  const handleCartBadgeCode = () => {
-    setCartBadgeCode(true);
-    setCartBadgePreview(false);
-  };
 
   // online badge
   const [onlineBadgePreview, setOnlineBadgePreview] = useState(true);
   const [onlineBadgeCode, setOnlineBadgeCode] = useState(false);
 
-  const handleOnlineBadgePreview = () => {
-    setOnlineBadgePreview(true);
-    setOnlineBadgeCode(false);
-  };
-
-  const handleOnlineBadgeCode = () => {
-    setOnlineBadgeCode(true);
-    setOnlineBadgePreview(false);
-  };
-
   // verified badge
   const [verifiedBadgePreview, setVerifiedBadgePreview] = useState(true);
   const [verifiedBadgeCode, setVerifiedBadgeCode] = useState(false);
-
-  const handleVerifiedBadgePreview = () => {
-    setVerifiedBadgePreview(true);
-    setVerifiedBadgeCode(false);
-  };
-
-  const handleVerifiedBadgeCode = () => {
-    setVerifiedBadgeCode(true);
-    setVerifiedBadgePreview(false);
-  };
 
   return (
     <>
@@ -82,57 +48,32 @@ const Badge = () => {
         <div>
           <ContentHeader text={'message badge'} id={'message_badge'} />
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            This is a message badge component. Display notifications or messages
-            with a sleek and visible badge.
-          </p>
+          <ComponentDescription text='This is a message badge component. Display notifications or messages
+            with a sleek and visible badge.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  messageBadgePreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[107px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  messageBadgePreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleMessageBadgePreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  messageBadgeCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleMessageBadgeCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={messageBadgeCode} setCode={setMessageBadgeCode} setPreview={setMessageBadgePreview} preview={messageBadgePreview}/>
+
+          <ComponentWrapper>
             {messageBadgePreview && (
-              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                <div className='relative'>
-                  <MdOutlineMail className='text-[2.7rem]' />
-                  <div className=' absolute top-[-10%] right-[-15%]  text-secondary min-w-[20px] min-h-[20px] text-center'>
-                    <span className='text-[0.8rem] bg-primary py-1 px-1 rounded-full w-full h-full border-[2px] border-secondary'>
+                <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                  <div className='relative'>
+                    <MdOutlineMail className='text-[2.7rem] dark:text-[#abc2d3]' />
+                    <div className=' absolute top-[-10%] right-[-15%] text-secondary min-w-[20px] min-h-[20px] text-center'>
+                    <span className='text-[0.8rem] bg-primary py-1 px-1 rounded-full w-full h-full border-[2px] border-secondary dark:border-darkBgColor'>
                       10
                     </span>
+                    </div>
+                  </div>
+
+                  <div className='relative before:absolute before:w-[20px] before:h-[20px] before:rounded-full before:top-[-2%] before:right-[-5%] before:border-[2px] dark:before:border-darkBgColor before:border-secondary before:bg-primary '>
+                    <MdOutlineMail className='text-[2.7rem] dark:text-[#abc2d3]' />
                   </div>
                 </div>
-
-                <div className='relative before:absolute before:w-[20px] before:h-[20px] before:rounded-full before:top-[-2%] before:right-[-5%] before:border-[2px] before:border-secondary before:bg-primary '>
-                  <MdOutlineMail className='text-[2.7rem]' />
-                </div>
-              </div>
             )}
 
             {messageBadgeCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 import React from "react";
 
 // icon
@@ -142,16 +83,16 @@ const MessageBadge = () => {
   return (
     <>
       <div className="relative">
-        <MdOutlineMail className="text-[2.7rem]" />
-        <div className=" absolute top-[-10%] right-[-15%]  text-secondary min-w-[20px] min-h-[20px] text-center">
-          <span className="text-[0.8rem] bg-primary py-1 px-1 rounded-full w-full h-full border-[2px] border-secondary">
+        <MdOutlineMail className="text-[2.7rem] dark:text-[#abc2d3]" />
+        <div className=" absolute top-[-10%] right-[-15%] text-white min-w-[20px] min-h-[20px] text-center">
+          <span className="text-[0.8rem] bg-primary dark:border-[#020617] py-1 px-1 rounded-full w-full h-full border-[2px] border-white">
             10
           </span>
         </div>
       </div>
 
-      <div className="relative before:absolute before:w-[20px] before:h-[20px] before:rounded-full before:top-[-2%] before:right-[-5%] before:border-[2px] before:border-secondary before:bg-primary ">
-        <MdOutlineMail className="text-[2.7rem]" />
+      <div className="relative before:absolute before:w-[20px] before:h-[20px] before:rounded-full before:top-[-2%] before:right-[-5%] before:border-[2px] before:border-white dark:before:border-[#020617] before:bg-[#3B9DF8] ">
+        <MdOutlineMail className="text-[2.7rem] dark:text-[#abc2d3]" />
       </div>
     </>
   );
@@ -159,61 +100,36 @@ const MessageBadge = () => {
 
 export default MessageBadge;
           '
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className='mt-8'>
             <ContentHeader text={'cart badge'} id={'cart_badge'} />
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            This is a cart badge component. Show cart items or notifications
-            with a stylish and visible badge.
-          </p>
+          <ComponentDescription text='This is a cart badge component. Show cart items or notifications
+            with a stylish and visible badge.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  cartBadgePreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[107px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  cartBadgePreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleCartBadgePreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  cartBadgeCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleCartBadgeCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={cartBadgeCode} setCode={setCartBadgeCode} preview={cartBadgePreview} setPreview={setCartBadgePreview}/>
+
+          <ComponentWrapper>
             {cartBadgePreview && (
-              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                <div className='relative'>
-                  <IoCartOutline className='text-[2.7rem]' />
-                  <div className=' absolute top-[-10%] right-[-15%]  text-secondary min-w-[20px] min-h-[20px] text-center'>
-                    <span className='text-[0.8rem] bg-primary py-1 px-1 rounded-full w-full h-full border-[2px] border-secondary'>
+                <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                  <div className='relative'>
+                    <IoCartOutline className='text-[2.7rem] dark:text-[#abc2d3]' />
+                    <div className=' absolute top-[-10%] right-[-15%] text-secondary min-w-[20px] min-h-[20px] text-center'>
+                    <span className='text-[0.8rem] bg-primary py-1 px-1 dark:border-darkBgColor rounded-full w-full h-full border-[2px] border-secondary'>
                       10
                     </span>
+                    </div>
                   </div>
                 </div>
-              </div>
             )}
 
             {cartBadgeCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 import React from "react";
 
 // icon
@@ -223,9 +139,9 @@ const CartBadge = () => {
   return (
     <>
       <div className="relative">
-        <IoCartOutline className="text-[2.7rem]" />
-        <div className=" absolute top-[-10%] right-[-15%]  text-secondary min-w-[20px] min-h-[20px] text-center">
-          <span className="text-[0.8rem] bg-primary py-1 px-1 rounded-full w-full h-full border-[2px] border-secondary">
+        <IoCartOutline className="text-[2.7rem] dark:text-[#abc2d3]" />
+        <div className=" absolute top-[-10%] right-[-15%] text-white min-w-[20px] min-h-[20px] text-center">
+          <span className="text-[0.8rem] bg-[#3B9DF8] py-1 px-1 rounded-full w-full h-full border-[2px] border-white dark:border-[#020617]">
             10
           </span>
         </div>
@@ -236,100 +152,75 @@ const CartBadge = () => {
 
 export default CartBadge;
           '
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className='mt-8'>
             <ContentHeader text={'online badge'} id={'online_badge'} />
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            An indicator, typically a small colored dot or icon, showing that a
-            user is currently online and available.
-          </p>
+          <ComponentDescription text='An indicator, typically a small colored dot or icon, showing that a
+            user is currently online and available.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  onlineBadgePreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[107px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  onlineBadgePreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleOnlineBadgePreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  onlineBadgeCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleOnlineBadgeCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={onlineBadgeCode} setPreview={setOnlineBadgePreview} preview={onlineBadgePreview} setCode={setOnlineBadgeCode}/>
+
+          <ComponentWrapper>
             {onlineBadgePreview && (
-              <div className='p-8 mb-4 flex items-center flex-wrap gap-5 justify-center'>
-                <div className='relative'>
-                  <img
-                    src='https://img.freepik.com/free-photo/cheerful-young-man-posing-isolated-grey_171337-10579.jpg?t=st=1722664771~exp=1722668371~hmac=b930da24388ca4a02a842fcd7697b7d73897d11c92ff354a19eb246ca222359e&w=996'
-                    alt='avatar'
-                    className='w-[80px] h-[80px] rounded-full object-cover'
-                  />
+                <div className='p-8 mb-4 flex items-center flex-wrap gap-5 justify-center'>
+                  <div className='relative'>
+                    <img
+                        src='https://img.freepik.com/free-photo/cheerful-young-man-posing-isolated-grey_171337-10579.jpg?t=st=1722664771~exp=1722668371~hmac=b930da24388ca4a02a842fcd7697b7d73897d11c92ff354a19eb246ca222359e&w=996'
+                        alt='avatar'
+                        className='w-[80px] h-[80px] rounded-full object-cover'
+                    />
 
-                  <div className='p-[2px] bg-white absolute top-[60px] right-2 rounded-full'>
-                    <div className='w-[16px] h-[16px] rounded-full bg-green-400 '></div>
+                    <div className='p-[2px] bg-white dark:bg-[#020617] absolute top-[60px] right-2 rounded-full'>
+                      <div className='w-[16px] h-[16px] rounded-full bg-green-400 '></div>
+                    </div>
+                  </div>
+
+                  <div className='relative'>
+                    <img
+                        src='https://img.freepik.com/free-photo/cheerful-young-man-posing-isolated-grey_171337-10579.jpg?t=st=1722664771~exp=1722668371~hmac=b930da24388ca4a02a842fcd7697b7d73897d11c92ff354a19eb246ca222359e&w=996'
+                        alt='avatar'
+                        className='w-[70px] h-[70px] rounded-full object-cover'
+                    />
+
+                    <div className='p-[2px] bg-white absolute dark:bg-[#020617] top-[53px] right-2 rounded-full'>
+                      <div className='w-[14px] h-[14px] rounded-full bg-green-400 '></div>
+                    </div>
+                  </div>
+
+                  <div className='relative'>
+                    <img
+                        src='https://img.freepik.com/free-photo/cheerful-young-man-posing-isolated-grey_171337-10579.jpg?t=st=1722664771~exp=1722668371~hmac=b930da24388ca4a02a842fcd7697b7d73897d11c92ff354a19eb246ca222359e&w=996'
+                        alt='avatar'
+                        className='w-[60px] h-[60px] rounded-full object-cover'
+                    />
+
+                    <div className='p-[2px] bg-white absolute dark:bg-[#020617] top-[47px] right-2 rounded-full'>
+                      <div className='w-[12px] h-[12px] rounded-full bg-green-400 '></div>
+                    </div>
+                  </div>
+
+                  <div className='relative'>
+                    <img
+                        src='https://img.freepik.com/free-photo/cheerful-young-man-posing-isolated-grey_171337-10579.jpg?t=st=1722664771~exp=1722668371~hmac=b930da24388ca4a02a842fcd7697b7d73897d11c92ff354a19eb246ca222359e&w=996'
+                        alt='avatar'
+                        className='w-[50px] h-[50px] rounded-full object-cover'
+                    />
+
+                    <div className='p-[2px] bg-white absolute dark:bg-[#020617] top-[38px] right-[4px] rounded-full'>
+                      <div className='w-[10px] h-[10px] rounded-full bg-green-400 '></div>
+                    </div>
                   </div>
                 </div>
-
-                <div className='relative'>
-                  <img
-                    src='https://img.freepik.com/free-photo/cheerful-young-man-posing-isolated-grey_171337-10579.jpg?t=st=1722664771~exp=1722668371~hmac=b930da24388ca4a02a842fcd7697b7d73897d11c92ff354a19eb246ca222359e&w=996'
-                    alt='avatar'
-                    className='w-[70px] h-[70px] rounded-full object-cover'
-                  />
-
-                  <div className='p-[2px] bg-white absolute top-[53px] right-2 rounded-full'>
-                    <div className='w-[14px] h-[14px] rounded-full bg-green-400 '></div>
-                  </div>
-                </div>
-
-                <div className='relative'>
-                  <img
-                    src='https://img.freepik.com/free-photo/cheerful-young-man-posing-isolated-grey_171337-10579.jpg?t=st=1722664771~exp=1722668371~hmac=b930da24388ca4a02a842fcd7697b7d73897d11c92ff354a19eb246ca222359e&w=996'
-                    alt='avatar'
-                    className='w-[60px] h-[60px] rounded-full object-cover'
-                  />
-
-                  <div className='p-[2px] bg-white absolute top-[47px] right-2 rounded-full'>
-                    <div className='w-[12px] h-[12px] rounded-full bg-green-400 '></div>
-                  </div>
-                </div>
-
-                <div className='relative'>
-                  <img
-                    src='https://img.freepik.com/free-photo/cheerful-young-man-posing-isolated-grey_171337-10579.jpg?t=st=1722664771~exp=1722668371~hmac=b930da24388ca4a02a842fcd7697b7d73897d11c92ff354a19eb246ca222359e&w=996'
-                    alt='avatar'
-                    className='w-[50px] h-[50px] rounded-full object-cover'
-                  />
-
-                  <div className='p-[2px] bg-white absolute top-[38px] right-[4px] rounded-full'>
-                    <div className='w-[10px] h-[10px] rounded-full bg-green-400 '></div>
-                  </div>
-                </div>
-              </div>
             )}
 
             {onlineBadgeCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 import React from "react";
 
 const Badge = () => {
@@ -342,7 +233,7 @@ const Badge = () => {
                     src="https://img.freepik.com/free-photo/cheerful-young-man-posing-isolated-grey_171337-10579.jpg?t=st=1722664771~exp=1722668371~hmac=b930da24388ca4a02a842fcd7697b7d73897d11c92ff354a19eb246ca222359e&w=996"
                     alt="avatar" className="w-[80px] h-[80px] rounded-full object-cover"/>
 
-                <div className="p-[2px] bg-white absolute top-[60px] right-2 rounded-full">
+                <div className="p-[2px] bg-white absolute dark:bg-[#020617] top-[60px] right-2 rounded-full">
                     <div className="w-[16px] h-[16px] rounded-full bg-green-400 "></div>
                 </div>
             </div>
@@ -353,7 +244,7 @@ const Badge = () => {
                     src="https://img.freepik.com/free-photo/cheerful-young-man-posing-isolated-grey_171337-10579.jpg?t=st=1722664771~exp=1722668371~hmac=b930da24388ca4a02a842fcd7697b7d73897d11c92ff354a19eb246ca222359e&w=996"
                     alt="avatar" className="w-[70px] h-[70px] rounded-full object-cover"/>
 
-                <div className="p-[2px] bg-white absolute top-[53px] right-2 rounded-full">
+                <div className="p-[2px] bg-white absolute dark:bg-[#020617] top-[53px] right-2 rounded-full">
                     <div className="w-[14px] h-[14px] rounded-full bg-green-400 "></div>
                 </div>
             </div>
@@ -364,7 +255,7 @@ const Badge = () => {
                     src="https://img.freepik.com/free-photo/cheerful-young-man-posing-isolated-grey_171337-10579.jpg?t=st=1722664771~exp=1722668371~hmac=b930da24388ca4a02a842fcd7697b7d73897d11c92ff354a19eb246ca222359e&w=996"
                     alt="avatar" className="w-[60px] h-[60px] rounded-full object-cover"/>
 
-                <div className="p-[2px] bg-white absolute top-[47px] right-2 rounded-full">
+                <div className="p-[2px] bg-white absolute dark:bg-[#020617] top-[47px] right-2 rounded-full">
                     <div className="w-[12px] h-[12px] rounded-full bg-green-400 "></div>
                 </div>
             </div>
@@ -375,7 +266,7 @@ const Badge = () => {
                     src="https://img.freepik.com/free-photo/cheerful-young-man-posing-isolated-grey_171337-10579.jpg?t=st=1722664771~exp=1722668371~hmac=b930da24388ca4a02a842fcd7697b7d73897d11c92ff354a19eb246ca222359e&w=996"
                     alt="avatar" className="w-[50px] h-[50px] rounded-full object-cover"/>
 
-                <div className="p-[2px] bg-white absolute top-[38px] right-[4px] rounded-full">
+                <div className="p-[2px] bg-white absolute dark:bg-[#020617] top-[38px] right-[4px] rounded-full">
                     <div className="w-[10px] h-[10px] rounded-full bg-green-400 "></div>
                 </div>
             </div>
@@ -385,92 +276,67 @@ const Badge = () => {
 
 export default Badge;
           '
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className='mt-8'>
             <ContentHeader text={'verified badge'} id={'verified_badge'} />
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            A badge or icon indicating that a user, account, or content has been
-            verified for authenticity or credibility.
-          </p>
+          <ComponentDescription text='A badge or icon indicating that a user, account, or content has been
+            verified for authenticity or credibility.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  verifiedBadgePreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[107px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  verifiedBadgePreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleVerifiedBadgePreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  verifiedBadgeCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleVerifiedBadgeCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={verifiedBadgeCode} setCode={setVerifiedBadgeCode} preview={verifiedBadgePreview} setPreview={setVerifiedBadgePreview}/>
+
+          <ComponentWrapper>
             {verifiedBadgePreview && (
-              <div className='p-8 mb-4 flex items-center flex-wrap gap-5 justify-center'>
-                <div className='relative'>
-                  <img
-                    src='https://img.freepik.com/free-photo/portrait-young-man-with-green-hoodie_23-2148514952.jpg?t=st=1722665625~exp=1722669225~hmac=61213dc4a128104a1e6f2685a176eca7bf689928fffab03d713789c45b6a1696&w=996'
-                    alt='avatar'
-                    className='w-[80px] h-[80px] rounded-full object-cover'
-                  />
+                <div className='p-8 mb-4 flex items-center flex-wrap gap-5 justify-center'>
+                  <div className='relative'>
+                    <img
+                        src='https://img.freepik.com/free-photo/portrait-young-man-with-green-hoodie_23-2148514952.jpg?t=st=1722665625~exp=1722669225~hmac=61213dc4a128104a1e6f2685a176eca7bf689928fffab03d713789c45b6a1696&w=996'
+                        alt='avatar'
+                        className='w-[80px] h-[80px] rounded-full object-cover'
+                    />
 
-                  <MdVerified className='text-blue-500 p-[2px] text-[1.5rem] bg-white rounded-full absolute top-[57px] right-[5px]' />
+                    <MdVerified className='text-blue-500 p-[2px] text-[1.5rem] dark:bg-[#020617] bg-white rounded-full absolute top-[57px] right-[5px]' />
+                  </div>
+
+                  <div className='relative'>
+                    <img
+                        src='https://img.freepik.com/free-photo/portrait-young-man-with-green-hoodie_23-2148514952.jpg?t=st=1722665625~exp=1722669225~hmac=61213dc4a128104a1e6f2685a176eca7bf689928fffab03d713789c45b6a1696&w=996'
+                        alt='avatar'
+                        className='w-[70px] h-[70px] rounded-full object-cover'
+                    />
+
+                    <MdVerified className='text-blue-500 p-[2px] text-[1.4rem] dark:bg-[#020617] bg-white rounded-full absolute top-[50px] right-[4px]' />
+                  </div>
+
+                  <div className='relative'>
+                    <img
+                        src='https://img.freepik.com/free-photo/portrait-young-man-with-green-hoodie_23-2148514952.jpg?t=st=1722665625~exp=1722669225~hmac=61213dc4a128104a1e6f2685a176eca7bf689928fffab03d713789c45b6a1696&w=996'
+                        alt='avatar'
+                        className='w-[60px] h-[60px] rounded-full object-cover'
+                    />
+
+                    <MdVerified className='text-blue-500 p-[2px] text-[1.3rem] dark:bg-[#020617] bg-white rounded-full absolute top-[43px] right-[4px]' />
+                  </div>
+
+                  <div className='relative'>
+                    <img
+                        src='https://img.freepik.com/free-photo/portrait-young-man-with-green-hoodie_23-2148514952.jpg?t=st=1722665625~exp=1722669225~hmac=61213dc4a128104a1e6f2685a176eca7bf689928fffab03d713789c45b6a1696&w=996'
+                        alt='avatar'
+                        className='w-[50px] h-[50px] rounded-full object-cover'
+                    />
+
+                    <MdVerified className='text-blue-500 p-[2px] text-[1.2rem] dark:bg-[#020617] bg-white rounded-full absolute top-[35px] right-[4px]' />
+                  </div>
                 </div>
-
-                <div className='relative'>
-                  <img
-                    src='https://img.freepik.com/free-photo/portrait-young-man-with-green-hoodie_23-2148514952.jpg?t=st=1722665625~exp=1722669225~hmac=61213dc4a128104a1e6f2685a176eca7bf689928fffab03d713789c45b6a1696&w=996'
-                    alt='avatar'
-                    className='w-[70px] h-[70px] rounded-full object-cover'
-                  />
-
-                  <MdVerified className='text-blue-500 p-[2px] text-[1.4rem] bg-white rounded-full absolute top-[50px] right-[4px]' />
-                </div>
-
-                <div className='relative'>
-                  <img
-                    src='https://img.freepik.com/free-photo/portrait-young-man-with-green-hoodie_23-2148514952.jpg?t=st=1722665625~exp=1722669225~hmac=61213dc4a128104a1e6f2685a176eca7bf689928fffab03d713789c45b6a1696&w=996'
-                    alt='avatar'
-                    className='w-[60px] h-[60px] rounded-full object-cover'
-                  />
-
-                  <MdVerified className='text-blue-500 p-[2px] text-[1.3rem] bg-white rounded-full absolute top-[43px] right-[4px]' />
-                </div>
-
-                <div className='relative'>
-                  <img
-                    src='https://img.freepik.com/free-photo/portrait-young-man-with-green-hoodie_23-2148514952.jpg?t=st=1722665625~exp=1722669225~hmac=61213dc4a128104a1e6f2685a176eca7bf689928fffab03d713789c45b6a1696&w=996'
-                    alt='avatar'
-                    className='w-[50px] h-[50px] rounded-full object-cover'
-                  />
-
-                  <MdVerified className='text-blue-500 p-[2px] text-[1.2rem] bg-white rounded-full absolute top-[35px] right-[4px]' />
-                </div>
-              </div>
             )}
 
             {verifiedBadgeCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 import React from "react";
 
 // react icons
@@ -487,7 +353,7 @@ const Badge = () => {
                     alt="avatar" className="w-[80px] h-[80px] rounded-full object-cover"/>
 
                 <MdVerified
-                    className="text-blue-500 p-[2px] text-[1.5rem] bg-white rounded-full absolute top-[57px] right-[5px]"/>
+                    className="text-blue-500 p-[2px] text-[1.5rem] dark:bg-[#020617] bg-white rounded-full absolute top-[57px] right-[5px]"/>
             </div>
 
             {/* medium */}
@@ -497,7 +363,7 @@ const Badge = () => {
                     alt="avatar" className="w-[70px] h-[70px] rounded-full object-cover"/>
 
                 <MdVerified
-                    className="text-blue-500 p-[2px] text-[1.4rem] bg-white rounded-full absolute top-[50px] right-[4px]"/>
+                    className="text-blue-500 p-[2px] text-[1.4rem] dark:bg-[#020617] bg-white rounded-full absolute top-[50px] right-[4px]"/>
             </div>
 
             {/* small */}
@@ -507,7 +373,7 @@ const Badge = () => {
                     alt="avatar" className="w-[60px] h-[60px] rounded-full object-cover"/>
 
                 <MdVerified
-                    className="text-blue-500 p-[2px] text-[1.3rem] bg-white rounded-full absolute top-[43px] right-[4px]"/>
+                    className="text-blue-500 p-[2px] text-[1.3rem] dark:bg-[#020617] bg-white rounded-full absolute top-[43px] right-[4px]"/>
             </div>
 
             {/* smallest */}
@@ -517,7 +383,7 @@ const Badge = () => {
                     alt="avatar" className="w-[50px] h-[50px] rounded-full object-cover"/>
 
                 <MdVerified
-                    className="text-blue-500 p-[2px] text-[1.2rem] bg-white rounded-full absolute top-[35px] right-[4px]"/>
+                    className="text-blue-500 p-[2px] text-[1.2rem] dark:bg-[#020617] bg-white rounded-full absolute top-[35px] right-[4px]"/>
             </div>
         </>
     );
@@ -525,9 +391,9 @@ const Badge = () => {
 
 export default Badge;
           '
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <OverviewFooter
             backUrl='/components/notification'
@@ -537,23 +403,8 @@ export default Badge;
           />
         </div>
 
-        <div className='1024px:flex hidden flex-col gap-4 sticky top-4 right-0 w-[40%]'>
-          <h2 className='text-[0.9rem] font-[600] text-text tracking-widest'>
-            CONTENTS
-          </h2>
-          {badgeContents.map((item) => (
-            <a
-              key={item.id}
-              href={item.href}
-              className={`${
-                activeSection === item.href.slice(1) &&
-                '!text-primary !border-primary'
-              } text-[0.9rem] text-text border-l border-transparent pl-4`}
-            >
-              {item.title}
-            </a>
-          ))}
-        </div>
+        <ContentNavbar contents={badgeContents} activeSection={activeSection}/>
+
       </aside>
       <Helmet>
         <title>Data Display - Badge</title>

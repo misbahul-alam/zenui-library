@@ -11,7 +11,11 @@ import Showcode from '../../../../../../Shared/ShowCode.jsx';
 // contents for scrollspy
 import {comparisonContents} from '../../../../../../Utils/ContentsConfig/SurfacesContents.js';
 import { useScrollSpy } from '../../../../../../CustomHooks/useScrollSpy.js';
-import {useToggleCardView} from "../../../../../../CustomHooks/ButtonToggle.js";
+
+import ComponentDescription from "../../../../../../Shared/ComponentDescription.jsx";
+import ToggleTab from "../../../../../../Shared/ToggleTab.jsx";
+import ComponentWrapper from "../../../../../../Shared/ComponentWrapper.jsx";
+import ContentNavbar from "../../../../../../Shared/ContentNavbar.jsx";
 
 import VerticalComparisonExample from "./VerticalComparisonExample.jsx";
 import HorizontalComparisonExample from "./HorizontalComparisonExample.jsx";
@@ -20,9 +24,6 @@ const Index = () => {
     const sectionIds = comparisonContents.map((item) => item.href.slice(1));
     const activeSection = useScrollSpy(sectionIds);
 
-    const toggle = useToggleCardView()
-
-    // toggle
     const [verticalComparisonPreview, setVerticalComparisonPreview] = useState(true);
     const [verticalComparisonCode, setVerticalComparisonCode] = useState(false);
 
@@ -36,35 +37,11 @@ const Index = () => {
 
                     <ContentHeader id='vertical_comparison' text={'Vertical comparison'} />
 
-                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        Compare items side-by-side in a vertical layout for clear and easy analysis.
-                    </p>
+                    <ComponentDescription text='Compare items side-by-side in a vertical layout for clear and easy analysis.'/>
 
-                    {/* First Index Container */}
-                    <div className='w-full 425px:w-[90%] border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${verticalComparisonPreview
-                                    ? 'translate-x-[0px] !w-[100px]'
-                                    : 'translate-x-[106px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${verticalComparisonPreview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={()=> toggle(setVerticalComparisonPreview, setVerticalComparisonCode, true)}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${verticalComparisonCode && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={()=> toggle(setVerticalComparisonPreview, setVerticalComparisonCode, false)}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={verticalComparisonCode} preview={verticalComparisonPreview} setPreview={setVerticalComparisonPreview} setCode={setVerticalComparisonCode}/>
 
+                    <ComponentWrapper>
                         {verticalComparisonPreview && (
                             <div className='p-8 mb-4 flex flex-col items-center gap-5 h-[400px] justify-center'>
                                 <VerticalComparisonExample/>
@@ -168,41 +145,17 @@ export default VerticalComparisonCard;
                                 '
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
                     <div className='mt-8'>
                         <ContentHeader id='horizontal_comparison' text={'Horizontal comparison'} />
                     </div>
 
-                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        Compare items side-by-side in a horizontal layout for clear and easy analysis.
-                    </p>
+                    <ComponentDescription text='Compare items side-by-side in a horizontal layout for clear and easy analysis.'/>
 
-                    {/* First Index Container */}
-                    <div className='w-full 425px:w-[90%] border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${horizontalComparisonPreview
-                                    ? 'translate-x-[0px] !w-[100px]'
-                                    : 'translate-x-[106px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${horizontalComparisonPreview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={()=> toggle(setHorizontalComparisonPreview, setHorizontalComparisonCode, true)}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${verticalComparisonCode && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={()=> toggle(setHorizontalComparisonPreview, setHorizontalComparisonCode, false)}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={horizontalComparisonCode} setCode={setHorizontalComparisonCode} setPreview={setHorizontalComparisonPreview} preview={horizontalComparisonPreview}/>
 
+                    <ComponentWrapper>
                         {horizontalComparisonPreview && (
                             <div className='p-8 mb-4 flex flex-col items-center gap-5 h-[400px] justify-center'>
                                 <HorizontalComparisonExample/>
@@ -303,7 +256,7 @@ export default HorizontalComparisonCard;
                                 '
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
                     <OverviewFooter
                         backUrl='/components/drag-and-drop'
@@ -313,22 +266,8 @@ export default HorizontalComparisonCard;
                     />
                 </div>
 
-                <div className='1024px:flex hidden flex-col gap-4 sticky top-4 right-0 w-[35%]'>
-                    <h2 className='text-[0.9rem] font-[600] text-text tracking-widest'>
-                        CONTENTS
-                    </h2>
-                    {comparisonContents.map((item) => (
-                        <a
-                            key={item.id}
-                            href={item.href}
-                            className={`${activeSection === item.href.slice(1) &&
-                            '!text-primary !border-primary'
-                            } text-[0.9rem] text-text border-l border-transparent pl-4`}
-                        >
-                            {item.title}
-                        </a>
-                    ))}
-                </div>
+                <ContentNavbar contents={comparisonContents} activeSection={activeSection}/>
+
             </aside>
             <Helmet>
                 <title>Surfaces - Comparison Card</title>

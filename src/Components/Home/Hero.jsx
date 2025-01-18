@@ -201,9 +201,9 @@ const Hero = () => {
                         {/*    <CountUp start={0} end={20} duration={5} ></CountUp>*/}
                         {/*    <p className='mb-1'>+</p>*/}
                         {/*</div>*/}
-                        <a href='https://www.npmjs.com/package/zenui-image-react' target='_blank' className='border flex items-center rounded-md bg-gray-50 gap-[10px] border-gray-200 py-3 px-3 cursor-pointer'>
+                        <a href='https://www.npmjs.com/package/zenui-image-react' target='_blank' className='border flex items-center rounded-md bg-gray-50 gap-[10px] dark:border-slate-700 dark:bg-slate-900 border-gray-200 py-3 px-3 cursor-pointer'>
                             <SiNpm className='text-[2rem] text-red-600'/>
-                            <p className='text-[0.84rem] 640px:text-[1rem] font-[600] text-gray-700'>Try Our Lazy Image React Package</p>
+                            <p className='text-[0.84rem] dark:text-[#abc2d3] 640px:text-[1rem] font-[600] text-gray-700'>Try Our Lazy Image React Package</p>
                         </a>
                     </motion.div>
                 </motion.div>

@@ -43,6 +43,11 @@ export const dialogContents = [
         title: 'Basic Dialog',
         href: '#basic_dialog',
     },
+    {
+        id: 2,
+        title: 'Alert Dialog',
+        href: '#alert_dialog',
+    },
 ];
 
 // Loader contents
@@ -92,6 +97,11 @@ export const loaderContents = [
 // Notification contents
 export const notificationContents = [
     {
+        id: 5,
+        title: 'Progressive Notification',
+        href: '#progressive_notification',
+    },
+    {
         id: 1,
         title: 'Border Notification',
         href: '#border_notification',
@@ -110,11 +120,6 @@ export const notificationContents = [
         id: 4,
         title: 'Push Notification',
         href: '#push_notification',
-    },
-    {
-        id: 5,
-        title: 'Progressive Notification',
-        href: '#progressive_notification',
     },
 ];
 

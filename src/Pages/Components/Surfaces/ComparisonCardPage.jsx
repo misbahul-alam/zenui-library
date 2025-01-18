@@ -9,7 +9,7 @@ import Index from "../../../Components/Overview/SidebarContent/Content/Surfaces/
 
 const ComparisonCardPage = () => {
     return (
-        <>
+        <div className='dark:bg-darkBgColor'>
             <Navbar />
             <MobileNavbar/>
             <div className="flex w-full mx-auto max-w-[1700px]">
@@ -22,7 +22,7 @@ const ComparisonCardPage = () => {
                     <Index />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

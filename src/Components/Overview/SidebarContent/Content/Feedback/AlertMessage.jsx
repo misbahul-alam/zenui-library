@@ -22,6 +22,11 @@ import { HiOutlineXMark } from "react-icons/hi2";
 // showing the code
 import Showcode from "../../../../../Shared/ShowCode";
 
+import ComponentDescription from "../../../../../Shared/ComponentDescription.jsx";
+import ToggleTab from "../../../../../Shared/ToggleTab.jsx";
+import ComponentWrapper from "../../../../../Shared/ComponentWrapper.jsx";
+import ContentNavbar from "../../../../../Shared/ContentNavbar.jsx";
+
 const AlertMessage = () => {
   const sectionIds = alertMessageContents.map(item => item.href.slice(1));
   const activeSection = useScrollSpy(sectionIds);
@@ -30,57 +35,17 @@ const AlertMessage = () => {
   const [backgroundPreview, setBackgroundPreview] = useState(true);
   const [backgroundCode, setBackgroundCode] = useState(false);
 
-  const handleBackgroundPreview = () => {
-    setBackgroundPreview(true);
-    setBackgroundCode(false);
-  };
-
-  const handleBackgroundCode = () => {
-    setBackgroundCode(true);
-    setBackgroundPreview(false);
-  };
-
   // alertWithTitlePreview
   const [alertWithTitlePreview, setAlertWithTitlePreview] = useState(true);
   const [alertWithTitleCode, setAlertWithTitleCode] = useState(false);
-
-  const handleAlertWithTitlePreview = () => {
-    setAlertWithTitlePreview(true);
-    setAlertWithTitleCode(false);
-  };
-
-  const handleAlertWithTitleCode = () => {
-    setAlertWithTitleCode(true);
-    setAlertWithTitlePreview(false);
-  };
 
   // borderPreview
   const [borderPreview, setBorderPreview] = useState(true);
   const [borderCode, setBorderCode] = useState(false);
 
-  const handleBorderPreview = () => {
-    setBorderPreview(true);
-    setBorderCode(false);
-  };
-
-  const handleBorderCode = () => {
-    setBorderCode(true);
-    setBorderPreview(false);
-  };
-
   // product details skeleton
   const [alertActionPreview, setAlertActionPreview] = useState(true);
   const [alertActionCode, setAlertActionCode] = useState(false);
-
-  const handleAlertActionPreview = () => {
-    setAlertActionPreview(true);
-    setAlertActionCode(false);
-  };
-
-  const handleAlertActionCode = () => {
-    setAlertActionCode(true);
-    setAlertActionPreview(false);
-  };
 
   return (
     <>
@@ -91,118 +56,94 @@ const AlertMessage = () => {
             id={'alert_message_with_background'}
           />
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            This is an alert message with background colors matched to different
-            error types for clear visibility.
-          </p>
+          <ComponentDescription text='This is an alert message with background colors matched to different
+            error types for clear visibility.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  backgroundPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[107px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  backgroundPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleBackgroundPreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  backgroundCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleBackgroundCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={backgroundCode} setPreview={setBackgroundPreview} setCode={setBackgroundCode} preview={backgroundPreview}/>
+
+          <ComponentWrapper>
             {backgroundPreview && (
-              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                <div className='w-full h-full flex flex-col gap-4'>
-                  <div className=' p-3 flex items-center gap-3 bg-[#edf7ed] rounded'>
-                    <IoCheckmarkDoneCircleOutline className='text-[#418944] text-[1.5rem]' />
-                    <p className='text-[#418944] text-[1rem]'>
-                      This is a success Alert.
-                    </p>
-                  </div>
+                <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                  <div className='w-full h-full flex flex-col gap-4'>
+                    <div className=' p-3 flex items-center gap-3 dark:bg-green-800/40 bg-[#edf7ed] rounded'>
+                      <IoCheckmarkDoneCircleOutline className='text-[#418944] dark:text-green-500 text-[1.5rem]' />
+                      <p className='text-[#418944] text-[1rem] dark:text-green-500'>
+                        This is a success Alert.
+                      </p>
+                    </div>
 
-                  <div className='p-3 flex items-center gap-3 bg-[#e5f6fd] rounded'>
-                    <MdOutlineInfo className='text-[#2d9dda] text-[1.5rem]' />
-                    <p className='text-[#2d9dda] text-[1rem]'>
-                      This is a info Alert.
-                    </p>
-                  </div>
+                    <div className='p-3 flex items-center gap-3 dark:bg-blue-800/40 bg-[#e5f6fd] rounded'>
+                      <MdOutlineInfo className='text-[#2d9dda] text-[1.5rem] dark:text-blue-500' />
+                      <p className='text-[#2d9dda] text-[1rem] dark:text-blue-500'>
+                        This is a info Alert.
+                      </p>
+                    </div>
 
-                  <div className='p-3 flex items-center gap-3 bg-[#fdeded] rounded'>
-                    <MdErrorOutline className='text-[#d74242] text-[1.5rem]' />
-                    <p className='text-[#d74242] text-[1rem]'>
-                      This is a error Alert.
-                    </p>
-                  </div>
+                    <div className='p-3 flex items-center gap-3 dark:bg-red-800/40 bg-[#fdeded] rounded'>
+                      <MdErrorOutline className='text-[#d74242] text-[1.5rem] dark:text-red-500' />
+                      <p className='text-[#d74242] text-[1rem] dark:text-red-500'>
+                        This is a error Alert.
+                      </p>
+                    </div>
 
-                  <div className='p-3  flex items-center gap-3 bg-[#fff4e5] rounded'>
-                    <IoWarningOutline className='text-[#f18831] text-[1.5rem]' />
-                    <p className='text-[#f18831] text-[1rem]'>
-                      This is a warning Alert.
-                    </p>
+                    <div className='p-3  flex items-center gap-3 dark:bg-orange-800/40 bg-[#fff4e5] rounded'>
+                      <IoWarningOutline className='text-[#f18831] text-[1.5rem] dark:text-orange-500' />
+                      <p className='text-[#f18831] text-[1rem] dark:text-orange-500'>
+                        This is a warning Alert.
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
             )}
 
             {backgroundCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 import React from "react";
 
-// icons
-import {
-  IoCheckmarkDoneCircleOutline,
-  IoWarningOutline,
-} from "react-icons/io5";
-import { MdErrorOutline, MdOutlineInfo } from "react-icons/md";
+// react icons
+import {IoCheckmarkDoneCircleOutline, IoWarningOutline} from "react-icons/io5";
+import {MdErrorOutline, MdOutlineInfo} from "react-icons/md";
 
-const AlertMessageWithBackground = () => {
-  return (
-    <div className="w-full h-full flex flex-col gap-4">
-      // Success Alert
-      <div className=" p-3 flex items-center gap-3 bg-[#edf7ed] rounded">
-        <IoCheckmarkDoneCircleOutline className="text-[#418944] text-[1.5rem]" />
-        <p className="text-[#418944] text-[1rem]">This is a success Alert.</p>
-      </div>
-      
-      // Info Alert
-      <div className="p-3 flex items-center gap-3 bg-[#e5f6fd] rounded">
-        <MdOutlineInfo className="text-[#2d9dda] text-[1.5rem]" />
-        <p className="text-[#2d9dda] text-[1rem]">This is a info Alert.</p>
-      </div>
+const AlertMessage = () => {
+    return (
+        <div className="w-full h-full flex flex-col gap-4">
+            <div className=" p-3 flex items-center gap-3 dark:bg-green-800/40 bg-[#edf7ed] rounded">
+                <IoCheckmarkDoneCircleOutline className="text-[#418944] dark:text-green-500 text-[1.5rem]"/>
+                <p className="text-[#418944] text-[1rem] dark:text-green-500">
+                    This is a success Alert.
+                </p>
+            </div>
 
-      // Error Alert
-      <div className="p-3 flex items-center gap-3 bg-[#fdeded] rounded">
-        <MdErrorOutline className="text-[#d74242] text-[1.5rem]" />
-        <p className="text-[#d74242] text-[1rem]">This is a error Alert.</p>
-      </div>
+            <div className="p-3 flex items-center gap-3 dark:bg-blue-800/40 bg-[#e5f6fd] rounded">
+                <MdOutlineInfo className="text-[#2d9dda] text-[1.5rem] dark:text-blue-500"/>
+                <p className="text-[#2d9dda] text-[1rem] dark:text-blue-500">
+                    This is a info Alert.
+                </p>
+            </div>
 
-      // Warning Alert
-      <div className="p-3  flex items-center gap-3 bg-[#fff4e5] rounded">
-        <IoWarningOutline className="text-[#f18831] text-[1.5rem]" />
-        <p className="text-[#f18831] text-[1rem]">This is a warning Alert.</p>
-      </div>
-    </div>
-  );
+            <div className="p-3 flex items-center gap-3 dark:bg-red-800/40 bg-[#fdeded] rounded">
+                <MdErrorOutline className="text-[#d74242] text-[1.5rem] dark:text-red-500"/>
+                <p className="text-[#d74242] text-[1rem] dark:text-red-500">
+                    This is a error Alert.
+                </p>
+            </div>
+
+            <div className="p-3 flex items-center gap-3 dark:bg-orange-800/40 bg-[#fff4e5] rounded">
+                <IoWarningOutline className="text-[#f18831] text-[1.5rem] dark:text-orange-500"/>
+                <p className="text-[#f18831] text-[1rem] dark:text-orange-500">
+                    This is a warning Alert.
+                </p>
+            </div>
+        </div>
+    );
 };
 
-export default AlertMessageWithBackground;
+export default AlertMessage;
               '
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className='mt-8'>
             <ContentHeader
@@ -211,154 +152,134 @@ export default AlertMessageWithBackground;
             />
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            This is an alert message with a title and background colors matched
-            to different error types for clear identification.
-          </p>
+          <ComponentDescription text='This is an alert message with a title and background colors matched
+            to different error types for clear identification.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  alertWithTitlePreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[107px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  alertWithTitlePreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleAlertWithTitlePreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  alertWithTitleCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleAlertWithTitleCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={alertWithTitleCode} preview={alertWithTitlePreview} setCode={setAlertWithTitleCode} setPreview={setAlertWithTitlePreview}/>
+
+          <ComponentWrapper>
             {alertWithTitlePreview && (
-              <div className='p-8 mb-4 flex items-center gap-5 justify-center'>
-                <div className='w-full h-full flex flex-col gap-4'>
-                  <div className=' p-3 flex gap-3 bg-[#edf7ed] rounded'>
-                    <IoCheckmarkDoneCircleOutline className='text-[#418944] text-[1.5rem]' />
-                    <div className='flex flex-col gap-1'>
-                      <h2 className='text-[#418944] text-[1.2rem] font-[500]'>
-                        Message Title
-                      </h2>
-                      <p className='text-[#418944] text-[1rem]'>
-                        This is a success Alert.
-                      </p>
+                <div className='p-8 mb-4 flex items-center gap-5 justify-center'>
+                  <div className='w-full h-full flex flex-col gap-4'>
+                    <div className=' p-3 flex gap-3 dark:bg-green-800/40 bg-[#edf7ed] rounded'>
+                      <IoCheckmarkDoneCircleOutline className='text-[#418944] text-[1.5rem] dark:text-green-600' />
+                      <div className='flex flex-col gap-1'>
+                        <h2 className='text-[#418944] text-[1.2rem] font-[500] dark:text-green-600'>
+                          Message Title
+                        </h2>
+                        <p className='text-[#418944] text-[1rem] dark:text-green-600'>
+                          This is a success Alert.
+                        </p>
+                      </div>
                     </div>
-                  </div>
 
-                  <div className='p-3 flex gap-3 bg-[#e5f6fd] rounded'>
-                    <MdOutlineInfo className='text-[#2d9dda] text-[1.5rem]' />
-                    <div className='flex flex-col gap-1'>
-                      <h2 className='text-[#2d9dda] text-[1.2rem] font-[500]'>
-                        Message Title
-                      </h2>
-                      <p className='text-[#2d9dda] text-[1rem]'>
-                        This is a info Alert.
-                      </p>
+                    <div className='p-3 flex gap-3 dark:bg-blue-800/40 bg-[#e5f6fd] rounded'>
+                      <MdOutlineInfo className='text-[#2d9dda] text-[1.5rem] dark:text-blue-500' />
+                      <div className='flex flex-col gap-1'>
+                        <h2 className='text-[#2d9dda] text-[1.2rem] font-[500] dark:text-blue-500'>
+                          Message Title
+                        </h2>
+                        <p className='text-[#2d9dda] text-[1rem] dark:text-blue-500'>
+                          This is a info Alert.
+                        </p>
+                      </div>
                     </div>
-                  </div>
 
-                  <div className='p-3 flex gap-3 bg-[#fdeded] rounded'>
-                    <MdErrorOutline className='text-[#d74242] text-[1.5rem]' />
-                    <div className='flex flex-col gap-1'>
-                      <h2 className='text-[#d74242] text-[1.2rem] font-[500]'>
-                        Message Title
-                      </h2>
-                      <p className='text-[#d74242] text-[1rem]'>
-                        This is a error Alert.
-                      </p>
+                    <div className='p-3 flex gap-3 dark:bg-red-800/40 bg-[#fdeded] rounded'>
+                      <MdErrorOutline className='text-[#d74242] text-[1.5rem] dark:text-red-500' />
+                      <div className='flex flex-col gap-1'>
+                        <h2 className='text-[#d74242] text-[1.2rem] font-[500] dark:text-red-500'>
+                          Message Title
+                        </h2>
+                        <p className='text-[#d74242] text-[1rem] dark:text-red-500'>
+                          This is a error Alert.
+                        </p>
+                      </div>
                     </div>
-                  </div>
 
-                  <div className='p-3  flex gap-3 bg-[#fff4e5] rounded'>
-                    <IoWarningOutline className='text-[#f18831] text-[1.5rem]' />
-                    <div className='flex flex-col gap-1'>
-                      <h2 className='text-[#f18831] text-[1.2rem] font-[500]'>
-                        Message Title
-                      </h2>
-                      <p className='text-[#f18831] text-[1rem]'>
-                        This is a warning Alert.
-                      </p>
+                    <div className='p-3  flex gap-3 dark:bg-orange-800/40 bg-[#fff4e5] rounded'>
+                      <IoWarningOutline className='text-[#f18831] text-[1.5rem] dark:text-orange-500' />
+                      <div className='flex flex-col gap-1'>
+                        <h2 className='text-[#f18831] text-[1.2rem] font-[500] dark:text-orange-500'>
+                          Message Title
+                        </h2>
+                        <p className='text-[#f18831] text-[1rem] dark:text-orange-500'>
+                          This is a warning Alert.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
             )}
 
             {alertWithTitleCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 import React from "react";
 
-// icons
-import {
-  IoCheckmarkDoneCircleOutline,
-  IoWarningOutline,
-} from "react-icons/io5";
-import { MdErrorOutline, MdOutlineInfo } from "react-icons/md";
+// react icons
+import {IoCheckmarkDoneCircleOutline, IoWarningOutline} from "react-icons/io5";
+import {MdErrorOutline, MdOutlineInfo} from "react-icons/md";
 
-const AlertMessageWithTitle = () => {
-  return (
-    <div className="w-full h-full flex flex-col gap-4">
-      // Success Alert
-      <div className=" p-3 flex gap-3 bg-[#edf7ed] rounded">
-        <IoCheckmarkDoneCircleOutline className="text-[#418944] text-[1.5rem]" />
-        <div className="flex flex-col gap-1">
-          <h2 className="text-[#418944] text-[1.2rem] font-[500]"> Message Title
-          </h2>
-          <p className="text-[#418944] text-[1rem]">This is a success Alert.</p>
-        </div>
-      </div>
+const AlertMessage = () => {
+    return (
+        <div className="w-full h-full flex flex-col gap-4">
+            <div className=" p-3 flex gap-3 dark:bg-green-800/40 bg-[#edf7ed] rounded">
+                <IoCheckmarkDoneCircleOutline className="text-[#418944] text-[1.5rem] dark:text-green-600"/>
+                <div className="flex flex-col gap-1">
+                    <h2 className="text-[#418944] text-[1.2rem] font-[500] dark:text-green-600">
+                        Message Title
+                    </h2>
+                    <p className="text-[#418944] text-[1rem] dark:text-green-600">
+                        This is a success Alert.
+                    </p>
+                </div>
+            </div>
 
-      // Info Alert
-      <div className="p-3 flex gap-3 bg-[#e5f6fd] rounded">
-        <MdOutlineInfo className="text-[#2d9dda] text-[1.5rem]" />
-        <div className="flex flex-col gap-1">
-          <h2 className="text-[#2d9dda] text-[1.2rem] font-[500]"> Message Title
-          </h2>
-          <p className="text-[#2d9dda] text-[1rem]">This is a info Alert.</p>
-        </div>
-      </div>
+            <div className="p-3 flex gap-3 dark:bg-blue-800/40 bg-[#e5f6fd] rounded">
+                <MdOutlineInfo className="text-[#2d9dda] text-[1.5rem] dark:text-blue-500"/>
+                <div className="flex flex-col gap-1">
+                    <h2 className="text-[#2d9dda] text-[1.2rem] font-[500] dark:text-blue-500">
+                        Message Title
+                    </h2>
+                    <p className="text-[#2d9dda] text-[1rem] dark:text-blue-500">
+                        This is a info Alert.
+                    </p>
+                </div>
+            </div>
 
-      // Error Alert
-      <div className="p-3 flex gap-3 bg-[#fdeded] rounded">
-        <MdErrorOutline className="text-[#d74242] text-[1.5rem]" />
-        <div className="flex flex-col gap-1">
-          <h2 className="text-[#d74242] text-[1.2rem] font-[500]"> Message Title
-          </h2>
-          <p className="text-[#d74242] text-[1rem]">This is a error Alert.</p>
-        </div>
-      </div>
+            <div className="p-3 flex gap-3 dark:bg-red-800/40 bg-[#fdeded] rounded">
+                <MdErrorOutline className="text-[#d74242] text-[1.5rem] dark:text-red-500"/>
+                <div className="flex flex-col gap-1">
+                    <h2 className="text-[#d74242] text-[1.2rem] font-[500] dark:text-red-500">
+                        Message Title
+                    </h2>
+                    <p className="text-[#d74242] text-[1rem] dark:text-red-500">
+                        This is a error Alert.
+                    </p>
+                </div>
+            </div>
 
-      // Warning Alert
-      <div className="p-3  flex gap-3 bg-[#fff4e5] rounded">
-        <IoWarningOutline className="text-[#f18831] text-[1.5rem]" />
-        <div className="flex flex-col gap-1">
-          <h2 className="text-[#f18831] text-[1.2rem] font-[500]"> Message Title
-          </h2>
-          <p className="text-[#f18831] text-[1rem]">This is a warning Alert.</p>
+            <div className="p-3  flex gap-3 dark:bg-orange-800/40 bg-[#fff4e5] rounded">
+                <IoWarningOutline className="text-[#f18831] text-[1.5rem] dark:text-orange-500"/>
+                <div className="flex flex-col gap-1">
+                    <h2 className="text-[#f18831] text-[1.2rem] font-[500] dark:text-orange-500">
+                        Message Title
+                    </h2>
+                    <p className="text-[#f18831] text-[1rem] dark:text-orange-500">
+                        This is a warning Alert.
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
-export default AlertMessageWithTitle;
+export default AlertMessage;
               '
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className='mt-8'>
             <ContentHeader
@@ -367,74 +288,49 @@ export default AlertMessageWithTitle;
             />
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            This is an alert message with a title and border colors matched to
-            different error types for clear identification.
-          </p>
+          <ComponentDescription text='This is an alert message with a title and border colors matched to
+            different error types for clear identification.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  borderPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[107px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  borderPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleBorderPreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  borderCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleBorderCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={borderCode} setPreview={setBorderPreview} setCode={setBorderCode} preview={borderPreview}/>
+
+          <ComponentWrapper>
             {borderPreview && (
-              <div className='p-8 mb-4 flex items-center gap-5 justify-center'>
-                <div className='w-full h-full flex flex-col gap-4'>
-                  <div className=' p-3 flex items-center gap-3 border-[2px] border-[#418944] rounded'>
-                    <IoCheckmarkDoneCircleOutline className='text-[#418944] text-[1.5rem]' />
-                    <p className='text-[#418944] text-[1rem]'>
-                      This is a success Alert.
-                    </p>
-                  </div>
+                <div className='p-8 mb-4 flex items-center gap-5 justify-center'>
+                  <div className='w-full h-full flex flex-col gap-4'>
+                    <div className=' p-3 flex items-center gap-3 border-[2px] border-[#418944] rounded'>
+                      <IoCheckmarkDoneCircleOutline className='text-[#418944] text-[1.5rem]' />
+                      <p className='text-[#418944] text-[1rem]'>
+                        This is a success Alert.
+                      </p>
+                    </div>
 
-                  <div className='p-3 flex items-center gap-3 border-[2px] border-[#2d9dda] rounded'>
-                    <MdOutlineInfo className='text-[#2d9dda] text-[1.5rem]' />
-                    <p className='text-[#2d9dda] text-[1rem]'>
-                      This is a info Alert.
-                    </p>
-                  </div>
+                    <div className='p-3 flex items-center gap-3 border-[2px] border-[#2d9dda] rounded'>
+                      <MdOutlineInfo className='text-[#2d9dda] text-[1.5rem]' />
+                      <p className='text-[#2d9dda] text-[1rem]'>
+                        This is a info Alert.
+                      </p>
+                    </div>
 
-                  <div className='p-3 flex items-center gap-3 border-[2px] border-[#d74242] rounded'>
-                    <MdErrorOutline className='text-[#d74242] text-[1.5rem]' />
-                    <p className='text-[#d74242] text-[1rem]'>
-                      This is a error Alert.
-                    </p>
-                  </div>
+                    <div className='p-3 flex items-center gap-3 border-[2px] border-[#d74242] rounded'>
+                      <MdErrorOutline className='text-[#d74242] text-[1.5rem]' />
+                      <p className='text-[#d74242] text-[1rem]'>
+                        This is a error Alert.
+                      </p>
+                    </div>
 
-                  <div className='p-3  flex items-center gap-3 border-[2px] border-[#f18831] rounded'>
-                    <IoWarningOutline className='text-[#f18831] text-[1.5rem]' />
-                    <p className='text-[#f18831] text-[1rem]'>
-                      This is a warning Alert.
-                    </p>
+                    <div className='p-3  flex items-center gap-3 border-[2px] border-[#f18831] rounded'>
+                      <IoWarningOutline className='text-[#f18831] text-[1.5rem]' />
+                      <p className='text-[#f18831] text-[1rem]'>
+                        This is a warning Alert.
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
             )}
 
             {borderCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 import React from "react";
 
 // icons
@@ -476,9 +372,9 @@ const AlertMessageWithBorder = () => {
 
 export default AlertMessageWithBorder;
               '
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className='mt-8'>
             <ContentHeader
@@ -487,147 +383,123 @@ export default AlertMessageWithBorder;
             />
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            This is an alert message with a title, border colors for error
-            types, and a cross icon for dismissal.
-          </p>
+          <ComponentDescription text='This is an alert message with a title, border colors for error
+            types, and a cross icon for dismissal.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  alertActionPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[107px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  alertActionPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleAlertActionPreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  alertActionCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleAlertActionCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={alertActionCode} preview={alertActionPreview} setPreview={setAlertActionPreview} setCode={setAlertActionCode}/>
+
+          <ComponentWrapper>
             {alertActionPreview && (
-              <div className='p-8 mb-4 flex items-center gap-5 justify-center'>
-                <div className='w-full h-full flex flex-col gap-4'>
-                  <div className=' p-3 flex items-center justify-between bg-[#edf7ed] rounded'>
-                    <div className='flex items-center gap-3'>
-                      <IoCheckmarkDoneCircleOutline className='text-[#418944] text-[1.5rem]' />
-                      <p className='text-[#418944] text-[1rem]'>
-                        This is a success Alert.
-                      </p>
+                <div className='p-8 mb-4 flex items-center gap-5 justify-center'>
+                  <div className='w-full h-full flex flex-col gap-4'>
+                    <div className=' p-3 flex items-center justify-between dark:bg-green-800/40 bg-[#edf7ed] rounded'>
+                      <div className='flex items-center gap-3'>
+                        <IoCheckmarkDoneCircleOutline className='text-[#418944] text-[1.5rem] dark:text-green-500' />
+                        <p className='text-[#418944] text-[1rem] dark:text-green-500'>
+                          This is a success Alert.
+                        </p>
+                      </div>
+                      <HiOutlineXMark className='text-[#418944] dark:text-green-500 text-[1.8rem] p-1 rounded-full hover:bg-[#41894317] cursor-pointer active:scale-[0.9]' />
                     </div>
-                    <HiOutlineXMark className='text-[#418944] text-[1.8rem] p-1 rounded-full hover:bg-[#41894317] cursor-pointer active:scale-[0.9]' />
-                  </div>
 
-                  <div className='p-3 flex items-center justify-between bg-[#e5f6fd] rounded'>
-                    <div className='flex items-center gap-3'>
-                      <MdOutlineInfo className='text-[#2d9dda] text-[1.5rem]' />
-                      <p className='text-[#2d9dda] text-[1rem]'>
-                        This is a info Alert.
-                      </p>
+                    <div className='p-3 flex items-center justify-between dark:bg-blue-800/40 bg-[#e5f6fd] rounded'>
+                      <div className='flex items-center gap-3'>
+                        <MdOutlineInfo className='text-[#2d9dda] text-[1.5rem] dark:text-blue-500' />
+                        <p className='text-[#2d9dda] text-[1rem] dark:text-blue-500'>
+                          This is a info Alert.
+                        </p>
+                      </div>
+                      <HiOutlineXMark className='text-[#2d9dda] dark:text-blue-500 text-[1.8rem] p-1 rounded-full hover:bg-[#2d9dda15] cursor-pointer active:scale-[0.9]' />
                     </div>
-                    <HiOutlineXMark className='text-[#2d9dda] text-[1.8rem] p-1 rounded-full hover:bg-[#2d9dda15] cursor-pointer active:scale-[0.9]' />
-                  </div>
 
-                  <div className='p-3 flex items-center justify-between bg-[#fdeded] rounded'>
-                    <div className='flex items-center gap-3'>
-                      <MdErrorOutline className='text-[#d74242] text-[1.5rem]' />
-                      <p className='text-[#d74242] text-[1rem]'>
-                        This is a error Alert.
-                      </p>
+                    <div className='p-3 flex items-center justify-between dark:bg-red-800/40 bg-[#fdeded] rounded'>
+                      <div className='flex items-center gap-3'>
+                        <MdErrorOutline className='text-[#d74242] text-[1.5rem] dark:text-red-500' />
+                        <p className='text-[#d74242] text-[1rem] dark:text-red-500'>
+                          This is a error Alert.
+                        </p>
+                      </div>
+                      <HiOutlineXMark className='text-[#d74242] dark:text-red-500 text-[1.8rem] p-1 rounded-full hover:bg-[#d7424215] cursor-pointer active:scale-[0.9]' />
                     </div>
-                    <HiOutlineXMark className='text-[#d74242] text-[1.8rem] p-1 rounded-full hover:bg-[#d7424215] cursor-pointer active:scale-[0.9]' />
-                  </div>
 
-                  <div className='p-3  flex items-center justify-between bg-[#fff4e5] rounded'>
-                    <div className='flex items-center gap-3'>
-                      <IoWarningOutline className='text-[#f18831] text-[1.5rem]' />
-                      <p className='text-[#f18831] text-[1rem]'>
-                        This is a warning Alert.
-                      </p>
+                    <div className='p-3  flex items-center justify-between dark:bg-orange-800/40 bg-[#fff4e5] rounded'>
+                      <div className='flex items-center gap-3'>
+                        <IoWarningOutline className='text-[#f18831] text-[1.5rem] dark:text-orange-500' />
+                        <p className='text-[#f18831] text-[1rem] dark:text-orange-500'>
+                          This is a warning Alert.
+                        </p>
+                      </div>
+                      <HiOutlineXMark className='text-[#f18831] dark:text-orange-500 text-[1.8rem] p-1 rounded-full hover:bg-[#f1873118] cursor-pointer active:scale-[0.9]' />
                     </div>
-                    <HiOutlineXMark className='text-[#f18831] text-[1.8rem] p-1 rounded-full hover:bg-[#f1873118] cursor-pointer active:scale-[0.9]' />
                   </div>
                 </div>
-              </div>
             )}
 
             {alertActionCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 import React from "react";
 
-// icons
-import {
-  IoCheckmarkDoneCircleOutline,
-  IoWarningOutline,
-} from "react-icons/io5";
-import { MdErrorOutline, MdOutlineInfo } from "react-icons/md";
-import { HiOutlineXMark } from "react-icons/hi2";
+// react icons
+import {IoCheckmarkDoneCircleOutline, IoWarningOutline} from "react-icons/io5";
+import {MdErrorOutline, MdOutlineInfo} from "react-icons/md";
+import {HiOutlineXMark} from "react-icons/hi2";
 
-const AlertMessageWithAction = () => {
-  return (
-    <div className="w-full h-full flex flex-col gap-4">
-      // Success Alert
-      <div className=" p-3 flex items-center justify-between bg-[#edf7ed] rounded">
-        <div className="flex items-center gap-3">
-          <IoCheckmarkDoneCircleOutline className="text-[#418944] text-[1.5rem]" />
-          <p className="text-[#418944] text-[1rem]">This is a success Alert.</p>
-        </div>
-        <HiOutlineXMark className="text-[#418944] text-[1.8rem] 
-        p-1 rounded-full hover:bg-[#41894317] cursor-pointer active:scale-[0.9]" />
-      </div>
+const AlertMessage = () => {
+    return (
+        <div className="w-full h-full flex flex-col gap-4">
+            <div className=" p-3 flex items-center justify-between dark:bg-green-800/40 bg-[#edf7ed] rounded">
+                <div className="flex items-center gap-3">
+                    <IoCheckmarkDoneCircleOutline className="text-[#418944] text-[1.5rem] dark:text-green-500"/>
+                    <p className="text-[#418944] text-[1rem] dark:text-green-500">
+                        This is a success Alert.
+                    </p>
+                </div>
+                <HiOutlineXMark
+                    className="text-[#418944] dark:text-green-500 text-[1.8rem] p-1 rounded-full hover:bg-[#41894317] cursor-pointer active:scale-[0.9]"/>
+            </div>
 
-      // Info Alert
-      <div className="p-3 flex items-center justify-between bg-[#e5f6fd] rounded">
-        <div className="flex items-center gap-3">
-          <MdOutlineInfo className="text-[#2d9dda] text-[1.5rem]" />
-          <p className="text-[#2d9dda] text-[1rem]">This is a info Alert.</p>
-        </div>
-        <HiOutlineXMark className="text-[#2d9dda] text-[1.8rem] 
-        p-1 rounded-full hover:bg-[#2d9dda15] cursor-pointer active:scale-[0.9]" />
-      </div>
+            <div className="p-3 flex items-center justify-between dark:bg-blue-800/40 bg-[#e5f6fd] rounded">
+                <div className="flex items-center gap-3">
+                    <MdOutlineInfo className="text-[#2d9dda] text-[1.5rem] dark:text-blue-500"/>
+                    <p className="text-[#2d9dda] text-[1rem] dark:text-blue-500">
+                        This is a info Alert.
+                    </p>
+                </div>
+                <HiOutlineXMark
+                    className="text-[#2d9dda] dark:text-blue-500 text-[1.8rem] p-1 rounded-full hover:bg-[#2d9dda15] cursor-pointer active:scale-[0.9]"/>
+            </div>
 
-      // Error Alert
-      <div className="p-3 flex items-center justify-between bg-[#fdeded] rounded">
-        <div className="flex items-center gap-3">
-          <MdErrorOutline className="text-[#d74242] text-[1.5rem]" />
-          <p className="text-[#d74242] text-[1rem]">This is a error Alert.</p>
-        </div>
-        <HiOutlineXMark className="text-[#d74242] text-[1.8rem] 
-        p-1 rounded-full hover:bg-[#d7424215] cursor-pointer active:scale-[0.9]" />
-      </div>
+            <div className="p-3 flex items-center justify-between dark:bg-red-800/40 bg-[#fdeded] rounded">
+                <div className="flex items-center gap-3">
+                    <MdErrorOutline className="text-[#d74242] text-[1.5rem] dark:text-red-500"/>
+                    <p className="text-[#d74242] text-[1rem] dark:text-red-500">
+                        This is a error Alert.
+                    </p>
+                </div>
+                <HiOutlineXMark
+                    className="text-[#d74242] dark:text-red-500 text-[1.8rem] p-1 rounded-full hover:bg-[#d7424215] cursor-pointer active:scale-[0.9]"/>
+            </div>
 
-      // Warning Alert
-      <div className="p-3  flex items-center justify-between bg-[#fff4e5] rounded">
-        <div className="flex items-center gap-3">
-          <IoWarningOutline className="text-[#f18831] text-[1.5rem]" />
-          <p className="text-[#f18831] text-[1rem]">This is a warning Alert.</p>
+            <div className="p-3  flex items-center justify-between dark:bg-orange-800/40 bg-[#fff4e5] rounded">
+                <div className="flex items-center gap-3">
+                    <IoWarningOutline className="text-[#f18831] text-[1.5rem] dark:text-orange-500"/>
+                    <p className="text-[#f18831] text-[1rem] dark:text-orange-500">
+                        This is a warning Alert.
+                    </p>
+                </div>
+                <HiOutlineXMark
+                    className="text-[#f18831] dark:text-orange-500 text-[1.8rem] p-1 rounded-full hover:bg-[#f1873118] cursor-pointer active:scale-[0.9]"/>
+            </div>
         </div>
-        <HiOutlineXMark className="text-[#f18831] text-[1.8rem] 
-        p-1 rounded-full hover:bg-[#f1873118] cursor-pointer active:scale-[0.9]" />
-      </div>
-    </div>
-  );
+    );
 };
 
-export default AlertMessageWithAction;
+export default AlertMessage;
               '
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <OverviewFooter
             backUrl='/components/tree-dropdown'
@@ -637,23 +509,8 @@ export default AlertMessageWithAction;
           />
         </div>
 
-        <div className='1024px:flex hidden flex-col gap-4 sticky top-4 right-0 w-[40%]'>
-          <h2 className='text-[0.9rem] font-[600] text-text tracking-widest'>
-            CONTENTS
-          </h2>
-          {alertMessageContents.map((item) => (
-            <a
-              key={item.id}
-              href={item.href}
-              className={`${
-                activeSection === item.href.slice(1) &&
-                '!text-primary !border-primary'
-              } text-[0.9rem] text-text border-l border-transparent pl-4`}
-            >
-              {item.title}
-            </a>
-          ))}
-        </div>
+        <ContentNavbar activeSection={activeSection} contents={alertMessageContents}/>
+
       </aside>
       <Helmet>
         <title>Feedback - Alert Message</title>

@@ -16,6 +16,11 @@ import { useScrollSpy } from '../../../../../CustomHooks/useScrollSpy';
 import { FiLoader } from "react-icons/fi";
 import { TbLoader3 } from "react-icons/tb";
 
+import ComponentDescription from "../../../../../Shared/ComponentDescription.jsx";
+import ToggleTab from "../../../../../Shared/ToggleTab.jsx";
+import ComponentWrapper from "../../../../../Shared/ComponentWrapper.jsx";
+import ContentNavbar from "../../../../../Shared/ContentNavbar.jsx";
+
 const Loader = () => {
   const sectionIds = loaderContents.map(item => item.href.slice(1));
   const activeSection = useScrollSpy(sectionIds);
@@ -24,113 +29,33 @@ const Loader = () => {
   const [circleLoaderPreview, setCircleLoaderPreview] = useState(true);
   const [circleLoaderCode, setCircleLoaderCode] = useState(false);
 
-  const handleCircleLoaderPreview = () => {
-    setCircleLoaderPreview(true);
-    setCircleLoaderCode(false);
-  };
-
-  const handleCircleLoaderCode = () => {
-    setCircleLoaderCode(true);
-    setCircleLoaderPreview(false);
-  };
-
   // dashed Loader
   const [dashedLoaderPreview, setDashedLoaderPreview] = useState(true);
   const [dashedLoaderCode, setDashedLoaderCode] = useState(false);
-
-  const handleDashedLoaderPreview = () => {
-    setDashedLoaderPreview(true);
-    setDashedLoaderCode(false);
-  };
-
-  const handleDashedLoaderCode = () => {
-    setDashedLoaderCode(true);
-    setDashedLoaderPreview(false);
-  };
 
   // dashed Loader
   const [opacityLoaderPreview, setOpacityLoaderPreview] = useState(true);
   const [opacityLoaderCode, setOpacityLoaderCode] = useState(false);
 
-  const handleOpacityLoaderPreview = () => {
-    setOpacityLoaderPreview(true);
-    setOpacityLoaderCode(false);
-  };
-
-  const handleOpacityLoaderCode = () => {
-    setOpacityLoaderCode(true);
-    setOpacityLoaderPreview(false);
-  };
-
   // wave Loader
   const [waveLoaderPreview, setWaveLoaderPreview] = useState(true);
   const [waveLoaderCode, setWaveLoaderCode] = useState(false);
-
-  const handleWaveLoaderPreview = () => {
-    setWaveLoaderPreview(true);
-    setWaveLoaderCode(false);
-  };
-
-  const handleWaveLoaderCode = () => {
-    setWaveLoaderCode(true);
-    setWaveLoaderPreview(false);
-  };
 
   // chase Loader
   const [chaseLoaderPreview, setChaseLoaderPreview] = useState(true);
   const [chaseLoaderCode, setChaseLoaderCode] = useState(false);
 
-  const handleChaseLoaderPreview = () => {
-    setChaseLoaderPreview(true);
-    setChaseLoaderCode(false);
-  };
-
-  const handleChaseLoaderCode = () => {
-    setChaseLoaderCode(true);
-    setChaseLoaderPreview(false);
-  };
-
   // chase Loader
   const [dotLoaderPreview, setDotLoaderPreview] = useState(true);
   const [dotLoaderCode, setDotLoaderCode] = useState(false);
-
-  const handleDotLoaderPreview = () => {
-    setDotLoaderPreview(true);
-    setDotLoaderCode(false);
-  };
-
-  const handleDotLoaderCode = () => {
-    setDotLoaderCode(true);
-    setDotLoaderPreview(false);
-  };
 
   // shape Loader
   const [shapeLoaderPreview, setShapeLoaderPreview] = useState(true);
   const [shapeLoaderCode, setShapeLoaderCode] = useState(false);
 
-  const handleShapeLoaderPreview = () => {
-    setShapeLoaderPreview(true);
-    setShapeLoaderCode(false);
-  };
-
-  const handleShapeLoaderCode = () => {
-    setShapeLoaderCode(true);
-    setShapeLoaderPreview(false);
-  };
-
   // flip Loader
   const [flipLoaderPreview, setFlipLoaderPreview] = useState(true);
   const [flipLoaderCode, setFlipLoaderCode] = useState(false);
-
-  const handleFlipLoaderPreview = () => {
-    setFlipLoaderPreview(true);
-    setFlipLoaderCode(false);
-  };
-
-  const handleFlipLoaderCode = () => {
-    setFlipLoaderCode(true);
-    setFlipLoaderPreview(false);
-  };
 
   const spinnerDivs = Array.from({ length: 10 }).map((_, index) => {
     const delay = (index + 1) * 0.1;
@@ -172,31 +97,11 @@ const Loader = () => {
         <div>
           <ContentHeader id={"circle_loader"} text={"circle loader"}/>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            This is a circle loader component. Indicate loading status with a sleek, circular animation.
-          </p>
+          <ComponentDescription text='This is a circle loader component. Indicate loading status with a sleek, circular animation.'/>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${circleLoaderPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
-              <button
-                  className={`${
-                      circleLoaderPreview && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={handleCircleLoaderPreview}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      circleLoaderCode && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={handleCircleLoaderCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab setCode={setCircleLoaderCode} code={circleLoaderCode} preview={circleLoaderPreview} setPreview={setCircleLoaderPreview}/>
+
+          <ComponentWrapper>
             {circleLoaderPreview && (
                 <div className="p-8 mb-4 flex items-center gap-12 justify-center">
                   <div
@@ -231,37 +136,17 @@ export default Loader;
               '
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className="mt-8">
             <ContentHeader id={"dashed_loader"} text={"dashed loader"}/>
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            This is a dashed loader component. Show loading progress with a dynamic, dashed-line animation.
-          </p>
+          <ComponentDescription text='This is a dashed loader component. Show loading progress with a dynamic, dashed-line animation.'/>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${dashedLoaderPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
-              <button
-                  className={`${
-                      dashedLoaderPreview && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={handleDashedLoaderPreview}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      dashedLoaderCode && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={handleDashedLoaderCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab setCode={setDashedLoaderCode} code={dashedLoaderCode} setPreview={setDashedLoaderPreview} preview={dashedLoaderPreview}/>
+
+          <ComponentWrapper>
             {dashedLoaderPreview && (
                 <div className="p-8 mb-4 flex items-center flex-col gap-5 justify-center">
                   <div className="w-10 h-10 animate-spin rounded-full border-dashed border-8 border-[#3b9df8]"></div>
@@ -275,38 +160,18 @@ export default Loader;
               '
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className="mt-8">
             <ContentHeader id={"opacity_loader"} text={"opacity loader"}/>
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            This is an opacity loader component. Display loading status with a subtle opacity animation for sleek
-            transitions.
-          </p>
+          <ComponentDescription text='This is an opacity loader component. Display loading status with a subtle opacity animation for sleek
+            transitions.'/>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${opacityLoaderPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
-              <button
-                  className={`${
-                      opacityLoaderPreview && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={handleOpacityLoaderPreview}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      opacityLoaderCode && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={handleOpacityLoaderCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab setCode={setOpacityLoaderCode} code={opacityLoaderCode} preview={opacityLoaderPreview} setPreview={setOpacityLoaderPreview}/>
+
+          <ComponentWrapper>
             {opacityLoaderPreview && (
                 <div className="p-8 mb-4 flex items-center flex-col gap-5 justify-center">
                   <div
@@ -327,37 +192,17 @@ export default Loader;
               '
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className="mt-8">
             <ContentHeader id={"wave_loader"} text={"wave loader"}/>
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            This is a wave loader component. Show loading progress with a dynamic, wave-like animation.
-          </p>
+          <ComponentDescription text='This is a wave loader component. Show loading progress with a dynamic, wave-like animation.'/>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${waveLoaderPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
-              <button
-                  className={`${
-                      waveLoaderPreview && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={handleWaveLoaderPreview}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      waveLoaderCode && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={handleWaveLoaderCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab setCode={setWaveLoaderCode} code={waveLoaderCode} setPreview={setWaveLoaderPreview} preview={waveLoaderPreview}/>
+
+          <ComponentWrapper>
             {waveLoaderPreview && (
                 <div className="p-8 mb-4 flex items-center flex-col gap-5 justify-center">
                   <div className='my-10'>
@@ -426,37 +271,17 @@ export default Loader;
           "
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className="mt-8">
             <ContentHeader id={"chase_loader"} text={"chase loader"}/>
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            This is a chase animation loader component. Display loading progress with an engaging, sequential movement.
-          </p>
+          <ComponentDescription text='This is a chase animation loader component. Display loading progress with an engaging, sequential movement.'/>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${chaseLoaderPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
-              <button
-                  className={`${
-                      chaseLoaderPreview && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={handleChaseLoaderPreview}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      chaseLoaderCode && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={handleChaseLoaderCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab setCode={setChaseLoaderCode} code={chaseLoaderCode} preview={chaseLoaderPreview} setPreview={setChaseLoaderPreview}/>
+
+          <ComponentWrapper>
             {chaseLoaderPreview && (
                 <div className="p-8 mb-4 flex items-center flex-col gap-5 justify-center">
                   <div className='my-10'>
@@ -547,44 +372,24 @@ export default Loader;
         "
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className="mt-8">
             <ContentHeader id={"dot_loader"} text={"dot loader"}/>
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            This is a dot animation loader component. Show loading progress with rhythmic dot movement for visual feedback.
-          </p>
+          <ComponentDescription text='This is a dot animation loader component. Show loading progress with rhythmic dot movement for visual feedback.'/>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${dotLoaderPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
-              <button
-                  className={`${
-                      dotLoaderPreview && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={handleDotLoaderPreview}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      dotLoaderCode && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={handleDotLoaderCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab setCode={setDotLoaderCode} code={dotLoaderCode} setPreview={setDotLoaderPreview} preview={dotLoaderPreview}/>
+
+          <ComponentWrapper>
             {dotLoaderPreview && (
                 <div className="p-8 mb-4 flex items-center flex-col gap-5 justify-center">
                   <div className='my-10'>
                     <div
                         className="w-[56px] h-[56px]"
                         style={{
-                            '--c': 'radial-gradient(farthest-side, #3B9DF8 92%, transparent)',
+                          '--c': 'radial-gradient(farthest-side, #3B9DF8 92%, transparent)',
                           background: `
           var(--c) 50% 0,
           var(--c) 50% 100%,
@@ -651,37 +456,17 @@ export default Loader;
             "
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className="mt-8">
             <ContentHeader id={"shape_loader"} text={"shape loader"}/>
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            This is a shape animation loader component. Display loading progress with dynamic shape transformations for visual appeal.
-          </p>
+          <ComponentDescription text='This is a shape animation loader component. Display loading progress with dynamic shape transformations for visual appeal.'/>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${shapeLoaderPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
-              <button
-                  className={`${
-                      shapeLoaderPreview && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={handleShapeLoaderPreview}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      shapeLoaderCode && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={handleShapeLoaderCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab setCode={setShapeLoaderCode} code={shapeLoaderCode} preview={shapeLoaderPreview} setPreview={setShapeLoaderPreview}/>
+
+          <ComponentWrapper>
             {shapeLoaderPreview && (
                 <div className="p-8 mb-4 flex items-center flex-col gap-5 justify-center">
                   <div className='my-10'>
@@ -772,37 +557,17 @@ export default Loader;
         "
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div className="mt-8">
             <ContentHeader id={"flip_loader"} text={"flip loader"}/>
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            This is a flip animation loader component. Showcase loading progress with engaging flip animations for visual interest.
-          </p>
+          <ComponentDescription text='This is a flip animation loader component. Showcase loading progress with engaging flip animations for visual interest.'/>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
-              <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${flipLoaderPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
-              <button
-                  className={`${
-                      flipLoaderPreview && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={handleFlipLoaderPreview}
-              >
-                Preview
-              </button>
-              <button
-                  className={`${
-                      flipLoaderCode && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={handleFlipLoaderCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab setCode={setFlipLoaderCode} code={flipLoaderCode} setPreview={setFlipLoaderPreview} preview={flipLoaderPreview}/>
+
+          <ComponentWrapper>
             {flipLoaderPreview && (
                 <div className="p-8 mb-4 flex items-center flex-col gap-5 justify-center">
                   <div className='my-10'>
@@ -881,29 +646,13 @@ export default Loader;
         "
                 />
             )}
-          </div>
+          </ComponentWrapper>
 
           <OverviewFooter backUrl='/components/testimonials' backName='testimonial' forwardName='notification' forwardUrl='/components/notification'/>
         </div>
 
-        <div className="1024px:flex hidden flex-col gap-4 sticky top-4 right-0 w-[40%]">
-          <h2 className="text-[0.9rem] font-[600] text-text tracking-widest">
-            CONTENTS
-          </h2>
-          {
-            loaderContents.map((item) => (
-              <a
-                key={item.id}
-                href={item.href}
-                className={`${
-                  activeSection === item.href.slice(1) && "!text-primary !border-primary"
-                } text-[0.9rem] text-text border-l border-transparent pl-4`}
-              >
-                {item.title}
-              </a>
-            ))
-          }
-        </div>
+        <ContentNavbar contents={loaderContents} activeSection={activeSection}/>
+
       </aside>
       <Helmet>
         <title>Feedback - Loader</title>
