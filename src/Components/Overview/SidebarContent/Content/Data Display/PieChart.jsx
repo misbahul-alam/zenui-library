@@ -11,7 +11,11 @@ import Showcode from "../../../../../Shared/ShowCode";
 // scrollspy
 import {pieChartContents} from "../../../../../Utils/ContentsConfig/DataDisplayContents.js";
 import {useScrollSpy} from "../../../../../CustomHooks/useScrollSpy.js";
-import {useToggleCardView} from "../../../../../CustomHooks/ButtonToggle.js";
+
+import ComponentDescription from "../../../../../Shared/ComponentDescription.jsx";
+import ToggleTab from "../../../../../Shared/ToggleTab.jsx";
+import ComponentWrapper from "../../../../../Shared/ComponentWrapper.jsx";
+import ContentNavbar from "../../../../../Shared/ContentNavbar.jsx";
 
 const PieChart = () => {
 
@@ -33,8 +37,6 @@ const PieChart = () => {
 
         return () => window.removeEventListener("resize", handleResize);
     }, []);
-
-    const toggleCardView = useToggleCardView()
 
     const [fillPieChartPreview, setFillPieChartPreview] = useState(true);
     const [fillPieChartCode, setFillPieChartCode] = useState(false);
@@ -184,31 +186,11 @@ const PieChart = () => {
                 <div>
                     <ContentHeader text={"fill pie chart"} id={"fill_pie_chart"}/>
 
-                    <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-                        A pie chart visually represents data as slices of a circle, with each slice showing a category's proportion of the whole.
-                    </p>
+                    <ComponentDescription text="A pie chart visually represents data as slices of a circle, with each slice showing a category's proportion of the whole."/>
 
-                    <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-                        <div className="relative">
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${fillPieChartPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
-                            <button
-                                className={`${
-                                    fillPieChartPreview && "text-tabTextColor"
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={()=> toggleCardView(setFillPieChartPreview, setFillPieChartCode, true)}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    fillPieChartCode && "text-tabTextColor"
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={()=> toggleCardView(setFillPieChartPreview, setFillPieChartCode, false)}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={fillPieChartCode} preview={fillPieChartPreview} setPreview={setFillPieChartPreview} setCode={setFillPieChartCode}/>
+
+                    <ComponentWrapper>
                         {fillPieChartPreview && (
                             <div className="p-8 mb-4 flex items-center flex-col gap-5 justify-center">
                                 <div className="relative cursor-pointer">
@@ -248,7 +230,7 @@ const PieChart = () => {
                                                     className="w-3 h-3 mr-2"
                                                     style={{backgroundColor: slice.color}}
                                                 />
-                                                <span className="text-[0.7rem] 400px:text-[0.9rem]">{slice.name}</span>
+                                                <span className="text-[0.7rem] dark:text-[#abc2d3] 400px:text-[0.9rem]">{slice.name}</span>
                                             </div>
                                         ))}
                                     </div>
@@ -395,7 +377,7 @@ const PieChart = () => {
                             className="w-3 h-3 mr-2"
                             style={{backgroundColor: slice.color}}
                         />
-                        <span className="text-[0.7rem] sm:text-[0.9rem]">{slice.name}</span>
+                        <span className="text-[0.7rem] dark:text-[#abc2d3] sm:text-[0.9rem]">{slice.name}</span>
                     </div>
                 ))}
             </div>
@@ -407,37 +389,17 @@ export default PieChart;
           '
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
                     <div className='mt-8'>
                         <ContentHeader text={"bordered pie chart"} id={"bordered_pie_chart"}/>
                     </div>
 
-                    <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-                        A bordered pie chart shows data in slices with clear borders, making it easier to distinguish each segment’s proportion.
-                    </p>
+                    <ComponentDescription text=' A bordered pie chart shows data in slices with clear borders, making it easier to distinguish each segment’s proportion.'/>
 
-                    <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-                        <div className="relative">
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${borderedPieCharPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
-                            <button
-                                className={`${
-                                    borderedPieCharPreview && "text-tabTextColor"
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={()=> toggleCardView(setBorderedPieChartPreview, setBorderedPieChartCode, true)}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    borderedPieChartCode && "text-tabTextColor"
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={()=> toggleCardView(setBorderedPieChartPreview, setBorderedPieChartCode, false)}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={borderedPieChartCode} preview={borderedPieCharPreview} setCode={setBorderedPieChartCode} setPreview={setBorderedPieChartPreview}/>
+
+                    <ComponentWrapper>
                         {borderedPieCharPreview && (
                             <div className="p-8 mb-4 flex items-center flex-col gap-5 justify-center">
                                 <div className="relative">
@@ -478,7 +440,7 @@ export default PieChart;
                                                     className="w-3 h-3 mr-2"
                                                     style={{backgroundColor: slice.color}}
                                                 />
-                                                <span className="text-[0.7rem] 400px:text-[0.9rem]">{slice.name}</span>
+                                                <span className="text-[0.7rem] dark:text-[#abc2d3] 400px:text-[0.9rem]">{slice.name}</span>
                                             </div>
                                         ))}
                                     </div>
@@ -630,7 +592,7 @@ const PieChart = () => {
                             className="w-3 h-3 mr-2"
                             style={{backgroundColor: slice.color}}
                         />
-                        <span className="text-[0.7rem] sm:text-[0.9rem]">{slice.name}</span>
+                        <span className="text-[0.7rem] dark:text-[#abc2d3] sm:text-[0.9rem]">{slice.name}</span>
                     </div>
                 ))}
             </div>
@@ -642,29 +604,15 @@ export default PieChart;
           '
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
                     <OverviewFooter backName='tooltip' backUrl='/components/tooltip' forwardUrl='/components/timeline'
                                     forwardName='Timeline'/>
                 </div>
 
-                <div className="1024px:flex hidden flex-col gap-4 sticky top-4 right-0 w-[40%]">
-                    <h2 className="text-[0.9rem] font-[600] text-text tracking-widest">
-                        CONTENTS
-                    </h2>
-                    {pieChartContents.map((item) => (
-                        <a
-                            key={item.id}
-                            href={item.href}
-                            className={`${
-                                activeSection === item.href.slice(1) &&
-                                '!text-primary !border-primary'
-                            } text-[0.9rem] capitalize transition-all duration-300 text-text border-l border-transparent pl-4`}
-                        >
-                            {item.title}
-                        </a>
-                    ))}
-                </div>
+
+                <ContentNavbar contents={pieChartContents} activeSection={activeSection}/>
+
             </aside>
             <Helmet>
                 <title>Data Display - Pie Chart</title>

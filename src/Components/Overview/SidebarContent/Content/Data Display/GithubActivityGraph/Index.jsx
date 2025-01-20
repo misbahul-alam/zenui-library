@@ -11,46 +11,1430 @@ import GithubActivityGraphWithMonthExample from "./GithubActivityGraphWithMonthE
 import CalculatingTotalActivityExample from "./CalculatingTotalActivityExample.jsx";
 import BlocksShowCode from "../../../../../../Shared/BlocksShowCode.jsx";
 
+import ComponentDescription from "../../../../../../Shared/ComponentDescription.jsx";
+import ToggleTab from "../../../../../../Shared/ToggleTab.jsx";
+import ComponentWrapper from "../../../../../../Shared/ComponentWrapper.jsx";
+
 const GithubActivityGraph = () => {
 
     const [activityGraphPreview, setActivityGraphPreview] = useState(true)
     const [activityGraphCode, setActivityGraphCode] = useState(false)
 
-    const handleActivityGraphPreview = () => {
-        setActivityGraphPreview(true)
-        setActivityGraphCode(false)
-    }
-
-    const handleActivityGraphCode = () => {
-        setActivityGraphPreview(false)
-        setActivityGraphCode(true)
-    }
-
     const [activityGraphWithMonthPreview, setActivityGraphWithMonthPreview] = useState(true)
     const [activityGraphWithMonthCode, setActivityGraphWithMonthCode] = useState(false)
-
-    const handleActivityGraphWithMonthPreview = () => {
-        setActivityGraphWithMonthPreview(true)
-        setActivityGraphWithMonthCode(false)
-    }
-
-    const handleActivityGraphWithMonthCode = () => {
-        setActivityGraphWithMonthCode(true)
-        setActivityGraphWithMonthPreview(false)
-    }
 
     const [calculatingTotalActivityPreview, setCalculatingTotalActivityPreview] = useState(true)
     const [calculatingTotalActivityCode, setCalculatingTotalActivityCode] = useState(false)
 
-    const handleCalculatingTotalActivityPreview = () => {
-        setCalculatingTotalActivityPreview(true)
-        setCalculatingTotalActivityCode(false)
-    }
+    const activityGraphCodes = [
+        {
+            id: 'main_code',
+            displayText: 'ActivityGraph.jsx',
+            language: 'jsx',
+            code: 'import React, { useState, useCallback } from \'react\';\n' +
+                'import {activityData} from "./Data.js"\n' +
+                '\n' +
+                'const ActivityGraph = () => {\n' +
+                '\n' +
+                '    // tooltip\n' +
+                '    const [tooltip, setTooltip] = useState({\n' +
+                '        show: false,\n' +
+                '        content: \'\',\n' +
+                '        x: 0,\n' +
+                '        y: 0,\n' +
+                '        position: \'top\'\n' +
+                '    });\n' +
+                '\n' +
+                '    // generate the dates data for showing the graph\n' +
+                '    const generateDates = () => {\n' +
+                '        const dates = [];\n' +
+                '        const now = new Date();\n' +
+                '        for (let i = 0; i < 52 * 7; i++) {\n' +
+                '            const date = new Date(now);\n' +
+                '            date.setDate(date.getDate() - i);\n' +
+                '            const dateStr = date.toISOString().split(\'T\')[0];\n' +
+                '            dates.unshift({\n' +
+                '                date: dateStr,\n' +
+                '                count: activityData[dateStr] || 0\n' +
+                '            });\n' +
+                '        }\n' +
+                '        return dates;\n' +
+                '    };\n' +
+                '\n' +
+                '    const data = generateDates();\n' +
+                '    const weeks = [];\n' +
+                '\n' +
+                '    // set the weeks from the dates data\n' +
+                '    for (let i = 0; i < data.length; i += 7) {\n' +
+                '        weeks.push(data.slice(i, i + 7));\n' +
+                '    }\n' +
+                '\n' +
+                '    // get the active color based on the activity logic\n' +
+                '    const getActivityColor = (count) => {\n' +
+                '        const isDarkMode = document.documentElement.classList.contains(\'dark\');\n' +
+                '\n' +
+                '        if (count === 0) return isDarkMode ? \'#0f172a\' : \'#ebedf0\';\n' +
+                '\n' +
+                '        if (isDarkMode) {\n' +
+                '            if (count <= 2) return \'#0e4429\';\n' +
+                '            if (count <= 4) return \'#006d32\';\n' +
+                '            if (count <= 6) return \'#26a641\';\n' +
+                '            return \'#39d353\';\n' +
+                '        } else {\n' +
+                '            if (count <= 2) return \'#9be9a8\';\n' +
+                '            if (count <= 4) return \'#40c463\';\n' +
+                '            if (count <= 6) return \'#30a14e\';\n' +
+                '            return \'#216e39\';\n' +
+                '        }\n' +
+                '    };\n' +
+                '\n' +
+                '    // format the date\n' +
+                '    const formatDate = (dateString) => {\n' +
+                '        return new Date(dateString).toLocaleDateString(\'en-US\', {\n' +
+                '            month: \'short\',\n' +
+                '            day: \'numeric\',\n' +
+                '            year: \'numeric\'\n' +
+                '        });\n' +
+                '    };\n' +
+                '\n' +
+                '    // handle mousemove for showing the tooltip at the current hovered position\n' +
+                '    const handleMouseMove = useCallback((e, day) => {\n' +
+                '        const rect = e.target.getBoundingClientRect();\n' +
+                '        const tooltipWidth = 200;\n' +
+                '        const tooltipHeight = 60;\n' +
+                '        const windowWidth = window.innerWidth;\n' +
+                '        const windowHeight = window.innerHeight;\n' +
+                '        const scrollY = window.scrollY || window.pageYOffset;\n' +
+                '\n' +
+                '        // Calculate available space in different directions\n' +
+                '        const spaceRight = windowWidth - rect.right;\n' +
+                '        const spaceLeft = rect.left;\n' +
+                '        const spaceTop = rect.top;\n' +
+                '        const spaceBottom = windowHeight - rect.bottom;\n' +
+                '\n' +
+                '        // Determine optimal position\n' +
+                '        let position = \'top\';\n' +
+                '        let x = rect.left;\n' +
+                '        let y = rect.top + scrollY;\n' +
+                '\n' +
+                '        // Horizontal position\n' +
+                '        if (spaceRight < tooltipWidth / 2 && spaceLeft > tooltipWidth / 2) {\n' +
+                '            x = rect.right - tooltipWidth;\n' +
+                '        } else if (spaceLeft < tooltipWidth / 2 && spaceRight > tooltipWidth / 2) {\n' +
+                '            x = rect.left;\n' +
+                '        } else {\n' +
+                '            x = rect.left - (tooltipWidth / 2) + (rect.width / 2);\n' +
+                '        }\n' +
+                '\n' +
+                '        // Vertical position\n' +
+                '        if (spaceTop < tooltipHeight && spaceBottom > tooltipHeight) {\n' +
+                '            y = rect.bottom + scrollY + 5;\n' +
+                '            position = \'bottom\';\n' +
+                '        } else {\n' +
+                '            y = rect.top + scrollY - tooltipHeight + 15;\n' +
+                '            position = \'top\';\n' +
+                '        }\n' +
+                '\n' +
+                '        // Ensure tooltip stays within window bounds\n' +
+                '        x = Math.max(10, Math.min(windowWidth - tooltipWidth - 10, x));\n' +
+                '\n' +
+                '        setTooltip({\n' +
+                '            show: true,\n' +
+                '            content: `${day.count} contributions on ${formatDate(day.date)}`,\n' +
+                '            x,\n' +
+                '            y,\n' +
+                '            position\n' +
+                '        });\n' +
+                '    }, []);\n' +
+                '\n' +
+                '    const handleMouseLeave = () => {\n' +
+                '        setTooltip(prev => ({ ...prev, show: false }));\n' +
+                '    };\n' +
+                '\n' +
+                '    return (\n' +
+                '        <div className="p-6 w-full max-w-4xl">\n' +
+                '            <h2 className="text-xl text-gray-800 font-bold dark:text-[#abc2d3] mb-4">Activity Contributions</h2>\n' +
+                '\n' +
+                '            <div className="flex flex-col gap-4">\n' +
+                '                <div className="flex items-center gap-2 text-sm dark:text-[#abc2d3] text-gray-600">\n' +
+                '                    <span>Less</span>\n' +
+                '                    {[0, 1, 3, 5, 7].map((count, i) => (\n' +
+                '                        <div key={i} className="flex flex-col items-center">\n' +
+                '                            <div\n' +
+                '                                className="w-3 h-3 border dark:border-slate-800 border-gray-200"\n' +
+                '                                style={{ backgroundColor: getActivityColor(count) }}\n' +
+                '                            />\n' +
+                '                        </div>\n' +
+                '                    ))}\n' +
+                '                    <span>More</span>\n' +
+                '                </div>\n' +
+                '\n' +
+                '                {/* the graph grid */}\n' +
+                '                <div className="relative overflow-x-auto pb-1 scrollbar w-full">\n' +
+                '                    <div className="flex gap-1">\n' +
+                '                        {weeks.map((week, weekIndex) => (\n' +
+                '                            <div key={weekIndex} className="flex flex-col gap-1">\n' +
+                '                                {week.map((day, dayIndex) => (\n' +
+                '                                    <div\n' +
+                '                                        key={dayIndex}\n' +
+                '                                        className="w-3 h-3 rounded-sm dark:border-slate-800 cursor-pointer transition-colors duration-200 border border-gray-200 hover:border-gray-400"\n' +
+                '                                        style={{ backgroundColor: getActivityColor(day.count) }}\n' +
+                '                                        onMouseMove={(e) => handleMouseMove(e, day)}\n' +
+                '                                        onMouseLeave={handleMouseLeave}\n' +
+                '                                    />\n' +
+                '                                ))}\n' +
+                '                            </div>\n' +
+                '                        ))}\n' +
+                '                    </div>\n' +
+                '\n' +
+                '                    {/* tooltip */}\n' +
+                '                    {tooltip.show && (\n' +
+                '                        <div\n' +
+                '                            className="fixed z-50 px-3 py-2 dark:bg-slate-800 dark:text-[#abc2d3] text-sm text-white bg-gray-800 rounded-md pointer-events-none"\n' +
+                '                            style={{\n' +
+                '                                left: `${tooltip.x}px`,\n' +
+                '                                top: `${tooltip.y}px`,\n' +
+                '                                width: \'max-content\',\n' +
+                '                                transition: \'transform 0.1s ease-out\'\n' +
+                '                            }}\n' +
+                '                        >\n' +
+                '                            <div>{tooltip.content}</div>\n' +
+                '                        </div>\n' +
+                '                    )}\n' +
+                '                </div>\n' +
+                '\n' +
+                '                {/* from and to date which graph you showing here */}\n' +
+                '                <div className="flex justify-between text-sm dark:text-[#abc2d3] text-gray-600">\n' +
+                '                    <span>{formatDate(data[0].date)}</span>\n' +
+                '                    <span>{formatDate(data[data.length - 1].date)}</span>\n' +
+                '                </div>\n' +
+                '            </div>\n' +
+                '        </div>\n' +
+                '    );\n' +
+                '};\n' +
+                '\n' +
+                'export default ActivityGraph;'
+        },
+        {
+            id: 'data',
+            displayText: 'Data.js',
+            language: 'js',
+            code: '    export const activityData = {\n' +
+                '        \'2024-01-01\': 1,\n' +
+                '        \'2024-01-02\': 5,\n' +
+                '        \'2024-01-03\': 2,\n' +
+                '        \'2024-01-04\': 10,\n' +
+                '        \'2024-01-05\': 5,\n' +
+                '        \'2024-01-06\': 9,\n' +
+                '        \'2024-01-16\': 4,\n' +
+                '        \'2024-01-17\': 5,\n' +
+                '        \'2024-01-18\': 9,\n' +
+                '        \'2024-01-19\': 2,\n' +
+                '        \'2024-01-20\': 10,\n' +
+                '        \'2024-02-03\': 4,\n' +
+                '        \'2024-02-04\': 3,\n' +
+                '        \'2024-02-05\': 8,\n' +
+                '        \'2024-02-06\': 7,\n' +
+                '        \'2024-02-07\': 7,\n' +
+                '        \'2024-02-08\': 1,\n' +
+                '        \'2024-02-09\': 9,\n' +
+                '        \'2024-02-10\': 9,\n' +
+                '        \'2024-02-11\': 6,\n' +
+                '        \'2024-02-12\': 4,\n' +
+                '        \'2024-02-13\': 1,\n' +
+                '        \'2024-02-14\': 2,\n' +
+                '        \'2024-02-15\': 2,\n' +
+                '        \'2024-02-16\': 4,\n' +
+                '        \'2024-02-17\': 0,\n' +
+                '        \'2024-02-18\': 5,\n' +
+                '        \'2024-02-19\': 4,\n' +
+                '        \'2024-02-20\': 9,\n' +
+                '        \'2024-02-21\': 5,\n' +
+                '        \'2024-02-22\': 3,\n' +
+                '        \'2024-02-23\': 7,\n' +
+                '        \'2024-02-24\': 6,\n' +
+                '        \'2024-02-25\': 6,\n' +
+                '        \'2024-02-26\': 9,\n' +
+                '        \'2024-02-27\': 4,\n' +
+                '        \'2024-02-28\': 2,\n' +
+                '        \'2024-02-29\': 0,\n' +
+                '        \'2024-03-01\': 3,\n' +
+                '        \'2024-03-02\': 9,\n' +
+                '        \'2024-03-03\': 4,\n' +
+                '        \'2024-03-04\': 1,\n' +
+                '        \'2024-03-05\': 9,\n' +
+                '        \'2024-03-06\': 10,\n' +
+                '        \'2024-03-07\': 4,\n' +
+                '        \'2024-03-08\': 4,\n' +
+                '        \'2024-03-09\': 3,\n' +
+                '        \'2024-03-10\': 2,\n' +
+                '        \'2024-03-11\': 10,\n' +
+                '        \'2024-03-12\': 7,\n' +
+                '        \'2024-03-13\': 3,\n' +
+                '        \'2024-03-24\': 0,\n' +
+                '        \'2024-03-25\': 1,\n' +
+                '        \'2024-03-26\': 5,\n' +
+                '        \'2024-03-27\': 0,\n' +
+                '        \'2024-03-28\': 5,\n' +
+                '        \'2024-03-29\': 4,\n' +
+                '        \'2024-03-30\': 5,\n' +
+                '        \'2024-03-31\': 7,\n' +
+                '        \'2024-04-01\': 5,\n' +
+                '        \'2024-04-02\': 0,\n' +
+                '        \'2024-04-03\': 4,\n' +
+                '        \'2024-04-04\': 6,\n' +
+                '        \'2024-04-05\': 2,\n' +
+                '        \'2024-04-06\': 10,\n' +
+                '        \'2024-04-24\': 9,\n' +
+                '        \'2024-04-25\': 2,\n' +
+                '        \'2024-04-26\': 5,\n' +
+                '        \'2024-04-27\': 3,\n' +
+                '        \'2024-04-28\': 8,\n' +
+                '        \'2024-04-29\': 6,\n' +
+                '        \'2024-04-30\': 7,\n' +
+                '        \'2024-05-01\': 7,\n' +
+                '        \'2024-05-02\': 2,\n' +
+                '        \'2024-05-03\': 3,\n' +
+                '        \'2024-05-04\': 1,\n' +
+                '        \'2024-05-05\': 1,\n' +
+                '        \'2024-05-06\': 8,\n' +
+                '        \'2024-05-07\': 5,\n' +
+                '        \'2024-05-08\': 6,\n' +
+                '        \'2024-05-09\': 1,\n' +
+                '        \'2024-05-10\': 6,\n' +
+                '        \'2024-05-11\': 10,\n' +
+                '        \'2024-05-12\': 2,\n' +
+                '        \'2024-05-13\': 10,\n' +
+                '        \'2024-05-14\': 7,\n' +
+                '        \'2024-05-15\': 6,\n' +
+                '        \'2024-05-16\': 2,\n' +
+                '        \'2024-05-17\': 5,\n' +
+                '        \'2024-05-18\': 8,\n' +
+                '        \'2024-05-19\': 8,\n' +
+                '        \'2024-05-20\': 7,\n' +
+                '        \'2024-05-21\': 9,\n' +
+                '        \'2024-05-22\': 6,\n' +
+                '        \'2024-05-23\': 2,\n' +
+                '        \'2024-05-24\': 9,\n' +
+                '        \'2024-05-25\': 9,\n' +
+                '        \'2024-05-26\': 8,\n' +
+                '        \'2024-05-27\': 3,\n' +
+                '        \'2024-05-28\': 1,\n' +
+                '        \'2024-05-29\': 6,\n' +
+                '        \'2024-05-30\': 1,\n' +
+                '        \'2024-05-31\': 8,\n' +
+                '        \'2024-06-01\': 2,\n' +
+                '        \'2024-06-02\': 10,\n' +
+                '        \'2024-06-03\': 7,\n' +
+                '        \'2024-06-04\': 4,\n' +
+                '        \'2024-06-05\': 9,\n' +
+                '        \'2024-06-06\': 5,\n' +
+                '        \'2024-06-07\': 8,\n' +
+                '        \'2024-06-08\': 10,\n' +
+                '        \'2024-06-09\': 0,\n' +
+                '        \'2024-06-10\': 0,\n' +
+                '        \'2024-06-11\': 3,\n' +
+                '        \'2024-06-12\': 4,\n' +
+                '        \'2024-06-13\': 5,\n' +
+                '        \'2024-06-14\': 6,\n' +
+                '        \'2024-06-15\': 5,\n' +
+                '        \'2024-06-16\': 0,\n' +
+                '        \'2024-07-03\': 9,\n' +
+                '        \'2024-07-04\': 6,\n' +
+                '        \'2024-07-05\': 0,\n' +
+                '        \'2024-07-06\': 8,\n' +
+                '        \'2024-07-07\': 10,\n' +
+                '        \'2024-07-08\': 3,\n' +
+                '        \'2024-07-09\': 5,\n' +
+                '        \'2024-07-10\': 0,\n' +
+                '        \'2024-07-11\': 4,\n' +
+                '        \'2024-07-12\': 0,\n' +
+                '        \'2024-07-13\': 9,\n' +
+                '        \'2024-07-14\': 6,\n' +
+                '        \'2024-07-15\': 5,\n' +
+                '        \'2024-07-16\': 6,\n' +
+                '        \'2024-07-17\': 2,\n' +
+                '        \'2024-07-18\': 6,\n' +
+                '        \'2024-07-19\': 10,\n' +
+                '        \'2024-07-20\': 8,\n' +
+                '        \'2024-07-27\': 10,\n' +
+                '        \'2024-07-28\': 6,\n' +
+                '        \'2024-07-29\': 5,\n' +
+                '        \'2024-07-30\': 1,\n' +
+                '        \'2024-07-31\': 5,\n' +
+                '        \'2024-08-01\': 5,\n' +
+                '        \'2024-08-02\': 10,\n' +
+                '        \'2024-08-03\': 2,\n' +
+                '        \'2024-08-17\': 3,\n' +
+                '        \'2024-08-18\': 1,\n' +
+                '        \'2024-08-19\': 1,\n' +
+                '        \'2024-08-20\': 0,\n' +
+                '        \'2024-08-21\': 8,\n' +
+                '        \'2024-08-22\': 10,\n' +
+                '        \'2024-08-23\': 2,\n' +
+                '        \'2024-08-24\': 7,\n' +
+                '        \'2024-08-25\': 4,\n' +
+                '        \'2024-08-26\': 9,\n' +
+                '        \'2024-08-27\': 9,\n' +
+                '        \'2024-08-28\': 7,\n' +
+                '        \'2024-08-29\': 2,\n' +
+                '        \'2024-08-30\': 2,\n' +
+                '        \'2024-08-31\': 5,\n' +
+                '        \'2024-09-01\': 3,\n' +
+                '        \'2024-09-02\': 4,\n' +
+                '        \'2024-09-03\': 1,\n' +
+                '        \'2024-09-04\': 8,\n' +
+                '        \'2024-09-05\': 8,\n' +
+                '        \'2024-09-06\': 1,\n' +
+                '        \'2024-09-07\': 8,\n' +
+                '        \'2024-09-08\': 6,\n' +
+                '        \'2024-09-09\': 0,\n' +
+                '        \'2024-09-10\': 9,\n' +
+                '        \'2024-09-11\': 10,\n' +
+                '        \'2024-09-12\': 1,\n' +
+                '        \'2024-09-13\': 8,\n' +
+                '        \'2024-09-14\': 1,\n' +
+                '        \'2024-09-15\': 5,\n' +
+                '        \'2024-09-16\': 4,\n' +
+                '        \'2024-09-17\': 7,\n' +
+                '        \'2024-09-18\': 7,\n' +
+                '        \'2024-09-19\': 8,\n' +
+                '        \'2024-09-20\': 9,\n' +
+                '        \'2024-09-21\': 9,\n' +
+                '        \'2024-09-22\': 3,\n' +
+                '        \'2024-09-23\': 5,\n' +
+                '        \'2024-09-24\': 3,\n' +
+                '        \'2024-09-25\': 6,\n' +
+                '        \'2024-09-26\': 1,\n' +
+                '        \'2024-09-27\': 6,\n' +
+                '        \'2024-09-28\': 0,\n' +
+                '        \'2024-09-29\': 4,\n' +
+                '        \'2024-09-30\': 2,\n' +
+                '        \'2024-10-01\': 3,\n' +
+                '        \'2024-10-02\': 6,\n' +
+                '        \'2024-10-03\': 10,\n' +
+                '        \'2024-10-04\': 3,\n' +
+                '        \'2024-10-24\': 1,\n' +
+                '        \'2024-10-25\': 4,\n' +
+                '        \'2024-10-26\': 0,\n' +
+                '        \'2024-10-27\': 7,\n' +
+                '        \'2024-10-28\': 6,\n' +
+                '        \'2024-10-29\': 9,\n' +
+                '        \'2024-10-30\': 5,\n' +
+                '        \'2024-10-31\': 9,\n' +
+                '        \'2024-11-01\': 0,\n' +
+                '        \'2024-11-02\': 7,\n' +
+                '        \'2024-11-03\': 7,\n' +
+                '        \'2024-11-04\': 1,\n' +
+                '        \'2024-11-05\': 8,\n' +
+                '        \'2024-11-06\': 4,\n' +
+                '        \'2024-11-07\': 0,\n' +
+                '        \'2024-11-08\': 0,\n' +
+                '        \'2024-11-09\': 6,\n' +
+                '        \'2024-11-10\': 2,\n' +
+                '        \'2024-11-11\': 10,\n' +
+                '        \'2024-11-12\': 7,\n' +
+                '        \'2024-11-13\': 7,\n' +
+                '        \'2024-11-14\': 5,\n' +
+                '        \'2024-11-15\': 7,\n' +
+                '        \'2024-11-16\': 9,\n' +
+                '        \'2024-11-17\': 5,\n' +
+                '        \'2024-11-18\': 1,\n' +
+                '        \'2024-11-19\': 0,\n' +
+                '        \'2024-11-20\': 6,\n' +
+                '        \'2024-11-21\': 8,\n' +
+                '        \'2024-11-22\': 10,\n' +
+                '        \'2024-11-23\': 1,\n' +
+                '        \'2024-11-24\': 10,\n' +
+                '        \'2024-11-25\': 4,\n' +
+                '        \'2024-11-26\': 5,\n' +
+                '        \'2024-11-27\': 0,\n' +
+                '        \'2024-11-28\': 6,\n' +
+                '        \'2024-11-29\': 6,\n' +
+                '        \'2024-11-30\': 3,\n' +
+                '        \'2024-12-01\': 8,\n' +
+                '    };'
+        },
+    ]
 
-    const handleCalculatingTotalActivityCode = () => {
-        setCalculatingTotalActivityCode(true)
-        setCalculatingTotalActivityPreview(false)
-    }
+    const activityGraphWithMonthCodes = [
+        {
+            id: 'main_code',
+            displayText: 'ActivityGraph.jsx',
+            language: 'jsx',
+            code: 'import React, { useState, useCallback } from \'react\';\n' +
+                'import {activityData} from "./Data.js"\n' +
+                '\n' +
+                'const ActivityGraph = () => {\n' +
+                '    // tooltip\n' +
+                '    const [tooltip, setTooltip] = useState({\n' +
+                '        show: false,\n' +
+                '        content: \'\',\n' +
+                '        x: 0,\n' +
+                '        y: 0,\n' +
+                '        position: \'top\'\n' +
+                '    });\n' +
+                '\n' +
+                '    // generate dates data\n' +
+                '    const generateDates = () => {\n' +
+                '        const dates = [];\n' +
+                '        const now = new Date();\n' +
+                '        for (let i = 0; i < 52 * 7; i++) {\n' +
+                '            const date = new Date(now);\n' +
+                '            date.setDate(date.getDate() - i);\n' +
+                '            const dateStr = date.toISOString().split(\'T\')[0];\n' +
+                '            dates.unshift({\n' +
+                '                date: dateStr,\n' +
+                '                count: activityData[dateStr] || 0\n' +
+                '            });\n' +
+                '        }\n' +
+                '        return dates;\n' +
+                '    };\n' +
+                '\n' +
+                '    // group the weeks by the data\n' +
+                '    const groupDataByWeeks = (dates) => {\n' +
+                '        const weeks = [];\n' +
+                '        for (let i = 0; i < dates.length; i += 7) {\n' +
+                '            weeks.push(dates.slice(i, i + 7));\n' +
+                '        }\n' +
+                '        return weeks;\n' +
+                '    };\n' +
+                '\n' +
+                '    // get the month name from the dates data\n' +
+                '    const getMonthLabels = (dates) => {\n' +
+                '        const months = [];\n' +
+                '        let currentMonth = \'\';\n' +
+                '        let currentStartIndex = 0;\n' +
+                '\n' +
+                '        dates.forEach((date, index) => {\n' +
+                '            const month = new Date(date.date).toLocaleString(\'default\', { month: \'short\' });\n' +
+                '            if (month !== currentMonth) {\n' +
+                '                if (currentMonth !== \'\') {\n' +
+                '                    months.push({\n' +
+                '                        month: currentMonth,\n' +
+                '                        startIndex: currentStartIndex,\n' +
+                '                        endIndex: Math.floor(index / 7)\n' +
+                '                    });\n' +
+                '                }\n' +
+                '                currentMonth = month;\n' +
+                '                currentStartIndex = Math.floor(index / 7);\n' +
+                '            }\n' +
+                '        });\n' +
+                '\n' +
+                '        // Add the last month\n' +
+                '        months.push({\n' +
+                '            month: currentMonth,\n' +
+                '            startIndex: currentStartIndex,\n' +
+                '            endIndex: Math.floor(dates.length / 7)\n' +
+                '        });\n' +
+                '\n' +
+                '        return months;\n' +
+                '    };\n' +
+                '\n' +
+                '    const data = generateDates();\n' +
+                '    const weeks = groupDataByWeeks(data);\n' +
+                '    const months = getMonthLabels(data);\n' +
+                '\n' +
+                '    // get the activity color based on the activity count\n' +
+                '    const getActivityColor = (count) => {\n' +
+                '        const isDarkMode = document.documentElement.classList.contains(\'dark\');\n' +
+                '\n' +
+                '        if (count === 0) return isDarkMode ? \'#0f172a\' : \'#ebedf0\';\n' +
+                '\n' +
+                '        if (isDarkMode) {\n' +
+                '            if (count <= 2) return \'#0e4429\';\n' +
+                '            if (count <= 4) return \'#006d32\';\n' +
+                '            if (count <= 6) return \'#26a641\';\n' +
+                '            return \'#39d353\';\n' +
+                '        } else {\n' +
+                '            if (count <= 2) return \'#9be9a8\';\n' +
+                '            if (count <= 4) return \'#40c463\';\n' +
+                '            if (count <= 6) return \'#30a14e\';\n' +
+                '            return \'#216e39\';\n' +
+                '        }\n' +
+                '    };\n' +
+                '\n' +
+                '    // format the date\n' +
+                '    const formatDate = (dateString) => {\n' +
+                '        return new Date(dateString).toLocaleDateString(\'en-US\', {\n' +
+                '            month: \'short\',\n' +
+                '            day: \'numeric\',\n' +
+                '            year: \'numeric\'\n' +
+                '        });\n' +
+                '    };\n' +
+                '\n' +
+                '    // handle mouse move for showing the tooltip current position\n' +
+                '    const handleMouseMove = useCallback((e, day) => {\n' +
+                '        const rect = e.target.getBoundingClientRect();\n' +
+                '        const tooltipWidth = 200;\n' +
+                '        const tooltipHeight = 60;\n' +
+                '        const windowWidth = window.innerWidth;\n' +
+                '        const windowHeight = window.innerHeight;\n' +
+                '        const scrollY = window.scrollY || window.pageYOffset;\n' +
+                '\n' +
+                '        // Determine optimal position\n' +
+                '        let position = \'top\';\n' +
+                '        let x = rect.left;\n' +
+                '        let y = rect.top + scrollY;\n' +
+                '\n' +
+                '        // Calculate available space in different directions\n' +
+                '        const spaceRight = windowWidth - rect.right;\n' +
+                '        const spaceLeft = rect.left;\n' +
+                '        const spaceTop = rect.top;\n' +
+                '        const spaceBottom = windowHeight - rect.bottom;\n' +
+                '\n' +
+                '        // Horizontal position\n' +
+                '        if (spaceRight < tooltipWidth / 2 && spaceLeft > tooltipWidth / 2) {\n' +
+                '            x = rect.right - tooltipWidth;\n' +
+                '        } else if (spaceLeft < tooltipWidth / 2 && spaceRight > tooltipWidth / 2) {\n' +
+                '            x = rect.left;\n' +
+                '        } else {\n' +
+                '            x = rect.left - (tooltipWidth / 2) + (rect.width / 2);\n' +
+                '        }\n' +
+                '\n' +
+                '        // Vertical position\n' +
+                '        if (spaceTop < tooltipHeight && spaceBottom > tooltipHeight) {\n' +
+                '            y = rect.bottom + scrollY + 5;\n' +
+                '            position = \'bottom\';\n' +
+                '        } else {\n' +
+                '            y = rect.top + scrollY - tooltipHeight + 15;\n' +
+                '            position = \'top\';\n' +
+                '        }\n' +
+                '\n' +
+                '        // Ensure tooltip stays within window bounds\n' +
+                '        x = Math.max(10, Math.min(windowWidth - tooltipWidth - 10, x));\n' +
+                '\n' +
+                '        setTooltip({\n' +
+                '            show: true,\n' +
+                '            content: `${day.count} contributions on ${formatDate(day.date)}`,\n' +
+                '            x,\n' +
+                '            y,\n' +
+                '            position\n' +
+                '        });\n' +
+                '    }, []);\n' +
+                '\n' +
+                '    const handleMouseLeave = () => {\n' +
+                '        setTooltip(prev => ({ ...prev, show: false }));\n' +
+                '    };\n' +
+                '\n' +
+                '    return (\n' +
+                '        <div className="p-6 w-full max-w-4xl">\n' +
+                '            <h2 className="text-xl text-gray-800 dark:text-[#abc2d3] font-bold mb-7">Activity Contributions</h2>\n' +
+                '\n' +
+                '            <div className="flex flex-col gap-4">\n' +
+                '                <div className="relative overflow-x-auto pb-2 scrollbar">\n' +
+                '                    <div className="flex">\n' +
+                '                        <div className="w-full">\n' +
+                '\n' +
+                '                            {/* month names*/}\n' +
+                '                            <div className="flex relative h-6 mb-1">\n' +
+                '                                {months.map((monthData, index) => {\n' +
+                '                                    const width = (monthData.endIndex - monthData.startIndex) * 16;\n' +
+                '                                    const left = monthData.startIndex * 16;\n' +
+                '                                    return (\n' +
+                '                                        <div\n' +
+                '                                            key={index}\n' +
+                '                                            className="absolute dark:text-[#abc2d3] text-xs text-gray-600 text-center"\n' +
+                '                                            style={{\n' +
+                '                                                left: `${left}px`,\n' +
+                '                                                width: `${width}px`\n' +
+                '                                            }}\n' +
+                '                                        >\n' +
+                '                                            {monthData.month}\n' +
+                '                                        </div>\n' +
+                '                                    );\n' +
+                '                                })}\n' +
+                '                            </div>\n' +
+                '\n' +
+                '                            {/* graph */}\n' +
+                '                            <div className="flex gap-1">\n' +
+                '                                {weeks.map((week, weekIndex) => (\n' +
+                '                                    <div key={weekIndex} className="flex flex-col gap-1">\n' +
+                '                                        {week.map((day, dayIndex) => (\n' +
+                '                                            <div\n' +
+                '                                                key={dayIndex}\n' +
+                '                                                className="w-3 h-3 rounded-sm cursor-pointer transition-colors duration-200 border border-gray-200 dark:border-slate-800 hover:border-gray-400"\n' +
+                '                                                style={{ backgroundColor: getActivityColor(day.count) }}\n' +
+                '                                                onMouseMove={(e) => handleMouseMove(e, day)}\n' +
+                '                                                onMouseLeave={handleMouseLeave}\n' +
+                '                                            />\n' +
+                '                                        ))}\n' +
+                '                                    </div>\n' +
+                '                                ))}\n' +
+                '                            </div>\n' +
+                '\n' +
+                '                        </div>\n' +
+                '                    </div>\n' +
+                '\n' +
+                '                    {/* tooltip */}\n' +
+                '                    {tooltip.show && (\n' +
+                '                        <div\n' +
+                '                            className="fixed z-50 px-3 dark:bg-slate-800 dark:text-[#abc2d3] py-2 text-sm text-white bg-gray-800 rounded-md pointer-events-none"\n' +
+                '                            style={{\n' +
+                '                                left: `${tooltip.x}px`,\n' +
+                '                                top: `${tooltip.y}px`,\n' +
+                '                                width: \'max-content\',\n' +
+                '                                transition: \'transform 0.1s ease-out\'\n' +
+                '                            }}\n' +
+                '                        >\n' +
+                '                            <div>{tooltip.content}</div>\n' +
+                '                        </div>\n' +
+                '                    )}\n' +
+                '                </div>\n' +
+                '\n' +
+                '                <div className="flex items-center justify-end gap-2 dark:text-[#abc2d3] text-[0.8rem] text-gray-600">\n' +
+                '                    <span>Less</span>\n' +
+                '                    {[0, 1, 3, 5, 7].map((count, i) => (\n' +
+                '                        <div key={i} className="flex flex-col items-center">\n' +
+                '                            <div\n' +
+                '                                className="w-3 h-3 border dark:border-slate-800 rounded-sm border-gray-200"\n' +
+                '                                style={{backgroundColor: getActivityColor(count)}}\n' +
+                '                            />\n' +
+                '                        </div>\n' +
+                '                    ))}\n' +
+                '                    <span>More</span>\n' +
+                '                </div>\n' +
+                '\n' +
+                '            </div>\n' +
+                '        </div>\n' +
+                '    );\n' +
+                '};\n' +
+                '\n' +
+                'export default ActivityGraph;'
+        },
+        {
+            id: 'data',
+            displayText: 'Data.js',
+            language: 'js',
+            code: '    export const activityData = {\n' +
+                '        \'2024-01-01\': 1,\n' +
+                '        \'2024-01-02\': 5,\n' +
+                '        \'2024-01-03\': 2,\n' +
+                '        \'2024-01-04\': 10,\n' +
+                '        \'2024-01-05\': 5,\n' +
+                '        \'2024-01-06\': 9,\n' +
+                '        \'2024-01-16\': 4,\n' +
+                '        \'2024-01-17\': 5,\n' +
+                '        \'2024-01-18\': 9,\n' +
+                '        \'2024-01-19\': 2,\n' +
+                '        \'2024-01-20\': 10,\n' +
+                '        \'2024-02-03\': 4,\n' +
+                '        \'2024-02-04\': 3,\n' +
+                '        \'2024-02-05\': 8,\n' +
+                '        \'2024-02-06\': 7,\n' +
+                '        \'2024-02-07\': 7,\n' +
+                '        \'2024-02-08\': 1,\n' +
+                '        \'2024-02-09\': 9,\n' +
+                '        \'2024-02-10\': 9,\n' +
+                '        \'2024-02-11\': 6,\n' +
+                '        \'2024-02-12\': 4,\n' +
+                '        \'2024-02-13\': 1,\n' +
+                '        \'2024-02-14\': 2,\n' +
+                '        \'2024-02-15\': 2,\n' +
+                '        \'2024-02-16\': 4,\n' +
+                '        \'2024-02-17\': 0,\n' +
+                '        \'2024-02-18\': 5,\n' +
+                '        \'2024-02-19\': 4,\n' +
+                '        \'2024-02-20\': 9,\n' +
+                '        \'2024-02-21\': 5,\n' +
+                '        \'2024-02-22\': 3,\n' +
+                '        \'2024-02-23\': 7,\n' +
+                '        \'2024-02-24\': 6,\n' +
+                '        \'2024-02-25\': 6,\n' +
+                '        \'2024-02-26\': 9,\n' +
+                '        \'2024-02-27\': 4,\n' +
+                '        \'2024-02-28\': 2,\n' +
+                '        \'2024-02-29\': 0,\n' +
+                '        \'2024-03-01\': 3,\n' +
+                '        \'2024-03-02\': 9,\n' +
+                '        \'2024-03-03\': 4,\n' +
+                '        \'2024-03-04\': 1,\n' +
+                '        \'2024-03-05\': 9,\n' +
+                '        \'2024-03-06\': 10,\n' +
+                '        \'2024-03-07\': 4,\n' +
+                '        \'2024-03-08\': 4,\n' +
+                '        \'2024-03-09\': 3,\n' +
+                '        \'2024-03-10\': 2,\n' +
+                '        \'2024-03-11\': 10,\n' +
+                '        \'2024-03-12\': 7,\n' +
+                '        \'2024-03-13\': 3,\n' +
+                '        \'2024-03-24\': 0,\n' +
+                '        \'2024-03-25\': 1,\n' +
+                '        \'2024-03-26\': 5,\n' +
+                '        \'2024-03-27\': 0,\n' +
+                '        \'2024-03-28\': 5,\n' +
+                '        \'2024-03-29\': 4,\n' +
+                '        \'2024-03-30\': 5,\n' +
+                '        \'2024-03-31\': 7,\n' +
+                '        \'2024-04-01\': 5,\n' +
+                '        \'2024-04-02\': 0,\n' +
+                '        \'2024-04-03\': 4,\n' +
+                '        \'2024-04-04\': 6,\n' +
+                '        \'2024-04-05\': 2,\n' +
+                '        \'2024-04-06\': 10,\n' +
+                '        \'2024-04-24\': 9,\n' +
+                '        \'2024-04-25\': 2,\n' +
+                '        \'2024-04-26\': 5,\n' +
+                '        \'2024-04-27\': 3,\n' +
+                '        \'2024-04-28\': 8,\n' +
+                '        \'2024-04-29\': 6,\n' +
+                '        \'2024-04-30\': 7,\n' +
+                '        \'2024-05-01\': 7,\n' +
+                '        \'2024-05-02\': 2,\n' +
+                '        \'2024-05-03\': 3,\n' +
+                '        \'2024-05-04\': 1,\n' +
+                '        \'2024-05-05\': 1,\n' +
+                '        \'2024-05-06\': 8,\n' +
+                '        \'2024-05-07\': 5,\n' +
+                '        \'2024-05-08\': 6,\n' +
+                '        \'2024-05-09\': 1,\n' +
+                '        \'2024-05-10\': 6,\n' +
+                '        \'2024-05-11\': 10,\n' +
+                '        \'2024-05-12\': 2,\n' +
+                '        \'2024-05-13\': 10,\n' +
+                '        \'2024-05-14\': 7,\n' +
+                '        \'2024-05-15\': 6,\n' +
+                '        \'2024-05-16\': 2,\n' +
+                '        \'2024-05-17\': 5,\n' +
+                '        \'2024-05-18\': 8,\n' +
+                '        \'2024-05-19\': 8,\n' +
+                '        \'2024-05-20\': 7,\n' +
+                '        \'2024-05-21\': 9,\n' +
+                '        \'2024-05-22\': 6,\n' +
+                '        \'2024-05-23\': 2,\n' +
+                '        \'2024-05-24\': 9,\n' +
+                '        \'2024-05-25\': 9,\n' +
+                '        \'2024-05-26\': 8,\n' +
+                '        \'2024-05-27\': 3,\n' +
+                '        \'2024-05-28\': 1,\n' +
+                '        \'2024-05-29\': 6,\n' +
+                '        \'2024-05-30\': 1,\n' +
+                '        \'2024-05-31\': 8,\n' +
+                '        \'2024-06-01\': 2,\n' +
+                '        \'2024-06-02\': 10,\n' +
+                '        \'2024-06-03\': 7,\n' +
+                '        \'2024-06-04\': 4,\n' +
+                '        \'2024-06-05\': 9,\n' +
+                '        \'2024-06-06\': 5,\n' +
+                '        \'2024-06-07\': 8,\n' +
+                '        \'2024-06-08\': 10,\n' +
+                '        \'2024-06-09\': 0,\n' +
+                '        \'2024-06-10\': 0,\n' +
+                '        \'2024-06-11\': 3,\n' +
+                '        \'2024-06-12\': 4,\n' +
+                '        \'2024-06-13\': 5,\n' +
+                '        \'2024-06-14\': 6,\n' +
+                '        \'2024-06-15\': 5,\n' +
+                '        \'2024-06-16\': 0,\n' +
+                '        \'2024-07-03\': 9,\n' +
+                '        \'2024-07-04\': 6,\n' +
+                '        \'2024-07-05\': 0,\n' +
+                '        \'2024-07-06\': 8,\n' +
+                '        \'2024-07-07\': 10,\n' +
+                '        \'2024-07-08\': 3,\n' +
+                '        \'2024-07-09\': 5,\n' +
+                '        \'2024-07-10\': 0,\n' +
+                '        \'2024-07-11\': 4,\n' +
+                '        \'2024-07-12\': 0,\n' +
+                '        \'2024-07-13\': 9,\n' +
+                '        \'2024-07-14\': 6,\n' +
+                '        \'2024-07-15\': 5,\n' +
+                '        \'2024-07-16\': 6,\n' +
+                '        \'2024-07-17\': 2,\n' +
+                '        \'2024-07-18\': 6,\n' +
+                '        \'2024-07-19\': 10,\n' +
+                '        \'2024-07-20\': 8,\n' +
+                '        \'2024-07-27\': 10,\n' +
+                '        \'2024-07-28\': 6,\n' +
+                '        \'2024-07-29\': 5,\n' +
+                '        \'2024-07-30\': 1,\n' +
+                '        \'2024-07-31\': 5,\n' +
+                '        \'2024-08-01\': 5,\n' +
+                '        \'2024-08-02\': 10,\n' +
+                '        \'2024-08-03\': 2,\n' +
+                '        \'2024-08-17\': 3,\n' +
+                '        \'2024-08-18\': 1,\n' +
+                '        \'2024-08-19\': 1,\n' +
+                '        \'2024-08-20\': 0,\n' +
+                '        \'2024-08-21\': 8,\n' +
+                '        \'2024-08-22\': 10,\n' +
+                '        \'2024-08-23\': 2,\n' +
+                '        \'2024-08-24\': 7,\n' +
+                '        \'2024-08-25\': 4,\n' +
+                '        \'2024-08-26\': 9,\n' +
+                '        \'2024-08-27\': 9,\n' +
+                '        \'2024-08-28\': 7,\n' +
+                '        \'2024-08-29\': 2,\n' +
+                '        \'2024-08-30\': 2,\n' +
+                '        \'2024-08-31\': 5,\n' +
+                '        \'2024-09-01\': 3,\n' +
+                '        \'2024-09-02\': 4,\n' +
+                '        \'2024-09-03\': 1,\n' +
+                '        \'2024-09-04\': 8,\n' +
+                '        \'2024-09-05\': 8,\n' +
+                '        \'2024-09-06\': 1,\n' +
+                '        \'2024-09-07\': 8,\n' +
+                '        \'2024-09-08\': 6,\n' +
+                '        \'2024-09-09\': 0,\n' +
+                '        \'2024-09-10\': 9,\n' +
+                '        \'2024-09-11\': 10,\n' +
+                '        \'2024-09-12\': 1,\n' +
+                '        \'2024-09-13\': 8,\n' +
+                '        \'2024-09-14\': 1,\n' +
+                '        \'2024-09-15\': 5,\n' +
+                '        \'2024-09-16\': 4,\n' +
+                '        \'2024-09-17\': 7,\n' +
+                '        \'2024-09-18\': 7,\n' +
+                '        \'2024-09-19\': 8,\n' +
+                '        \'2024-09-20\': 9,\n' +
+                '        \'2024-09-21\': 9,\n' +
+                '        \'2024-09-22\': 3,\n' +
+                '        \'2024-09-23\': 5,\n' +
+                '        \'2024-09-24\': 3,\n' +
+                '        \'2024-09-25\': 6,\n' +
+                '        \'2024-09-26\': 1,\n' +
+                '        \'2024-09-27\': 6,\n' +
+                '        \'2024-09-28\': 0,\n' +
+                '        \'2024-09-29\': 4,\n' +
+                '        \'2024-09-30\': 2,\n' +
+                '        \'2024-10-01\': 3,\n' +
+                '        \'2024-10-02\': 6,\n' +
+                '        \'2024-10-03\': 10,\n' +
+                '        \'2024-10-04\': 3,\n' +
+                '        \'2024-10-24\': 1,\n' +
+                '        \'2024-10-25\': 4,\n' +
+                '        \'2024-10-26\': 0,\n' +
+                '        \'2024-10-27\': 7,\n' +
+                '        \'2024-10-28\': 6,\n' +
+                '        \'2024-10-29\': 9,\n' +
+                '        \'2024-10-30\': 5,\n' +
+                '        \'2024-10-31\': 9,\n' +
+                '        \'2024-11-01\': 0,\n' +
+                '        \'2024-11-02\': 7,\n' +
+                '        \'2024-11-03\': 7,\n' +
+                '        \'2024-11-04\': 1,\n' +
+                '        \'2024-11-05\': 8,\n' +
+                '        \'2024-11-06\': 4,\n' +
+                '        \'2024-11-07\': 0,\n' +
+                '        \'2024-11-08\': 0,\n' +
+                '        \'2024-11-09\': 6,\n' +
+                '        \'2024-11-10\': 2,\n' +
+                '        \'2024-11-11\': 10,\n' +
+                '        \'2024-11-12\': 7,\n' +
+                '        \'2024-11-13\': 7,\n' +
+                '        \'2024-11-14\': 5,\n' +
+                '        \'2024-11-15\': 7,\n' +
+                '        \'2024-11-16\': 9,\n' +
+                '        \'2024-11-17\': 5,\n' +
+                '        \'2024-11-18\': 1,\n' +
+                '        \'2024-11-19\': 0,\n' +
+                '        \'2024-11-20\': 6,\n' +
+                '        \'2024-11-21\': 8,\n' +
+                '        \'2024-11-22\': 10,\n' +
+                '        \'2024-11-23\': 1,\n' +
+                '        \'2024-11-24\': 10,\n' +
+                '        \'2024-11-25\': 4,\n' +
+                '        \'2024-11-26\': 5,\n' +
+                '        \'2024-11-27\': 0,\n' +
+                '        \'2024-11-28\': 6,\n' +
+                '        \'2024-11-29\': 6,\n' +
+                '        \'2024-11-30\': 3,\n' +
+                '        \'2024-12-01\': 8,\n' +
+                '    };'
+        },
+    ]
+
+    const calculatingTotalContributionCodes = [
+        {
+            id: 'main_code',
+            displayText: 'ActivityGraph.jsx',
+            language: 'jsx',
+            code: 'import React, { useState, useCallback, useMemo } from \'react\';\n' +
+                'import {activityData} from "./Data.js"\n' +
+                '\n' +
+                'const ActivityGraph = () => {\n' +
+                '    // tooltip\n' +
+                '    const [tooltip, setTooltip] = useState({\n' +
+                '        show: false,\n' +
+                '        content: \'\',\n' +
+                '        x: 0,\n' +
+                '        y: 0,\n' +
+                '        position: \'top\'\n' +
+                '    });\n' +
+                '\n' +
+                '    // generate the dates data\n' +
+                '    const generateDates = () => {\n' +
+                '        const dates = [];\n' +
+                '        const now = new Date();\n' +
+                '        for (let i = 0; i < 52 * 7; i++) {\n' +
+                '            const date = new Date(now);\n' +
+                '            date.setDate(date.getDate() - i);\n' +
+                '            const dateStr = date.toISOString().split(\'T\')[0];\n' +
+                '            dates.unshift({\n' +
+                '                date: dateStr,\n' +
+                '                count: activityData[dateStr] || 0\n' +
+                '            });\n' +
+                '        }\n' +
+                '        return dates;\n' +
+                '    };\n' +
+                '\n' +
+                '    // calculate the total activity\n' +
+                '    const totalContributions = useMemo(() => {\n' +
+                '        return Object.values(activityData).reduce((sum, count) => sum + count, 0);\n' +
+                '    }, [activityData]);\n' +
+                '\n' +
+                '    // make group by the weeks\n' +
+                '    const groupDataByWeeks = (dates) => {\n' +
+                '        const weeks = [];\n' +
+                '        for (let i = 0; i < dates.length; i += 7) {\n' +
+                '            weeks.push(dates.slice(i, i + 7));\n' +
+                '        }\n' +
+                '        return weeks;\n' +
+                '    };\n' +
+                '\n' +
+                '    // get the month name from the date\n' +
+                '    const getMonthLabels = (dates) => {\n' +
+                '        const months = [];\n' +
+                '        let currentMonth = \'\';\n' +
+                '        let currentStartIndex = 0;\n' +
+                '\n' +
+                '        dates.forEach((date, index) => {\n' +
+                '            const month = new Date(date.date).toLocaleString(\'default\', { month: \'short\' });\n' +
+                '            if (month !== currentMonth) {\n' +
+                '                if (currentMonth !== \'\') {\n' +
+                '                    months.push({\n' +
+                '                        month: currentMonth,\n' +
+                '                        startIndex: currentStartIndex,\n' +
+                '                        endIndex: Math.floor(index / 7)\n' +
+                '                    });\n' +
+                '                }\n' +
+                '                currentMonth = month;\n' +
+                '                currentStartIndex = Math.floor(index / 7);\n' +
+                '            }\n' +
+                '        });\n' +
+                '\n' +
+                '        // Add the last month\n' +
+                '        months.push({\n' +
+                '            month: currentMonth,\n' +
+                '            startIndex: currentStartIndex,\n' +
+                '            endIndex: Math.floor(dates.length / 7)\n' +
+                '        });\n' +
+                '\n' +
+                '        return months;\n' +
+                '    };\n' +
+                '\n' +
+                '    const data = generateDates();\n' +
+                '    const weeks = groupDataByWeeks(data);\n' +
+                '    const months = getMonthLabels(data);\n' +
+                '\n' +
+                '    // get the activity color based on the activity count\n' +
+                '    const getActivityColor = (count) => {\n' +
+                '        const isDarkMode = document.documentElement.classList.contains(\'dark\');\n' +
+                '\n' +
+                '        if (count === 0) return isDarkMode ? \'#0f172a\' : \'#ebedf0\';\n' +
+                '\n' +
+                '        if (isDarkMode) {\n' +
+                '            if (count <= 2) return \'#0e4429\';\n' +
+                '            if (count <= 4) return \'#006d32\';\n' +
+                '            if (count <= 6) return \'#26a641\';\n' +
+                '            return \'#39d353\';\n' +
+                '        } else {\n' +
+                '            if (count <= 2) return \'#9be9a8\';\n' +
+                '            if (count <= 4) return \'#40c463\';\n' +
+                '            if (count <= 6) return \'#30a14e\';\n' +
+                '            return \'#216e39\';\n' +
+                '        }\n' +
+                '    };\n' +
+                '\n' +
+                '    // format the date\n' +
+                '    const formatDate = (dateString) => {\n' +
+                '        return new Date(dateString).toLocaleDateString(\'en-US\', {\n' +
+                '            month: \'short\',\n' +
+                '            day: \'numeric\',\n' +
+                '            year: \'numeric\'\n' +
+                '        });\n' +
+                '    };\n' +
+                '\n' +
+                '    // handle the mouse move for showing the tooltip in the current position\n' +
+                '    const handleMouseMove = useCallback((e, day) => {\n' +
+                '        const rect = e.target.getBoundingClientRect();\n' +
+                '        const tooltipWidth = 200;\n' +
+                '        const tooltipHeight = 60;\n' +
+                '        const windowWidth = window.innerWidth;\n' +
+                '        const windowHeight = window.innerHeight;\n' +
+                '        const scrollY = window.scrollY || window.pageYOffset;\n' +
+                '\n' +
+                '        // Determine optimal position\n' +
+                '        let position = \'top\';\n' +
+                '        let x = rect.left;\n' +
+                '        let y = rect.top + scrollY;\n' +
+                '\n' +
+                '        // Calculate available space in different directions\n' +
+                '        const spaceRight = windowWidth - rect.right;\n' +
+                '        const spaceLeft = rect.left;\n' +
+                '        const spaceTop = rect.top;\n' +
+                '        const spaceBottom = windowHeight - rect.bottom;\n' +
+                '\n' +
+                '        // Horizontal position\n' +
+                '        if (spaceRight < tooltipWidth / 2 && spaceLeft > tooltipWidth / 2) {\n' +
+                '            x = rect.right - tooltipWidth;\n' +
+                '        } else if (spaceLeft < tooltipWidth / 2 && spaceRight > tooltipWidth / 2) {\n' +
+                '            x = rect.left;\n' +
+                '        } else {\n' +
+                '            x = rect.left - (tooltipWidth / 2) + (rect.width / 2);\n' +
+                '        }\n' +
+                '\n' +
+                '        // Vertical position\n' +
+                '        if (spaceTop < tooltipHeight && spaceBottom > tooltipHeight) {\n' +
+                '            y = rect.bottom + scrollY + 5;\n' +
+                '            position = \'bottom\';\n' +
+                '        } else {\n' +
+                '            y = rect.top + scrollY - tooltipHeight + 15;\n' +
+                '            position = \'top\';\n' +
+                '        }\n' +
+                '\n' +
+                '        // Ensure tooltip stays within window bounds\n' +
+                '        x = Math.max(10, Math.min(windowWidth - tooltipWidth - 10, x));\n' +
+                '\n' +
+                '        setTooltip({\n' +
+                '            show: true,\n' +
+                '            content: `${day.count} contributions on ${formatDate(day.date)}`,\n' +
+                '            x,\n' +
+                '            y,\n' +
+                '            position\n' +
+                '        });\n' +
+                '    }, []);\n' +
+                '\n' +
+                '    const handleMouseLeave = () => {\n' +
+                '        setTooltip(prev => ({ ...prev, show: false }));\n' +
+                '    };\n' +
+                '\n' +
+                '    return (\n' +
+                '        <div className="p-6 w-full max-w-4xl">\n' +
+                '            <h2 className="text-xl font-bold dark:text-[#abc2d3] text-gray-800 mb-7">Activity Contributions ({totalContributions})</h2>\n' +
+                '\n' +
+                '            <div className="flex flex-col gap-4">\n' +
+                '                <div className="relative overflow-x-auto pb-2 scrollbar">\n' +
+                '                    <div className="flex">\n' +
+                '                        <div className="w-full">\n' +
+                '\n' +
+                '                            {/* month names*/}\n' +
+                '                            <div className="flex relative h-6 mb-1">\n' +
+                '                                {months.map((monthData, index) => {\n' +
+                '                                    const width = (monthData.endIndex - monthData.startIndex) * 16;\n' +
+                '                                    const left = monthData.startIndex * 16;\n' +
+                '                                    return (\n' +
+                '                                        <div\n' +
+                '                                            key={index}\n' +
+                '                                            className="absolute text-xs dark:text-[#abc2d3] text-gray-600 text-center"\n' +
+                '                                            style={{\n' +
+                '                                                left: `${left}px`,\n' +
+                '                                                width: `${width}px`\n' +
+                '                                            }}\n' +
+                '                                        >\n' +
+                '                                            {monthData.month}\n' +
+                '                                        </div>\n' +
+                '                                    );\n' +
+                '                                })}\n' +
+                '                            </div>\n' +
+                '\n' +
+                '                            {/* graph */}\n' +
+                '                            <div className="flex gap-1">\n' +
+                '                                {weeks.map((week, weekIndex) => (\n' +
+                '                                    <div key={weekIndex} className="flex flex-col gap-1">\n' +
+                '                                        {week.map((day, dayIndex) => (\n' +
+                '                                            <div\n' +
+                '                                                key={dayIndex}\n' +
+                '                                                className="w-3 h-3 rounded-sm dark:border-slate-800 cursor-pointer transition-colors duration-200 border border-gray-200 hover:border-gray-400"\n' +
+                '                                                style={{ backgroundColor: getActivityColor(day.count) }}\n' +
+                '                                                onMouseMove={(e) => handleMouseMove(e, day)}\n' +
+                '                                                onMouseLeave={handleMouseLeave}\n' +
+                '                                            />\n' +
+                '                                        ))}\n' +
+                '                                    </div>\n' +
+                '                                ))}\n' +
+                '                            </div>\n' +
+                '\n' +
+                '                        </div>\n' +
+                '                    </div>\n' +
+                '\n' +
+                '                    {/* tooltip */}\n' +
+                '                    {tooltip.show && (\n' +
+                '                        <div\n' +
+                '                            className="fixed z-50 px-3 dark:bg-slate-800 dark:text-[#abc2d3] py-2 text-sm text-white bg-gray-800 rounded-md pointer-events-none"\n' +
+                '                            style={{\n' +
+                '                                left: `${tooltip.x}px`,\n' +
+                '                                top: `${tooltip.y}px`,\n' +
+                '                                width: \'max-content\',\n' +
+                '                                transition: \'transform 0.1s ease-out\'\n' +
+                '                            }}\n' +
+                '                        >\n' +
+                '                            <div>{tooltip.content}</div>\n' +
+                '                        </div>\n' +
+                '                    )}\n' +
+                '                </div>\n' +
+                '\n' +
+                '                <div className="flex items-center justify-end dark:text-[#abc2d3] gap-2 text-[0.8rem] text-gray-600">\n' +
+                '                    <span>Less</span>\n' +
+                '                    {[0, 1, 3, 5, 7].map((count, i) => (\n' +
+                '                        <div key={i} className="flex flex-col items-center">\n' +
+                '                            <div\n' +
+                '                                className="w-3 h-3 border dark:border-slate-800 rounded-sm border-gray-200"\n' +
+                '                                style={{backgroundColor: getActivityColor(count)}}\n' +
+                '                            />\n' +
+                '                        </div>\n' +
+                '                    ))}\n' +
+                '                    <span>More</span>\n' +
+                '                </div>\n' +
+                '\n' +
+                '            </div>\n' +
+                '        </div>\n' +
+                '    );\n' +
+                '};\n' +
+                '\n' +
+                'export default ActivityGraph;'
+        },
+        {
+            id: 'data',
+            displayText: 'Data.js',
+            language: 'js',
+            code: '    export const activityData = {\n' +
+                '        \'2024-01-01\': 1,\n' +
+                '        \'2024-01-02\': 5,\n' +
+                '        \'2024-01-03\': 2,\n' +
+                '        \'2024-01-04\': 10,\n' +
+                '        \'2024-01-05\': 5,\n' +
+                '        \'2024-01-06\': 9,\n' +
+                '        \'2024-01-16\': 4,\n' +
+                '        \'2024-01-17\': 5,\n' +
+                '        \'2024-01-18\': 9,\n' +
+                '        \'2024-01-19\': 2,\n' +
+                '        \'2024-01-20\': 10,\n' +
+                '        \'2024-02-03\': 4,\n' +
+                '        \'2024-02-04\': 3,\n' +
+                '        \'2024-02-05\': 8,\n' +
+                '        \'2024-02-06\': 7,\n' +
+                '        \'2024-02-07\': 7,\n' +
+                '        \'2024-02-08\': 1,\n' +
+                '        \'2024-02-09\': 9,\n' +
+                '        \'2024-02-10\': 9,\n' +
+                '        \'2024-02-11\': 6,\n' +
+                '        \'2024-02-12\': 4,\n' +
+                '        \'2024-02-13\': 1,\n' +
+                '        \'2024-02-14\': 2,\n' +
+                '        \'2024-02-15\': 2,\n' +
+                '        \'2024-02-16\': 4,\n' +
+                '        \'2024-02-17\': 0,\n' +
+                '        \'2024-02-18\': 5,\n' +
+                '        \'2024-02-19\': 4,\n' +
+                '        \'2024-02-20\': 9,\n' +
+                '        \'2024-02-21\': 5,\n' +
+                '        \'2024-02-22\': 3,\n' +
+                '        \'2024-02-23\': 7,\n' +
+                '        \'2024-02-24\': 6,\n' +
+                '        \'2024-02-25\': 6,\n' +
+                '        \'2024-02-26\': 9,\n' +
+                '        \'2024-02-27\': 4,\n' +
+                '        \'2024-02-28\': 2,\n' +
+                '        \'2024-02-29\': 0,\n' +
+                '        \'2024-03-01\': 3,\n' +
+                '        \'2024-03-02\': 9,\n' +
+                '        \'2024-03-03\': 4,\n' +
+                '        \'2024-03-04\': 1,\n' +
+                '        \'2024-03-05\': 9,\n' +
+                '        \'2024-03-06\': 10,\n' +
+                '        \'2024-03-07\': 4,\n' +
+                '        \'2024-03-08\': 4,\n' +
+                '        \'2024-03-09\': 3,\n' +
+                '        \'2024-03-10\': 2,\n' +
+                '        \'2024-03-11\': 10,\n' +
+                '        \'2024-03-12\': 7,\n' +
+                '        \'2024-03-13\': 3,\n' +
+                '        \'2024-03-24\': 0,\n' +
+                '        \'2024-03-25\': 1,\n' +
+                '        \'2024-03-26\': 5,\n' +
+                '        \'2024-03-27\': 0,\n' +
+                '        \'2024-03-28\': 5,\n' +
+                '        \'2024-03-29\': 4,\n' +
+                '        \'2024-03-30\': 5,\n' +
+                '        \'2024-03-31\': 7,\n' +
+                '        \'2024-04-01\': 5,\n' +
+                '        \'2024-04-02\': 0,\n' +
+                '        \'2024-04-03\': 4,\n' +
+                '        \'2024-04-04\': 6,\n' +
+                '        \'2024-04-05\': 2,\n' +
+                '        \'2024-04-06\': 10,\n' +
+                '        \'2024-04-24\': 9,\n' +
+                '        \'2024-04-25\': 2,\n' +
+                '        \'2024-04-26\': 5,\n' +
+                '        \'2024-04-27\': 3,\n' +
+                '        \'2024-04-28\': 8,\n' +
+                '        \'2024-04-29\': 6,\n' +
+                '        \'2024-04-30\': 7,\n' +
+                '        \'2024-05-01\': 7,\n' +
+                '        \'2024-05-02\': 2,\n' +
+                '        \'2024-05-03\': 3,\n' +
+                '        \'2024-05-04\': 1,\n' +
+                '        \'2024-05-05\': 1,\n' +
+                '        \'2024-05-06\': 8,\n' +
+                '        \'2024-05-07\': 5,\n' +
+                '        \'2024-05-08\': 6,\n' +
+                '        \'2024-05-09\': 1,\n' +
+                '        \'2024-05-10\': 6,\n' +
+                '        \'2024-05-11\': 10,\n' +
+                '        \'2024-05-12\': 2,\n' +
+                '        \'2024-05-13\': 10,\n' +
+                '        \'2024-05-14\': 7,\n' +
+                '        \'2024-05-15\': 6,\n' +
+                '        \'2024-05-16\': 2,\n' +
+                '        \'2024-05-17\': 5,\n' +
+                '        \'2024-05-18\': 8,\n' +
+                '        \'2024-05-19\': 8,\n' +
+                '        \'2024-05-20\': 7,\n' +
+                '        \'2024-05-21\': 9,\n' +
+                '        \'2024-05-22\': 6,\n' +
+                '        \'2024-05-23\': 2,\n' +
+                '        \'2024-05-24\': 9,\n' +
+                '        \'2024-05-25\': 9,\n' +
+                '        \'2024-05-26\': 8,\n' +
+                '        \'2024-05-27\': 3,\n' +
+                '        \'2024-05-28\': 1,\n' +
+                '        \'2024-05-29\': 6,\n' +
+                '        \'2024-05-30\': 1,\n' +
+                '        \'2024-05-31\': 8,\n' +
+                '        \'2024-06-01\': 2,\n' +
+                '        \'2024-06-02\': 10,\n' +
+                '        \'2024-06-03\': 7,\n' +
+                '        \'2024-06-04\': 4,\n' +
+                '        \'2024-06-05\': 9,\n' +
+                '        \'2024-06-06\': 5,\n' +
+                '        \'2024-06-07\': 8,\n' +
+                '        \'2024-06-08\': 10,\n' +
+                '        \'2024-06-09\': 0,\n' +
+                '        \'2024-06-10\': 0,\n' +
+                '        \'2024-06-11\': 3,\n' +
+                '        \'2024-06-12\': 4,\n' +
+                '        \'2024-06-13\': 5,\n' +
+                '        \'2024-06-14\': 6,\n' +
+                '        \'2024-06-15\': 5,\n' +
+                '        \'2024-06-16\': 0,\n' +
+                '        \'2024-07-03\': 9,\n' +
+                '        \'2024-07-04\': 6,\n' +
+                '        \'2024-07-05\': 0,\n' +
+                '        \'2024-07-06\': 8,\n' +
+                '        \'2024-07-07\': 10,\n' +
+                '        \'2024-07-08\': 3,\n' +
+                '        \'2024-07-09\': 5,\n' +
+                '        \'2024-07-10\': 0,\n' +
+                '        \'2024-07-11\': 4,\n' +
+                '        \'2024-07-12\': 0,\n' +
+                '        \'2024-07-13\': 9,\n' +
+                '        \'2024-07-14\': 6,\n' +
+                '        \'2024-07-15\': 5,\n' +
+                '        \'2024-07-16\': 6,\n' +
+                '        \'2024-07-17\': 2,\n' +
+                '        \'2024-07-18\': 6,\n' +
+                '        \'2024-07-19\': 10,\n' +
+                '        \'2024-07-20\': 8,\n' +
+                '        \'2024-07-27\': 10,\n' +
+                '        \'2024-07-28\': 6,\n' +
+                '        \'2024-07-29\': 5,\n' +
+                '        \'2024-07-30\': 1,\n' +
+                '        \'2024-07-31\': 5,\n' +
+                '        \'2024-08-01\': 5,\n' +
+                '        \'2024-08-02\': 10,\n' +
+                '        \'2024-08-03\': 2,\n' +
+                '        \'2024-08-17\': 3,\n' +
+                '        \'2024-08-18\': 1,\n' +
+                '        \'2024-08-19\': 1,\n' +
+                '        \'2024-08-20\': 0,\n' +
+                '        \'2024-08-21\': 8,\n' +
+                '        \'2024-08-22\': 10,\n' +
+                '        \'2024-08-23\': 2,\n' +
+                '        \'2024-08-24\': 7,\n' +
+                '        \'2024-08-25\': 4,\n' +
+                '        \'2024-08-26\': 9,\n' +
+                '        \'2024-08-27\': 9,\n' +
+                '        \'2024-08-28\': 7,\n' +
+                '        \'2024-08-29\': 2,\n' +
+                '        \'2024-08-30\': 2,\n' +
+                '        \'2024-08-31\': 5,\n' +
+                '        \'2024-09-01\': 3,\n' +
+                '        \'2024-09-02\': 4,\n' +
+                '        \'2024-09-03\': 1,\n' +
+                '        \'2024-09-04\': 8,\n' +
+                '        \'2024-09-05\': 8,\n' +
+                '        \'2024-09-06\': 1,\n' +
+                '        \'2024-09-07\': 8,\n' +
+                '        \'2024-09-08\': 6,\n' +
+                '        \'2024-09-09\': 0,\n' +
+                '        \'2024-09-10\': 9,\n' +
+                '        \'2024-09-11\': 10,\n' +
+                '        \'2024-09-12\': 1,\n' +
+                '        \'2024-09-13\': 8,\n' +
+                '        \'2024-09-14\': 1,\n' +
+                '        \'2024-09-15\': 5,\n' +
+                '        \'2024-09-16\': 4,\n' +
+                '        \'2024-09-17\': 7,\n' +
+                '        \'2024-09-18\': 7,\n' +
+                '        \'2024-09-19\': 8,\n' +
+                '        \'2024-09-20\': 9,\n' +
+                '        \'2024-09-21\': 9,\n' +
+                '        \'2024-09-22\': 3,\n' +
+                '        \'2024-09-23\': 5,\n' +
+                '        \'2024-09-24\': 3,\n' +
+                '        \'2024-09-25\': 6,\n' +
+                '        \'2024-09-26\': 1,\n' +
+                '        \'2024-09-27\': 6,\n' +
+                '        \'2024-09-28\': 0,\n' +
+                '        \'2024-09-29\': 4,\n' +
+                '        \'2024-09-30\': 2,\n' +
+                '        \'2024-10-01\': 3,\n' +
+                '        \'2024-10-02\': 6,\n' +
+                '        \'2024-10-03\': 10,\n' +
+                '        \'2024-10-04\': 3,\n' +
+                '        \'2024-10-24\': 1,\n' +
+                '        \'2024-10-25\': 4,\n' +
+                '        \'2024-10-26\': 0,\n' +
+                '        \'2024-10-27\': 7,\n' +
+                '        \'2024-10-28\': 6,\n' +
+                '        \'2024-10-29\': 9,\n' +
+                '        \'2024-10-30\': 5,\n' +
+                '        \'2024-10-31\': 9,\n' +
+                '        \'2024-11-01\': 0,\n' +
+                '        \'2024-11-02\': 7,\n' +
+                '        \'2024-11-03\': 7,\n' +
+                '        \'2024-11-04\': 1,\n' +
+                '        \'2024-11-05\': 8,\n' +
+                '        \'2024-11-06\': 4,\n' +
+                '        \'2024-11-07\': 0,\n' +
+                '        \'2024-11-08\': 0,\n' +
+                '        \'2024-11-09\': 6,\n' +
+                '        \'2024-11-10\': 2,\n' +
+                '        \'2024-11-11\': 10,\n' +
+                '        \'2024-11-12\': 7,\n' +
+                '        \'2024-11-13\': 7,\n' +
+                '        \'2024-11-14\': 5,\n' +
+                '        \'2024-11-15\': 7,\n' +
+                '        \'2024-11-16\': 9,\n' +
+                '        \'2024-11-17\': 5,\n' +
+                '        \'2024-11-18\': 1,\n' +
+                '        \'2024-11-19\': 0,\n' +
+                '        \'2024-11-20\': 6,\n' +
+                '        \'2024-11-21\': 8,\n' +
+                '        \'2024-11-22\': 10,\n' +
+                '        \'2024-11-23\': 1,\n' +
+                '        \'2024-11-24\': 10,\n' +
+                '        \'2024-11-25\': 4,\n' +
+                '        \'2024-11-26\': 5,\n' +
+                '        \'2024-11-27\': 0,\n' +
+                '        \'2024-11-28\': 6,\n' +
+                '        \'2024-11-29\': 6,\n' +
+                '        \'2024-11-30\': 3,\n' +
+                '        \'2024-12-01\': 8,\n' +
+                '    };'
+        },
+    ]
 
     return (
         <>
@@ -60,1491 +1444,67 @@ const GithubActivityGraph = () => {
                         <ContentHeader text={'github activity graph'} id={'github_activity_graph'}/>
                     </div>
 
-                    <p className='w-full text-text text-[1rem]'>
-                        Track your daily activities with a GitHub-style activity graph, showcasing your progress and habits in a visual grid format.
-                    </p>
+                    <ComponentDescription text='Track your daily activities with a GitHub-style activity graph, showcasing your progress and habits in a visual grid format.'/>
 
-                    <div className='w-full border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    activityGraphPreview
-                                        ? 'translate-x-[0px] !w-[100px]'
-                                        : 'translate-x-[107px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${
-                                    activityGraphPreview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={handleActivityGraphPreview}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    activityGraphCode && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={handleActivityGraphCode}
-                            >
-                                Code
-                            </button>
-                        </div>
-                        {activityGraphPreview && (
-                            <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                                <GithubActivityGraphExample/>
-                            </div>
-                        )}
+                <ToggleTab code={activityGraphCode} setPreview={setActivityGraphPreview} setCode={setActivityGraphCode} preview={activityGraphPreview}/>
 
-                        {activityGraphCode && (
-                            <BlocksShowCode
-                                code='
-import React, { useState, useCallback } from "react";
-
-const GithubActivityGraph = () => {
-
-    // activity data
-    const activityData = {
-        "2024-01-01": 1,
-        "2024-01-02": 5,
-        "2024-01-03": 2,
-        "2024-01-04": 10,
-        "2024-01-05": 5,
-        "2024-01-06": 9,
-        "2024-01-16": 4,
-        "2024-01-17": 5,
-        "2024-01-18": 9,
-        "2024-01-19": 2,
-        "2024-01-20": 10,
-        "2024-02-03": 4,
-        "2024-02-04": 3,
-        "2024-02-05": 8,
-        "2024-02-06": 7,
-        "2024-02-07": 7,
-        "2024-02-08": 1,
-        "2024-02-09": 9,
-        "2024-02-10": 9,
-        "2024-02-11": 6,
-        "2024-02-12": 4,
-        "2024-02-13": 1,
-        "2024-02-14": 2,
-        "2024-02-15": 2,
-        "2024-02-16": 4,
-        "2024-02-17": 0,
-        "2024-02-18": 5,
-        "2024-02-19": 4,
-        "2024-02-20": 9,
-        "2024-02-21": 5,
-        "2024-02-22": 3,
-        "2024-02-23": 7,
-        "2024-02-24": 6,
-        "2024-02-25": 6,
-        "2024-02-26": 9,
-        "2024-02-27": 4,
-        "2024-02-28": 2,
-        "2024-02-29": 0,
-        "2024-03-01": 3,
-        "2024-03-02": 9,
-        "2024-03-03": 4,
-        "2024-03-04": 1,
-        "2024-03-05": 9,
-        "2024-03-06": 10,
-        "2024-03-07": 4,
-        "2024-03-08": 4,
-        "2024-03-09": 3,
-        "2024-03-10": 2,
-        "2024-03-11": 10,
-        "2024-03-12": 7,
-        "2024-03-13": 3,
-        "2024-03-24": 0,
-        "2024-03-25": 1,
-        "2024-03-26": 5,
-        "2024-03-27": 0,
-        "2024-03-28": 5,
-        "2024-03-29": 4,
-        "2024-03-30": 5,
-        "2024-03-31": 7,
-        "2024-04-01": 5,
-        "2024-04-02": 0,
-        "2024-04-03": 4,
-        "2024-04-04": 6,
-        "2024-04-05": 2,
-        "2024-04-06": 10,
-        "2024-04-24": 9,
-        "2024-04-25": 2,
-        "2024-04-26": 5,
-        "2024-04-27": 3,
-        "2024-04-28": 8,
-        "2024-04-29": 6,
-        "2024-04-30": 7,
-        "2024-05-01": 7,
-        "2024-05-02": 2,
-        "2024-05-03": 3,
-        "2024-05-04": 1,
-        "2024-05-05": 1,
-        "2024-05-06": 8,
-        "2024-05-07": 5,
-        "2024-05-08": 6,
-        "2024-05-09": 1,
-        "2024-05-10": 6,
-        "2024-05-11": 10,
-        "2024-05-12": 2,
-        "2024-05-13": 10,
-        "2024-05-14": 7,
-        "2024-05-15": 6,
-        "2024-05-16": 2,
-        "2024-05-17": 5,
-        "2024-05-18": 8,
-        "2024-05-19": 8,
-        "2024-05-20": 7,
-        "2024-05-21": 9,
-        "2024-05-22": 6,
-        "2024-05-23": 2,
-        "2024-05-24": 9,
-        "2024-05-25": 9,
-        "2024-05-26": 8,
-        "2024-05-27": 3,
-        "2024-05-28": 1,
-        "2024-05-29": 6,
-        "2024-05-30": 1,
-        "2024-05-31": 8,
-        "2024-06-01": 2,
-        "2024-06-02": 10,
-        "2024-06-03": 7,
-        "2024-06-04": 4,
-        "2024-06-05": 9,
-        "2024-06-06": 5,
-        "2024-06-07": 8,
-        "2024-06-08": 10,
-        "2024-06-09": 0,
-        "2024-06-10": 0,
-        "2024-06-11": 3,
-        "2024-06-12": 4,
-        "2024-06-13": 5,
-        "2024-06-14": 6,
-        "2024-06-15": 5,
-        "2024-06-16": 0,
-        "2024-07-03": 9,
-        "2024-07-04": 6,
-        "2024-07-05": 0,
-        "2024-07-06": 8,
-        "2024-07-07": 10,
-        "2024-07-08": 3,
-        "2024-07-09": 5,
-        "2024-07-10": 0,
-        "2024-07-11": 4,
-        "2024-07-12": 0,
-        "2024-07-13": 9,
-        "2024-07-14": 6,
-        "2024-07-15": 5,
-        "2024-07-16": 6,
-        "2024-07-17": 2,
-        "2024-07-18": 6,
-        "2024-07-19": 10,
-        "2024-07-20": 8,
-        "2024-07-27": 10,
-        "2024-07-28": 6,
-        "2024-07-29": 5,
-        "2024-07-30": 1,
-        "2024-07-31": 5,
-        "2024-08-01": 5,
-        "2024-08-02": 10,
-        "2024-08-03": 2,
-        "2024-08-17": 3,
-        "2024-08-18": 1,
-        "2024-08-19": 1,
-        "2024-08-20": 0,
-        "2024-08-21": 8,
-        "2024-08-22": 10,
-        "2024-08-23": 2,
-        "2024-08-24": 7,
-        "2024-08-25": 4,
-        "2024-08-26": 9,
-        "2024-08-27": 9,
-        "2024-08-28": 7,
-        "2024-08-29": 2,
-        "2024-08-30": 2,
-        "2024-08-31": 5,
-        "2024-09-01": 3,
-        "2024-09-02": 4,
-        "2024-09-03": 1,
-        "2024-09-04": 8,
-        "2024-09-05": 8,
-        "2024-09-06": 1,
-        "2024-09-07": 8,
-        "2024-09-08": 6,
-        "2024-09-09": 0,
-        "2024-09-10": 9,
-        "2024-09-11": 10,
-        "2024-09-12": 1,
-        "2024-09-13": 8,
-        "2024-09-14": 1,
-        "2024-09-15": 5,
-        "2024-09-16": 4,
-        "2024-09-17": 7,
-        "2024-09-18": 7,
-        "2024-09-19": 8,
-        "2024-09-20": 9,
-        "2024-09-21": 9,
-        "2024-09-22": 3,
-        "2024-09-23": 5,
-        "2024-09-24": 3,
-        "2024-09-25": 6,
-        "2024-09-26": 1,
-        "2024-09-27": 6,
-        "2024-09-28": 0,
-        "2024-09-29": 4,
-        "2024-09-30": 2,
-        "2024-10-01": 3,
-        "2024-10-02": 6,
-        "2024-10-03": 10,
-        "2024-10-04": 3,
-        "2024-10-24": 1,
-        "2024-10-25": 4,
-        "2024-10-26": 0,
-        "2024-10-27": 7,
-        "2024-10-28": 6,
-        "2024-10-29": 9,
-        "2024-10-30": 5,
-        "2024-10-31": 9,
-        "2024-11-01": 0,
-        "2024-11-02": 7,
-        "2024-11-03": 7,
-        "2024-11-04": 1,
-        "2024-11-05": 8,
-        "2024-11-06": 4,
-        "2024-11-07": 0,
-        "2024-11-08": 0,
-        "2024-11-09": 6,
-        "2024-11-10": 2,
-        "2024-11-11": 10,
-        "2024-11-12": 7,
-        "2024-11-13": 7,
-        "2024-11-14": 5,
-        "2024-11-15": 7,
-        "2024-11-16": 9,
-        "2024-11-17": 5,
-        "2024-11-18": 1,
-        "2024-11-19": 0,
-        "2024-11-20": 6,
-        "2024-11-21": 8,
-        "2024-11-22": 10,
-        "2024-11-23": 1,
-        "2024-11-24": 10,
-        "2024-11-25": 4,
-        "2024-11-26": 5,
-        "2024-11-27": 0,
-        "2024-11-28": 6,
-        "2024-11-29": 6,
-        "2024-11-30": 3,
-        "2024-12-01": 8,
-    };
-
-    // tooltip
-    const [tooltip, setTooltip] = useState({
-        show: false,
-        content: "",
-        x: 0,
-        y: 0,
-        position: "top"
-    });
-
-    // generate the dates data for showing the graph
-    const generateDates = () => {
-        const dates = [];
-        const now = new Date();
-        for (let i = 0; i < 52 * 7; i++) {
-            const date = new Date(now);
-            date.setDate(date.getDate() - i);
-            const dateStr = date.toISOString().split("T")[0];
-            dates.unshift({
-                date: dateStr,
-                count: activityData[dateStr] || 0
-            });
-        }
-        return dates;
-    };
-
-    const data = generateDates();
-    const weeks = [];
-
-    // set the weeks from the dates data
-    for (let i = 0; i < data.length; i += 7) {
-        weeks.push(data.slice(i, i + 7));
-    }
-
-    // get the active color based on the activity logic
-    const getActivityColor = (count) => {
-        if (count === 0) return "#ebedf0";
-        if (count <= 2) return "#9be9a8";
-        if (count <= 4) return "#40c463";
-        if (count <= 6) return "#30a14e";
-        return "#216e39";
-    };
-
-    // format the date
-    const formatDate = (dateString) => {
-        return new Date(dateString).toLocaleDateString("en-US", {
-            month: "short",
-            day: "numeric",
-            year: "numeric"
-        });
-    };
-
-    // handle mousemove for showing the tooltip at the current hovered position
-    const handleMouseMove = useCallback((e, day) => {
-        const rect = e.target.getBoundingClientRect();
-        const tooltipWidth = 200;
-        const tooltipHeight = 60;
-        const windowWidth = window.innerWidth;
-        const windowHeight = window.innerHeight;
-        const scrollY = window.scrollY || window.pageYOffset;
-
-        // Calculate available space in different directions
-        const spaceRight = windowWidth - rect.right;
-        const spaceLeft = rect.left;
-        const spaceTop = rect.top;
-        const spaceBottom = windowHeight - rect.bottom;
-
-        // Determine optimal position
-        let position = "top";
-        let x = rect.left;
-        let y = rect.top + scrollY;
-
-        // Horizontal position
-        if (spaceRight < tooltipWidth / 2 && spaceLeft > tooltipWidth / 2) {
-            x = rect.right - tooltipWidth;
-        } else if (spaceLeft < tooltipWidth / 2 && spaceRight > tooltipWidth / 2) {
-            x = rect.left;
-        } else {
-            x = rect.left - (tooltipWidth / 2) + (rect.width / 2);
-        }
-
-        // Vertical position
-        if (spaceTop < tooltipHeight && spaceBottom > tooltipHeight) {
-            y = rect.bottom + scrollY + 5;
-            position = "bottom";
-        } else {
-            y = rect.top + scrollY - tooltipHeight + 15;
-            position = "top";
-        }
-
-        // Ensure tooltip stays within window bounds
-        x = Math.max(10, Math.min(windowWidth - tooltipWidth - 10, x));
-
-        setTooltip({
-            show: true,
-            content: `${day.count} contributions on ${formatDate(day.date)}`,
-            x,
-            y,
-            position
-        });
-    }, []);
-
-    const handleMouseLeave = () => {
-        setTooltip(prev => ({ ...prev, show: false }));
-    };
-
-    return (
-        <div className="p-6 w-full max-w-4xl">
-            <h2 className="text-xl font-bold mb-4">Activity Contributions</h2>
-
-            <div className="flex flex-col gap-4">
-                <div className="flex items-center gap-2 text-sm text-gray-600">
-                    <span>Less</span>
-                    {[0, 1, 3, 5, 7].map((count, i) => (
-                        <div key={i} className="flex flex-col items-center">
-                            <div
-                                className="w-3 h-3 border border-gray-200"
-                                style={{ backgroundColor: getActivityColor(count) }}
-                            />
-                        </div>
-                    ))}
-                    <span>More</span>
-                </div>
-
-                {/* the graph grid */}
-                <div className="relative overflow-x-auto pb-1 w-full">
-                    <div className="flex gap-1">
-                        {weeks.map((week, weekIndex) => (
-                            <div key={weekIndex} className="flex flex-col gap-1">
-                                {week.map((day, dayIndex) => (
-                                    <div
-                                        key={dayIndex}
-                                        className="w-3 h-3 rounded-sm cursor-pointer transition-colors duration-200 border border-gray-200 hover:border-gray-400"
-                                        style={{ backgroundColor: getActivityColor(day.count) }}
-                                        onMouseMove={(e) => handleMouseMove(e, day)}
-                                        onMouseLeave={handleMouseLeave}
-                                    />
-                                ))}
-                            </div>
-                        ))}
-                    </div>
-
-                    {/* tooltip */}
-                    {tooltip.show && (
-                        <div
-                            className="fixed z-50 px-3 py-2 text-sm text-white bg-gray-800 rounded-md pointer-events-none"
-                            style={{
-                                left: `${tooltip.x}px`,
-                                top: `${tooltip.y}px`,
-                                width: "max-content",
-                                transition: "transform 0.1s ease-out"
-                            }}
-                        >
-                            <div>{tooltip.content}</div>
+                <ComponentWrapper width={100}>
+                    {activityGraphPreview && (
+                        <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                            <GithubActivityGraphExample/>
                         </div>
                     )}
-                </div>
 
-                {/* from and to date which graph you showing here */}
-                <div className="flex justify-between text-sm text-gray-600">
-                    <span>{formatDate(data[0].date)}</span>
-                    <span>{formatDate(data[data.length - 1].date)}</span>
-                </div>
-            </div>
-        </div>
-    );
-};
-
-export default GithubActivityGraph
-          '
-                            />
-                        )}
-                    </div>
+                    {activityGraphCode && (
+                        <BlocksShowCode
+                            code={activityGraphCodes}
+                        />
+                    )}
+                </ComponentWrapper>
 
                     <div className='mt-8'>
                         <ContentHeader text={'github activity graph with month'} id={'github_activity_graph_with_month'}/>
                     </div>
 
-                    <p className='w-full text-text text-[1rem]'>
-                        Track your daily activities with a GitHub-style activity graph, showcasing your progress and habits in a visual grid format.
-                    </p>
+                   <ComponentDescription text='Track your daily activities with a GitHub-style activity graph, showcasing your progress and habits in a visual grid format.'/>
 
-                    <div className='w-full border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    activityGraphWithMonthPreview
-                                        ? 'translate-x-[0px] !w-[100px]'
-                                        : 'translate-x-[107px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${
-                                    activityGraphWithMonthPreview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={handleActivityGraphWithMonthPreview}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    activityGraphWithMonthCode && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={handleActivityGraphWithMonthCode}
-                            >
-                                Code
-                            </button>
-                        </div>
-                        {activityGraphWithMonthPreview && (
-                            <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                                <GithubActivityGraphWithMonthExample/>
-                            </div>
-                        )}
+                <ToggleTab code={activityGraphWithMonthCode} preview={activityGraphWithMonthPreview} setCode={setActivityGraphWithMonthCode} setPreview={setActivityGraphWithMonthPreview}/>
 
-                        {activityGraphWithMonthCode && (
-                            <BlocksShowCode
-                                code='
-import React, { useState, useCallback } from "react";
-
-const GithubActivityGraph = () => {
-
-    // activity data
-    const activityData = {
-        "2024-01-01": 1,
-        "2024-01-02": 5,
-        "2024-01-03": 2,
-        "2024-01-04": 10,
-        "2024-01-05": 5,
-        "2024-01-06": 9,
-        "2024-01-16": 4,
-        "2024-01-17": 5,
-        "2024-01-18": 9,
-        "2024-01-19": 2,
-        "2024-01-20": 10,
-        "2024-02-03": 4,
-        "2024-02-04": 3,
-        "2024-02-05": 8,
-        "2024-02-06": 7,
-        "2024-02-07": 7,
-        "2024-02-08": 1,
-        "2024-02-09": 9,
-        "2024-02-10": 9,
-        "2024-02-11": 6,
-        "2024-02-12": 4,
-        "2024-02-13": 1,
-        "2024-02-14": 2,
-        "2024-02-15": 2,
-        "2024-02-16": 4,
-        "2024-02-17": 0,
-        "2024-02-18": 5,
-        "2024-02-19": 4,
-        "2024-02-20": 9,
-        "2024-02-21": 5,
-        "2024-02-22": 3,
-        "2024-02-23": 7,
-        "2024-02-24": 6,
-        "2024-02-25": 6,
-        "2024-02-26": 9,
-        "2024-02-27": 4,
-        "2024-02-28": 2,
-        "2024-02-29": 0,
-        "2024-03-01": 3,
-        "2024-03-02": 9,
-        "2024-03-03": 4,
-        "2024-03-04": 1,
-        "2024-03-05": 9,
-        "2024-03-06": 10,
-        "2024-03-07": 4,
-        "2024-03-08": 4,
-        "2024-03-09": 3,
-        "2024-03-10": 2,
-        "2024-03-11": 10,
-        "2024-03-12": 7,
-        "2024-03-13": 3,
-        "2024-03-24": 0,
-        "2024-03-25": 1,
-        "2024-03-26": 5,
-        "2024-03-27": 0,
-        "2024-03-28": 5,
-        "2024-03-29": 4,
-        "2024-03-30": 5,
-        "2024-03-31": 7,
-        "2024-04-01": 5,
-        "2024-04-02": 0,
-        "2024-04-03": 4,
-        "2024-04-04": 6,
-        "2024-04-05": 2,
-        "2024-04-06": 10,
-        "2024-04-24": 9,
-        "2024-04-25": 2,
-        "2024-04-26": 5,
-        "2024-04-27": 3,
-        "2024-04-28": 8,
-        "2024-04-29": 6,
-        "2024-04-30": 7,
-        "2024-05-01": 7,
-        "2024-05-02": 2,
-        "2024-05-03": 3,
-        "2024-05-04": 1,
-        "2024-05-05": 1,
-        "2024-05-06": 8,
-        "2024-05-07": 5,
-        "2024-05-08": 6,
-        "2024-05-09": 1,
-        "2024-05-10": 6,
-        "2024-05-11": 10,
-        "2024-05-12": 2,
-        "2024-05-13": 10,
-        "2024-05-14": 7,
-        "2024-05-15": 6,
-        "2024-05-16": 2,
-        "2024-05-17": 5,
-        "2024-05-18": 8,
-        "2024-05-19": 8,
-        "2024-05-20": 7,
-        "2024-05-21": 9,
-        "2024-05-22": 6,
-        "2024-05-23": 2,
-        "2024-05-24": 9,
-        "2024-05-25": 9,
-        "2024-05-26": 8,
-        "2024-05-27": 3,
-        "2024-05-28": 1,
-        "2024-05-29": 6,
-        "2024-05-30": 1,
-        "2024-05-31": 8,
-        "2024-06-01": 2,
-        "2024-06-02": 10,
-        "2024-06-03": 7,
-        "2024-06-04": 4,
-        "2024-06-05": 9,
-        "2024-06-06": 5,
-        "2024-06-07": 8,
-        "2024-06-08": 10,
-        "2024-06-09": 0,
-        "2024-06-10": 0,
-        "2024-06-11": 3,
-        "2024-06-12": 4,
-        "2024-06-13": 5,
-        "2024-06-14": 6,
-        "2024-06-15": 5,
-        "2024-06-16": 0,
-        "2024-07-03": 9,
-        "2024-07-04": 6,
-        "2024-07-05": 0,
-        "2024-07-06": 8,
-        "2024-07-07": 10,
-        "2024-07-08": 3,
-        "2024-07-09": 5,
-        "2024-07-10": 0,
-        "2024-07-11": 4,
-        "2024-07-12": 0,
-        "2024-07-13": 9,
-        "2024-07-14": 6,
-        "2024-07-15": 5,
-        "2024-07-16": 6,
-        "2024-07-17": 2,
-        "2024-07-18": 6,
-        "2024-07-19": 10,
-        "2024-07-20": 8,
-        "2024-07-27": 10,
-        "2024-07-28": 6,
-        "2024-07-29": 5,
-        "2024-07-30": 1,
-        "2024-07-31": 5,
-        "2024-08-01": 5,
-        "2024-08-02": 10,
-        "2024-08-03": 2,
-        "2024-08-17": 3,
-        "2024-08-18": 1,
-        "2024-08-19": 1,
-        "2024-08-20": 0,
-        "2024-08-21": 8,
-        "2024-08-22": 10,
-        "2024-08-23": 2,
-        "2024-08-24": 7,
-        "2024-08-25": 4,
-        "2024-08-26": 9,
-        "2024-08-27": 9,
-        "2024-08-28": 7,
-        "2024-08-29": 2,
-        "2024-08-30": 2,
-        "2024-08-31": 5,
-        "2024-09-01": 3,
-        "2024-09-02": 4,
-        "2024-09-03": 1,
-        "2024-09-04": 8,
-        "2024-09-05": 8,
-        "2024-09-06": 1,
-        "2024-09-07": 8,
-        "2024-09-08": 6,
-        "2024-09-09": 0,
-        "2024-09-10": 9,
-        "2024-09-11": 10,
-        "2024-09-12": 1,
-        "2024-09-13": 8,
-        "2024-09-14": 1,
-        "2024-09-15": 5,
-        "2024-09-16": 4,
-        "2024-09-17": 7,
-        "2024-09-18": 7,
-        "2024-09-19": 8,
-        "2024-09-20": 9,
-        "2024-09-21": 9,
-        "2024-09-22": 3,
-        "2024-09-23": 5,
-        "2024-09-24": 3,
-        "2024-09-25": 6,
-        "2024-09-26": 1,
-        "2024-09-27": 6,
-        "2024-09-28": 0,
-        "2024-09-29": 4,
-        "2024-09-30": 2,
-        "2024-10-01": 3,
-        "2024-10-02": 6,
-        "2024-10-03": 10,
-        "2024-10-04": 3,
-        "2024-10-24": 1,
-        "2024-10-25": 4,
-        "2024-10-26": 0,
-        "2024-10-27": 7,
-        "2024-10-28": 6,
-        "2024-10-29": 9,
-        "2024-10-30": 5,
-        "2024-10-31": 9,
-        "2024-11-01": 0,
-        "2024-11-02": 7,
-        "2024-11-03": 7,
-        "2024-11-04": 1,
-        "2024-11-05": 8,
-        "2024-11-06": 4,
-        "2024-11-07": 0,
-        "2024-11-08": 0,
-        "2024-11-09": 6,
-        "2024-11-10": 2,
-        "2024-11-11": 10,
-        "2024-11-12": 7,
-        "2024-11-13": 7,
-        "2024-11-14": 5,
-        "2024-11-15": 7,
-        "2024-11-16": 9,
-        "2024-11-17": 5,
-        "2024-11-18": 1,
-        "2024-11-19": 0,
-        "2024-11-20": 6,
-        "2024-11-21": 8,
-        "2024-11-22": 10,
-        "2024-11-23": 1,
-        "2024-11-24": 10,
-        "2024-11-25": 4,
-        "2024-11-26": 5,
-        "2024-11-27": 0,
-        "2024-11-28": 6,
-        "2024-11-29": 6,
-        "2024-11-30": 3,
-        "2024-12-01": 8,
-    };
-
-    // tooltip
-    const [tooltip, setTooltip] = useState({
-        show: false,
-        content: "",
-        x: 0,
-        y: 0,
-        position: "top"
-    });
-
-    // generate dates data
-    const generateDates = () => {
-        const dates = [];
-        const now = new Date();
-        for (let i = 0; i < 52 * 7; i++) {
-            const date = new Date(now);
-            date.setDate(date.getDate() - i);
-            const dateStr = date.toISOString().split("T")[0];
-            dates.unshift({
-                date: dateStr,
-                count: activityData[dateStr] || 0
-            });
-        }
-        return dates;
-    };
-
-    // group the weeks by the data
-    const groupDataByWeeks = (dates) => {
-        const weeks = [];
-        for (let i = 0; i < dates.length; i += 7) {
-            weeks.push(dates.slice(i, i + 7));
-        }
-        return weeks;
-    };
-
-    // get the month name from the dates data
-    const getMonthLabels = (dates) => {
-        const months = [];
-        let currentMonth = "";
-        let currentStartIndex = 0;
-
-        dates.forEach((date, index) => {
-            const month = new Date(date.date).toLocaleString("default", { month: "short" });
-            if (month !== currentMonth) {
-                if (currentMonth !== "") {
-                    months.push({
-                        month: currentMonth,
-                        startIndex: currentStartIndex,
-                        endIndex: Math.floor(index / 7)
-                    });
-                }
-                currentMonth = month;
-                currentStartIndex = Math.floor(index / 7);
-            }
-        });
-
-        // Add the last month
-        months.push({
-            month: currentMonth,
-            startIndex: currentStartIndex,
-            endIndex: Math.floor(dates.length / 7)
-        });
-
-        return months;
-    };
-
-    const data = generateDates();
-    const weeks = groupDataByWeeks(data);
-    const months = getMonthLabels(data);
-
-    // get the activity color based on the activity count
-    const getActivityColor = (count) => {
-        if (count === 0) return "#ebedf0";
-        if (count <= 2) return "#9be9a8";
-        if (count <= 4) return "#40c463";
-        if (count <= 6) return "#30a14e";
-        return "#216e39";
-    };
-
-    // format the date
-    const formatDate = (dateString) => {
-        return new Date(dateString).toLocaleDateString("en-US", {
-            month: "short",
-            day: "numeric",
-            year: "numeric"
-        });
-    };
-
-    // handle mouse move for showing the tooltip current position
-    const handleMouseMove = useCallback((e, day) => {
-        const rect = e.target.getBoundingClientRect();
-        const tooltipWidth = 200;
-        const tooltipHeight = 60;
-        const windowWidth = window.innerWidth;
-        const windowHeight = window.innerHeight;
-        const scrollY = window.scrollY || window.pageYOffset;
-
-        // Determine optimal position
-        let position = "top";
-        let x = rect.left;
-        let y = rect.top + scrollY;
-
-        // Calculate available space in different directions
-        const spaceRight = windowWidth - rect.right;
-        const spaceLeft = rect.left;
-        const spaceTop = rect.top;
-        const spaceBottom = windowHeight - rect.bottom;
-
-        // Horizontal position
-        if (spaceRight < tooltipWidth / 2 && spaceLeft > tooltipWidth / 2) {
-            x = rect.right - tooltipWidth;
-        } else if (spaceLeft < tooltipWidth / 2 && spaceRight > tooltipWidth / 2) {
-            x = rect.left;
-        } else {
-            x = rect.left - (tooltipWidth / 2) + (rect.width / 2);
-        }
-
-        // Vertical position
-        if (spaceTop < tooltipHeight && spaceBottom > tooltipHeight) {
-            y = rect.bottom + scrollY + 5;
-            position = "bottom";
-        } else {
-            y = rect.top + scrollY - tooltipHeight + 15;
-            position = "top";
-        }
-
-        // Ensure tooltip stays within window bounds
-        x = Math.max(10, Math.min(windowWidth - tooltipWidth - 10, x));
-
-        setTooltip({
-            show: true,
-            content: `${day.count} contributions on ${formatDate(day.date)}`,
-            x,
-            y,
-            position
-        });
-    }, []);
-
-    const handleMouseLeave = () => {
-        setTooltip(prev => ({ ...prev, show: false }));
-    };
-
-    return (
-        <div className="p-6 w-full max-w-4xl">
-            <h2 className="text-xl font-bold mb-7">Activity Contributions</h2>
-
-            <div className="flex flex-col gap-4">
-                <div className="relative overflow-x-auto pb-2 scrollbar">
-                    <div className="flex">
-                        <div className="w-full">
-
-                            {/* month names*/}
-                            <div className="flex relative h-6 mb-1">
-                                {months.map((monthData, index) => {
-                                    const width = (monthData.endIndex - monthData.startIndex) * 16;
-                                    const left = monthData.startIndex * 16;
-                                    return (
-                                        <div
-                                            key={index}
-                                            className="absolute text-xs text-gray-600 text-center"
-                                            style={{
-                                                left: `${left}px`,
-                                                width: `${width}px`
-                                            }}
-                                        >
-                                            {monthData.month}
-                                        </div>
-                                    );
-                                })}
-                            </div>
-
-                            {/* graph */}
-                            <div className="flex gap-1">
-                                {weeks.map((week, weekIndex) => (
-                                    <div key={weekIndex} className="flex flex-col gap-1">
-                                        {week.map((day, dayIndex) => (
-                                            <div
-                                                key={dayIndex}
-                                                className="w-3 h-3 rounded-sm cursor-pointer transition-colors duration-200 border border-gray-200 hover:border-gray-400"
-                                                style={{ backgroundColor: getActivityColor(day.count) }}
-                                                onMouseMove={(e) => handleMouseMove(e, day)}
-                                                onMouseLeave={handleMouseLeave}
-                                            />
-                                        ))}
-                                    </div>
-                                ))}
-                            </div>
-
-                        </div>
-                    </div>
-
-                    {/* tooltip */}
-                    {tooltip.show && (
-                        <div
-                            className="fixed z-50 px-3 py-2 text-sm text-white bg-gray-800 rounded-md pointer-events-none"
-                            style={{
-                                left: `${tooltip.x}px`,
-                                top: `${tooltip.y}px`,
-                                width: "max-content",
-                                transition: "transform 0.1s ease-out"
-                            }}
-                        >
-                            <div>{tooltip.content}</div>
+                <ComponentWrapper width={100}>
+                    {activityGraphWithMonthPreview && (
+                        <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                            <GithubActivityGraphWithMonthExample/>
                         </div>
                     )}
-                </div>
 
-                <div className="flex items-center justify-end gap-2 text-[0.8rem] text-gray-600">
-                    <span>Less</span>
-                    {[0, 1, 3, 5, 7].map((count, i) => (
-                        <div key={i} className="flex flex-col items-center">
-                            <div
-                                className="w-3 h-3 border rounded-sm border-gray-200"
-                                style={{backgroundColor: getActivityColor(count)}}
-                            />
-                        </div>
-                    ))}
-                    <span>More</span>
-                </div>
-
-            </div>
-        </div>
-    );
-};
-
-export default GithubActivityGraph;
-          '
-                            />
-                        )}
-                    </div>
+                    {activityGraphWithMonthCode && (
+                        <BlocksShowCode
+                            code={activityGraphWithMonthCodes}
+                        />
+                    )}
+                </ComponentWrapper>
 
                     <div className='mt-8'>
                         <ContentHeader text={'calculating total activity'} id={'calculating_total_activity'}/>
                     </div>
 
-                    <p className='w-full text-text text-[1rem]'>
-                        Track your daily activities with a GitHub-style activity graph, showcasing your progress and habits in a visual grid format.
-                    </p>
+                    <ComponentDescription text='Track your daily activities with a GitHub-style activity graph, showcasing your progress and habits in a visual grid format.'/>
 
-                    <div className='w-full border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    calculatingTotalActivityPreview
-                                        ? 'translate-x-[0px] !w-[100px]'
-                                        : 'translate-x-[107px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${
-                                    calculatingTotalActivityPreview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={handleCalculatingTotalActivityPreview}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    calculatingTotalActivityCode && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={handleCalculatingTotalActivityCode}
-                            >
-                                Code
-                            </button>
-                        </div>
-                        {calculatingTotalActivityPreview && (
-                            <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                                <CalculatingTotalActivityExample/>
-                            </div>
-                        )}
+                <ToggleTab code={calculatingTotalActivityCode} setPreview={setCalculatingTotalActivityPreview} setCode={setCalculatingTotalActivityCode} preview={calculatingTotalActivityPreview}/>
 
-                        {calculatingTotalActivityCode && (
-                            <BlocksShowCode
-                                code='
-import React, { useState, useCallback, useMemo } from "react";
-
-const GithubActivityGraph = () => {
-
-    // activity data
-    const activityData = {
-        "2024-01-01": 1,
-        "2024-01-02": 5,
-        "2024-01-03": 2,
-        "2024-01-04": 10,
-        "2024-01-05": 5,
-        "2024-01-06": 9,
-        "2024-01-16": 4,
-        "2024-01-17": 5,
-        "2024-01-18": 9,
-        "2024-01-19": 2,
-        "2024-01-20": 10,
-        "2024-02-03": 4,
-        "2024-02-04": 3,
-        "2024-02-05": 8,
-        "2024-02-06": 7,
-        "2024-02-07": 7,
-        "2024-02-08": 1,
-        "2024-02-09": 9,
-        "2024-02-10": 9,
-        "2024-02-11": 6,
-        "2024-02-12": 4,
-        "2024-02-13": 1,
-        "2024-02-14": 2,
-        "2024-02-15": 2,
-        "2024-02-16": 4,
-        "2024-02-17": 0,
-        "2024-02-18": 5,
-        "2024-02-19": 4,
-        "2024-02-20": 9,
-        "2024-02-21": 5,
-        "2024-02-22": 3,
-        "2024-02-23": 7,
-        "2024-02-24": 6,
-        "2024-02-25": 6,
-        "2024-02-26": 9,
-        "2024-02-27": 4,
-        "2024-02-28": 2,
-        "2024-02-29": 0,
-        "2024-03-01": 3,
-        "2024-03-02": 9,
-        "2024-03-03": 4,
-        "2024-03-04": 1,
-        "2024-03-05": 9,
-        "2024-03-06": 10,
-        "2024-03-07": 4,
-        "2024-03-08": 4,
-        "2024-03-09": 3,
-        "2024-03-10": 2,
-        "2024-03-11": 10,
-        "2024-03-12": 7,
-        "2024-03-13": 3,
-        "2024-03-24": 0,
-        "2024-03-25": 1,
-        "2024-03-26": 5,
-        "2024-03-27": 0,
-        "2024-03-28": 5,
-        "2024-03-29": 4,
-        "2024-03-30": 5,
-        "2024-03-31": 7,
-        "2024-04-01": 5,
-        "2024-04-02": 0,
-        "2024-04-03": 4,
-        "2024-04-04": 6,
-        "2024-04-05": 2,
-        "2024-04-06": 10,
-        "2024-04-24": 9,
-        "2024-04-25": 2,
-        "2024-04-26": 5,
-        "2024-04-27": 3,
-        "2024-04-28": 8,
-        "2024-04-29": 6,
-        "2024-04-30": 7,
-        "2024-05-01": 7,
-        "2024-05-02": 2,
-        "2024-05-03": 3,
-        "2024-05-04": 1,
-        "2024-05-05": 1,
-        "2024-05-06": 8,
-        "2024-05-07": 5,
-        "2024-05-08": 6,
-        "2024-05-09": 1,
-        "2024-05-10": 6,
-        "2024-05-11": 10,
-        "2024-05-12": 2,
-        "2024-05-13": 10,
-        "2024-05-14": 7,
-        "2024-05-15": 6,
-        "2024-05-16": 2,
-        "2024-05-17": 5,
-        "2024-05-18": 8,
-        "2024-05-19": 8,
-        "2024-05-20": 7,
-        "2024-05-21": 9,
-        "2024-05-22": 6,
-        "2024-05-23": 2,
-        "2024-05-24": 9,
-        "2024-05-25": 9,
-        "2024-05-26": 8,
-        "2024-05-27": 3,
-        "2024-05-28": 1,
-        "2024-05-29": 6,
-        "2024-05-30": 1,
-        "2024-05-31": 8,
-        "2024-06-01": 2,
-        "2024-06-02": 10,
-        "2024-06-03": 7,
-        "2024-06-04": 4,
-        "2024-06-05": 9,
-        "2024-06-06": 5,
-        "2024-06-07": 8,
-        "2024-06-08": 10,
-        "2024-06-09": 0,
-        "2024-06-10": 0,
-        "2024-06-11": 3,
-        "2024-06-12": 4,
-        "2024-06-13": 5,
-        "2024-06-14": 6,
-        "2024-06-15": 5,
-        "2024-06-16": 0,
-        "2024-07-03": 9,
-        "2024-07-04": 6,
-        "2024-07-05": 0,
-        "2024-07-06": 8,
-        "2024-07-07": 10,
-        "2024-07-08": 3,
-        "2024-07-09": 5,
-        "2024-07-10": 0,
-        "2024-07-11": 4,
-        "2024-07-12": 0,
-        "2024-07-13": 9,
-        "2024-07-14": 6,
-        "2024-07-15": 5,
-        "2024-07-16": 6,
-        "2024-07-17": 2,
-        "2024-07-18": 6,
-        "2024-07-19": 10,
-        "2024-07-20": 8,
-        "2024-07-27": 10,
-        "2024-07-28": 6,
-        "2024-07-29": 5,
-        "2024-07-30": 1,
-        "2024-07-31": 5,
-        "2024-08-01": 5,
-        "2024-08-02": 10,
-        "2024-08-03": 2,
-        "2024-08-17": 3,
-        "2024-08-18": 1,
-        "2024-08-19": 1,
-        "2024-08-20": 0,
-        "2024-08-21": 8,
-        "2024-08-22": 10,
-        "2024-08-23": 2,
-        "2024-08-24": 7,
-        "2024-08-25": 4,
-        "2024-08-26": 9,
-        "2024-08-27": 9,
-        "2024-08-28": 7,
-        "2024-08-29": 2,
-        "2024-08-30": 2,
-        "2024-08-31": 5,
-        "2024-09-01": 3,
-        "2024-09-02": 4,
-        "2024-09-03": 1,
-        "2024-09-04": 8,
-        "2024-09-05": 8,
-        "2024-09-06": 1,
-        "2024-09-07": 8,
-        "2024-09-08": 6,
-        "2024-09-09": 0,
-        "2024-09-10": 9,
-        "2024-09-11": 10,
-        "2024-09-12": 1,
-        "2024-09-13": 8,
-        "2024-09-14": 1,
-        "2024-09-15": 5,
-        "2024-09-16": 4,
-        "2024-09-17": 7,
-        "2024-09-18": 7,
-        "2024-09-19": 8,
-        "2024-09-20": 9,
-        "2024-09-21": 9,
-        "2024-09-22": 3,
-        "2024-09-23": 5,
-        "2024-09-24": 3,
-        "2024-09-25": 6,
-        "2024-09-26": 1,
-        "2024-09-27": 6,
-        "2024-09-28": 0,
-        "2024-09-29": 4,
-        "2024-09-30": 2,
-        "2024-10-01": 3,
-        "2024-10-02": 6,
-        "2024-10-03": 10,
-        "2024-10-04": 3,
-        "2024-10-24": 1,
-        "2024-10-25": 4,
-        "2024-10-26": 0,
-        "2024-10-27": 7,
-        "2024-10-28": 6,
-        "2024-10-29": 9,
-        "2024-10-30": 5,
-        "2024-10-31": 9,
-        "2024-11-01": 0,
-        "2024-11-02": 7,
-        "2024-11-03": 7,
-        "2024-11-04": 1,
-        "2024-11-05": 8,
-        "2024-11-06": 4,
-        "2024-11-07": 0,
-        "2024-11-08": 0,
-        "2024-11-09": 6,
-        "2024-11-10": 2,
-        "2024-11-11": 10,
-        "2024-11-12": 7,
-        "2024-11-13": 7,
-        "2024-11-14": 5,
-        "2024-11-15": 7,
-        "2024-11-16": 9,
-        "2024-11-17": 5,
-        "2024-11-18": 1,
-        "2024-11-19": 0,
-        "2024-11-20": 6,
-        "2024-11-21": 8,
-        "2024-11-22": 10,
-        "2024-11-23": 1,
-        "2024-11-24": 10,
-        "2024-11-25": 4,
-        "2024-11-26": 5,
-        "2024-11-27": 0,
-        "2024-11-28": 6,
-        "2024-11-29": 6,
-        "2024-11-30": 3,
-        "2024-12-01": 8,
-    };
-
-    // tooltip
-    const [tooltip, setTooltip] = useState({
-        show: false,
-        content: "",
-        x: 0,
-        y: 0,
-        position: "top"
-    });
-
-    // generate the dates data
-    const generateDates = () => {
-        const dates = [];
-        const now = new Date();
-        for (let i = 0; i < 52 * 7; i++) {
-            const date = new Date(now);
-            date.setDate(date.getDate() - i);
-            const dateStr = date.toISOString().split("T")[0];
-            dates.unshift({
-                date: dateStr,
-                count: activityData[dateStr] || 0
-            });
-        }
-        return dates;
-    };
-
-    // calculate the total activity
-    const totalContributions = useMemo(() => {
-        return Object.values(activityData).reduce((sum, count) => sum + count, 0);
-    }, [activityData]);
-
-    // make group by the weeks
-    const groupDataByWeeks = (dates) => {
-        const weeks = [];
-        for (let i = 0; i < dates.length; i += 7) {
-            weeks.push(dates.slice(i, i + 7));
-        }
-        return weeks;
-    };
-
-    // get the month name from the date
-    const getMonthLabels = (dates) => {
-        const months = [];
-        let currentMonth = "";
-        let currentStartIndex = 0;
-
-        dates.forEach((date, index) => {
-            const month = new Date(date.date).toLocaleString("default", { month: "short" });
-            if (month !== currentMonth) {
-                if (currentMonth !== "") {
-                    months.push({
-                        month: currentMonth,
-                        startIndex: currentStartIndex,
-                        endIndex: Math.floor(index / 7)
-                    });
-                }
-                currentMonth = month;
-                currentStartIndex = Math.floor(index / 7);
-            }
-        });
-
-        // Add the last month
-        months.push({
-            month: currentMonth,
-            startIndex: currentStartIndex,
-            endIndex: Math.floor(dates.length / 7)
-        });
-
-        return months;
-    };
-
-    const data = generateDates();
-    const weeks = groupDataByWeeks(data);
-    const months = getMonthLabels(data);
-
-    // get the activity color based on the activity count
-    const getActivityColor = (count) => {
-        if (count === 0) return "#ebedf0";
-        if (count <= 2) return "#9be9a8";
-        if (count <= 4) return "#40c463";
-        if (count <= 6) return "#30a14e";
-        return "#216e39";
-    };
-
-    // format the date
-    const formatDate = (dateString) => {
-        return new Date(dateString).toLocaleDateString("en-US", {
-            month: "short",
-            day: "numeric",
-            year: "numeric"
-        });
-    };
-
-    // handle the mouse move for showing the tooltip in the current position
-    const handleMouseMove = useCallback((e, day) => {
-        const rect = e.target.getBoundingClientRect();
-        const tooltipWidth = 200;
-        const tooltipHeight = 60;
-        const windowWidth = window.innerWidth;
-        const windowHeight = window.innerHeight;
-        const scrollY = window.scrollY || window.pageYOffset;
-
-        // Determine optimal position
-        let position = "top";
-        let x = rect.left;
-        let y = rect.top + scrollY;
-
-        // Calculate available space in different directions
-        const spaceRight = windowWidth - rect.right;
-        const spaceLeft = rect.left;
-        const spaceTop = rect.top;
-        const spaceBottom = windowHeight - rect.bottom;
-
-        // Horizontal position
-        if (spaceRight < tooltipWidth / 2 && spaceLeft > tooltipWidth / 2) {
-            x = rect.right - tooltipWidth;
-        } else if (spaceLeft < tooltipWidth / 2 && spaceRight > tooltipWidth / 2) {
-            x = rect.left;
-        } else {
-            x = rect.left - (tooltipWidth / 2) + (rect.width / 2);
-        }
-
-        // Vertical position
-        if (spaceTop < tooltipHeight && spaceBottom > tooltipHeight) {
-            y = rect.bottom + scrollY + 5;
-            position = "bottom";
-        } else {
-            y = rect.top + scrollY - tooltipHeight + 15;
-            position = "top";
-        }
-
-        // Ensure tooltip stays within window bounds
-        x = Math.max(10, Math.min(windowWidth - tooltipWidth - 10, x));
-
-        setTooltip({
-            show: true,
-            content: `${day.count} contributions on ${formatDate(day.date)}`,
-            x,
-            y,
-            position
-        });
-    }, []);
-
-    const handleMouseLeave = () => {
-        setTooltip(prev => ({ ...prev, show: false }));
-    };
-
-    return (
-        <div className="p-6 w-full max-w-4xl">
-            <h2 className="text-xl font-bold mb-7">Activity Contributions ({totalContributions})</h2>
-
-            <div className="flex flex-col gap-4">
-                <div className="relative overflow-x-auto pb-2 scrollbar">
-                    <div className="flex">
-                        <div className="w-full">
-
-                            {/* month names*/}
-                            <div className="flex relative h-6 mb-1">
-                                {months.map((monthData, index) => {
-                                    const width = (monthData.endIndex - monthData.startIndex) * 16;
-                                    const left = monthData.startIndex * 16;
-                                    return (
-                                        <div
-                                            key={index}
-                                            className="absolute text-xs text-gray-600 text-center"
-                                            style={{
-                                                left: `${left}px`,
-                                                width: `${width}px`
-                                            }}
-                                        >
-                                            {monthData.month}
-                                        </div>
-                                    );
-                                })}
-                            </div>
-
-                            {/* graph */}
-                            <div className="flex gap-1">
-                                {weeks.map((week, weekIndex) => (
-                                    <div key={weekIndex} className="flex flex-col gap-1">
-                                        {week.map((day, dayIndex) => (
-                                            <div
-                                                key={dayIndex}
-                                                className="w-3 h-3 rounded-sm cursor-pointer transition-colors duration-200 border border-gray-200 hover:border-gray-400"
-                                                style={{ backgroundColor: getActivityColor(day.count) }}
-                                                onMouseMove={(e) => handleMouseMove(e, day)}
-                                                onMouseLeave={handleMouseLeave}
-                                            />
-                                        ))}
-                                    </div>
-                                ))}
-                            </div>
-
-                        </div>
-                    </div>
-
-                    {/* tooltip */}
-                    {tooltip.show && (
-                        <div
-                            className="fixed z-50 px-3 py-2 text-sm text-white bg-gray-800 rounded-md pointer-events-none"
-                            style={{
-                                left: `${tooltip.x}px`,
-                                top: `${tooltip.y}px`,
-                                width: "max-content",
-                                transition: "transform 0.1s ease-out"
-                            }}
-                        >
-                            <div>{tooltip.content}</div>
+                <ComponentWrapper width={100}>
+                    {calculatingTotalActivityPreview && (
+                        <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                            <CalculatingTotalActivityExample/>
                         </div>
                     )}
-                </div>
 
-                <div className="flex items-center justify-end gap-2 text-[0.8rem] text-gray-600">
-                    <span>Less</span>
-                    {[0, 1, 3, 5, 7].map((count, i) => (
-                        <div key={i} className="flex flex-col items-center">
-                            <div
-                                className="w-3 h-3 border rounded-sm border-gray-200"
-                                style={{backgroundColor: getActivityColor(count)}}
-                            />
-                        </div>
-                    ))}
-                    <span>More</span>
-                </div>
-
-            </div>
-        </div>
-    );
-};
-
-export default GithubActivityGraph;
-          '
-                            />
-                        )}
-                    </div>
+                    {calculatingTotalActivityCode && (
+                        <BlocksShowCode
+                            code={calculatingTotalContributionCodes}
+                        />
+                    )}
+                </ComponentWrapper>
 
                     <BlocksFooter
                         backUrl="/components/table"

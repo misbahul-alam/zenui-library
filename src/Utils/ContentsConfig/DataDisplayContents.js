@@ -12,7 +12,7 @@ export const pieChartContents = [
   },
 ];
 
-// Table contents
+// Index contents
 export const tableContents = [
   {
     id: 1,

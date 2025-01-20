@@ -1,52 +1,74 @@
 import React from "react";
 
-// react icons
-import {FaQuoteLeft, FaQuoteRight, FaRegStar, FaStar} from "react-icons/fa";
+import {milestoneData} from "./Data.js"
 
-const Testimonial = () => {
+const Timeline = () => {
+
+    export const milestones = [
+        {
+            date: "January 2024",
+            title: "B.Tech",
+            description: "B.Tech graduate with specialization in CSE",
+            icon: graduationCapIcon,
+        },
+        {
+            date: "February 2024",
+            title: "Design Phase",
+            description: "Finalizing designs and mockups.",
+            icon: briefcaseIcon,
+        },
+        {
+            date: "March 2024",
+            title: "Development Phase",
+            description: "Starting the development of the project.",
+            icon: briefcaseIcon,
+        },
+        {
+            date: "April 2024",
+            title: "Testing Phase",
+            description: "Testing and quality assurance.",
+            icon: briefcaseIcon,
+        },
+        {
+            date: "May 2024",
+            title: "Launch",
+            description: "Official project launch.",
+            icon: briefcaseIcon,
+        },
+    ];
 
     return (
-        <div
-            className="w-full border border-[#3B9DF8] shadow-2xl rounded-lg flex flex-col md:flex-row items-center justify-between gap-6 px-6 py-16">
-            <img
-                src="https://img.freepik.com/free-photo/curly-man-with-broad-smile-shows-perfect-teeth-being-amused-by-interesting-talk-has-bushy-curly-dark-hair-stands-indoor-against-white-blank-wall_273609-17092.jpg?size=626&ext=jpg&uid=R134535407&ga=GA1.1.71340048.1688965399&semt=sph"
-                alt="demo/image"
-                className="w-[180px] h-[180px] object-cover rounded-full"
-            />
-
-            <div className="w-full md:w-[65%] relative">
-                <div className="flex flex-col md:flex-row flex-wrap gap-y-2 items-center justify-between relative">
-                    <FaQuoteRight
-                        className=" absolute top-[-550%] md:top-[-150%] left-[0%] text-[2rem] text-[#3B9DF8]"/>
-                    <div className="flex items-center gap-2">
-                        <h2 className="text-[1rem] dark:text-[#abc2d3] font-[500]">
-                            Jhone Dehon -
-                        </h2>
-                        <p className="text-[0.9rem] dark:text-[#abc2d3] text-[#9c9c9c]">
-                            CEO of Miracle
-                        </p>
+        <div className="max-w-4xl mx-auto p-6">
+            <h1 className="text-3xl font-bold mb-16 dark:text-[#abc2d3] text-center">
+                Milestone Icon Timeline
+            </h1>
+            <div className="relative border-l-[5px] dark:border-slate-700 border-gray-300">
+                {milestoneData.map((milestone, index) => (
+                    <div key={index} className="mb-8 relative ">
+                        <div
+                            id="icon"
+                            className={`absolute border-2 border-white top-5 -left-[2.5px] transform -translate-x-1/2 -translate-y-1/2 bg-[#3B9DF8] dark:border-slate-600 rounded-full p-2 z-10`}
+                        >
+                            {milestone.icon}
+                        </div>
+                        <div className="pl-6 ">
+                            <div className="flex sm:items-center sm:flex-row flex-col">
+                                <div className="text-[#3B9DF8] font-semibold">
+                                    {milestone.date}
+                                </div>
+                                <div className="sm:ml-4 dark:text-[#abc2d3] text-[#424242] text-lg font-semibold">
+                                    {milestone.title}
+                                </div>
+                            </div>
+                            <p className="text-gray-500 dark:text-slate-400 text-[0.9rem] mt-1">
+                                {milestone.description}
+                            </p>
+                        </div>
                     </div>
-                    <div className="flex items-center gap-1">
-                        <FaStar className="text-[1.1rem] text-[#ffba24]"/>
-                        <FaStar className="text-[1.1rem] text-[#ffba24]"/>
-                        <FaStar className="text-[1.1rem] text-[#ffba24]"/>
-                        <FaStar className="text-[1.1rem] text-[#ffba24]"/>
-                        <FaRegStar className="text-[#ffba24] text-[1.1rem]"/>
-                    </div>
-                </div>
-                <h2 className="text-[1.5rem] dark:text-[#abc2d3] font-[500] capitalize mt-3">
-                    amazing customer service
-                </h2>
-                <p className="text-justify dark:text-[#abc2d3] text-[0.9rem] my-3 text-[#424242]">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Atque nesciunt saepe quam doloremque nulla cumque vero
-                    sequi, repellendus vel reiciendis? Eos totam quidem
-                    ducimus amet, in fuga quia minus ab!
-                </p>
-                <FaQuoteLeft className="absolute bottom-[-10%] right-[0%] text-[2rem] text-[#3B9DF8]"/>
+                ))}
             </div>
         </div>
     );
 };
 
-export default Testimonial;
+export default Timeline;

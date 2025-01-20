@@ -712,7 +712,7 @@ export default Skeleton;
                     />
                 </div>
 
-                <ContentNavbar activeSection={activeSection} contents={skeletonContents} width='37%'/>
+                <ContentNavbar activeSection={activeSection} contents={skeletonContents} />
 
             </aside>
             <Helmet>

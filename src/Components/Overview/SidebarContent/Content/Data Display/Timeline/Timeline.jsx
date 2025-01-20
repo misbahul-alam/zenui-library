@@ -13,6 +13,8 @@ import WorkProgressTimeline from "./WorkProgressTimeline";
 import TreeTimeline from "./TreeTimeline";
 import MilestoneIconTimeline from "./MilestoneIconTimeline";
 
+import ContentNavbar from "../../../../../../Shared/ContentNavbar.jsx";
+
 const Timeline = () => {
   const sectionIds = timelineContents.map((item) => item.href.slice(1));
   const activeSection = useScrollSpy(sectionIds);
@@ -34,23 +36,8 @@ const Timeline = () => {
           />
         </div>
 
-        <div className="1024px:flex hidden flex-col gap-4 sticky top-4 right-0 w-[48%]">
-          <h2 className="text-[0.9rem] font-[600] text-text tracking-widest">
-            CONTENTS
-          </h2>
-          {timelineContents.map((item) => (
-            <a
-              key={item.id}
-              href={item.href}
-              className={`${
-                activeSection === item.href.slice(1) &&
-                "!text-primary !border-primary"
-              } text-[0.9rem] text-text border-l border-transparent pl-4`}
-            >
-              {item.title}
-            </a>
-          ))}
-        </div>
+        <ContentNavbar activeSection={activeSection} contents={timelineContents} width='48%'/>
+
       </aside>
       <Helmet>
         <title>Data Display - Timeline</title>

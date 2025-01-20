@@ -9,7 +9,7 @@ import Timeline from "../../../Components/Overview/SidebarContent/Content/Data D
 
 const TooltipPage = () => {
     return (
-        <>
+        <div className='dark:bg-darkBgColor'>
             <Navbar />
             <MobileNavbar/>
             <div className="flex w-full mx-auto max-w-[1700px]">
@@ -22,7 +22,7 @@ const TooltipPage = () => {
                     <Timeline />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

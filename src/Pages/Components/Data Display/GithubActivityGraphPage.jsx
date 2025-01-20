@@ -9,7 +9,7 @@ import GithubActivityGraph from "../../../Components/Overview/SidebarContent/Con
 
 const GithubActivityGraphPage = () => {
     return (
-        <>
+        <div className='dark:bg-darkBgColor'>
             <Navbar />
             <MobileNavbar/>
             <div className="flex w-full mx-auto max-w-[1700px]">
@@ -22,7 +22,7 @@ const GithubActivityGraphPage = () => {
                     <GithubActivityGraph />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

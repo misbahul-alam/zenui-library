@@ -41,7 +41,7 @@ const OverviewFooter = ({width = '820px',backUrl, forwardUrl, backName, forwardN
                 )
             }
 
-            <div className="flex items-center gap-5 justify-between w-full border-t border-border pt-5">
+            <div className="flex items-center gap-5 dark:border-slate-700 justify-between w-full border-t border-border pt-5">
                 <img src="/footer_logo.png" alt="logo-image" className="w-[120px] 640px:w-[120px]" />
 
                 <div className="flex items-center gap-3">

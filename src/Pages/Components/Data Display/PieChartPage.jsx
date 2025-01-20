@@ -3,14 +3,13 @@ import React from "react";
 // components
 import Navbar from "../../../Components/Home/Navbar";
 import Sidebar from "../../../Components/Overview/Sidebar";
-import Badge from "../../../Components/Overview/SidebarContent/Content/Data Display/Badge";
 import MobileNavbar from "../../../Components/Home/MobileNavbar.jsx";
 import MobileSidebar from "../../../Components/Overview/Sidebar/MobileSidebar.jsx";
 import PieChart from "../../../Components/Overview/SidebarContent/Content/Data Display/PieChart.jsx";
 
 const PieChartPage = () => {
     return (
-        <>
+        <div className='dark:bg-darkBgColor'>
             <Navbar />
             <MobileNavbar/>
             <div className="flex w-full mx-auto max-w-[1700px]">
@@ -23,7 +22,7 @@ const PieChartPage = () => {
                     <PieChart />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

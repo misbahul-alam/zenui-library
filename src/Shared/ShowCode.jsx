@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { FaRegCopy } from "react-icons/fa";
+import {FaJsSquare, FaReact, FaRegCopy} from "react-icons/fa";
 import { MdOutlineDone } from "react-icons/md";
 
 // store
 import useZenuiStore from "../Store/Index.js";
 import toggleThemeBaseClasses from "../Supports/Index.js";
+import {IoLogoCss3} from "react-icons/io";
 
 const ShowCode = ({ code }) => {
     const [isCopy, setIsCopy] = useState(false);
@@ -42,12 +43,27 @@ const ShowCode = ({ code }) => {
                         <button
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
-                            className={`px-3 py-2 rounded-lg text-sm ${
+                            className={`px-3 py-2 flex items-center gap-[8px] rounded-lg text-sm ${
                                 activeTab === tab.id
                                     ? "border-b rounded-b-none text-white"
                                     : "text-gray-400 hover:bg-slate-700"
                             }`}
                         >
+                            {
+                                tab?.language == 'jsx' && (
+                                    <FaReact className='text-blue-400 text-[1.1rem]'/>
+                                )
+                            }
+                            {
+                                tab?.language == 'js' && (
+                                    <FaJsSquare className='text-yellow-400 text-[1.1rem]'/>
+                                )
+                            }
+                            {
+                                tab?.language == 'css' && (
+                                    <IoLogoCss3 className='text-blue-400 text-[1.1rem]'/>
+                                )
+                            }
                             {tab.displayText || tab.id.toUpperCase()}
                         </button>
                     ))}

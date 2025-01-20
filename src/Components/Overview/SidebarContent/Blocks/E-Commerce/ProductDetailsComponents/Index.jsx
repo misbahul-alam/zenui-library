@@ -457,7 +457,7 @@ const ProductDetailsPage = () => {
                         <span className="text-sm text-gray-600">11 Reviews</span>
                     </div>
 
-                    <h1 className="text-[1.6rem] lg:text-[1.9rem] text-gray-800 font-semibold">Tray Table</h1>
+                    <h1 className="text-[1.6rem] lg:text-[1.9rem] text-gray-800 font-semibold">Tray Index</h1>
 
                     <p className="text-gray-600 text-[0.9rem]">
                         Buy one or buy a few and make every space where you sit more convenient. Light and easy to
