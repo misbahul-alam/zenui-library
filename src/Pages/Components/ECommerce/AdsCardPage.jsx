@@ -9,7 +9,7 @@ import AdsCard from "../../../Components/Overview/SidebarContent/Content/ECommer
 
 const AdsCardPage = () => {
     return (
-        <>
+        <div className='dark:bg-darkBgColor'>
             <Navbar />
             <MobileNavbar/>
             <div className="flex w-full mx-auto max-w-[1700px]">
@@ -22,7 +22,7 @@ const AdsCardPage = () => {
                     <AdsCard />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

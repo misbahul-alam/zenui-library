@@ -22,28 +22,14 @@ import {IoIosHeart, IoMdHeartEmpty} from "react-icons/io";
 import {MdLocalShipping} from "react-icons/md";
 import {HiArrowsUpDown} from "react-icons/hi2";
 
-import {useToggleCardView} from "../../../../../CustomHooks/ButtonToggle.js";
+import ComponentDescription from "../../../../../Shared/ComponentDescription.jsx";
+import ToggleTab from "../../../../../Shared/ToggleTab.jsx";
+import ComponentWrapper from "../../../../../Shared/ComponentWrapper.jsx";
+import ContentNavbar from "../../../../../Shared/ContentNavbar.jsx";
 
 const ProductCard = () => {
     const sectionIds = productCardsContents.map(item => item.href.slice(1));
     const activeSection = useScrollSpy(sectionIds);
-
-    // backgroundPreview
-    const [basicDialogPreview, setBasicDialogPreview] = useState(true);
-    const [basicDialogCode, setBasicDialogCode] = useState(false);
-
-    const handleBasicDialogPreview = () => {
-        setBasicDialogPreview(true);
-        setBasicDialogCode(false);
-    };
-
-    const handleBasicDialogCode = () => {
-        setBasicDialogCode(true);
-        setBasicDialogPreview(false);
-    };
-
-    // toggle actions
-    const toggleCardView = useToggleCardView();
 
     const [productCard1Preview, setProductCard1Preview] = useState(true);
     const [productCard1Code, setProductCard1Code] = useState(false);
@@ -101,36 +87,11 @@ const ProductCard = () => {
                 <div>
                     <ContentHeader text={'clothing product card'} id={'clothing_product_card'}/>
 
-                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        Clothing product card with name, price, sizes, colors, and quick action buttons for easy shopping.
-                    </p>
+                    <ComponentDescription text='Clothing product card with name, price, sizes, colors, and quick action buttons for easy shopping.'/>
 
-                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    productCard1Preview
-                                        ? 'translate-x-[0px] !w-[100px]'
-                                        : 'translate-x-[107px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${
-                                    productCard1Preview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={() => toggleCardView(setProductCard1Preview, setProductCard1Code, true)}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    productCard1Code && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={() => toggleCardView(setProductCard1Preview, setProductCard1Code, false)}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={productCard1Code} setCode={setProductCard1Code} setPreview={setProductCard1Preview} preview={productCard1Preview}/>
+
+                    <ComponentWrapper>
                         {productCard1Preview && (
                             <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
                                 <div className='w-full 640px:w-[50%] group'>
@@ -250,12 +211,12 @@ const ProductCard = () => {
                                                     );
                                                 })}
                                             </div>
-                                            <span className='text-[0.9rem] text-gray-500'>(43)</span>
+                                            <span className='text-[0.9rem] dark:text-slate-400 text-gray-500'>(43)</span>
                                         </div>
 
-                                        <h3 className='text-[1rem] font-medium text-center mt-0.5 text-gray-900'>Drop-shoulder
+                                        <h3 className='text-[1rem] font-medium text-center mt-0.5 text-gray-900 dark:text-[#abc2d3]'>Drop-shoulder
                                             synthetic</h3>
-                                        <p className='text-center mt-0.5 text-[0.9rem] text-gray-900'>Tk 1,800.00</p>
+                                        <p className='text-center mt-0.5 dark:text-[#abc2d3] text-[0.9rem] text-gray-900'>Tk 1,800.00</p>
 
                                         <div className='flex items-center gap-[10px] justify-center mt-3'>
                                             <div
@@ -421,12 +382,12 @@ const ProductCard = () => {
                             );
                         })}
                     </div>
-                    <span className="text-[0.9rem] text-gray-500">(43)</span>
+                    <span className="text-[0.9rem] dark:text-slate-400 text-gray-500">(43)</span>
                 </div>
 
-                <h3 className="text-[1rem] font-medium text-center mt-0.5 text-gray-900">Drop-shoulder
+                <h3 className="text-[1rem] font-medium text-center mt-0.5 text-gray-900 dark:text-[#abc2d3]">Drop-shoulder
                     synthetic</h3>
-                <p className="text-center mt-0.5 text-[0.9rem] text-gray-900">Tk 1,800.00</p>
+                <p className="text-center mt-0.5 text-[0.9rem] text-gray-900 dark:text-[#abc2d3]">Tk 1,800.00</p>
 
                 <div className="flex items-center gap-[10px] justify-center mt-3">
                     <div
@@ -443,45 +404,21 @@ export default ProductCard;
           '
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
                     <div className='mt-8'>
                         <ContentHeader text={'juice product card'} id={'juice_product_card'}/>
                     </div>
 
-                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        Juice product card with name, price, flavors, size options, and quick action buttons for easy purchase.
-                    </p>
+                   <ComponentDescription text='Juice product card with name, price, flavors, size options, and quick action buttons for easy purchase.'/>
 
-                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    productCard2Preview
-                                        ? 'translate-x-[0px] !w-[100px]'
-                                        : 'translate-x-[107px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${
-                                    productCard2Preview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={() => toggleCardView(setProductCard2Preview, setProductCard2Code, true)}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    productCard2Code && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={() => toggleCardView(setProductCard2Preview, setProductCard2Code, false)}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={productCard2Code} setCode={setProductCard2Code} preview={productCard2Preview}
+                    setPreview={setProductCard2Preview}/>
+
+                    <ComponentWrapper>
                         {productCard2Preview && (
                             <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                                <div className='border border-gray-300 rounded-md p-5'>
+                                <div className='border dark:border-slate-700 border-gray-300 rounded-md p-5'>
 
                                     {/* product image */}
                                     <img alt='product/image' src='https://i.ibb.co.com/VN5sNHX/Link-14-png.png'
@@ -489,7 +426,7 @@ export default ProductCard;
 
                                     {/* product details */}
                                     <div className='mt-3'>
-                                        <h3 className='text-[1.1rem] font-semibold'>Frooti Mango Drink</h3>
+                                        <h3 className='text-[1.1rem] dark:text-[#abc2d3] font-semibold'>Frooti Mango Drink</h3>
 
                                         {/* rating area */}
                                         <div className='flex items-center gap-[10px] mt-2'>
@@ -508,12 +445,12 @@ export default ProductCard;
                                                     );
                                                 })}
                                             </div>
-                                            <span className='text-[0.9rem] text-gray-500'>(43)</span>
+                                            <span className='text-[0.9rem] dark:text-slate-400 text-gray-500'>(43)</span>
                                         </div>
 
                                         <div className='flex items-end justify-between mt-2'>
                                             <div>
-                                                <p className='text-[0.9rem] text-gray-500'>1 KG</p>
+                                                <p className='text-[0.9rem] dark:text-slate-400 text-gray-500'>1 KG</p>
                                                 <p className='text-[1rem] font-semibold mt-1 text-[#0FABCA]'>$ 80.00</p>
                                             </div>
 
@@ -542,7 +479,7 @@ const ProductCard = () => {
     const [rating, setRating] = useState(5);
 
     return (
-        <div className="border border-gray-300 rounded-md p-5">
+        <div className="border dark:border-slate-700 border-gray-300 rounded-md p-5">
 
             {/* product image */}
             <img alt="product/image" src="https://i.ibb.co.com/VN5sNHX/Link-14-png.png"
@@ -550,7 +487,7 @@ const ProductCard = () => {
 
             {/* product details */}
             <div className="mt-3">
-                <h3 className="text-[1.1rem] font-semibold">Frooti Mango Drink</h3>
+                <h3 className="text-[1.1rem] dark:text-[#abc2d3] font-semibold">Frooti Mango Drink</h3>
 
                 {/* rating area */}
                 <div className="flex items-center gap-[10px] mt-2">
@@ -569,12 +506,12 @@ const ProductCard = () => {
                             );
                         })}
                     </div>
-                    <span className="text-[0.9rem] text-gray-500">(43)</span>
+                    <span className="text-[0.9rem] dark:text-slate-400 text-gray-500">(43)</span>
                 </div>
 
                 <div className="flex items-end justify-between mt-2">
                     <div>
-                        <p className="text-[0.9rem] text-gray-500">1 KG</p>
+                        <p className="text-[0.9rem] dark:text-slate-400 text-gray-500">1 KG</p>
                         <p className="text-[1rem] font-semibold mt-1 text-[#0FABCA]">$ 80.00</p>
                     </div>
 
@@ -593,51 +530,26 @@ export default ProductCard;
           '
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
                     <div className='mt-8'>
                         <ContentHeader text={'Grocery product card'} id={'grocery_product_card'}/>
                     </div>
 
-                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        Grocery product card with name, price, weight, category, and quick action buttons for easy shopping.
-                    </p>
+                    <ComponentDescription text='Grocery product card with name, price, weight, category, and quick action buttons for easy shopping.'/>
 
-                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    productCard3Preview
-                                        ? 'translate-x-[0px] !w-[100px]'
-                                        : 'translate-x-[107px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${
-                                    productCard3Preview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={() => toggleCardView(setProductCard3Preview, setProductCard3Code, true)}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    productCard3Code && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={() => toggleCardView(setProductCard3Preview, setProductCard3Code, false)}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={productCard3Code} setCode={setProductCard3Code} preview={productCard3Preview} setPreview={setProductCard3Preview}/>
+
+                    <ComponentWrapper>
                         {productCard3Preview && (
                             <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                                <div className='relative border w-full 640px:w-[55%] border-gray-300 rounded-md p-5'>
+                                <div className='relative border dark:border-slate-700 w-full 640px:w-[55%] border-gray-300 rounded-md p-5'>
 
                                     {/* favorite icon */}
                                     <FaHeart onClick={() => setIsFavorite(false)}
-                                             className={` ${isFavorite ? 'opacity-100 scale-[1] z-10' : 'opacity-0 scale-[0.7] z-[-1]'} text-[1.4rem] absolute top-3 text-red-500 right-3 cursor-pointer transition-all duration-300`}/>
+                                             className={` ${isFavorite ? 'opacity-100 scale-[1] z-10' : 'opacity-0 scale-[0.7] z-[-1]'} text-[1.4rem] dark:text-slate-400 absolute top-3 text-red-500 right-3 cursor-pointer transition-all duration-300`}/>
                                     <FaRegHeart onClick={() => setIsFavorite(true)}
-                                                className={`${isFavorite ? 'opacity-0 scale-[0.7] z-[-1]' : 'opacity-100 scale-[1] z-10'} text-[1.4rem] absolute top-3 right-3 text-gray-600 cursor-pointer transition-all duration-300`}/>
+                                                className={`${isFavorite ? 'opacity-0 scale-[0.7] z-[-1]' : 'opacity-100 scale-[1] z-10'} text-[1.4rem] dark:text-slate-400 absolute top-3 right-3 text-gray-600 cursor-pointer transition-all duration-300`}/>
 
 
                                     {/* product image */}
@@ -664,24 +576,24 @@ export default ProductCard;
                                             })}
                                         </div>
 
-                                        <h3 className='text-[1.1rem] font-medium mt-1.5'>Cucumber</h3>
+                                        <h3 className='text-[1.1rem] dark:text-[#abc2d3] font-medium mt-1.5'>Cucumber</h3>
 
                                         <div className='flex items-center gap-[10px]'>
                                             <p className='text-[1rem] font-semibold mt-1 text-[#0FABCA]'>$70.21</p>
-                                            <del className='text-[1rem] font-normal mt-1 text-gray-500 '>$80.50</del>
+                                            <del className='text-[1rem] font-normal mt-1 dark:text-slate-500 text-gray-500 '>$80.50</del>
                                         </div>
 
                                         <div className='flex items-center w-full justify-between mt-4'>
 
-                                            <div className='flex items-center border border-gray-200 rounded-md'>
+                                            <div className='flex items-center border dark:border-slate-700 border-gray-200 rounded-md'>
                                                 <button
-                                                    className='bg-gray-100 p-[9px] rounded-l-md text-gray-600 text-[1.1rem]'
+                                                    className='bg-gray-100 dark:text-[#abc2d3] dark:bg-slate-900 p-[9px] rounded-l-md text-gray-600 text-[1.1rem]'
                                                     onClick={handleDecrement}><FiMinus/></button>
                                                 <input type='number' value={count}
-                                                       className='w-[50px] py-[4px] outline-none text-gray-600 focus:ring-0 border-none text-center text-[1.1rem]'
+                                                       className='w-[50px] py-[4px] dark:bg-transparent dark:text-[#abc2d3] outline-none text-gray-600 focus:ring-0 border-none text-center text-[1.1rem]'
                                                        onInput={handleInputValueChange}/>
                                                 <button
-                                                    className='bg-gray-100 p-[9px] rounded-r-md text-gray-600 text-[1.1rem]'
+                                                    className='bg-gray-100 dark:text-[#abc2d3] dark:bg-slate-900 p-[9px] rounded-r-md text-gray-600 text-[1.1rem]'
                                                     onClick={handleIncrement}><FiPlus/></button>
                                             </div>
 
@@ -725,13 +637,13 @@ const ProductCard = () => {
     }
 
     return (
-        <div className="relative border w-full md:w-[55%] border-gray-300 rounded-md p-5">
+        <div className="relative border dark:border-slate-700 w-full md:w-[55%] border-gray-300 rounded-md p-5">
 
             {/* favorite icon */}
             <FaHeart onClick={() => setIsFavorite(false)}
-                     className={` ${isFavorite ? "opacity-100 scale-[1] z-10" : "opacity-0 scale-[0.7] z-[-1]"} text-[1.4rem] absolute top-3 text-red-500 right-3 cursor-pointer transition-all duration-300`}/>
+                     className={` ${isFavorite ? "opacity-100 scale-[1] z-10" : "opacity-0 scale-[0.7] z-[-1]"} text-[1.4rem] absolute top-3 dark:text-slate-400 text-red-500 right-3 cursor-pointer transition-all duration-300`}/>
             <FaRegHeart onClick={() => setIsFavorite(true)}
-                        className={`${isFavorite ? "opacity-0 scale-[0.7] z-[-1]" : "opacity-100 scale-[1] z-10"} text-[1.4rem] absolute top-3 right-3 text-gray-600 cursor-pointer transition-all duration-300`}/>
+                        className={`${isFavorite ? "opacity-0 scale-[0.7] z-[-1]" : "opacity-100 scale-[1] z-10"} text-[1.4rem] absolute top-3 dark:text-slate-400 right-3 text-gray-600 cursor-pointer transition-all duration-300`}/>
 
 
             {/* product image */}
@@ -758,7 +670,7 @@ const ProductCard = () => {
                     })}
                 </div>
 
-                <h3 className="text-[1.1rem] font-medium mt-1.5">Cucumber</h3>
+                <h3 className="text-[1.1rem] dark:text-[#abc2d3] font-medium mt-1.5">Cucumber</h3>
 
                 <div className="flex items-center gap-[10px]">
                     <p className="text-[1rem] font-semibold mt-1 text-[#0FABCA]">$70.21</p>
@@ -767,15 +679,15 @@ const ProductCard = () => {
 
                 <div className="flex items-center w-full justify-between mt-4">
 
-                    <div className="flex items-center border border-gray-200 rounded-md">
+                    <div className="flex items-center dark:border-slate-700 border border-gray-200 rounded-md">
                         <button
-                            className="bg-gray-100 p-[9px] rounded-l-md text-gray-600 text-[1.1rem]"
+                            className="bg-gray-100 p-[9px] rounded-l-md dark:text-[#abc2d3] dark:bg-slate-900 text-gray-600 text-[1.1rem]"
                             onClick={handleDecrement}><FiMinus/></button>
                         <input type="number" value={count}
-                               className="w-[50px] py-[4px] outline-none text-gray-600 focus:ring-0 border-none text-center text-[1.1rem]"
+                               className="w-[50px] py-[4px] dark:bg-transparent dark:text-[#abc2d3] outline-none text-gray-600 focus:ring-0 border-none text-center text-[1.1rem]"
                                onInput={handleInputValueChange}/>
                         <button
-                            className="bg-gray-100 p-[9px] rounded-r-md text-gray-600 text-[1.1rem]"
+                            className="bg-gray-100 p-[9px] rounded-r-md dark:text-[#abc2d3] dark:bg-slate-900 text-gray-600 text-[1.1rem]"
                             onClick={handleIncrement}><FiPlus/></button>
                     </div>
 
@@ -793,45 +705,20 @@ export default ProductCard;
           '
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
                     <div className='mt-8'>
                         <ContentHeader text={'digital product card'} id={'digital_product_card'}/>
                     </div>
 
-                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        Digital product card with name, price, file size, format, and quick action buttons for instant download.
-                    </p>
+                    <ComponentDescription text='Digital product card with name, price, file size, format, and quick action buttons for instant download.'/>
 
-                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    productCard4Preview
-                                        ? 'translate-x-[0px] !w-[100px]'
-                                        : 'translate-x-[107px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${
-                                    productCard4Preview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={() => toggleCardView(setProductCard4Preview, setProductCard4Code, true)}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    productCard4Code && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={() => toggleCardView(setProductCard4Preview, setProductCard4Code, false)}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={productCard4Code} setCode={setProductCard4Code} setPreview={setProductCard4Preview} preview={productCard4Preview}/>
+
+                    <ComponentWrapper>
                         {productCard4Preview && (
                             <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                                <div className='border border-gray-300 rounded-xl p-2 w-full 640px:w-[70%]'>
+                                <div className='border border-gray-300 dark:border-slate-700 rounded-xl p-2 w-full 640px:w-[65%]'>
 
                                     {/* product image */}
                                     <div className='relative'>
@@ -855,14 +742,14 @@ export default ProductCard;
 
                                     {/* product details */}
                                     <div className='mt-2 pt-0 p-1'>
-                                        <h3 className='text-[1.1rem] font-medium line-clamp-1'>Criphin - Contemporary
+                                        <h3 className='text-[1.1rem] font-medium dark:text-[#abc2d3] line-clamp-1'>Criphin - Contemporary
                                             Business Keynote</h3>
 
                                         {/* authors & reviews */}
                                         <div className='flex flex-col 640px:flex-row 640px:items-center justify-between mt-1'>
                                             <p className='text-gray-400 text-[0.9rem]'>by <span
-                                                className='text-black'>Criphin</span> in <span
-                                                className='text-black'>Graphics</span></p>
+                                                className='text-black dark:text-[#abc2d3]'>Criphin</span> in <span
+                                                className='text-black dark:text-[#abc2d3]'>Graphics</span></p>
 
                                             {/* review area */}
                                             <div className='flex items-center gap-[10px]'>
@@ -881,14 +768,14 @@ export default ProductCard;
                                                         );
                                                     })}
                                                 </div>
-                                                <span className='text-[0.8rem] text-gray-500'>(4.8)</span>
+                                                <span className='text-[0.8rem] dark:text-slate-400 text-gray-500'>(4.8)</span>
                                             </div>
                                         </div>
 
                                         {/* price and action btn */}
                                         <div className='flex items-end justify-between mt-5'>
                                             <div>
-                                                <span className='text-gray-400 text-[0.9rem]'>168 Sales</span>
+                                                <span className='text-gray-400 dark:text-slate-400 text-[0.9rem]'>168 Sales</span>
                                                 <p className='text-[1.150rem] font-semibold text-[#0FABCA]'>$52.00</p>
                                             </div>
 
@@ -926,7 +813,7 @@ const ProductCard = () => {
     const [isFavorite, setIsFavorite] = useState(false);
 
     return (
-        <div className="border border-gray-300 rounded-xl p-2 w-full md:w-[70%]">
+        <div className="border border-gray-300 dark:border-slate-700 rounded-xl p-2 w-full md:w-[70%]">
 
             {/* product image */}
             <div className="relative">
@@ -950,14 +837,14 @@ const ProductCard = () => {
 
             {/* product details */}
             <div className="mt-2 pt-0 p-1">
-                <h3 className="text-[1.1rem] font-medium line-clamp-1">Criphin - Contemporary
+                <h3 className="text-[1.1rem] dark:text-[#abc2d3] font-medium line-clamp-1">Criphin - Contemporary
                     Business Keynote</h3>
 
                 {/* authors & reviews */}
                 <div className="flex flex-col md:flex-row md:items-center justify-between mt-1">
                     <p className="text-gray-400 text-[0.9rem]">by <span
-                        className="text-black">Criphin</span> in <span
-                        className="text-black">Graphics</span></p>
+                        className="text-black dark:text-[#abc2d3]">Criphin</span> in <span
+                        className="text-black dark:text-[#abc2d3]">Graphics</span></p>
 
                     {/* review area */}
                     <div className="flex items-center gap-[10px]">
@@ -976,14 +863,14 @@ const ProductCard = () => {
                                 );
                             })}
                         </div>
-                        <span className="text-[0.8rem] text-gray-500">(4.8)</span>
+                        <span className="text-[0.8rem] dark:text-slate-400 text-gray-500">(4.8)</span>
                     </div>
                 </div>
 
                 {/* price and action btn */}
                 <div className="flex items-end justify-between mt-5">
                     <div>
-                        <span className="text-gray-400 text-[0.9rem]">168 Sales</span>
+                        <span className="text-gray-400 dark:text-slate-400 text-[0.9rem]">168 Sales</span>
                         <p className="text-[1.150rem] font-semibold text-[#0FABCA]">$52.00</p>
                     </div>
 
@@ -1009,42 +896,17 @@ export default ProductCard;
           '
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
                     <div className='mt-8'>
                         <ContentHeader text={'book product card'} id={'book_product_card'}/>
                     </div>
 
-                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        Book product card with title, price, author, genre, and quick action buttons for easy purchase.
-                    </p>
+                    <ComponentDescription text='Book product card with title, price, author, genre, and quick action buttons for easy purchase.'/>
 
-                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    productCard5Preview
-                                        ? 'translate-x-[0px] !w-[100px]'
-                                        : 'translate-x-[107px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${
-                                    productCard5Preview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={() => toggleCardView(setProductCard5Preview, setProductCard5Code, true)}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    productCard5Code && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={() => toggleCardView(setProductCard5Preview, setProductCard5Code, false)}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={productCard5Code} preview={productCard5Preview} setPreview={setProductCard5Preview} setCode={setProductCard5Code}/>
+
+                    <ComponentWrapper>
                         {productCard5Preview && (
                             <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
                                 <div className='w-full 640px:w-[55%] relative rounded-md overflow-hidden'>
@@ -1059,10 +921,10 @@ export default ProductCard;
 
                                     {/* product details */}
                                     <div className='mt-2'>
-                                        <span className='text-gray-400 text-[0.9rem]'>Biography</span>
-                                        <h3 className='text-[1.1rem] font-medium mt-2'>Home Decor Lucky Deer Family
+                                        <span className='text-gray-400 dark:text-slate-400 text-[0.9rem]'>Biography</span>
+                                        <h3 className='text-[1.1rem] dark:text-[#abc2d3] font-medium mt-2'>Home Decor Lucky Deer Family
                                             Matte Finish Ceramic Figures</h3>
-                                        <p className='text-[0.9rem] text-gray-400 mt-1'>By Ellie Thomson, Henry</p>
+                                        <p className='text-[0.9rem] dark:text-slate-400 text-gray-400 mt-1'>By Ellie Thomson, Henry</p>
                                         <p className='text-[1.1rem] font-semibold mt-1 text-[#0FABCA]'>$80.00</p>
                                     </div>
                                 </div>
@@ -1088,10 +950,10 @@ const ProductCard = () => {
 
             {/* product details */}
             <div className="mt-2">
-                <span className="text-gray-400 text-[0.9rem]">Biography</span>
-                <h3 className="text-[1.1rem] font-medium mt-2">Home Decor Lucky Deer Family
+                <span className="text-gray-400 dark:text-slate-400 text-[0.9rem]">Biography</span>
+                <h3 className="text-[1.1rem] dark:text-[#abc2d3] font-medium mt-2">Home Decor Lucky Deer Family
                     Matte Finish Ceramic Figures</h3>
-                <p className="text-[0.9rem] text-gray-400 mt-1">By Ellie Thomson, Henry</p>
+                <p className="text-[0.9rem] dark:text-slate-400 text-gray-400 mt-1">By Ellie Thomson, Henry</p>
                 <p className="text-[1.1rem] font-semibold mt-1 text-[#0FABCA]">$80.00</p>
             </div>
         </div>
@@ -1102,45 +964,20 @@ export default ProductCard;
           '
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
                     <div className='mt-8'>
                         <ContentHeader text={'gadget product card 1'} id={'gadget_product_card_1'}/>
                     </div>
 
-                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        Gadget product card with name, price, features, available colors, and quick action buttons for easy purchase.
-                    </p>
+                    <ComponentDescription text='Gadget product card with name, price, features, available colors, and quick action buttons for easy purchase.'/>
 
-                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    productCard6Preview
-                                        ? 'translate-x-[0px] !w-[100px]'
-                                        : 'translate-x-[107px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${
-                                    productCard6Preview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={() => toggleCardView(setProductCard6Preview, setProductCard6Code, true)}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    productCard6Code && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={() => toggleCardView(setProductCard6Preview, setProductCard6Code, false)}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={productCard6Code} setCode={setProductCard6Code} setPreview={setProductCard6Preview} preview={productCard6Preview}/>
+
+                    <ComponentWrapper>
                         {productCard6Preview && (
                             <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                                <div className='border border-gray-300 w-full 640px:w-[60%] relative rounded-2xl overflow-hidden'>
+                                <div className='border border-gray-300 dark:border-slate-700 w-full 640px:w-[60%] relative rounded-2xl overflow-hidden'>
 
                                     {/* badge */}
                                     <span
@@ -1152,13 +989,13 @@ export default ProductCard;
 
                                     {/* product details */}
                                     <div className='p-4 pt-0'>
-                                        <h3 className='text-[1.4rem] font-semibold mb-1 mt-2'>Apple</h3>
+                                        <h3 className='text-[1.4rem] dark:text-[#abc2d3] font-semibold mb-1 mt-2'>Apple</h3>
 
-                                        <span className='text-[0.9rem] font-normal text-gray-500 line-clamp-2'>2020 Apple MacBook Pro with Apple M1 Chip (13-inch, 8GB RAM, 256GB SSD Storage) - Silver</span>
+                                        <span className='text-[0.9rem] dark:text-slate-400 font-normal text-gray-500 line-clamp-2'>2020 Apple MacBook Pro with Apple M1 Chip (13-inch, 8GB RAM, 256GB SSD Storage) - Silver</span>
 
                                         {/* price & discount offer */}
                                         <div className='flex items-center mt-3 gap-[15px]'>
-                                            <p className='text-[1.150rem] font-semibold mt-1'>$1024.99+</p>
+                                            <p className='text-[1.150rem] dark:text-[#abc2d3] font-semibold mt-1'>$1024.99+</p>
 
                                             <p className='border text-green-600 text-[0.8rem] border-green-400 px-2 py-1 rounded-md'>35%
                                                 Off</p>
@@ -1166,12 +1003,12 @@ export default ProductCard;
 
                                         {/* shipping offers */}
                                         <div
-                                            className='flex items-center border-t border-gray-300 mt-3 gap-[15px] pt-[5px]'>
-                                            <div className='flex items-center gap-[6px] text-gray-400 text-[0.9rem]'>
+                                            className='flex items-center dark:border-slate-700 border-t border-gray-300 mt-3 gap-[15px] pt-[5px]'>
+                                            <div className='flex items-center gap-[6px] dark:text-slate-400 text-gray-400 text-[0.9rem]'>
                                                 <MdLocalShipping/>
                                                 <p>Free shipping</p>
                                             </div>
-                                            <div className='flex items-center gap-[6px] text-gray-400 text-[0.9rem]'>
+                                            <div className='flex items-center gap-[6px] dark:text-slate-400 text-gray-400 text-[0.9rem]'>
                                                 <IoGift/>
                                                 <p>Free gift</p>
                                             </div>
@@ -1217,7 +1054,7 @@ const ProductCard = () => {
     const [isFavorite, setIsFavorite] = useState(false);
 
     return (
-        <div className="border border-gray-300 w-full md:w-[60%] relative rounded-2xl overflow-hidden">
+        <div className="border border-gray-300 dark:border-slate-700 w-full md:w-[60%] relative rounded-2xl overflow-hidden">
 
             {/* badge */}
             <span
@@ -1229,13 +1066,13 @@ const ProductCard = () => {
 
             {/* product details */}
             <div className="p-4 pt-0">
-                <h3 className="text-[1.4rem] font-semibold mb-1 mt-2">Apple</h3>
+                <h3 className="text-[1.4rem] dark:text-[#abc2d3] font-semibold mb-1 mt-2">Apple</h3>
 
-                <span className="text-[0.9rem] font-normal text-gray-500 line-clamp-2">2020 Apple MacBook Pro with Apple M1 Chip (13-inch, 8GB RAM, 256GB SSD Storage) - Silver</span>
+                <span className="text-[0.9rem] dark:text-slate-400 font-normal text-gray-500 line-clamp-2">2020 Apple MacBook Pro with Apple M1 Chip (13-inch, 8GB RAM, 256GB SSD Storage) - Silver</span>
 
                 {/* price & discount offer */}
                 <div className="flex items-center mt-3 gap-[15px]">
-                    <p className="text-[1.150rem] font-semibold mt-1">$1024.99+</p>
+                    <p className="text-[1.150rem] dark:text-[#abc2d3] font-semibold mt-1">$1024.99+</p>
 
                     <p className="border text-green-600 text-[0.8rem] border-green-400 px-2 py-1 rounded-md">35%
                         Off</p>
@@ -1243,12 +1080,12 @@ const ProductCard = () => {
 
                 {/* shipping offers */}
                 <div
-                    className="flex items-center border-t border-gray-300 mt-3 gap-[15px] pt-[5px]">
-                    <div className="flex items-center gap-[6px] text-gray-400 text-[0.9rem]">
+                    className="flex items-center border-t dark:border-slate-700 border-gray-300 mt-3 gap-[15px] pt-[5px]">
+                    <div className="flex items-center gap-[6px] dark:text-slate-400 text-gray-400 text-[0.9rem]">
                         <MdLocalShipping/>
                         <p>Free shipping</p>
                     </div>
-                    <div className="flex items-center gap-[6px] text-gray-400 text-[0.9rem]">
+                    <div className="flex items-center gap-[6px] dark:text-slate-400 text-gray-400 text-[0.9rem]">
                         <IoGift/>
                         <p>Free gift</p>
                     </div>
@@ -1282,45 +1119,20 @@ export default ProductCard;
           '
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
                     <div className='mt-8'>
                         <ContentHeader text={'gadget product card 2'} id={'gadget_product_card_2'}/>
                     </div>
 
-                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        Gadget product card with name, price, features, available colors, and quick action buttons for easy purchase.
-                    </p>
+                    <ComponentDescription text='Gadget product card with name, price, features, available colors, and quick action buttons for easy purchase.'/>
 
-                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    productCard7Preview
-                                        ? 'translate-x-[0px] !w-[100px]'
-                                        : 'translate-x-[107px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${
-                                    productCard7Preview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={() => toggleCardView(setProductCard7Preview, setProductCard7Code, true)}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    productCard7Code && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={() => toggleCardView(setProductCard7Preview, setProductCard7Code, false)}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={productCard7Code} preview={productCard7Preview} setPreview={setProductCard7Preview} setCode={setProductCard7Code}/>
+
+                    <ComponentWrapper>
                         {productCard7Preview && (
                             <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                                <div className='border border-gray-300 w-full 640px:w-[60%] relative rounded-2xl overflow-hidden'>
+                                <div className='border border-gray-300 dark:border-slate-700 w-full 640px:w-[60%] relative rounded-2xl overflow-hidden'>
 
                                     {/* badge */}
                                     <span
@@ -1409,10 +1221,10 @@ export default ProductCard;
                                                     );
                                                 })}
                                             </div>
-                                            <span className='text-[0.8rem] text-gray-500'>(738)</span>
+                                            <span className='text-[0.8rem] dark:text-slate-400 text-gray-500'>(738)</span>
                                         </div>
 
-                                        <h3 className='text-[1.1rem] text-gray-900 font-medium mb-2 mt-2'>TOZO T6 True
+                                        <h3 className='text-[1.1rem] dark:text-[#abc2d3] text-gray-900 font-medium mb-2 mt-2'>TOZO T6 True
                                             Wireless
                                             Earbuds Bluetooth Headphon</h3>
                                         <p className='text-[1.150rem] font-medium text-[#0FABCA] mt-1'>$70</p>
@@ -1442,7 +1254,7 @@ const ProductCard = () => {
     const [rating, setRating] = useState(5);
 
     return (
-        <div className="border border-gray-300 w-full md:w-[60%] relative rounded-2xl overflow-hidden">
+        <div className="border border-gray-300 dark:border-slate-700 w-full md:w-[60%] relative rounded-2xl overflow-hidden">
 
             {/* badge */}
             <span
@@ -1531,10 +1343,10 @@ const ProductCard = () => {
                             );
                         })}
                     </div>
-                    <span className="text-[0.8rem] text-gray-500">(738)</span>
+                    <span className="text-[0.8rem] dark:text-slate-400 text-gray-500">(738)</span>
                 </div>
 
-                <h3 className="text-[1.1rem] text-gray-900 font-medium mb-2 mt-2">TOZO T6 True
+                <h3 className="text-[1.1rem] dark:text-[#abc2d3] text-gray-900 font-medium mb-2 mt-2">TOZO T6 True
                     Wireless
                     Earbuds Bluetooth Headphon</h3>
                 <p className="text-[1.150rem] font-medium text-[#0FABCA] mt-1">$70</p>
@@ -1548,49 +1360,24 @@ export default ProductCard;
           '
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
                     <div className='mt-8'>
                         <ContentHeader text={'product list card 1'} id={'product_list_card_1'}/>
                     </div>
 
-                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        Product list card with name, price, image, and quick action buttons for easy browsing and purchase.
-                    </p>
+                    <ComponentDescription text='Product list card with name, price, image, and quick action buttons for easy browsing and purchase.'/>
 
-                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    productCard8Preview
-                                        ? 'translate-x-[0px] !w-[100px]'
-                                        : 'translate-x-[107px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${
-                                    productCard8Preview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={() => toggleCardView(setProductCard8Preview, setProductCard8Code, true)}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    productCard8Code && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={() => toggleCardView(setProductCard8Preview, setProductCard8Code, false)}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={productCard8Code} preview={productCard8Preview} setCode={setProductCard8Code} setPreview={setProductCard8Preview}/>
+
+                    <ComponentWrapper>
                         {productCard8Preview && (
                             <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                                <div className='w-full 640px:w-[80%] border border-gray-300 rounded-md px-4 flex flex-col 640px:flex-row 640px:items-center 640px:gap-[10px]'>
+                                <div className='w-full 640px:w-[80%] dark:border-slate-700 border border-gray-300 rounded-md px-4 flex flex-col 640px:flex-row 640px:items-center 640px:gap-[10px]'>
                                     <img alt='product/image' src='https://i.ibb.co.com/FDsyM7X/Image-4.png' className='w-[120px]'/>
 
                                     <div className='pb-4 640px:pb-0'>
-                                        <h3 className='text-[1.1rem] font-medium line-clamp-2'>Portable Wshing Machine, 11lbs capacity Model 18NMF</h3>
+                                        <h3 className='text-[1.1rem] dark:text-[#abc2d3] font-medium line-clamp-2'>Portable Wshing Machine, 11lbs capacity Model 18NMF</h3>
                                         <p className='text-[1rem] font-medium text-[#0FABCA] mt-1'>$1,500</p>
                                     </div>
                                 </div>
@@ -1605,11 +1392,11 @@ import React from "react";
 const ProductCard = () => {
     return (
         <div
-            className="w-full md:w-[80%] border border-gray-300 rounded-md px-4 flex flex-col md:flex-row md:items-center md:gap-[10px]">
+            className="w-full md:w-[80%] border dark:border-slate-700 border-gray-300 rounded-md px-4 flex flex-col md:flex-row md:items-center md:gap-[10px]">
             <img alt="product/image" src="https://i.ibb.co.com/FDsyM7X/Image-4.png" className="w-[120px]"/>
 
             <div className="pb-4 md:pb-0">
-                <h3 className="text-[1.1rem] font-medium line-clamp-2">Portable Wshing Machine, 11lbs capacity Model
+                <h3 className="text-[1.1rem] dark:text-[#abc2d3] font-medium line-clamp-2">Portable Wshing Machine, 11lbs capacity Model
                     18NMF</h3>
                 <p className="text-[1rem] font-medium text-[#0FABCA] mt-1">$1,500</p>
             </div>
@@ -1621,49 +1408,24 @@ export default ProductCard;
           '
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
                     <div className='mt-8'>
                         <ContentHeader text={'product list card 2'} id={'product_list_card_2'}/>
                     </div>
 
-                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        Product list card with name, price, image, and quick action buttons for easy browsing and purchase.
-                    </p>
+                    <ComponentDescription text='Product list card with name, price, image, and quick action buttons for easy browsing and purchase.'/>
 
-                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    productCard9Preview
-                                        ? 'translate-x-[0px] !w-[100px]'
-                                        : 'translate-x-[107px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${
-                                    productCard9Preview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={() => toggleCardView(setProductCard9Preview, setProductCard9Code, true)}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    productCard9Code && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={() => toggleCardView(setProductCard9Preview, setProductCard9Code, false)}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={productCard9Code} preview={productCard9Preview} setCode={setProductCard9Code} setPreview={setProductCard9Preview}/>
+
+                    <ComponentWrapper>
                         {productCard9Preview && (
                             <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
                                 <div className='w-full 640px:w-[80%] justify-center flex flex-col 640px:flex-row 640px:items-center gap-[10px]'>
                                     <img alt='product/image' src='https://i.ibb.co.com/HHP2J04/7-jpg.png' className='w-[80px] rounded-md'/>
 
                                     <div>
-                                        <h3 className='text-[1.1rem] font-medium line-clamp-2'>Good Life Raw Peanuts</h3>
+                                        <h3 className='text-[1.1rem] font-medium dark:text-[#abc2d3] line-clamp-2'>Good Life Raw Peanuts</h3>
 
                                         {/* review area */}
                                         <div className='flex items-center gap-[10px] mb-2'>
@@ -1682,7 +1444,7 @@ export default ProductCard;
                                                     );
                                                 })}
                                             </div>
-                                            <span className='text-[0.8rem] text-gray-500'>(4.8)</span>
+                                            <span className='text-[0.8rem] dark:text-slate-400 text-gray-500'>(4.8)</span>
                                         </div>
 
                                         <p className='text-[1rem] font-medium text-[#0FABCA] mt-1'>$85.00</p>
@@ -1708,7 +1470,7 @@ const ProductCard = () => {
             <img alt="product/image" src="https://i.ibb.co.com/HHP2J04/7-jpg.png" className="w-[80px] rounded-md"/>
 
             <div>
-                <h3 className="text-[1.1rem] font-medium line-clamp-2">Good Life Raw Peanuts</h3>
+                <h3 className="text-[1.1rem] font-medium dark:text-[#abc2d3] line-clamp-2">Good Life Raw Peanuts</h3>
 
                 {/* review area */}
                 <div className="flex items-center gap-[10px] mb-2">
@@ -1727,7 +1489,7 @@ const ProductCard = () => {
                             );
                         })}
                     </div>
-                    <span className="text-[0.8rem] text-gray-500">(4.8)</span>
+                    <span className="text-[0.8rem] dark:text-slate-400 text-gray-500">(4.8)</span>
                 </div>
 
                 <p className="text-[1rem] font-medium text-[#0FABCA] mt-1">$85.00</p>
@@ -1740,7 +1502,7 @@ export default ProductCard;
           '
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
                     <OverviewFooter
                         backUrl='/components/timeline'
@@ -1750,23 +1512,8 @@ export default ProductCard;
                     />
                 </div>
 
-                <div className='1024px:flex hidden flex-col gap-4 sticky top-4 right-0 w-[40%]'>
-                    <h2 className='text-[0.9rem] font-[600] text-text tracking-widest'>
-                        CONTENTS
-                    </h2>
-                    {productCardsContents.map((item) => (
-                        <a
-                            key={item.id}
-                            href={item.href}
-                            className={`${
-                                activeSection === item.href.slice(1) &&
-                                '!text-primary !border-primary'
-                            } text-[0.9rem] capitalize transition-all duration-300 text-text border-l border-transparent pl-4`}
-                        >
-                            {item.title}
-                        </a>
-                    ))}
-                </div>
+                <ContentNavbar contents={productCardsContents} activeSection={activeSection}/>
+
             </aside>
             <Helmet>
                 <title>E-Commerce - Product Card</title>

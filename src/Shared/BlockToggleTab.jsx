@@ -5,7 +5,7 @@ import {LuSettings2} from "react-icons/lu";
 // store
 import useZenuiStore from "../Store/Index.js";
 
-const ToggleTab = ({preview, code, setPreview, setCode}) => {
+const BlockToggleTab = ({preview, code, setPreview, setCode}) => {
 
     const[settingOpen, setSettingOpen] = useState(false);
 
@@ -31,7 +31,7 @@ const ToggleTab = ({preview, code, setPreview, setCode}) => {
     }, [settingOpen, uniqueId]);
 
     return (
-        <div className={`flex mt-8 mb-2 relative items-end justify-between w-full 1024px:w-[90%]`}>
+        <div className={`flex mt-8 mb-2 relative items-end justify-between w-full 1024px:w-[100%]`}>
 
             <div
                 className='relative backdrop-blur-md overflow-hidden bg-gray-200/80 dark:bg-slate-800 w-max rounded'>
@@ -91,4 +91,4 @@ const ToggleTab = ({preview, code, setPreview, setCode}) => {
     );
 };
 
-export default ToggleTab;
+export default BlockToggleTab;

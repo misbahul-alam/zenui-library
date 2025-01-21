@@ -9,7 +9,7 @@ import AllBlocks from "../../Components/Overview/SidebarContent/Blocks/AllBlocks
 
 const AllBlocksPage = () => {
     return (
-        <>
+        <div className='dark:bg-darkBgColor'>
             <Navbar />
             <MobileNavbar/>
             <div className="flex w-full mx-auto max-w-[1700px]">
@@ -22,7 +22,7 @@ const AllBlocksPage = () => {
                     <AllBlocks />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

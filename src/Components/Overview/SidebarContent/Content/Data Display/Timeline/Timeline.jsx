@@ -36,7 +36,7 @@ const Timeline = () => {
           />
         </div>
 
-        <ContentNavbar activeSection={activeSection} contents={timelineContents} width='48%'/>
+        <ContentNavbar activeSection={activeSection} contents={timelineContents} />
 
       </aside>
       <Helmet>

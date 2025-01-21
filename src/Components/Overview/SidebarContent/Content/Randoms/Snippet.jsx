@@ -18,6 +18,11 @@ import { GoCopy } from 'react-icons/go';
 // showing the code
 import Showcode from '../../../../../Shared/ShowCode';
 
+import ComponentDescription from "../../../../../Shared/ComponentDescription.jsx";
+import ToggleTab from "../../../../../Shared/ToggleTab.jsx";
+import ComponentWrapper from "../../../../../Shared/ComponentWrapper.jsx";
+import ContentNavbar from "../../../../../Shared/ContentNavbar.jsx";
+
 const Snippet = () => {
   const sectionIds = snippetContents.map((item) => item.href.slice(1));
   const activeSection = useScrollSpy(sectionIds);
@@ -26,59 +31,19 @@ const Snippet = () => {
   const [primarySnippetPreview, setPrimarySnippetPreview] = useState(true);
   const [primarySnippetCode, setPrimarySnippetCode] = useState(false);
 
-  const handlePrimarySnippetPreview = () => {
-    setPrimarySnippetPreview(true);
-    setPrimarySnippetCode(false);
-  };
-
-  const handlePrimarySnippetCode = () => {
-    setPrimarySnippetCode(true);
-    setPrimarySnippetPreview(false);
-  };
-
   // Primary Snippet
   const [backgroundSnippetPreview, setBackgroundSnippetPreview] =
     useState(true);
   const [backgroundSnippetCode, setBackgroundSnippetCode] = useState(false);
 
-  const handleBackgroundSnippetPreview = () => {
-    setBackgroundSnippetPreview(true);
-    setBackgroundSnippetCode(false);
-  };
-
-  const handleBackgroundSnippetCode = () => {
-    setBackgroundSnippetCode(true);
-    setBackgroundSnippetPreview(false);
-  };
-
   // border Snippet
   const [borderSnippetPreview, setBorderSnippetPreview] = useState(true);
   const [borderSnippetCode, setBorderSnippetCode] = useState(false);
-
-  const handleBorderSnippetPreview = () => {
-    setBorderSnippetPreview(true);
-    setBorderSnippetCode(false);
-  };
-
-  const handleBorderSnippetCode = () => {
-    setBorderSnippetCode(true);
-    setBorderSnippetPreview(false);
-  };
 
   // border Snippet
   const [withoutIconSnippetPreview, setWithoutIconSnippetPreview] =
     useState(true);
   const [withoutIconSnippetCode, setWithoutIconSnippetCode] = useState(false);
-
-  const handleWithoutIconSnippetPreview = () => {
-    setWithoutIconSnippetPreview(true);
-    setWithoutIconSnippetCode(false);
-  };
-
-  const handleWithoutIconSnippetCode = () => {
-    setWithoutIconSnippetCode(true);
-    setWithoutIconSnippetPreview(false);
-  };
 
   // actions
   const [isCopy, setIsCopy] = useState(false);
@@ -99,59 +64,34 @@ const Snippet = () => {
         <div>
           <ContentHeader text={'primary Snippet'} id={'primary_snippet'} />
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            This is a primary code snippet component with a copy button for easy
-            code duplication.
-          </p>
+          <ComponentDescription text='This is a primary code snippet component with a copy button for easy
+            code duplication.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  primarySnippetPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[107px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  primarySnippetPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handlePrimarySnippetPreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  primarySnippetCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handlePrimarySnippetCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={primarySnippetCode} setPreview={setPrimarySnippetPreview} setCode={setPrimarySnippetCode} preview={primarySnippetPreview}/>
+
+          <ComponentWrapper>
             {primarySnippetPreview && (
-              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                <div className='bg-[#d1d1d180] text-[#000000] rounded-md py-1 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4'>
-                  $ npm i @zenui
-                  <GoCopy
-                    onClick={() => handlePrimaryCopy('npm i @zenui', setIsCopy)}
-                    className={`${
-                      isCopy ? ' opacity-0 hidden' : ' opacity-100 flex'
-                    } transition-all duration-300 cursor-pointer`}
-                  />
-                  <MdOutlineDone
-                    className={`${
-                      isCopy ? ' opacity-100 flex' : ' opacity-0 hidden'
-                    } transition-all duration-300 cursor-pointer`}
-                  />
+                <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                  <div className='bg-[#d1d1d180] dark:bg-slate-800 dark:text-[#abc2d3] text-[#000000] rounded-md py-1 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4'>
+                    $ npm i @zenui
+                    <GoCopy
+                        onClick={() => handlePrimaryCopy('npm i @zenui', setIsCopy)}
+                        className={`${
+                            isCopy ? ' opacity-0 hidden' : ' opacity-100 flex'
+                        } transition-all duration-300 cursor-pointer`}
+                    />
+                    <MdOutlineDone
+                        className={`${
+                            isCopy ? ' opacity-100 flex' : ' opacity-0 hidden'
+                        } transition-all duration-300 cursor-pointer`}
+                    />
+                  </div>
                 </div>
-              </div>
             )}
 
             {primarySnippetCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 // icons
 import { MdOutlineDone } from "react-icons/md";
 import { GoCopy } from "react-icons/go";
@@ -167,7 +107,7 @@ const Snippet = () => {
     }, 1000);
   };
   return (
-    <div className="bg-[#d1d1d180] text-[#000000] rounded-md py-1 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4">
+    <div className="bg-[#d1d1d180] dark:bg-slate-800 dark:text-[#abc2d3] text-[#000000] rounded-md py-1 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4">
       $ npm i @zenui
       <GoCopy
         onClick={() => handleCopy("npm i @zenui")}
@@ -186,76 +126,51 @@ const Snippet = () => {
 
 export default Snippet;
                 '
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
-          <div class='mt-8'>
+          <div className='mt-8'>
             <ContentHeader
               text={'background Snippet'}
               id={'background_snippet'}
             />
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            This is a primary code snippet with background color and a copy
-            button for convenient code sharing.
-          </p>
+          <ComponentDescription text='This is a primary code snippet with background color and a copy
+            button for convenient code sharing.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  backgroundSnippetPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[107px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  backgroundSnippetPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleBackgroundSnippetPreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  backgroundSnippetCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleBackgroundSnippetCode}
-              >
-                Code
-              </button>
-            </div>
+            <ToggleTab code={backgroundSnippetCode} setPreview={setBackgroundSnippetPreview} setCode={setBackgroundSnippetCode} preview={backgroundSnippetPreview}/>
+
+          <ComponentWrapper>
             {backgroundSnippetPreview && (
-              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                <div className='bg-primary text-[#fff] rounded-md py-1 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4'>
-                  $ npm i @zenui
-                  <GoCopy
-                    onClick={() =>
-                      handlePrimaryCopy('npm i @zenui', setBackgroundSnippet)
-                    }
-                    className={`${
-                      backgroundSnippet
-                        ? ' opacity-0 hidden'
-                        : ' opacity-100 flex'
-                    } transition-all duration-300 cursor-pointer`}
-                  />
-                  <MdOutlineDone
-                    className={`${
-                      backgroundSnippet
-                        ? ' opacity-100 flex'
-                        : ' opacity-0 hidden'
-                    } transition-all duration-300 cursor-pointer`}
-                  />
+                <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                  <div className='bg-primary text-[#fff] rounded-md py-1 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4'>
+                    $ npm i @zenui
+                    <GoCopy
+                        onClick={() =>
+                            handlePrimaryCopy('npm i @zenui', setBackgroundSnippet)
+                        }
+                        className={`${
+                            backgroundSnippet
+                                ? ' opacity-0 hidden'
+                                : ' opacity-100 flex'
+                        } transition-all duration-300 cursor-pointer`}
+                    />
+                    <MdOutlineDone
+                        className={`${
+                            backgroundSnippet
+                                ? ' opacity-100 flex'
+                                : ' opacity-0 hidden'
+                        } transition-all duration-300 cursor-pointer`}
+                    />
+                  </div>
                 </div>
-              </div>
             )}
 
             {backgroundSnippetCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 // icons
 import { MdOutlineDone } from "react-icons/md";
 import { GoCopy } from "react-icons/go";
@@ -290,86 +205,61 @@ const Snippet = () => {
 
 export default Snippet;
                 '
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <div class='mt-8'>
             <ContentHeader text={'Bordered Snippet'} id={'bordered_snippet'} />
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            This is a primary code snippet with border color and a copy button
-            for efficient code sharing and reuse.
-          </p>
+          <ComponentDescription text='This is a primary code snippet with border color and a copy button
+            for efficient code sharing and reuse.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  borderSnippetPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[107px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  borderSnippetPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleBorderSnippetPreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  borderSnippetCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleBorderSnippetCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={borderSnippetCode} setPreview={setBorderSnippetPreview} setCode={setBorderSnippetCode} preview={borderSnippetPreview}/>
+
+          <ComponentWrapper>
             {borderSnippetPreview && (
-              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                <div className='border border-primary text-primary rounded-md py-1 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4'>
-                  $ npm i @zenui
-                  <GoCopy
-                    onClick={() =>
-                      handlePrimaryCopy('npm i @zenui', setBorder1)
-                    }
-                    className={`${
-                      border1 ? ' opacity-0 hidden' : ' opacity-100 flex'
-                    } transition-all duration-300 cursor-pointer`}
-                  />
-                  <MdOutlineDone
-                    className={`${
-                      border1 ? ' opacity-100 flex' : ' opacity-0 hidden'
-                    } transition-all duration-300 cursor-pointer`}
-                  />
-                </div>
+                <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                  <div className='border border-primary dark:border-blue-800 text-primary rounded-md py-1 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4'>
+                    $ npm i @zenui
+                    <GoCopy
+                        onClick={() =>
+                            handlePrimaryCopy('npm i @zenui', setBorder1)
+                        }
+                        className={`${
+                            border1 ? ' opacity-0 hidden' : ' opacity-100 flex'
+                        } transition-all duration-300 cursor-pointer`}
+                    />
+                    <MdOutlineDone
+                        className={`${
+                            border1 ? ' opacity-100 flex' : ' opacity-0 hidden'
+                        } transition-all duration-300 cursor-pointer`}
+                    />
+                  </div>
 
-                <div className='border border-border text-text rounded-md py-1 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4'>
-                  $ npm i @zenui
-                  <GoCopy
-                    onClick={() =>
-                      handlePrimaryCopy('npm i @zenui', setBorder2)
-                    }
-                    className={`${
-                      border2 ? ' opacity-0 hidden' : ' opacity-100 flex'
-                    } transition-all duration-300 cursor-pointer`}
-                  />
-                  <MdOutlineDone
-                    className={`${
-                      border2 ? ' opacity-100 flex' : ' opacity-0 hidden'
-                    } transition-all duration-300 cursor-pointer`}
-                  />
+                  <div className='border border-border dark:border-slate-700 dark:text-[#abc2d3] text-text rounded-md py-1 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4'>
+                    $ npm i @zenui
+                    <GoCopy
+                        onClick={() =>
+                            handlePrimaryCopy('npm i @zenui', setBorder2)
+                        }
+                        className={`${
+                            border2 ? ' opacity-0 hidden' : ' opacity-100 flex'
+                        } transition-all duration-300 cursor-pointer`}
+                    />
+                    <MdOutlineDone
+                        className={`${
+                            border2 ? ' opacity-100 flex' : ' opacity-0 hidden'
+                        } transition-all duration-300 cursor-pointer`}
+                    />
+                  </div>
                 </div>
-              </div>
             )}
 
             {borderSnippetCode && (
-              <Showcode
-                code='
+                <Showcode
+                    code='
 // icons
 import { MdOutlineDone } from "react-icons/md";
 import { GoCopy } from "react-icons/go";
@@ -387,7 +277,7 @@ const Snippet = () => {
   };
   return (
     <>
-      <div className="border border-[#3B9DF8] text-[#3B9DF8] rounded-md py-1 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4">
+      <div className="border border-[#3B9DF8] dark:border-blue-800 text-[#3B9DF8] rounded-md py-1 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4">
         $ npm i @zenui
         <GoCopy
           onClick={() => handleCopy("npm i @zenui", setIsCopy1)}
@@ -402,7 +292,7 @@ const Snippet = () => {
         />
       </div>
 
-      <div className="border border-[#e5eaf2] text-[#424242] rounded-md py-1 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4">
+      <div className="border border-[#e5eaf2] dark:border-slate-700 dark:text-[#abc2d3] text-[#424242] rounded-md py-1 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4">
         $ npm i @zenui
         <GoCopy
           onClick={() => handleCopy("npm i @zenui", setIsCopy2)}
@@ -422,66 +312,41 @@ const Snippet = () => {
 
 export default Snippet;
                 '
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
-          <div class='mt-8'>
+          <div className='mt-8'>
             <ContentHeader
               text={'without icon Snippet'}
               id={'without_icon_snippet'}
             />
           </div>
 
-          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-            This is a primary code snippet with a gray background for clear code
-            display without a copy button.
-          </p>
+          <ComponentDescription text='This is a primary code snippet with a gray background for clear code
+            display without a copy button.'/>
 
-          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-            <div className='relative'>
-              <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  withoutIconSnippetPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[107px] rounded-br'
-                }`}
-              ></div>
-              <button
-                className={`${
-                  withoutIconSnippetPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleWithoutIconSnippetPreview}
-              >
-                Preview
-              </button>
-              <button
-                className={`${
-                  withoutIconSnippetCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleWithoutIconSnippetCode}
-              >
-                Code
-              </button>
-            </div>
+          <ToggleTab code={withoutIconSnippetCode} setPreview={setWithoutIconSnippetPreview} setCode={setWithoutIconSnippetCode} preview={withoutIconSnippetPreview}/>
+
+          <ComponentWrapper>
             {withoutIconSnippetPreview && (
-              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                <div className='bg-[#d1d1d180] text-[#000] rounded-md py-1 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4'>
-                  $ npm i @zenui
+                <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                  <div className='bg-[#d1d1d180] text-[#000] dark:bg-slate-800 dark:text-[#abc2d3] rounded-md py-1 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4'>
+                    $ npm i @zenui
+                  </div>
                 </div>
-              </div>
             )}
 
             {withoutIconSnippetCode && (
-              <Showcode
-                code='
-<div className="bg-[#d1d1d180] text-[#000] rounded-md py-1 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4">
+                <Showcode
+                    code='
+<div className="bg-[#d1d1d180] text-[#000] dark:bg-slate-800 dark:text-[#abc2d3] rounded-md py-1 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4">
    $ npm i @zenui
 </div>
                 '
-              />
+                />
             )}
-          </div>
+          </ComponentWrapper>
 
           <OverviewFooter
             backUrl='/components/code'
@@ -491,23 +356,8 @@ export default Snippet;
           />
         </div>
 
-        <div className='1024px:flex hidden flex-col gap-4 sticky top-4 right-0 w-[40%]'>
-          <h2 className='text-[0.9rem] font-[600] text-text tracking-widest'>
-            CONTENTS
-          </h2>
-          {snippetContents.map((item) => (
-            <a
-              key={item.id}
-              href={item.href}
-              className={`${
-                activeSection === item.href.slice(1) &&
-                '!text-primary !border-primary'
-              } text-[0.9rem] text-text border-l border-transparent pl-4`}
-            >
-              {item.title}
-            </a>
-          ))}
-        </div>
+        <ContentNavbar activeSection={activeSection} contents={snippetContents}/>
+
       </aside>
       <Helmet>
         <title>Randoms - Snippet</title>

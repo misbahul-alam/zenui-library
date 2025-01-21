@@ -41,11 +41,11 @@ const AllBlocks = () => {
                 <h2 className="font-[600] text-[#0471d6] uppercase text-[2rem] 425px:text-[2.5rem]">
                     ZenUI Blocks
                 </h2>
-                <p className="text-text text-[0.9rem]">
+                <p className="text-text dark:text-darkTextColor text-[0.9rem]">
                     Free & Professional-Grade UI Components for Your Projects.
                 </p>
 
-                <p className="text-text text-[0.9rem] mt-8">
+                <p className="text-text dark:text-darkSubTextColor text-[0.9rem] mt-8">
                     ZenUI offers a wide range of beautifully designed, free UI components for developers and designers. Whether you’re building websites or applications, our components are easy to integrate and use in any project. Each block is carefully crafted with clean, professional-grade code, ensuring reliability and flexibility. Get access to all these components for free and follow our detailed guidelines to seamlessly incorporate them into your projects.
                 </p>
 
@@ -59,7 +59,7 @@ const AllBlocks = () => {
                                 className="w-full h-[150px] rounded-t object-contain"
                             />
                             <div className="border-t border-border p-4">
-                                <h2 className="text-text font-[600] text-[1rem] capitalize">
+                                <h2 className="text-text dark:text-darkTextColor font-[600] text-[1rem] capitalize">
                                     {button.title}
                                 </h2>
                             </div>
@@ -77,7 +77,7 @@ const AllBlocks = () => {
                                 className="w-full h-[150px] rounded-t object-contain"
                             />
                             <div className="border-t border-border p-4">
-                                <h2 className="text-text font-[600] text-[1rem] capitalize">
+                                <h2 className="text-text dark:text-darkTextColor font-[600] text-[1rem] capitalize">
                                     {button.title}
                                 </h2>
                             </div>
@@ -95,7 +95,7 @@ const AllBlocks = () => {
                                 className="w-full h-[150px] rounded-t object-contain"
                             />
                             <div className="border-t border-border p-4">
-                                <h2 className="text-text font-[600] text-[1rem] capitalize">
+                                <h2 className="text-text dark:text-darkTextColor font-[600] text-[1rem] capitalize">
                                     {button.title}
                                 </h2>
                             </div>
@@ -113,7 +113,7 @@ const AllBlocks = () => {
                                 className="w-full h-[150px] rounded-t object-contain"
                             />
                             <div className="border-t border-border p-4">
-                                <h2 className="text-text font-[600] text-[1rem] capitalize">
+                                <h2 className="text-text dark:text-darkTextColor font-[600] text-[1rem] capitalize">
                                     {button.title}
                                 </h2>
                             </div>

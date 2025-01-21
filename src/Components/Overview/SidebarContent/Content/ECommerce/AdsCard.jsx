@@ -19,15 +19,15 @@ import {HiArrowRight} from "react-icons/hi";
 // sidebar contents
 import {adsCardContents} from "../../../../../Utils/ContentsConfig/ECommerceContents.js";
 
-import {useToggleCardView} from "../../../../../CustomHooks/ButtonToggle.js";
+import ComponentDescription from "../../../../../Shared/ComponentDescription.jsx";
+import ToggleTab from "../../../../../Shared/ToggleTab.jsx";
+import ComponentWrapper from "../../../../../Shared/ComponentWrapper.jsx";
+import ContentNavbar from "../../../../../Shared/ContentNavbar.jsx";
 
 const AdsCard = () => {
     // const [contentActiveTab, setContentActiveTab] = useState(0);
     const sectionIds = adsCardContents.map((item) => item.href.slice(1));
     const activeSection = useScrollSpy(sectionIds);
-
-    // toggle actions
-    const toggleCardView = useToggleCardView();
 
     const[adsCard1Preview, setAdsCard1Preview] = useState(true);
     const[adsCard1Code, setAdsCard1Code] = useState(false);
@@ -53,36 +53,11 @@ const AdsCard = () => {
                 <div>
                     <ContentHeader text={'ads card 1'} id={'ads_card_1'} />
 
-                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        E-commerce ad cards highlight products with an image, price, discount, and a "Buy Now" button for easy shopping.
-                    </p>
+                    <ComponentDescription text='E-commerce ad cards highlight products with an image, price, discount, and a "Buy Now" button for easy shopping.'/>
 
-                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    adsCard1Preview
-                                        ? 'translate-x-[0px] !w-[100px]'
-                                        : 'translate-x-[105px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${
-                                    adsCard1Preview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={()=> toggleCardView(setAdsCard1Preview, setAdsCard1Code, true)}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    adsCard1Code && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={()=> toggleCardView(setAdsCard1Preview, setAdsCard1Code, false)}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={adsCard1Code} setPreview={setAdsCard1Preview} setCode={setAdsCard1Code} preview={adsCard1Preview}/>
+
+                    <ComponentWrapper>
                         {adsCard1Preview && (
                             <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
                                 <div className='w-full 640px:w-[62%] bg-[#F7E99E] rounded-md p-4 640px:p-6 text-center'>
@@ -135,49 +110,24 @@ export default AdsCard;
                 '
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
                     <div className='mt-8'>
                         <ContentHeader text={'ads card 2'} id={'ads_card_2'} />
                     </div>
 
-                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        E-commerce ad cards highlight products with an image, price, discount, and a "Buy Now" button for easy shopping.
-                    </p>
+                    <ComponentDescription text='E-commerce ad cards highlight products with an image, price, discount, and a "Buy Now" button for easy shopping.'/>
 
-                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    adsCard2Preview
-                                        ? 'translate-x-[0px] !w-[100px]'
-                                        : 'translate-x-[105px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${
-                                    adsCard2Preview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={()=> toggleCardView(setAdsCard2Preview, setAdsCard2Code, true)}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    adsCard2Code && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={()=> toggleCardView(setAdsCard2Preview, setAdsCard2Code, false)}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={adsCard2Code} setPreview={setAdsCard2Preview} setCode={setAdsCard2Code} preview={adsCard2Preview}/>
+
+                    <ComponentWrapper>
                         {adsCard2Preview && (
                             <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
-                                <div className='bg-[#F2F4F5] p-5 640px:p-8 gap-[30px] 640px:gap-[15px] w-full rounded-md flex flex-col 640px:flex-row 640px:items-center 640px:justify-between'>
+                                <div className='bg-[#F2F4F5] dark:bg-slate-800 p-5 640px:p-8 gap-[30px] 640px:gap-[15px] w-full rounded-md flex flex-col 640px:flex-row 640px:items-center 640px:justify-between'>
                                     <div className='w-full 640px:w-[55%]'>
                                         <span className='py-1.5 px-4 text-[0.8rem] rounded-md bg-blue-400 text-white'>INTRODUCING</span>
-                                        <h3 className='text-[1.4rem] font-semibold text-gray-900 my-2'>New Apple Homepod Mini</h3>
-                                        <p className='text-[0.9rem] text-gray-700 mb-4'>Jam-packed with innovation, HomePod mini delivers unexpectedly.</p>
+                                        <h3 className='text-[1.4rem] dark:text-[#abc2d3] font-semibold text-gray-900 my-2'>New Apple Homepod Mini</h3>
+                                        <p className='text-[0.9rem] dark:text-[#abc2d3] text-gray-700 mb-4'>Jam-packed with innovation, HomePod mini delivers unexpectedly.</p>
                                         <button
                                             className='group w-max flex items-center gap-[10px] bg-[#FA8232] text-white py-2.5 rounded-md hover:bg-[#DE732D] transition-all duration-300 px-8 justify-center'>
                                             Shop now
@@ -204,11 +154,11 @@ const AdsCard = () => {
 
     return (
         <div
-            className="bg-[#F2F4F5] p-5 md:p-8 gap-[30px] md:gap-[15px] w-full rounded-md flex flex-col md:flex-row md:items-center md:justify-between">
+            className="bg-[#F2F4F5] dark:bg-slate-800 p-5 md:p-8 gap-[30px] md:gap-[15px] w-full rounded-md flex flex-col md:flex-row md:items-center md:justify-between">
             <div className="w-full md:w-[55%]">
                 <span className="py-1.5 px-4 text-[0.8rem] rounded-md bg-blue-400 text-white">INTRODUCING</span>
-                <h3 className="text-[1.4rem] font-semibold text-gray-900 my-2">New Apple Homepod Mini</h3>
-                <p className="text-[0.9rem] text-gray-700 mb-4">Jam-packed with innovation, HomePod mini delivers
+                <h3 className="text-[1.4rem] dark:text-[#abc2d3] font-semibold text-gray-900 my-2">New Apple Homepod Mini</h3>
+                <p className="text-[0.9rem] dark:text-[#abc2d3] text-gray-700 mb-4">Jam-packed with innovation, HomePod mini delivers
                     unexpectedly.</p>
                 <button
                     className="group w-max flex items-center gap-[10px] bg-[#FA8232] text-white py-2.5 rounded-md hover:bg-[#DE732D] transition-all duration-300 px-8 justify-center">
@@ -228,42 +178,17 @@ export default AdsCard;
                 '
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
                     <div className='mt-8'>
                         <ContentHeader text={'ads card 3'} id={'ads_card_3'} />
                     </div>
 
-                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        E-commerce ad cards highlight products with an image, price, discount, and a "Buy Now" button for easy shopping.
-                    </p>
+                    <ComponentDescription text='E-commerce ad cards highlight products with an image, price, discount, and a "Buy Now" button for easy shopping.'/>
 
-                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    adsCard3Preview
-                                        ? 'translate-x-[0px] !w-[100px]'
-                                        : 'translate-x-[105px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${
-                                    adsCard3Preview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={()=> toggleCardView(setAdsCard3Preview, setAdsCard3Code, true)}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    adsCard3Code && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={()=> toggleCardView(setAdsCard3Preview, setAdsCard3Code, false)}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={adsCard3Code} setPreview={setAdsCard3Preview} setCode={setAdsCard3Code} preview={adsCard3Preview}/>
+
+                    <ComponentWrapper>
                         {adsCard3Preview && (
                             <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
                                 <div className='w-full 640px:w-[80%] relative'>
@@ -313,42 +238,17 @@ export default AdsCard;
                 '
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
                     <div className='mt-8'>
                         <ContentHeader text={'ads card 4'} id={'ads_card_4'} />
                     </div>
 
-                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        E-commerce ad cards highlight products with an image, price, discount, and a "Buy Now" button for easy shopping.
-                    </p>
+                    <ComponentDescription text='E-commerce ad cards highlight products with an image, price, discount, and a "Buy Now" button for easy shopping.'/>
 
-                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    adsCard4Preview
-                                        ? 'translate-x-[0px] !w-[100px]'
-                                        : 'translate-x-[105px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${
-                                    adsCard4Preview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={()=> toggleCardView(setAdsCard4Preview, setAdsCard4Code, true)}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    adsCard4Code && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={()=> toggleCardView(setAdsCard4Preview, setAdsCard4Code, false)}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={adsCard4Code} setPreview={setAdsCard4Preview} setCode={setAdsCard4Code} preview={adsCard4Preview}/>
+
+                    <ComponentWrapper>
                         {adsCard4Preview && (
                             <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
                                 <div className='w-full 640px:w-[60%] overflow-hidden flex items-center justify-center flex-col pt-12 p-6 bg-[#0BAF9A] rounded-xl'>
@@ -393,48 +293,23 @@ export default AdsCard;
                 '
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
                     <div className='mt-8'>
                         <ContentHeader text={'ads card 5'} id={'ads_card_5'} />
                     </div>
 
-                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        E-commerce ad cards highlight products with an image, price, discount, and a "Buy Now" button for easy shopping.
-                    </p>
+                    <ComponentDescription text='E-commerce ad cards highlight products with an image, price, discount, and a "Buy Now" button for easy shopping.'/>
 
-                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    adsCard5Preview
-                                        ? 'translate-x-[0px] !w-[100px]'
-                                        : 'translate-x-[105px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${
-                                    adsCard5Preview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={()=> toggleCardView(setAdsCard5Preview, setAdsCard5Code, true)}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    adsCard5Code && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={()=> toggleCardView(setAdsCard5Preview, setAdsCard5Code, false)}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={adsCard5Code} setPreview={setAdsCard5Preview} setCode={setAdsCard5Code} preview={adsCard5Preview}/>
+
+                    <ComponentWrapper>
                         {adsCard5Preview && (
                             <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
                                 <div className='w-full 640px:w-[70%] relative'>
 
                                     <img alt='product/image' src='https://i.ibb.co.com/PC8s3B6/Link-2.png'
-                                         className='w-full'/>
+                                         className='w-full rounded-xl'/>
 
                                     <div className='absolute top-[50%] transform translate-y-[-50%] left-8'>
                                         <p className='text-[1rem] font-[300] text-gray-900'>Today Special</p>
@@ -488,42 +363,17 @@ export default AdsCard;
                 '
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
                     <div className='mt-8'>
                         <ContentHeader text={'ads card 6'} id={'ads_card_6'} />
                     </div>
 
-                    <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
-                        E-commerce ad cards highlight products with an image, price, discount, and a "Buy Now" button for easy shopping.
-                    </p>
+                    <ComponentDescription text='E-commerce ad cards highlight products with an image, price, discount, and a "Buy Now" button for easy shopping.'/>
 
-                    <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
-                        <div className='relative'>
-                            <div
-                                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                                    adsCard6Preview
-                                        ? 'translate-x-[0px] !w-[100px]'
-                                        : 'translate-x-[105px] rounded-br'
-                                }`}
-                            ></div>
-                            <button
-                                className={`${
-                                    adsCard6Preview && 'text-tabTextColor'
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                                onClick={()=> toggleCardView(setAdsCard6Preview, setAdsCard6Code, true)}
-                            >
-                                Preview
-                            </button>
-                            <button
-                                className={`${
-                                    adsCard6Code && 'text-tabTextColor'
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                                onClick={()=> toggleCardView(setAdsCard6Preview, setAdsCard6Code, false)}
-                            >
-                                Code
-                            </button>
-                        </div>
+                    <ToggleTab code={adsCard6Code} setPreview={setAdsCard6Preview} setCode={setAdsCard6Code} preview={adsCard6Preview}/>
+
+                    <ComponentWrapper>
                         {adsCard6Preview && (
                             <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
                                 <div className='wful 640px:w-[90%] bg-gray-900 flex flex-col justify-center min-h-[260px] overflow-hidden rounded-md relative px-7 640px:px-12'>
@@ -595,7 +445,7 @@ export default AdsCard;
                 '
                             />
                         )}
-                    </div>
+                    </ComponentWrapper>
 
                     <OverviewFooter
                         backUrl='/components/product-card'
@@ -605,23 +455,8 @@ export default AdsCard;
                     />
                 </div>
 
-                <div className='1024px:flex hidden flex-col gap-4 sticky top-4 right-0 w-[40%]'>
-                    <h2 className='text-[0.9rem] font-[600] text-text tracking-widest'>
-                        CONTENTS
-                    </h2>
-                    {adsCardContents.map((item) => (
-                        <a
-                            key={item.id}
-                            href={item.href}
-                            className={`${
-                                activeSection === item.href.slice(1) &&
-                                '!text-primary !border-primary'
-                            } text-[0.9rem] capitalize transition-all duration-300 text-text border-l border-transparent pl-4`}
-                        >
-                            {item.title}
-                        </a>
-                    ))}
-                </div>
+                <ContentNavbar activeSection={activeSection} contents={adsCardContents}/>
+
             </aside>
             <Helmet>
                 <title>E-Commerce - Ads Card</title>

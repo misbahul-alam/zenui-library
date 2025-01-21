@@ -9,7 +9,7 @@ import ProductCard from "../../../Components/Overview/SidebarContent/Content/ECo
 
 const ProductCardPage = () => {
     return (
-        <>
+        <div className='dark:bg-darkBgColor'>
             <Navbar />
             <MobileNavbar/>
             <div className="flex w-full mx-auto max-w-[1700px]">
@@ -22,7 +22,7 @@ const ProductCardPage = () => {
                     <ProductCard />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

@@ -8,7 +8,7 @@ import ResponsiveNavbar from "../../../Components/Overview/SidebarContent/Blocks
 
 const ResponsiveNavbarPage = () => {
     return (
-        <>
+        <div className='dark:bg-darkBgColor'>
             <Navbar />
             <MobileNavbar/>
             <div className="flex w-full mx-auto max-w-[1700px]">
@@ -21,7 +21,7 @@ const ResponsiveNavbarPage = () => {
                     <ResponsiveNavbar />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

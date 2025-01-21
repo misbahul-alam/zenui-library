@@ -11,9 +11,9 @@ import GithubActivityGraphWithMonthExample from "./GithubActivityGraphWithMonthE
 import CalculatingTotalActivityExample from "./CalculatingTotalActivityExample.jsx";
 import BlocksShowCode from "../../../../../../Shared/BlocksShowCode.jsx";
 
-import ComponentDescription from "../../../../../../Shared/ComponentDescription.jsx";
-import ToggleTab from "../../../../../../Shared/ToggleTab.jsx";
-import ComponentWrapper from "../../../../../../Shared/ComponentWrapper.jsx";
+import BlockToggleTab from "../../../../../../Shared/BlockToggleTab.jsx";
+import BlockWrapper from "../../../../../../Shared/BlockWrapper.jsx";
+import BlockDescription from "../../../../../../Shared/BlockDescription.jsx";
 
 const GithubActivityGraph = () => {
 
@@ -1444,11 +1444,11 @@ const GithubActivityGraph = () => {
                         <ContentHeader text={'github activity graph'} id={'github_activity_graph'}/>
                     </div>
 
-                    <ComponentDescription text='Track your daily activities with a GitHub-style activity graph, showcasing your progress and habits in a visual grid format.'/>
+                    <BlockDescription text='Track your daily activities with a GitHub-style activity graph, showcasing your progress and habits in a visual grid format.'/>
 
-                <ToggleTab code={activityGraphCode} setPreview={setActivityGraphPreview} setCode={setActivityGraphCode} preview={activityGraphPreview}/>
+                <BlockToggleTab code={activityGraphCode} setPreview={setActivityGraphPreview} setCode={setActivityGraphCode} preview={activityGraphPreview}/>
 
-                <ComponentWrapper width={100}>
+                <BlockWrapper>
                     {activityGraphPreview && (
                         <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
                             <GithubActivityGraphExample/>
@@ -1460,17 +1460,17 @@ const GithubActivityGraph = () => {
                             code={activityGraphCodes}
                         />
                     )}
-                </ComponentWrapper>
+                </BlockWrapper>
 
                     <div className='mt-8'>
                         <ContentHeader text={'github activity graph with month'} id={'github_activity_graph_with_month'}/>
                     </div>
 
-                   <ComponentDescription text='Track your daily activities with a GitHub-style activity graph, showcasing your progress and habits in a visual grid format.'/>
+                   <BlockDescription text='Track your daily activities with a GitHub-style activity graph, showcasing your progress and habits in a visual grid format.'/>
 
-                <ToggleTab code={activityGraphWithMonthCode} preview={activityGraphWithMonthPreview} setCode={setActivityGraphWithMonthCode} setPreview={setActivityGraphWithMonthPreview}/>
+                <BlockToggleTab code={activityGraphWithMonthCode} preview={activityGraphWithMonthPreview} setCode={setActivityGraphWithMonthCode} setPreview={setActivityGraphWithMonthPreview}/>
 
-                <ComponentWrapper width={100}>
+                <BlockWrapper>
                     {activityGraphWithMonthPreview && (
                         <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
                             <GithubActivityGraphWithMonthExample/>
@@ -1482,17 +1482,17 @@ const GithubActivityGraph = () => {
                             code={activityGraphWithMonthCodes}
                         />
                     )}
-                </ComponentWrapper>
+                </BlockWrapper>
 
                     <div className='mt-8'>
                         <ContentHeader text={'calculating total activity'} id={'calculating_total_activity'}/>
                     </div>
 
-                    <ComponentDescription text='Track your daily activities with a GitHub-style activity graph, showcasing your progress and habits in a visual grid format.'/>
+                    <BlockDescription text='Track your daily activities with a GitHub-style activity graph, showcasing your progress and habits in a visual grid format.'/>
 
-                <ToggleTab code={calculatingTotalActivityCode} setPreview={setCalculatingTotalActivityPreview} setCode={setCalculatingTotalActivityCode} preview={calculatingTotalActivityPreview}/>
+                <BlockToggleTab code={calculatingTotalActivityCode} setPreview={setCalculatingTotalActivityPreview} setCode={setCalculatingTotalActivityCode} preview={calculatingTotalActivityPreview}/>
 
-                <ComponentWrapper width={100}>
+                <BlockWrapper>
                     {calculatingTotalActivityPreview && (
                         <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
                             <CalculatingTotalActivityExample/>
@@ -1504,7 +1504,7 @@ const GithubActivityGraph = () => {
                             code={calculatingTotalContributionCodes}
                         />
                     )}
-                </ComponentWrapper>
+                </BlockWrapper >
 
                     <BlocksFooter
                         backUrl="/components/table"
