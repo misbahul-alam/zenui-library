@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 // components
 import OverviewFooter from "../../../../../Shared/OverviewFooter";
-import ShowCode from "../../../../../Shared/ShowCode";
+import ShowCode from "../../../../../Shared/Component/ShowCode.jsx";
 import ContentHeader from "../../../../../Shared/ContentHeader";
 import { Helmet } from "react-helmet";
 
@@ -10,10 +10,10 @@ import { Helmet } from "react-helmet";
 import { authButtonContents } from '../../../../../Utils/ContentsConfig/ButtonsContents.js';
 import { useScrollSpy } from '../../../../../CustomHooks/useScrollSpy';
 
-import ComponentDescription from "../../../../../Shared/ComponentDescription.jsx";
-import ToggleTab from "../../../../../Shared/ToggleTab.jsx";
-import ComponentWrapper from "../../../../../Shared/ComponentWrapper.jsx";
-import ContentNavbar from "../../../../../Shared/ContentNavbar.jsx";
+import ComponentDescription from "../../../../../Shared/Component/ComponentDescription.jsx";
+import ToggleTab from "../../../../../Shared/Component/ToggleTab.jsx";
+import ComponentWrapper from "../../../../../Shared/Component/ComponentWrapper.jsx";
+import ContentNavbar from "../../../../../Shared/Component/ContentNavbar.jsx";
 
 const AuthButton = () => {
     const sectionIds = authButtonContents.map(item => item.href.slice(1));

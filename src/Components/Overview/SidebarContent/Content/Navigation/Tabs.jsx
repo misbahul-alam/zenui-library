@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 // components
-import Showcode from '../../../../../Shared/ShowCode';
+import Showcode from '../../../../../Shared/Component/ShowCode.jsx';
 import OverviewFooter from '../../../../../Shared/OverviewFooter';
 import ContentHeader from '../../../../../Shared/ContentHeader';
 import { Helmet } from 'react-helmet';
@@ -10,10 +10,10 @@ import { Helmet } from 'react-helmet';
 import { tabsContents } from '../../../../../Utils/ContentsConfig/NavigationContents';
 import { useScrollSpy } from '../../../../../CustomHooks/useScrollSpy';
 
-import ComponentDescription from "../../../../../Shared/ComponentDescription.jsx";
-import ToggleTab from "../../../../../Shared/ToggleTab.jsx";
-import ComponentWrapper from "../../../../../Shared/ComponentWrapper.jsx";
-import ContentNavbar from "../../../../../Shared/ContentNavbar.jsx";
+import ComponentDescription from "../../../../../Shared/Component/ComponentDescription.jsx";
+import ToggleTab from "../../../../../Shared/Component/ToggleTab.jsx";
+import ComponentWrapper from "../../../../../Shared/Component/ComponentWrapper.jsx";
+import ContentNavbar from "../../../../../Shared/Component/ContentNavbar.jsx";
 
 const Tabs = () => {
   // normal button

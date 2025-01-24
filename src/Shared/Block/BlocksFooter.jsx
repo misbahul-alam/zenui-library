@@ -6,7 +6,7 @@ import { BiSolidLike, BiSolidDislike } from "react-icons/bi";
 import { FaHand } from "react-icons/fa6";
 
 // utils style
-import utils from "../Utils";
+import utils from "../../Utils/index.jsx";
 import {Link} from "react-router-dom";
 import {IoChevronBack} from "react-icons/io5";
 

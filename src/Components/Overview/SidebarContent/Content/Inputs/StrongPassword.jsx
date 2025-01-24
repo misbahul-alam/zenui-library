@@ -12,16 +12,16 @@ import { useScrollSpy } from '../../../../../CustomHooks/useScrollSpy';
 import { Helmet } from 'react-helmet';
 
 // showing the code
-import Showcode from '../../../../../Shared/ShowCode';
+import Showcode from '../../../../../Shared/Component/ShowCode.jsx';
 import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
 import { MdDone, MdErrorOutline } from 'react-icons/md';
 import { IoCheckmarkDoneCircleSharp } from 'react-icons/io5';
 import { RxCross1 } from 'react-icons/rx';
 
-import ComponentDescription from '../../../../../Shared/ComponentDescription';
-import ComponentWrapper from '../../../../../Shared/ComponentWrapper';
-import ToggleTab from '../../../../../Shared/ToggleTab';
-import ContentNavbar from '../../../../../Shared/ContentNavbar';
+import ComponentDescription from '../../../../../Shared/Component/ComponentDescription.jsx';
+import ComponentWrapper from '../../../../../Shared/Component/ComponentWrapper.jsx';
+import ToggleTab from '../../../../../Shared/Component/ToggleTab.jsx';
+import ContentNavbar from '../../../../../Shared/Component/ContentNavbar.jsx';
 
 const OtpInput = () => {
   const sectionIds = strongPasswordContents.map((item) => item.href.slice(1));

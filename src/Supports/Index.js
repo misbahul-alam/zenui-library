@@ -1,4 +1,3 @@
-// filter classes based on theme mode
 const toggleThemeBaseClasses = (classString, isDark) => {
     if (isDark) return classString;
 

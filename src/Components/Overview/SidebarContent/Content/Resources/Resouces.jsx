@@ -6,7 +6,7 @@ import { resourcesData } from "../../../../../Utils/ResourcesData.js"
 import FilterByLanguages from "./FilterByLanguages.jsx";
 import FilterByPackage from "./FilterByPackage.jsx";
 import FilterByBookmarks from "./FilterByBookmarks.jsx";
-import BlocksFooter from "../../../../../Shared/BlocksFooter.jsx";
+import BlocksFooter from "../../../../../Shared/Block/BlocksFooter.jsx";
 
 const Resources = () => {
     const [selectedLanguage, setSelectedLanguage] = useState({ slug: 'all' })

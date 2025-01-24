@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // components
-import Showcode from "../../../../../Shared/ShowCode";
+import Showcode from "../../../../../Shared/Component/ShowCode.jsx";
 import OverviewFooter from "../../../../../Shared/OverviewFooter";
 import ContentHeader from "../../../../../Shared/ContentHeader";
 import { Helmet } from "react-helmet";
@@ -14,10 +14,10 @@ import {IoCodeSlashOutline} from "react-icons/io5";
 import {normalButtonContents} from "../../../../../Utils/ContentsConfig/ButtonsContents.js";
 import {useScrollSpy} from "../../../../../CustomHooks/useScrollSpy.js";
 
-import ComponentDescription from '../../../../../Shared/ComponentDescription';
-import ComponentWrapper from '../../../../../Shared/ComponentWrapper';
-import ToggleTab from '../../../../../Shared/ToggleTab';
-import ContentNavbar from '../../../../../Shared/ContentNavbar';
+import ComponentDescription from '../../../../../Shared/Component/ComponentDescription.jsx';
+import ComponentWrapper from '../../../../../Shared/Component/ComponentWrapper.jsx';
+import ToggleTab from '../../../../../Shared/Component/ToggleTab.jsx';
+import ContentNavbar from '../../../../../Shared/Component/ContentNavbar.jsx';
 
 const Normal = () => {
   const sectionIds = normalButtonContents.map(item => item.href.slice(1));

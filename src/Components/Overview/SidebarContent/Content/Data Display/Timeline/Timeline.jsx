@@ -13,7 +13,7 @@ import WorkProgressTimeline from "./WorkProgressTimeline";
 import TreeTimeline from "./TreeTimeline";
 import MilestoneIconTimeline from "./MilestoneIconTimeline";
 
-import ContentNavbar from "../../../../../../Shared/ContentNavbar.jsx";
+import ContentNavbar from "../../../../../../Shared/Component/ContentNavbar.jsx";
 
 const Timeline = () => {
   const sectionIds = timelineContents.map((item) => item.href.slice(1));

@@ -8,7 +8,7 @@ import ContactForm from "../../../Components/Overview/SidebarContent/Blocks/Form
 
 const ContactFormPage = () => {
     return (
-        <>
+        <div className='dark:bg-darkBgColor'>
             <Navbar />
             <MobileNavbar/>
             <div className="flex w-full mx-auto max-w-[1700px]">
@@ -21,7 +21,7 @@ const ContactFormPage = () => {
                     <ContactForm />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

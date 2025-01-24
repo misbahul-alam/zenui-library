@@ -5,8 +5,8 @@ import {FaJsSquare, FaReact, FaRegCopy} from "react-icons/fa";
 import { MdOutlineDone } from "react-icons/md";
 
 // store
-import useZenuiStore from "../Store/Index.js";
-import toggleThemeBaseClasses from "../Supports/Index.js";
+import useZenuiStore from "../../Store/Index.js";
+import toggleThemeBaseClasses from "../../Supports/Index.js";
 import {IoLogoCss3} from "react-icons/io";
 
 const ShowCode = ({ code }) => {
@@ -43,7 +43,7 @@ const ShowCode = ({ code }) => {
                         <button
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
-                            className={`px-3 py-2 rounded-lg flex items-center gap-[8px] text-sm ${
+                            className={`px-3 py-2 flex items-center gap-[8px] rounded-lg text-sm ${
                                 activeTab === tab.id
                                     ? "border-b rounded-b-none text-white"
                                     : "text-gray-400 hover:bg-slate-700"
@@ -64,7 +64,6 @@ const ShowCode = ({ code }) => {
                                     <IoLogoCss3 className='text-blue-400 text-[1.1rem]'/>
                                 )
                             }
-
                             {tab.displayText || tab.id.toUpperCase()}
                         </button>
                     ))}
@@ -96,7 +95,7 @@ const ShowCode = ({ code }) => {
                         fontSize: "14px",
                         maxHeight: "400px",
                     }}
-                    className='zenui_code_snippet overflow-x-scroll scrollbar 425px:max-w-[350px] 640px:max-w-[780px] 1605px:max-w-[1250px] w-full 1404px:max-w-[1107px] 1024px:max-w-[730px] 1260px:max-w-[880px] max-h-[500px] max-w-[325px]'
+                    className='zenui_code_snippet text-[14px] 1404px:max-w-[700px] max-h-[400px] 400px:max-w-[380px] 425px:max-w-[638px] max-w-[325px]'
                 >
                     {toggleThemeBaseClasses(formattedCode.find(item => item.id === activeTab)?.code, store.withDarkClasses) || ''}
                 </SyntaxHighlighter>

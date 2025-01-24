@@ -8,7 +8,7 @@ import PricingSection from "../../../Components/Overview/SidebarContent/Blocks/S
 
 const PricingSectionPage = () => {
     return (
-        <>
+        <div className='dark:bg-darkBgColor'>
             <Navbar />
             <MobileNavbar/>
             <div className="flex w-full mx-auto max-w-[1700px]">
@@ -21,7 +21,7 @@ const PricingSectionPage = () => {
                     <PricingSection />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

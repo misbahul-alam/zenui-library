@@ -17,14 +17,14 @@ import { MdOutlineMail } from 'react-icons/md';
 import {IoEyeOutline, IoEyeOffOutline, IoSearch} from 'react-icons/io5';
 
 // showing the code
-import Showcode from '../../../../../Shared/ShowCode';
+import Showcode from '../../../../../Shared/Component/ShowCode.jsx';
 import { IoIosArrowDown, IoLogoUsd } from 'react-icons/io';
 import { FaBangladeshiTakaSign } from 'react-icons/fa6';
 import { FaEuroSign } from 'react-icons/fa';
-import ToggleTab from "../../../../../Shared/ToggleTab.jsx";
-import ContentNavbar from "../../../../../Shared/ContentNavbar.jsx";
-import ComponentDescription from "../../../../../Shared/ComponentDescription.jsx";
-import ComponentWrapper from "../../../../../Shared/ComponentWrapper.jsx";
+import ToggleTab from "../../../../../Shared/Component/ToggleTab.jsx";
+import ContentNavbar from "../../../../../Shared/Component/ContentNavbar.jsx";
+import ComponentDescription from "../../../../../Shared/Component/ComponentDescription.jsx";
+import ComponentWrapper from "../../../../../Shared/Component/ComponentWrapper.jsx";
 
 const TextInput = () => {
   const sectionIds = textInputContents.map((item) => item.href.slice(1));

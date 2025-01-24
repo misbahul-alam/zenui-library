@@ -3,11 +3,11 @@ import React, { useState,useEffect } from "react";
 // components
 import ContentHeader from "../../../../../Shared/ContentHeader";
 import { Helmet } from "react-helmet";
-import BlocksShowCode from "../../../../../Shared/BlocksShowCode.jsx";
+import BlocksShowCode from "../../../../../Shared/Block/BlocksShowCode.jsx";
 
 // icons
 import {IoIosSearch, IoMdContact} from "react-icons/io";
-import BlocksFooter from "../../../../../Shared/BlocksFooter.jsx";
+import BlocksFooter from "../../../../../Shared/Block/BlocksFooter.jsx";
 import {GoLinkExternal} from "react-icons/go";
 import {RxCross2} from "react-icons/rx";
 import {FaPlus} from "react-icons/fa6";

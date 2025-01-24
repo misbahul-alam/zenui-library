@@ -26,7 +26,7 @@ const Sidebar = () => {
   return (
     <aside
       ref={sidebarRef}
-      className="py-6 px-10 dark:bg-darkBgColor pr-7 dark:border-darkBorderColor border-r h-[89vh] border-border flex-col gap-4 overflow-y-scroll sticky top-18 left-0 w-[320px] bg-secondary z-20 1024px:flex hidden"
+      className="py-6 px-10 dark:bg-darkBgColor pr-7 dark:border-darkBorderColor border-r h-[calc(100vh-76px)] border-border flex-col gap-4 overflow-y-scroll sticky top-18 left-0 w-[320px] bg-secondary z-20 1024px:flex hidden"
     >
       <Content />
     </aside>

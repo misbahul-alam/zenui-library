@@ -6,16 +6,16 @@ import { Helmet } from 'react-helmet';
 // components
 import OverviewFooter from '../../../../../../Shared/OverviewFooter.jsx';
 import ContentHeader from '../../../../../../Shared/ContentHeader.jsx';
-import Showcode from '../../../../../../Shared/ShowCode.jsx';
+import Showcode from '../../../../../../Shared/Component/ShowCode.jsx';
 
 // contents for scrollspy
 import { tableContents } from '../../../../../../Utils/ContentsConfig/DataDisplayContents.js';
 import { useScrollSpy } from '../../../../../../CustomHooks/useScrollSpy.js';
 
-import ComponentDescription from "../../../../../../Shared/ComponentDescription.jsx";
-import ToggleTab from "../../../../../../Shared/ToggleTab.jsx";
-import ComponentWrapper from "../../../../../../Shared/ComponentWrapper.jsx";
-import ContentNavbar from "../../../../../../Shared/ContentNavbar.jsx";
+import ComponentDescription from "../../../../../../Shared/Component/ComponentDescription.jsx";
+import ToggleTab from "../../../../../../Shared/Component/ToggleTab.jsx";
+import ComponentWrapper from "../../../../../../Shared/Component/ComponentWrapper.jsx";
+import ContentNavbar from "../../../../../../Shared/Component/ContentNavbar.jsx";
 
 import CheckboxTableExample from "./CheckboxTableExample.jsx";
 import PaginationTableExample from "./PaginationTableExample.jsx";

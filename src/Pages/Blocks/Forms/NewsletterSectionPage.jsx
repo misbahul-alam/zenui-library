@@ -8,7 +8,7 @@ import NewsletterSection from "../../../Components/Overview/SidebarContent/Block
 
 const NewsletterSectionPage = () => {
     return (
-        <>
+        <div className='dark:bg-darkBgColor'>
             <Navbar />
             <MobileNavbar/>
             <div className="flex w-full mx-auto max-w-[1700px]">
@@ -21,7 +21,7 @@ const NewsletterSectionPage = () => {
                     <NewsletterSection />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

@@ -6,16 +6,16 @@ import {Helmet} from "react-helmet";
 // components
 import OverviewFooter from "../../../../../Shared/OverviewFooter";
 import ContentHeader from "../../../../../Shared/ContentHeader";
-import Showcode from "../../../../../Shared/ShowCode";
+import Showcode from "../../../../../Shared/Component/ShowCode.jsx";
 
 // scrollspy
 import {pieChartContents} from "../../../../../Utils/ContentsConfig/DataDisplayContents.js";
 import {useScrollSpy} from "../../../../../CustomHooks/useScrollSpy.js";
 
-import ComponentDescription from "../../../../../Shared/ComponentDescription.jsx";
-import ToggleTab from "../../../../../Shared/ToggleTab.jsx";
-import ComponentWrapper from "../../../../../Shared/ComponentWrapper.jsx";
-import ContentNavbar from "../../../../../Shared/ContentNavbar.jsx";
+import ComponentDescription from "../../../../../Shared/Component/ComponentDescription.jsx";
+import ToggleTab from "../../../../../Shared/Component/ToggleTab.jsx";
+import ComponentWrapper from "../../../../../Shared/Component/ComponentWrapper.jsx";
+import ContentNavbar from "../../../../../Shared/Component/ContentNavbar.jsx";
 
 const PieChart = () => {
 

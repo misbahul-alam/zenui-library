@@ -12,13 +12,13 @@ import { useScrollSpy } from '../../../../../../CustomHooks/useScrollSpy.js';
 import { Helmet } from 'react-helmet';
 
 // showing the code
-import Showcode from '../../../../../../Shared/ShowCode.jsx';
+import Showcode from '../../../../../../Shared/Component/ShowCode.jsx';
 
-import ComponentDescription from "../../../../../../Shared/ComponentDescription.jsx";
-import ToggleTab from "../../../../../../Shared/ToggleTab.jsx";
-import ComponentWrapper from "../../../../../../Shared/ComponentWrapper.jsx";
-import ContentNavbar from "../../../../../../Shared/ContentNavbar.jsx";
-import WarningMessageCard from "../../../../../../Shared/WarningMessageCard.jsx";
+import ComponentDescription from "../../../../../../Shared/Component/ComponentDescription.jsx";
+import ToggleTab from "../../../../../../Shared/Component/ToggleTab.jsx";
+import ComponentWrapper from "../../../../../../Shared/Component/ComponentWrapper.jsx";
+import ContentNavbar from "../../../../../../Shared/Component/ContentNavbar.jsx";
+import WarningMessageCard from "../../../../../../Shared/Component/WarningMessageCard.jsx";
 import ControlledTreeExample from "./ControlledTreeExample.jsx";
 import DirectoryTreeExample from "./DirectoryTreeExample.jsx";
 import SimpleTreeDropdownExmaple from "./SimpleTreeDropdownExmaple.jsx";

@@ -8,7 +8,7 @@ import MultipageForm from "../../../Components/Overview/SidebarContent/Blocks/Fo
 
 const MultipageFormPage = () => {
     return (
-        <>
+        <div className='dark:bg-darkBgColor'>
             <Navbar />
             <MobileNavbar/>
             <div className="flex w-full mx-auto max-w-[1700px]">
@@ -21,7 +21,7 @@ const MultipageFormPage = () => {
                     <MultipageForm />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

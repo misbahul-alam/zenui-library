@@ -6,7 +6,7 @@ import ContentHeader from "../../../../Shared/ContentHeader";
 
 // react helmet
 import { Helmet } from "react-helmet";
-import BlocksFooter from "../../../../Shared/BlocksFooter.jsx";
+import BlocksFooter from "../../../../Shared/Block/BlocksFooter.jsx";
 
 const Overview = () => {
   return (

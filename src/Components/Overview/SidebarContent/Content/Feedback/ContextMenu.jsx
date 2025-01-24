@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet';
 
 // components
 import ContentHeader from '../../../../../Shared/ContentHeader';
-import Showcode from '../../../../../Shared/ShowCode';
+import Showcode from '../../../../../Shared/Component/ShowCode.jsx';
 import OverviewFooter from '../../../../../Shared/OverviewFooter';
 
 // contents for scrollspy
@@ -23,10 +23,10 @@ import { LuPencil } from 'react-icons/lu';
 import { GrCloudUpload } from 'react-icons/gr';
 import { IoCloudDownloadOutline } from 'react-icons/io5';
 
-import ComponentDescription from "../../../../../Shared/ComponentDescription.jsx";
-import ToggleTab from "../../../../../Shared/ToggleTab.jsx";
-import ComponentWrapper from "../../../../../Shared/ComponentWrapper.jsx";
-import ContentNavbar from "../../../../../Shared/ContentNavbar.jsx";
+import ComponentDescription from "../../../../../Shared/Component/ComponentDescription.jsx";
+import ToggleTab from "../../../../../Shared/Component/ToggleTab.jsx";
+import ComponentWrapper from "../../../../../Shared/Component/ComponentWrapper.jsx";
+import ContentNavbar from "../../../../../Shared/Component/ContentNavbar.jsx";
 
 const Dialog = () => {
   const sectionIds = contextMenuContents.map((item) => item.href.slice(1));

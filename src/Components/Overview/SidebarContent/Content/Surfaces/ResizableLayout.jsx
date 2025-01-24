@@ -5,7 +5,7 @@ import {Helmet} from "react-helmet";
 
 // components
 import ContentHeader from "../../../../../Shared/ContentHeader";
-import Showcode from "../../../../../Shared/ShowCode";
+import Showcode from "../../../../../Shared/Component/ShowCode.jsx";
 import OverviewFooter from "../../../../../Shared/OverviewFooter";
 
 // icons

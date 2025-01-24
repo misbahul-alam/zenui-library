@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import ContentHeader from "../../../../../../Shared/ContentHeader";
-import ShowCode from "../../../../../../Shared/ShowCode";
+import ShowCode from "../../../../../../Shared/Component/ShowCode.jsx";
 
-import ComponentDescription from "../../../../../../Shared/ComponentDescription.jsx";
-import ToggleTab from "../../../../../../Shared/ToggleTab.jsx";
-import ComponentWrapper from "../../../../../../Shared/ComponentWrapper.jsx";
+import ComponentDescription from "../../../../../../Shared/Component/ComponentDescription.jsx";
+import ToggleTab from "../../../../../../Shared/Component/ToggleTab.jsx";
+import ComponentWrapper from "../../../../../../Shared/Component/ComponentWrapper.jsx";
 import code from "../../Randoms/Code.jsx";
 
 const MilestoneTimeline = () => {

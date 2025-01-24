@@ -8,16 +8,16 @@ import ContentHeader from "../../../../../Shared/ContentHeader";
 import { Helmet } from "react-helmet";
 
 // showing the code
-import Showcode from "../../../../../Shared/ShowCode";
+import Showcode from "../../../../../Shared/Component/ShowCode.jsx";
 
 // contents for scrollspy
 import { otpInputContents } from '../../../../../Utils/ContentsConfig/InputContents';
 import { useScrollSpy } from '../../../../../CustomHooks/useScrollSpy';
 
-import ComponentDescription from '../../../../../Shared/ComponentDescription';
-import ComponentWrapper from '../../../../../Shared/ComponentWrapper';
-import ToggleTab from '../../../../../Shared/ToggleTab';
-import ContentNavbar from '../../../../../Shared/ContentNavbar';
+import ComponentDescription from '../../../../../Shared/Component/ComponentDescription.jsx';
+import ComponentWrapper from '../../../../../Shared/Component/ComponentWrapper.jsx';
+import ToggleTab from '../../../../../Shared/Component/ToggleTab.jsx';
+import ContentNavbar from '../../../../../Shared/Component/ContentNavbar.jsx';
 
 const OtpInput = () => {
     const sectionIds = otpInputContents.map((item) => item.href.slice(1));

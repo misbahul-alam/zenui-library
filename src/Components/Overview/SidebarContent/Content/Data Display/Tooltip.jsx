@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet';
 // components
 import OverviewFooter from '../../../../../Shared/OverviewFooter';
 import ContentHeader from '../../../../../Shared/ContentHeader';
-import Showcode from '../../../../../Shared/ShowCode';
+import Showcode from '../../../../../Shared/Component/ShowCode.jsx';
 
 // contents for scrollspy
 import { tooltipContents } from '../../../../../Utils/ContentsConfig/DataDisplayContents.js';
@@ -16,11 +16,11 @@ import { useScrollSpy } from '../../../../../CustomHooks/useScrollSpy';
 import { FaGithubSquare, FaInstagramSquare, FaLinkedin } from 'react-icons/fa';
 import { FiMessageCircle } from 'react-icons/fi';
 
-import ComponentDescription from "../../../../../Shared/ComponentDescription.jsx";
-import ToggleTab from "../../../../../Shared/ToggleTab.jsx";
-import ComponentWrapper from "../../../../../Shared/ComponentWrapper.jsx";
-import ContentNavbar from "../../../../../Shared/ContentNavbar.jsx";
-import WarningMessageCard from "../../../../../Shared/WarningMessageCard.jsx";
+import ComponentDescription from "../../../../../Shared/Component/ComponentDescription.jsx";
+import ToggleTab from "../../../../../Shared/Component/ToggleTab.jsx";
+import ComponentWrapper from "../../../../../Shared/Component/ComponentWrapper.jsx";
+import ContentNavbar from "../../../../../Shared/Component/ContentNavbar.jsx";
+import WarningMessageCard from "../../../../../Shared/Component/WarningMessageCard.jsx";
 
 const Tooltip = () => {
   const sectionIds = tooltipContents.map((item) => item.href.slice(1));

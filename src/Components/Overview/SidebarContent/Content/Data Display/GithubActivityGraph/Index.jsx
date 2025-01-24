@@ -6,14 +6,14 @@ import { Helmet } from "react-helmet";
 // contents for scrollspy
 import ContentHeader from "../../../../../../Shared/ContentHeader.jsx";
 import GithubActivityGraphExample from "./GithubActivityGraphExample.jsx";
-import BlocksFooter from "../../../../../../Shared/BlocksFooter.jsx";
+import BlocksFooter from "../../../../../../Shared/Block/BlocksFooter.jsx";
 import GithubActivityGraphWithMonthExample from "./GithubActivityGraphWithMonthExample.jsx";
 import CalculatingTotalActivityExample from "./CalculatingTotalActivityExample.jsx";
-import BlocksShowCode from "../../../../../../Shared/BlocksShowCode.jsx";
+import BlocksShowCode from "../../../../../../Shared/Block/BlocksShowCode.jsx";
 
-import BlockToggleTab from "../../../../../../Shared/BlockToggleTab.jsx";
-import BlockWrapper from "../../../../../../Shared/BlockWrapper.jsx";
-import BlockDescription from "../../../../../../Shared/BlockDescription.jsx";
+import BlockToggleTab from "../../../../../../Shared/Block/BlockToggleTab.jsx";
+import BlockWrapper from "../../../../../../Shared/Block/BlockWrapper.jsx";
+import BlockDescription from "../../../../../../Shared/Block/BlockDescription.jsx";
 
 const GithubActivityGraph = () => {
 

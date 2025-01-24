@@ -1,15 +1,17 @@
-import React, { useState,useEffect } from "react";
+import React, { useState } from "react";
 
 // components
 import ContentHeader from "../../../../../Shared/ContentHeader";
 import { Helmet } from "react-helmet";
-import BlocksShowCode from "../../../../../Shared/BlocksShowCode.jsx";
+import BlocksShowCode from "../../../../../Shared/Block/BlocksShowCode.jsx";
 
 // icons
-import BlocksFooter from "../../../../../Shared/BlocksFooter.jsx";
+import BlocksFooter from "../../../../../Shared/Block/BlocksFooter.jsx";
 import {AiOutlineMail} from "react-icons/ai";
 import {MdOutlineMail} from "react-icons/md";
-import {useToggleCardView} from "../../../../../CustomHooks/ButtonToggle.js";
+import BlockDescription from "../../../../../Shared/Block/BlockDescription.jsx";
+import BlockToggleTab from "../../../../../Shared/Block/BlockToggleTab.jsx";
+import BlockWrapper from "../../../../../Shared/Block/BlockWrapper.jsx";
 
 
 const NewsletterSection = () => {
@@ -38,39 +40,17 @@ const NewsletterSection = () => {
     const[newsletter8Preview, setNewsletter8Preview] = useState(true);
     const[newsletter8Code, setNewsletter8Code] = useState(false);
 
-    const toggleCardView = useToggleCardView()
-
     return (
         <aside className="flex items-start justify-between gap-6 w-full 640px:pl-[2.5rem] px-6 640px:px-10">
             <div>
                 <ContentHeader text={"newsletter form 1"} id={"newsletter_form_1"}/>
 
-                <p className="w-full text-text text-[1rem]">
-                    A section on a website inviting users to subscribe to updates or a newsletter, typically with an
-                    email input field and a call-to-action button.
-                </p>
+                <BlockDescription text='A section on a website inviting users to subscribe to updates or a newsletter, typically with an
+                    email input field and a call-to-action button.'/>
 
-                <div className="w-full border border-border rounded mt-8">
-                    <div className="relative">
-                        <div
-                            className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${newsletter1Preview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
-                        <button
-                            className={`${
-                                newsletter1Preview && "text-tabTextColor"
-                            } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                            onClick={() => toggleCardView(setNewsletter1Preview, setNewsletter1Code, true)}
-                        >
-                            Preview
-                        </button>
-                        <button
-                            className={`${
-                                newsletter1Code && "text-tabTextColor"
-                            } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                            onClick={() => toggleCardView(setNewsletter1Preview, setNewsletter1Code, false)}
-                        >
-                            Code
-                        </button>
-                    </div>
+                <BlockToggleTab code={newsletter1Code} setCode={setNewsletter1Code} setPreview={setNewsletter1Preview} preview={newsletter1Preview}/>
+
+                <BlockWrapper>
                     {newsletter1Preview && (
                         <div
                             className={`p-8 flex flex-wrap items-center gap-5 justify-center overflow-hidden`}>
@@ -82,9 +62,9 @@ const NewsletterSection = () => {
                                     </div>
 
                                     <div className='w-full 1260px:w-[45%]'>
-                                        <b className='text-[1.3rem] 640px:text-[2rem]'>Get our weekly</b>
+                                        <b className='text-[1.3rem] dark:text-[#abc2d3] 640px:text-[2rem]'>Get our weekly</b>
                                         <h1 className='text-[2.1rem] 640px:text-[3.2rem] font-[800] uppercase text-[#FF354D] leading-[50px]'>newsletter</h1>
-                                        <p className='text-[1rem] 640px:text-[1.3rem] mt-5 640px:mt-8'>Get weekly
+                                        <p className='text-[1rem] dark:text-[#abc2d3] 640px:text-[1.3rem] mt-5 640px:mt-8'>Get weekly
                                             updates on the newest design
                                             stories, case studies and tips right
                                             in your mailbox. <b>Subscribe now!</b></p>
@@ -93,7 +73,7 @@ const NewsletterSection = () => {
 
                                 <div className='relative mt-10 w-full 640px:w-[85%] mx-auto'>
                                     <input placeholder="Email Address"
-                                           className='py-3 px-4 pr-[130px] border border-border rounded-l-md outline-none focus:ring-0 focus:border-[#FF354D] w-full'/>
+                                           className='py-3 px-4 dark:bg-slate-900 dark:border-slate-700 dark:placeholder:text-slate-500 dark:text-[#abc2d3] pr-[130px] border border-border rounded-md outline-none focus:ring-0 focus:border-[#FF354D] w-full'/>
                                     <button
                                         className='py-3 px-6 h-full absolute top-0 right-0 hover:bg-[#ea253c] bg-[#FF354D] text-white rounded-r-md'>Subscribe
                                     </button>
@@ -116,9 +96,9 @@ const NewsletterForm = () => {
                 </div>
 
                 <div className="w-full lg:w-[45%]">
-                    <b className="text-[1.3rem] sm:text-[2rem]">Get our weekly</b>
+                    <b className="text-[1.3rem] dark:text-[#abc2d3] sm:text-[2rem]">Get our weekly</b>
                     <h1 className="text-[2.1rem] sm:text-[3.2rem] font-[800] uppercase text-[#FF354D] leading-[50px]">newsletter</h1>
-                    <p className="text-[1rem] sm:text-[1.3rem] mt-5 sm:mt-8">Get weekly
+                    <p className="text-[1rem] dark:text-slate-400 sm:text-[1.3rem] mt-5 sm:mt-8">Get weekly
                         updates on the newest design
                         stories, case studies and tips right
                         in your mailbox. <b>Subscribe now!</b></p>
@@ -127,7 +107,7 @@ const NewsletterForm = () => {
 
             <div className="relative mt-10 w-full sm:w-[85%] mx-auto">
                 <input placeholder="Email Address"
-                       className="py-3 px-4 pr-[130px] border border-border rounded-l-md outline-none focus:ring-0 focus:border-[#FF354D] w-full"/>
+                       className="py-3 px-4 dark:bg-slate-900 dark:border-slate-700 dark:placeholder:text-slate-500 dark:text-[#abc2d3] pr-[130px] border border-border rounded-md outline-none focus:ring-0 focus:border-[#FF354D] w-full"/>
                 <button
                     className="py-3 px-6 h-full absolute top-0 right-0 hover:bg-[#ea253c] bg-[#FF354D] text-white rounded-r-md">Subscribe
                 </button>
@@ -139,38 +119,18 @@ const NewsletterForm = () => {
 export default NewsletterForm;
                     '/>
                     }
-                </div>
+                </BlockWrapper>
 
                 <div className='mt-8'>
                     <ContentHeader text={"newsletter form 2"} id={"newsletter_form_2"}/>
                 </div>
 
-                <p className="w-full text-text text-[1rem]">
-                    A section on a website inviting users to subscribe to updates or a newsletter, typically with an
-                    email input field and a call-to-action button.
-                </p>
+                <BlockDescription text='A section on a website inviting users to subscribe to updates or a newsletter, typically with an
+                    email input field and a call-to-action button.'/>
 
-                <div className="w-full border border-border rounded mt-8">
-                    <div className="relative">
-                        <div
-                            className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${newsletter2Preview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
-                        <button
-                            className={`${
-                                newsletter2Preview && "text-tabTextColor"
-                            } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                            onClick={() => toggleCardView(setNewsletter2Preview, setNewsletter2Code, true)}
-                        >
-                            Preview
-                        </button>
-                        <button
-                            className={`${
-                                newsletter2Code && "text-tabTextColor"
-                            } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                            onClick={() => toggleCardView(setNewsletter2Preview, setNewsletter2Code, false)}
-                        >
-                            Code
-                        </button>
-                    </div>
+                <BlockToggleTab code={newsletter2Code} setCode={setNewsletter2Code} setPreview={setNewsletter2Preview} preview={newsletter2Preview}/>
+
+                <BlockWrapper>
                     {newsletter2Preview && (
                         <div
                             className={`p-8 640px:p-12 flex flex-wrap items-center gap-5 justify-center overflow-hidden`}>
@@ -249,38 +209,18 @@ const NewsletterForm = () => {
 export default NewsletterForm;
                     '/>
                     }
-                </div>
+                </BlockWrapper>
 
                 <div className='mt-8'>
                     <ContentHeader text={"newsletter form 3"} id={"newsletter_form_3"}/>
                 </div>
 
-                <p className="w-full text-text text-[1rem]">
-                    A section on a website inviting users to subscribe to updates or a newsletter, typically with an
-                    email input field and a call-to-action button.
-                </p>
+                <BlockDescription text='A section on a website inviting users to subscribe to updates or a newsletter, typically with an
+                    email input field and a call-to-action button.'/>
 
-                <div className="w-full border border-border rounded mt-8">
-                    <div className="relative">
-                        <div
-                            className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${newsletter3Preview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
-                        <button
-                            className={`${
-                                newsletter3Preview && "text-tabTextColor"
-                            } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                            onClick={() => toggleCardView(setNewsletter3Preview, setNewsletter3Code, true)}
-                        >
-                            Preview
-                        </button>
-                        <button
-                            className={`${
-                                newsletter3Code && "text-tabTextColor"
-                            } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                            onClick={() => toggleCardView(setNewsletter3Preview, setNewsletter3Code, false)}
-                        >
-                            Code
-                        </button>
-                    </div>
+                <BlockToggleTab code={newsletter3Code} setCode={setNewsletter3Code} setPreview={setNewsletter3Preview} preview={newsletter3Preview}/>
+
+                <BlockWrapper>
                     {newsletter3Preview && (
                         <div
                             className={`p-8  flex flex-wrap items-center gap-5 justify-center overflow-hidden`}>
@@ -291,7 +231,7 @@ export default NewsletterForm;
 
                                 <div className='relative mt-6 w-full 640px:w-[70%] mx-auto'>
                                     <input placeholder="Email Address"
-                                           className='py-4 pl-6 pr-[130px] border rounded-full outline-none focus:ring-0 border-[#FF354D] w-full'/>
+                                           className='py-4 pl-6 pr-[130px] dark:bg-slate-900 dark:placeholder:text-slate-500 dark:text-[#abc2d3] dark:border-slate-700 border rounded-full outline-none focus:ring-0 border-[#FF354D] w-full'/>
                                     <button
                                         className='py-3 px-6 absolute top-[50%] translate-y-[-50%] transform right-1.5 hover:bg-[#ea253c] bg-[#FF354D] text-white rounded-full'>Subscribe
                                     </button>
@@ -313,7 +253,7 @@ const NewsletterForm = () => {
 
             <div className="relative mt-6 w-full sm:w-[70%] mx-auto">
                 <input placeholder="Email Address"
-                       className="py-4 pl-6 pr-[130px] border rounded-full outline-none focus:ring-0 border-[#FF354D] w-full"/>
+                       className="py-4 pl-6 pr-[130px] dark:bg-slate-900 dark:placeholder:text-slate-500 dark:text-[#abc2d3] dark:border-slate-700 border rounded-full outline-none focus:ring-0 border-[#FF354D] w-full"/>
                 <button
                     className="py-3 px-6 absolute top-[50%] translate-y-[-50%] transform right-1.5 hover:bg-[#ea253c] bg-[#FF354D] text-white rounded-full">Subscribe
                 </button>
@@ -325,38 +265,18 @@ const NewsletterForm = () => {
 export default NewsletterForm;
                     '/>
                     }
-                </div>
+                </BlockWrapper>
 
                 <div className='mt-8'>
                     <ContentHeader text={"newsletter form 4"} id={"newsletter_form_4"}/>
                 </div>
 
-                <p className="w-full text-text text-[1rem]">
-                    A section on a website inviting users to subscribe to updates or a newsletter, typically with an
-                    email input field and a call-to-action button.
-                </p>
+                <BlockDescription text='A section on a website inviting users to subscribe to updates or a newsletter, typically with an
+                    email input field and a call-to-action button.'/>
 
-                <div className="w-full border border-border rounded mt-8">
-                    <div className="relative">
-                        <div
-                            className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${newsletter4Preview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
-                        <button
-                            className={`${
-                                newsletter4Preview && "text-tabTextColor"
-                            } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                            onClick={() => toggleCardView(setNewsletter4Preview, setNewsletter4Code, true)}
-                        >
-                            Preview
-                        </button>
-                        <button
-                            className={`${
-                                newsletter4Code && "text-tabTextColor"
-                            } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                            onClick={() => toggleCardView(setNewsletter4Preview, setNewsletter4Code, false)}
-                        >
-                            Code
-                        </button>
-                    </div>
+                <BlockToggleTab code={newsletter4Code} setCode={setNewsletter4Code} setPreview={setNewsletter4Preview} preview={newsletter4Preview}/>
+
+                <BlockWrapper>
                     {newsletter4Preview && (
                         <div
                             className={`p-8  flex flex-wrap items-center gap-5 justify-center overflow-hidden`}>
@@ -368,16 +288,16 @@ export default NewsletterForm;
                                     </div>
 
                                     <div className='w-full 1260px:w-[50%]'>
-                                        <b className='text-[1rem] 640px:text-[1.8rem] text-text'>Subscribe to our</b>
-                                        <h1 className='text-[2rem] 640px:text-[3rem] font-[800] capitalize text-text leading-[50px]'>newsletter</h1>
-                                        <p className='text-[1.1rem] mt-3'>Get weekly updates on the newest design
+                                        <b className='text-[1rem] dark:text-[#abc2d3] 640px:text-[1.8rem] text-text'>Subscribe to our</b>
+                                        <h1 className='text-[2rem] dark:text-[#abc2d3] 640px:text-[3rem] font-[800] capitalize text-text leading-[50px]'>newsletter</h1>
+                                        <p className='text-[1.1rem] dark:text-[#abc2d3] mt-3'>Get weekly updates on the newest design
                                             stories, case studies and tips right
                                             in your mailbox. <b>Subscribe now!</b></p>
 
                                         <form className='mt-5'>
                                             <div className='relative'>
                                                 <input placeholder='Email Address'
-                                                       className='w-full py-3 pr-4 pl-14 outline-none focus:ring-0 border rounded-md border-[#00b0ff]'/>
+                                                       className='w-full py-3 dark:border-slate-700 dark:bg-slate-900 dark:placeholder:text-slate-500 dark:text-[#abc2d3] pr-4 pl-14 outline-none focus:ring-0 border rounded-md border-[#00b0ff]'/>
                                                 <AiOutlineMail
                                                     className='absolute top-[50%] transform translate-y-[-50%] left-3 text-[#00b0ff] text-[1.7rem]'/>
                                             </div>
@@ -409,16 +329,16 @@ const NewsletterForm = () => {
                 </div>
 
                 <div className="w-full lg:w-[50%]">
-                    <b className="text-[1rem] sm:text-[1.8rem] text-text">Subscribe to our</b>
-                    <h1 className="text-[2rem] sm:text-[3rem] font-[800] capitalize text-text leading-[50px]">newsletter</h1>
-                    <p className="text-[1.1rem] mt-3">Get weekly updates on the newest design
+                    <b className="text-[1rem] dark:text-[#abc2d3] sm:text-[1.8rem] text-text">Subscribe to our</b>
+                    <h1 className="text-[2rem] dark:text-[#abc2d3] sm:text-[3rem] font-[800] capitalize text-text leading-[50px]">newsletter</h1>
+                    <p className="text-[1.1rem] dark:text-[#abc2d3] mt-3">Get weekly updates on the newest design
                         stories, case studies and tips right
                         in your mailbox. <b>Subscribe now!</b></p>
 
                     <form className="mt-5">
                         <div className="relative">
                             <input placeholder="Email Address"
-                                   className="w-full py-3 pr-4 pl-14 outline-none focus:ring-0 border rounded-md border-[#00b0ff]"/>
+                                   className="w-full py-3 dark:border-slate-700 dark:bg-slate-900 dark:placeholder:text-slate-500 dark:text-[#abc2d3] pr-4 pl-14 outline-none focus:ring-0 border rounded-md border-[#00b0ff]"/>
                             <AiOutlineMail
                                 className="absolute top-[50%] transform translate-y-[-50%] left-3 text-[#00b0ff] text-[1.7rem]"/>
                         </div>
@@ -436,42 +356,22 @@ const NewsletterForm = () => {
 export default NewsletterForm;
                     '/>
                     }
-                </div>
+                </BlockWrapper>
 
                 <div className='mt-8'>
                     <ContentHeader text={"newsletter form 5"} id={"newsletter_form_5"}/>
                 </div>
 
-                <p className="w-full text-text text-[1rem]">
-                    A section on a website inviting users to subscribe to updates or a newsletter, typically with an
-                    email input field and a call-to-action button.
-                </p>
+                <BlockDescription text='A section on a website inviting users to subscribe to updates or a newsletter, typically with an
+                    email input field and a call-to-action button.'/>
 
-                <div className="w-full border border-border rounded mt-8">
-                    <div className="relative">
-                        <div
-                            className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${newsletter5Preview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
-                        <button
-                            className={`${
-                                newsletter5Preview && "text-tabTextColor"
-                            } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                            onClick={() => toggleCardView(setNewsletter5Preview, setNewsletter5Code, true)}
-                        >
-                            Preview
-                        </button>
-                        <button
-                            className={`${
-                                newsletter5Code && "text-tabTextColor"
-                            } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                            onClick={() => toggleCardView(setNewsletter5Preview, setNewsletter5Code, false)}
-                        >
-                            Code
-                        </button>
-                    </div>
+                <BlockToggleTab code={newsletter5Code} setCode={setNewsletter5Code} setPreview={setNewsletter5Preview} preview={newsletter5Preview}/>
+
+                <BlockWrapper>
                     {newsletter5Preview && (
                         <div
                             className={`p-8  flex flex-wrap items-center gap-5 justify-center overflow-hidden`}>
-                            <section className='w-full rounded-xl p-[20px] bg-gray-700 relative'>
+                            <section className='w-full rounded-xl p-[20px] dark:bg-slate-900 bg-gray-700 relative'>
 
                                 {/* email icon */}
                                 <div
@@ -489,14 +389,14 @@ export default NewsletterForm;
                                     <form
                                         className='mt-12 640px:flex-row flex-col flex items-end 640px:items-center justify-between gap-[15px]'>
                                         <input placeholder='Email Address'
-                                               className='w-full py-3 px-4 outline-none focus:ring-0 rounded-md '/>
+                                               className='w-full py-3 dark:bg-transparent dark:placeholder:text-slate-500 dark:text-[#abc2d3] dark:border dark:border-blue-700 px-4 outline-none focus:ring-0 rounded-md '/>
 
                                         <button
                                             className='w-max px-8 py-3 rounded-md bg-blue-500 text-white'>Submit
                                         </button>
                                     </form>
 
-                                    <p className='text-[0.9rem] text-gray-500 text-center mt-8'>Your email is safe with
+                                    <p className='text-[0.9rem] dark:text-slate-400 text-gray-500 text-center mt-8'>Your email is safe with
                                         us, we don't spam</p>
                                 </div>
                             </section>
@@ -512,7 +412,7 @@ import {MdOutlineMail} from "react-icons/md";
 const NewsletterForm = () => {
 
     return (
-        <section className="w-full rounded-xl p-[20px] bg-gray-700 relative">
+        <section className="w-full rounded-xl dark:bg-slate-900 p-[20px] bg-gray-700 relative">
 
             {/* email icon */}
             <div
@@ -530,14 +430,14 @@ const NewsletterForm = () => {
                 <form
                     className="mt-12 sm:flex-row flex-col flex items-end sm:items-center justify-between gap-[15px]">
                     <input placeholder="Email Address"
-                           className="w-full py-3 px-4 outline-none focus:ring-0 rounded-md "/>
+                           className="w-full py-3 dark:bg-transparent dark:placeholder:text-slate-500 dark:text-[#abc2d3] dark:border dark:border-blue-700 px-4 outline-none focus:ring-0 rounded-md "/>
 
                     <button
                         className="w-max px-8 py-3 rounded-md bg-blue-500 text-white">Submit
                     </button>
                 </form>
 
-                <p className="text-[0.9rem] text-gray-500 text-center mt-8">Your email is safe with
+                <p className="text-[0.9rem] dark:text-slate-400 text-gray-500 text-center mt-8">Your email is safe with
                     us, we don"t spam</p>
             </div>
         </section>
@@ -547,38 +447,18 @@ const NewsletterForm = () => {
 export default NewsletterForm;
                     '/>
                     }
-                </div>
+                </BlockWrapper>
 
                 <div className='mt-8'>
                     <ContentHeader text={"newsletter form 6"} id={"newsletter_form_6"}/>
                 </div>
 
-                <p className="w-full text-text text-[1rem]">
-                    A section on a website inviting users to subscribe to updates or a newsletter, typically with an
-                    email input field and a call-to-action button.
-                </p>
+                <BlockDescription text=' A section on a website inviting users to subscribe to updates or a newsletter, typically with an
+                    email input field and a call-to-action button.'/>
 
-                <div className="w-full border border-border rounded mt-8">
-                    <div className="relative">
-                        <div
-                            className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${newsletter6Preview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
-                        <button
-                            className={`${
-                                newsletter6Preview && "text-tabTextColor"
-                            } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                            onClick={() => toggleCardView(setNewsletter6Preview, setNewsletter6Code, true)}
-                        >
-                            Preview
-                        </button>
-                        <button
-                            className={`${
-                                newsletter6Code && "text-tabTextColor"
-                            } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                            onClick={() => toggleCardView(setNewsletter6Preview, setNewsletter6Code, false)}
-                        >
-                            Code
-                        </button>
-                    </div>
+                <BlockToggleTab code={newsletter6Code} setCode={setNewsletter6Code} setPreview={setNewsletter6Preview} preview={newsletter6Preview}/>
+
+                <BlockWrapper>
                     {newsletter6Preview && (
                         <div
                             className={`p-8 flex flex-wrap items-center gap-5 justify-center overflow-hidden`}>
@@ -591,14 +471,14 @@ export default NewsletterForm;
                                     </div>
 
                                     <div className='w-full 1260px:w-[50%]'>
-                                        <h1 className='text-[2rem] 640px:text-[3rem] font-[500] capitalize text-text leading-[50px]'>Join
+                                        <h1 className='text-[2rem] dark:text-[#abc2d3] 640px:text-[3rem] font-[500] capitalize text-text leading-[50px]'>Join
                                             Us!</h1>
-                                        <p className='text-[1.1rem] mt-3'>Subscribe to our weekly newsletter and be a
+                                        <p className='text-[1.1rem] dark:text-slate-400 mt-3'>Subscribe to our weekly newsletter and be a
                                             part of our journey to self discovery and love.</p>
 
                                         <form className=' mt-12 relative'>
                                             <input placeholder='Email Address'
-                                                   className='w-full py-4 pl-4 pr-[120px] outline-none focus:ring-0 border rounded-full border-[#00b0ff]'/>
+                                                   className='w-full py-4 dark:bg-transparent dark:placeholder:text-slate-500 dark:text-[#abc2d3] pl-4 pr-[120px] outline-none focus:ring-0 border rounded-full border-[#00b0ff]'/>
 
                                             <button
                                                 className='px-8 py-3 absolute top-0 right-0 h-full rounded-full rounded-tl-[0px] hover:bg-[#02aaf2] bg-[#00b0ff] text-white'>Submit
@@ -625,14 +505,14 @@ const NewsletterForm = () => {
                 </div>
 
                 <div className="w-full lg:w-[50%]">
-                    <h1 className="text-[2rem] sm:text-[3rem] font-[500] capitalize text-text leading-[50px]">Join
+                    <h1 className="text-[2rem] dark:text-[#abc2d3] sm:text-[3rem] font-[500] capitalize text-text leading-[50px]">Join
                         Us!</h1>
-                    <p className="text-[1.1rem] mt-3">Subscribe to our weekly newsletter and be a
+                    <p className="text-[1.1rem] dark:text-slate-400 mt-3">Subscribe to our weekly newsletter and be a
                         part of our journey to self discovery and love.</p>
 
                     <form className=" mt-12 relative">
                         <input placeholder="Email Address"
-                               className="w-full py-4 pl-4 pr-[120px] outline-none focus:ring-0 border rounded-full border-[#00b0ff]"/>
+                               className="w-full py-4 pl-4 dark:bg-transparent dark:placeholder:text-slate-500 dark:text-[#abc2d3] pr-[120px] outline-none focus:ring-0 border rounded-full border-[#00b0ff]"/>
 
                         <button
                             className="px-8 py-3 absolute top-0 right-0 h-full rounded-full rounded-tl-[0px] hover:bg-[#02aaf2] bg-[#00b0ff] text-white">Submit
@@ -647,38 +527,18 @@ const NewsletterForm = () => {
 export default NewsletterForm;
                     '/>
                     }
-                </div>
+                </BlockWrapper>
 
                 <div className='mt-8'>
                     <ContentHeader text={"newsletter form 7"} id={"newsletter_form_7"}/>
                 </div>
 
-                <p className="w-full text-text text-[1rem]">
-                    A section on a website inviting users to subscribe to updates or a newsletter, typically with an
-                    email input field and a call-to-action button.
-                </p>
+                <BlockDescription text='A section on a website inviting users to subscribe to updates or a newsletter, typically with an
+                    email input field and a call-to-action button.'/>
 
-                <div className="w-full border border-border rounded mt-8">
-                    <div className="relative">
-                        <div
-                            className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${newsletter7Preview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
-                        <button
-                            className={`${
-                                newsletter7Preview && "text-tabTextColor"
-                            } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                            onClick={() => toggleCardView(setNewsletter7Preview, setNewsletter7Code, true)}
-                        >
-                            Preview
-                        </button>
-                        <button
-                            className={`${
-                                newsletter7Code && "text-tabTextColor"
-                            } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                            onClick={() => toggleCardView(setNewsletter7Preview, setNewsletter7Code, false)}
-                        >
-                            Code
-                        </button>
-                    </div>
+                <BlockToggleTab code={newsletter7Code} setCode={setNewsletter7Code} setPreview={setNewsletter7Preview} preview={newsletter7Preview}/>
+
+                <BlockWrapper>
                     {newsletter7Preview && (
                         <div
                             className={`p-8  flex flex-wrap items-center gap-5 justify-center overflow-hidden`}>
@@ -752,61 +612,41 @@ const NewsletterForm = () => {
 export default NewsletterForm;
                     '/>
                     }
-                </div>
+                </BlockWrapper>
 
                 <div className='mt-8'>
                     <ContentHeader text={"newsletter form 8"} id={"newsletter_form_8"}/>
                 </div>
 
-                <p className="w-full text-text text-[1rem]">
-                    A section on a website inviting users to subscribe to updates or a newsletter, typically with an
-                    email input field and a call-to-action button.
-                </p>
+                <BlockDescription text='A section on a website inviting users to subscribe to updates or a newsletter, typically with an
+                    email input field and a call-to-action button.'/>
 
-                <div className="w-full border border-border rounded mt-8">
-                    <div className="relative">
-                        <div
-                            className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${newsletter8Preview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
-                        <button
-                            className={`${
-                                newsletter8Preview && "text-tabTextColor"
-                            } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                            onClick={() => toggleCardView(setNewsletter8Preview, setNewsletter8Code, true)}
-                        >
-                            Preview
-                        </button>
-                        <button
-                            className={`${
-                                newsletter8Code && "text-tabTextColor"
-                            } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                            onClick={() => toggleCardView(setNewsletter8Preview, setNewsletter8Code, false)}
-                        >
-                            Code
-                        </button>
-                    </div>
+                <BlockToggleTab code={newsletter8Code} setCode={setNewsletter8Code} setPreview={setNewsletter8Preview} preview={newsletter8Preview}/>
+
+                <BlockWrapper>
                     {newsletter8Preview && (
                         <div
                             className={`p-8  flex flex-wrap items-center gap-5 justify-center overflow-hidden`}>
                             <section
-                                className='w-full rounded-xl py-[20px] 640px:py-[40px] px-[40px] 640px:px-[80px] bg-gradient-to-br from-[#fff] via-[#fff] to-[#6D96FF] boxShadow'>
-                                <h1 className='text-[2rem] 640px:text-[3.5rem] w-full 640px:w-[60%] text-[#161819] font-[400] leading-[45px] 640px:leading-[70px]'>Subscibe
+                                className='w-full rounded-xl py-[20px] 640px:py-[40px] px-[40px] 640px:px-[80px] bg-gradient-to-br from-[#fff] dark:from-slate-800 via-[#fff] to-[#6D96FF] boxShadow'>
+                                <h1 className='text-[2rem] 640px:text-[3.5rem] w-full 640px:w-[60%] text-[#161819] font-[400] leading-[45px] dark:text-[#abc2d3] 640px:leading-[70px]'>Subscibe
                                     to Our
                                     Newsletter</h1>
 
                                 <div
                                     className='w-full 1260px:flex-row flex-col flex items-start mt-12 justify-between gap-[30px]'>
-                                    <p className='text-[0.9rem] text-[#555555]'>Get weekly update about our
+                                    <p className='text-[0.9rem] dark:text-slate-400 text-[#555555]'>Get weekly update about our
                                         product
                                         on your email, no spam guaranteed we promise ✌️</p>
 
                                     <div className='relative mb-6 w-full 640px:w-[80%]'>
-                                        <input className='py-3 pr-4 pl-12 w-full outline-none'
+                                        <input className='py-3 dark:bg-slate-800 dark:placeholder:text-slate-500 dark:text-[#abc2d3] pr-4 pl-12 w-full outline-none'
                                                placeholder='Email Address'/>
                                         <MdOutlineMail
-                                            className='p-1.5 bg-[#F8F8F8] text-[#6C777C] text-[2rem] absolute top-[50%] left-2 transform translate-y-[-50%]'/>
+                                            className='p-1.5 bg-[#F8F8F8] dark:bg-slate-900 dark:text-slate-300 text-[#6C777C] text-[2rem] absolute top-[50%] left-2 transform translate-y-[-50%]'/>
 
                                         <button
-                                            className='absolute bottom-[-20px] right-[-20px] bg-[#161819] hover:bg-[#161819] text-white py-3 px-8'>subscribe
+                                            className='absolute dark:bg-slate-700 dark:text-[#abc2d3] dark:hover:bg-slate-700 dark:hover:text-[#abc2d3] bottom-[-20px] right-[-20px] bg-[#161819] hover:bg-[#161819] text-white py-3 px-8'>subscribe
                                         </button>
                                     </div>
                                 </div>
@@ -825,24 +665,24 @@ const NewsletterForm = () => {
     return (
         <section
             className="w-full rounded-xl py-[20px] sm:py-[40px] px-[40px] sm:px-[80px] bg-gradient-to-br from-[#fff] via-[#fff] to-[#6D96FF] boxShadow">
-            <h1 className="text-[2rem] sm:text-[3.5rem] w-full sm:w-[60%] text-[#161819] font-[400] leading-[45px] sm:leading-[70px]">Subscibe
+            <h1 className="text-[2rem] dark:text-[#abc2d3] sm:text-[3.5rem] w-full sm:w-[60%] text-[#161819] font-[400] leading-[45px] sm:leading-[70px]">Subscibe
                 to Our
                 Newsletter</h1>
 
             <div
                 className="w-full 1260px:flex-row flex-col flex items-start mt-12 justify-between gap-[30px]">
-                <p className="text-[0.9rem] text-[#555555]">Get weekly update about our
+                <p className="text-[0.9rem] dark:text-slate-400 text-[#555555]">Get weekly update about our
                     product
                     on your email, no spam guaranteed we promise ✌️</p>
 
                 <div className="relative mb-6 w-full sm:w-[80%]">
-                    <input className="py-3 pr-4 pl-12 w-full outline-none"
+                    <input className="py-3 dark:bg-slate-800 dark:placeholder:text-slate-500 dark:text-[#abc2d3] pr-4 pl-12 w-full outline-none"
                            placeholder="Email Address"/>
                     <MdOutlineMail
-                        className="p-1.5 bg-[#F8F8F8] text-[#6C777C] text-[2rem] absolute top-[50%] left-2 transform translate-y-[-50%]"/>
+                        className="p-1.5 bg-[#F8F8F8] dark:bg-slate-900 dark:text-slate-300 text-[#6C777C] text-[2rem] absolute top-[50%] left-2 transform translate-y-[-50%]"/>
 
                     <button
-                        className="absolute bottom-[-20px] right-[-20px] bg-[#161819] hover:bg-[#161819] text-white py-3 px-8">subscribe
+                        className="absolute dark:bg-slate-700 dark:text-[#abc2d3] dark:hover:bg-slate-700 dark:hover:text-[#abc2d3] bottom-[-20px] right-[-20px] bg-[#161819] hover:bg-[#161819] text-white py-3 px-8">subscribe
                     </button>
                 </div>
             </div>
@@ -853,7 +693,7 @@ const NewsletterForm = () => {
 export default NewsletterForm;
                     '/>
                     }
-                </div>
+                </BlockWrapper>
 
                 <BlocksFooter backUrl='/blocks/multi-step-form' backName='multi step form' forwardName='404 page' forwardUrl='/blocks/404-page'/>
             </div>
