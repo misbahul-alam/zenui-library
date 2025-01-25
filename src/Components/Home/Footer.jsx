@@ -189,7 +189,7 @@ const Footer = () => {
 
               <div>
                 <h4 className='text-[1rem] font-[600] text-gray-700'>Join Community</h4>
-                <p className='text-[0.9rem] font-[300] text-gray-700'>115+ Members</p>
+                <p className='text-[0.9rem] font-[300] text-gray-700'>123+ Members</p>
               </div>
             </a>
           </div>
