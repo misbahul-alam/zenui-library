@@ -132,7 +132,7 @@ const Index = () => {
         <div className="min-h-screen flex flex-col 1024px:flex-row px-8 640px:px-12 py-8 justify-between gap-[50px] max-w-[1615px] mx-auto">
             <div className='flex-1'>
                 <h1 className="text-[2rem] 640px:text-[2.5rem] font-[700] leading-[45px] 640px:leading-[55px] text-[#0499B6]">ZenUI Image React Playground</h1>
-                <p className="text-gray-600 mb-8 max-w-[90%] leading-[30px] mt-2">Experiment with different settings to see how the LazyLoadImage
+                <p className="text-gray-600 mb-8 dark:text-darkSubTextColor max-w-[90%] leading-[30px] mt-2">Experiment with different settings to see how the LazyLoadImage
                     component behaves. ( open network tab in the browser developer tool and scroll images to see lazy loading ) </p>
 
                 {/* Configuration Card */}
@@ -200,14 +200,14 @@ const Index = () => {
                         )}
 
                         <div className="flex flex-col gap-2">
-                            <label className="text-sm font-medium text-gray-700">Loading Offset (px)</label>
+                            <label className="text-sm dark:text-darkSubTextColor font-medium text-gray-700">Loading Offset (px)</label>
                             <input
                                 type="number"
                                 min={0}
                                 max={1000}
                                 value={settings.offset}
                                 onChange={(event) => handleSettingChange('offset', Number(event.target.value))}
-                                className="w-full px-3 py-2 border border-gray-200 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-[#0499B6] focus:border-blue-500"
+                                className="w-full dark:border-slate-700 dark:bg-slate-900 dark:placeholder:text-slate-500 dark:text-darkSubTextColor px-3 py-2 border border-gray-200 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-[#0499B6] focus:border-blue-500"
                             />
                         </div>
 

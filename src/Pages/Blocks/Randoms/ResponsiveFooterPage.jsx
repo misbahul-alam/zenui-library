@@ -1,11 +1,11 @@
 import ResponsiveFooter from "../../../Components/Overview/SidebarContent/Blocks/Randoms/ResponsiveFooter.jsx";
-import ContentPageWrapper from "../../../Shared/ContentPageWrapper.jsx";
+import ContentPageLayout from "../../../Shared/ContentPageLayout.jsx";
 
 const ResponsiveFooterPage = () => {
     return (
-        <ContentPageWrapper>
+        <ContentPageLayout>
             <ResponsiveFooter/>
-        </ContentPageWrapper>
+        </ContentPageLayout>
     );
 };
 

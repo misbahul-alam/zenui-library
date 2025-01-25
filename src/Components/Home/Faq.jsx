@@ -127,7 +127,7 @@ const Faq = () => {
                                         ? "grid-rows-[1fr] opacity-100 mt-4"
                                         : "grid-rows-[0fr] opacity-0"
                                 }`}>
-                                <p className="text-gray-600 dark:text-darkSubTextColor/80 text-[0.9rem] overflow-hidden">
+                                <p className="text-gray-600 dark:text-darkSubTextColor text-[0.9rem] overflow-hidden">
                                     {according.description}
                                 </p>
                             </div>
@@ -175,7 +175,7 @@ const Faq = () => {
                                         ? "grid-rows-[1fr] opacity-100 mt-4"
                                         : "grid-rows-[0fr] opacity-0"
                                 }`}>
-                                <p className="text-gray-600 dark:text-darkSubTextColor/80 text-[0.9rem] overflow-hidden">
+                                <p className="text-gray-600 dark:text-darkSubTextColor text-[0.9rem] overflow-hidden">
                                     {according.description}
                                 </p>
                             </div>

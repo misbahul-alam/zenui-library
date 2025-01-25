@@ -41,7 +41,7 @@ const AllBlocks = () => {
                 <h2 className="font-[600] text-[#0471d6] uppercase text-[2rem] 425px:text-[2.5rem]">
                     ZenUI Blocks
                 </h2>
-                <p className="text-text dark:text-darkTextColor text-[0.9rem]">
+                <p className="text-text dark:text-darkSubTextColor text-[0.9rem]">
                     Free & Professional-Grade UI Components for Your Projects.
                 </p>
 
@@ -52,14 +52,14 @@ const AllBlocks = () => {
                 <h2 className="mt-12 font-[600] text-[1.5rem] text-[#0471d6]">Sections</h2>
                 <div className="grid grid-cols-2 425px:grid-cols-3 mt-4 gap-8">
                     {sections?.map((button, index) => (
-                        <a href={button.url} className="border border-border rounded" key={index}>
+                        <a href={button.url} className="border border-border dark:border-slate-700 rounded" key={index}>
                             <img
                                 src={button.image}
                                 alt="component/image"
                                 className="w-full h-[150px] rounded-t object-contain"
                             />
-                            <div className="border-t border-border p-4">
-                                <h2 className="text-text dark:text-darkTextColor font-[600] text-[1rem] capitalize">
+                            <div className="border-t dark:border-slate-700 border-border p-4">
+                                <h2 className="text-text dark:text-darkSubTextColor font-[600] text-[1rem] capitalize">
                                     {button.title}
                                 </h2>
                             </div>
@@ -70,14 +70,14 @@ const AllBlocks = () => {
                 <h2 className="mt-12 font-[600] text-[1.5rem] text-[#0471d6]">Forms</h2>
                 <div className="grid grid-cols-2 425px:grid-cols-3 mt-4 gap-8">
                     {forms?.map((button, index) => (
-                        <a href={button.url} className="border border-border rounded" key={index}>
+                        <a href={button.url} className="border border-border dark:border-slate-700 rounded" key={index}>
                             <img
                                 src={button.image}
                                 alt="component/image"
                                 className="w-full h-[150px] rounded-t object-contain"
                             />
-                            <div className="border-t border-border p-4">
-                                <h2 className="text-text dark:text-darkTextColor font-[600] text-[1rem] capitalize">
+                            <div className="border-t dark:border-slate-700 border-border p-4">
+                                <h2 className="text-text dark:text-darkSubTextColor font-[600] text-[1rem] capitalize">
                                     {button.title}
                                 </h2>
                             </div>
@@ -88,14 +88,14 @@ const AllBlocks = () => {
                 <h2 className="mt-12 font-[600] text-[1.5rem] mb-3 text-[#0471d6]">Empty Pages</h2>
                 <div className="grid grid-cols-2 425px:grid-cols-3 gap-8">
                     {emptyPages?.map((button, index) => (
-                        <a href={button.url} className="border border-border rounded" key={index}>
+                        <a href={button.url} className="border border-border dark:border-slate-700 rounded" key={index}>
                             <img
                                 src={button.image}
                                 alt="component/image"
                                 className="w-full h-[150px] rounded-t object-contain"
                             />
-                            <div className="border-t border-border p-4">
-                                <h2 className="text-text dark:text-darkTextColor font-[600] text-[1rem] capitalize">
+                            <div className="border-t dark:border-slate-700 border-border p-4">
+                                <h2 className="text-text dark:text-darkSubTextColor font-[600] text-[1rem] capitalize">
                                     {button.title}
                                 </h2>
                             </div>
@@ -106,14 +106,14 @@ const AllBlocks = () => {
                 <h2 className="mt-12 font-[600] text-[1.5rem] text-[#0471d6]">Randoms</h2>
                 <div className="grid grid-cols-2 425px:grid-cols-3 mt-4 gap-8">
                     {randoms?.map((button, index) => (
-                        <a href={button.url} className="border border-border rounded" key={index}>
+                        <a href={button.url} className="border border-border dark:border-slate-700 rounded" key={index}>
                             <img
                                 src={button.image}
                                 alt="component/image"
                                 className="w-full h-[150px] rounded-t object-contain"
                             />
-                            <div className="border-t border-border p-4">
-                                <h2 className="text-text dark:text-darkTextColor font-[600] text-[1rem] capitalize">
+                            <div className="border-t dark:border-slate-700 border-border p-4">
+                                <h2 className="text-text dark:text-darkSubTextColor font-[600] text-[1rem] capitalize">
                                     {button.title}
                                 </h2>
                             </div>

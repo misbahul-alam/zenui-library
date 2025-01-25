@@ -8,15 +8,13 @@ import BlocksShowCode from "../../../../../Shared/Block/BlocksShowCode.jsx";
 // icons
 import BlocksFooter from "../../../../../Shared/Block/BlocksFooter.jsx";
 
-// toggle card view
-import {useToggleCardView} from "../../../../../CustomHooks/ButtonToggle.js";
 import {HiArrowRight} from "react-icons/hi";
+import BlockDescription from "../../../../../Shared/Block/BlockDescription.jsx";
+import BlockToggleTab from "../../../../../Shared/Block/BlockToggleTab.jsx";
+import BlockWrapper from "../../../../../Shared/Block/BlockWrapper.jsx";
 
 
 const OfferGrid = () => {
-
-    // toggle actions
-    const toggleCardView = useToggleCardView()
 
     const [offerGrid1Preview, setOfferGrid1Preview] = useState(true);
     const [offerGrid1Code, setOfferGrid1Code] = useState(false);
@@ -33,19 +31,13 @@ const OfferGrid = () => {
     const [offerGrid5Preview, setOfferGrid5Preview] = useState(true);
     const [offerGrid5Code, setOfferGrid5Code] = useState(false);
 
-    const [offerGrid6Preview, setOfferGrid6Preview] = useState(true);
-    const [offerGrid6Code, setOfferGrid6Code] = useState(false);
-
-    const [offerGrid7Preview, setOfferGrid7Preview] = useState(true);
-    const [offerGrid7Code, setOfferGrid7Code] = useState(false);
-
     const [timeLeft, setTimeLeft] = useState({
         days: 0,
         hours: 0,
         minutes: 0,
         seconds: 0
     });
-    const targetDate = '2024-12-31T23:59:59'
+    const targetDate = '2025-03-31T23:59:59'
 
     useEffect(() => {
         const calculateTimeLeft = () => {
@@ -74,81 +66,61 @@ const OfferGrid = () => {
             <div>
                 <ContentHeader text={"Offer grid 1"} id={"offer_grid_1"}/>
 
-                <p className="w-full text-text text-[1rem]">
-                    Explore exclusive e-commerce offers in a sleek grid layout—top deals, big savings, and premium brands, all at your fingertips!
-                </p>
+                <BlockDescription text='Explore exclusive e-commerce offers in a sleek grid layout—top deals, big savings, and premium brands, all at your fingertips!'/>
 
-                <div className="w-full border border-border rounded mt-8">
-                    <div className="relative">
-                        <div
-                            className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${offerGrid1Preview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
-                        <button
-                            className={`${
-                                offerGrid1Preview && "text-tabTextColor"
-                            } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                            onClick={() => toggleCardView(setOfferGrid1Preview, setOfferGrid1Code, true)}
-                        >
-                            Preview
-                        </button>
-                        <button
-                            className={`${
-                                offerGrid1Code && "text-tabTextColor"
-                            } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                            onClick={() => toggleCardView(setOfferGrid1Preview, setOfferGrid1Code, false)}
-                        >
-                            Code
-                        </button>
-                    </div>
+                <BlockToggleTab preview={offerGrid1Preview} setPreview={setOfferGrid1Preview} code={offerGrid1Code} setCode={setOfferGrid1Code}/>
+
+                <BlockWrapper>
                     {offerGrid1Preview && (
                         <div className={`p-8  flex flex-wrap items-center gap-5 justify-center overflow-hidden`}>
 
                             <div className='grid grid-cols-1 1024px:grid-cols-2 gap-[15px] w-full 640px:w-[80%] min-h-[550px]'>
 
                                 <div
-                                    className='col-span-1 overflow-hidden flex justify-between flex-col rounded-sm row-span-2 bg-[#f2f4f6] h-full py-8'>
+                                    className='col-span-1 dark:bg-slate-900 overflow-hidden flex justify-between flex-col rounded-sm row-span-2 bg-[#f2f4f6] h-full py-8'>
                                     <div className='px-8'>
-                                        <h4 className='text-[1.5rem] font-medium text-gray-900'>Living Room</h4>
+                                        <h4 className='text-[1.5rem] dark:text-[#abc2d3] font-medium text-gray-900'>Living Room</h4>
                                         <button
-                                            className='flex w-max items-center hover:text-[#0FABCA] hover:border-[#0FABCA] transition-all duration-300 gap-[10px] border-gray-900 text-[0.9rem] mt-2 group border-b'>
+                                            className='flex w-max items-center hover:text-[#0FABCA] hover:border-[#0FABCA] dark:text-[#abc2d3] transition-all duration-300 gap-[10px] border-gray-900 text-[0.9rem] mt-2 group border-b'>
                                             Shop Now
                                             <HiArrowRight className='group-hover:ml-1 transition-all duration-200'/>
                                         </button>
                                     </div>
 
-                                    <img alt='product/image' src='https://i.ibb.co.com/sJvBCfN/Paste-image.png'
+                                    <img alt='product/image' src='https://i.ibb.co.com/F7MBZqh/Paste-image-removebg-preview.png'
                                          className='w-[500px]'/>
                                 </div>
 
                                 <div
-                                    className='bg-[#f2f4f6] rounded-sm col-span-1 flex justify-between items-center px-4 overflow-hidden'>
+                                    className='bg-[#f2f4f6] dark:bg-slate-900 rounded-sm col-span-1 flex justify-between items-center px-4 overflow-hidden'>
 
                                     <div className='px-6 mt-auto pb-9'>
-                                        <h4 className='text-[1.5rem] font-medium text-gray-900'>Bedroom</h4>
+                                        <h4 className='text-[1.5rem] dark:text-[#abc2d3] font-medium text-gray-900'>Bedroom</h4>
                                         <button
-                                            className='flex w-max items-center hover:text-[#0FABCA] hover:border-[#0FABCA] transition-all duration-300 gap-[10px] border-gray-900 text-[0.9rem] mt-2 group border-b'>
+                                            className='flex w-max items-center hover:text-[#0FABCA] hover:border-[#0FABCA] dark:text-[#abc2d3] transition-all duration-300 gap-[10px] border-gray-900 text-[0.9rem] mt-2 group border-b'>
                                             Shop Now
                                             <HiArrowRight className='group-hover:ml-1 transition-all duration-200'/>
                                         </button>
                                     </div>
 
-                                    <img alt='product/image' src='https://i.ibb.co.com/qRMf20H/Paste-image.png'
+                                    <img alt='product/image' src='https://i.ibb.co.com/PCw23Vs/Paste-image-1-removebg-preview.png'
                                          className='w-[200px] h-[200px]'/>
 
                                 </div>
 
                                 <div
-                                    className='bg-[#f2f4f6] rounded-sm col-span-1 flex justify-between items-center px-4 overflow-hidden'>
+                                    className='bg-[#f2f4f6] dark:bg-slate-900 rounded-sm col-span-1 flex justify-between items-center px-4 overflow-hidden'>
 
                                     <div className='px-6 mt-auto pb-9'>
-                                        <h4 className='text-[1.5rem] font-medium text-gray-900'>Kitchen</h4>
+                                        <h4 className='text-[1.5rem] dark:text-[#abc2d3] font-medium text-gray-900'>Kitchen</h4>
                                         <button
-                                            className='flex w-max items-center hover:text-[#0FABCA] hover:border-[#0FABCA] transition-all duration-300 gap-[10px] border-gray-900 text-[0.9rem] mt-2 group border-b'>
+                                            className='flex w-max items-center hover:text-[#0FABCA] hover:border-[#0FABCA] dark:text-[#abc2d3] transition-all duration-300 gap-[10px] border-gray-900 text-[0.9rem] mt-2 group border-b'>
                                             Shop Now
                                             <HiArrowRight className='group-hover:ml-1 transition-all duration-200'/>
                                         </button>
                                     </div>
 
-                                    <img alt='product/image' src='https://i.ibb.co.com/L9QXpt6/Paste-image.png'
+                                    <img alt='product/image' src='https://i.ibb.co.com/4FjR02m/Paste-image-2-removebg-preview.png'
                                          className='w-[200px] h-max'/>
 
                                 </div>
@@ -165,55 +137,57 @@ import React from "react";
 import {HiArrowRight} from "react-icons/hi";
 
 const OfferGrid = () => {
-
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[15px] w-full sm:w-[80%] min-h-[550px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-[15px] w-full sm:w-[80%] min-h-[550px]">
 
+            {/* left card with row span 2 */}
             <div
-                className="col-span-1 overflow-hidden flex justify-between flex-col rounded-sm row-span-2 bg-[#f2f4f6] h-full py-8">
+                className="col-span-1 dark:bg-slate-900 overflow-hidden flex justify-between flex-col rounded-sm row-span-2 bg-[#f2f4f6] h-full py-8">
                 <div className="px-8">
-                    <h4 className="text-[1.5rem] font-medium text-gray-900">Living Room</h4>
+                    <h4 className="text-[1.5rem] dark:text-[#abc2d3] font-medium text-gray-900">Living Room</h4>
                     <button
-                        className="flex w-max items-center hover:text-[#0FABCA] hover:border-[#0FABCA] transition-all duration-300 gap-[10px] border-gray-900 text-[0.9rem] mt-2 group border-b">
+                        className="flex w-max items-center hover:text-[#0FABCA] hover:border-[#0FABCA] dark:text-[#abc2d3] transition-all duration-300 gap-[10px] border-gray-900 text-[0.9rem] mt-2 group border-b">
                         Shop Now
                         <HiArrowRight className="group-hover:ml-1 transition-all duration-200"/>
                     </button>
                 </div>
 
-                <img alt="product/image" src="https://i.ibb.co.com/sJvBCfN/Paste-image.png"
+                <img alt="product/image" src="https://i.ibb.co.com/F7MBZqh/Paste-image-removebg-preview.png"
                      className="w-[500px]"/>
             </div>
 
+            {/* right top card */}
             <div
-                className="bg-[#f2f4f6] rounded-sm col-span-1 flex justify-between items-center px-4 overflow-hidden">
+                className="bg-[#f2f4f6] dark:bg-slate-900 rounded-sm col-span-1 flex justify-between items-center px-4 overflow-hidden">
 
                 <div className="px-6 mt-auto pb-9">
-                    <h4 className="text-[1.5rem] font-medium text-gray-900">Bedroom</h4>
+                    <h4 className="text-[1.5rem] dark:text-[#abc2d3] font-medium text-gray-900">Bedroom</h4>
                     <button
-                        className="flex w-max items-center hover:text-[#0FABCA] hover:border-[#0FABCA] transition-all duration-300 gap-[10px] border-gray-900 text-[0.9rem] mt-2 group border-b">
+                        className="flex w-max items-center hover:text-[#0FABCA] hover:border-[#0FABCA] dark:text-[#abc2d3] transition-all duration-300 gap-[10px] border-gray-900 text-[0.9rem] mt-2 group border-b">
                         Shop Now
                         <HiArrowRight className="group-hover:ml-1 transition-all duration-200"/>
                     </button>
                 </div>
 
-                <img alt="product/image" src="https://i.ibb.co.com/qRMf20H/Paste-image.png"
+                <img alt="product/image" src="https://i.ibb.co.com/PCw23Vs/Paste-image-1-removebg-preview.png"
                      className="w-[200px] h-[200px]"/>
 
             </div>
 
+            {/* right bottom card */}
             <div
-                className="bg-[#f2f4f6] rounded-sm col-span-1 flex justify-between items-center px-4 overflow-hidden">
+                className="bg-[#f2f4f6] dark:bg-slate-900 rounded-sm col-span-1 flex justify-between items-center px-4 overflow-hidden">
 
                 <div className="px-6 mt-auto pb-9">
-                    <h4 className="text-[1.5rem] font-medium text-gray-900">Kitchen</h4>
+                    <h4 className="text-[1.5rem] dark:text-[#abc2d3] font-medium text-gray-900">Kitchen</h4>
                     <button
-                        className="flex w-max items-center hover:text-[#0FABCA] hover:border-[#0FABCA] transition-all duration-300 gap-[10px] border-gray-900 text-[0.9rem] mt-2 group border-b">
+                        className="flex w-max items-center hover:text-[#0FABCA] hover:border-[#0FABCA] dark:text-[#abc2d3] transition-all duration-300 gap-[10px] border-gray-900 text-[0.9rem] mt-2 group border-b">
                         Shop Now
                         <HiArrowRight className="group-hover:ml-1 transition-all duration-200"/>
                     </button>
                 </div>
 
-                <img alt="product/image" src="https://i.ibb.co.com/L9QXpt6/Paste-image.png"
+                <img alt="product/image" src="https://i.ibb.co.com/4FjR02m/Paste-image-2-removebg-preview.png"
                      className="w-[200px] h-max"/>
 
             </div>
@@ -225,37 +199,17 @@ const OfferGrid = () => {
 export default OfferGrid;
                     '/>
                     }
-                </div>
+                </BlockWrapper>
 
                 <div className='mt-8'>
                     <ContentHeader text={"offer grid 2"} id={"offer_grid_2"}/>
                 </div>
 
-                <p className="w-full text-text text-[1rem]">
-                    Explore exclusive e-commerce offers in a sleek grid layout—top deals, big savings, and premium brands, all at your fingertips!
-                </p>
+                <BlockDescription text='Explore exclusive e-commerce offers in a sleek grid layout—top deals, big savings, and premium brands, all at your fingertips!'/>
 
-                <div className="w-full border border-border rounded mt-8">
-                    <div className="relative">
-                        <div
-                            className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${offerGrid2Preview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
-                        <button
-                            className={`${
-                                offerGrid2Preview && "text-tabTextColor"
-                            } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                            onClick={() => toggleCardView(setOfferGrid2Preview, setOfferGrid2Code, true)}
-                        >
-                            Preview
-                        </button>
-                        <button
-                            className={`${
-                                offerGrid2Code && "text-tabTextColor"
-                            } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                            onClick={() => toggleCardView(setOfferGrid2Preview, setOfferGrid2Code, false)}
-                        >
-                            Code
-                        </button>
-                    </div>
+                <BlockToggleTab preview={offerGrid2Preview} setPreview={setOfferGrid2Preview} code={offerGrid2Code} setCode={setOfferGrid2Code}/>
+
+                <BlockWrapper>
                     {offerGrid2Preview && (
                         <div className={`p-8  flex flex-wrap items-center gap-5 justify-center overflow-hidden`}>
 
@@ -423,48 +377,28 @@ const OfferGrid = () => {
 export default OfferGrid;
                     '/>
                     }
-                </div>
+                </BlockWrapper>
 
                 <div className='mt-8'>
                     <ContentHeader text={"offer grid 3"} id={"offer_grid-3"}/>
                 </div>
 
-                <p className="w-full text-text text-[1rem]">
-                    Explore exclusive e-commerce offers in a sleek grid layout—top deals, big savings, and premium brands, all at your fingertips!
-                </p>
+                <BlockDescription text='Explore exclusive e-commerce offers in a sleek grid layout—top deals, big savings, and premium brands, all at your fingertips!'/>
 
-                <div className="w-full border border-border rounded mt-8">
-                    <div className="relative">
-                        <div
-                            className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${offerGrid3Preview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
-                        <button
-                            className={`${
-                                offerGrid3Preview && "text-tabTextColor"
-                            } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                            onClick={() => toggleCardView(setOfferGrid3Preview, setOfferGrid3Code, true)}
-                        >
-                            Preview
-                        </button>
-                        <button
-                            className={`${
-                                offerGrid3Code && "text-tabTextColor"
-                            } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                            onClick={() => toggleCardView(setOfferGrid3Preview, setOfferGrid3Code, false)}
-                        >
-                            Code
-                        </button>
-                    </div>
+                <BlockToggleTab preview={offerGrid3Preview} setPreview={setOfferGrid3Preview} code={offerGrid3Code} setCode={setOfferGrid3Code}/>
+
+                <BlockWrapper>
                     {offerGrid3Preview && (
                         <div className={`p-8  flex flex-wrap items-center gap-5 justify-center overflow-hidden`}>
 
                             <div className="grid grid-cols-1 1024px:grid-cols-4 w-full 1024px:h-[450px]">
 
                                 <div
-                                    className='col-span-1 1024px:col-span-2 overflow-hidden flex justify-between flex-col rounded-sm row-span-1 1024px:row-span-2 bg-white h-[180px] 1024px:h-full py-8 relative'>
+                                    className='col-span-1 1024px:col-span-2 overflow-hidden flex justify-between flex-col rounded-sm dark:bg-slate-900 dark:border-r dark:border-slate-700 dark:border-b row-span-1 1024px:row-span-2 bg-white h-[180px] 1024px:h-full py-8 relative'>
 
                                     <div className='px-8 absolute top-[50%] translate-y-[-50%] 1024px:right-7 z-20 w-full 1024px:w-[60%]'>
-                                        <h4 className='text-[1.5rem] font-medium text-white 1024px:text-gray-900'>PlayStation 5</h4>
-                                        <p className='text-[0.8rem] mt-1 text-[#909090] font-[300]'>Incredibly powerful CPUs, GPUs, and an SSD with integrated I/O will redefine your PlayStation experience.</p>
+                                        <h4 className='text-[1.5rem] font-medium text-white 1024px:text-gray-900 dark:text-[#abc2d3]'>PlayStation 5</h4>
+                                        <p className='text-[0.8rem] dark:text-slate-400 mt-1 text-[#909090] font-[300]'>Incredibly powerful CPUs, GPUs, and an SSD with integrated I/O will redefine your PlayStation experience.</p>
                                     </div>
 
                                     <img alt='product/image'
@@ -473,13 +407,13 @@ export default OfferGrid;
                                 </div>
 
                                 <div
-                                    className='bg-[#EDEDED] rounded-sm col-span-1 1024px:col-span-2 flex justify-between items-center px-4 overflow-hidden h-full row-span-3 relative'>
+                                    className='bg-[#EDEDED] dark:bg-slate-900 rounded-sm col-span-1 1024px:col-span-2 flex justify-between items-center px-4 overflow-hidden h-full row-span-3 relative'>
 
                                     <div className='p-4 1024px:pl-5 z-30 w-full 1024px:w-[60%]'>
-                                        <h4 className='text-[2rem] font-[300] text-gray-900'>Macbook <b className='text-gray-900 font-semibold'>Air</b></h4>
-                                        <p className='text-[0.8rem] mt-1 text-[#909090] font-[300]'>The new 15‑inch MacBook Air makes room for more of what you love with a spacious Liquid Retina display.</p>
+                                        <h4 className='text-[2rem] font-[300] dark:text-[#abc2d3] text-gray-900'>Macbook <b className='text-gray-900 dark:text-[#abc2d3] font-semibold'>Air</b></h4>
+                                        <p className='text-[0.8rem] dark:text-slate-400 mt-1 text-[#909090] font-[300]'>The new 15‑inch MacBook Air makes room for more of what you love with a spacious Liquid Retina display.</p>
                                         <button
-                                            className='w-max py-2 px-6 rounded-md border border-gray-900 text-gray-900 text-[0.9rem] hover:bg-gray-900 transition-all duration-300 hover:text-white mt-5'>
+                                            className='w-max py-2 px-6 rounded-md border border-gray-900 text-gray-900 text-[0.9rem] hover:bg-gray-900 dark:text-[#abc2d3] dark:border-slate-700 transition-all duration-300 hover:text-white mt-5'>
                                             Shop Now
                                         </button>
                                     </div>
@@ -491,12 +425,12 @@ export default OfferGrid;
                                 </div>
 
                                 <div
-                                    className='overflow-hidden flex justify-between flex-col rounded-sm bg-[#EDEDED] py-8 relative min-h-[140px]'>
+                                    className='overflow-hidden flex dark:bg-slate-900 justify-between flex-col rounded-sm bg-[#EDEDED] py-8 relative min-h-[140px]'>
 
                                     <div className='absolute top-[50%] transform translate-y-[-50%] right-6 z-200 w-[70%] 1024px:w-[50%] z-30'>
-                                        <h4 className='text-[1.3rem] font-[300] text-gray-900'>Apple <br/>
+                                        <h4 className='text-[1.3rem] font-[300] dark:text-[#abc2d3] text-gray-900'>Apple <br/>
                                             AirPods <b className='font-semibold'>Max</b></h4>
-                                        <p className='text-[0.8rem] mt-1 text-[#909090] font-[300]'>Computational audio. Listen, it's powerful</p>
+                                        <p className='text-[0.8rem] mt-1 dark:text-slate-400 text-[#909090] font-[300]'>Computational audio. Listen, it's powerful</p>
                                     </div>
 
                                     <img alt='product/image'
@@ -527,17 +461,18 @@ export default OfferGrid;
 import React from "react";
 
 const OfferGrid = () => {
-
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-4 w-full lg:h-[450px]">
+        <div className="grid grid-cols-1 md:grid-cols-4 w-full md:h-[450px]">
 
+            {/* top left card */}
             <div
-                className="col-span-1 lg:col-span-2 overflow-hidden flex justify-between flex-col rounded-sm row-span-1 lg:row-span-2 bg-white h-[180px] lg:h-full py-8 relative">
+                className="col-span-1 md:col-span-2 overflow-hidden flex justify-between flex-col rounded-sm dark:bg-slate-900 dark:border-r dark:border-slate-700 dark:border-b row-span-1 md:row-span-2 bg-white h-[180px] md:h-full py-8 relative">
 
-                <div className="px-8 absolute top-[50%] translate-y-[-50%] lg:right-7 z-20 w-full lg:w-[60%]">
-                    <h4 className="text-[1.5rem] font-medium text-white lg:text-gray-900">PlayStation 5</h4>
-                    <p className="text-[0.8rem] mt-1 text-[#909090] font-[300]">Incredibly powerful CPUs, GPUs, and an
-                        SSD with integrated I/O will redefine your PlayStation experience.</p>
+                <div className="px-8 absolute top-[50%] translate-y-[-50%] md:right-7 z-20 w-full md:w-[60%]">
+                    <h4 className="text-[1.5rem] font-medium text-white md:text-gray-900 dark:text-[#abc2d3]">PlayStation
+                        5</h4>
+                    <p className="text-[0.8rem] dark:text-slate-400 mt-1 text-[#909090] font-[300]">Incredibly powerful
+                        CPUs, GPUs, and an SSD with integrated I/O will redefine your PlayStation experience.</p>
                 </div>
 
                 <img alt="product/image"
@@ -545,35 +480,37 @@ const OfferGrid = () => {
                      className="w-[230px] absolute -left-12 top-[50%] transform translate-y-[-50%]"/>
             </div>
 
+            {/* right card with col span 2 */}
             <div
-                className="bg-[#EDEDED] rounded-sm col-span-1 lg:col-span-2 flex justify-between items-center px-4 overflow-hidden h-full row-span-3 relative">
+                className="bg-[#EDEDED] dark:bg-slate-900 rounded-sm col-span-1 md:col-span-2 flex justify-between items-center px-4 overflow-hidden h-full row-span-3 relative">
 
-                <div className="p-4 lg:pl-5 z-30 w-full lg:w-[60%]">
-                    <h4 className="text-[2rem] font-[300] text-gray-900">Macbook <b
-                        className="text-gray-900 font-semibold">Air</b></h4>
-                    <p className="text-[0.8rem] mt-1 text-[#909090] font-[300]">The new 15‑inch MacBook Air makes room
-                        for more of what you love with a spacious Liquid Retina display.</p>
+                <div className="p-4 md:pl-5 z-30 w-full md:w-[60%]">
+                    <h4 className="text-[2rem] font-[300] dark:text-[#abc2d3] text-gray-900">Macbook <b
+                        className="text-gray-900 dark:text-[#abc2d3] font-semibold">Air</b></h4>
+                    <p className="text-[0.8rem] dark:text-slate-400 mt-1 text-[#909090] font-[300]">The new 15‑inch
+                        MacBook Air makes room for more of what you love with a spacious Liquid Retina display.</p>
                     <button
-                        className="w-max py-2 px-6 rounded-md border border-gray-900 text-gray-900 text-[0.9rem] hover:bg-gray-900 transition-all duration-300 hover:text-white mt-5">
+                        className="w-max py-2 px-6 rounded-md border border-gray-900 text-gray-900 text-[0.9rem] hover:bg-gray-900 dark:text-[#abc2d3] dark:border-slate-700 transition-all duration-300 hover:text-white mt-5">
                         Shop Now
                     </button>
                 </div>
 
                 <img alt="product/image"
                      src="https://i.ibb.co.com/JKqHn1w/Mac-Book-Pro-14.png"
-                     className="w-[100px] lg:w-[180px] absolute top-[50%] transform translate-y-[-50%] right-0"/>
+                     className="w-[100px] md:w-[180px] absolute top-[50%] transform translate-y-[-50%] right-0"/>
 
             </div>
 
+            {/* left bottom first card */}
             <div
-                className="overflow-hidden flex justify-between flex-col rounded-sm bg-[#EDEDED] py-8 relative min-h-[140px]">
+                className="overflow-hidden flex dark:bg-slate-900 justify-between flex-col rounded-sm bg-[#EDEDED] py-8 relative min-h-[140px]">
 
                 <div
-                    className="absolute top-[50%] transform translate-y-[-50%] right-6 z-200 w-[70%] lg:w-[50%] z-30">
-                    <h4 className="text-[1.3rem] font-[300] text-gray-900">Apple <br/>
+                    className="absolute top-[50%] transform translate-y-[-50%] right-6 z-200 w-[70%] md:w-[50%] z-30">
+                    <h4 className="text-[1.3rem] font-[300] dark:text-[#abc2d3] text-gray-900">Apple <br/>
                         AirPods <b className="font-semibold">Max</b></h4>
-                    <p className="text-[0.8rem] mt-1 text-[#909090] font-[300]">Computational audio. Listen, it"s
-                        powerful</p>
+                    <p className="text-[0.8rem] mt-1 dark:text-slate-400 text-[#909090] font-[300]">Computational audio.
+                        Listen, it"s powerful</p>
                 </div>
 
                 <img alt="product/image"
@@ -581,10 +518,11 @@ const OfferGrid = () => {
                      className="w-[80px] absolute top-[50%] left-0 transform translate-y-[-50%]"/>
             </div>
 
+            {/* left bottom second card */}
             <div
                 className="overflow-hidden flex justify-between flex-col rounded-sm bg-[#353535] py-8 relative min-h-[140px] h-full">
 
-                <div className="absolute top-[50%] translate-y-[-50%] right-6 z-20 w-[70%] lg:w-[50%]">
+                <div className="absolute top-[50%] translate-y-[-50%] right-6 z-20 w-[70%] md:w-[50%]">
                     <h4 className="text-[1.1rem] font-[300] text-white">Apple <br/>
                         Vision <b className="font-semibold">Pro</b></h4>
                     <p className="text-[0.8rem] mt-1 text-[#909090] font-[300]">An immersive way to experience
@@ -603,37 +541,17 @@ const OfferGrid = () => {
 export default OfferGrid;
                     '/>
                     }
-                </div>
+                </BlockWrapper>
 
                 <div className='mt-8'>
                     <ContentHeader text={"offer grid 4"} id={"offer_grid_4"}/>
                 </div>
 
-                <p className="w-full text-text text-[1rem]">
-                    Explore exclusive e-commerce offers in a sleek grid layout—top deals, big savings, and premium brands, all at your fingertips!
-                </p>
+                <BlockDescription text='Explore exclusive e-commerce offers in a sleek grid layout—top deals, big savings, and premium brands, all at your fingertips!'/>
 
-                <div className="w-full border border-border rounded mt-8">
-                    <div className="relative">
-                        <div
-                            className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${offerGrid4Preview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
-                        <button
-                            className={`${
-                                offerGrid4Preview && "text-tabTextColor"
-                            } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                            onClick={() => toggleCardView(setOfferGrid4Preview, setOfferGrid4Code, true)}
-                        >
-                            Preview
-                        </button>
-                        <button
-                            className={`${
-                                offerGrid4Code && "text-tabTextColor"
-                            } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                            onClick={() => toggleCardView(setOfferGrid4Preview, setOfferGrid4Code, false)}
-                        >
-                            Code
-                        </button>
-                    </div>
+                <BlockToggleTab preview={offerGrid4Preview} setPreview={setOfferGrid4Preview} code={offerGrid4Code} setCode={setOfferGrid4Code}/>
+
+                <BlockWrapper>
                     {offerGrid4Preview && (
                         <div className={`p-8  flex flex-wrap items-center gap-5 justify-center overflow-hidden`}>
 
@@ -757,37 +675,17 @@ const OfferGrid = () => {
 export default OfferGrid;
                     '/>
                     }
-                </div>
+                </BlockWrapper>
 
                 <div className='mt-8'>
                     <ContentHeader text={"offer grid 5"} id={"offer_grid_5"}/>
                 </div>
 
-                <p className="w-full text-text text-[1rem]">
-                    Explore exclusive e-commerce offers in a sleek grid layout—top deals, big savings, and premium brands, all at your fingertips!
-                </p>
+                <BlockDescription text='Explore exclusive e-commerce offers in a sleek grid layout—top deals, big savings, and premium brands, all at your fingertips!'/>
 
-                <div className="w-full border border-border rounded mt-8">
-                    <div className="relative">
-                        <div
-                            className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${offerGrid5Preview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
-                        <button
-                            className={`${
-                                offerGrid5Preview && "text-tabTextColor"
-                            } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                            onClick={() => toggleCardView(setOfferGrid5Preview, setOfferGrid5Code, true)}
-                        >
-                            Preview
-                        </button>
-                        <button
-                            className={`${
-                                offerGrid5Code && "text-tabTextColor"
-                            } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                            onClick={() => toggleCardView(setOfferGrid5Preview, setOfferGrid5Code, false)}
-                        >
-                            Code
-                        </button>
-                    </div>
+                <BlockToggleTab preview={offerGrid5Preview} setPreview={setOfferGrid5Preview} code={offerGrid5Code} setCode={setOfferGrid5Code}/>
+
+                <BlockWrapper>
                     {offerGrid5Preview && (
                         <div className={`p-8  flex flex-wrap items-center gap-5 justify-center overflow-hidden`}>
 
@@ -864,7 +762,7 @@ const OfferGrid = () => {
 export default OfferGrid;
                     '/>
                     }
-                </div>
+                </BlockWrapper>
 
                 <BlocksFooter backUrl='/blocks/empty-page' backName='empty page'
                               forwardUrl='/blocks/product-details-page' forwardName='product details page'/>

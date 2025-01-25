@@ -16,7 +16,7 @@ const Slider = ({value, onChange}) => {
     return (
         <div className="flex items-center justify-center">
             <div
-                className="relative w-full h-3 bg-gray-300 rounded-full cursor-pointer"
+                className="relative w-full h-3 dark:bg-slate-800 bg-gray-300 rounded-full cursor-pointer"
                 onClick={handleClick}
             >
                 <input
@@ -34,7 +34,7 @@ const Slider = ({value, onChange}) => {
                     }}
                 />
                 <div
-                    className="absolute top-[50%] w-[22px] h-[22px] transform bg-[#0499B6] rounded-full -translate-x-1/2 translate-y-[-50%] cursor-pointer transition-transform duration-150 ease-in-out border-2 border-white"
+                    className="absolute top-[50%] w-[22px] h-[22px] transform bg-[#0499B6] rounded-full -translate-x-1/2 translate-y-[-50%] dark:border-slate-300 cursor-pointer transition-transform duration-150 ease-in-out border-2 border-white"
                     style={{
                         left: `${value}%`,
                     }}

@@ -7,12 +7,12 @@ import Footer from "../Components/Home/Footer.jsx";
 
 const LazyImagePackagePlaygroundPage = () => {
     return (
-        <>
+        <div className='dark:bg-darkBgColor'>
             <Navbar/>
             <MobileNavbar/>
             <LazyImageReact/>
             <Footer/>
-        </>
+        </div>
     );
 };
 

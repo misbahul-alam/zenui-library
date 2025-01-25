@@ -5,7 +5,7 @@ import Navbar from "../Components/Home/Navbar.jsx";
 import MobileNavbar from "../Components/Home/MobileNavbar.jsx";
 import Sidebar from "../Components/Overview/Sidebar/index.jsx";
 
-const ContentPageWrapper = ({children}) => {
+const ContentPageLayout = ({children}) => {
     return (
         <div className='dark:bg-darkBgColor'>
             <Navbar/>
@@ -16,7 +16,7 @@ const ContentPageWrapper = ({children}) => {
                 </div>
 
                 <div
-                    className="w-full h-[calc(100vh-76px)] overflow-y-auto pb-[1rem] pt-[5rem] 640px:py-[5rem] 1024px:py-[2rem] 1024px:px-[0.5rem] relative"
+                    className="w-full h-[calc(100vh-76px)] overflow-y-auto pb-[2rem] pt-[5rem] 640px:py-[5rem] 1024px:py-[2rem] 1024px:px-[0.5rem] relative"
                     style={{scrollbarWidth: 'none'}}>
                     <MobileSidebar/>
                     {children}
@@ -26,4 +26,4 @@ const ContentPageWrapper = ({children}) => {
     );
 };
 
-export default ContentPageWrapper;
+export default ContentPageLayout;

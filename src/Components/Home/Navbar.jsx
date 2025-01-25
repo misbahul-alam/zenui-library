@@ -393,16 +393,16 @@ const Navbar = () => {
                         <div className='flex items-center gap-2'>
                             <a href='https://discord.gg/qbwytm4WUG' target='_blank'>
                                 <RxDiscordLogo
-                                    className={`text-[2.7rem] dark:border-darkBorderColor dark:text-slate-400 text-gray-400 rounded-md p-[6px] border border-gray-200 cursor-pointer`}/>
+                                    className={`text-[2.7rem] hover:bg-gray-50 dark:hover:bg-slate-900 dark:border-darkBorderColor dark:text-slate-400 text-gray-400 rounded-md p-[6px] border border-gray-200 cursor-pointer`}/>
                             </a>
 
                             <a href='https://github.com/Asfak00/zenui-library' target='_blank'>
                                 <FiGithub
-                                    className={`text-[2.7rem] dark:border-darkBorderColor dark:text-slate-400 text-gray-400 rounded-md p-[6px] border border-gray-200 cursor-pointer`}/>
+                                    className={`text-[2.7rem] hover:bg-gray-50 dark:hover:bg-slate-900 dark:border-darkBorderColor dark:text-slate-400 text-gray-400 rounded-md p-[6px] border border-gray-200 cursor-pointer`}/>
                             </a>
 
                             <div onClick={handleThemeChange}
-                                 className='text-[1.6rem] dark:border-darkBorderColor dark:text-slate-400 text-gray-500 overflow-hidden h-[43px] border border-border rounded-md px-[9px] p-1 cursor-pointer'>
+                                 className='text-[1.6rem] hover:bg-gray-50 dark:hover:bg-slate-900 dark:border-darkBorderColor dark:text-slate-400 text-gray-500 overflow-hidden h-[43px] border border-border rounded-md px-[9px] p-1 cursor-pointer'>
                                 <LuSun
                                     className={`${theme === 'dark' ? 'translate-y-[4px] rotate-0' : 'translate-y-[-80px] rotate-[160deg]'} transition-all duration-500`}/>
                                 <RiMoonClearLine

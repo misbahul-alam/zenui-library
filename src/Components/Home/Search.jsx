@@ -129,15 +129,15 @@ const Search = ({ isSearchOpen, setIsSearchOpen }) => {
   };
 
   return (
-    <main className='w-full h-screen fixed top-0 left-0 bg-[#00000057] z-[1000] flex items-center justify-center'>
+    <main className='w-full h-screen fixed top-0 left-0 bg-[#00000057] dark:bg-black/70 z-[1000] flex items-center justify-center'>
       <div
         className={`${
           isSearchOpen
             ? 'scale-[1] opacity-100 z-[100]'
             : 'scale-[0.7] opacity-0 z-[-1]'
-        } transition-all duration-500 zenuiSearchComponent bg-secondary w-[90%] 425px:w-[70%] 1024px:w-[40%] h-[80vh] p-6 rounded-md`}
+        } transition-all duration-500 zenuiSearchComponent dark:bg-slate-900 bg-secondary w-[90%] 425px:w-[70%] 1024px:w-[40%] h-[80vh] p-6 rounded-md`}
       >
-        <div className='relative bg-white pb-[10px]'>
+        <div className='relative bg-white dark:bg-slate-900 pb-[10px]'>
           <CiSearch className='absolute top-[25px] transform -translate-y-1/2 left-4 text-[1.5rem] text-[#9da4b0]' />
           <input
             id='zenui_search_input'
@@ -145,7 +145,7 @@ const Search = ({ isSearchOpen, setIsSearchOpen }) => {
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
             onKeyDown={handleKeyDown}
-            className='px-4 pl-12 py-3 w-full border rounded-md border-gray-200 focus:border-primary text-text focus:outline-none'
+            className='px-4 pl-12 dark:bg-slate-800 dark:border-slate-700 dark:placeholder:text-slate-500 dark:text-darkTextColor py-3 w-full border rounded-md border-gray-200 focus:border-primary text-text focus:outline-none'
             placeholder='Search Component'
             type='text'
             autoFocus={isSearchOpen}
@@ -154,8 +154,8 @@ const Search = ({ isSearchOpen, setIsSearchOpen }) => {
 
         <div className='h-[65vh] overflow-y-auto'>
           {filteredComponentData?.length > 0 && (
-            <div className='sticky top-0 bg-white z-10'>
-              <h3 className='text-gray-600 font-bold pb-[10px]'>Components</h3>
+            <div className='sticky top-0 dark:bg-slate-900 bg-white z-10'>
+              <h3 className='text-gray-600 font-bold dark:text-darkTextColor pb-[10px]'>Components</h3>
             </div>
           )}
           <div className='flex flex-col pr-2'>
@@ -168,22 +168,22 @@ const Search = ({ isSearchOpen, setIsSearchOpen }) => {
                 className={`flex group items-start gap-[10px] py-3 px-3 text-gray-500 
                   ${isKeyboardActive 
                     ? focusedIndex === index 
-                      ? 'bg-gray-100' 
+                      ? 'bg-gray-100 dark:bg-slate-800/50' 
                       : 'text-gray-500'
-                    : 'hover:bg-gray-100'
+                    : 'hover:bg-gray-100 dark:hover:bg-slate-800/50'
                   } rounded-md transition-colors`}
               >
-                <LuLayoutTemplate className='text-[1.4rem] flex-shrink-0 mt-1' />
+                <LuLayoutTemplate className='text-[1.4rem] dark:text-darkSubTextColor flex-shrink-0 mt-1' />
                 <div className='flex-1 min-w-0'>
                   <p
-                    className='text-[1rem] font-[500] text-gray-600 capitalize'
+                    className='text-[1rem] font-[500] dark:text-darkSubTextColor text-gray-600 capitalize'
                     dangerouslySetInnerHTML={{
                       __html: highlightText(component.title, inputText),
                     }}
                   />
                   {component.description && (
                     <p
-                      className={`text-sm font-[300] mt-0.5 truncate text-gray-500`}
+                      className={`text-sm font-[300] dark:text-darkSubTextColor/60 mt-0.5 truncate text-gray-500`}
                       dangerouslySetInnerHTML={{
                         __html: highlightText(component.description, inputText),
                       }}
@@ -194,10 +194,10 @@ const Search = ({ isSearchOpen, setIsSearchOpen }) => {
                       {component.tags.map((tag, tagIndex) => (
                         <span
                           key={tagIndex}
-                          className={`text-xs group-hover:bg-gray-200 px-2 py-0.5 rounded-full ${
+                          className={`text-xs group-hover:bg-gray-200 dark:group-hover:bg-slate-800 dark:group-hover:text-darkSubTextColor px-2 py-0.5 rounded-full ${
                             focusedIndex === index
-                              ? 'bg-gray-200'
-                              : 'bg-gray-100 text-gray-600'
+                              ? 'bg-gray-200 dark:bg-slate-800 dark:text-darkSubTextColor'
+                              : 'bg-gray-100 text-gray-600 dark:bg-slate-800 dark:text-darkSubTextColor'
                           }`}
                         >
                           {tag}
@@ -210,8 +210,8 @@ const Search = ({ isSearchOpen, setIsSearchOpen }) => {
             ))}
           </div>
           {filteredBlocksData?.length > 0 && (
-            <div className='sticky top-0 bg-white z-10 mt-5'>
-              <h3 className='text-gray-600 font-bold pb-[10px]'>Blocks</h3>
+            <div className='sticky top-0 bg-white dark:bg-slate-900 z-10 mt-5'>
+              <h3 className='text-gray-600 dark:text-darkTextColor font-bold pb-[10px]'>Blocks</h3>
             </div>
           )}
           <div className='flex flex-col pr-2 pb-7'>
@@ -226,22 +226,22 @@ const Search = ({ isSearchOpen, setIsSearchOpen }) => {
                   className={`flex items-start group gap-[10px] py-3 px-3 text-gray-500 
                     ${isKeyboardActive 
                       ? focusedIndex === blockIndex 
-                        ? 'bg-gray-100' 
+                        ? 'bg-gray-100 dark:bg-slate-800/50' 
                         : 'text-gray-500'
-                      : 'hover:bg-gray-100'
+                      : 'hover:bg-gray-100 dark:hover:bg-slate-800/50'
                     } rounded-md transition-colors`}
                 >
-                  <RxSection className='text-[1.4rem] flex-shrink-0 mt-1' />
+                  <RxSection className='text-[1.4rem] dark:text-darkSubTextColor flex-shrink-0 mt-1' />
                   <div className='flex-1 min-w-0'>
                     <p
-                      className='text-[1rem] text-gray-600 font-[500] capitalize'
+                      className='text-[1rem] dark:text-darkSubTextColor text-gray-600 font-[500] capitalize'
                       dangerouslySetInnerHTML={{
                         __html: highlightText(block.title, inputText),
                       }}
                     />
                     {block.description && (
                       <p
-                        className={`text-sm font-[300] mt-0.5 truncate text-gray-500`}
+                        className={`text-sm font-[300] dark:text-darkSubTextColor/60 mt-0.5 truncate text-gray-500`}
                         dangerouslySetInnerHTML={{
                           __html: highlightText(block.description, inputText),
                         }}
@@ -252,10 +252,10 @@ const Search = ({ isSearchOpen, setIsSearchOpen }) => {
                         {block.tags.map((tag, tagIndex) => (
                           <span
                             key={tagIndex}
-                            className={`text-xs px-2 group-hover:bg-gray-200 py-0.5 rounded-full ${
+                            className={`text-xs px-2 group-hover:bg-gray-200 dark:group-hover:bg-slate-800 dark:group-hover:text-darkSubTextColor py-0.5 rounded-full ${
                               focusedIndex === blockIndex
-                                ? 'bg-gray-200'
-                                : 'bg-gray-100 text-gray-600'
+                                ? 'bg-gray-200 dark:bg-slate-800 dark:text-darkSubTextColor'
+                                : 'bg-gray-100 text-gray-600 dark:bg-slate-800 dark:text-darkSubTextColor'
                             }`}
                           >
                             {tag}
@@ -278,32 +278,32 @@ const Search = ({ isSearchOpen, setIsSearchOpen }) => {
         </div>
 
         {/* Bottom Navigation */}
-        <div className='w-full fixed bottom-0 left-0 bg-white border-t border-gray-200 rounded-b-md'>
+        <div className='w-full fixed bottom-0 left-0 dark:bg-slate-800 dark:border-slate-700 bg-white border-t border-gray-200 rounded-b-md'>
           <div className='flex flex-wrap gap-[15px] p-3'>
             <div className='flex items-center gap-[5px]'>
-              <span className='bg-gray-100 text-gray-500 px-2 flex items-center justify-center py-1 rounded font-semibold text-[0.7rem] w-5 h-5 text-center'>
+              <span className='bg-gray-100 dark:bg-slate-900 dark:text-darkSubTextColor text-gray-500 px-2 flex items-center justify-center py-1 rounded font-semibold text-[0.7rem] w-5 h-5 text-center'>
                 ↑
               </span>
-              <span className='text-[0.7rem] text-gray-500 capitalize'>up navigate</span>
+              <span className='text-[0.7rem] dark:text-darkSubTextColor text-gray-500 capitalize'>up navigate</span>
             </div>
             <div className='flex items-center gap-[5px]'>
-              <span className='bg-gray-100 text-gray-500 px-2 py-1 flex items-center justify-center rounded font-semibold text-[0.7rem] w-5 h-5 text-center'>
+              <span className='bg-gray-100 dark:bg-slate-900 dark:text-darkSubTextColor text-gray-500 px-2 py-1 flex items-center justify-center rounded font-semibold text-[0.7rem] w-5 h-5 text-center'>
                 ↓
               </span>
-              <span className='text-[0.7rem] text-gray-500 capitalize'>down navigate</span>
+              <span className='text-[0.7rem] dark:text-darkSubTextColor text-gray-500 capitalize'>down navigate</span>
             </div>
             <div className='flex items-center gap-[5px]'>
-              <span className='bg-gray-100 text-gray-500 px-2 py-1 flex items-center justify-center rounded font-semibold text-[0.7rem] w-5 h-5 text-center'>
+              <span className='bg-gray-100 dark:bg-slate-900 dark:text-darkSubTextColor text-gray-500 px-2 py-1 flex items-center justify-center rounded font-semibold text-[0.7rem] w-5 h-5 text-center'>
                 ↵
               </span>
-              <span className='text-[0.7rem] text-gray-500 capitalize'>select</span>
+              <span className='text-[0.7rem] dark:text-darkSubTextColor text-gray-500 capitalize'>select</span>
             </div>
             <div className='flex items-center gap-2'>
               <span
-                  className='bg-gray-100 text-gray-500 px-2 py-1 flex items-center justify-center rounded font-semibold text-[0.7rem] w-8 h-5 text-center'>
+                  className='bg-gray-100 dark:bg-slate-900 dark:text-darkSubTextColor text-gray-500 px-2 py-1 flex items-center justify-center rounded font-semibold text-[0.7rem] w-8 h-5 text-center'>
                 Esc
               </span>
-              <span className='text-[0.7rem] text-gray-500 capitalize'>close</span>
+              <span className='text-[0.7rem] dark:text-darkSubTextColor text-gray-500 capitalize'>close</span>
             </div>
           </div>
         </div>

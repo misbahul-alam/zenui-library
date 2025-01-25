@@ -97,7 +97,7 @@ const InputSliderPage = React.lazy(() => import("./Pages/Components/Inputs/Input
 
 // e-commerce blocks
 import OfferGridPage from "./Pages/Blocks/E-Commerce/OfferGridPage.jsx";
-import ProductDetailsPage from "./Pages/Blocks/E-Commerce/ProductDetailsPages/Index.jsx";
+import ProductDetailsPage from "./Pages/Blocks/E-Commerce/ProductDetailsPage.jsx";
 import ProductFilterPage from "./Pages/Blocks/E-Commerce/ProductFilterPage.jsx";
 import CheckoutPage from "./Pages/Blocks/E-Commerce/CheckoutPage.jsx";
 

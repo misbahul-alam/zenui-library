@@ -131,54 +131,54 @@ const ProductDetailsExample2 = () => {
                     <div className="flex items-center gap-2">
                         <div className="flex gap-0.5">
                             {[...Array(5)].map((_, i) => (
-                                <FaStar key={i} className="w-4 h-4 fill-black"/>
+                                <FaStar key={i} className="w-4 h-4 dark:fill-slate-400 fill-black"/>
                             ))}
                         </div>
-                        <span className="text-sm text-gray-600">11 Reviews</span>
+                        <span className="text-sm dark:text-slate-400 text-gray-600">11 Reviews</span>
                     </div>
 
-                    <h1 className="text-[1.6rem] 1024px:text-[1.9rem] text-gray-800 font-semibold">Tray Table</h1>
+                    <h1 className="text-[1.6rem] 1024px:text-[1.9rem] dark:text-[#abc2d3] text-gray-800 font-semibold">Tray Table</h1>
 
-                    <p className="text-gray-600 text-[0.9rem]">
+                    <p className="text-gray-600 dark:text-slate-400 text-[0.9rem]">
                         Buy one or buy a few and make every space where you sit more convenient. Light and easy to
                         move around with removable tray top, handy for serving snacks.
                     </p>
 
                     <div className="flex items-center gap-3">
-                        <span className="text-[1.5rem] text-gray-800 font-medium">$199.00</span>
-                        <span className="text-lg text-gray-500 line-through">$400.00</span>
+                        <span className="text-[1.5rem] dark:text-[#abc2d3] text-gray-800 font-medium">$199.00</span>
+                        <span className="text-lg dark:text-slate-400 text-gray-500 line-through">$400.00</span>
                     </div>
 
                     <div className="pb-2">
-                        <p className="font-medium text-[0.9rem] text-gray-600">Offer expires in:</p>
+                        <p className="font-medium text-[0.9rem] dark:text-[#abc2d3] text-gray-600">Offer expires in:</p>
                         <div className='flex items-center gap-[10px] mt-2'>
-                            <div className='flex items-center justify-center flex-col gap-[0.2rem]'>
-                                <h5 className='py-2 px-3 bg-gray-100 text-[1.9rem] font-semibold'>{formatNumber(timeLeft.days)}</h5>
+                            <div className='flex items-center justify-center dark:text-[#abc2d3] flex-col gap-[0.2rem]'>
+                                <h5 className='py-2 px-3 dark:bg-slate-900 bg-gray-100 text-[1.9rem] font-semibold'>{formatNumber(timeLeft.days)}</h5>
                                 <span className='text-[0.7rem]'>Days</span>
                             </div>
-                            <div className='flex items-center justify-center flex-col gap-[0.2rem]'>
-                                <h5 className='py-2 px-3 bg-gray-100 text-[1.9rem] font-semibold'>{formatNumber(timeLeft.hours)}</h5>
+                            <div className='flex items-center justify-center dark:text-[#abc2d3] flex-col gap-[0.2rem]'>
+                                <h5 className='py-2 px-3 dark:bg-slate-900 bg-gray-100 text-[1.9rem] font-semibold'>{formatNumber(timeLeft.hours)}</h5>
                                 <span className='text-[0.7rem]'>Hours</span>
                             </div>
-                            <div className='flex items-center justify-center flex-col gap-[0.2rem]'>
-                                <h5 className='py-2 px-3 bg-gray-100 text-[1.9rem] font-semibold'>{formatNumber(timeLeft.minutes)}</h5>
+                            <div className='flex items-center justify-center dark:text-[#abc2d3] flex-col gap-[0.2rem]'>
+                                <h5 className='py-2 px-3 dark:bg-slate-900 bg-gray-100 text-[1.9rem] font-semibold'>{formatNumber(timeLeft.minutes)}</h5>
                                 <span className='text-[0.7rem]'>Minutes</span>
                             </div>
-                            <div className='flex items-center justify-center flex-col gap-[0.2rem]'>
-                                <h5 className='py-2 px-3 bg-gray-100 text-[1.9rem] font-semibold'>{formatNumber(timeLeft.seconds)}</h5>
+                            <div className='flex items-center justify-center dark:text-[#abc2d3] flex-col gap-[0.2rem]'>
+                                <h5 className='py-2 px-3 dark:bg-slate-900 bg-gray-100 text-[1.9rem] font-semibold'>{formatNumber(timeLeft.seconds)}</h5>
                                 <span className='text-[0.7rem]'>Seconds</span>
                             </div>
                         </div>
                     </div>
 
-                    <div className="space-y-2 border-t border-t-gray-200 pt-4">
-                        <p className="font-medium text-[0.9rem] text-gray-600">Measurements</p>
-                        <p className="text-gray-800">17 1/2×20 5/8 "</p>
+                    <div className="space-y-2 border-t dark:border-slate-700 border-t-gray-200 pt-4">
+                        <p className="font-medium dark:text-[#abc2d3] text-[0.9rem] text-gray-600">Measurements</p>
+                        <p className="text-gray-800 dark:text-slate-400">17 1/2×20 5/8 "</p>
                     </div>
 
                     <div className="space-y-2 pt-2">
-                        <p className="font-medium text-gray-600 text-[0.9rem]">Choose Color</p>
-                        <p className="font-semibold pb-1 text-gray-800 text-[0.9rem] capitalize">{selectedColor}</p>
+                        <p className="font-medium text-gray-600 dark:text-[#abc2d3] text-[0.9rem]">Choose Color</p>
+                        <p className="font-semibold pb-1 dark:text-slate-400 text-gray-800 text-[0.9rem] capitalize">{selectedColor}</p>
                         <div className="flex gap-2">
                             {colors.map((color) => (
                                 <button
@@ -186,7 +186,7 @@ const ProductDetailsExample2 = () => {
                                     aria-label={color.name}
                                     key={color.name}
                                     className={`w-8 h-8 rounded-full ${color.value} ${
-                                        selectedColor === color.name ? 'ring-2 ring-offset-2 ring-[#0FABCA]' : ''
+                                        selectedColor === color.name ? 'ring-2 dark:ring-offset-slate-800 ring-offset-2 ring-[#0FABCA]' : ''
                                     }`}
                                 >
                                 </button>
@@ -195,10 +195,10 @@ const ProductDetailsExample2 = () => {
                     </div>
 
                     <div className="flex gap-4 items-center pt-6">
-                        <div className="flex items-center bg-gray-100 rounded-md">
+                        <div className="flex items-center dark:bg-slate-900 bg-gray-100 rounded-md">
                             <button
                                 onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                                className="px-4 py-[0.560rem] text-[1.3rem] font-[300] hover:bg-gray-100 rounded-l-md"
+                                className="px-4 py-[0.560rem] dark:hover:bg-slate-800 dark:text-[#abc2d3] text-[1.3rem] font-[300] hover:bg-gray-100 rounded-l-md"
                             >
                                 −
                             </button>
@@ -206,24 +206,24 @@ const ProductDetailsExample2 = () => {
                                 type="number"
                                 value={quantity}
                                 onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-                                className="w-10 font-medium text-[0.9rem] bg-transparent text-center"
+                                className="w-10 font-medium outline-none dark:text-[#abc2d3] text-[0.9rem] bg-transparent text-center"
                             />
                             <button
                                 onClick={() => setQuantity(quantity + 1)}
-                                className="px-4 py-[0.560rem] text-[1.3rem] font-[300] hover:bg-gray-100 rounded-r-md"
+                                className="px-4 py-[0.560rem] dark:text-[#abc2d3] dark:hover:bg-slate-800 text-[1.3rem] font-[300] hover:bg-gray-100 rounded-r-md"
                             >
                                 +
                             </button>
                         </div>
                         <button
                             onClick={()=> setIsFavorite(!isFavorite)}
-                            className="py-3 border border-gray-200 rounded-md  flex items-center justify-center gap-[10px] grow hover:bg-gray-50">
+                            className="py-3 border border-gray-200 rounded-md dark:border-slate-700 dark:text-[#abc2d3] dark:hover:bg-slate-900 flex items-center justify-center gap-[10px] grow hover:bg-gray-50">
                             {
                                 isFavorite ? (
                                         <FaHeart className="w-5 h-5 text-red-500"/>
                                     )
                                     : (
-                                        <FaRegHeart className="w-5 h-5 text-gray-800"/>
+                                        <FaRegHeart className="w-5 h-5 dark:text-[#abc2d3] text-gray-800"/>
                                     )
                             }
                             Wishlist

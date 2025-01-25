@@ -27,15 +27,6 @@ export const TeamData = [
         twitterLink: ''
     },
     {
-        name: 'Harsh Shah',
-        title: 'Product Designer',
-        image: 'https://pbs.twimg.com/profile_images/1667590221788221440/WhaZ_9c7_400x400.jpg',
-        behanceLink: '',
-        figmaLink: 'https://www.figma.com/@onethirdesigner',
-        linkedinLink: '',
-        twitterLink: 'https://x.com/Onethirdesigner'
-    },
-    {
         name: 'Amin RahmanZadeh',
         title: 'Product Designer',
         image: 'https://s3-alpha.figma.com/profile/3b982b18-084c-4082-bf70-b871c0640cd3',

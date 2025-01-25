@@ -42,7 +42,7 @@ const Select = ({ value, label, options, onChange }) => {
 
     return (
         <div>
-            <span className="text-sm font-medium text-gray-700">{label}</span>
+            <span className="text-sm font-medium dark:text-darkSubTextColor text-gray-700">{label}</span>
             <div className="relative custom-select mt-1">
                 {/* Input field */}
                 <input
@@ -51,23 +51,23 @@ const Select = ({ value, label, options, onChange }) => {
                     value={isOpen ? search : selectedOptions?.label || ""}
                     onChange={(e) => setSearch(e.target.value)}
                     onFocus={() => setIsOpen(true)}
-                    className="w-full border text-gray-700 border-gray-300 rounded-md px-3 py-2 focus:outline-none"
+                    className="w-full border dark:border-slate-700 dark:bg-slate-900 dark:text-darkTextColor text-gray-700 border-gray-300 rounded-md px-3 py-2 focus:outline-none"
                 />
 
                 {/* Dropdown icon */}
                 <IoIosArrowDown
-                    className={`${isOpen ? "rotate-[180deg]" : "rotate-0"} transition-all duration-300 text-[1.3rem] absolute top-[50%] transform translate-y-[-50%] right-3 text-gray-500`}
+                    className={`${isOpen ? "rotate-[180deg]" : "rotate-0"} transition-all duration-300 text-[1.3rem] absolute top-[50%] transform dark:text-darkSubTextColor translate-y-[-50%] right-3 text-gray-500`}
                 />
 
                 {/* Dropdown menu */}
                 {isOpen && (
-                    <div className="absolute left-0 w-full mt-1 border border-gray-200 rounded-md bg-white shadow-lg z-20">
+                    <div className="absolute left-0 dark:bg-slate-900 dark:border-slate-700 w-full mt-1 border border-gray-200 rounded-md bg-white shadow-lg z-20">
                         <div className="w-full overflow-auto">
                             {filteredItems.map((item) => (
                                 <p
                                     key={item.id}
                                     onClick={() => toggleSelection(item)}
-                                    className="cursor-pointer px-3 py-2 flex items-center hover:bg-gray-200"
+                                    className="cursor-pointer dark:text-darkSubTextColor px-3 py-2 flex dark:hover:bg-slate-800/50 items-center hover:bg-gray-200"
                                 >
                                     <img
                                         src="https://besnik-space.fra1.cdn.digitaloceanspaces.com/doplac/dYj3EG2tlN8jM29cWxiA1711341238.svg"
