@@ -1,11 +1,34 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import useZenuiStore from "../../Store/Index.js";
 
 const SwitchCard = () => {
     const [animatedSwitch, setAnimatedSwitch] = useState(false);
     const [widthIncrease, setWidthIncrease] = useState(false);
 
+    const {theme, toggleTheme} = useZenuiStore();
+
+    useEffect(() => {
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+        if(theme == 'dark'){
+            setWidthIncrease(true)
+            setTimeout(()=> {
+                setWidthIncrease(false)
+                setAnimatedSwitch(true)
+            }, 300)
+        }else {
+            setWidthIncrease(true)
+            setTimeout(()=> {
+                setWidthIncrease(false)
+                setAnimatedSwitch(false)
+            }, 300)
+        }
+    }, [theme]);
+
     const handleAnimatedSwitch = () => {
         setWidthIncrease(true)
+
+        toggleTheme()
+
         setTimeout(()=> {
             setWidthIncrease(false)
             setAnimatedSwitch(!animatedSwitch);

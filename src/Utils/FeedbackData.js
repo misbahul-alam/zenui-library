@@ -12,10 +12,10 @@ export const feedbackData = [
         source: 'product_hunt',
     },
     {
-        name: 'Gemma Mortlock',
-        avatar: 'https://ph-avatars.imgix.net/7607452/851a8320-e7d6-4d80-8303-7a61b6025293.jpeg?auto=compress&codec=mozjpeg&cs=strip&auto=format&w=36&h=36&fit=crop&dpr=1',
-        review: 'The design of ZenUI looks amazing the range of templates and components will be a big for many developers',
-        source: 'product_hunt',
+        name: 'Franklin De Jesús Durán',
+        avatar: 'https://i.ibb.co.com/8jwGzmQ/unnamed-1.png',
+        review: 'It’s perfect, clean, simple, beautiful and with tailwind',
+        source: 'daily_dev',
     },
     {
         name: 'Peter Cruckshank',
@@ -46,15 +46,15 @@ export const feedbackData = [
         source: 'product_hunt',
     },
     {
-        name: 'Sharif',
-        avatar: 'https://ph-avatars.imgix.net/4576332/20dfa47f-ef92-4da1-8300-563bef387af2.png?auto=compress&codec=mozjpeg&cs=strip&auto=format&w=36&h=36&fit=crop&dpr=1',
-        review: 'The component library in ZenUI is a great time-saver. I don\'t have to start from scratch for every project.',
-        source: 'product_hunt',
+        name: 'Muhammad Fiaz',
+        avatar: 'https://i.ibb.co.com/VpPZNTSq/unnamed-1.jpg',
+        review: 'Cool UI components! It also offers many additional components that aren’t provided by ShadCN, Radix UI, or other popular UI providers.',
+        source: 'daily_dev',
     },
     {
-        name: 'Shahriar Sajeeb',
-        avatar: 'https://ph-avatars.imgix.net/7657612/4a79f130-82df-4689-8a2f-e15dc85243a2.jpeg?auto=compress&codec=mozjpeg&cs=strip&auto=format&w=40&h=40&fit=crop&dpr=1',
-        review: 'ZenUI is a great tool for fast website development. The templates are modern and easy to use, making it simple to build impressive designs quickly. It’s a solid resource for any developer looking to create sleek, responsive websites.',
+        name: 'Gemma Mortlock',
+        avatar: 'https://ph-avatars.imgix.net/7607452/851a8320-e7d6-4d80-8303-7a61b6025293.jpeg?auto=compress&codec=mozjpeg&cs=strip&auto=format&w=36&h=36&fit=crop&dpr=1',
+        review: 'The design of ZenUI looks amazing the range of templates and components will be a big for many developers',
         source: 'product_hunt',
     },
     {
@@ -79,10 +79,10 @@ export const feedbackData = [
         source: 'product_hunt',
     },
     {
-        name: 'Franklin De Jesús Durán',
-        avatar: 'https://i.ibb.co.com/8jwGzmQ/unnamed-1.png',
-        review: 'It’s perfect, clean, simple, beautiful and with tailwind',
-        source: 'daily_dev',
+        name: 'Shahriar Sajeeb',
+        avatar: 'https://ph-avatars.imgix.net/7657612/4a79f130-82df-4689-8a2f-e15dc85243a2.jpeg?auto=compress&codec=mozjpeg&cs=strip&auto=format&w=40&h=40&fit=crop&dpr=1',
+        review: 'ZenUI is a great tool for fast website development. The templates are modern and easy to use, making it simple to build impressive designs quickly. It’s a solid resource for any developer looking to create sleek, responsive websites.',
+        source: 'product_hunt',
     },
     {
         name: 'Bablu Mia',
@@ -91,10 +91,10 @@ export const feedbackData = [
         source: 'product_hunt',
     },
     {
-        name: 'Misbah Ahmed',
-        avatar: 'https://i.ibb.co.com/jTWnDQb/1707239557517.jpg',
-        review: 'ZenUI is an awesome library for developing websites rapidy. It offers ready-made impressive templates that have touch in modern design. I personally love to explore the UI library and use it as I need. Hopefully it will make difference in modern development.',
-        source: 'product_hunt',
+        name: 'Edson Simão Jr',
+        avatar: 'https://i.ibb.co.com/v6WTKTtg/unnamed.jpg',
+        review: 'This UI library is different, because you will find here all of unique components for free.',
+        source: 'daily_dev',
     },
     {
         name: 'Muhammad Belal',

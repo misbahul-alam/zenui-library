@@ -14,6 +14,8 @@ import NewBadge from "../../Shared/NewBadge.jsx";
 import {LuSun} from "react-icons/lu";
 import {RiMoonClearLine} from "react-icons/ri";
 
+import useZenuiStore from "../../Store/Index.js";
+
 const Navbar = () => {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [hasShadow, setHasShadow] = useState(false);
@@ -48,25 +50,11 @@ const Navbar = () => {
     }, [])
 
     // theme changing
-    const [theme, setTheme] = useState(() => {
-        const savedTheme = localStorage.getItem('zenuiTheme');
-        return savedTheme || 'light';
-    });
-
-    const handleThemeChange = () => {
-        const newTheme = theme === 'light' ? 'dark' : 'light';
-        localStorage.setItem('zenuiTheme', newTheme);
-        document.documentElement.classList.remove('light', 'dark');
-        document.documentElement.classList.add(newTheme);
-        setTheme(newTheme);
-    }
+    const {theme, toggleTheme} = useZenuiStore();
 
     useEffect(() => {
-        const savedTheme = localStorage.getItem('zenuiTheme') || 'light';
-        document.documentElement.classList.remove('light', 'dark');
-        document.documentElement.classList.add(savedTheme);
-        setTheme(savedTheme);
-    }, []);
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+    }, [theme]);
 
     useEffect(() => {
         const handleShortCut = (event) => {
@@ -401,8 +389,8 @@ const Navbar = () => {
                                     className={`text-[2.7rem] hover:bg-gray-50 dark:hover:bg-slate-900 dark:border-darkBorderColor dark:text-slate-400 text-gray-400 rounded-md p-[6px] border border-gray-200 cursor-pointer`}/>
                             </a>
 
-                            <div onClick={handleThemeChange}
-                                 className='text-[1.6rem] hover:bg-gray-50 dark:hover:bg-slate-900 dark:border-darkBorderColor dark:text-slate-400 text-gray-500 overflow-hidden h-[43px] border border-border rounded-md px-[9px] p-1 cursor-pointer'>
+                            <div onClick={toggleTheme}
+                                 className='text-[1.6rem] hover:bg-gray-50 dark:hover:bg-slate-900 dark:border-darkBorderColor dark:text-slate-400 text-gray-400 overflow-hidden h-[43px] border border-border rounded-md px-[9px] p-1 cursor-pointer'>
                                 <LuSun
                                     className={`${theme === 'dark' ? 'translate-y-[4px] rotate-0' : 'translate-y-[-80px] rotate-[160deg]'} transition-all duration-500`}/>
                                 <RiMoonClearLine

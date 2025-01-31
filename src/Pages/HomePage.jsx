@@ -9,7 +9,6 @@ import Feedback from "../Components/Home/feedback.jsx";
 import TemplatesSlider from "../Components/Home/TemplatesSlider.jsx";
 import Sponsor from "../Components/Home/Sponsor.jsx";
 import Faq from "../Components/Home/Faq.jsx";
-import NewsBoard from "../Components/Home/NewsBoard.jsx";
 import ZenUITools from "../Components/Home/ZenUITools.jsx";
 
 
@@ -17,11 +16,10 @@ const HomePage = () => {
 
     return (
         <div className='dark:bg-darkBgColor transition-all duration-500'>
-            {/*<NewsBoard/>*/}
             <Navbar/>
             <div className='overflow-x-hidden'>
-                <MobileNavbar/>
-                <Hero/>
+                <MobileNavbar />
+                <Hero />
                 <ZenUITools/>
                 <Feedback/>
                 <TemplatesSlider/>

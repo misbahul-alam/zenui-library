@@ -13,6 +13,7 @@ import {AnimatePresence, motion} from "framer-motion";
 import NewBadge from "../../Shared/NewBadge.jsx";
 import {LuSun} from "react-icons/lu";
 import {RiMoonClearLine} from "react-icons/ri";
+import useZenuiStore from "../../Store/Index.js";
 
 const MobileNavbar = () => {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -20,10 +21,6 @@ const MobileNavbar = () => {
     const [developerKitDropdownOpen, setDeveloperKitDropdownOpen] = useState(false);
     const [toolsDropdownOpen, setToolsDropdownOpen] = useState(false);
     const [eCommerceDropdownOpen, setECommerceDropdownOpen] = useState(false)
-    const [theme, setTheme] = useState(() => {
-        const savedTheme = localStorage.getItem('zenuiTheme');
-        return savedTheme || 'light';
-    });
 
     const [searchPlaceholderText, setSearchPlaceholderText] = useState("search component");
 
@@ -33,20 +30,11 @@ const MobileNavbar = () => {
         setIsSearchOpen(true);
     };
 
-    const handleThemeChange = () => {
-        const newTheme = theme === 'light' ? 'dark' : 'light';
-        localStorage.setItem('zenuiTheme', newTheme);
-        document.documentElement.classList.remove('light', 'dark');
-        document.documentElement.classList.add(newTheme);
-        setTheme(newTheme);
-    }
+    const {theme, toggleTheme} = useZenuiStore();
 
     useEffect(() => {
-        const savedTheme = localStorage.getItem('zenuiTheme') || 'light';
-        document.documentElement.classList.remove('light', 'dark');
-        document.documentElement.classList.add(savedTheme);
-        setTheme(savedTheme);
-    }, []);
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+    }, [theme]);
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -110,7 +98,7 @@ const MobileNavbar = () => {
                                 className={`text-[2.3rem] dark:border-darkBorderColor dark:text-slate-400 text-gray-400 rounded-md p-[6px] border border-gray-200 cursor-pointer`}/>
                         </a>
 
-                        <div onClick={handleThemeChange}
+                        <div onClick={toggleTheme}
                              className='text-[1.5rem] dark:border-darkBorderColor dark:text-slate-400 text-gray-500 overflow-hidden h-[38px] border border-border rounded-md px-[6px] p-1 cursor-pointer'>
                             <LuSun
                                 className={`${theme === 'dark' ? 'translate-y-[2px] rotate-0' : 'translate-y-[-80px] rotate-[160deg]'} transition-all duration-500`}/>

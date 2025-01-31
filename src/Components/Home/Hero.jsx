@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 
 // react icons
-import {CgTemplate} from "react-icons/cg";
 import {FaGithub, FaReact} from "react-icons/fa";
 
 // import aos animation
@@ -12,13 +11,11 @@ import AOS from "aos";
 import {useNavigate} from "react-router-dom";
 
 import {BiLogoTailwindCss} from "react-icons/bi";
-import {TbBrandNextjs, TbIcons} from "react-icons/tb";
+import {TbBrandNextjs} from "react-icons/tb";
 import ComponentsSlider from "./ComponentsSlider.jsx";
 import FeaturesCard from "./FeaturesCard.jsx";
 
 import {motion} from "framer-motion";
-import {LuLayoutTemplate} from "react-icons/lu";
-import CountUp from "react-countup";
 import {FaArrowRightLong} from "react-icons/fa6";
 
 // components
@@ -201,7 +198,7 @@ const Hero = () => {
                         {/*    <CountUp start={0} end={20} duration={5} ></CountUp>*/}
                         {/*    <p className='mb-1'>+</p>*/}
                         {/*</div>*/}
-                        <a href='https://www.npmjs.com/package/zenui-image-react' target='_blank' className='border flex items-center rounded-md bg-gray-50 gap-[10px] dark:border-slate-700 dark:bg-slate-900 border-gray-200 py-3 px-3 cursor-pointer'>
+                        <a href='https://www.npmjs.com/package/zenui-image-react' target='_blank' className='border flex items-center rounded-md hover:border-[#0FABCA] transition-all duration-300 hover:bg-[#0FABCA]/5 bg-gray-50 gap-[10px] dark:border-slate-700 dark:bg-slate-900 border-gray-200 py-3 px-3 cursor-pointer'>
                             <SiNpm className='text-[2rem] text-red-600'/>
                             <p className='text-[0.84rem] dark:text-[#abc2d3] 640px:text-[1rem] font-[600] text-gray-700'>Try Our Lazy Image React Package</p>
                         </a>
