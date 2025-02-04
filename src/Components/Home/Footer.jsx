@@ -123,6 +123,10 @@ const Footer = () => {
                 <p><a href='/docs/resources'>Resources</a></p>
                 <span><a href='/docs/resources'>Resources</a></span>
               </li>
+              <li>
+                <p><a href='/semantic-tag-master'>Semantic TagMaster</a></p>
+                <span><a href='/semantic-tag-master'>Semantic TagMaster</a></span>
+              </li>
             </ul>
           </div>
 

@@ -113,6 +113,8 @@ const TablePage = React.lazy(() => import("./Pages/Components/Data Display/Table
 const PieChartPage = React.lazy(() => import("./Pages/Components/Data Display/PieChartPage.jsx"));
 const CarouselPage = React.lazy(() => import("./Pages/Components/Surfaces/CarouselPage.jsx"));
 
+const SemanticTagMasterPage = React.lazy(() => import("./Pages/SemanticTagMasterPage.jsx"));
+
 // become zenui hero docs
 import ZenUIHeroDocsPage from "./Pages/ZenUIHeroDocsPage.jsx";
 import TimerPage from "./Pages/Components/Navigation/TimerPage.jsx";
@@ -280,6 +282,9 @@ const App = () => {
 
                 {/* zenui lazy image package */}
                 <Route path='/zenui-image-react-playground' element={<LazyImagePackagePlaygroundPage/>}/>
+
+                {/* Tag master */}
+                <Route path='/semantic-tag-master' element={<SemanticTagMasterPage/>}/>
 
                 {/*  empty route  */}
                 <Route path="*" element={<EmptyPage/>}/>

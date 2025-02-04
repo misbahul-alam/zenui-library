@@ -150,8 +150,10 @@ const MobileNavbar = () => {
                 <ul className='text-gray-600 flex flex-col mt-5 items-start gap-4 font-[500] capitalize text-[1rem]'>
                     <Link to='/about-us' className='!text-[1rem] dark:text-darkSubTextColor !pl-0 !font-[500]'>About Us</Link>
                     <li onClick={() => setToolsDropdownOpen(!toolsDropdownOpen)}
-                        className='cursor-pointer dark:text-darkSubTextColor flex items-center gap-[8px]'>
+                        className='cursor-pointer relative dark:text-darkSubTextColor flex items-center gap-[8px]'>
                         Tools
+                        <NewBadge/>
+                        <div className='w-[8px] h-[8px] bg-green-500 rounded-full absolute -top-1.5 right-6 animate-[ping_1.5s_linear_infinite]'></div>
                         <IoIosArrowDown className={`${toolsDropdownOpen ? 'rotate-[180deg]': 'rotate-0'} transition-all duration-300`}/>
                     </li>
 
@@ -197,10 +199,21 @@ const MobileNavbar = () => {
                                             <p className='cursor-pointer dark:text-darkSubTextColor leading-[20px] text-gray-600 transition-all duration-200'>
                                                 Config AI
                                             </p>
-                                            <NewBadge/>
                                         </div>
                                         <span
                                             className='text-[0.8rem] dark:text-slate-400 font-[300] text-gray-500'>Generate tailwind config file by AI.</span>
+                                    </Link>
+
+                                    <Link to='/semantic-tag-master'
+                                          className='!p-0'>
+                                        <div className='flex items-center gap-[10px]'>
+                                            <p className='cursor-pointer dark:text-darkSubTextColor leading-[20px] text-gray-600 transition-all duration-200'>
+                                                Semantic TagMaster
+                                            </p>
+                                            <NewBadge/>
+                                        </div>
+                                        <span
+                                            className='text-[0.8rem] dark:text-slate-400 font-[300] text-gray-500'>A comprehensive guide about HTML semantic tags</span>
                                     </Link>
                                 </div>
                             </motion.div>
@@ -265,8 +278,6 @@ const MobileNavbar = () => {
                     <li onClick={() => setECommerceDropdownOpen(!eCommerceDropdownOpen)}
                         className='cursor-pointer relative dark:text-darkSubTextColor flex items-center gap-[8px] mt-1.5'>
                         E-Commerce
-                        <NewBadge/>
-                        <div className='w-[8px] h-[8px] bg-green-500 rounded-full absolute -top-1.5 right-6 animate-[ping_1.5s_linear_infinite]'></div>
                         <IoIosArrowDown className={`${eCommerceDropdownOpen ? 'rotate-[180deg]': 'rotate-0'} transition-all duration-300`}/>
                     </li>
 

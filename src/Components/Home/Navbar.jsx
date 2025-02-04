@@ -176,6 +176,8 @@ const Navbar = () => {
                                 className={`${isActiveToolsMenu && 'text-[#0FABCA]'} cursor-pointer relative py-[23px] hover:text-[#0FABCA] dark:text-darkTextColor transition-all duration-200 flex items-center gap-[8px]`}
                             >
                                 Tools
+                                <NewBadge/>
+                                <div className='w-[8px] h-[8px] bg-green-500 rounded-full absolute top-5 right-6 animate-[ping_1.5s_linear_infinite]'></div>
                                 <IoIosArrowDown className={`${(isToolsHover || isActiveToolsMenu) ? 'rotate-[180deg]': 'rotate-0'} transition-all duration-300`}/>
 
                                 {(isToolsHover || isActiveToolsMenu) && (
@@ -183,7 +185,7 @@ const Navbar = () => {
                                         initial={{opacity: 0, scale: 0.8}}
                                         animate={{opacity: 1, scale: 1}}
                                         exit={{opacity: 0, scale: 0.8}}
-                                        className="absolute dark:bg-slate-900 dark:border-darkBorderColor top-[68px] left-0 gap-[30px] w-[600px] grid grid-cols-2 bg-white border border-gray-200 shadow-sm rounded-md p-6 mt-2"
+                                        className="absolute dark:bg-slate-900 dark:border-darkBorderColor top-[68px] left-0 gap-x-[30px] w-[600px] grid grid-cols-2 bg-white border border-gray-200 shadow-sm rounded-md p-6 mt-2"
                                         onMouseEnter={() => setIsToolsHover(true)}
                                         onMouseLeave={() => setIsToolsHover(false)}
                                     >
@@ -220,9 +222,21 @@ const Navbar = () => {
                                                     <p className='cursor-pointer leading-[20px] dark:text-darkTextColor text-gray-600 transition-all duration-200'>
                                                         Config AI
                                                     </p>
-                                                    <NewBadge/>
                                                 </div>
                                                 <span className='text-[0.8rem] font-[300] dark:text-darkSubTextColor text-gray-500'>Generate tailwind config file by AI.</span>
+                                            </Link>
+                                        </div>
+
+                                        <div className='flex flex-col text-[1rem]'>
+
+                                            <Link to='/semantic-tag-master' className='p-[10px] dark:hover:bg-slate-800 transition-all duration-200 hover:bg-gray-100 rounded-md'>
+                                                <div className='flex items-center gap-[10px]'>
+                                                    <p className='cursor-pointer leading-[20px] dark:text-darkTextColor text-gray-600 transition-all duration-200'>
+                                                        Semantic TagMaster
+                                                    </p>
+                                                    <NewBadge/>
+                                                </div>
+                                                <span className='text-[0.8rem] font-[300] dark:text-darkSubTextColor text-gray-500'>A comprehensive guide about HTML semantic tags</span>
                                             </Link>
                                         </div>
                                     </motion.div>
@@ -291,8 +305,6 @@ const Navbar = () => {
                                 className={`${isActiveEcommcerMenu && 'text-[#0FABCA]'} cursor-pointer relative py-[23px] hover:text-[#0FABCA] dark:text-darkTextColor transition-all duration-200 flex items-center gap-[8px]`}
                             >
                                 E-Commerce
-                                <NewBadge/>
-                                <div className='w-[8px] h-[8px] bg-green-500 rounded-full absolute top-5 right-6 animate-[ping_1.5s_linear_infinite]'></div>
                                 <IoIosArrowDown className={`${(eCommerceHover|| isActiveEcommcerMenu) ? 'rotate-[180deg]': 'rotate-0'} transition-all duration-300`}/>
 
                                 {(eCommerceHover||isActiveEcommcerMenu) && (
