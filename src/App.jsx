@@ -82,7 +82,7 @@ const EmptyPage = React.lazy(() => import("./Pages/EmptyPage.jsx"))
 const StepsPage = React.lazy(() => import("./Pages/Components/Navigation/StepsPage.jsx"));
 
 // icons page
-const IconsPage = React.lazy(() => import('./Pages/IconsPages/IconsPage.jsx'))
+const IconsPage = React.lazy(() => import('./Pages/IconsPage.jsx'))
 const ResponsiveFooterPage = React.lazy(() => import("./Pages/Blocks/Randoms/ResponsiveFooterPage.jsx"));
 const AuthButtonPage = React.lazy(() => import("./Pages/Components/Buttons/AuthButtonPage.jsx"));
 
