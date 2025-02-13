@@ -14,7 +14,7 @@ const AnimatedDarkBg = () => {
                     w-[250vmax] h-[250vmax]
                     translate-x-1/2 translate-y-1/2
                     rounded-full bg-darkBgColor
-                    transition-transform duration-[1200ms] ease-in-out
+                    transition-transform duration-[1100ms] ease-in-out
                     ${theme == 'dark' ? 'scale-100' : 'scale-0'}
                 `}
         />

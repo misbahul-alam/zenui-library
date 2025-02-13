@@ -157,7 +157,7 @@ const Navbar = () => {
 
                         <div className='relative mr-6 h-[52px]'>
                             <span
-                                className='px-2.5 dark:bg-slate-800 dark:text-slate-400 absolute right-[-40px] text-[#a4a4a8] top-0 py-0.5 bg-[#f0f0f1] rounded-full text-[12px]'>
+                                className='px-2.5 dark:bg-slate-800 transition-all duration-500 dark:text-slate-400 absolute right-[-40px] text-[#a4a4a8] top-0 py-0.5 bg-[#f0f0f1] rounded-full text-[12px]'>
                                 v2.2
                             </span>
                             <img
@@ -386,19 +386,19 @@ const Navbar = () => {
                                     className={`py-[0.59rem] pl-10 dark:border-darkBorderColor border w-full bg-transparent border-gray-200 rounded-md focus:ring-0 outline-none`}
                                 />
                             <span
-                                className={`text-gray-500 dark:bg-slate-800 dark:border-darkBorderColor dark:text-slate-400 bg-gray-50 border-gray-200 px-2 py-1 text-[0.8rem] font-[500] rounded-md h-[75%] absolute right-1.5 border top-[0.35rem] flex items-center justify-center`}>
+                                className={`text-gray-500 dark:bg-slate-800 dark:border-darkBorderColor dark:text-slate-400 bg-gray-50 transition-all duration-500 border-gray-200 px-2 py-1 text-[0.8rem] font-[500] rounded-md h-[75%] absolute right-1.5 border top-[0.35rem] flex items-center justify-center`}>
                                 Ctrl + S
                             </span>
                         </div>
                         <div className='flex items-center gap-2'>
                             <a href='https://discord.gg/qbwytm4WUG' target='_blank'>
                                 <RxDiscordLogo
-                                    className={`text-[2.7rem] hover:bg-gray-50 dark:hover:bg-slate-900 dark:border-darkBorderColor dark:text-slate-400 text-gray-400 rounded-md p-[6px] border border-gray-200 cursor-pointer`}/>
+                                    className={`text-[2.7rem] hover:bg-gray-50 dark:hover:bg-slate-900 dark:border-darkBorderColor transition-all duration-500 dark:text-slate-400 text-gray-400 rounded-md p-[6px] border border-gray-200 cursor-pointer`}/>
                             </a>
 
                             <a href='https://github.com/Asfak00/zenui-library' target='_blank'>
                                 <FiGithub
-                                    className={`text-[2.7rem] hover:bg-gray-50 dark:hover:bg-slate-900 dark:border-darkBorderColor dark:text-slate-400 text-gray-400 rounded-md p-[6px] border border-gray-200 cursor-pointer`}/>
+                                    className={`text-[2.7rem] hover:bg-gray-50 dark:hover:bg-slate-900 dark:border-darkBorderColor transition-all duration-500 dark:text-slate-400 text-gray-400 rounded-md p-[6px] border border-gray-200 cursor-pointer`}/>
                             </a>
 
                             <div onClick={toggleTheme}

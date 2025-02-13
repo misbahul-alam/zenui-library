@@ -130,7 +130,7 @@ const Hero = () => {
 
                     <motion.h1
                         variants={FADE_DOWN_ANIMATION_VARIANTS}
-                        className="text-[2.4rem] font-[600] 425px:text-[3rem] 640px:text-[2.8rem] leading-[3rem] 425px:leading-[4.5rem] mt-8 640px:leading-[1.25] dark:text-darkTextColor text-text">
+                        className="text-[2.4rem] font-[600] 425px:text-[3rem] 640px:text-[2.8rem] leading-[3rem] 425px:leading-[4.5rem] mt-8 transition-all duration-700 640px:leading-[1.25] dark:text-darkTextColor text-text">
                         <span className='heroText text-[#0FABCA] font-[500]'>ZenUI</span> Open-Source Free UI Components & Templates
                         Library
                     </motion.h1>
@@ -198,7 +198,7 @@ const Hero = () => {
                         {/*    <CountUp start={0} end={20} duration={5} ></CountUp>*/}
                         {/*    <p className='mb-1'>+</p>*/}
                         {/*</div>*/}
-                        <a href='https://www.npmjs.com/package/zenui-image-react' target='_blank' className='border flex items-center rounded-md hover:border-[#0FABCA] transition-all duration-300 hover:bg-[#0FABCA]/5 bg-gray-50 gap-[10px] dark:border-slate-700 dark:bg-slate-900 border-gray-200 py-3 px-3 cursor-pointer'>
+                        <a href='https://www.npmjs.com/package/zenui-image-react' target='_blank' className='border flex items-center rounded-md hover:border-[#0FABCA] transition-all duration-500 hover:bg-[#0FABCA]/5 bg-gray-50 gap-[10px] dark:border-slate-700 dark:bg-slate-900 border-gray-200 py-3 px-3 cursor-pointer'>
                             <SiNpm className='text-[2rem] text-red-600'/>
                             <p className='text-[0.84rem] dark:text-[#abc2d3] 640px:text-[1rem] font-[600] text-gray-700'>Try Our Lazy Image React Package</p>
                         </a>

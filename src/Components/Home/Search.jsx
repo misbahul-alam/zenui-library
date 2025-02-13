@@ -278,7 +278,7 @@ const Search = ({ isSearchOpen, setIsSearchOpen }) => {
         </div>
 
         {/* Bottom Navigation */}
-        <div className='w-full fixed bottom-0 left-0 dark:bg-slate-800 dark:border-slate-700 bg-white border-t border-gray-200 rounded-b-md'>
+        <div className='w-full hidden 1024px:block fixed bottom-0 left-0 dark:bg-slate-800 dark:border-slate-700 bg-white border-t border-gray-200 rounded-b-md'>
           <div className='flex flex-wrap gap-[15px] p-3'>
             <div className='flex items-center gap-[5px]'>
               <span className='bg-gray-100 dark:bg-slate-900 dark:text-darkSubTextColor text-gray-500 px-2 flex items-center justify-center py-1 rounded font-semibold text-[0.7rem] w-5 h-5 text-center'>
